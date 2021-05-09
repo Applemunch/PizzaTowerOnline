@@ -1,5 +1,3 @@
-if live_call() return live_result;
-
 // roundrect
 draw_set_colour($222222);
 
