@@ -1,0 +1,371 @@
+Converting GML script: ${project_dir}\scripts\scr_player_knightpep\scr_player_knightpep.gml
+Converted builtin - line 106: view_xview[0] -> __view_get( e__VW.XView, 0 )
+Converted builtin - line 106: view_xview[0] -> __view_get( e__VW.XView, 0 )
+Converted builtin - line 106: view_yview[0] -> __view_get( e__VW.YView, 0 )
+Converted builtin - line 106: view_yview[0] -> __view_get( e__VW.YView, 0 )
+Converted builtin - line 106: view_wview[0] -> __view_get( e__VW.WView, 0 )
+Converted builtin - line 106: view_hview[0] -> __view_get( e__VW.HView, 0 )
+
+Converting GML script: ${project_dir}\scripts\scr_player_meteorpep\scr_player_meteorpep.gml
+Converted builtin - line 24: view_xview[0] -> __view_get( e__VW.XView, 0 )
+Converted builtin - line 24: view_xview[0] -> __view_get( e__VW.XView, 0 )
+Converted builtin - line 42: view_xview[0] -> __view_get( e__VW.XView, 0 )
+Converted builtin - line 42: view_xview[0] -> __view_get( e__VW.XView, 0 )
+Converted builtin - line 24: view_yview[0] -> __view_get( e__VW.YView, 0 )
+Converted builtin - line 24: view_yview[0] -> __view_get( e__VW.YView, 0 )
+Converted builtin - line 42: view_yview[0] -> __view_get( e__VW.YView, 0 )
+Converted builtin - line 42: view_yview[0] -> __view_get( e__VW.YView, 0 )
+Converted builtin - line 24: view_wview[0] -> __view_get( e__VW.WView, 0 )
+Converted builtin - line 42: view_wview[0] -> __view_get( e__VW.WView, 0 )
+Converted builtin - line 24: view_hview[0] -> __view_get( e__VW.HView, 0 )
+Converted builtin - line 42: view_hview[0] -> __view_get( e__VW.HView, 0 )
+
+Converting GML script: ${project_dir}\scripts\scr_player_superslam\scr_player_superslam.gml
+Converted builtin - line 51: view_xview[0] -> __view_get( e__VW.XView, 0 )
+Converted builtin - line 51: view_xview[0] -> __view_get( e__VW.XView, 0 )
+Converted builtin - line 51: view_yview[0] -> __view_get( e__VW.YView, 0 )
+Converted builtin - line 51: view_yview[0] -> __view_get( e__VW.YView, 0 )
+Converted builtin - line 51: view_wview[0] -> __view_get( e__VW.WView, 0 )
+Converted builtin - line 51: view_hview[0] -> __view_get( e__VW.HView, 0 )
+
+Converting GML script: ${project_dir}\scripts\scr_player_machroll\scr_player_machroll.gml
+Converted builtin - line 48: view_xview[0] -> __view_get( e__VW.XView, 0 )
+Converted builtin - line 48: view_xview[0] -> __view_get( e__VW.XView, 0 )
+Converted builtin - line 48: view_yview[0] -> __view_get( e__VW.YView, 0 )
+Converted builtin - line 48: view_yview[0] -> __view_get( e__VW.YView, 0 )
+Converted builtin - line 48: view_wview[0] -> __view_get( e__VW.WView, 0 )
+Converted builtin - line 48: view_hview[0] -> __view_get( e__VW.HView, 0 )
+
+Converting GML script: ${project_dir}\scripts\scr_player_machfreefall\scr_player_machfreefall.gml
+Converted builtin - line 85: view_xview[0] -> __view_get( e__VW.XView, 0 )
+Converted builtin - line 85: view_xview[0] -> __view_get( e__VW.XView, 0 )
+Converted builtin - line 85: view_yview[0] -> __view_get( e__VW.YView, 0 )
+Converted builtin - line 85: view_yview[0] -> __view_get( e__VW.YView, 0 )
+Converted builtin - line 85: view_wview[0] -> __view_get( e__VW.WView, 0 )
+Converted builtin - line 85: view_hview[0] -> __view_get( e__VW.HView, 0 )
+
+Converting GML script: ${project_dir}\scripts\scr_player_slam\scr_player_slam.gml
+Converted builtin - line 78: view_xview[0] -> __view_get( e__VW.XView, 0 )
+Converted builtin - line 78: view_xview[0] -> __view_get( e__VW.XView, 0 )
+Converted builtin - line 78: view_yview[0] -> __view_get( e__VW.YView, 0 )
+Converted builtin - line 78: view_yview[0] -> __view_get( e__VW.YView, 0 )
+Converted builtin - line 78: view_wview[0] -> __view_get( e__VW.WView, 0 )
+Converted builtin - line 78: view_hview[0] -> __view_get( e__VW.HView, 0 )
+
+Converting GML script: ${project_dir}\scripts\scr_player_grab\scr_player_grab.gml
+Converted builtin - line 88: view_xview[0] -> __view_get( e__VW.XView, 0 )
+Converted builtin - line 88: view_xview[0] -> __view_get( e__VW.XView, 0 )
+Converted builtin - line 88: view_yview[0] -> __view_get( e__VW.YView, 0 )
+Converted builtin - line 88: view_yview[0] -> __view_get( e__VW.YView, 0 )
+Converted builtin - line 88: view_wview[0] -> __view_get( e__VW.WView, 0 )
+Converted builtin - line 88: view_hview[0] -> __view_get( e__VW.HView, 0 )
+
+Converting GML script: ${project_dir}\scripts\scr_player_Sjump\scr_player_Sjump.gml
+Converted builtin - line 52: view_xview[0] -> __view_get( e__VW.XView, 0 )
+Converted builtin - line 52: view_xview[0] -> __view_get( e__VW.XView, 0 )
+Converted builtin - line 52: view_yview[0] -> __view_get( e__VW.YView, 0 )
+Converted builtin - line 52: view_yview[0] -> __view_get( e__VW.YView, 0 )
+Converted builtin - line 52: view_wview[0] -> __view_get( e__VW.WView, 0 )
+Converted builtin - line 52: view_hview[0] -> __view_get( e__VW.HView, 0 )
+
+Converting GML script: ${project_dir}\scripts\scr_player_freefall\scr_player_freefall.gml
+Converted builtin - line 34: view_xview[0] -> __view_get( e__VW.XView, 0 )
+Converted builtin - line 34: view_xview[0] -> __view_get( e__VW.XView, 0 )
+Converted builtin - line 34: view_yview[0] -> __view_get( e__VW.YView, 0 )
+Converted builtin - line 34: view_yview[0] -> __view_get( e__VW.YView, 0 )
+Converted builtin - line 34: view_wview[0] -> __view_get( e__VW.WView, 0 )
+Converted builtin - line 34: view_hview[0] -> __view_get( e__VW.HView, 0 )
+
+Converting GML script: ${project_dir}\scripts\scr_player_mach3\scr_player_mach3.gml
+Converted builtin - line 158: view_xview[0] -> __view_get( e__VW.XView, 0 )
+Converted builtin - line 158: view_xview[0] -> __view_get( e__VW.XView, 0 )
+Converted builtin - line 158: view_yview[0] -> __view_get( e__VW.YView, 0 )
+Converted builtin - line 158: view_yview[0] -> __view_get( e__VW.YView, 0 )
+Converted builtin - line 158: view_wview[0] -> __view_get( e__VW.WView, 0 )
+Converted builtin - line 158: view_hview[0] -> __view_get( e__VW.HView, 0 )
+
+Converting GML script: ${project_dir}\scripts\scr_player_jump\scr_player_jump.gml
+Converted builtin - line 134: view_xview[0] -> __view_get( e__VW.XView, 0 )
+Converted builtin - line 134: view_xview[0] -> __view_get( e__VW.XView, 0 )
+Converted builtin - line 134: view_yview[0] -> __view_get( e__VW.YView, 0 )
+Converted builtin - line 134: view_yview[0] -> __view_get( e__VW.YView, 0 )
+Converted builtin - line 134: view_wview[0] -> __view_get( e__VW.WView, 0 )
+Converted builtin - line 134: view_hview[0] -> __view_get( e__VW.HView, 0 )
+
+Converting GML script: ${project_dir}\scripts\pal_swap_draw_palette\pal_swap_draw_palette.gml
+Converted description /// @description pal_swap_draw_palette(palette_sprite,pal_index,x,y);/// @param palette_sprite
+/// @param pal_index
+/// @param x
+/// @param y
+
+Converting GML script: ${project_dir}\scripts\pal_swap_enable_override\pal_swap_enable_override.gml
+Converted description /// @description pal_swap_enable_override(pal sprite)/// @param pal sprite
+
+Converting GML script: ${project_dir}\scripts\pal_swap_get_pal_color\pal_swap_get_pal_color.gml
+Converted description /// @description pal_swap_get_pal_color(palette sprite,pal index, color index)/// @param palette sprite
+/// @param pal index
+/// @param  color index
+
+Converting GML script: ${project_dir}\scripts\pal_swap_get_pal_count\pal_swap_get_pal_count.gml
+Converted description /// @description pal_swap_get_pal_count(palette sprite)/// @param palette sprite
+
+Converting GML script: ${project_dir}\scripts\pal_swap_init_system\pal_swap_init_system.gml
+Converted description /// @description pal_swap_init_system(shader,enable indexing <optional>)/// @param shader
+/// @param enable indexing <optional>
+Converted string - line 12: 'texel_size' -> "texel_size"
+Converted string - line 13: 'palette_UVs' -> "palette_UVs"
+Converted string - line 14: 'palette_index' -> "palette_index"
+Converted string - line 15: 'palette_texture' -> "palette_texture"
+
+Converting GML script: ${project_dir}\scripts\pal_swap_reset\pal_swap_reset.gml
+Converted description /// @description pal_swap_reset();
+
+Converting GML script: ${project_dir}\scripts\pal_swap_set\pal_swap_set.gml
+Converted description /// @description pal_swap_set(palette_sprite_index, palette_index,palette is surface);/// @param palette_sprite_index
+/// @param  palette_index
+/// @param palette is surface
+
+Converting GML script: ${project_dir}\scripts\wrap\wrap.gml
+Converted description /// @description wrap(value,min,max)/// @param value
+/// @param min
+/// @param max
+
+Converting GML script: ${project_dir}\scripts\pal_swap_index_palette\pal_swap_index_palette.gml
+Converted description /// @description pal_swap_index_palette(palette sprite index)/// @param palette sprite index
+
+Converting GML script: ${project_dir}\scripts\pal_swap_set_tiles\pal_swap_set_tiles.gml
+Converted description /// @description pal_swap_set_tiles(palette sprite or surface, pal index, start layer, end layer, pal is surface);/// @param palette sprite or surface
+/// @param  pal index
+/// @param  start layer
+/// @param  end layer
+/// @param  pal is surface
+
+Converting GML script: ${project_dir}\scripts\pal_swap_get_color_count\pal_swap_get_color_count.gml
+Converted description /// @description pal_swap_get_color_count(palette sprite)/// @param palette sprite
+
+Converting GML script: ${project_dir}\scripts\scr_getinput\scr_getinput.gml
+Converted string - line 6: 'Z' -> "Z"
+Converted string - line 7: 'X' -> "X"
+Converted string - line 31: 'Z' -> "Z"
+Converted string - line 32: 'Z' -> "Z"
+Converted string - line 33: 'X' -> "X"
+Converted string - line 34: 'X' -> "X"
+
+Font font0 has been converted to font family Comic Sans MS (Regular) - Font has been regenerated, small inconsistencies may occur
+Converting GML script: ${project_dir}\objects\obj_pause\Step_0.gml
+Converted builtin - line 10: view_xview -> __view_get( e__VW.XView, 0 )
+Converted builtin - line 11: view_xview -> __view_get( e__VW.XView, 0 )
+Converted builtin - line 10: view_yview -> __view_get( e__VW.YView, 0 )
+Converted builtin - line 11: view_yview -> __view_get( e__VW.YView, 0 )
+
+Converting GML script: ${project_dir}\objects\obj_camera\Step_0.gml
+Converted builtin - line 87: view_xview[0] -> __view_get( e__VW.XView, 0 )
+Converted builtin - line 99: view_xview[0] -> __view_get( e__VW.XView, 0 )
+Converted builtin - line 75: view_xview[0] = target.x - (view_wview[0]/2) + (chargecamera) -> __view_set( e__VW.XView, 0, target.x - (view_wview[0]/2) + (chargecamera) )
+Converted builtin - line 84: view_xview[0] = target.x - (view_wview[0]/2)  + (chargecamera) -> __view_set( e__VW.XView, 0, target.x - (view_wview[0]/2)  + (chargecamera) )
+Converted builtin - line 98: view_xview[0] = target.x - (view_wview[0]/2) + (chargecamera) -> __view_set( e__VW.XView, 0, target.x - (view_wview[0]/2) + (chargecamera) )
+Converted builtin - line 89: view_yview[0] -> __view_get( e__VW.YView, 0 )
+Converted builtin - line 101: view_yview[0] -> __view_get( e__VW.YView, 0 )
+Converted builtin - line 88: view_yview[0] = target.y - (view_hview[0]/2) -> __view_set( e__VW.YView, 0, target.y - (view_hview[0]/2) )
+Converted builtin - line 100: view_yview[0] = (target.y - (view_hview[0]/2) + irandom_range(-shake_mag,shake_mag)) -> __view_set( e__VW.YView, 0, (target.y - (view_hview[0]/2) + irandom_range(-shake_mag,shake_mag)) )
+Converted builtin - line 87: view_wview[0] -> __view_get( e__VW.WView, 0 )
+Converted builtin - line 99: view_wview[0] -> __view_get( e__VW.WView, 0 )
+Converted builtin - line 89: view_hview[0] -> __view_get( e__VW.HView, 0 )
+Converted builtin - line 101: view_hview[0] -> __view_get( e__VW.HView, 0 )
+Converted builtin - line 87: view_xview[0] = clamp(__view_get( e__VW.XView, 0 ),0, room_width - __view_get( e__VW.WView, 0 )) -> __view_set( e__VW.XView, 0, clamp(__view_get( e__VW.XView, 0 ),0, room_width - __view_get( e__VW.WView, 0 )) )
+Converted builtin - line 99: view_xview[0] = clamp(__view_get( e__VW.XView, 0 ),0, room_width - __view_get( e__VW.WView, 0 )) -> __view_set( e__VW.XView, 0, clamp(__view_get( e__VW.XView, 0 ),0, room_width - __view_get( e__VW.WView, 0 )) )
+Converted builtin - line 89: view_yview[0] = clamp(__view_get( e__VW.YView, 0 ),0, room_height - __view_get( e__VW.HView, 0 )) -> __view_set( e__VW.YView, 0, clamp(__view_get( e__VW.YView, 0 ),0, room_height - __view_get( e__VW.HView, 0 )) )
+Converted builtin - line 101: view_yview[0] = clamp(__view_get( e__VW.YView, 0 ),0+ irandom_range(-shake_mag,shake_mag), (room_height) - __view_get( e__VW.HView, 0 )+ irandom_range(-shake_mag,shake_mag)) -> __view_set( e__VW.YView, 0, clamp(__view_get( e__VW.YView, 0 ),0+ irandom_range(-shake_mag,shake_mag), (room_height) - __view_get( e__VW.HView, 0 )+ irandom_range(-shake_mag,shake_mag)) )
+Converted builtin - line 75: view_wview[0] -> __view_get( e__VW.WView, 0 )
+Converted builtin - line 84: view_wview[0] -> __view_get( e__VW.WView, 0 )
+Converted builtin - line 98: view_wview[0] -> __view_get( e__VW.WView, 0 )
+Converted builtin - line 88: view_hview[0] -> __view_get( e__VW.HView, 0 )
+Converted builtin - line 100: view_hview[0] -> __view_get( e__VW.HView, 0 )
+
+Converting GML script: ${project_dir}\objects\obj_menuselections\Step_0.gml
+Converted string - line 13: 'Z' -> "Z"
+Converted string - line 14: 'X' -> "X"
+Converted string - line 26: 'Z' -> "Z"
+Converted string - line 27: 'X' -> "X"
+
+Converting GML script: ${project_dir}\objects\obj_flyingenemy\Create_0.gml
+Converted description /// @description Initialize Variables
+
+Converting GML script: ${project_dir}\objects\obj_pepperman\Create_0.gml
+Converted description /// @description Initialize Variables
+
+Converting GML script: ${project_dir}\objects\obj_bomb\Create_0.gml
+Converted description /// @description Initialize Variables
+
+Converting GML script: ${project_dir}\objects\obj_barrelspawner\Step_0.gml
+Converted builtin - line 1: view_xview[0] -> __view_get( e__VW.XView, 0 )
+Converted builtin - line 1: view_xview[0] -> __view_get( e__VW.XView, 0 )
+Converted builtin - line 1: view_yview[0] -> __view_get( e__VW.YView, 0 )
+Converted builtin - line 1: view_yview[0] -> __view_get( e__VW.YView, 0 )
+Converted builtin - line 1: view_wview[0] -> __view_get( e__VW.WView, 0 )
+Converted builtin - line 1: view_hview[0] -> __view_get( e__VW.HView, 0 )
+
+Converting GML script: ${project_dir}\objects\obj_transformbarrelspawner\Step_0.gml
+Converted builtin - line 1: view_xview[0] -> __view_get( e__VW.XView, 0 )
+Converted builtin - line 1: view_xview[0] -> __view_get( e__VW.XView, 0 )
+Converted builtin - line 1: view_yview[0] -> __view_get( e__VW.YView, 0 )
+Converted builtin - line 1: view_yview[0] -> __view_get( e__VW.YView, 0 )
+Converted builtin - line 1: view_wview[0] -> __view_get( e__VW.WView, 0 )
+Converted builtin - line 1: view_hview[0] -> __view_get( e__VW.HView, 0 )
+
+Converting GML script: ${project_dir}\objects\obj_tutorialtrap\Destroy_0.gml
+Converted builtin - line 6: background_index[2] = trapscreen2 -> __background_set( e__BG.Index, 2, trapscreen2 )
+
+Converting GML script: ${project_dir}\objects\obj_parrallax\Create_0.gml
+Converted description /// @description Time uniform
+
+Converting GML script: ${project_dir}\objects\obj_parrallax\Draw_0.gml
+Converted builtin - line 4: background_width[0] -> __background_get( e__BG.Width, 0 )
+Converted builtin - line 9: background_width[0] -> __background_get( e__BG.Width, 0 )
+Converted builtin - line 14: background_width[0] -> __background_get( e__BG.Width, 0 )
+Converted builtin - line 5: background_height[0] -> __background_get( e__BG.Height, 0 )
+Converted builtin - line 10: background_height[0] -> __background_get( e__BG.Height, 0 )
+Converted builtin - line 15: background_height[0] -> __background_get( e__BG.Height, 0 )
+Converted builtin - line 4: view_xview -> __view_get( e__VW.XView, 0 )
+Converted builtin - line 9: view_xview -> __view_get( e__VW.XView, 0 )
+Converted builtin - line 14: view_xview -> __view_get( e__VW.XView, 0 )
+Converted builtin - line 5: view_yview -> __view_get( e__VW.YView, 0 )
+Converted builtin - line 10: view_yview -> __view_get( e__VW.YView, 0 )
+Converted builtin - line 15: view_yview -> __view_get( e__VW.YView, 0 )
+Converted builtin - line 4: view_wview -> __view_get( e__VW.WView, 0 )
+Converted builtin - line 9: view_wview -> __view_get( e__VW.WView, 0 )
+Converted builtin - line 14: view_wview -> __view_get( e__VW.WView, 0 )
+Converted builtin - line 5: view_hview -> __view_get( e__VW.HView, 0 )
+Converted builtin - line 10: view_hview -> __view_get( e__VW.HView, 0 )
+Converted builtin - line 15: view_hview -> __view_get( e__VW.HView, 0 )
+Converted description /// @description Draw pizza
+
+Converting GML script: ${project_dir}\objects\obj_fadeout\Draw_0.gml
+Converted builtin - line 3: view_xview [0] -> __view_get( e__VW.XView, 0 )
+Converted builtin - line 3: view_yview[0] -> __view_get( e__VW.YView, 0 )
+Converted builtin - line 3: view_wview[0] -> __view_get( e__VW.WView, 0 )
+Converted builtin - line 3: view_hview[0] -> __view_get( e__VW.HView, 0 )
+
+Converting GML script: ${project_dir}\objects\obj_endlevelfade\Draw_0.gml
+Converted builtin - line 3: view_xview [0] -> __view_get( e__VW.XView, 0 )
+Converted builtin - line 3: view_yview[0] -> __view_get( e__VW.YView, 0 )
+Converted builtin - line 3: view_wview[0] -> __view_get( e__VW.WView, 0 )
+Converted builtin - line 3: view_hview[0] -> __view_get( e__VW.HView, 0 )
+
+Converting GML script: ${project_dir}\objects\obj_bossdefeatflash\Draw_0.gml
+Converted builtin - line 4: view_xview[0] -> __view_get( e__VW.XView, 0 )
+Converted builtin - line 5: view_xview [0] -> __view_get( e__VW.XView, 0 )
+Converted builtin - line 4: view_yview[0] -> __view_get( e__VW.YView, 0 )
+Converted builtin - line 5: view_yview[0] -> __view_get( e__VW.YView, 0 )
+Converted builtin - line 5: view_wview[0] -> __view_get( e__VW.WView, 0 )
+Converted builtin - line 5: view_hview[0] -> __view_get( e__VW.HView, 0 )
+
+Converting GML script: ${project_dir}\rooms\Realtitlescreen\RoomCreationCode.gml
+ERROR: D:\Pizza_Tower_GM2\rooms\Realtitlescreen\RoomCreationCode.gml - 94: duplicate enum entry found
+Too many errors - GML not processed : ${project_dir}\rooms\Realtitlescreen\RoomCreationCode.gml
+
+Windows NSIS Installer Script has been set to default due to changes in GameMaker Studio 2
+Missing audiogroup for sound: 'sound_pizzagot' - setting to default audio group
+Missing audiogroup for sound: 'sound_toppingot' - setting to default audio group
+Missing audiogroup for sound: 'sound_treasuregot' - setting to default audio group
+Missing audiogroup for sound: 'sound_unlockingdoor' - setting to default audio group
+Missing audiogroup for sound: 'sound_throw' - setting to default audio group
+Missing audiogroup for sound: 'sound_enemythrow' - setting to default audio group
+Missing audiogroup for sound: 'sound_stomp' - setting to default audio group
+Missing audiogroup for sound: 'sound_step' - setting to default audio group
+Missing audiogroup for sound: 'sound_step2' - setting to default audio group
+Missing audiogroup for sound: 'sound_slaphit' - setting to default audio group
+Missing audiogroup for sound: 'sound_suplex1' - setting to default audio group
+Missing audiogroup for sound: 'sound_points' - setting to default audio group
+Missing audiogroup for sound: 'sound_pizzacoin' - setting to default audio group
+Missing audiogroup for sound: 'sound_maximumchargestop2' - setting to default audio group
+Missing audiogroup for sound: 'sound_maximumspeedstop' - setting to default audio group
+Missing audiogroup for sound: 'sound_slapswipe2' - setting to default audio group
+Missing audiogroup for sound: 'sound_slapswipe1' - setting to default audio group
+Missing audiogroup for sound: 'sound_slapswipe' - setting to default audio group
+Missing audiogroup for sound: 'sound_losetransformation' - setting to default audio group
+Missing audiogroup for sound: 'sound_maximumspeedland' - setting to default audio group
+Missing audiogroup for sound: 'sound_swordswing' - setting to default audio group
+Missing audiogroup for sound: 'sound_enemyslap' - setting to default audio group
+Missing audiogroup for sound: 'sound_touchspike' - setting to default audio group
+Missing audiogroup for sound: 'sound_tackleenemy' - setting to default audio group
+Missing audiogroup for sound: 'sound_explosion' - setting to default audio group
+Missing audiogroup for sound: 'sound_machroll' - setting to default audio group
+Missing audiogroup for sound: 'sound_superjumprelease' - setting to default audio group
+Missing audiogroup for sound: 'sound_superjumpcharge2' - setting to default audio group
+Missing audiogroup for sound: 'sound_superjumpcharge1' - setting to default audio group
+Missing audiogroup for sound: 'sound_enemystomp' - setting to default audio group
+Missing audiogroup for sound: 'sound_combo4' - setting to default audio group
+Missing audiogroup for sound: 'sound_combo3' - setting to default audio group
+Missing audiogroup for sound: 'sound_combo2' - setting to default audio group
+Missing audiogroup for sound: 'sound_combo1' - setting to default audio group
+Missing audiogroup for sound: 'sound_maxspeed' - setting to default audio group
+Missing audiogroup for sound: 'sound_dash2' - setting to default audio group
+Missing audiogroup for sound: 'sound_dash1' - setting to default audio group
+Missing audiogroup for sound: 'sound_destroyblock2' - setting to default audio group
+Missing audiogroup for sound: 'sound_destroyblock1' - setting to default audio group
+Missing audiogroup for sound: 'sound_becomeknight' - setting to default audio group
+Missing audiogroup for sound: 'sound_crawl' - setting to default audio group
+Missing audiogroup for sound: 'sound_superjump' - setting to default audio group
+Missing audiogroup for sound: 'sound_damage' - setting to default audio group
+Missing audiogroup for sound: 'sound_hit' - setting to default audio group
+Missing audiogroup for sound: 'sound_jump' - setting to default audio group
+Missing audiogroup for sound: 'music_coldspagremix' - setting to default audio group
+Missing audiogroup for sound: 'music_onepizzaatatimeremix' - setting to default audio group
+Missing audiogroup for sound: 'music_pizzatimeremix' - setting to default audio group
+Missing audiogroup for sound: 'music_bossthemeremix' - setting to default audio group
+Missing audiogroup for sound: 'music_spookyapartment' - setting to default audio group
+Missing audiogroup for sound: 'music_freefallingescape' - setting to default audio group
+Missing audiogroup for sound: 'music_freefalling' - setting to default audio group
+Missing audiogroup for sound: 'music_spookytower' - setting to default audio group
+Missing audiogroup for sound: 'sound_firstescapetheme' - setting to default audio group
+Missing audiogroup for sound: 'music_noiseappear' - setting to default audio group
+Missing audiogroup for sound: 'music_escapetheme2' - setting to default audio group
+Missing audiogroup for sound: 'music_desert' - setting to default audio group
+Missing audiogroup for sound: 'music_null' - setting to default audio group
+Missing audiogroup for sound: 'music_rankd' - setting to default audio group
+Missing audiogroup for sound: 'music_rankb' - setting to default audio group
+Missing audiogroup for sound: 'music_ranka' - setting to default audio group
+Missing audiogroup for sound: 'music_ranks' - setting to default audio group
+Missing audiogroup for sound: 'music_toppins' - setting to default audio group
+Missing audiogroup for sound: 'music_weird' - setting to default audio group
+Missing audiogroup for sound: 'music_title' - setting to default audio group
+Missing audiogroup for sound: 'music_coldspag2' - setting to default audio group
+Missing audiogroup for sound: 'music_coldspag' - setting to default audio group
+Missing audiogroup for sound: 'music_basement2' - setting to default audio group
+Missing audiogroup for sound: 'music_factory2' - setting to default audio group
+Missing audiogroup for sound: 'music_factory1' - setting to default audio group
+Missing audiogroup for sound: 'music_towerbonus' - setting to default audio group
+Missing audiogroup for sound: 'music_towertheme' - setting to default audio group
+Missing audiogroup for sound: 'music_knight' - setting to default audio group
+Missing audiogroup for sound: 'music_escapetheme' - setting to default audio group
+Missing audiogroup for sound: 'music_scary' - setting to default audio group
+Missing audiogroup for sound: 'music_cooltheme' - setting to default audio group
+Missing audiogroup for sound: 'music_funiculi' - setting to default audio group
+Missing audiogroup for sound: 'music_onepizzaatatime' - setting to default audio group
+Imported layer depths for room(s) 'hub_room1, PP_room1, PP_room2, PP_room3, PP_room8, PP_room13, floor1_room0, floor1_room2, floor1_room3, floor1_room4, floor1_room6, floor1_room5, floor1_room1, floor1_room7, floor1_room8, floor2_room0, floor2_room1, floor2_room2, floor2_room3, floor2_room4, floor2_room5, floor2_room7, floor2_room8, floor3_room0, floor3_room1, floor3_room2B, floor3_room2A, floor3_room2A2, floor3_room3, floor3_room4, floor3_room5, floor3_room6, floor3_room7, floor3_room8, floor3_room9, floor4_room0, floor4_room1, floor4_room2, floor4_room3, floor4_room4, floor4_room5, floor4_room6, floor4_room7, floor4_room8, floor4_room9' were not adequately spaced. Unless updated this will have undefined results in game.
+Game speed set to 60
+Added compatibility script 'action/action_kill_object.gml'
+Added compatibility script 'background/draw_background_tiled.gml'
+Added compatibility script 'background/__background_get.gml'
+Added compatibility script 'background/__background_get_element.gml'
+Added compatibility script 'background/__background_get_internal.gml'
+Added compatibility script 'background/__background_set.gml'
+Added compatibility script 'background/__background_set_element.gml'
+Added compatibility script 'background/__background_set_internal.gml'
+Added compatibility script 'draw/draw_set_blend_mode.gml'
+Added compatibility script 'instance/instance_create.gml'
+Added compatibility script 'object/object_get_depth.gml'
+Added compatibility script 'texture/texture_set_interpolation_ext.gml'
+Added compatibility script 'tile/tile_layer_delete_at.gml'
+Added compatibility script 'tile/tile_layer_find.gml'
+Added compatibility script 'tile/tile_layer_hide.gml'
+Added compatibility script 'tile/tile_layer_show.gml'
+Added compatibility script 'view/__view_get.gml'
+Added compatibility script 'view/__view_set.gml'
+Added compatibility script 'view/__view_set_internal.gml'
+Added compatibility script 'action/__init_action.gml'
+Added compatibility script 'background/__init_background.gml'
+Added compatibility script 'view/__init_view.gml'
+Added compatibility script '__init_global.gml'
+Added compatibility script '__global_object_depths.gml'

@@ -1,0 +1,1 @@
+hat = HATS.cowboy2;

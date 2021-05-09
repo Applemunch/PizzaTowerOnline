@@ -1,0 +1,1 @@
+draw_text(x, y, instance_number(obj_oeobj));

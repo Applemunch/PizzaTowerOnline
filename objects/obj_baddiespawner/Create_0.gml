@@ -1,0 +1,9 @@
+image_speed = 0
+baddieid = obj_null
+content = 0
+refresh = 20
+depth = 1
+hsp = 0 
+vsp = 0
+grounded = false
+grav = 0.5

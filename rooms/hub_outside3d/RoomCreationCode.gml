@@ -1,0 +1,3 @@
+
+
+global.roommessage = "GRAB MUSEUM"

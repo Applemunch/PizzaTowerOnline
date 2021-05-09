@@ -1,0 +1,1 @@
+pvp_cooldown = 10;

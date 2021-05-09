@@ -1,0 +1,2 @@
+// savedata
+gms_logout();

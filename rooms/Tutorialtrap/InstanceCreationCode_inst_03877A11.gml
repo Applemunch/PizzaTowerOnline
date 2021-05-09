@@ -1,0 +1,3 @@
+targetRoom = entrance_1
+
+

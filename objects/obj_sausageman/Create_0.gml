@@ -1,0 +1,52 @@
+scr_initenemy();
+
+grav = 0.5;
+hsp = 0;
+vsp = 0;
+movespeed = 1
+state = states.walk
+stunned = 0
+alarm[0] = 150
+roaming = true
+collectdrop = 5
+flying = false
+straightthrow = false
+cigar = false
+cigarcreate = false
+stomped = false
+shot = false
+thrown = false
+reset = false
+flash = false
+landspr = spr_sausagemannocigar_land
+idlespr = spr_sausagemannocigar_idle
+fallspr = spr_sausagemannocigar_fall
+hitceillingspr = spr_sausagemannocigar_hitceilling
+stunfalltransspr = spr_sausagemannocigar_stunfalltrans
+hitwallspr = spr_sausagemannocigar_hitwall
+stunfallspr = spr_sausagemannocigar_stunfall
+rollingspr =spr_sausagemannocigar_rolling
+walkspr =spr_sausagemannocigar_walk
+turnspr = spr_sausagemannocigar_turn
+flyingspr = spr_sausagemannocigar_flying
+hitspr = spr_sausagemannocigar_hit
+stunlandspr = spr_sausagemannocigar_stunland
+stunspr = spr_sausagemannocigar_stun
+recoveryspr = spr_sausagemannocigar_recovery
+stompedspr = spr_sausagemannocigar_stomped
+grabbedspr = spr_sausagemannocigar_stunfall
+scaredspr = spr_sausagemannocigar_stomped
+spr_dead = spr_sausageman_shot
+image_xscale = -1
+hp = 5
+grounded = true
+slapped = false
+birdcreated = false
+render_angle =0
+hitboxcreate = false
+
+haspalette = true
+spr_palette = spr_sausageman_palette;
+paletteselect = cigar
+
+sprite_index = walkspr

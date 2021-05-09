@@ -1,0 +1,1 @@
+xdef = image_xscale;

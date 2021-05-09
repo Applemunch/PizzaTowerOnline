@@ -1,0 +1,43 @@
+with other
+{
+	if !other.old
+		x = other.x
+	y = min(y, other.y + (other.sprite_height - 46));
+	
+	if !instance_exists(obj_fadeout) && !instance_exists(obj_pausefadeout) && !obj_pause.pause
+	{
+		targetDoor = other.targetDoor
+	    targetRoom = other.targetRoom
+		
+		if !other.old
+		{
+			hallway = true
+			hallwaydirection = other.image_xscale;
+			
+			if other.targetRoom == room
+			{
+				hallwaydirection *= -1;
+				hsp *= -1;
+				movespeed *= -1;
+			}
+		}
+		else
+		{
+			oldhallway = true
+			target_x = other.target_x
+			target_y = other.target_y
+		}
+		
+		other.visited = true
+		if state = states.machslide
+			state = states.normal
+
+		scr_soundeffect(sfx_door)
+		instance_create(x,y,obj_fadeout)
+	}
+	if instance_exists(obj_pausefadeout)
+	{
+		x = xprevious;
+		y = yprevious;
+	}
+}

@@ -1,0 +1,2 @@
+/// @description 
+other.index = index;

@@ -1,0 +1,1 @@
+msg = "HUB OF FUN"

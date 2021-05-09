@@ -1,0 +1,2 @@
+
+global.roommessage = "SQUISHING THROUGH"

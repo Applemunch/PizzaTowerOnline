@@ -1,0 +1,2 @@
+targetRoom = graveyard_2
+

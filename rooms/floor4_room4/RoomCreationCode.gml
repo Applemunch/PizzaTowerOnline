@@ -1,0 +1,2 @@
+
+global.roommessage = "YUCKY WATERSLIDE";
