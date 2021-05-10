@@ -45,3 +45,15 @@ else
 	paletteselect = 0;
 spr_palette = palette_pizzard
 stuntouchbuffer = 0
+
+if global.snickrematch
+{
+	idlespr = spr_pizzard_walk_re
+	stunfallspr = spr_pizzard_stun_re
+	walkspr = spr_pizzard_walk_re
+	grabbedspr = spr_pizzard_stun_re
+	scaredspr = spr_pizzard_stun_re
+	spr_dead = spr_pizzard_dead_re
+	
+	sprite_index = walkspr;
+}

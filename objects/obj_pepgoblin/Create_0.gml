@@ -42,3 +42,14 @@ else
 	paletteselect = 0;
 spr_palette = palette_pepgoblin
 stuntouchbuffer = 0
+
+if global.snickrematch
+{
+	idlespr = spr_pepgoblin_re
+	stunfallspr = spr_pepgoblinstun_re
+	walkspr = spr_pepgoblin_re
+	grabbedspr = spr_pepgoblinstun_re
+	scaredspr = spr_pepgoblinstun_re
+	spr_dead = spr_pepgoblin_dead_re
+	sprite_index = walkspr;
+}

@@ -257,19 +257,27 @@ function scr_hurtplayer(argument0)
 			image_index = 0
 			flash = true
 			
-			global.hurtcounter += 1
-			
-			var loseamount = 50
+			var loseamount = 50;
 			if global.pizzadelivery == false or global.gameplay == 0
 			{
-				if !hurted
+				if !(global.snickchallenge && shotgunAnim)
 				{
-				    if global.collect > loseamount
-				        global.collect -= loseamount;
-				    else
-				        global.collect = 0;
+					global.hurtcounter += 1
+					if !hurted
+					{
+					    if global.collect > loseamount
+					        global.collect -= loseamount;
+					    else
+					        global.collect = 0;
+					}
+					repeat (min(global.collect, 10)) instance_create(x,y,obj_pizzaloss);
 				}
-				repeat (min(global.collect, 10)) instance_create(x,y,obj_pizzaloss)
+				else
+				{
+					with instance_create(x, y, obj_sausageman_dead)
+						sprite_index = spr_shotgunback;
+					shotgunAnim = false;
+				}
 			}
 			
 			hurted = true;

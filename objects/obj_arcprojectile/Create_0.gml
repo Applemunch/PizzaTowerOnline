@@ -4,3 +4,4 @@ vsp = 0;
 
 image_speed = 0.4;
 alarm[0] = 5;
+haspalette = false;

@@ -669,26 +669,27 @@ else if (global.musicgame == 0 or !global.loaded_pc) && global.panic = false && 
 	{
 		for (i = 0; i < 20; ++i)
 		{
-			if (roomname = "floor2_room" + string(i) && i <= 8)
-			or (roomname = "floor2_room" + string(i) + "a" && i <= 8)
-			or (roomname = "floor2_room" + string(i) + "b" && i <= 8)
+			if string_startswith(roomname, "floor2_room" + string(i))
 			{
-				if !audio_is_playing(mu_mansion)
+				if i <= 8
 				{
-					audio_stop_sound(global.music)
-					scr_sound(mu_mansion)
-					pausedmusic = mu_mansion
-					audio_sound_set_track_position(global.music, fadeoff)
+					if !audio_is_playing(mu_mansion)
+					{
+						audio_stop_sound(global.music)
+						scr_sound(mu_mansion)
+						pausedmusic = mu_mansion
+						audio_sound_set_track_position(global.music, fadeoff)
+					}
 				}
-			}
-			else if roomname = "floor2_room" + string(i) && i > 8
-			{
-				if !audio_is_playing(mu_forest)
+				else
 				{
-					audio_stop_sound(global.music)
-					scr_sound(mu_forest)
-					pausedmusic = mu_forest
-					audio_sound_set_track_position(global.music, fadeoff)
+					if !audio_is_playing(mu_forest)
+					{
+						audio_stop_sound(global.music)
+						scr_sound(mu_forest)
+						pausedmusic = mu_forest
+						audio_sound_set_track_position(global.music, fadeoff)
+					}
 				}
 			}
 		}
@@ -1123,20 +1124,15 @@ else if global.loaded_pc && global.panic = false && global.snickchallenge = fals
 				else 				
 				if roomname = "strongcold_1"
 				{
-
 					if !audio_is_playing(mu_chateau_pc)
 					{
-						    audio_stop_sound(global.music)
-					scr_sound(mu_chateau_pc)
-					audio_sound_set_track_position(global.music, fadeoff)
-					pausedmusic = mu_chateau_pc
+						   audio_stop_sound(global.music)
+						scr_sound(mu_chateau_pc)
+						audio_sound_set_track_position(global.music, fadeoff)
+						pausedmusic = mu_chateau_pc
 					}
 
 				}
-									
-
-
-
 			}
 	}
 
@@ -1510,26 +1506,27 @@ else if global.loaded_pc && global.panic = false && global.snickchallenge = fals
 	{
 		for (i = 0; i < 20; ++i)
 		{
-			if (roomname = "floor2_room" + string(i) && i <= 8)
-			or (roomname = "floor2_room" + string(i) + "a" && i <= 8)
-			or (roomname = "floor2_room" + string(i) + "b" && i <= 8)
+			if string_startswith(roomname, "floor2_room" + string(i))
 			{
-				if !audio_is_playing(mu_mansion_pc)
+				if i <= 8
 				{
-					audio_stop_sound(global.music)
-					scr_sound(mu_mansion_pc)
-					pausedmusic = mu_mansion_pc
-					audio_sound_set_track_position(global.music, fadeoff)
+					if !audio_is_playing(mu_mansion_pc)
+					{
+						audio_stop_sound(global.music)
+						scr_sound(mu_mansion_pc)
+						pausedmusic = mu_mansion_pc
+						audio_sound_set_track_position(global.music, fadeoff)
+					}
 				}
-			}
-			else if roomname = "floor2_room" + string(i) && i > 8
-			{
-				if !audio_is_playing(mu_forest_pc)
+				else
 				{
-					audio_stop_sound(global.music)
-					scr_sound(mu_forest_pc)
-					pausedmusic = mu_forest_pc
-					audio_sound_set_track_position(global.music, fadeoff)
+					if !audio_is_playing(mu_forest_pc)
+					{
+						audio_stop_sound(global.music)
+						scr_sound(mu_forest_pc)
+						pausedmusic = mu_forest_pc
+						audio_sound_set_track_position(global.music, fadeoff)
+					}
 				}
 			}
 		}

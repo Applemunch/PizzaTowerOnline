@@ -3,7 +3,7 @@ switch (state)
     case states.idle: scr_enemy_idle (); break;
     case states.bounce: scr_enemy_bounce (); break;
     case states.stun: scr_enemy_stun (); break;
-    case states.grabbed: scr_enemy_grabbed (); break;
+    // grabbed state here
 }
 
 if  state = states.stun && stunned > 40 && birdcreated = false

@@ -39,3 +39,17 @@ charging = false
 
 grabbedby = 0
 stuntouchbuffer = 0
+
+if global.snickrematch
+{
+	idlespr = spr_fencer_re
+	stunfallspr = spr_fencer_stun_re
+	walkspr = spr_fencer_re
+	grabbedspr = spr_fencer_stun_re
+	scaredspr = spr_fencer_stun_re
+	spr_dead = spr_fencer_dead_re
+	
+	spr_chargestart = spr_fencer_chargestart_re
+	spr_charge = spr_fencer_charge_re
+	sprite_index = walkspr;
+}

@@ -16,6 +16,7 @@ if state == 1
 	else
 	{
 		scr_getinput(true);
+		
 		var move = -key_up2 + key_down2;
 		if move != 0
 		{
@@ -33,7 +34,7 @@ if state == 1
 			else
 				state = 2;
 		}
-		else if key_slap
+		else if key_slap2
 		{
 			scr_soundeffect(sfx_enemyprojectile);
 			state = 0;

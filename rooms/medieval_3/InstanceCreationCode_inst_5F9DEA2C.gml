@@ -1,5 +1,8 @@
 prompt_condition = function()
 {
+	if global.snickchallenge
+		return false;
+	
 	with obj_player1
 	{
 		if state == states.knightpep or state == states.knightpepslopes or state == states.knightpepattack

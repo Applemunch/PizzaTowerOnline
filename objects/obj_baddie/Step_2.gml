@@ -11,6 +11,8 @@ if thrown
 }
 if state != states.grabbed
 	scr_collide();
+else
+	scr_enemy_grabbed();
 
 if escape && (!global.panic or (global.gameplay == 0 && object_index != obj_minijohn))
 {

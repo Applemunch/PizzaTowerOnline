@@ -8,7 +8,7 @@ switch (state)
     case states.hit: scr_enemy_hit (); break;
     case states.stun: scr_enemy_stun (); break;
     case states.pizzagoblinthrow: scr_pizzagoblin_throw (); break;
-    case states.grabbed: scr_enemy_grabbed (); break;
+    // grabbed state here
 }
 
 if  state = states.stun && stunned > 100 && birdcreated = false

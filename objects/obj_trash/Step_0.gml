@@ -8,10 +8,10 @@ switch (state)
     case states.hit: scr_enemy_hit (); break;
     case states.stun: scr_enemy_stun (); break;
     case states.pizzagoblinthrow: scr_pizzagoblin_throw (); break;
-    case states.grabbed: scr_enemy_grabbed (); break;
+    // grabbed state here
 }
 
-if  state = states.stun && stunned > 100 && birdcreated = false
+if state = states.stun && stunned > 100 && birdcreated = false
 {
 	birdcreated = true
 	with instance_create(x,y, obj_enemybird)
@@ -23,8 +23,7 @@ if state != states.stun
 
 //Spit
 if bombreset > 0
-bombreset --
-
+	bombreset --
 
 //Throw Bomb at
 if state != states.pizzagoblinthrow && bombreset = 0
@@ -65,7 +64,7 @@ if ((obj_player1.x > x - 400) && (obj_player1.x < x + 400)) && (y <= obj_player1
 if state != states.stun
 	thrown= false
 
-if boundbox = false
+if !boundbox
 {
 	with instance_create(x,y,obj_baddiecollisionbox)
 	{
@@ -75,5 +74,3 @@ if boundbox = false
 		other.boundbox = true
 	}
 }
-
-

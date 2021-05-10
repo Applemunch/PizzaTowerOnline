@@ -5,6 +5,8 @@ if deactivate
 	
     hitboxcreate = false;
     visible = false;
+	
+	appear = 0;
 	appeartimer = room_speed * 5;
 	gotoplayer = 0;
 	exit;
@@ -134,7 +136,7 @@ else
 				lockcam = true;
 				gotoplayer--;
 				if room == dungeon_10 or room == dungeon_9 or room == snick_challengeend
-					gotoplayer -= 4;
+					gotoplayer -= 2;
 				
 				if gotoplayer <= 0
 					appear = 2;
@@ -177,20 +179,27 @@ else
 					scr_soundeffect(sfx_pephurt);
 					with obj_player1
 					{
-						hsp = 0;
-						if vsp >= 0
-							vsp = -3;
+						if state != states.hurt && state != states.parry && state != states.hitlag
+						&& state != states.door && state != states.victory && !cutscene
+						{
+							hsp = 0;
+							if vsp >= 0
+								vsp = -3;
 					
-						hitLag = 200;
-						tauntstoredstate = state;
-						tauntstoredmovespeed = movespeed;
-						tauntstoredsprite = sprite_index;
+							hitLag = 200;
+							tauntstoredstate = state;
+							tauntstoredmovespeed = movespeed;
+							tauntstoredsprite = sprite_index;
 					
-						sprite_index = spr_hurt;
-						movespeed = 0;
-						state = states.frozen;
+							sprite_index = spr_hurt;
+							movespeed = 0;
+							state = states.frozen;
+						}
 					}
-				
+					
+					repeat 6 with instance_create(x + random_range(-100,100), y + random_range(-100,100), obj_balloonpop)
+						sprite_index = spr_shotgunimpact
+					
 					appear = 0;
 				    appeartimer = room_speed * (10 + random(5));
 				    gotoplayer = room_speed * 5;

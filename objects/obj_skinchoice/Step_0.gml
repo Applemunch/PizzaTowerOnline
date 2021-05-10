@@ -37,6 +37,7 @@ if key_start or key_slap2
 {
 	scr_soundeffect(sfx_enemyprojectile);
 	instance_destroy();
+	exit;
 }
 
 if character == "N" && key_taunt2

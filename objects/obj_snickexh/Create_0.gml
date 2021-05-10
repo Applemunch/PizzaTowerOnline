@@ -11,5 +11,5 @@ xcam = 960;
 ycam = 540;
 lockcam = false;
 
-if global.snickrematch
+if global.snickrematch && global.gameplay == 0
 	alarm[3] = 50

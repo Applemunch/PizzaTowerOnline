@@ -27,6 +27,7 @@ if (obj_player1.state = states.normal or obj_player1.state = states.mach1 or obj
 	
 	image_index = 1;
 	global.gerome = false;
+	instance_destroy(obj_pizzaface);
 }
 
 if floor(obj_player1.image_index) = obj_player1.image_number - 1 && obj_player1.state = states.victory && place_meeting(x, y, obj_player1)

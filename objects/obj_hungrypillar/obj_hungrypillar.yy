@@ -5,7 +5,10 @@
   },
   "solid": false,
   "visible": true,
-  "spriteMaskId": null,
+  "spriteMaskId": {
+    "name": "spr_hungrypillar",
+    "path": "sprites/spr_hungrypillar/spr_hungrypillar.yy",
+  },
   "persistent": false,
   "parentObjectId": {
     "name": "obj_destroyable3",

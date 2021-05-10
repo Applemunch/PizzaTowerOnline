@@ -77,7 +77,19 @@ function scr_pizzagoblin_throw() {
 	{
 		// Set bomb timer and animation frame
 		bombreset = global.reset_timer[object_index] / (global.stylethreshold + 1);
-		sprite_index = global.throw_sprite[object_index]
+		
+		var spr = global.throw_sprite[object_index];
+		if global.snickrematch
+		{
+			if spr == spr_pizzagoblin_throwbomb
+				spr = spr_pizzagoblin_throwbomb_re;
+			if spr == spr_pizzard_shoot
+				spr = spr_pizzard_shoot_re;
+			if spr == spr_pepgoblin_kick
+				spr = spr_pepgoblin_kick_re;
+		}
+		sprite_index = spr;
+		
 		if point_in_camera(x, y, view_camera[0])
 		{
 			audio_stop_sound(sfx_enemyprojectile)

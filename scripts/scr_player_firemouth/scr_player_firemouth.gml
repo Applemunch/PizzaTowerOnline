@@ -79,7 +79,7 @@ function scr_player_firemouth()
 	}
 	
 	//Turn
-	if scr_solid(x + xscale,y) && hsp != 0 && !place_meeting(x+sign(hsp),y,obj_slope) && (!place_meeting(x + sign(hsp), y, obj_destroyable) or global.gameplay == 0)
+	if scr_solid(x + xscale,y) && hsp != 0 && !place_meeting(x+sign(hsp),y,obj_slope) && (!place_meeting(x + sign(hsp), y, obj_destructibles) or global.gameplay == 0)
 	{
 		instance_create(x + 10 * xscale, y + 10, obj_bumpeffect)
 		xscale *= -1

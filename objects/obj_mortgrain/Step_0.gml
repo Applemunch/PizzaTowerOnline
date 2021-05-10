@@ -1,6 +1,6 @@
 with obj_player1
 {
-	if place_meeting(x - 1, y, other) or place_meeting(x + 1, y, other)
+	if (place_meeting(x - 1, y, other) or place_meeting(x + 1, y, other))
 	&& state == states.mort && !other.eaten
 	{
 		other.eaten = true

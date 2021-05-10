@@ -27,7 +27,6 @@ walkspr =spr_pizzagoblin_walk
 stunspr = spr_pizzagoblin_stun
 grabbedspr = spr_pizzagoblin_stun
 scaredspr = spr_pizzagoblin_scared
-sprite_index = spr_pizzagoblin_walk
 
 image_xscale = -1
 flash = false
@@ -37,7 +36,18 @@ boundbox = false
 spr_dead = spr_pizzagoblin_dead
 important = false
 heavy = true
-depth =0
+depth = 0
 
 grabbedby = 0
 stuntouchbuffer = 0
+
+if global.snickrematch
+{
+	idlespr = spr_pizzagoblin_walk_re
+	stunfallspr = spr_pizzagoblin_stun_re
+	walkspr = spr_pizzagoblin_walk_re
+	grabbedspr = spr_pizzagoblin_stun_re
+	scaredspr = spr_pizzagoblin_stun_re
+	spr_dead = spr_pizzagoblin_dead_re
+}
+sprite_index = walkspr;

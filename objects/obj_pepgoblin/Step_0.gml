@@ -10,7 +10,7 @@ switch (state)
     case states.hit: scr_enemy_hit (); break;
     case states.stun: scr_enemy_stun (); break;
     case states.pizzagoblinthrow: scr_pizzagoblin_throw (); break;
-    case states.grabbed: scr_enemy_grabbed (); break;
+    // grabbed state here
 }
 
 
@@ -48,22 +48,23 @@ if bombreset > 0
 bombreset --
 
 //Identify the player
-var targetplayer = instance_nearest(x,y ,obj_player)
+var targetplayer = instance_nearest(x, y, obj_player1)
 
 //Kick
-if x != targetplayer.x && state != states.pizzagoblinthrow && obj_player.state != states.tumble && bombreset = 0  && grounded
+if x != targetplayer.x && state != states.pizzagoblinthrow && targetplayer.state != states.tumble && bombreset == 0 && grounded
 {
-if ((targetplayer.x > x - 80) && (targetplayer.x < x + 80)) && (y <= targetplayer.y+100 && y >= targetplayer.y- 100)
-{
-if (state = states.walk) 
-{
-image_index = 0
-sprite_index = spr_pepgoblin_kick
-image_xscale = -sign(x - obj_player.x)
-state = states.pizzagoblinthrow
-
-}
-}
+	if ((targetplayer.x > x - 80) && (targetplayer.x < x + 80)) && (y <= targetplayer.y+100 && y >= targetplayer.y- 100)
+	{
+		if state = states.walk && !rematchscare
+		{
+			image_index = 0
+			sprite_index = spr_pepgoblin_kick
+			if global.snickrematch
+				sprite_index = spr_pepgoblin_kick_re
+			image_xscale = -sign(x - obj_player.x)
+			state = states.pizzagoblinthrow
+		}
+	}
 }
 
 //Taunt attack

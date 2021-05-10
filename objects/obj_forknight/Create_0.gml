@@ -26,7 +26,7 @@ stunfallspr = spr_forknight_stun
 walkspr =spr_forknight_walk
 grabbedspr = spr_forknight_grabbed
 scaredspr = spr_forknight_scared
-sprite_index = spr_forknight_walk
+turnspr = spr_forknight_turn
 image_xscale = -1
 flash = false
 slapped = false
@@ -35,7 +35,7 @@ boundbox = false
 spr_dead = spr_forknight_dead
 important = false
 heavy = false
-depth =0
+depth = 0
 
 if string_startswith(room_get_name(room), "chateau")
 	paletteselect = 1
@@ -44,3 +44,15 @@ else
 spr_palette = palette_forknight
 grabbedby = 0
 stuntouchbuffer = 0
+
+if global.snickrematch
+{
+	idlespr = spr_forknight_walk_re
+	stunfallspr = spr_forknight_grabbed_re
+	walkspr = spr_forknight_walk_re
+	grabbedspr = spr_forknight_grabbed_re
+	scaredspr = spr_forknight_grabbed_re
+	spr_dead = spr_forknight_dead_re
+	turnspr = spr_forknight_turn_re
+}
+sprite_index = walkspr

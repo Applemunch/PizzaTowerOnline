@@ -1,5 +1,8 @@
 prompt_condition = function()
 {
+	if global.snickchallenge
+		return false;
+	
 	if place_meeting(x, y, obj_player1)
 	{
 	    //tv_reset();

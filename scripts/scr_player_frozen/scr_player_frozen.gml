@@ -23,6 +23,7 @@ function scr_player_frozen()
 	    }
 		
 		image_blend = c_white;
+		exit;
 	}
 	
 	if -key_left2 or key_right2 or key_up2 or key_down2 or key_jump or key_slap
@@ -40,11 +41,16 @@ function scr_player_frozen()
 		
 		    movespeed = tauntstoredmovespeed;
 		    sprite_index = tauntstoredsprite;
-		    state = tauntstoredstate;
 			
-			movespeed = 0;
+		    state = states.jump;
+			jumpstop = true;
+			vsp = -12;
+			sprite_index = spr_machfreefall;
+			
+			exit;
 		}
 	}
+	
 	audio_sound_pitch(global.music, lerp(1, 0.25, movespeed));
 	image_blend = merge_colour(c_white, c_purple, movespeed);
 }

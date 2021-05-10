@@ -18,6 +18,7 @@ shot = false
 thrown = false
 reset = false
 flash = false
+
 landspr = spr_slimebounce
 idlespr = spr_slimeidle
 fallspr = spr_slimefall
@@ -46,7 +47,21 @@ else
 	paletteselect = 0;
 spr_palette = palette_cheeseslime
 
-sprite_index = spr_slimemove
+if global.snickrematch
+{
+	landspr = spr_slimemove_re
+	idlespr = spr_slimemove_re
+	fallspr = spr_slimemove_re
+	stunfallspr = spr_slimegrabbed_re
+	walkspr = spr_slimemove_re
+	turnspr = spr_slimemove_re
+	recoveryspr = spr_slimemove_re
+	grabbedspr = spr_slimegrabbed_re
+	scaredspr = spr_slimegrabbed_re
+	spr_dead = spr_slimedead_re
+}
+
+sprite_index = walkspr
 
 grabbedby = 0
 stuntouchbuffer = 0

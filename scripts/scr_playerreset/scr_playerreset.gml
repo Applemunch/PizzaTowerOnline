@@ -131,338 +131,169 @@ function scr_playerreset()
 		c = 0
 		heavy = false
 		image_index = 0
-	sprite_index = spr_walkfront
-	alarm[0] = -1
-	alarm[1] = -1
-	alarm[3] = -1
-	alarm[4] = -1
-	alarm[5] = -1
-	alarm[6] = -1
-	alarm[7] = -1
-	alarm[8] = -1
-	alarm[9] = -1
-	alarm[10] = -1
-	grav = 0.5;
-	hsp = 0;
-	vsp = 0;
-	global.playerhealth = 100
-	xscale = 1;
-	yscale = 1;
+		sprite_index = spr_walkfront
+		alarm[0] = -1
+		alarm[1] = -1
+		alarm[3] = -1
+		alarm[4] = -1
+		alarm[5] = -1
+		alarm[6] = -1
+		alarm[7] = -1
+		alarm[8] = -1
+		alarm[9] = -1
+		alarm[10] = -1
+		grav = 0.5;
+		hsp = 0;
+		vsp = 0;
+		global.playerhealth = 100
+		xscale = 1;
+		yscale = 1;
 
 
 
-	pogospeed = 6
-	pogochargeactive = false
-	pogocharge = 100
+		pogospeed = 6
+		pogochargeactive = false
+		pogocharge = 100
 
-	x = backtohubstartx
-	y = backtohubstarty
+		x = backtohubstartx
+		y = backtohubstarty
 
-	backupweapon = false
-	shotgunAnim = false
+		backupweapon = false
+		shotgunAnim = false
 
-	box = false
-	steppy = false
+		box = false
+		steppy = false
 
-	movespeedmax = 5
-	jumpstop = false
-	start_running = true
+		movespeedmax = 5
+		jumpstop = false
+		start_running = true
 
-	obj_camera.ded = false
+		obj_camera.ded = false
 
-	visible = true
-	global.panic = false
-	turn = false
-	jumpAnim = true
-	dashAnim = true
-	landAnim = false
-	machslideAnim = false
-	moveAnim = true
-	stopAnim = true
-	crouchslideAnim = true
-	crouchAnim = true
-	machhitAnim = false
-	stompAnim = false
+		visible = true
+		global.panic = false
+		turn = false
+		jumpAnim = true
+		dashAnim = true
+		landAnim = false
+		machslideAnim = false
+		moveAnim = true
+		stopAnim = true
+		crouchslideAnim = true
+		crouchAnim = true
+		machhitAnim = false
+		stompAnim = false
 
-	inv_frames = false
+		inv_frames = false
 
-	turning = false
+		turning = false
 
-	hurtbounce = 0
-	hurted = false
-	autodash = false
-	mach2 = 0
+		hurtbounce = 0
+		hurted = false
+		autodash = false
+		mach2 = 0
 
-	parry = false
-	parry_inst = noone
-	taunt_to_parry_max = 10
-	parry_count = 0
-	parry_max = 8
+		parry = false
+		parry_inst = noone
+		taunt_to_parry_max = 10
+		parry_count = 0
+		parry_max = 8
 
-	input_buffer_jump = 8
-	input_buffer_secondjump = 8
-	input_buffer_highjump = 8
+		input_buffer_jump = 8
+		input_buffer_secondjump = 8
+		input_buffer_highjump = 8
 
-	flash = false
-	global.key_inv = false
-	global.shroomfollow = false
-	global.cheesefollow = false
-	global.tomatofollow = false
-	global.sausagefollow = false
-	global.pineapplefollow = false
-	global.keyget = false
-	global.collect = 0
-	global.collectN = 0
-	global.ammo = 0
-	global.treasure = false
-	global.combo = 0
-	global.combotime = 0
-	global.pizzacoin = global.pizzacoinstart
-	global.toppintotal = 1
-	global.hit = 0
+		flash = false
+		global.key_inv = false
+		global.shroomfollow = false
+		global.cheesefollow = false
+		global.tomatofollow = false
+		global.sausagefollow = false
+		global.pineapplefollow = false
+		global.keyget = false
+		global.collect = 0
+		global.collectN = 0
+		global.ammo = 0
+		global.treasure = false
+		global.combo = 0
+		global.combotime = 0
+		global.pizzacoin = global.pizzacoinstart
+		global.toppintotal = 1
+		global.hit = 0
 
 
-	ini_open("saveData.ini");
-	// SAGE2019 achievements
-	global.SAGEshotgunsnick = ini_read_string("SAGE2019","shotgunsnick",false);
-	global.SAGEshotgunsnicknumber = 0
+		ini_open("saveData.ini");
+		// SAGE2019 achievements
+		global.SAGEshotgunsnick = ini_read_string("SAGE2019","shotgunsnick",false);
+		global.SAGEshotgunsnicknumber = 0
 
-	global.SAGEdungeonbackup = ini_read_string("SAGE2019","dungeonbackup",false);
-	global.SAGEsrank = ini_read_string("SAGE2019","srank",false);
-	global.SAGEsnicksrank = ini_read_string("SAGE2019","snicksrank",false);
-	global.SAGEcombo10 = ini_read_string("SAGE2019","combo10",false);
-	global.SAGEsecret = ini_read_string("SAGE2019","secret",false);
+		global.SAGEdungeonbackup = ini_read_string("SAGE2019","dungeonbackup",false);
+		global.SAGEsrank = ini_read_string("SAGE2019","srank",false);
+		global.SAGEsnicksrank = ini_read_string("SAGE2019","snicksrank",false);
+		global.SAGEcombo10 = ini_read_string("SAGE2019","combo10",false);
+		global.SAGEsecret = ini_read_string("SAGE2019","secret",false);
 
-	global.SAGEknight = ini_read_string("SAGE2019","knight",false);
-	global.SAGEknighttaken = false
+		global.SAGEknight = ini_read_string("SAGE2019","knight",false);
+		global.SAGEknighttaken = false
  
-	global.SAGEtoppin = ini_read_string("SAGE2019","toppin",false);
-	global.SAGEtreasure = ini_read_string("SAGE2019","treasure",false);
-	ini_close()
+		global.SAGEtoppin = ini_read_string("SAGE2019","toppin",false);
+		global.SAGEtreasure = ini_read_string("SAGE2019","treasure",false);
+		ini_close()
 
 
 
-	in_water = false
-	key_particles = false
-	barrel = false
-	bounce = false
-	a = 0
-	idle = 0
-	attacking = false
-	slamming = false
-	superslam = 0
+		in_water = false
+		key_particles = false
+		barrel = false
+		bounce = false
+		a = 0
+		idle = 0
+		attacking = false
+		slamming = false
+		superslam = 0
 
-	machpunchAnim = false
-	punch = false
-	machfreefall = 0
-	shoot = true
-	instakillmove = false
-	windingAnim = 0
-	facestompAnim = false
-	ladderbuffer = 0
-	chainsaw = 50
-	toomuchalarm1 = 0
-	toomuchalarm2 = 0
-	dashdust = false
-	throwforce = 0
-	hurtsound = false
+		machpunchAnim = false
+		punch = false
+		machfreefall = 0
+		shoot = true
+		instakillmove = false
+		windingAnim = 0
+		facestompAnim = false
+		ladderbuffer = 0
+		chainsaw = 50
+		toomuchalarm1 = 0
+		toomuchalarm2 = 0
+		dashdust = false
+		throwforce = 0
+		hurtsound = false
 
-	idleanim = 0
-	momemtum = false
-	cutscene = false
-	grabbing = false
-	dir = xscale
+		idleanim = 0
+		momemtum = false
+		cutscene = false
+		grabbing = false
+		dir = xscale
 
 
 
-	goingdownslope = false
-	goingupslope = false
-	fallinganimation = 0
-	bombpeptimer = 100
-	slapbuffer = 0
-	slaphand= 1
+		goingdownslope = false
+		goingupslope = false
+		fallinganimation = 0
+		bombpeptimer = 100
+		slapbuffer = 0
+		slaphand= 1
 
-	suplexmove = false
-	suplexhavetomash = 0
+		suplexmove = false
+		suplexhavetomash = 0
 
-	timeuntilhpback = 300
+		timeuntilhpback = 300
 
-	anger = 0
-	angry = false
+		anger = 0
+		angry = false
 
-	springsjump = false;
-	keydoor = false;
-	sprgot = -1;
-	storedstate = states.normal;
+		springsjump = false;
+		keydoor = false;
+		sprgot = -1;
+		storedstate = states.normal;
 
 	}
-
-	/*
-							with (obj_player2) 
-							{
-								pizzashield = false
-								image_blend = make_colour_hsv(0,0,255);
-								supercharged = false
-								pizzapepper = 0
-									c = 0
-								heavy = false
-									image_index = 0
-	sprite_index = spr_walkfront
-							alarm[0] = -1
-							alarm[1] = -1
-							alarm[3] = -1
-							alarm[4] = -1
-							alarm[5] = -1
-							alarm[6] = -1
-							alarm[7] = -1
-							alarm[8] = -1
-							alarm[9] = -1
-							alarm[10] = -1
-							grav = 0.5;
-							hsp = 0;
-							vsp = 0;
-							global.playerhealth = 100
-							xscale = 1;
-							yscale = 1;
-
-	pogospeed = 6
-	pogochargeactive = false
-	pogocharge = 100
-
-
-
-							x = backtohubstartx
-							y = backtohubstarty
-
-							backupweapon = false
-							shotgunAnim = false
-
-							box = false
-							steppy = false
-
-							movespeedmax = 5
-							jumpstop = false
-							start_running = true
-
-							obj_camera.ded = false
-
-							visible = true
-							global.panic = false
-							turn = false
-							jumpAnim = true
-							dashAnim = true
-							landAnim = false
-							machslideAnim = false
-							moveAnim = true
-							stopAnim = true
-							crouchslideAnim = true
-							crouchAnim = true
-							machhitAnim = false
-							stompAnim = false
-
-							inv_frames = false
-
-							turning = false
-
-							hurtbounce = 0
-							hurted = false
-							autodash = false
-							mach2 = 0
-
-							input_buffer_jump = 8
-							input_buffer_secondjump = 8
-							input_buffer_highjump = 8
-
-							flash = false
-							global.key_inv = false
-							global.shroomfollow = false
-							global.cheesefollow = false
-							global.tomatofollow = false
-							global.sausagefollow = false
-							global.pineapplefollow = false
-							global.keyget = false
-							global.collect = 0
-							global.collectN = 0
-							global.ammo = 0
-							global.treasure = false
-							global.combo = 0
-							global.combotime = 0
-							global.pizzacoin = 0
-							global.toppintotal = 1
-							global.hit = 0
-
-
-							ini_open("saveData.ini");
-							// SAGE2019 achievements
-							global.SAGEshotgunsnick = ini_read_string("SAGE2019","shotgunsnick",false);
-							global.SAGEshotgunsnicknumber = 0
-
-							global.SAGEdungeonbackup = ini_read_string("SAGE2019","dungeonbackup",false);
-							global.SAGEsrank = ini_read_string("SAGE2019","srank",false);
-							global.SAGEsnicksrank = ini_read_string("SAGE2019","snicksrank",false);
-							global.SAGEcombo10 = ini_read_string("SAGE2019","combo10",false);
-							global.SAGEsecret = ini_read_string("SAGE2019","secret",false);
-
-							global.SAGEknight = ini_read_string("SAGE2019","knight",false);
-							global.SAGEknighttaken = false
- 
-							global.SAGEtoppin = ini_read_string("SAGE2019","toppin",false);
-							global.SAGEtreasure = ini_read_string("SAGE2019","treasure",false);
-							ini_close()
-
-
-
-							in_water = false
-							key_particles = false
-							barrel = false
-							bounce = false
-							a = 0
-							idle = 0
-							attacking = false
-							slamming = false
-							superslam = 0
-
-							machpunchAnim = false
-							punch = false
-							machfreefall = 0
-							shoot = true
-							instakillmove = false
-							windingAnim = 0
-							facestompAnim = false
-							ladderbuffer = 0
-							chainsaw = 50
-							toomuchalarm1 = 0
-							toomuchalarm2 = 0
-							dashdust = false
-							throwforce = 0
-							hurtsound = false
-
-							idleanim = 0
-							momemtum = false
-							cutscene = false
-							grabbing = false
-							dir = xscale
-
-
-
-							goingdownslope = false
-							goingupslope = false
-							fallinganimation = 0
-							bombpeptimer = 100
-							slapbuffer = 0
-							slaphand= 1
-
-							suplexmove = false
-							suplexhavetomash = 0
-
-							timeuntilhpback = 300
-
-							anger = 0
-							angry = false
-
-							}
-
-
-
-/* end scr_playerreset */
 }

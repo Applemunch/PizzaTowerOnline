@@ -39,7 +39,7 @@ function scr_enemy_grabpos(player)
 			else
 				y -= 2;
 			
-			if sprite_index == spr_slimegrabbed
+			if sprite_index == spr_slimegrabbed or sprite_index == spr_slimegrabbed_re
 				y += 20;
 			if sprite_index == spr_sausagemannocigar_grabbed
 			or sprite_index == spr_sausageman_grabbed
@@ -136,7 +136,7 @@ function scr_enemy_driverpos(player)
 			y -= 28;
 		}
 		
-		if sprite_index == spr_slimegrabbed
+		if sprite_index == spr_slimegrabbed or sprite_index == spr_slimegrabbed_re
 			y += 20;
 		if sprite_index == spr_sausagemannocigar_grabbed
 		or sprite_index == spr_sausageman_grabbed

@@ -10,7 +10,7 @@ switch (state)
     case states.hit: scr_enemy_hit (); break;
     case states.stun: scr_enemy_stun (); break;
     case states.pizzagoblinthrow: scr_pizzagoblin_throw (); break;
-    case states.grabbed: scr_enemy_grabbed (); break;
+    // grabbed state here
 }
 
 if  state = states.stun && stunned > 100 && birdcreated = false
@@ -36,7 +36,7 @@ if (flash == true && alarm[2] <= 0) {
 
 
 
-if  hitboxcreate = false && (state = states.walk) 
+if hitboxcreate == false && state == states.walk && !rematchscare
 {
 	hitboxcreate = true
 	with instance_create(x,y,obj_forkhitbox)
@@ -44,14 +44,12 @@ if  hitboxcreate = false && (state = states.walk)
 }
 
 if state != states.grabbed
-depth = 0
-
-
+	depth = 0
 
 if state != states.stun
-thrown= false
+	thrown = false
 
-if boundbox = false
+if !boundbox
 {
 	with instance_create(x,y,obj_baddiecollisionbox)
 	{

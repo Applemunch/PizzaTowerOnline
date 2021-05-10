@@ -10,7 +10,7 @@ switch (state)
     case states.hit: scr_enemy_hit (); break;
     case states.stun: scr_enemy_stun (); break;
     case states.pizzagoblinthrow: scr_pizzagoblin_throw (); break;
-    case states.grabbed: scr_enemy_grabbed (); break;
+    // grabbed state here
 }
 
 
@@ -51,17 +51,18 @@ var targetplayer = instance_nearest(x,y ,obj_player)
 //Throw Bomb at
 if x != targetplayer.x && state != states.pizzagoblinthrow && bombreset = 0  && grounded
 {
-if ((targetplayer.x > x - 400) && (targetplayer.x < x + 400)) && (y <= targetplayer.y+20 && y >= targetplayer.y- 20)
-{
-if (state = states.walk or state = states.idle) 
-{
-
-sprite_index = spr_pizzard_shoot
-image_index = 0
-image_xscale = -sign(x - targetplayer.x)
-state = states.pizzagoblinthrow
-}
-}
+	if ((targetplayer.x > x - 400) && (targetplayer.x < x + 400)) && (y <= targetplayer.y+20 && y >= targetplayer.y- 20)
+	{
+		if (state = states.walk or state = states.idle) 
+		{
+			sprite_index = spr_pizzard_shoot
+			if global.snickrematch
+				sprite_index = spr_pizzard_shoot_re
+			image_index = 0
+			image_xscale = -sign(x - targetplayer.x)
+			state = states.pizzagoblinthrow
+		}
+	}
 }
 
 //Taunt attack

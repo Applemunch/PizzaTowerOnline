@@ -43,7 +43,13 @@ if ds_list_find_index(global.baddieroom, id) = -1 && important = false
 	ds_list_add(global.baddieroom, id) 
 
 	//Combos
-	global.combo += 1
+	if global.gameplay == 0
+	{
+		global.combo += 1
+		global.combotime = 60;
+		global.heattime = 60;
+		global.style += 5 + global.combo;
+	}
 
 	if global.snickchallenge = false
 	{
@@ -66,10 +72,6 @@ if ds_list_find_index(global.baddieroom, id) = -1 && important = false
 		with instance_create(x,y,obj_smallnumber)
 			number = string(num)
 	}
-	global.combotime = 60;
-	global.heattime = 60;
-	
-	global.style += 5 + global.combo;
 }
 else if  ds_list_find_index(global.baddieroom, id) = -1 && important = true
 {

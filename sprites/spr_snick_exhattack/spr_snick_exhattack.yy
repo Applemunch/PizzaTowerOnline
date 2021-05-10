@@ -73,8 +73,8 @@
   ],
   "nineSlice": null,
   "parent": {
-    "name": "PLN snicks",
-    "path": "folders/Sprites/demo_event/PLN snicks.yy",
+    "name": "snicks",
+    "path": "folders/Sprites/demo_event/PLN/snicks.yy",
   },
   "resourceVersion": "1.0",
   "name": "spr_snick_exhattack",

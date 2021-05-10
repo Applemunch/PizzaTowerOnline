@@ -23,7 +23,7 @@ function scr_enemy_idle()
 	if scaredbuffer > 0
 		scaredbuffer --
 	
-	if (sprite_index == spr_forknight_turn or sprite_index == spr_indiancheese_turn)
+	if ((variable_instance_exists(id, "turnspr") && sprite_index == turnspr) or sprite_index == spr_indiancheese_turn)
 	&& floor(image_index) == image_number- 1
 	{
 		sprite_index = walkspr

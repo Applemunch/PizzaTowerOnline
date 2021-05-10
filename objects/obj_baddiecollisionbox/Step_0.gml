@@ -53,6 +53,11 @@ if instance_exists(baddieID) && place_meeting(x,y,obj_player1) && !obj_player1.c
 					instance_destroy(other.baddieID);
 				else
 				{
+					global.combo += 1
+					global.combotime = 60;
+					global.heattime = 60;
+					global.style += 5 + global.combo;
+					
 					repeat 3
 						instance_create(x,y,obj_baddiegibs)
 					instance_create(x,y,obj_bangeffect)

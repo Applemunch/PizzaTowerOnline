@@ -101,8 +101,8 @@
   ],
   "nineSlice": null,
   "parent": {
-    "name": "demo_event",
-    "path": "folders/Sprites/demo_event.yy",
+    "name": "PLN",
+    "path": "folders/Sprites/demo_event/PLN.yy",
   },
   "resourceVersion": "1.0",
   "name": "spr_rematchplugwoke",

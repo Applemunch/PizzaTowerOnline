@@ -22,8 +22,6 @@ if sprite_index = _spr_intro && floor(image_index) = image_number - 1
 
 if sprite_index != _spr_intro
 {
-	event_inherited()
-	
 	// Sprites
 	if x != xprevious
 	{

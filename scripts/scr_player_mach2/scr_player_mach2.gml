@@ -25,71 +25,63 @@ function scr_player_mach2()
 	//Jump Stop
 	if (!key_jump2) && jumpstop = false && vsp < 0.5 
 	{
-	vsp /= 10
-	jumpstop = true
+		vsp /= 10
+		jumpstop = true
 	}
 
 	if grounded && vsp > 0
-	{
-	jumpstop = false
-	}
-
-
-
+		jumpstop = false
 
 	//Jump
 	if (input_buffer_jump < 8) && grounded && !(move == 1 && xscale == -1) && !(move == -1 && xscale == 1) 
 	{
-	image_index = 0
-	sprite_index = spr_secondjump1
-	scr_soundeffect(sfx_jump)
+		image_index = 0
+		sprite_index = spr_secondjump1
+		scr_soundeffect(sfx_jump)
 
-	vsp = -11
-
+		vsp = -11
 	}
 
 	//Animations
 	if grounded  && vsp > 0
 	{
-	if machpunchAnim = false && sprite_index != spr_mach && sprite_index != spr_mach4 && sprite_index != spr_player_machhit
-	{
-	if sprite_index != spr_player_machhit && (sprite_index != spr_rollgetup or character == "S")
-	sprite_index = spr_mach
-
-
-	}
-
-	if machpunchAnim = true
-	{
-		if punch = false && sprite_index != spr_machpunch1
+		if machpunchAnim = false && sprite_index != spr_mach && sprite_index != spr_mach4 && sprite_index != spr_player_machhit
 		{
-			image_index = 0;
-			sprite_index = spr_machpunch1
+			if sprite_index != spr_player_machhit && (sprite_index != spr_rollgetup or character == "S")
+				sprite_index = spr_mach
 		}
 
-		if punch = true && sprite_index != spr_machpunch2
+		if machpunchAnim = true
 		{
-			image_index = 0;
-			sprite_index = spr_machpunch2
-		}
+			if punch = false && sprite_index != spr_machpunch1
+			{
+				image_index = 0;
+				sprite_index = spr_machpunch1
+			}
 
-		if floor(image_index) = image_number - 1 && sprite_index = spr_machpunch1
-		{
-			punch = true
-			machpunchAnim = false
-		}
+			if punch = true && sprite_index != spr_machpunch2
+			{
+				image_index = 0;
+				sprite_index = spr_machpunch2
+			}
 
-		if floor(image_index) = image_number - 1 && sprite_index = spr_machpunch2
-		{
-			punch = false
-			machpunchAnim = false
+			if floor(image_index) = image_number - 1 && sprite_index = spr_machpunch1
+			{
+				punch = true
+				machpunchAnim = false
+			}
+
+			if floor(image_index) = image_number - 1 && sprite_index = spr_machpunch2
+			{
+				punch = false
+				machpunchAnim = false
+			}
 		}
-	}
 	}
 
 
 	if !grounded
-	machpunchAnim = false
+		machpunchAnim = false
 
 
 
@@ -109,9 +101,11 @@ function scr_player_mach2()
 	{
 		if movespeed < 12
 		{
+			/*
 			if character == "SP"
 				movespeed += 0.075
 			else
+			*/
 				movespeed += 0.1
 
 			if movespeed < 8
@@ -124,6 +118,7 @@ function scr_player_mach2()
 			machhitAnim = false
 			state = states.mach3 
 			flash = true
+			
 			if sprite_index != spr_rollgetup
 				sprite_index = spr_mach4
 			with instance_create(x,y,obj_jumpdust)

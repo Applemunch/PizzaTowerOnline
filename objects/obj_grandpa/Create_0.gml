@@ -11,3 +11,6 @@ grounded = true
 hsp = 0
 vsp = 0
 hp = 1
+
+with obj_player1
+	if character == "S" instance_destroy(other.id, false);

@@ -10,7 +10,7 @@ switch (state)
     case states.hit: scr_enemy_hit (); break;
     case states.stun: scr_enemy_stun (); break;
     case states.pizzagoblinthrow: scr_pizzagoblin_throw (); break;
-    case states.grabbed: scr_enemy_grabbed (); break;
+    // grabbed state here
 }
 if  state = states.stun && stunned > 100 && birdcreated = false
 {
@@ -55,7 +55,7 @@ if state != states.charge
 scr_scareenemy()
 
 //Charge sprite
-if sprite_index = spr_ancho_chargestart && floor(image_index) = image_number -1
+if sprite_index = spr_chargestart && floor(image_index) = image_number -1
 {
 //Chargehitbox
 if  hitboxcreate = false && (state = states.charge)  
@@ -66,7 +66,7 @@ with instance_create(x,y,obj_forkhitbox)
 ID = other.id
 }
 }
-sprite_index = spr_ancho_charge
+sprite_index = spr_charge
 movespeed = 10
 }
 
@@ -86,7 +86,7 @@ image_index = 0
 image_xscale = -sign(x - obj_player.x)
 
 state = states.charge
-sprite_index = spr_ancho_chargestart
+sprite_index = spr_chargestart
 }
 }
 }

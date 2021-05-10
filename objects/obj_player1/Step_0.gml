@@ -321,7 +321,7 @@ if state != states.grabbed && state != states.hurt
 if grounded && state != states.handstandjump
 	suplexmove = false
 
-if state != states.freefall
+if state != states.freefall && state != states.hitlag
 	freefallsmash = 0
 
 //Die

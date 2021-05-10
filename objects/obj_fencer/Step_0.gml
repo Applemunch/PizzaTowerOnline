@@ -10,7 +10,7 @@ switch (state)
     case states.hit: scr_enemy_hit (); break;
     case states.stun: scr_enemy_stun (); break;
     case states.pizzagoblinthrow: scr_pizzagoblin_throw (); break;
-    case states.grabbed: scr_enemy_grabbed (); break;
+    // grabbed state here
 }
 if  state = states.stun && stunned > 100 && birdcreated = false
 {
@@ -42,7 +42,7 @@ charging = true
 state = states.charge
 movespeed = 5
 vsp = -7
-sprite_index = spr_fencer_chargestart
+sprite_index = spr_chargestart
 }
 }
 }
@@ -67,8 +67,8 @@ movespeed = 0
 
 
 //Charge sprite
-if sprite_index = spr_fencer_chargestart && floor(image_index) = image_number -1
-sprite_index = spr_fencer_charge
+if sprite_index = spr_chargestart && floor(image_index) = image_number -1
+sprite_index = spr_charge
 
 //Flash
 if (flash == true && alarm[2] <= 0) {

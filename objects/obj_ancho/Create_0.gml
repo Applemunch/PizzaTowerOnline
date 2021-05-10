@@ -24,8 +24,11 @@ grounded = false
 idlespr = spr_ancho
 stunfallspr = spr_anchobounce
 walkspr = spr_ancho
-grabbedspr = spr_anchobounce
+grabbedspr = spr_ancho_grabbed
 scaredspr = spr_ancho_scared
+spr_chargestart = spr_ancho_chargestart
+spr_charge = spr_ancho_charge
+
 image_xscale = -1
 flash = false
 slapped = false
@@ -38,3 +41,17 @@ depth =0
 
 grabbedby = 0
 stuntouchbuffer = 0
+
+if global.snickrematch
+{
+	idlespr = spr_ancho_re
+	stunfallspr = spr_anchobounce_re
+	walkspr = spr_ancho_re
+	grabbedspr = spr_ancho_grabbed_re
+	scaredspr = spr_anchobounce_re
+	spr_dead = spr_anchodead_re
+	
+	spr_chargestart = spr_ancho_chargestart_re
+	spr_charge = spr_ancho_charge_re
+	sprite_index = walkspr;
+}

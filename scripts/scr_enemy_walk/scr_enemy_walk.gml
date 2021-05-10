@@ -37,7 +37,7 @@ function scr_enemy_walk() {
 		{
 			image_xscale *= -1
 			image_index = 0
-			sprite_index = spr_forknight_turn
+			sprite_index = turnspr
 			state = states.idle
 		}
 		else if object_index = obj_indiancheese && global.gameplay != 0
@@ -79,7 +79,7 @@ function scr_enemy_walk() {
 			{
 				image_xscale *= -1
 				image_index = 0
-				sprite_index = spr_forknight_turn
+				sprite_index = turnspr
 				state = states.idle
 			}
 			else if object_index = obj_tankOLD

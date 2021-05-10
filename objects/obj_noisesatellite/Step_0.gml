@@ -6,7 +6,7 @@ switch (state)
     case states.land: scr_enemy_land (); break;
     case states.hit: scr_enemy_hit (); break;
     case states.stun: scr_enemy_stun (); break;
-    case states.grabbed: scr_enemy_grabbed (); break;
+    // grabbed state here
 }
 if !instance_exists(obj_slaphitbox)
 slapped = false
