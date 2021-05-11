@@ -50,11 +50,11 @@ if global.gameplay == 0
 	//Rank milestone
 	if instance_exists(obj_itspizzatime)
 	{
-			image_speed = 0.25
-	message = "GET TO THE EXIT!!"
-	alarm[0] = 200
-	showtext = true
-	tvsprite = spr_tvexit
+		image_speed = 0.25
+		message = "GET TO THE EXIT!!"
+		alarm[0] = 200
+		showtext = true
+		tvsprite = spr_tvexit
 	}
 
 
@@ -264,7 +264,7 @@ else
 			
 				if obj_player1.character != "P"
 				&& obj_player1.character != "N"
-				&& obj_player1.character != "SP"
+				&& (obj_player1.character != "SP" or global.streamer)
 					idlespr = spr_tv_placeholder;
 				else
 				{

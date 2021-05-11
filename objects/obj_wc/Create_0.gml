@@ -1,9 +1,10 @@
 /// @description world control create
+WC_consoleopen = false;
 if debug
 {
 	// world console
 	WC_creatingobj = false;
-
+	
 	WC_dragobj = noone;
 	WC_fakedragobj = noone;
 	WC_moffsetx = 0;
@@ -64,7 +65,4 @@ if debug
 	WC_livestep = undefined;
 }
 else
-{
-	message = "get off my crib";
 	instance_destroy();
-}

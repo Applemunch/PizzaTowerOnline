@@ -8,5 +8,8 @@ function create_collect(x, y, sprite)
 }
 
 function create_baddiegibsticks(x, y) {
+	if global.gameplay == 0
+		exit;
+	
 	instance_create(x, y, obj_baddiegibsstick);
 }

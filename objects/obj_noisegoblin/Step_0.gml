@@ -48,7 +48,7 @@ thrown= false
 
 
 if bombreset > 0
-bombreset --
+	bombreset = max(bombreset - 1, 0);
 
 if sprite_index == spr_archergoblin_shoot
     image_xscale = -sign(x - obj_player1.x)

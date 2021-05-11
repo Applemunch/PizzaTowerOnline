@@ -1,4 +1,4 @@
 up -= 5
 
-if up = -50
-instance_destroy()
+if up <= -100
+	instance_destroy()

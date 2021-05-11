@@ -12,10 +12,12 @@ if string_startswith(roomname, "floor2_room")
 	for (var i = 0; i < 20; ++i)
 	{
 		if string_startswith(roomname, "floor2_room" + string(i))
-		&& i <= 8
-			sprite_index = spr_ladder_mansion;
-		else
-			sprite_index = spr_ladder_forest;
+		{
+			if i <= 8
+				sprite_index = spr_ladder_mansion;
+			else if i > 8
+				sprite_index = spr_ladder_forest;
+		}
 	}
 }
 if string_startswith(roomname, "golf_room")
@@ -34,7 +36,7 @@ if up
 {
 	if down
 		image_index = 0;
-	else if !scr_solid(x, y + 32)
+	else if !scr_solid(x, y + 32) or place_meeting(x, y + 32, obj_destructibles)
 		image_index = 1;
 }
 else if down

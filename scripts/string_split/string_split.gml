@@ -15,6 +15,4 @@ function string_split() {
 	}
 	ds_list_add(r, s);
 	return r;
-
-
 }

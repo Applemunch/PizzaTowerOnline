@@ -237,6 +237,14 @@ function scr_enemy_grabbed()
 			
 			if global.gameplay != 0
 			{
+				increase_combo();
+				if hp <= 0
+				{
+					instance_create(x, y, obj_genericpoofeffect);
+					instance_destroy();
+					exit;
+				}
+				
 				repeat 3
 					instance_create(x, y, obj_baddiegibs)
 				instance_create(x, y, obj_bangeffect)

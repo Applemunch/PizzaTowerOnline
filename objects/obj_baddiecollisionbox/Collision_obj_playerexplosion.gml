@@ -3,6 +3,7 @@ if other.sync
 
 if instance_exists(baddieID)
 {
+	increase_combo();
 	if baddieID.object_index != obj_pizzaballOLD
 	{
 		instance_destroy(baddieID)

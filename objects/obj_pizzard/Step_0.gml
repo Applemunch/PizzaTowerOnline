@@ -42,14 +42,14 @@ thrown= false
 scr_scareenemy()
 
 if bombreset > 0
-bombreset --
+	bombreset = max(bombreset - 1, 0);
 
 //Identify the player
 var targetplayer = instance_nearest(x,y ,obj_player)
 
 
 //Throw Bomb at
-if x != targetplayer.x && state != states.pizzagoblinthrow && bombreset = 0  && grounded
+if x != targetplayer.x && state != states.pizzagoblinthrow && bombreset = 0 && grounded && !rematchscare
 {
 	if ((targetplayer.x > x - 400) && (targetplayer.x < x + 400)) && (y <= targetplayer.y+20 && y >= targetplayer.y- 20)
 	{

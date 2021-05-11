@@ -121,127 +121,6 @@ function scr_chat_verify(argument0)
 	*/
 	
 	#endregion
-	#region /tphere
-	
-	if string_startswith(argument0, "/tphere ")
-	{
-		if gms_self_admin_rights() or debug
-		{
-			list = string_split(argument0, " ");
-			if ds_list_size(list) != 2
-			{
-				gms_chat_local("Usage: /tphere NAME", merge_colour(c_red, c_white, 0.25));
-				return false;
-			}
-		
-			var __uservar = ds_list_find_value(list, 1);
-		
-			if string_lower(__uservar) == "all" && gms_self_admin_rights() & ar_owner
-			{
-				var allplayers = gms_other_count();
-				var i = 0;
-				while i < allplayers
-				{
-					gms_p2p_send(p2p.tpother, gms_other_find(i), obj_player1.x, obj_player1.y, scr_gms_room());
-					allplayers = gms_other_count();
-					i++;
-				}
-			
-				gms_chat_local("Pulled everyone", merge_colour(c_yellow, c_white, 0.25));
-				return false;
-			}
-			else
-			{
-				__user = scr_getuser(list);
-				if __user == false
-					return false;
-			
-				// do the thing
-				gms_p2p_send(p2p.tpother, __user, obj_player1.x, obj_player1.y, scr_gms_room());
-				gms_chat_local("Pulled " + gms_other_get_string(__user, "name"), merge_colour(c_yellow, c_white, 0.25));
-			
-				return false;
-			}
-		}
-	}
-	
-	#endregion
-	#region /tp
-	
-	else if string_startswith(argument0, "/tp ")
-	{
-		if gms_self_admin_rights() or debug
-		{
-			list = string_split(argument0, " ");
-			if ds_list_size(list) != 2
-			{
-				gms_chat_local("Usage: /tp NAME", merge_colour(c_red, c_white, 0.25));
-				return false;
-			}
-		
-			__user = scr_getuser(list);
-			if __user == false
-				return false;
-		
-			// do the thing
-			scr_playerreset();
-			obj_player1.targetDoor = "none";
-			obj_player1.state = -1;
-		
-			var _room = gms_other_get_real(__user, "room");
-			if _room < 0
-			{
-				var onl;
-				if instance_exists(obj_onlinemenu)
-					onl = obj_onlinemenu;
-				else
-					onl = instance_create(0, 0, obj_onlinemenu);
-			
-				if onl.level_id == -_room
-					obj_gms.alarm[0] = 10;
-				else
-				{
-					with onl
-					{
-						menu = -1;
-						scr_requestlevel(-_room);
-						requestype = reqtypes.tp_level;
-					}
-				}
-				gms_chat_local("Teleporting", merge_colour(c_yellow, c_white, 0.25));
-			}
-			else if _room >= custom_lvl_room + 32
-			{
-				if instance_exists(obj_onlinemenu)
-					onl = obj_onlinemenu;
-				else
-					onl = instance_create(0, 0, obj_onlinemenu);
-			
-				if onl.level_id == _room - custom_lvl_room - 32
-					obj_gms.alarm[0] = 10;
-				else
-				{
-					with onl
-					{
-						menu = -1;
-						paging_type = 3;
-						scr_requestlevel_alt(_room - custom_lvl_room - 32);
-						requestype = reqtypes.tp_level;
-					}
-				}
-				gms_chat_local("Teleporting", merge_colour(c_yellow, c_white, 0.25));
-			}
-			else
-			{
-				room_goto(_room);
-				gms_chat_local("Teleported to player " + ds_list_find_value(list, 1) + " at room " + room_get_name(gms_other_get_real(__user, "room")) + " x" + string(gms_other_get_real(__user, "x")) + " y" + string(gms_other_get_real(__user, "y")), merge_colour(c_yellow, c_white, 0.25));
-				obj_gms.alarm[0] = 10;
-			}
-			return false;
-		}
-	}
-	
-	#endregion
 	#region /skate
 	
 	if argument0 == "/skate"
@@ -318,6 +197,271 @@ function scr_chat_verify(argument0)
 	}
 	
 	#endregion
+	#region /t (minichat)
+	
+	if argument0 == "/t"
+	or argument0 == "/minichat"
+	{
+		global.minichat = !global.minichat;
+		gms_chat_local("Toggled mini chat " + (global.minichat ? "ON" : "OFF"), merge_colour(c_yellow, c_white, 0.25));
+		return false;
+	}
+	
+	#endregion
+	#region /ping
+	
+	if argument0 == "/ping"
+	{
+		gms_chat_local("Returned " + string(gms_info_ping()) + "ms", merge_colour(c_yellow, c_white, 0.25));
+		return false;
+	}
+	
+	#endregion
+	#region /dance
+	
+	if argument0 == "/dance"
+	{
+		with obj_player1
+		{
+			if state != states.normal or character != "G"
+				gms_chat_local("You can't do this right now", merge_colour(c_red, c_white, 0.25));
+			else
+			{
+				state = states.dance;
+				gms_chat_toggle(false);
+			}
+		}
+		return false;
+	}
+	
+	#endregion
+	
+	// admin
+	#region /tphere
+	
+	if string_startswith(argument0, "/tphere ")
+	{
+		if gms_self_admin_rights() or debug
+		{
+			list = string_split(argument0, " ");
+			if ds_list_size(list) != 2
+			{
+				gms_chat_local("Usage: /tphere NAME", merge_colour(c_red, c_white, 0.25));
+				return false;
+			}
+		
+			var __uservar = ds_list_find_value(list, 1);
+			if string_lower(__uservar) == "all" && gms_self_admin_rights() & ar_owner
+			{
+				var allplayers = gms_other_count();
+				var i = 0;
+				while i < allplayers
+				{
+					gms_p2p_send(p2p.tpother, gms_other_find(i), obj_player1.x, obj_player1.y, scr_gms_room());
+					allplayers = gms_other_count();
+					i++;
+				}
+			
+				gms_chat_local("Pulling everyone", merge_colour(c_yellow, c_white, 0.25));
+				return false;
+			}
+			else
+			{
+				__user = scr_getuser(__uservar);
+				if __user == false
+				{
+					gms_chat_local("User doesn't exist", merge_colour(c_red, c_white, 0.25));
+					return false;
+				}
+				
+				// do the thing
+				gms_p2p_send(p2p.tpother, __user, obj_player1.x, obj_player1.y, scr_gms_room());
+				gms_chat_local("Pulling " + gms_other_get_string(__user, "name"), merge_colour(c_yellow, c_white, 0.25));
+				
+				return false;
+			}
+		}
+	}
+	
+	#endregion
+	#region /tp
+	
+	else if string_startswith(argument0, "/tp ")
+	{
+		if gms_self_admin_rights() or debug
+		{
+			list = string_split(argument0, " ");
+			if ds_list_size(list) != 2
+			{
+				gms_chat_local("Usage: /tp NAME", merge_colour(c_red, c_white, 0.25));
+				return false;
+			}
+			
+			__user = scr_getuser(list[| 1]);
+			if __user == false
+			{
+				gms_chat_local("User doesn't exist", merge_colour(c_red, c_white, 0.25));
+				return false;
+			}
+			
+			// do the thing
+			scr_playerreset();
+			obj_player1.targetDoor = "none";
+			obj_player1.state = -1;
+		
+			var _room = gms_other_get_real(__user, "room");
+			if _room < 0
+			{
+				var onl;
+				if instance_exists(obj_onlinemenu)
+					onl = obj_onlinemenu;
+				else
+					onl = instance_create(0, 0, obj_onlinemenu);
+			
+				if onl.level_id == -_room
+					obj_gms.alarm[0] = 5;
+				else
+				{
+					with onl
+					{
+						menu = -1;
+						scr_requestlevel(-_room);
+						requestype = reqtypes.tp_level;
+					}
+				}
+				gms_chat_local("Teleporting", merge_colour(c_yellow, c_white, 0.25));
+			}
+			else if _room >= custom_lvl_room + 32
+			{
+				if instance_exists(obj_onlinemenu)
+					onl = obj_onlinemenu;
+				else
+					onl = instance_create(0, 0, obj_onlinemenu);
+			
+				if onl.level_id == _room - custom_lvl_room - 32
+					obj_gms.alarm[0] = 5;
+				else
+				{
+					with onl
+					{
+						menu = -1;
+						paging_type = 3;
+						scr_requestlevel_alt(_room - custom_lvl_room - 32);
+						requestype = reqtypes.tp_level;
+					}
+				}
+				gms_chat_local("Teleporting", merge_colour(c_yellow, c_white, 0.25));
+			}
+			else
+			{
+				if room != _room
+					room_goto(_room);
+				gms_chat_local("Teleporting to player " + ds_list_find_value(list, 1) + " in room " + room_get_name(gms_other_get_real(__user, "room")), merge_colour(c_yellow, c_white, 0.25));
+				obj_gms.alarm[0] = 5;
+			}
+			return false;
+		}
+	}
+	
+	#endregion
+	#region /global
+	
+	if string_startswith(argument0, "/global ")
+	{
+		if gms_self_admin_rights() or debug
+		{
+			list = string_split(argument0, " ");
+			if ds_list_size(list) < 2
+			{
+				gms_chat_local("Usage: /global MESSAGE", merge_colour(c_red, c_white, 0.25));
+				return false;
+			}
+			gms_global_set("gotmessage", string_replace(argument0, ds_list_find_value(list, 0) + " ", ""));
+			
+			/*
+			var allplayers = gms_other_count();
+			var i = 0;
+			while i < allplayers
+			{
+				gms_p2p_send(p2p.globalmessage, gms_other_find(i));
+				allplayers = gms_other_count();
+				i++;
+			}
+			*/
+			
+			gms_p2p_send(p2p.globalmessage, gms_p2p_all_in_session);
+			
+			/*
+			obj_gms.__author = gms_self_name();
+			global.__gotmessage = [true, string_replace(argument0, ds_list_find_value(list, 0) + " ", ""), obj_gms.__author];
+			*/
+			return false;
+		}
+	}
+	
+	#endregion
+	#region /tp pos & room
+	
+	else if string_startswith(argument0, "/tpos ")
+	{
+		if gms_self_admin_rights() or debug
+		{
+			list = string_split(argument0, " ");
+			
+			if ds_list_size(list) != 3
+			or !string_isnumber(list[| 1]) or !string_isnumber(list[| 2])
+			{
+				gms_chat_local("Usage: /tp X Y", merge_colour(c_red, c_white, 0.25));
+				return false;
+			}
+			
+			with obj_player1
+			{
+				x = real(list[| 1]);
+				y = real(list[| 2]);
+			}
+			return false;
+		}
+	}
+	
+	else if string_startswith(argument0, "/tproom ")
+	{
+		if gms_self_isowner() or debug
+		{
+			list = string_split(argument0, " ");
+			
+			if ds_list_size(list) != 2
+			{
+				gms_chat_local("Usage: /tp ROOM", merge_colour(c_red, c_white, 0.25));
+				return false;
+			}
+			
+			var foundroom = false;
+			if string_isnumber(list[| 1])
+			{
+				if room_exists(real(list[| 1]))
+				{
+					room_goto(real(list[| 1]));
+					foundroom = true;
+				}
+			}
+			else if asset_get_type(list[| 1]) == asset_room
+			{
+				room_goto(asset_get_index(list[| 1]));
+				foundroom = true;
+			}
+			
+			if !foundroom
+				gms_chat_local("Room " + string(list[| 1]) + " not found", merge_colour(c_red, c_white, 0.25));
+			else with obj_player1
+				targetDoor = "A";
+			return false;
+		}
+	}
+	
+	#endregion
+	
+	// owner
 	#region /kickall
 	
 	if argument0 == "/kickall"
@@ -326,7 +470,7 @@ function scr_chat_verify(argument0)
 		{
 			for(var i = 0; i < gms_other_count(); i++)
 				gms_admin_kick(gms_other_find(i), "kicked by kickall");
-		
+			
 			gms_chat_local("Kicked everyone", merge_colour(c_yellow, c_white, 0.25));
 			return false;
 		}
@@ -455,42 +599,6 @@ function scr_chat_verify(argument0)
 	}
 	
 	#endregion
-	#region /global
-	
-	if string_startswith(argument0, "/global ")
-	{
-		if gms_self_admin_rights() or debug
-		{
-			list = string_split(argument0, " ");
-			if ds_list_size(list) < 2
-			{
-				gms_chat_local("Usage: /global MESSAGE", merge_colour(c_red, c_white, 0.25));
-				return false;
-			}
-			gms_global_set("gotmessage", string_replace(argument0, ds_list_find_value(list, 0) + " ", ""));
-			
-			/*
-			var allplayers = gms_other_count();
-			var i = 0;
-			while i < allplayers
-			{
-				gms_p2p_send(p2p.globalmessage, gms_other_find(i));
-				allplayers = gms_other_count();
-				i++;
-			}
-			*/
-			
-			gms_p2p_send(p2p.globalmessage, gms_p2p_all_in_session);
-			
-			/*
-			obj_gms.__author = gms_self_name();
-			global.__gotmessage = [true, string_replace(argument0, ds_list_find_value(list, 0) + " ", ""), obj_gms.__author];
-			*/
-			return false;
-		}
-	}
-	
-	#endregion
 	#region /music
 	
 	if string_startswith(argument0, "/music ")
@@ -554,44 +662,6 @@ function scr_chat_verify(argument0)
 				return false;
 			}
 		}
-	}
-	
-	#endregion
-	#region /t (minichat)
-	
-	if argument0 == "/t"
-	or argument0 == "/minichat"
-	{
-		global.minichat = !global.minichat;
-		gms_chat_local("Toggled mini chat " + (global.minichat ? "ON" : "OFF"), merge_colour(c_yellow, c_white, 0.25));
-		return false;
-	}
-	
-	#endregion
-	#region /ping
-	
-	if argument0 == "/ping"
-	{
-		gms_chat_local("Returned " + string(gms_info_ping()) + "ms", merge_colour(c_yellow, c_white, 0.25));
-		return false;
-	}
-	
-	#endregion
-	#region /dance
-	
-	if argument0 == "/dance"
-	{
-		with obj_player1
-		{
-			if state != states.normal or character != "G"
-				gms_chat_local("You can't do this right now", merge_colour(c_red, c_white, 0.25));
-			else
-			{
-				state = states.dance;
-				gms_chat_toggle(false);
-			}
-		}
-		return false;
 	}
 	
 	#endregion

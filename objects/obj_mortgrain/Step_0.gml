@@ -1,7 +1,7 @@
 with obj_player1
 {
 	if (place_meeting(x - 1, y, other) or place_meeting(x + 1, y, other))
-	&& state == states.mort && !other.eaten
+	&& (state == states.mort or global.mort) && !other.eaten
 	{
 		other.eaten = true
 		other.x = -100
@@ -12,6 +12,7 @@ with obj_player1
 	}
 }
 
+/*
 if instance_exists(obj_mort) && eaten
 {
 	x = xstart
@@ -19,3 +20,4 @@ if instance_exists(obj_mort) && eaten
 	eaten = false
 	sprite_index = spr_corn
 }
+*/

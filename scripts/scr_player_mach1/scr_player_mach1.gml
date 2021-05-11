@@ -171,33 +171,32 @@ function scr_player_mach1()
 	}
 
 	//Snick peelout
-	    if key_attack && !scr_solid(x+xscale,y)  && character = "S" && grounded
-	    {
-	state = states.handstandjump
-
-	movespeed = 0
-	    }
-	
-		//Vigilante revolver
+	if key_attack && !scr_solid(x+xscale,y)  && character = "S" && grounded
+	{
+		state = states.handstandjump
+		movespeed = 0
+	}
+		
+	//Vigilante revolver
 	if key_slap2 && character = "V"
 	{
-	vsp = -5
-	state = states.revolver	
-	image_index = 0
+		vsp = -5
+		state = states.revolver	
+		image_index = 0
 		sprite_index = spr_playerV_airrevolver
 		image_index = 0
 		instance_create(x+image_xscale*20,y+20,obj_shotgunbullet)
-	scr_soundeffect(sfx_killingblow)
+		scr_soundeffect(sfx_killingblow)
 	}
 	
-		//Vigilante Dynamite
+	//Vigilante Dynamite
 	if key_shoot2 && character = "V" && !instance_exists(obj_dynamite)
 	{
 		vsp = -5
 
-	state = states.dynamite
-	image_index = 0
-	sprite_index = spr_playerV_dynamitethrow
+		state = states.dynamite
+		image_index = 0
+		sprite_index = spr_playerV_dynamitethrow
 		with instance_create(x,y,obj_dynamite)
 		{
 			image_xscale = other.xscale
@@ -209,63 +208,42 @@ function scr_player_mach1()
 	//Manual Freefall
 	if key_down && !grounded
 	{
-		if shotgunAnim = false
+		if !shotgunAnim
 		{
-	image_index= 0
-	state = states.freefallprep
-	sprite_index = spr_bodyslamstart
-	vsp =-5
+			image_index= 0
+			state = states.freefallprep
+			sprite_index = spr_bodyslamstart
+			vsp =-5
 		}
 		else
 		{
 			image_index= 0
-	state = states.freefallprep
-	sprite_index = spr_player_shotgunjump1
-	vsp = -5
-	with instance_create(x +xscale*30,y+60,obj_shotgunbullet)
-	{
-	sprite_index = sprite10391
-	spdh = -10
-	spd = 0
-	}
-	with instance_create(x +xscale*30,y+60,obj_shotgunbullet)
-	{
-	sprite_index = sprite10391
-	spdh = -10
-	spd = 5
-	}
-	with instance_create(x +xscale*30,y+60,obj_shotgunbullet)
-	{
-	sprite_index = sprite10391
-	spdh = -10
-	spd = -5
-	}
+			state = states.freefallprep
+			sprite_index = spr_shotgunjump1
+			vsp = -5
+			
+			with instance_create(x +xscale*30,y+60,obj_shotgunbullet)
+			{
+				sprite_index = sprite10391
+				spdh = -10
+				spd = 0
+			}
+			with instance_create(x +xscale*30,y+60,obj_shotgunbullet)
+			{
+				sprite_index = sprite10391
+				spdh = -10
+				spd = 5
+			}
+			with instance_create(x +xscale*30,y+60,obj_shotgunbullet)
+			{
+				sprite_index = sprite10391
+				spdh = -10
+				spd = -5
+			}
 		}
-
 	}
 	
 	//Taunt
 	if key_taunt2 
-	{
-		scr_soundeffect(sfx_taunt)
-		taunttimer = 20
-		tauntstoredmovespeed = movespeed
-		tauntstoredsprite = sprite_index
-		tauntstoredstate = state
-		state = states.backbreaker
-	
-		if supercharged = true && character != "S" && character != "V" && character != "G"
-		{
-			image_index = 0
-			sprite_index = choose(spr_supertaunt1,spr_supertaunt2,spr_supertaunt3,spr_supertaunt4)
-		}
-		else
-		{
-			taunttimer = 20
-			image_index = irandom(sprite_get_number(spr_taunt))
-			sprite_index = spr_taunt
-			image_speed = 0
-		}
-		instance_create(x,y,obj_taunteffect)	
-	}
+		scr_player_taunt();
 }

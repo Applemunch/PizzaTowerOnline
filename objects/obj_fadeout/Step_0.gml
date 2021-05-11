@@ -82,9 +82,9 @@ if fadealpha > 1
 	}
 }
 
-if fadein = false
+if !fadein
 	fadealpha += 0.1
-else if fadein = true && cont
+else if cont
 	fadealpha -= 0.1
 
 with obj_player1 

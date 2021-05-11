@@ -39,7 +39,7 @@ thrown= false
 
 
 if bombreset > 0
-bombreset --
+	bombreset = max(bombreset - 1, 0);
 
 //Throw Bomb at
 if x != obj_player1.x && state != states.pizzagoblinthrow && bombreset = 0 

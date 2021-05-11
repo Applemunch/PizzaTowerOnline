@@ -44,7 +44,7 @@ if state != states.chase && image_alpha >= 1
 	scr_scareenemy()
 
 if bombreset > 0
-bombreset --
+	bombreset = max(bombreset - 1, 0);
 
 
 

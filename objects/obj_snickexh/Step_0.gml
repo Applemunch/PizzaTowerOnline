@@ -9,6 +9,9 @@ if deactivate
 	appear = 0;
 	appeartimer = room_speed * 5;
 	gotoplayer = 0;
+	
+	obj_tv.manualhide = false;
+	obj_camera.manualhide = false;
 	exit;
 }
 

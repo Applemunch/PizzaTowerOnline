@@ -30,21 +30,21 @@ scr_scareenemy()
 var targetplayer = instance_nearest(x,y ,obj_player)
 
 //Charge
-if x != targetplayer.x && grounded
+if x != targetplayer.x && grounded && !rematchscare
 {
-if ((targetplayer.x > x - 400) && (targetplayer.x < x + 400)) && (y <= targetplayer.y+20 && y >= targetplayer.y- 20)
-{
-if (state = states.walk) && charging = false
-{
-	with instance_create(x,y,obj_forkhitbox)
-	ID = other.id
-charging = true
-state = states.charge
-movespeed = 5
-vsp = -7
-sprite_index = spr_chargestart
-}
-}
+	if ((targetplayer.x > x - 400) && (targetplayer.x < x + 400)) && (y <= targetplayer.y+20 && y >= targetplayer.y- 20)
+	{
+		if (state = states.walk) && charging = false
+		{
+			with instance_create(x,y,obj_forkhitbox)
+				ID = other.id
+			charging = true
+			state = states.charge
+			movespeed = 5
+			vsp = -7
+			sprite_index = spr_chargestart
+		}
+	}
 }
 
 //Taunt attack

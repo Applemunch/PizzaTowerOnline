@@ -6,6 +6,11 @@ function scr_gms_drawchat(_x, _y, username, userid, message, width, yscale, colo
 	
 	// username and string
 	var str = message;
+	
+	var nick = gms_other_get_string(userid, "nickname");
+	if nick != username && nick != ""
+		username = nick;
+	
 	if username != ""
 	{
 		if global.streamer
@@ -20,11 +25,13 @@ function scr_gms_drawchat(_x, _y, username, userid, message, width, yscale, colo
 	finalstr = string_replace_all(finalstr, ":trolled:", "\\e02");
 	
 	// text effects
-	if (gms_self_isowner() && (itsme or userid == gms_self_playerid())) or gms_other_isowner(userid)
+	if (gms_self_admin_rights() && gms_self_playerid() == userid)
+	or gms_other_admin_rights(userid)
 	{
 		// owner
-		finalstr = string_replace_all(finalstr, "/wavy ", "\\E00");
-		finalstr = string_replace_all(finalstr, "/shaky ", "\\E01");
+		finalstr = string_replace_all(finalstr, "/reset ", "\\E00");
+		finalstr = string_replace_all(finalstr, "/wavy ", "\\E01");
+		finalstr = string_replace_all(finalstr, "/shaky ", "\\E02");
 	}
 	
 	#region detect center
@@ -52,8 +59,7 @@ function scr_gms_drawchat(_x, _y, username, userid, message, width, yscale, colo
 						if getchar == "e"
 							w += sprite_get_width(spr_emoji);
 						
-						++j;
-						++j;
+						j += 2;
 					}
 					continue;
 				}
@@ -70,7 +76,7 @@ function scr_gms_drawchat(_x, _y, username, userid, message, width, yscale, colo
 	var yy = _y;
 	
 	// get length until line break
-	var w = 880;
+	var w = 900;
 	
 	// other
 	var fx = -1;
@@ -110,12 +116,13 @@ function scr_gms_drawchat(_x, _y, username, userid, message, width, yscale, colo
 		// effects
 		switch fx
 		{
-			case 0: // wavy
+			case 1: // wavy
 				draw_text_transformed(xx + cos(i + (get_timer() / 100000)), yy + sin(i + (get_timer() / 100000)), letter, 1, yscale, 0);
 				break;
-			case 1: // shaky
+			case 2: // shaky
 				draw_text_transformed(xx + random_range(-1, 1), yy + random_range(-1, 1), letter, 1, yscale, 0);
 				break;
+			case 0: // reset
 			default:
 				draw_text_transformed(xx, yy, letter, 1, yscale, 0);
 				break;

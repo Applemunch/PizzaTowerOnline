@@ -4,10 +4,13 @@ if instance_exists(baddieID) && instance_exists(other.baddieID)
 {
 	with (other)
 	{
-		if baddieID != other.id && other.baddieID.killbyenemy
+		if baddieID != other.baddieID && id != other.id && other.baddieID.killbyenemy
 		{
 		    if baddieID.state == states.stun && baddieID.thrown
-				instance_destroy(other.baddieID)
+			{
+				increase_combo();
+				instance_destroy(other.baddieID);
+			}
 		}
 	}
 }

@@ -24,7 +24,7 @@ if state != states.stun
 
 //Spit
 if bombreset > 0
-bombreset --
+	bombreset = max(bombreset - 1, 0);
 
 
 //Throw Bomb at

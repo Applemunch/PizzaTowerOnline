@@ -89,8 +89,8 @@
   ],
   "nineSlice": null,
   "parent": {
-    "name": "demo_event",
-    "path": "folders/Sprites/demo_event.yy",
+    "name": "strongcold",
+    "path": "folders/Sprites/followers/toppin/strongcold.yy",
   },
   "resourceVersion": "1.0",
   "name": "spr_xmastomatotoppin_idle",

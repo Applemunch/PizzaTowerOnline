@@ -45,7 +45,7 @@ thrown= false
 
 
 if bombreset > 0
-bombreset --
+	bombreset = max(bombreset - 1, 0);
 
 scr_scareenemy();
 

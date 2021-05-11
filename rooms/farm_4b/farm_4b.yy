@@ -219,7 +219,7 @@
     {"spriteId":{"name":"bg_farm2","path":"sprites/bg_farm2/bg_farm2.yy",},"colour":4294967295,"x":0,"y":-200,"htiled":true,"vtiled":true,"hspeed":-0.5,"vspeed":0.0,"stretch":false,"animationFPS":15.0,"animationSpeedType":0,"userdefinedAnimFPS":false,"visible":true,"depth":200,"userdefinedDepth":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"gridX":32,"gridY":32,"layers":[],"hierarchyFrozen":false,"resourceVersion":"1.0","name":"Backgrounds_scroll","tags":[],"resourceType":"GMRBackgroundLayer",},
   ],
   "inheritLayers": false,
-  "creationCodeFile": "RoomCreationCode.gml",
+  "creationCodeFile": "${project_dir}/rooms/farm_4b/RoomCreationCode.gml",
   "inheritCode": false,
   "instanceCreationOrder": [
     {"name":"inst_11207A9E","path":"rooms/farm_4b/farm_4b.yy",},

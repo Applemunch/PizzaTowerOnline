@@ -1,7 +1,7 @@
 event_inherited();
 
 maxspeed = 10
-depth = obj_tv.depth - 1;
+depth = obj_tv.depth + 1;
 
 appeartimer = room_speed * 5;
 gotoplayer = 0;

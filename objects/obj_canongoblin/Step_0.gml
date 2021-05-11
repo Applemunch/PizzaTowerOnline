@@ -59,7 +59,7 @@ thrown= false
 
 
 if bombreset > 0
-bombreset --
+	bombreset = max(bombreset - 1, 0);
 
 //Identify the player
 var targetplayer = instance_nearest(x,y ,obj_player)

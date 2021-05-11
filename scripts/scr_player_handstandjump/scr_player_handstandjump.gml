@@ -255,12 +255,12 @@ function scr_player_handstandjump()
 		}
 	}
 	
-	if !place_meeting(x + xscale, y, obj_slope) && !place_meeting(x + xscale, y, obj_destructibles) && character != "S"
+	if !place_meeting(x + xscale, y, obj_destructibles) && character != "S"
 	{
 		ledge_bump();
 		
 		// Bump
-		if scr_solid(x + xscale, y)
+		if scr_solid(x + xscale, y) && (!place_meeting(x + xscale, y, obj_slope) or scr_solidwall(x + xscale, y))
 		{
 			grav = 0.5
 			movespeed = 0

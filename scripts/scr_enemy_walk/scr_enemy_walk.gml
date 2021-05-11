@@ -59,6 +59,8 @@ function scr_enemy_walk() {
 			image_xscale *= -1
 			if object_index == obj_pickle
 				hsp = 0;
+			if object_index == obj_miniufo
+				turntimer = 600;
 		}
 	}
 

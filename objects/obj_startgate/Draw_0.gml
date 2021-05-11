@@ -66,7 +66,7 @@ if drawing
 	&& level != "golf" && level != "eatery" && level != ""
 	{
 		scory = -160;
-		if level != "freezer" && level != "sewer" && level != "factory"
+		if level != "freezer" && level != "sewer" && level != "factory" && level != "dragonlair"
 			draw_text(x, y - 200, string(secret) + " OF " + string(outof) + " SECRET");
 		
 		if toppin1

@@ -22,7 +22,7 @@ function scr_gms_p2p(mid, sender, args)
 	{
 		case p2p.tpother:
 			global.gottp = [
-				true, 
+				true,
 				ds_list_find_value(args, 0), // x
 				ds_list_find_value(args, 1), // y
 				ds_list_find_value(args, 2) // room

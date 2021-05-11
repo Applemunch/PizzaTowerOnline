@@ -5,7 +5,7 @@ function scr_getinput()
 	if ((instance_exists(obj_gms) && global.__chat)
 	or (instance_exists(obj_manual) && obj_manual.visible)
 	or (instance_exists(obj_wc) && obj_wc.WC_consoleopen)
-	or (instance_exists(obj_skinchoice) && obj_skinchoice.show)
+	or (instance_exists(obj_skinchoice))
 	or (instance_exists(obj_hatchoice))
 	or (instance_exists(obj_hubelevator) && obj_hubelevator.state == 1))
 	&& !(argument_count > 0 && argument[0] == true)
@@ -30,8 +30,13 @@ function scr_getinput()
 		key_shoot2 = false
 		key_start = false
 		key_escape = false
+		
+		stickpressed = true;
 		exit;
 	}
+	
+	if !variable_instance_exists(id, "stickpressed")
+		stickpressed = true;
 	
 	var deadzone = 0.4
 	gamepad_set_axis_deadzone(cont,deadzone)

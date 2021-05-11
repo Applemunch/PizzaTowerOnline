@@ -330,10 +330,10 @@ function scr_player_jump()
 			}
 		}
 	}
-
-
+	
 	image_speed = 0.35
-
+	if sprite_index == spr_suplexcancel
+		image_speed = 0.5;
 
 	//Chainsaw Pogo
 	//if key_chainsaw2 && !grounded
@@ -349,30 +349,30 @@ function scr_player_jump()
 	//}
 
 
-	    //Freefall
-	    if grounded && (sprite_index = spr_facestomp or sprite_index = spr_freefall)
-	    {
-	        with (obj_baddie)
+	//Freefall
+	if grounded && (sprite_index = spr_facestomp or sprite_index = spr_freefall)
+	{
+	    with (obj_baddie)
+		{
+			if point_in_camera(x, y, view_camera[0])
 			{
-				if point_in_camera(x, y, view_camera[0])
-				{
-					vsp = -7
-					hsp = 0
-				}
+				vsp = -7
+				hsp = 0
 			}
-	        with (obj_camera)
-			{
-			    shake_mag=10;
-			    shake_mag_acc=30/room_speed;
-			}
-			scr_soundeffect(sfx_groundpound)
-		    image_index = 0
-			if character == "SP"
-				sprite_index = spr_playerSP_machfreefallland
-			else
-				sprite_index = spr_bodyslamland
-		    state = states.freefallland
-	    }
+		}
+	    with (obj_camera)
+		{
+			shake_mag=10;
+			shake_mag_acc=30/room_speed;
+		}
+		scr_soundeffect(sfx_groundpound)
+		image_index = 0
+		if character == "SP"
+			sprite_index = spr_playerSP_machfreefallland
+		else
+			sprite_index = spr_bodyslamland
+		state = states.freefallland
+	}
 
 
 
@@ -582,26 +582,5 @@ function scr_player_jump()
 	
 	//Taunt
 	if key_taunt2 
-	{
-		scr_soundeffect(sfx_taunt)
-		taunttimer = 20
-		tauntstoredmovespeed = movespeed
-		tauntstoredsprite = sprite_index
-		tauntstoredstate = state
-		state = states.backbreaker
-	
-		if supercharged = true && character != "S" && character != "V" && character != "G"
-		{
-			image_index = 0
-			sprite_index = choose(spr_supertaunt1,spr_supertaunt2,spr_supertaunt3,spr_supertaunt4)
-		}
-		else
-		{
-			taunttimer = 20
-			image_index = irandom(sprite_get_number(spr_taunt))
-			sprite_index = spr_taunt
-			image_speed = 0
-		}
-		instance_create(x,y,obj_taunteffect)
-	}
+		scr_player_taunt();
 }

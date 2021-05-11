@@ -34,13 +34,12 @@ if instance_exists(baddieID) && place_meeting(x,y,obj_player1) && !obj_player1.c
 					image_index = 0
 				}
 				if state = states.mach3 or (state == states.freefall && freefallsmash > 10) or state == states.knightpepslopes
-					other.baddieID.hp = 0;
+					other.baddieID.hp = -10;
 				
 				if state != states.hurt
 					other.baddieID.grabbedby = 1
 				
 				global.hit += 1
-				global.combotime = 60
 				if !grounded && state != states.freefall && key_jump2
 				{
 					if state = states.mach2 or (state = states.mach3 && fightball = false)
@@ -53,18 +52,17 @@ if instance_exists(baddieID) && place_meeting(x,y,obj_player1) && !obj_player1.c
 					instance_destroy(other.baddieID);
 				else
 				{
-					global.combo += 1
-					global.combotime = 60;
-					global.heattime = 60;
-					global.style += 5 + global.combo;
-					
-					repeat 3
-						instance_create(x,y,obj_baddiegibs)
-					instance_create(x,y,obj_bangeffect)
-					
 					var lag = 5;
 					with other.baddieID
 					{
+						increase_combo();
+						
+						repeat 3
+							instance_create(x,y,obj_baddiegibs)
+						repeat 3
+							instance_create(x,y,obj_slapstar)
+						instance_create(x,y,obj_bangeffect)
+						
 						hp--;
 						thrown = true;
 						
@@ -146,10 +144,12 @@ if instance_exists(baddieID) && place_meeting(x,y,obj_player1) && !obj_player1.c
 					other.baddieID.stunned = 100
 					sprite_index = spr_playerN_pogobounce
 				}
-				else
+				else if !other.baddieID.thrown
 				{
 					pogospeedprev = false
 					scr_throwenemy()
+					if global.gameplay != 0
+						increase_combo();
 					sprite_index = spr_playerN_pogobouncemach
 				}
 				
@@ -187,7 +187,7 @@ if instance_exists(baddieID) && place_meeting(x,y,obj_player1) && !obj_player1.c
 			//Attack
 			if instance_exists(other.baddieID) && state == states.handstandjump && !other.baddieID.invincible && character != "S"
 			{
-				if !other.baddieID.thrown// && (character = "P" or character = "N" or character == "SP" or other.baddieID.object_index == obj_pizzaballOLD)
+				if !other.baddieID.thrown or global.gameplay != 0 // && (character = "P" or character = "N" or character == "SP" or other.baddieID.object_index == obj_pizzaballOLD)
 				{
 					movespeed = 0
 					image_index = 0

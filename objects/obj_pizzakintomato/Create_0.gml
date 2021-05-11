@@ -5,6 +5,7 @@ if global.gameplay == 0
 	spr_idle = spr_toppintomato;
 	spr_run = spr_toppintomato_run;
 	spr_panic = spr_toppintomato_panic;
+	spr_panicidle = spr_toppintomato_panicidle;
 }
 else
 {
@@ -12,8 +13,11 @@ else
 	spr_idle = spr_toppintomato_NEW;
 	spr_run = spr_toppintomato_run_NEW;
 	spr_panic = spr_toppintomato_panic_NEW;
+	spr_panicidle = spr_toppintomato_NEW;
 	yoffset = 0;
 }
 spr_intro_strongcold = spr_xmastomatotoppin_intro;
 spr_idle_strongcold = spr_xmastomatotoppin_idle;
 spr_run_strongcold = spr_xmastomatotoppin_walk;
+spr_panic_strongcold = spr_xmastomatotoppin_panicidle;
+spr_panicidle_strongcold = spr_xmastomatotoppin_panicidle;

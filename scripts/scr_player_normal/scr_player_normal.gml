@@ -138,9 +138,9 @@ function scr_player_normal()
 	if movespeed > 6
 		movespeed -= 0.1
 	
-	if character = "S"
+	if character == "S"
 	{
-		if machslideAnim = false
+		if !machslideAnim
 		{
 			if move == 0
 			{
@@ -168,11 +168,11 @@ function scr_player_normal()
 			}
 		}
 	}
-
+	
 	//Land Anim
-	if landAnim = true 
+	if landAnim
 	{
-	    if shotgunAnim = false
+	    if !shotgunAnim
 	    {
 		    if move == 0
 		    {
@@ -181,7 +181,7 @@ function scr_player_normal()
 			    if floor(image_index) = image_number - 1
 					landAnim = false
 		    }
-		    if move != 0 
+		    else
 		    {
 			    sprite_index = spr_land2
 				
@@ -193,7 +193,7 @@ function scr_player_normal()
 			    }
 		    }
 	    }
-	    if shotgunAnim = true
+	    else
 	    {
 		    sprite_index = spr_shotgunland
 		    if floor(image_index) = image_number - 1
@@ -206,34 +206,77 @@ function scr_player_normal()
 	}
 
 	//MachSlide End Anim
-	if machslideAnim = true
-	{
+	if machslideAnim
 		sprite_index = spr_machslideend
-		if floor(image_index) = image_number -1 && sprite_index = spr_machslideend
-			machslideAnim = false
+	
+	if floor(image_index) = image_number - 1
+	{
+		switch sprite_index
+		{
+			case spr_playerV_revolverend:
+				sprite_index = spr_idle;
+				break;
+			case spr_shotgunshoot:
+				sprite_index = spr_shotgunidle;
+				break;
+			case spr_machslideend:
+				machslideAnim = false;
+				break;
+		}
 	}
-
-	if sprite_index = spr_playerV_revolverend &&  floor(image_index) = image_number -1 
-		sprite_index = spr_idle
-
-	//Shotgun Anim
-	if sprite_index = spr_shotgunshoot && floor(image_index) = image_number-1
-		sprite_index = spr_shotgunidle
 
 	if !landAnim && shotgunAnim && sprite_index != spr_shotgunshoot
-	{
-		if move == 0
-			sprite_index = spr_shotgunidle
-		else
-			sprite_index = spr_shotgunwalk
-	}
-
-
+		sprite_index = (move ? spr_shotgunwalk : spr_shotgunidle);
+	
 	if scr_solid(x+sign(hsp),y) && move == xscale && !place_meeting(x+xscale,y,obj_slope)
 		movespeed = 0
 	
-	//Fall off
-	if !grounded && !key_jump 
+	if grounded
+	{
+		//Jump
+		if (key_jump or (input_buffer_jump < 8 && !key_attack && vsp > 0)) && !key_down
+		{
+			scr_soundeffect(sfx_jump)
+			
+			if shotgunAnim
+				sprite_index = spr_shotgunjump
+			else if global.minutes = 0 && global.seconds = 0 && character == "P"
+				sprite_index = spr_player_hurtjump
+			else
+				sprite_index = spr_jump
+
+			with instance_create(x,y,obj_highjumpcloud2)
+				image_xscale = other.xscale
+			
+			stompAnim = false
+			vsp = -11
+		
+			state = states.jump
+			jumpAnim = true
+			jumpstop = false
+			image_index = 0
+
+			freefallstart = 0
+		}
+	
+		//Crouch
+		if (key_down or scr_solid(x, y - 3)) && character != "S"
+		{
+			state = states.crouch
+			landAnim = false
+			crouchAnim = true
+			image_index = 0
+			idle = 0
+		}
+		
+		//Snick peelout
+		if key_attack && character = "S"
+		{
+			state = states.handstandjump
+			movespeed = 0
+		}
+	}
+	else if !key_jump
 	{
 		if !shotgunAnim
 		{
@@ -244,82 +287,10 @@ function scr_player_normal()
 		}
 		else 
 			sprite_index = spr_shotgunfall
+		
 		jumpAnim = false
 		state = states.jump
 		image_index = 0
-		
-		exit;
-	}
-
-	//Snick peelout
-	if key_attack /*&& !place_meeting(x+xscale,y,obj_solid)*/ && character = "S" && grounded
-	{
-		state = states.handstandjump
-		movespeed = 0
-	}
-
-	//Jump
-	if key_jump && grounded && !key_down 
-	{
-		scr_soundeffect(sfx_jump)
-
-		if global.minutes = 0 && global.seconds = 0 && character == "P"
-			sprite_index = spr_player_hurtjump
-		else
-			sprite_index = spr_jump
-
-		if shotgunAnim = true
-			sprite_index = spr_shotgunjump
-		with instance_create(x,y,obj_highjumpcloud2)
-			image_xscale = other.xscale
-
-		vsp = -11
-
-		state = states.jump
-		image_index = 0
-		jumpAnim = true
-	}
-	
-	//Input jumping
-	if (grounded && input_buffer_jump < 8 && !key_down && !key_attack && vsp > 0) 
-	{
-		scr_soundeffect(sfx_jump)
-
-		if global.minutes = 0 && global.seconds = 0 && character == "P"
-			sprite_index = spr_player_hurtjump
-		else
-			sprite_index = spr_jump
-		
-		
-		if shotgunAnim = true
-			sprite_index = spr_shotgunjump
-
-		with instance_create(x,y,obj_highjumpcloud2)
-			image_xscale = other.xscale
-		stompAnim = false
-		
-		vsp = -11
-		
-		
-		
-		state = states.jump
-		jumpAnim = true
-		jumpstop = false
-		image_index = 0
-
-		freefallstart = 0
-
-
-	}
-	
-	//Crouch
-	if ((key_down && grounded) or (scr_solid(x,y-3) && grounded)) && character != "S"
-	{
-		state = states.crouch
-		landAnim = false
-		crouchAnim = true
-		image_index = 0
-		idle = 0
 	}
 	
 	//Suplex Dash
@@ -337,7 +308,7 @@ function scr_player_normal()
 				sprite_index = spr_breakdanceuppercut;
 				vsp = -14;
 				movespeed = 2;
-				instance_create(x, y, obj_highjumpcloud2)
+				instance_create(x, y, obj_highjumpcloud2);
 				instance_create(x, y, obj_swingdinghitbox);
 			}
 			else if character == "N"
@@ -427,7 +398,7 @@ function scr_player_normal()
 	}
 
 	// Shotgun
-	if key_shoot2 && (shotgunAnim = true) 
+	if key_shoot2 && shotgunAnim
 	{
 		scr_soundeffect(sfx_killingblow)
 		state = states.shotgun
@@ -445,10 +416,7 @@ function scr_player_normal()
 				spdh= -4
 		}
 	}
-
-
-
-
+	
 	//Jetpack flash
 	if character == "N" && (pogochargeactive = true or pizzapepper > 0)
 	{
@@ -647,27 +615,5 @@ function scr_player_normal()
 	
 	//Taunt
 	if key_taunt2 
-	{
-		scr_soundeffect(sfx_taunt)
-		taunttimer = 20
-		tauntstoredmovespeed = movespeed
-		tauntstoredsprite = sprite_index
-		tauntstoredstate = state
-		state = states.backbreaker
-	
-		if supercharged = true && character != "S" && character != "V" && character != "G"
-		{
-			image_index = 0
-			sprite_index = choose(spr_supertaunt1,spr_supertaunt2,spr_supertaunt3,spr_supertaunt4)
-		}
-		else
-		{
-			taunttimer = 20
-			image_index = irandom(sprite_get_number(spr_taunt))
-			sprite_index = spr_taunt
-			image_speed = 0
-		}
-		with instance_create(x,y,obj_taunteffect)
-			player = other.id;
-	}
+		scr_player_taunt();
 }

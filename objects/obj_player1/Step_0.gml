@@ -2,7 +2,7 @@ if alarm[11] == -1
 	alarm[11] = 15;
 
 if room == rm_editor {
-	visible = 0;
+	visible = false;
 	exit;
 }
 
@@ -184,7 +184,7 @@ if global.combotime <= 0 && global.combo != 0
 if global.heattime <= 0 && global.style > -1 && !global.stylelock
     global.style -= 0.05;
 
-if cutscene == true
+if cutscene
     global.heattime = 60
 
 //Titlescreen
@@ -201,7 +201,6 @@ if pizzapepper > 0
 {
 	angry = true
 	anger = 1
-	pizzapepper--
 	
 	/*
 	if character = "P"
@@ -209,20 +208,26 @@ if pizzapepper > 0
 	else
 		paletteselect = 1
 	*/
-}
-else if pizzapepper = 0 && angry = true
-{
-	/*
-	if character = "P"
-		paletteselect = 1
-	else
-		paletteselect = 0
-	*/
 	
-	angry = false
-	anger = 0
+	pizzapepper--
+	if pizzapepper <= 0
+	{
+		/*
+		if character = "P"
+			paletteselect = 1
+		else
+			paletteselect = 0
+		*/
+		
+		angry = false;
+		anger = 0;
+	}
 }
- 
+if global.gameplay != 0
+{
+	angry = false;
+	anger = 0;
+}
  
 //Supercharge
 if global.combo >= 3 && state != states.backbreaker && character != "S"
@@ -232,7 +237,6 @@ if global.combo >= 3 && state != states.backbreaker && character != "S"
 	else
 		anger = 100
 }
-
  
 //Supercharged effect
 if !instance_exists(superchargedeffectid) && supercharged
@@ -269,14 +273,14 @@ if grounded
 	doublejump = false
 
 //Jetpack flash
-if pogochargeactive = true
+if pogochargeactive
 {
-	if flashflicker = false
+	if !flashflicker
 	{
-		if pogochargeactive = true && sprite_index = spr_playerN_pogofall
+		if pogochargeactive && sprite_index == spr_playerN_pogofall
 			sprite_index = spr_playerN_pogofallmach
 
-		if pogochargeactive = true && sprite_index = spr_playerN_pogobounce
+		if pogochargeactive && sprite_index == spr_playerN_pogobounce
 			sprite_index = spr_playerN_pogobouncemach
 	}
 	
@@ -289,7 +293,6 @@ else
 if state != states._throw
 	kickbomb = false
 
-
 if pogocharge = 0
 {
 	pogochargeactive = false
@@ -297,7 +300,7 @@ if pogocharge = 0
 }
 
 //Flash flicker
-if flashflicker = true
+if flashflicker
 {
 	flashflickertime ++
 	if flashflickertime = 20
@@ -308,9 +311,11 @@ if flashflicker = true
 }
 
 //Fightball off
+/*
 if !global.coop
 	fightball = false
 if state != states.mach3 && state != states.grabbed
+*/
 	fightball = false
 
 //Thrown at enemy
@@ -453,19 +458,13 @@ if grinding
 	state = states.grind
 
 //Angry
-if anger = 0
-angry = false
-
 if anger > 0
 {
 	angry = true
 	anger -= 1
 }
-
-
-
-
-
+else
+	angry = false
 
 //Stop winding up
 if sprite_index =spr_winding && state != states.normal 

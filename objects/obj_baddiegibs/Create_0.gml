@@ -1,3 +1,6 @@
+if global.snickrematch
+	sprite_index = spr_baddiegibs_re
+
 image_index = random_range(0,13)
 image_speed = 0
 vsp = random_range(-10, 10)

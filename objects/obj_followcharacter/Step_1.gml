@@ -40,3 +40,4 @@ if place_meeting(x, y + 32, obj_slope) && !place_meeting(x, y + yslope + 1, obj_
 */
 
 image_alpha = leader.image_alpha;
+visible = leader.visible;

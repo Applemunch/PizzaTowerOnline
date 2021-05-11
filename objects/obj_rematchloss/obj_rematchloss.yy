@@ -26,8 +26,8 @@
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "demo_events",
-    "path": "folders/Objects/demo_events.yy",
+    "name": "PLN",
+    "path": "folders/Objects/demo_events/PLN.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_rematchloss",

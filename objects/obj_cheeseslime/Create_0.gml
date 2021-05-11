@@ -23,7 +23,7 @@ landspr = spr_slimebounce
 idlespr = spr_slimeidle
 fallspr = spr_slimefall
 stunfallspr = spr_slimestun
-walkspr =spr_slimemove
+walkspr = spr_slimemove
 turnspr = spr_slimeturn
 recoveryspr = spr_slimerecovery
 grabbedspr = spr_slimegrabbed
@@ -52,12 +52,12 @@ if global.snickrematch
 	landspr = spr_slimemove_re
 	idlespr = spr_slimemove_re
 	fallspr = spr_slimemove_re
-	stunfallspr = spr_slimegrabbed_re
+	stunfallspr = spr_slimestun_re
 	walkspr = spr_slimemove_re
 	turnspr = spr_slimemove_re
 	recoveryspr = spr_slimemove_re
 	grabbedspr = spr_slimegrabbed_re
-	scaredspr = spr_slimegrabbed_re
+	scaredspr = spr_slimestun_re
 	spr_dead = spr_slimedead_re
 }
 
