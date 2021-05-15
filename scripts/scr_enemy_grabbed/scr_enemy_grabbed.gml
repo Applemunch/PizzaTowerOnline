@@ -237,11 +237,6 @@ function scr_enemy_grabbed()
 			if global.gameplay != 0
 			{
 				increase_combo();
-				
-				repeat 5
-					create_particle(x, y, particles.baddiegibs)
-				repeat 5
-					instance_create(x,y,obj_slapstar)
 				instance_create(x, y, obj_bangeffect)
 				
 				var lag = 5;

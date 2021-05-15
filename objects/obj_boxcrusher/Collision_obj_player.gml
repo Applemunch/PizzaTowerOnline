@@ -1,24 +1,35 @@
-if sprite_index = spr_boxcrusher_fall
+if other.state != states.boxxedpep
 {
-	other.image_index = 0
-	other.state = states.bump
-	other.x = x
-	other.y = y
-}
-
-if sprite_index = spr_boxcrusher_land
-{
-	tv_push_prompt_once(tv_create_prompt("This is the boxxed transformation text", 2, spr_tv_boxxedpep, 3), "boxxedpep");
-	
-	other.state = states.boxxedpep
-	if other.sprite_index != spr_boxxedpep_intro
+	if sprite_index == spr_boxcrusher_fall
 	{
-		other.sprite_index = spr_boxxedpep_intro
-		scr_soundeffect(sfx_pephurt)
+		other.image_index = 0
+		other.state = states.bump
+		other.x = x
+		other.y = y
 	}
-	other.image_index = 0
-	other.hsp = 0
-	other.vsp = 0
-	other.x = x
-	other.y = y-20
+
+	if sprite_index == spr_boxcrusher_land
+	{
+		if other.character == "V"
+			scr_hurtplayer(other);
+		else
+		{
+			tv_push_prompt_once(tv_create_prompt("This is the boxxed transformation text", 2, spr_tv_boxxedpep, 3), "boxxedpep");
+		
+			with other
+			{
+				scr_knightbump(true, false);
+				state = states.boxxedpep
+			
+				sprite_index = spr_boxxed_intro
+				scr_soundeffect(sfx_pephurt)
+				
+				image_index = 0
+				hsp = 0
+				vsp = 0
+				x = x
+				y = y - 20
+			}
+		}
+	}
 }

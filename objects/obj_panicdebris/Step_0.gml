@@ -4,3 +4,5 @@ if global.panic && alarm[0] == -1
 
 if !global.panic
 	alarm[0] = -1;
+
+flasha -= 0.1;

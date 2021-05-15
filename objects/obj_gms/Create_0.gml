@@ -22,7 +22,7 @@ gms_settings_declare_syncable_object(obj_baddiegibs);
 */
 
 // settings
-gameversion = 5.2;
+gameversion = 5.3;
 gms_settings(true, gameversion, obj_player1, obj_otherplayer);
 
 // scripts

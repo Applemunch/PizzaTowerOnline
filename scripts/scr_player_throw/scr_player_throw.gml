@@ -23,12 +23,9 @@ function scr_player_throw() {
 
 
 		anger = 100
-		if !place_meeting(x,y+1, obj_railh) && !place_meeting(x,y+1, obj_railh2)
-		hsp = move * movespeed;
-		else if place_meeting(x,y+1, obj_railh)
-		hsp = move * movespeed -5
-		else if place_meeting(x,y+1, obj_railh2)
-		hsp = move * movespeed +5
+		var railh = 0, railmeet = instance_place(x, y + 1, obj_railparent);
+		if railmeet then railh = railmeet.spdh;
+		hsp = move * movespeed + railh;
 
 
 		//Movespeed
@@ -161,12 +158,9 @@ function scr_player_throw() {
 
 	bombcharge = 0
 
-	if !place_meeting(x,y+1, obj_railh) && !place_meeting(x,y+1, obj_railh2)
-	hsp = xscale * movespeed;
-	else if place_meeting(x,y+1, obj_railh)
-	hsp = xscale * movespeed -5
-	else if place_meeting(x,y+1, obj_railh2)
-	hsp = xscale * movespeed +5
+	var railh = 0, railmeet = instance_place(x, y + 1, obj_railparent);
+	if railmeet then railh = railmeet.spdh;
+	hsp = xscale * movespeed + railh;
 
 	if movespeed > 0
 	movespeed -= 0.5

@@ -232,6 +232,7 @@ function scr_characterspr()
 				spr_boxxed_walk = spr_boxxedpep_walk;
 				spr_boxxed_air = spr_boxxedpep_air;
 				spr_boxxed_dash = spr_boxxedpep_dash;
+				spr_boxxed_jump = spr_boxxedpep_jump;
 				
 				spr_dashpadmach = spr_player_dashpad;
 				spr_dead = spr_player_deathend
@@ -493,11 +494,12 @@ function scr_characterspr()
 				spr_firemouthshoot = spr_playerN_firemouthshoot;
 				spr_firemouthend = spr_playerN_firemouthend;
 				
-				spr_boxxed_intro = spr_boxxedpep_intro;
-				spr_boxxed_idle = spr_boxxedpep_idle;
-				spr_boxxed_walk = spr_boxxedpep_walk;
-				spr_boxxed_air = spr_boxxedpep_air;
-				spr_boxxed_dash = spr_boxxedpep_dash;
+				spr_boxxed_intro = spr_playerN_boxxedintro;
+				spr_boxxed_idle = spr_playerN_boxxedidle;
+				spr_boxxed_walk = spr_playerN_boxxedmove;
+				spr_boxxed_air = spr_playerN_boxxedfall;
+				spr_boxxed_dash = spr_playerN_boxxeddash;
+				spr_boxxed_jump = spr_playerN_boxxedjump;
 				
 				spr_dashpadmach = spr_playerN_dashpad;
 				spr_dead = spr_playerN_deathend
@@ -762,6 +764,7 @@ function scr_characterspr()
 				spr_boxxed_walk = spr_playerV_hurt;
 				spr_boxxed_air = spr_playerV_hurt;
 				spr_boxxed_dash = spr_playerV_hurt;
+				spr_boxxed_jump = spr_playerV_hurt;
 				
 				spr_dashpadmach = spr_player_dashpad;
 				spr_dead = spr_playerV_dead
@@ -970,6 +973,7 @@ function scr_characterspr()
 				spr_boxxed_walk = spr_boxxedpep_walk;
 				spr_boxxed_air = spr_boxxedpep_air;
 				spr_boxxed_dash = spr_boxxedpep_dash;
+				spr_boxxed_jump = spr_boxxedpep_jump;
 				
 				spr_dashpadmach = spr_player_dashpad;
 				spr_dead = spr_snick_stunned
@@ -1216,11 +1220,12 @@ function scr_characterspr()
 				spr_firemouthshoot = spr_player_firemouthshoot;
 				spr_firemouthend = spr_player_firemouthend;
 				
-				spr_boxxed_intro = spr_boxxedpep_intro;
-				spr_boxxed_idle = spr_boxxedpep_idle;
-				spr_boxxed_walk = spr_boxxedpep_walk;
-				spr_boxxed_air = spr_boxxedpep_air;
-				spr_boxxed_dash = spr_boxxedpep_dash;
+				spr_boxxed_intro = spr_playerSP_boxxedstart;
+				spr_boxxed_idle = spr_playerSP_boxxedidle;
+				spr_boxxed_walk = spr_playerSP_boxxedmove;
+				spr_boxxed_air = spr_playerSP_boxxedfall;
+				spr_boxxed_dash = spr_playerSP_boxxeddash;
+				spr_boxxed_jump = spr_playerSP_boxxedfall;
 				
 				spr_dashpadmach = spr_playerSP_dashpad;
 				spr_dead = spr_playerSP_dead;

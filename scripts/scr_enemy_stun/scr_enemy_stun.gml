@@ -16,7 +16,7 @@ function scr_enemy_stun()
 	
 	if grounded
 	{
-		if object_index == obj_peasanto
+		if object_index == obj_peasanto && angry != 1
 			stunned -= 4;
 		
 		if global.gameplay == 0
@@ -26,16 +26,16 @@ function scr_enemy_stun()
 			switch global.stylethreshold
 			{
 			    case 0:
-			        stunned -= 0.5
+			        stunned -= 1
 			        break
 			    case 1:
-			        stunned -= 0.65
+			        stunned -= 1.35
 			        break
 			    case 2:
-			        stunned -= 0.8
+			        stunned -= 1.65
 			        break
 			    case 3:
-			        stunned -= 1
+			        stunned -= 2
 			}
 		}
 	}
@@ -64,10 +64,8 @@ function scr_enemy_stun()
 		hsp = 0
 	}
 	
-	if place_meeting(x,y+1, obj_railh)
-		hsp = -5
-	else if place_meeting(x,y+1, obj_railh2)
-		hsp = 5
+	var railmeet = instance_place(x, y + 1, obj_railparent);
+	if railmeet then hsp = railmeet.spdh;
 	
 	if scr_solid(x-image_xscale,y) && !place_meeting(x-image_xscale,y,obj_destructibles)
 	{

@@ -1,3 +1,4 @@
+depth = 16;
 image_speed = 0.35;
 
 if abs(image_xscale) == 1
@@ -14,3 +15,4 @@ if abs(image_xscale) == 1
 	else if right
 		sprite_index = spr_railhleft;
 }
+spdh = -5;

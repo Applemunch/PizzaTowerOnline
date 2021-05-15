@@ -3,7 +3,8 @@ function scr_panicbg_end() {
 	if !check_shaders()
 		exit;
 	
-	if event_type == ev_draw and event_number == 0 {
+	if event_type == ev_draw and event_number == 0
+	{
 		// demo 3 stuff
 		gpu_set_blendenable(false)
 	    gpu_set_colorwriteenable(false, false, false, true)
@@ -31,9 +32,20 @@ function scr_panicbg_end() {
 		shader_set_uniform_f(mult_id, 1);
 		
 		// Draw panicbg_surface and reset to application surface
-		draw_surface_ext(global.panicbg_surface, camera_get_view_x(view_camera[0]) - 64, camera_get_view_y(view_camera[0]) - 64, 1, 1, camera_get_view_angle(view_camera[0]), -1, 1)
+		var x1 = camera_get_view_x(view_camera[0]) - 64;
+		var y1 = camera_get_view_y(view_camera[0]) - 64;
+		var x2 = camera_get_view_x(view_camera[0]) + camera_get_view_width(view_camera[0]) + 64;
+		var y2 = camera_get_view_y(view_camera[0]) + camera_get_view_height(view_camera[0]) + 64;
+		
+		draw_surface_ext(global.panicbg_surface, x1, y1, 1, 1, camera_get_view_angle(view_camera[0]), -1, 1)
 		shader_reset()
+		
+		if obj_panicdebris.flasha > 0
+		{
+			draw_set_alpha(obj_panicdebris.flasha);
+			draw_set_colour(c_white);
+			draw_rectangle(x1, y1, x2, y2, false);
+			draw_set_alpha(1);
+		}
 	}
-
-
 }

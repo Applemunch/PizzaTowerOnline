@@ -13,14 +13,11 @@ function scr_player_normal()
 		movespeed = 2 
 		facehurt = false
 	}
-
-	if !place_meeting(x,y+1, obj_railh) && !place_meeting(x,y+1, obj_railh2)
-		hsp = move * movespeed;
-	else if place_meeting(x,y+1, obj_railh)
-		hsp = move * movespeed -5
-	else if place_meeting(x,y+1, obj_railh2)
-		hsp = move * movespeed +5
-
+	
+	var railh = 0, railmeet = instance_place(x, y + 1, obj_railparent);
+	if railmeet then railh = railmeet.spdh;
+	hsp = move * movespeed + railh;
+	
 	//Idles Anim
 	if character != "S"
 	{

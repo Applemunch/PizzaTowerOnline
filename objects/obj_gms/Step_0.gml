@@ -9,6 +9,8 @@ if (gms_info_isloggedin() == false or os_is_network_connected(false) == false)
 	gms_logout();
 	alarm[4] = 1;
 	
+	with obj_player1
+		alarm[11] = 60;
 	exit;
 }
 
@@ -22,6 +24,8 @@ if gms_info_isloggedin() && room == Realtitlescreen
 // gots
 if global.gottp[0] && !obj_pause.pause // tpother
 {
+	with obj_player1
+		alarm[11] = 60;
 	global.gottp[0] = false;
 	
 	if global.gottp[3] < 0

@@ -1,4 +1,5 @@
-function scr_player_boxxedpep() {
+function scr_player_boxxedpep()
+{
 	mask_index = spr_crouchmask
 	key_particles = false
 
@@ -11,54 +12,40 @@ function scr_player_boxxedpep() {
 	//Jump Stop
 	if (!key_jump2) && jumpstop = false && vsp < 0.5 && stompAnim =false
 	{
-	vsp /= 10
-	jumpstop = true
+		vsp /= 10
+		jumpstop = true
 	}
-
-
+	
 	if grounded && vsp > 0
-	{
-	jumpstop = false
-	}
+		jumpstop = false
 
 	//Turn
-
 	if dir != xscale 
 	{
 		dir = xscale
 		movespeed = 2
 	}
 
-	if sprite_index != spr_boxxedpep_intro
+	if sprite_index != spr_boxxed_intro
 	{
-
-	move = key_left + key_right;
-	if !place_meeting(x,y+1, obj_railh)&& !place_meeting(x,y+1, obj_railh2)
-	hsp = move * movespeed;
-	else if place_meeting(x,y+1, obj_railh)
-	hsp = move * movespeed -5
-	else if place_meeting(x,y+1, obj_railh2)
-	hsp = move  * movespeed +5
+		move = key_left + key_right;
+		
+		var railh = 0, railmeet = instance_place(x, y + 1, obj_railparent);
+		if railmeet then railh = railmeet.spdh;
+		hsp = move * movespeed + railh;
 	}
 
-	if scr_solid(x+sign(hsp),y) && xscale == 1 && move == 1 && !place_meeting(x+1,y,obj_slope)
-	{
-	movespeed = 0
-	}
-	if scr_solid(x+sign(hsp),y) && xscale == -1 && move == -1 && !place_meeting(x-1,y,obj_slope)
-	{
-	movespeed = 0
-	}
-
-
+	if scr_solid(x+sign(hsp),y) && xscale == xscale && !place_meeting(x+xscale,y,obj_slope)
+		movespeed = 0
 
 	//Input jumping
-
 	if (grounded && (input_buffer_jump < 8) && vsp > 0 ) && !(scr_solid(x,y-16)) && !(scr_solid(x,y-32))
 	{
-	scr_soundeffect(sfx_jump)
-	instance_create(x,y,obj_highjumpcloud2)
-	vsp = -11
+		scr_soundeffect(sfx_jump)
+		instance_create(x,y,obj_highjumpcloud2)
+		vsp = -11
+		sprite_index = spr_boxxed_jump;
+		image_index = 0;
 	}
 
 
@@ -66,50 +53,43 @@ function scr_player_boxxedpep() {
 
 	if move != 0 
 	{
-	if movespeed < 8
-	{
-	movespeed += 0.5
-	}
-	else if floor(movespeed)= 8
-	{
-	movespeed = 8
-	}
+		if movespeed < 8
+		{
+			movespeed += 0.5
+		}
+		else if floor(movespeed)= 8
+		{
+			movespeed = 8
+		}
 	}
 	else
-	movespeed = 0
+		movespeed = 0
 
 	if movespeed > 8
-	movespeed -= 0.1
+		movespeed -= 0.1
 
 
 
 	//Sprites
-	if sprite_index = spr_boxxedpep_intro && floor(image_index) = image_number -1
-	sprite_index = spr_boxxedpep_idle
+	if sprite_index = spr_boxxed_intro && floor(image_index) = image_number -1
+		sprite_index = spr_boxxed_idle
 
-	if sprite_index != spr_boxxedpep_intro
+	if sprite_index != spr_boxxed_intro
 	{
+		if move != 0
+			xscale = move
 
-	if move !=0
-	{
-	xscale = move
-	}
-
-	if grounded && vsp >= 0 
-	{
-		if move !=0
+		if grounded && vsp >= 0 
 		{
-		sprite_index = spr_boxxedpep_walk
+			if move != 0
+				sprite_index = spr_boxxed_walk
+			else
+				sprite_index = spr_boxxed_idle
 		}
-		else
-		sprite_index = spr_boxxedpep_idle
-		}
-		else
-		sprite_index = spr_boxxedpep_air
+		else if sprite_index != spr_boxxed_jump or floor(image_index) == image_number - 1
+			sprite_index = spr_boxxed_air
 	}
-
-
-
+	
 	//Effects
 	if !(instance_exists(obj_cloudeffect)) && grounded && move != 0 && (floor(image_index) = 4 or floor(image_index) = 10)
 	{

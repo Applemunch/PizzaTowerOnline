@@ -9,14 +9,17 @@ function scr_player_knightpep()
 	if (sprite_index = spr_knightpepwalk or sprite_index = spr_knightpepjump or sprite_index = spr_knightpepfall or sprite_index = spr_knightpepidle or (sprite_index == spr_knightpepland && global.gameplay != 0))
 	{
 		move = key_left + key_right;
-		hsp = move * movespeed;
+		
+		var railh = 0, railmeet = instance_place(x, y + 1, obj_railparent);
+		if railmeet then railh = railmeet.spdh;
+		hsp = move * movespeed + railh;
 	}
 	else if grounded 
 	{
 		hsp = 0
 		move = 0
 	}
-
+	
 	//Input buffer jumping
 	if key_jump
 		input_buffer_jump = 0

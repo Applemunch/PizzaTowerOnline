@@ -1,13 +1,11 @@
-function scr_player_crouch() {
+function scr_player_crouch()
+{
 	move = key_left + key_right;
 
 
-	if !place_meeting(x,y+1, obj_railh) && !place_meeting(x,y+1, obj_railh2)
-	hsp = move * movespeed;
-	else if place_meeting(x,y+1, obj_railh)
-	hsp = move * movespeed -5
-	else if place_meeting(x,y+1, obj_railh2)
-	hsp = move * movespeed +5
+	var railh = 0, railmeet = instance_place(x, y + 1, obj_railparent);
+	if railmeet then railh = railmeet.spdh;
+	hsp = move * movespeed + railh;
 
 
 	movespeed = 4

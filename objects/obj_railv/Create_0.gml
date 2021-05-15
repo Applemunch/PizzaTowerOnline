@@ -1,3 +1,4 @@
+depth = 16;
 image_speed = -0.35
 
 var up = place_meeting(x, y - 32, obj_solid);

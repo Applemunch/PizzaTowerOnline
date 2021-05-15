@@ -1,10 +1,8 @@
-function scr_player_revolver() {
-	if !place_meeting(x,y+1, obj_railh) && !place_meeting(x,y+1, obj_railh2)
-	hsp = xscale * movespeed;
-	else if place_meeting(x,y+1, obj_railh)
-	hsp = xscale * movespeed -5
-	else if place_meeting(x,y+1, obj_railh2)
-	hsp = xscale * movespeed +5
+function scr_player_revolver()
+{
+	var railh = 0, railmeet = instance_place(x, y + 1, obj_railparent);
+	if railmeet then railh = railmeet.spdh;
+	hsp = xscale * movespeed + railh;
 
 	//if key_slap2
 	//revolverbuffer = 25
