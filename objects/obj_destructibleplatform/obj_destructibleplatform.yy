@@ -5,7 +5,10 @@
   },
   "solid": false,
   "visible": true,
-  "spriteMaskId": null,
+  "spriteMaskId": {
+    "name": "spr_cheeseblockOLD",
+    "path": "sprites/spr_cheeseblockOLD/spr_cheeseblockOLD.yy",
+  },
   "persistent": false,
   "parentObjectId": {
     "name": "obj_solid",

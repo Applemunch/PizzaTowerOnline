@@ -1,2 +1,2 @@
-if !global.pvp
+//if !global.pvp
 	instance_destroy()

@@ -17,16 +17,15 @@ stomped = false
 shot = false
 thrown = false
 reset = false
-hp = 2
+hp = 3
 hitboxcreate = false
 grounded = true
 
 idlespr = spr_bigcheese_idle
 stunfallspr = spr_bigcheese_stun
-walkspr =spr_bigcheese_walk
+walkspr = spr_bigcheese_walk
 grabbedspr = spr_bigcheese_stun
 scaredspr = spr_bigcheese_stun
-image_xscale = -1
 flash = false
 slapped = false
 birdcreated = false
@@ -34,6 +33,6 @@ boundbox = false
 spr_dead = spr_bigcheese_dead
 important = false
 heavy = true
-depth =0
+depth = 0
 
 sprite_index = walkspr;

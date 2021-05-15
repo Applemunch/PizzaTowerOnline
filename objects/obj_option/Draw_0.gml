@@ -191,6 +191,7 @@ if menu == 2
 	//draw_text_colour(72, 32 + (16 * 13), "Online - PvP", c_white, c_white, c_white, c_white, (optionselected == 10 ? 1 : 0.5));
 	
 	draw_text_colour(72, 32 + (16 * 16), "Other - Discord Rich Presence", c_white, c_white, c_white, c_white, (optionselected == 12 ? 1 : 0.5));
+	draw_text_colour(72, 32 + (16 * 17), "Other - FPS Counter", c_white, c_white, c_white, c_white, (optionselected == 13 ? 1 : 0.5));
 	
 	switch optionselected
 	{
@@ -774,6 +775,21 @@ if menu == 2
 				draw_set_font(font0);
 				draw_text_transformed(560, 240, "boring shit", 2, 2, 0);
 			}
+			break;
+		
+		#endregion
+		#region rich presence
+		
+		case 13:
+			draw_set_colour(global.showfps ? merge_colour(c_lime, c_white, 0.5) : c_white);
+			draw_set_font(global.bigfont);
+			draw_set_halign(fa_center);
+			draw_text(640 + random_range(-1, 1), 64, "FPS COUNTER");
+			
+			draw_set_font(global.font_small);
+			draw_set_colour(c_ltgray);
+			draw_text(640, 96, "A simple FPS counter at the bottom right of the screen.");
+			
 			break;
 		
 		#endregion

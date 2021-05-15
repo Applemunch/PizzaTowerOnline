@@ -80,7 +80,7 @@
   },
   "parent": {
     "name": "SAGE2019",
-    "path": "folders/Rooms/Tower/SAGE2019.yy",
+    "path": "folders/Rooms/Levels/SAGE2019.yy",
   },
   "resourceVersion": "1.0",
   "name": "snick_challengeend",

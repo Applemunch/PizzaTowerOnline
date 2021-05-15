@@ -354,7 +354,7 @@
   },
   "parent": {
     "name": "Entrance",
-    "path": "folders/Rooms/Tower/Entrance.yy",
+    "path": "folders/Rooms/Levels/Entrance.yy",
   },
   "resourceVersion": "1.0",
   "name": "entrance_7_NEW",

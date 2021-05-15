@@ -15,7 +15,7 @@ switch character
 			["GB", "Grayscale."],
 			["XMAS", "Give me a break."],
 			["THE NOISE", "...woag?"],
-			["SKETCH", "Will you color him in?"],
+			["SKETCH", "He crashed into somebody."],
 			["GRINCH", "It's Claus!!!!"],
 			["PURPLE", "No, he wasn't involved in slaughter."],
 			["ANTON", "I hate him."],
@@ -24,7 +24,8 @@ switch character
 			["AETHER", "Where's a coder when you need one?"],
 			["PETER", "Griffin"],
 			["SAGE", "Reminds him of bad memories..."],
-			["BLACK", "Not the clothes..."],
+			["BLACK", "Not the clothes."],
+			["MASSACRE", "Forgot his chainsaw at home, but still unstable."],
 		];
 		break;
 	
@@ -44,7 +45,7 @@ switch character
 			["THE DOISE", "Do not steal."],
 			["NOISETTE", "It takes a noiser noise than The Noise's noise to annoy The Noise."],
 			["RAINBOW", "My eyes."],
-			["SKETCH", "I think it's best not to color him in."],
+			["SKETCH", "He's closing his eyes...!"],
 			["THE NOID", "Avoid him."],
 			["GALAXY", "Stunning."],
 			["CHUNGUS", "Big."],
@@ -132,11 +133,16 @@ switch character
 		spr_palette = spr_pizzpalette;
 		spr_idle = spr_playerSP_idle;
 		palettenames = [
-			["YELLOW", ""],
+			["YELLOW", "Read the first 4 letters of Pizzelle,\nbut replace Pizz with fuck you."],
 			["PIZZELLE", "It's the Candy-making pizzano!"],
+			["WILD STRAWBERRY", "Also known as \"pink\"."],
+			["CHERRY", "Lucky!"],
+			["LIME", "Make margaritas."],
+			["VIOLET", "Now in grape flavor."],
+			["ORANGE", "The color or the fruit?"],
 			["GUM", "Don't actually chew it please."],
 			["CANDY CANE", "It's the Candy-"],
-			["PUMPKIN", "Pretty orange."],
+			["PUMPKIN", "Have you ever eaten one?"],
 			["THE NOISE", "Nearly identical..."],
 			["SAGE", "For the SAGE-... oh wait."],
 			["DOOM", "Gibs is an anagram of candy."],
@@ -145,7 +151,7 @@ switch character
 			["BLURPLE", "Also known as \"test\"."],
 			["PAINTLAD", "Very original, Jacko."],
 			["ENA", "Cheese and rice, Moony!"],
-			["TRANSGENDER", "Laugh."],
+			["TRANS", "Laugh."],
 		];
 		break;
 		

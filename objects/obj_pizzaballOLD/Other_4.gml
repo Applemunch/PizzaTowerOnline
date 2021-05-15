@@ -1,8 +1,13 @@
-if ds_list_find_index(global.baddieroom, id) != -1  
+if ds_list_find_index(global.saveroom, id) != -1  
 {
-	with obj_camera
+	if global.panic
+		instance_destroy(id, false);
+	else
 	{
-		targetoverride = noone
-		targetgoingback = false
+		with obj_camera
+		{
+			targetoverride = noone
+			targetgoingback = false
+		}
 	}
 }

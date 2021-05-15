@@ -50,7 +50,7 @@ if character == "N" && key_taunt2
 xoffset = lerp(xoffset, 0, 0.25);
 if check_shaders()
 {
-	if -key_left2 && paletteselect > palettemin
+	if -key_left2 && (paletteselect > palettemin or (debug && paletteselect > -1))
 	{
 		scr_soundeffect(sfx_step);
 		paletteselect -= 1;

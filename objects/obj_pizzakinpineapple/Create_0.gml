@@ -12,8 +12,8 @@ else
 	spr_intro = spr_toppinpineapple_intro_NEW;
 	spr_idle = spr_toppinpineapple_NEW;
 	spr_run = spr_toppinpineapple_run_NEW;
-	spr_panic = spr_toppinpineapple_panic_NEW;
-	spr_panicidle = spr_toppinpineapple_NEW;
+	spr_panic = spr_toppinpineapple_run_NEW;
+	spr_panicidle = spr_toppinpineapple_panic_NEW;
 	yoffset = 0;
 }
 spr_intro_strongcold = spr_xmaspineappletoppin_intro;

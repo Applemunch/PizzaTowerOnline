@@ -9,11 +9,20 @@ function point_in_camera(x, y, cam)
 
 function increase_combo()
 {
-	if global.gameplay != 0
+	var funny = true;
+	if variable_instance_exists(id, "baddieID")
+	&& instance_exists(baddieID)
+		if baddieID.important funny = false;
+	if variable_instance_exists(id, "boundbox")
+		if important funny = false;
+	
+	if global.gameplay != 0 && funny
 	{
 		global.combo += 1
 		global.combotime = 60;
 		global.heattime = 60;
 		global.style += 3 + global.combo;
 	}
+	else
+		global.combotime = 60;
 }

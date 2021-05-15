@@ -11,6 +11,7 @@ if floor(image_index) = image_number -1 && obj_player1.state != states.door && o
 	with (obj_player1)
 	{
 		state = states.door
+		doorx = x;
 		sprite_index = spr_snick_victory
 		image_index = 0
 	}

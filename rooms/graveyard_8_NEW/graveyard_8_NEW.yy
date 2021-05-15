@@ -252,7 +252,7 @@
   },
   "parent": {
     "name": "Graveyard",
-    "path": "folders/Rooms/Weird West/Graveyard.yy",
+    "path": "folders/Rooms/Levels/Graveyard.yy",
   },
   "resourceVersion": "1.0",
   "name": "graveyard_8_NEW",

@@ -3,6 +3,7 @@ if ds_list_find_index(global.baddieroom, id) == -1
     with instance_create(x, y, obj_treasureguybox)
     {
         vsp = -3;
+		image_xscale = other.image_xscale;
         mask_index = other.mask_index;
 		
 		content_var = ds_map_create();

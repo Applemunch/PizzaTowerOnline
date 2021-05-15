@@ -26,7 +26,7 @@ function scr_enemy_hit()
 	    stunned = 200;
 	    thrown = true;
 		
-	    if hp < -6/* && object_get_parent(object_index) != par_boss*/
+	    if hp < -6 && object_index != obj_pizzaballOLD/* && object_get_parent(object_index) != par_boss*/
 	    {
 	        instance_destroy();
 	        instance_create(x, y, obj_genericpoofeffect);

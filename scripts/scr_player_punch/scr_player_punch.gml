@@ -31,7 +31,7 @@ function scr_player_punch()
 			if movespeed > 0 && sprite_index == spr_player_breakdancesuper
 			    movespeed -= 0.25
 			
-			if place_meeting(x + xscale, y, obj_solid) && !place_meeting(x + xscale, y, obj_destructibles) && (sprite_index == spr_player_breakdancestart or sprite_index == spr_player_breakdance)
+			if scr_solidwall(x + xscale, y) && !place_meeting(x + xscale, y, obj_destructibles) && (sprite_index == spr_player_breakdancestart or sprite_index == spr_player_breakdance)
 			    movespeed = 0
 			
 			if floor(image_index) == image_number - 1 && sprite_index == spr_player_breakdancestart

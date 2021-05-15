@@ -187,6 +187,10 @@ function scr_player_grab()
 		
 	    if movespeed == 0
 	        sprite_index = spr_haulingidle;
+		
+		//Jump Stop
+		if !key_jump2 && vsp < 0.5
+			vsp /= 10
 	}
 	
 	//Input buffer jumping

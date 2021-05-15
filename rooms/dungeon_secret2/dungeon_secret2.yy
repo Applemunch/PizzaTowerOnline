@@ -138,7 +138,7 @@
   },
   "parent": {
     "name": "Dungeon",
-    "path": "folders/Rooms/Tower/Dungeon.yy",
+    "path": "folders/Rooms/Levels/Dungeon.yy",
   },
   "resourceVersion": "1.0",
   "name": "dungeon_secret2",

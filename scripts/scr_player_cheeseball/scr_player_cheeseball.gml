@@ -1,5 +1,6 @@
 function scr_player_cheeseball()
 {
+	image_speed = 0.35;
 	hsp = xscale * 12
 	
 	if scr_solid(x + sign(hsp), y)
@@ -20,7 +21,7 @@ function scr_player_cheeseball()
 	    state = states.bump
 	}
 	sprite_index = spr_cheeseballed
-
+	
 	//Input buffer jumping
 	if key_jump
 		input_buffer_jump = 0

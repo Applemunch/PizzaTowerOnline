@@ -301,7 +301,7 @@
   },
   "parent": {
     "name": "Chateau",
-    "path": "folders/Rooms/Chateau.yy",
+    "path": "folders/Rooms/Levels/Chateau.yy",
   },
   "resourceVersion": "1.0",
   "name": "chateau_8",

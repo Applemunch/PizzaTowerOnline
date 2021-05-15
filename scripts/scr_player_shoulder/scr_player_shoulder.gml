@@ -1,5 +1,5 @@
-function scr_player_shoulder() {
-
+function scr_player_shoulder()
+{
 	move = key_left + key_right;
 
 

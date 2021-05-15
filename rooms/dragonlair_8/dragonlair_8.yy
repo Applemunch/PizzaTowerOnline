@@ -460,7 +460,7 @@
   },
   "parent": {
     "name": "Dragonlair",
-    "path": "folders/Rooms/Tower/Dragonlair.yy",
+    "path": "folders/Rooms/Levels/Dragonlair.yy",
   },
   "resourceVersion": "1.0",
   "name": "dragonlair_8",

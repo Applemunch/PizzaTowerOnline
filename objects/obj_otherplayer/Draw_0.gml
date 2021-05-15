@@ -80,7 +80,7 @@ else
 	}
 	
 	if is_real(spr_palette) && spr_palette != 0 && sprite_exists(spr_palette)
-	&& state != states.cheeseball && (state != states.ghost or sprite_index == spr_player_ghostend && image_index >= 12)
+	&& (state != states.cheeseball or sprite_index == spr_playerSP_cheeseball) && (state != states.ghost or sprite_index == spr_player_ghostend && image_index >= 12)
 	{
 		if paletteselect < 0
 		{
@@ -131,18 +131,18 @@ else
 		if shieldframe >= sprite_get_number(spr_pizzashield)
 			shieldframe = 0;
 		
-		draw_sprite_ext(spr_pizzashield, shieldframe, x, y, xscale, yscale, image_angle, image_blend, image_alpha);
+		draw_sprite_ext(spr_pizzashield, shieldframe, x, y, xscale, yscale, image_angle, pausedcolor, image_alpha);
 	}
-}
-
-// cowboy hat
-var cowboy = gms_other_get_real(player_id, "cowboy");
-if sprite_exists(cowboy)
-{
-	cowboyframe += sprite_get_speed(cowboy);
-	if cowboyframe >= sprite_get_number(cowboy)
-		cowboyframe -= sprite_get_number(cowboy);
-	draw_sprite_ext(cowboy, cowboyframe, x, sprite_get_bbox_top(sprit) + y - 40, xscale, yscale, image_angle, image_blend, image_alpha);
+	
+	// cowboy hat
+	var cowboy = gms_other_get_real(player_id, "cowboy");
+	if sprite_exists(cowboy)
+	{
+		cowboyframe += sprite_get_speed(cowboy);
+		if cowboyframe >= sprite_get_number(cowboy)
+			cowboyframe -= sprite_get_number(cowboy);
+		draw_sprite_ext(cowboy, cowboyframe, x, sprite_get_bbox_top(sprit) + y - 40, xscale, yscale, image_angle, pausedcolor, image_alpha);
+	}
 }
 
 // draw name

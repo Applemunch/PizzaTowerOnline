@@ -294,6 +294,7 @@ function scr_playerreset()
 		keydoor = false;
 		sprgot = -1;
 		storedstate = states.normal;
-
+		
+		mort = false;
 	}
 }

@@ -180,7 +180,7 @@
   },
   "parent": {
     "name": "Beach",
-    "path": "folders/Rooms/Island Adventure/Beach.yy",
+    "path": "folders/Rooms/Levels/Beach.yy",
   },
   "resourceVersion": "1.0",
   "name": "beach_secret3",

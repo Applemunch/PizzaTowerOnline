@@ -142,9 +142,9 @@ function scr_player_normal()
 	{
 		if !machslideAnim
 		{
+			image_speed = 0.35;
 			if move == 0
 			{
-				image_speed = 0.35;
 				if idle < 400
 					idle++
 				if idle >= 100
@@ -226,7 +226,7 @@ function scr_player_normal()
 	}
 
 	if !landAnim && shotgunAnim && sprite_index != spr_shotgunshoot
-		sprite_index = (move ? spr_shotgunwalk : spr_shotgunidle);
+		sprite_index = (move != 0 ? spr_shotgunwalk : spr_shotgunidle);
 	
 	if scr_solid(x+sign(hsp),y) && move == xscale && !place_meeting(x+xscale,y,obj_slope)
 		movespeed = 0

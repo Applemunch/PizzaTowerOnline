@@ -1,6 +1,6 @@
-if place_meeting(x,y-1,obj_player1)
+if place_meeting(x, y - 1, obj_player1)
 {
-	with (obj_player1)
+	with obj_player1
 	{
 		if place_meeting(x,y+1,other) && key_down && (state = states.crouch or (character = "S" && (state = states.normal or state = states.mach1))) && place_meeting(x,y+1,obj_platform)
 		{
@@ -32,14 +32,14 @@ if place_meeting(x,y-200,obj_solid) && blinking = 0
 	alarm[0] = 1
 }
 
-if hooked = true
+if hooked
 {
 	y -= 5
 
 	if playerid.state = states.ladder && place_meeting(x,y,playerid)
 		playerid.y -= 5
 
-	if y < -50
+	if y < -50 && room != custom_lvl_room
 	{
 		instance_destroy()
 		instance_create(startx, starty, obj_hookup)

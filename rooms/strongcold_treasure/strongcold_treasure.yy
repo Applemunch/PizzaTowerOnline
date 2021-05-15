@@ -65,7 +65,7 @@
   },
   "parent": {
     "name": "Strongcold",
-    "path": "folders/Rooms/Strongcold.yy",
+    "path": "folders/Rooms/Levels/Strongcold.yy",
   },
   "resourceVersion": "1.0",
   "name": "strongcold_treasure",

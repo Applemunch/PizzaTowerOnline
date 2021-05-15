@@ -90,7 +90,7 @@
   },
   "parent": {
     "name": "Medieval",
-    "path": "folders/Rooms/Tower/Medieval.yy",
+    "path": "folders/Rooms/Levels/Medieval.yy",
   },
   "resourceVersion": "1.0",
   "name": "medieval_secret4",

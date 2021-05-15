@@ -3,7 +3,6 @@ if room == Realtitlescreen
 	exit;
 
 var showhud = obj_player1.state != states.rotate;
-
 if global.pizzadelivery && global.hp > 0
 	draw_sprite(spr_pizzahealthbar, 8 - global.hp, 190, 70)
 
@@ -37,19 +36,19 @@ if global.gameplay == 0
 
 	//Backup Weapon
 	if obj_player.backupweapon = true
-	draw_sprite_ext(spr_shotgunbackup,-1,50, 100, 1, 1, 0, c_white, alpha)
+		draw_sprite_ext(spr_shotgunbackup,-1,50, 100, 1, 1, 0, c_white, alpha)
 
 
 
 	if obj_player.state != states.gameover
 	{
-		if obj_player1.character = "V"
+		if obj_player1.character == "V"
 		{
-			if (healthshaketime > 0 && playerhealthup = true) or obj_player1.sprite_index = spr_playerV_keydoor or obj_player1.state = states.keyget or obj_player1.state = states.gottreasure 
+			if (healthshaketime > 0 && playerhealthup) or obj_player1.sprite_index = spr_playerV_keydoor or obj_player1.state = states.keyget or obj_player1.state = states.gottreasure 
 				draw_sprite_ext(spr_playerV_happyHUD,-1,125,100, 1, 1, 0, c_white, other.alpha)
 			else if obj_player1.state == states.mach1 or obj_player1.state = states.mach2 or obj_player1.state == states.mach3 or obj_player1.state == states.machslide or obj_player1.state == states.machroll
 				draw_sprite_ext(spr_playerV_machHUD,-1,125,100, 1, 1, 0, c_white, other.alpha)
-			else if  (healthshaketime > 0 && playerhealthup = false) or obj_player1.state = states.hurt
+			else if (healthshaketime > 0 && !playerhealthup) or obj_player1.state = states.hurt
 				draw_sprite_ext(spr_playerV_hurtHUD,-1,125,100, 1, 1, 0, c_white, other.alpha)
 			else if global.panic = true
 				draw_sprite_ext(spr_playerV_panicHUD,-1,125,100, 1, 1, 0, c_white, other.alpha)

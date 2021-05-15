@@ -327,7 +327,7 @@
   },
   "parent": {
     "name": "Cotton",
-    "path": "folders/Rooms/Sugary Spire/Cotton.yy",
+    "path": "folders/Rooms/Extra Levels/Sugary Spire/Cotton.yy",
   },
   "resourceVersion": "1.0",
   "name": "steamcc_1",

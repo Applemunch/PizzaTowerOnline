@@ -26,12 +26,11 @@ if ds_list_find_index(global.saveroom, id) = -1 && global.snickchallenge = false
 	
 	obj_camera.alarm[1] = 60
 	instance_create(x,y,obj_bangeffect)
-	instance_create(x,y,obj_slapstar)
-	instance_create(x,y,obj_slapstar)
-	instance_create(x,y,obj_slapstar)
-	instance_create(x,y,obj_baddiegibs)
-	instance_create(x,y,obj_baddiegibs)
-	instance_create(x,y,obj_baddiegibs)
+	repeat 3
+	{
+		instance_create(x,y,obj_baddiegibs)
+		instance_create(x,y,obj_slapstar)
+	}
 
 	with (obj_camera) {
 

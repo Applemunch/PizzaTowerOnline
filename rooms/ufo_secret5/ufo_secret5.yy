@@ -154,7 +154,7 @@
   },
   "parent": {
     "name": "UFO",
-    "path": "folders/Rooms/Weird West/UFO.yy",
+    "path": "folders/Rooms/Levels/UFO.yy",
   },
   "resourceVersion": "1.0",
   "name": "ufo_secret5",

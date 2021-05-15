@@ -7,12 +7,12 @@ if healthshaketime > 0
 	healthshaketime--
 	healthshake = random_range(-2,2)
 }
-if healthshaketime = 0
+if healthshaketime <= 0
 	healthshake = 0					  
 
 if healthold != global.playerhealth
 {
-	if healthold < global.playerhealth
+	if healthold <= global.playerhealth
 		playerhealthup = true
 	else
 		playerhealthup = false

@@ -17,5 +17,5 @@ if !collisioned
     collisioned = true;
     hsp = 0;
     vsp = 0;
-    ds_list_add(global.baddietomb, [room, x, y]);
+    ds_list_add(global.baddietomb, [room, x, y, sprite_index]);
 }

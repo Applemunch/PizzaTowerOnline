@@ -218,7 +218,7 @@
   },
   "parent": {
     "name": "Ruin",
-    "path": "folders/Rooms/Tower/Ruin.yy",
+    "path": "folders/Rooms/Levels/Ruin.yy",
   },
   "resourceVersion": "1.0",
   "name": "ruin_3_NEW",

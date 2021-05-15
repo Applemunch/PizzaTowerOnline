@@ -48,7 +48,7 @@ if room == medieval_1 && global.snickchallenge
 
 if room == chateau_1
 {
-	global.srank =  9300
+	global.srank = 9300
 	global.arank = global.srank -(global.srank/4)
 	global.brank = global.srank -(global.srank/4 * 2)
 	global.crank = global.srank -(global.srank/4 * 3)
@@ -111,7 +111,10 @@ if room == floor5_room1
 
 if room == golf_room1
 {
-	global.srank = 3200
+	global.srank = 4500;
+	if global.gameplay != 0
+		global.srank = 5000;
+	
     global.arank = global.srank -(global.srank/4)
 	global.brank = global.srank -(global.srank/4 * 2)
 	global.crank = global.srank -(global.srank/4 * 3)

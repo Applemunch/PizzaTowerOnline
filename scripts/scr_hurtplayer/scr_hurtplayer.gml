@@ -15,6 +15,7 @@ function scr_hurtplayer(argument0)
 				with obj_baddie
 				{
 					if state == states.grabbed && grabbedby > -1
+					&& object_index != obj_pizzaballOLD
 						instance_destroy();
 				}
 			}
@@ -257,6 +258,15 @@ function scr_hurtplayer(argument0)
 			image_index = 0
 			flash = true
 			
+			if character == "SP" repeat 5
+				with instance_create(x, y, obj_slapstar)
+				{
+					sprite_index = spr_slapstar_ss;
+					image_index = irandom_range(0, image_number - 1);
+					hsp = random_range(-10, 10);
+					angspd = random(2);
+				}
+			
 			var loseamount = 50;
 			if global.pizzadelivery == false or global.gameplay == 0
 			{
@@ -270,7 +280,9 @@ function scr_hurtplayer(argument0)
 					    else
 					        global.collect = 0;
 					}
-					repeat (min(global.collect, 10)) instance_create(x,y,obj_pizzaloss);
+					
+					if character != "SP"
+						repeat (min(global.collect, 10)) instance_create(x,y,obj_pizzaloss);
 				}
 				else
 				{

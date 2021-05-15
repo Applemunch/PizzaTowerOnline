@@ -10,7 +10,7 @@
     "name": "audiogroup_default",
     "path": "audiogroups/audiogroup_default",
   },
-  "soundFile": "mu_kungfu_pc.ogg",
+  "soundFile": "mu_kungfu_pc.wav",
   "duration": 190.19368,
   "parent": {
     "name": "pizza castle",

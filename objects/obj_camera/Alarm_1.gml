@@ -8,7 +8,7 @@ else if global.timedgate or global.miniboss
 
 if global.seconds < 0
 {
-	global.seconds += 59;
+	global.seconds += 60;
 	global.minutes -= 1;
 }
 

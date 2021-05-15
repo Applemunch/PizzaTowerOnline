@@ -3,7 +3,7 @@ var color = make_color_rgb(121, 103, 151);
 draw_set_alpha(0.85);
 draw_rectangle_color(0, 0, 960, 540, color, color, color, color, 0);
 draw_set_alpha(0.25);
-draw_sprite_tiled(spr_pizzacollect1, 0, floor(x), floor(y));
+draw_sprite_tiled(pizza, 0, floor(x), floor(y));
 draw_set_alpha(1);
 
 y -= 0.5;

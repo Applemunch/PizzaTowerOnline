@@ -2,37 +2,10 @@ with other
 {
 	if state != states.Sjump
 	{
-	    if state = states.knightpep or state = states.knightpepattack or state = states.knightpepslopes
-	    {
-		    with instance_create(x,y,obj_knightdebris)
-		    {
-		    image_index = 0
-		    }
-		    with instance_create(x,y,obj_knightdebris)
-		    {
-		    image_index = 1
-		    }
-		    with instance_create(x,y,obj_knightdebris)
-		    {
-		    image_index = 2
-		    }
-		    with instance_create(x,y,obj_knightdebris)
-		    {
-		    image_index = 3
-		    }
-		    with instance_create(x,y,obj_knightdebris)
-		    {
-		    image_index = 4
-		    }
-		    with instance_create(x,y,obj_knightdebris)
-		    {
-		    image_index = 5
-		    }
-	    }
-		
+		scr_knightbump(true, false);
 		if state = states.bombpep
 			instance_create(x,y,obj_bombexplosion)
-
+		
 		scr_soundeffect(sfx_superjumprelease)
 		sprite_index = spr_superjump
 		state = states.Sjump

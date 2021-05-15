@@ -81,7 +81,7 @@ function scr_wcevaluate(argument0)
 				    ds_list_insert(WC_consolelist, 0, "Invalid command " + arg0);
 				}
 				break;
-	
+			
 			// console settings
 			case "consolesize":
 			case "consoleresize":
@@ -103,13 +103,14 @@ function scr_wcevaluate(argument0)
 					ds_list_insert(WC_consolelist, 0, "Size parameter must be a whole number");
 				}
 				break;
-	
+			
 			case "consolecolor":
 			case "consolecol":
 			case "color":
 				arg1 = ds_list_find_value(arg, 1);
 				arg2 = ds_list_find_value(arg, 2);
 				arg3 = ds_list_find_value(arg, 3);
+				
 				if is_undefined(arg1) or is_undefined(arg2) or is_undefined(arg3)
 				{
 					ds_list_insert(WC_consolelist, 0, "Usage: consolecolor R G B");
@@ -159,7 +160,7 @@ function scr_wcevaluate(argument0)
 					}
 				}
 				break;
-	
+			
 			case "drag":
 			case "toggledrag":
 				WC_dragobj = noone;
@@ -239,7 +240,7 @@ function scr_wcevaluate(argument0)
 				if WC_draggrid == 0
 					WC_draggrid = 1;
 				break;
-	
+			
 			case "clear":
 			case "clean":
 			case "cls":
@@ -255,7 +256,7 @@ function scr_wcevaluate(argument0)
 					audio_stop_all();
 				}
 			    break;
-	
+			
 			// actual commands
 			case "endgame":
 				audio_resume_all();
@@ -268,7 +269,7 @@ function scr_wcevaluate(argument0)
 				audio_stop_all();
 			    game_restart();
 			    break;
-	
+			
 			case "live_snippet":
 			case "live_execute":
 			case "execute_string": // gmlive exclusive
@@ -878,7 +879,7 @@ function scr_wcevaluate(argument0)
 				        ds_list_insert(WC_consolelist, 0, "Limitless camera OFF");
 				}
 			    break;
-		
+			
 			case "variable":
 			case "var":
 			case "setvar":
@@ -1738,7 +1739,7 @@ function scr_wcevaluate(argument0)
 			
 			//    ds_list_insert(WC_consolelist, 0, "Frozen all variables");
 			//    break;
-		
+			
 			case "showhidden":
 			case "showinvisible":
 			case "showinv":

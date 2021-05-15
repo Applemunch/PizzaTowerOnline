@@ -11,11 +11,61 @@ if instance_exists(baddieID)
 	image_xscale  = baddieID.image_xscale;
 }
 
-if instance_exists(baddieID) && place_meeting(x,y,obj_player1) && !obj_player1.cutscene
-&& (obj_player1.state != states.firemouth or global.gameplay == 1) && obj_player1.state != states.gameover
-&& obj_player1.state != states.hitlag && baddieID.state != states.hit
+function scr_getfucked(player)
 {
-	if baddieID.state != states.grabbed
+	var lag = 5;
+	with other.baddieID
+	{
+		increase_combo();
+		
+		repeat 5
+			create_particle(x, y, particles.baddiegibs)
+		repeat 5
+			instance_create(x,y,obj_slapstar)
+		instance_create(x,y,obj_bangeffect)
+		
+		hp -= 1;
+		thrown = true;
+						
+		hitLag = lag;
+		hitX = x;
+		hitY = --y;
+		state = states.hit;
+						
+		image_xscale = other.xscale;
+						
+		hithsp = 8 * image_xscale;
+		hitvsp = -8;
+		hsp = hithsp;
+		vsp = hitvsp;
+						
+		grounded = false;
+	}
+	
+	if player && state != states.hitlag
+	{
+		if scr_solid(x, y)
+		{
+			x = hitX;
+			y = hitY;
+		}
+		tauntstoredmovespeed = movespeed;
+		tauntstoredsprite = sprite_index;
+		tauntstoredstate = state;
+		tauntstoredvsp = vsp;
+		state = states.hitlag;
+						
+		hitLag = lag;
+		hitX = x;
+		hitY = y;
+	}
+}
+
+if instance_exists(baddieID) && place_meeting(x,y,obj_player1) && !obj_player1.cutscene
+&& (obj_player1.state != states.firemouth or global.gameplay != 0) && obj_player1.state != states.gameover
+&& obj_player1.state != states.hitlag
+{
+	if baddieID.state != states.grabbed && baddieID.state != states.hit
 	{
 		with (obj_player1)
 		{
@@ -51,61 +101,14 @@ if instance_exists(baddieID) && place_meeting(x,y,obj_player1) && !obj_player1.c
 				if global.gameplay == 0
 					instance_destroy(other.baddieID);
 				else
-				{
-					var lag = 5;
-					with other.baddieID
-					{
-						increase_combo();
-						
-						repeat 3
-							instance_create(x,y,obj_baddiegibs)
-						repeat 3
-							instance_create(x,y,obj_slapstar)
-						instance_create(x,y,obj_bangeffect)
-						
-						hp--;
-						thrown = true;
-						
-						hitLag = lag;
-						hitX = x;
-						hitY = --y;
-						state = states.hit;
-						
-						image_xscale = other.xscale;
-						
-						hithsp = 8 * image_xscale;
-						hitvsp = -8;
-						hsp = hithsp;
-						vsp = hitvsp;
-						
-						grounded = false;
-					}
-					
-					if state != states.hitlag
-					{
-						if scr_solid(x, y)
-						{
-							x = hitX;
-							y = hitY;
-						}
-						tauntstoredmovespeed = movespeed;
-						tauntstoredsprite = sprite_index;
-						tauntstoredstate = state;
-						tauntstoredvsp = vsp;
-						state = states.hitlag;
-						
-						hitLag = lag;
-						hitX = x;
-						hitY = y;
-					}
-				}
+					scr_getfucked(true);
 				
 				scr_soundeffect(sfx_punch);
 				exit;
 			}
 			
 			//Stomp
-			if instance_exists(other.baddieID) && y < other.baddieID.y && attacking = false && sprite_index != spr_player_mach2jump && (( state = states.boots && vsp > 0) or state = states.jump  or state = states.mach1 or state = states.grab) && vsp > 0 && other.baddieID.vsp >= 0 && sprite_index != spr_stompprep && (sprite_index != spr_swingding or global.gameplay == 0) && !other.baddieID.invincible && other.baddieID.stompable
+			if instance_exists(other.baddieID) && y < other.baddieID.y && attacking = false && sprite_index != spr_player_mach2jump && sprite_index != spr_swingding && ((state = states.boots && vsp > 0) or state = states.jump  or state = states.mach1 or state = states.grab) && vsp > 0 && other.baddieID.vsp >= 0 && sprite_index != spr_stompprep && (sprite_index != spr_swingding or global.gameplay == 0) && !other.baddieID.invincible && other.baddieID.stompable
 			{
 				scr_soundeffect(sfx_stompenemy)
 				

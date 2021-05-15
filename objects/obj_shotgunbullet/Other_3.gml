@@ -1,1 +1,1 @@
-event_perform(ev_other, ev_room_end);
+//event_perform(ev_other, ev_room_end);

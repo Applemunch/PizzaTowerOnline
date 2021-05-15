@@ -35,3 +35,9 @@ xoffset = 0;
 yoffset = 0;
 
 stickpressed = false;
+
+pizza = spr_pizzacollect1;
+if irandom_range(0, 100) >= 80
+	pizza = spr_pizzacollect2;
+if irandom_range(0, 100) >= 90
+	pizza = spr_pizzacollect3;

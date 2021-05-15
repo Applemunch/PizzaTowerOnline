@@ -537,7 +537,7 @@
   },
   "parent": {
     "name": "Farm",
-    "path": "folders/Rooms/Weird West/Farm.yy",
+    "path": "folders/Rooms/Levels/Farm.yy",
   },
   "resourceVersion": "1.0",
   "name": "farm_6",

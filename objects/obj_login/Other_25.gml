@@ -3,8 +3,10 @@ if gms_ini_game_read("game", "version") != obj_gms.gameversion
 {
 	if !debug
 	{
+		audio_stop_all();
 		instance_destroy(obj_gms);
 		scr_soundeffect(sfx_pephurt);
+		
 		with obj_roomname
 		{
 			var msg = gms_ini_game_read("game", "outdatedtext");
@@ -16,6 +18,7 @@ if gms_ini_game_read("game", "version") != obj_gms.gameversion
 			showtext = true;
 			alarm[0] = -1;
 		}
+		
 		gms_logout();
 		instance_destroy();
 		exit;

@@ -57,8 +57,8 @@
     "PhysicsWorldPixToMetres": 0.1,
   },
   "parent": {
-    "name": "Rooms",
-    "path": "folders/Rooms.yy",
+    "name": "Level Result",
+    "path": "folders/Rooms/Level Result.yy",
   },
   "resourceVersion": "1.0",
   "name": "rank_room",

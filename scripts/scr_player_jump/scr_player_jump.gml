@@ -25,99 +25,76 @@ function scr_player_jump()
 		mach2 = 0;
 	}
 
-
-
 	//Movespeed
-
 	if move != 0 
 	{
-	if movespeed < 6
-	{
-	movespeed += 0.5
-	}
-	else if floor(movespeed)= 6
-	{
-	movespeed = 6
-	}
+		if movespeed < 6
+			movespeed += 0.5
+		else if floor(movespeed)= 6
+			movespeed = 6
+		
+		if scr_solidwall(x + xscale, y) && move == xscale
+			movespeed = 0
 	}
 	else
-	movespeed = 0
+		movespeed = 0
 
 	if movespeed > 6
-	movespeed -= 0.1
-
-
-
-
-
-	if ((scr_solidwall(x+1,y) && move == 1) or (scr_solidwall(x-1,y) && move == -1))
-	{
-	movespeed = 0
-	}
+		movespeed -= 0.1
 
 	//Turn
-
 	if dir != xscale 
-	{
-
-	dir = xscale
-
-	}
-
-
+		dir = xscale
 	landAnim = true
-
 
 	//Jump Stop
 	if (!key_jump2) && jumpstop = false && vsp < 0.5 && stompAnim =false
 	{
-	vsp /= 10
-	jumpstop = true
+		vsp /= 10
+		jumpstop = true
 	}
 
 	//Ladder Buffer
 	if ladderbuffer > 0
-	ladderbuffer --
+		ladderbuffer --
 
 	//Hit head
 	if scr_solid(x,y-1) && jumpstop = false && jumpAnim = true
 	{
-	vsp = grav
-	jumpstop = true
+		vsp = grav
+		jumpstop = true
 	}
 
 	if move != 0
-	xscale = move
+		xscale = move
 
-		//Wallcling
+	//Wallcling
 	if character = "N"  && wallclingcooldown = 10 && global.gameplay == 0
 	{
-		if scr_solid(x+xscale,y)  && key_jump
+		if scr_solid(x+xscale,y) && key_jump
 		{
-				scr_soundeffect(sfx_step)
+			scr_soundeffect(sfx_step)
 			
-		state = states.hang
-		sprite_index = spr_playerN_wallclingstart
-		image_index = 0
-		xscale *= -1
-		vsp = 0
-		doublejump = false
+			state = states.hang
+			sprite_index = spr_playerN_wallclingstart
+			image_index = 0
+			xscale *= -1
+			vsp = 0
+			doublejump = false
 		}
-		else
 		//Noise double jump
-		if  key_jump && doublejump = false && sprite_index != spr_freefall && sprite_index != spr_facestomp
-	{
-		scr_soundeffect(sfx_woosh)
-		jumpAnim = true
-		sprite_index = spr_playerN_doublejump
-		image_index = 0
-		jumpstop = false
-		vsp = -9
-	with instance_create(x,y,obj_highjumpcloud2)
-	image_xscale = other.xscale
-	doublejump = true
-	}
-	
+		else if key_jump && !doublejump && sprite_index != spr_freefall && sprite_index != spr_facestomp
+		{
+			scr_soundeffect(sfx_woosh)
+			jumpAnim = true
+			sprite_index = spr_playerN_doublejump
+			image_index = 0
+			jumpstop = false
+			vsp = -9
+			with instance_create(x,y,obj_highjumpcloud2)
+				image_xscale = other.xscale
+			doublejump = true
+		}
 	}
 
 	//Input jumping
@@ -212,72 +189,58 @@ function scr_player_jump()
 
 
 	//Animations
-	if stompAnim = false
+	if !stompAnim
 	{
-	if jumpAnim = true
-	{
-
-
-
-
-
-
-
-	}
-
-	if jumpAnim = false
-	{
+		if !jumpAnim
+		{
+			if sprite_index = spr_playerN_doublejump
+				sprite_index = spr_playerN_doublejumpfall
 	
-		if sprite_index = spr_playerN_doublejump
-	sprite_index = spr_playerN_doublejumpfall
+			if sprite_index = spr_airdash1
+				sprite_index = spr_airdash2
+
+			if sprite_index = spr_shotgunjump
+				sprite_index = spr_shotgunfall
+
+			if sprite_index = spr_playerV_superjump
+				sprite_index = spr_playerV_fall
+
+			if sprite_index = spr_jump
+				sprite_index = spr_fall
+
+			if sprite_index = spr_player_hurtjump
+				sprite_index = spr_player_hurtjump2
+
+			if sprite_index = spr_player_Sjumpstart
+				sprite_index = spr_player_Sjump
+
+			if sprite_index = spr_shotgunjump1
+				sprite_index = spr_shotgunjump2
+			
+			if sprite_index = spr_shotgun_shootair
+				sprite_index = spr_shotgun_fall
 	
-	if sprite_index = spr_airdash1
-	sprite_index = spr_airdash2
+			if sprite_index = spr_suplexcancel
+				sprite_index = spr_fall
 
-	if sprite_index = spr_shotgunjump
-	sprite_index = spr_shotgunfall
-
-	if sprite_index = spr_playerV_superjump
-	sprite_index = spr_playerV_fall
-
-	if sprite_index = spr_jump
-	sprite_index = spr_fall
-
-	if sprite_index = spr_player_hurtjump
-	sprite_index = spr_player_hurtjump2
-
-	if sprite_index = spr_player_Sjumpstart
-	sprite_index = spr_player_Sjump
-
-	if sprite_index =spr_player_shotgunjump1
-	sprite_index =spr_player_shotgunjump2
-
-	if sprite_index = spr_shotgun_shootair
-	sprite_index = spr_shotgun_fall
-	
-	if sprite_index = spr_suplexcancel
-	sprite_index = spr_fall
-
-	if sprite_index = spr_suplexland
-	sprite_index = spr_fall
-
+			if sprite_index = spr_suplexland
+				sprite_index = spr_fall
+		}
 	}
-	}
-
-	if stompAnim = true
+	else
 	{
-	if sprite_index = spr_stompprep && floor(image_index) = image_number -1
-	sprite_index = spr_stomp
+		if sprite_index = spr_stompprep && floor(image_index) = image_number -1
+			sprite_index = spr_stomp
 	}
 
 	//Vigilante Dynamite
 	if key_shoot2 && character = "V" && !instance_exists(obj_dynamite)
 	{
-			if move = 0
-		movespeed = 0
-	state = states.dynamite
-	image_index = 0
-	sprite_index = spr_playerV_dynamitethrow
+		if move = 0
+			movespeed = 0
+		state = states.dynamite
+		image_index = 0
+		sprite_index = spr_playerV_dynamitethrow
 		with instance_create(x,y,obj_dynamite)
 		{
 			image_xscale = other.xscale
@@ -399,32 +362,48 @@ function scr_player_jump()
 
 
 	//Suplex Dash
-	if key_slap2 && !suplexmove && (character != "S" && character != "V")
+	if key_slap2 && (character != "S" && character != "V")
 	{
-		suplexmove = true
-		if character != "SP"
+		if key_up && global.gameplay == 1 && character == "SP"
 		{
-			suplexdashsnd =	audio_play_sound(sfx_suplexdash,1,0)
-			sprite_index = spr_suplexdashjumpstart
+			// Breakdance up
+			scr_soundeffect(sfx_suplexdash);
+				
+			state = states.punch;
+			image_index = 0;
+			sprite_index = spr_breakdanceuppercut;
+			vsp = -7;
+			movespeed = 2;
+			instance_create(x, y, obj_highjumpcloud2);
+			instance_create(x, y, obj_swingdinghitbox);
+		}
+		else if !suplexmove
+		{
+			suplexmove = true
+			if character != "SP"
+			{
+				suplexdashsnd =	audio_play_sound(sfx_suplexdash,1,0)
+				sprite_index = spr_suplexdashjumpstart
 			
-			if global.gameplay == 0
-				vsp = -4
-		}
-		else
-		{
-			scr_soundeffect(sfx_suplexdashSP);
-			sprite_index = spr_suplexdash
-		}
-		state = states.handstandjump
-		image_index = 0
+				if global.gameplay == 0
+					vsp = -4
+			}
+			else
+			{
+				scr_soundeffect(sfx_suplexdashSP);
+				sprite_index = spr_suplexdash
+			}
+			state = states.handstandjump
+			image_index = 0
 
-		if character = "P" or character == "SP"
-			movespeed = 6
-		else
-			movespeed = 4
+			if character = "P" or character == "SP"
+				movespeed = 6
+			else
+				movespeed = 4
 		
-		if global.gameplay == 1
-			instance_create(x, y, obj_crazyrunothereffect)
+			if global.gameplay == 1
+				instance_create(x, y, obj_crazyrunothereffect)
+		}
 	}
 
 	// Breakdance

@@ -25,6 +25,7 @@ global.chatbubbles = ini_read_real("online", "chatbubbles", true);
 global.synceffect = ini_read_real("online", "synceffect", true);
 global.richpresence = ini_read_real("online", "richpresence", true);
 global.streamer = ini_read_real("online", "streamer", false);
+global.showfps = ini_read_real("online", "showfps", false);
 global.pvp = /*ini_read_real("online", "pvp", false)*/ false;
 
 // loaded?

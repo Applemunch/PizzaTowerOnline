@@ -95,23 +95,23 @@ if debug
 		            if b <= 32 + WC_debugvarstart
 		                draw_text(956, (((b - WC_debugvarstart) * 16) + 4) + i, objvars[b] + ": " + todraw);
 		        }
+				
+				if keyboard_check_pressed(vk_pageup)
+			    {
+			        WC_debugvarstart -= 32;
+			        if WC_debugvarstart < 0
+			            WC_debugvarstart = 0;
+			    }
+			    if keyboard_check_pressed(vk_pagedown)
+			    {
+			        WC_debugvarstart += 32;
+			        if WC_debugvarstart > array_length_1d(objvars) - 32
+			            WC_debugvarstart = array_length_1d(objvars) - 32;
+			    }
 		    }
 		}
 		else
 		    WC_debugselected = noone;
-	
-	    if keyboard_check_pressed(vk_pageup)
-	    {
-	        WC_debugvarstart -= 32;
-	        if WC_debugvarstart < 0
-	            WC_debugvarstart = 0;
-	    }
-	    if keyboard_check_pressed(vk_pagedown)
-	    {
-	        WC_debugvarstart += 32;
-	        if WC_debugvarstart > array_length_1d(objvars) - 32
-	            WC_debugvarstart = array_length_1d(objvars) - 32;
-	    }
 	}
 
 	if WC_varobj != undefined && (instance_exists(WC_varobj) or WC_varobj == global)

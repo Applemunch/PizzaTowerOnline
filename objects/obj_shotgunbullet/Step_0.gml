@@ -1,4 +1,4 @@
-if sync == false
+//if sync == false
 {
 	with instance_place(x+spd, y,obj_shotgunblock)
 		instance_destroy()
@@ -17,8 +17,10 @@ if sync == false
 			instance_destroy()
 	}
 	
+	/*
 	if gms_instance_get(id, "rebound")
 		sync = true;
+	*/
 }
 
 x += spd

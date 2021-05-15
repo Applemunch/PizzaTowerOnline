@@ -14,6 +14,7 @@ if !ds_list_empty(global.baddietomb)
         var tombRoom = arr[0];
         var X = arr[1];
         var Y = arr[2];
+        var spr = arr[3];
 		
         if !is_undefined(tombRoom) && !is_undefined(X) && !is_undefined(Y)
         {
@@ -27,6 +28,8 @@ if !ds_list_empty(global.baddietomb)
 	                hsp = 0;
 	                vsp = 0;
 	                image_index = image_number - 1;
+					if !is_undefined(spr)
+						sprite_index = spr;
 				}
             }
         }

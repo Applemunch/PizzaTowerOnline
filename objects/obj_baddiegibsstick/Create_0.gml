@@ -7,4 +7,9 @@ storedy = noone;
 grav = 0.4;
 collisioned = false;
 depth = -1;
+
 sprite_index = choose(spr_goop, spr_goop2);
+if obj_player1.character == "SP"
+	sprite_index = choose(spr_goop1SP, spr_goop2SP);
+if obj_player1.character == "N"
+	sprite_index = choose(spr_goop1N, spr_goop2N);

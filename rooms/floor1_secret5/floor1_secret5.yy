@@ -231,7 +231,7 @@
   },
   "parent": {
     "name": "Desert",
-    "path": "folders/Rooms/Weird West/Desert.yy",
+    "path": "folders/Rooms/Levels/Desert.yy",
   },
   "resourceVersion": "1.0",
   "name": "floor1_secret5",

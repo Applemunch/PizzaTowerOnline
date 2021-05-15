@@ -41,9 +41,9 @@ function scr_player_handstandjump()
 			scr_soundeffect(sfx_suplexdashSP);
 			machhitAnim = false
 			state = states.crouchslide
-			movespeed = 15
+			movespeed = 16
 		}
-	
+		
 		// Jump
 		if key_jump && grounded
 		{
@@ -134,10 +134,9 @@ function scr_player_handstandjump()
 
 			machhitAnim = false
 			state = states.crouchslide
-			movespeed = 15
+			movespeed = 16
 		}
-
-
+		
 		//Input jumping
 		if !grounded && (sprite_index =spr_suplexdash or sprite_index =spr_shotgunsuplexdash) 
 		{
@@ -167,6 +166,9 @@ function scr_player_handstandjump()
 			
 			if global.gameplay == 1 && !(obj_player1.character == "N" && obj_player1.noisetype == 0)
 			{
+				if state == states.crouchslide
+					movespeed = 8;
+				
 				state = states.mach2;
 				sprite_index = spr_mach2jump;
 			}

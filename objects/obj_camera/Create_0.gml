@@ -30,10 +30,11 @@ edge_indicator = ds_queue_create()
 //DDP Set this to false to disable background effects to save FPS
 // I suggest creating a menu option to set this to false
 ini_open("saveData.ini");
-global.panicbg = ini_read_real("online", "panicbg", false);
-global.panicmelt = ini_read_real("online", "panicmelt", false)
-global.panicshake = ini_read_real("online", "panicshake", true)
-global.panicnightmare = ini_read_real("online", "panicnightmare", true)
+global.panicbg = ini_read_real("online", "panicbg", false); // waving background
+global.panicmelt = ini_read_real("online", "panicmelt", false) // motion blur
+global.panicshake = ini_read_real("online", "panicshake", true) // shaking
+global.panicnightmare = ini_read_real("online", "panicnightmare", true) // panic backgrounds
+global.panictilt = ini_read_real("online", "panictilt", false) // panic screen tilt
 ini_close();
 
 //DDP During runbacks, waveamount slowly increases
@@ -51,7 +52,7 @@ p2pdistancex  = 0
 bound_camera = false;
 global.timedgate = false
 
-healthshake =0
+healthshake = 0
 healthold = 100
 healthshaketime = 0
 playerhealthup = false

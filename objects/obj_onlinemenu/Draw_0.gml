@@ -58,10 +58,18 @@ switch menu
 		
 		if draw_editorbutton(384, 200 + 64 + (debug * 64), "BUILD")
 		{
+			/*
 			window_set_cursor(cr_default);
 			scr_playerreset();
 			room = hub_outside2;
 			obj_player1.targetDoor = "B";
+			*/
+			with obj_roomname
+			{
+				showtext = true;
+				message = "UNFINISHED!!!";
+				alarm[0] = 200;
+			}
 		}
 		
 		if draw_editorbutton(384, 200 + 64 + 64 + (debug * 64), "BACK")
@@ -86,36 +94,40 @@ switch menu
 		#endregion
 		#region online menu
 		
-		if draw_editorbutton(384, 200, "BROWSE")
+		if debug
 		{
-			menu = menutypes.levelbrowser;
-			if paging_type != 0
+			if draw_editorbutton(384, 200, "BROWSE")
 			{
-				page = 1;
-				pagelast = 0;
+				menu = menutypes.levelbrowser;
+				if paging_type != 0
+				{
+					page = 1;
+					pagelast = 0;
+				}
+				paging_type = 0;
+				scr_requestpage(page);
 			}
-			paging_type = 0;
-			scr_requestpage(page);
-		}
-		if draw_editorbutton(384, 200 + 64, "FEATURED")
-		{
-			menu = menutypes.levelbrowser;
-			if paging_type != 1
+			if draw_editorbutton(384, 200 + 64, "FEATURED")
 			{
-				page = 1;
-				pagelast = 0;
+				menu = menutypes.levelbrowser;
+				if paging_type != 1
+				{
+					page = 1;
+					pagelast = 0;
+				}
+				paging_type = 1;
+				scr_requestpage(page);
 			}
-			paging_type = 1;
-			scr_requestpage(page);
 		}
-		if draw_editorbutton(384, 200 + 64 + 64, "PTONLINE")
+		
+		if draw_editorbutton(384, 200 + 64 + (debug * 64), "PTONLINE")
 		{
 			menu = menutypes.levelbrowser;
 			paging_type = 3;
 			scr_requestpage_alt(page);
 		}
 		
-		if draw_editorbutton(384, 200 + 64 + 64 + 64, "BACK")
+		if draw_editorbutton(384, 200 + 64 + 64 + (debug * 64), "BACK")
 			menu = menutypes.menustart;
 		
 		#endregion

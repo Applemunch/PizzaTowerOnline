@@ -1914,7 +1914,7 @@
   },
   "parent": {
     "name": "Tutorial",
-    "path": "folders/Rooms/Tutorial.yy",
+    "path": "folders/Rooms/Levels/Tutorial.yy",
   },
   "resourceVersion": "1.0",
   "name": "PP_room12",

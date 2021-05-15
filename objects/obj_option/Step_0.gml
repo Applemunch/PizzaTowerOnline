@@ -8,7 +8,7 @@ if !instance_exists(obj_keyconfig) && !instance_exists(obj_erasegame)
 	if menu == 1
 		omax = 2 + global.loaded_pc;
 	if menu == 2
-		omax = 12;
+		omax = 13;
 	
 	if (obj_player1.key_up2 or keyboard_check_pressed(vk_up))
 	{
@@ -435,6 +435,16 @@ else if menu == 2 && !instance_exists(obj_erasegame)
 		}
 	}
 	
+	// fps count
+	if optionselected == 13
+	{
+		if select
+		{
+			global.showfps = !global.showfps;
+			scr_soundeffect(sfx_step);
+		}
+	}
+	
 	//Finish
 	if (obj_player1.key_slap2 or keyboard_check_pressed(vk_escape)) && !instance_exists(obj_keyconfig)
 	{
@@ -459,6 +469,7 @@ else if menu == 2 && !instance_exists(obj_erasegame)
 		ini_write_real("online","synceffect",global.synceffect)
 		ini_write_real("online","richpresence",global.richpresence)
 		ini_write_real("online","streamer",global.streamer)
+		ini_write_real("online","showfps",global.showfps)
 		ini_close();
 		
 		if obj_drpc_updater.running != global.richpresence

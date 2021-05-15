@@ -10,7 +10,7 @@ if state != states.cheeseball
 		_spr = spr_sbombic;
 }
 
-if state != states.cheeseball && ((state != states.ghost or sprite_index == spr_player_ghostend && image_index >= 12) or character != "P")
+if (state != states.cheeseball or sprite_index == spr_playerSP_cheeseball) && ((state != states.ghost or sprite_index == spr_player_ghostend && image_index >= 12) or character != "P")
 {
 	if paletteselect == -1
 	{

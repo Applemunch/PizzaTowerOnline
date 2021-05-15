@@ -355,7 +355,7 @@ function scr_chat_verify(argument0)
 			else
 			{
 				if room != _room
-					room_goto(_room);
+					room_goto_new(_room);
 				gms_chat_local("Teleporting to player " + ds_list_find_value(list, 1) + " in room " + room_get_name(gms_other_get_real(__user, "room")), merge_colour(c_yellow, c_white, 0.25));
 				obj_gms.alarm[0] = 5;
 			}

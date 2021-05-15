@@ -2,7 +2,7 @@
   "ConfigValues": {
     "debug": {"textureGroupId":"{\"name\":\"tg_baddie\",\"path\":\"texturegroups/tg_baddie\"}",},
   },
-  "bboxMode": 0,
+  "bboxMode": 2,
   "collisionKind": 1,
   "type": 0,
   "origin": 4,
@@ -13,7 +13,7 @@
   "bbox_left": 22,
   "bbox_right": 80,
   "bbox_top": 18,
-  "bbox_bottom": 95,
+  "bbox_bottom": 84,
   "HTile": false,
   "VTile": false,
   "For3D": false,

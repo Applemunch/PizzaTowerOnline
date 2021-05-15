@@ -5,7 +5,10 @@
   },
   "solid": false,
   "visible": true,
-  "spriteMaskId": null,
+  "spriteMaskId": {
+    "name": "spr_pizzaslice",
+    "path": "sprites/spr_pizzaslice/spr_pizzaslice.yy",
+  },
   "persistent": false,
   "parentObjectId": null,
   "physicsObject": false,

@@ -43,23 +43,32 @@ function scr_enemy_grabpos(player)
 				y += 20;
 			if sprite_index == spr_sausagemannocigar_grabbed
 			or sprite_index == spr_sausageman_grabbed
-				y += 15;
+				y += 20;
 		}
 		else
 			y = player.y - 40
 	}
 	else
 	{
+		var bottom = bbox_bottom - y;
+		y = player.y - bottom;
+		
 		if player.character == "SP"
 		{
 			if floor(player.image_index) = 0
-				y = player.y - 8
+				y += 18;
 			else if floor(player.image_index) = 1
-				y = player.y - 20
+				y += 4;
 			else if floor(player.image_index) = 2
-				y = player.y - 35
+				y -= 10;
 			else if floor(player.image_index) = 3
-				y = player.y - 35
+				y -= 8;
+			
+			if sprite_index == spr_slimegrabbed or sprite_index == spr_slimegrabbed_re
+				y += 20;
+			if sprite_index == spr_sausagemannocigar_grabbed
+			or sprite_index == spr_sausageman_grabbed
+				y += 20;
 		}
 		else
 			y = player.y - (floor(player.image_index) * 10);

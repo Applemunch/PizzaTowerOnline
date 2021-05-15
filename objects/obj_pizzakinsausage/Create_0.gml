@@ -12,8 +12,8 @@ else
 	spr_intro = spr_toppinsausage_intro_NEW;
 	spr_idle = spr_toppinsausage_NEW;
 	spr_run = spr_toppinsausage_run_NEW;
-	spr_panic = spr_toppinsausage_panic_NEW;
-	spr_panicidle = spr_toppinsausage_NEW;
+	spr_panic = spr_toppinsausage_run_NEW;
+	spr_panicidle = spr_toppinsausage_panic_NEW;
 	yoffset = 0;
 }
 spr_intro_strongcold = spr_xmassausagetoppin_intro;

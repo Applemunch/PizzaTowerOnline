@@ -12,13 +12,15 @@ if (other.state = states.handstandjump or other.state = states.punch or other.in
 	}
 
 	scr_soundeffect(sfx_killenemy)
-	scr_sleep(50)
-	instance_create(x,y,obj_slapstar)
-	instance_create(x,y,obj_slapstar)
-	instance_create(x,y,obj_slapstar)
-	instance_create(x,y,obj_baddiegibs)
-	instance_create(x,y,obj_baddiegibs)
-	instance_create(x,y,obj_baddiegibs)
+	
+	if global.gameplay == 0
+		scr_sleep(50)
+	
+	repeat 3
+		instance_create(x,y,obj_slapstar)
+	repeat 3
+		create_particle(x, y, particles.baddiegibs)
+	
 	instance_create(x,y,obj_bangeffect)
 
 	with instance_create(x,y,obj_sausageman_dead)

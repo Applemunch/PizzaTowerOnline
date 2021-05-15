@@ -62,7 +62,7 @@ if global.gottp[0] && !obj_pause.pause // tpother
 		obj_player1.y = global.gottp[2];
 		obj_player1.targetDoor = "none";
 		
-		room_goto(global.gottp[3]);
+		room_goto_new(global.gottp[3]);
 	}
 }
 if global.__gotmessage[0] // global message

@@ -12,13 +12,15 @@ if character = 0
 
 global.boxhp -= 1
 scr_soundeffect(sfx_killenemy)
-scr_sleep(50)
-instance_create(x,y,obj_slapstar)
-instance_create(x,y,obj_slapstar)
-instance_create(x,y,obj_slapstar)
-instance_create(x,y,obj_baddiegibs)
-instance_create(x,y,obj_baddiegibs)
-instance_create(x,y,obj_baddiegibs)
+
+if global.gameplay == 0
+	scr_sleep(50)
+
+repeat 3
+{
+	instance_create(x,y,obj_baddiegibs)
+	instance_create(x,y,obj_slapstar)
+}
 
 
 				ds_list_shuffle(global.boxlist)
@@ -40,13 +42,13 @@ else {
     shake_mag_acc=40/room_speed;
 }
 scr_soundeffect(sfx_killenemy)
-scr_sleep(50)
-instance_create(x,y,obj_slapstar)
-instance_create(x,y,obj_slapstar)
-instance_create(x,y,obj_slapstar)
-instance_create(x,y,obj_baddiegibs)
-instance_create(x,y,obj_baddiegibs)
-instance_create(x,y,obj_baddiegibs)
+if global.gameplay == 0
+	scr_sleep(50)
+repeat 3
+{
+	instance_create(x,y,obj_baddiegibs)
+	instance_create(x,y,obj_slapstar)
+}
 
 sprite_index = spr_present	
 
