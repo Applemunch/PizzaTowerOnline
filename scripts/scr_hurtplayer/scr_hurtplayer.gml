@@ -272,17 +272,14 @@ function scr_hurtplayer(argument0)
 			{
 				if !(global.snickchallenge && shotgunAnim)
 				{
-					global.hurtcounter += 1
+					if character != "SP"
+						repeat (min(global.collect, ceil(loseamount / 5))) instance_create(x,y,obj_pizzaloss);
+					
 					if !hurted
 					{
-					    if global.collect > loseamount
-					        global.collect -= loseamount;
-					    else
-					        global.collect = 0;
+						global.hurtcounter += 1;
+						global.collect = max(global.collect - loseamount, 0);
 					}
-					
-					if character != "SP"
-						repeat (min(global.collect, 10)) instance_create(x,y,obj_pizzaloss);
 				}
 				else
 				{

@@ -8,17 +8,19 @@ with other
 	        changecoord = false;
 	
 		if (grounded && (state == states.mach1 or state = states.mach2 or (state == states.handstandjump && (-key_left or key_right) && character == "S")) && key_attack)
-		or (global.gameplay != 0 && sprite_index != spr_dashpadmach)
+		or (global.gameplay != 0 && sprite_index != spr_dashpadmach && character != "V")
 		{
 			if other.image_xscale != 0
 				xscale = sign(other.image_xscale)
-		
+			
 			machhitAnim = false
 			state = states.mach3
 			image_index = 0;
-		
+			
 			if character != "S" && character != "V"
 				sprite_index = spr_dashpadmach
+			else
+				sprite_index = spr_mach4
 		
 			instance_create(x, y, obj_jumpdust)
 		

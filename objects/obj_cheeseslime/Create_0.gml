@@ -29,7 +29,7 @@ recoveryspr = spr_slimerecovery
 grabbedspr = spr_slimegrabbed
 scaredspr = spr_slime_scared
 
-image_xscale = -1
+//image_xscale = -1
 hp = 1
 slapped = false
 grounded = true

@@ -27,6 +27,7 @@ with obj_baddie
 {
 	if place_meeting(x, y + 1, other) && state != states.grabbed && hp > 0
 	{
+		thrown = false;
 		vsp = -11;
 		
 		with other

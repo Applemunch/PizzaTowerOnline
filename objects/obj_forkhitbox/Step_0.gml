@@ -4,6 +4,8 @@ if !instance_exists(ID) && room != custom_lvl_room
 if instance_exists(ID)
 {
 	x = ID.x
+	if ID.object_index == obj_burgknight
+		x += ID.image_xscale * 10;
 	y = ID.y
 	image_xscale = ID.image_xscale
 	image_index = ID.image_index

@@ -55,8 +55,10 @@ function scr_player_ladder()
 		vsp = 0
 	}
 
-	if key_jump
+	if key_jump or (input_buffer_jump < 8 && key_jump2)
 	{
+		input_buffer_jump = 8;
+		
 		hooked = false;
 		sprite_index = spr_jump
 		ladderbuffer = 20

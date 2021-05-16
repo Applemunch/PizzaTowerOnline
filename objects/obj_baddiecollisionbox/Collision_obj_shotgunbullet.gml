@@ -1,5 +1,7 @@
+/*
 if other.sync
 	exit;
+*/
 
 if instance_exists(baddieID) && baddieID.object_index != obj_pizzaballOLD
 && (baddieID.hp <= 1 or obj_player1.character != "V")

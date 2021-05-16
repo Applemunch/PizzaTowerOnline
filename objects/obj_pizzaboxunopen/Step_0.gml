@@ -1,5 +1,5 @@
 if (place_meeting(x,y,obj_player1) or place_meeting(x,y,obj_antonball)) && obj_player1.state != states.gameover
-&& sprite_index = spr_pizzaboxunopen
+&& sprite_index == spr_closed
 {
 	global.heattime = 60;
 	if content != obj_bigcollect
@@ -91,7 +91,7 @@ if (place_meeting(x,y,obj_player1) or place_meeting(x,y,obj_antonball)) && obj_p
 		obj_tv.alarm[0] = 150;
 		global.toppintotal += 1;
 	
-		if content == obj_pizzakinshroom
+		if content == obj_pizzakinshroom or content == obj_toppinmallow
 			global.shroomfollow = true;
 		if content == obj_pizzakincheese
 			global.cheesefollow = true;
@@ -104,19 +104,22 @@ if (place_meeting(x,y,obj_player1) or place_meeting(x,y,obj_antonball)) && obj_p
 	}
 	
 	image_index = 0;
-	sprite_index = spr_pizzaboxopen
+	sprite_index = spr_open
 }
 
-if sprite_index == spr_pizzaboxopen && floor(image_index) == 3 && !createdpizza && content == obj_bigcollect
+if sprite_index == spr_open
 {
-    createdpizza = true
-	depth = 105
-    with instance_create(x, y, content)
-		owner = other.id;
+	if floor(image_index) >= 3 && !createdpizza && content == obj_bigcollect
+	{
+	    createdpizza = true
+		depth = 105
+	    with instance_create(x, y, content)
+			owner = other.id;
+	}
+	
+	if floor(image_index) >= image_number - 1
+		instance_destroy();
 }
-
-if sprite_index = spr_pizzaboxopen && floor(image_index) = 16
-	instance_destroy()
 
 if place_meeting(x, y, obj_otherplayer)
 	image_alpha = 0.5;

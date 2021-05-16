@@ -39,7 +39,7 @@ if (flash == true && alarm[2] <= 0) {
 if hitboxcreate == false && state == states.walk && !rematchscare
 {
 	hitboxcreate = true
-	with instance_create(x,y,obj_forkhitbox)
+	with instance_create(x, y, obj_forkhitbox)
 		ID = other.id
 }
 

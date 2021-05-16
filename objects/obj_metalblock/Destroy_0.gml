@@ -1,12 +1,17 @@
 
 if  ds_list_find_index(global.saveroom, id) = -1
 {
-	repeat 4
-		with instance_create(x+ 32,y+ 32,obj_metaldebris)
-			if other.sprite_index == spr_metalblock_ss
+	var shit = 4;
+	if sprite_index == spr_metalblock_ss
+		shit = 8;
+	
+	repeat shit
+		with instance_create(x + 32, y + 32, obj_metaldebris)
+			if shit == 8
 			{
 				sprite_index = spr_metaldebris_ss;
-				image_index = random_range(0,7)
+				image_index = random_range(0, 7);
+				hsp = random_range(-8, 8);
 			}
 	
 	/*

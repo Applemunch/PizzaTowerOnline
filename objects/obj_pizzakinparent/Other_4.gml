@@ -14,6 +14,7 @@ switch object_index
             instance_destroy()
         break
     case obj_pizzakinshroom:
+	case obj_toppinmallow:
         if !global.shroomfollow
             instance_destroy()
         break

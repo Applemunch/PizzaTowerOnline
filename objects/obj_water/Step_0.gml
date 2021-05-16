@@ -1,4 +1,4 @@
-with instance_place(x,y - 1, obj_player1)
+with instance_place(x, y - 1, obj_player1)
 {
 	if state != states.gameover && state != states.mach3 && sprite_index != spr_mach3boost
     {
@@ -21,7 +21,11 @@ with instance_place(x,y - 1, obj_player1)
 				scr_soundeffect(obj_player1.snd_fireass)
 		}
 		else
-			scr_hurtplayer(obj_player1);
+		{
+			if state == states.tumble
+				state = states.normal;
+			scr_hurtplayer(id);
+		}
     }
 }
 with instance_place(x, y - 1, obj_baddie)

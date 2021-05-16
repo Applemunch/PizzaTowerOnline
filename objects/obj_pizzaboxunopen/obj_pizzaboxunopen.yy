@@ -5,7 +5,10 @@
   },
   "solid": false,
   "visible": true,
-  "spriteMaskId": null,
+  "spriteMaskId": {
+    "name": "spr_pizzaboxunopen",
+    "path": "sprites/spr_pizzaboxunopen/spr_pizzaboxunopen.yy",
+  },
   "persistent": false,
   "parentObjectId": null,
   "physicsObject": false,

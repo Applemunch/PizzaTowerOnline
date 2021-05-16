@@ -13,9 +13,6 @@ function scr_player_mach2()
 	move2 = key_right2 + key_left2
 	move = key_right + key_left
 
-
-
-
 	crouchslideAnim = true
 
 
@@ -28,10 +25,16 @@ function scr_player_mach2()
 
 	if grounded && vsp > 0
 		jumpstop = false
+	
+	//Input buffer jumping
+	if key_jump
+		input_buffer_jump = 0
 
 	//Jump
 	if (input_buffer_jump < 8) && grounded && !(move == 1 && xscale == -1) && !(move == -1 && xscale == 1) 
 	{
+		input_buffer_jump = 8;
+		
 		image_index = 0
 		sprite_index = spr_secondjump1
 		scr_soundeffect(sfx_jump)
@@ -122,10 +125,6 @@ function scr_player_mach2()
 				image_xscale = other.xscale
 		}
 	}
-
-	//Input buffer jumping
-	if key_jump
-		input_buffer_jump = 0
 
 	//Machroll
 	if key_down && !place_meeting(x,y,obj_dashpad) && (sprite_index != spr_mach2jump or character != "SP")

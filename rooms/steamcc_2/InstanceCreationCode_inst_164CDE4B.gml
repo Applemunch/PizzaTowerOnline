@@ -1,0 +1,1 @@
+targetRoom = steamcc_secret1;

@@ -5,4 +5,5 @@ if ds_list_find_index(global.saveroom, id) == -1
 	    vsp = -5
 	    hsp = other.hsp * 34
 	}
+	ds_list_add(global.saveroom, id);
 }

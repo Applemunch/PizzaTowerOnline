@@ -5,7 +5,10 @@
   },
   "solid": false,
   "visible": true,
-  "spriteMaskId": null,
+  "spriteMaskId": {
+    "name": "obj_onewaybigblock",
+    "path": "sprites/obj_onewaybigblock/obj_onewaybigblock.yy",
+  },
   "persistent": false,
   "parentObjectId": {
     "name": "obj_bigdestructibles",

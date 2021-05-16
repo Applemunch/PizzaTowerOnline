@@ -23,10 +23,10 @@ if sc_check()
 	}
 }
 
-if sprite_index = _spr_intro && floor(image_index) = image_number - 1
+if sprite_index = _spr_intro && floor(image_index) == image_number - 1
 	sprite_index = _spr_idle
 
-if sprite_index != _spr_intro
+if sprite_index != _spr_intro or _spr_intro == _spr_run
 {
 	// Sprites
 	if x != xprevious

@@ -12,7 +12,7 @@ function scr_player_handstandjump()
 		dir = xscale;
 		
 		move = key_left + key_right;
-	
+		
 		if image_index <= image_number - 1
 			movespeed = 11;
 		else
@@ -62,7 +62,7 @@ function scr_player_handstandjump()
 		with instance_create(x,y,obj_slidecloud)
 		image_xscale = other.xscale
 	
-	#endregion
+		#endregion
 	}
 	else
 	{
@@ -77,9 +77,9 @@ function scr_player_handstandjump()
 		
 		
 		if movespeed < 10 && grounded
-		movespeed += 0.5
+			movespeed += 0.5
 		else if !grounded
-		movespeed = 10
+			movespeed = 10
 		
 		if global.gameplay == 1 && character != "S"
 			movespeed = 10;
@@ -106,21 +106,24 @@ function scr_player_handstandjump()
 			}
 		}
 
-		if (floor(image_index) = image_number -1 or sprite_index = spr_suplexdashjump or sprite_index = spr_suplexdashjumpstart) && grounded && (!key_attack or character = "N") && vsp > 0
+		if (floor(image_index) == image_number - 1 or ((sprite_index == spr_suplexdashjump or sprite_index == spr_suplexdashjumpstart) && !scr_slope())) && grounded
 		{
-			image_speed = 0.35
-			state = states.normal
-			grav = 0.5
+			if (!key_attack or character = "N") && vsp >= 0
+			{
+				image_speed = 0.35
+				state = states.normal
+				grav = 0.5
+			}
+
+			if key_attack && (!(character == "N" && noisetype == 0) && character != "S")
+			{
+				image_speed = 0.35
+				state = states.mach2
+				grav = 0.5
+			}
 		}
 
-		if (floor(image_index) = image_number -1 or sprite_index = spr_suplexdashjump or sprite_index = spr_suplexdashjumpstart) && grounded && key_attack && (!(character == "N" && noisetype == 0) && character != "S")
-		{
-			image_speed = 0.35
-			state = states.mach2
-			grav = 0.5
-		}
-
-		if floor(image_index) = image_number -1 && sprite_index = spr_suplexdashjumpstart
+		if floor(image_index) == image_number - 1 && sprite_index = spr_suplexdashjumpstart
 			sprite_index = spr_suplexdashjump
 
 		//Crouchslide
@@ -131,14 +134,14 @@ function scr_player_handstandjump()
 				sprite_index = spr_player_breakdancesuper
 			else
 				sprite_index = spr_crouchslip
-
+			
 			machhitAnim = false
 			state = states.crouchslide
 			movespeed = 16
 		}
 		
 		//Input jumping
-		if !grounded && (sprite_index =spr_suplexdash or sprite_index =spr_shotgunsuplexdash) 
+		if !grounded && (sprite_index == spr_suplexdash or sprite_index == spr_shotgunsuplexdash) 
 		{
 			image_index = 0
 			sprite_index = spr_suplexdashjumpstart	
@@ -199,7 +202,7 @@ function scr_player_handstandjump()
 			}
 		}
 
-		if character = "S"
+		if character == "S"
 		{
 			if key_attack 
 			{
@@ -223,7 +226,7 @@ function scr_player_handstandjump()
 				state = states.normal
 				movespeed = 0
 			}
-
+			
 			//Effects
 			if !(instance_exists(obj_dashcloud2)) && grounded && movespeed > 5
 			with instance_create(x,y,obj_dashcloud2)

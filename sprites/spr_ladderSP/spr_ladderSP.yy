@@ -77,8 +77,8 @@
   ],
   "nineSlice": null,
   "parent": {
-    "name": "object",
-    "path": "folders/Sprites/players/pizzelle/object.yy",
+    "name": "ladder",
+    "path": "folders/Sprites/players/pizzelle/object/ladder.yy",
   },
   "resourceVersion": "1.0",
   "name": "spr_ladderSP",

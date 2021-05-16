@@ -80,6 +80,8 @@ function scr_player_mach3()
 			//Jump
 			if input_buffer_jump < 8 && grounded && (move == xscale or move == 0) && sprite_index != spr_dashpadmach
 			{
+				input_buffer_jump = 8;
+				
 				scr_soundeffect(sfx_jump)
 				if sprite_index != spr_fightball
 				{

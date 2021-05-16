@@ -76,7 +76,7 @@ function scr_pizzagoblin_throw() {
 	if bombreset = 0 && floor(image_index) = global.throw_frame[object_index]
 	{
 		// Set bomb timer and animation frame
-		bombreset = global.reset_timer[object_index] / (global.stylethreshold + 1);
+		bombreset = ceil(global.reset_timer[object_index] / max((global.stylethreshold + 1) / 2, 1));
 		
 		var spr = global.throw_sprite[object_index];
 		if global.snickrematch
