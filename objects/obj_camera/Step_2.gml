@@ -229,6 +229,12 @@ if player.state != states.timesup && player.state != states.rotate && player.sta
 	}
 	chargeprev = chargecamera;
 	
+	// manual camera pan
+	if pancur[0] != panto[0]
+		pancur[0] = median(pancur[0] - 2, panto[0], pancur[0] + 2);
+	if pancur[1] != panto[1]
+		pancur[1] = median(pancur[1] - 2, panto[1], pancur[1] + 2);
+	
 	// set camera position
 	if is_real(target) && instance_exists(target)
 	{
@@ -247,11 +253,11 @@ if player.state != states.timesup && player.state != states.rotate && player.sta
 			shkh = 0;
 			shkv = 0;
 				
-			var tx = target.x - (__view_get(e__VW.WView, 0) / 2) + chargecamera + chargesmooth;
-			var ty = target.y - (__view_get(e__VW.HView, 0) / 2) + floor(crouchcamera);
+			var tx = target.x - (__view_get(e__VW.WView, 0) / 2) + chargecamera + chargesmooth + pancur[0];
+			var ty = target.y - (__view_get(e__VW.HView, 0) / 2) + floor(crouchcamera) + pancur[1];
 			tx = clamp(tx, 0 + shkh, room_width - __view_get( e__VW.WView, 0 ));
 			ty = clamp(ty, 0 + shkv, room_height - __view_get( e__VW.HView, 0 ));
-				
+			
 			var xx = median(__view_get(e__VW.XView, 0) - maxspeed, tx, __view_get(e__VW.XView, 0) + maxspeed);
 			__view_set( e__VW.XView, 0, xx + shkh);
 			
@@ -265,8 +271,8 @@ if player.state != states.timesup && player.state != states.rotate && player.sta
 		else
 		{
 			// normal camera
-			__view_set( e__VW.XView, 0, target.x - (__view_get(e__VW.WView, 0) / 2) + chargecamera + chargesmooth + shkh);
-			__view_set( e__VW.YView, 0, target.y - (__view_get(e__VW.HView, 0) / 2) + floor(crouchcamera) + shkv);
+			__view_set( e__VW.XView, 0, target.x - (__view_get(e__VW.WView, 0) / 2) + chargecamera + chargesmooth + shkh + pancur[0]);
+			__view_set( e__VW.YView, 0, target.y - (__view_get(e__VW.HView, 0) / 2) + floor(crouchcamera) + shkv + pancur[1]);
 		}
 	}
 	else
@@ -277,9 +283,9 @@ if player.state != states.timesup && player.state != states.rotate && player.sta
 			lastx = __view_get(e__VW.XView, 0);
 			lasty = __view_get(e__VW.YView, 0);
 		}
-			
-		__view_set( e__VW.XView, 0, lastx + shkh);
-		__view_set( e__VW.YView, 0, lasty + shkv);
+		
+		__view_set( e__VW.XView, 0, lastx + shkh + pancur[0]);
+		__view_set( e__VW.YView, 0, lasty + shkv + pancur[1]);
 	}
 	
 	if room != custom_lvl_room

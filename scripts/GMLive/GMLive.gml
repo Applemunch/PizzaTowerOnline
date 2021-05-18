@@ -8005,90 +8005,92 @@ function gml_parse_name(l_s,l_i){
 	} else throw gml_std_haxe_Exception_thrown("API.parseName: wrong format in "+l_s);
 }
 
-if(live_enabled)
 function gml_func_add(l_signature,l_func){
-	var l_s=l_signature;
-	var l_p0=gml_std_string_pos_ext_haxe(l_s,"(")+1;
-	var l_p1=gml_std_string_pos_ext_haxe(l_s,")");
-	var l_argv=gml_std_StringTools_trim(gml_std_string_substring(l_s,l_p0,l_p1));
-	var l_flags=gml_std_string_substring(l_s,l_p1+1);
-	var l_argc,l_arg1;
-	var l_arg0=-1;
-	var l_argt;
-	var l_rest=gml_type_check_any;
-	if(l_argv==""){
-		l_argc=0;
-		l_arg1=0;
-		l_argt=array_create(0);
-	} else {
-		var l_args1=gml_std_string_split(l_argv,",");
-		l_argc=array_length(l_args1);
-		l_arg1=l_argc;
-		l_argt=array_create(l_argc);
-		var l_tmap=gml_type_check_map;
-		var l_i=0;
-		for(var l__g1=l_argc;l_i<l__g1;l_i++){
-			var l_arg=l_args1[l_i];
-			var l_pos=gml_std_string_pos_ext_haxe(l_arg,"=");
-			var l_opt=false;
-			if(l_pos>=0){
-				l_opt=true;
-				l_arg=gml_std_string_substring(l_arg,0,l_pos);
-			} else if(gml_std_string_pos_ext_haxe(l_arg,"...")>=0){
-				l_arg1=81;
-				l_argc=-1;
-				l_opt=true;
+	if live_enabled
+	{
+		var l_s=l_signature;
+		var l_p0=gml_std_string_pos_ext_haxe(l_s,"(")+1;
+		var l_p1=gml_std_string_pos_ext_haxe(l_s,")");
+		var l_argv=gml_std_StringTools_trim(gml_std_string_substring(l_s,l_p0,l_p1));
+		var l_flags=gml_std_string_substring(l_s,l_p1+1);
+		var l_argc,l_arg1;
+		var l_arg0=-1;
+		var l_argt;
+		var l_rest=gml_type_check_any;
+		if(l_argv==""){
+			l_argc=0;
+			l_arg1=0;
+			l_argt=array_create(0);
+		} else {
+			var l_args1=gml_std_string_split(l_argv,",");
+			l_argc=array_length(l_args1);
+			l_arg1=l_argc;
+			l_argt=array_create(l_argc);
+			var l_tmap=gml_type_check_map;
+			var l_i=0;
+			for(var l__g1=l_argc;l_i<l__g1;l_i++){
+				var l_arg=l_args1[l_i];
+				var l_pos=gml_std_string_pos_ext_haxe(l_arg,"=");
+				var l_opt=false;
+				if(l_pos>=0){
+					l_opt=true;
+					l_arg=gml_std_string_substring(l_arg,0,l_pos);
+				} else if(gml_std_string_pos_ext_haxe(l_arg,"...")>=0){
+					l_arg1=81;
+					l_argc=-1;
+					l_opt=true;
+				}
+				l_pos=gml_std_string_pos_ext_haxe(l_arg,":");
+				if(l_pos>=0){
+					var l_name=gml_std_string_substring(l_arg,0,l_pos);
+					if(gml_std_string_pos_ext_haxe(l_name,"?")>=0)l_opt=true;
+					var l_type=gml_std_StringTools_trim(gml_std_string_substring(l_arg,l_pos+1));
+					if(l_tmap.h_exists(l_type)){
+						var l_tfun=l_tmap.h_get(l_type);
+						if(gml_std_string_pos_ext_haxe(l_arg,"...")>=0)l_rest=l_tfun;
+						l_argt[@l_i]=l_tfun;
+					} else throw gml_std_haxe_Exception_thrown("\""+l_type+"\" is not a known type (in argument["+string(l_i)+"] \""+l_arg+"\" in \""+l_signature+"\")");
+				} else l_argt[@l_i]=gml_type_check_any;
+				if(l_opt&&l_arg0<0)l_arg0=l_i;
 			}
-			l_pos=gml_std_string_pos_ext_haxe(l_arg,":");
-			if(l_pos>=0){
-				var l_name=gml_std_string_substring(l_arg,0,l_pos);
-				if(gml_std_string_pos_ext_haxe(l_name,"?")>=0)l_opt=true;
-				var l_type=gml_std_StringTools_trim(gml_std_string_substring(l_arg,l_pos+1));
-				if(l_tmap.h_exists(l_type)){
-					var l_tfun=l_tmap.h_get(l_type);
-					if(gml_std_string_pos_ext_haxe(l_arg,"...")>=0)l_rest=l_tfun;
-					l_argt[@l_i]=l_tfun;
-				} else throw gml_std_haxe_Exception_thrown("\""+l_type+"\" is not a known type (in argument["+string(l_i)+"] \""+l_arg+"\" in \""+l_signature+"\")");
-			} else l_argt[@l_i]=gml_type_check_any;
-			if(l_opt&&l_arg0<0)l_arg0=l_i;
+			if(gml_std_string_pos_ext_haxe(l_argv,"...")>=0||gml_std_string_pos_ext_haxe(l_argv,"?")>=0||gml_std_string_pos_ext_haxe(l_argv,"=")>=0)l_argc=-1;
 		}
-		if(gml_std_string_pos_ext_haxe(l_argv,"...")>=0||gml_std_string_pos_ext_haxe(l_argv,"?")>=0||gml_std_string_pos_ext_haxe(l_argv,"=")>=0)l_argc=-1;
+		if(l_argc<0){
+			if(l_arg0<0)l_arg0=0;
+		} else {
+			l_arg1=l_argc;
+			l_arg0=l_argc;
+		}
+		var l_i=0;
+		var l_inst=0;
+		if(string_ord_at(l_s,l_i+1)==58){
+			l_i++;
+			l_inst++;
+		}
+		if(string_ord_at(l_s,l_i+1)==58){
+			l_i++;
+			l_inst++;
+		}
+		if(string_ord_at(l_s,l_i+1)==58){
+			l_i++;
+			l_inst++;
+		}
+		if(string_ord_at(l_s,l_i+1)==36&&string_ord_at(l_s,l_i+1+1)==123){
+			var l_k=gml_std_string_pos_ext_haxe(l_s,"}",l_i+2);
+			if(l_k<0)throw gml_std_haxe_Exception_thrown("Unclosed $(meta)");
+			if(gml_std_string_substring(l_s,l_i+2,l_k)=="raw")l_inst=-5; else throw gml_std_haxe_Exception_thrown("Unknown meta $("+gml_std_string_substring(l_s,l_i+2,l_k)+")");
+			l_i=l_k+1;
+		}
+		var l_name=gml_parse_name(l_s,l_i);
+		if(l_inst!=0)gml_inst_data.h_set(l_name,l_inst);
+		gml_func_eval.h_set(l_name,gml_std_string_pos_ext_haxe(l_flags,"#")>=0);
+		gml_func_args.h_set(l_name,l_argt);
+		gml_func_rest.h_set(l_name,l_rest);
+		gml_func_arg0.h_set(l_name,l_arg0);
+		gml_func_arg1.h_set(l_name,l_arg1);
+		gml_func_script.h_set(l_name,l_func);
+		gml_func_sig.h_set(l_name,l_s);
 	}
-	if(l_argc<0){
-		if(l_arg0<0)l_arg0=0;
-	} else {
-		l_arg1=l_argc;
-		l_arg0=l_argc;
-	}
-	var l_i=0;
-	var l_inst=0;
-	if(string_ord_at(l_s,l_i+1)==58){
-		l_i++;
-		l_inst++;
-	}
-	if(string_ord_at(l_s,l_i+1)==58){
-		l_i++;
-		l_inst++;
-	}
-	if(string_ord_at(l_s,l_i+1)==58){
-		l_i++;
-		l_inst++;
-	}
-	if(string_ord_at(l_s,l_i+1)==36&&string_ord_at(l_s,l_i+1+1)==123){
-		var l_k=gml_std_string_pos_ext_haxe(l_s,"}",l_i+2);
-		if(l_k<0)throw gml_std_haxe_Exception_thrown("Unclosed $(meta)");
-		if(gml_std_string_substring(l_s,l_i+2,l_k)=="raw")l_inst=-5; else throw gml_std_haxe_Exception_thrown("Unknown meta $("+gml_std_string_substring(l_s,l_i+2,l_k)+")");
-		l_i=l_k+1;
-	}
-	var l_name=gml_parse_name(l_s,l_i);
-	if(l_inst!=0)gml_inst_data.h_set(l_name,l_inst);
-	gml_func_eval.h_set(l_name,gml_std_string_pos_ext_haxe(l_flags,"#")>=0);
-	gml_func_args.h_set(l_name,l_argt);
-	gml_func_rest.h_set(l_name,l_rest);
-	gml_func_arg0.h_set(l_name,l_arg0);
-	gml_func_arg1.h_set(l_name,l_arg1);
-	gml_func_script.h_set(l_name,l_func);
-	gml_func_sig.h_set(l_name,l_s);
 }
 
 if(live_enabled)

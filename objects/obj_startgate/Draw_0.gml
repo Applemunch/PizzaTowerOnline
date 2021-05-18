@@ -11,6 +11,8 @@ if place_meeting(x,y,obj_player1) && !drawing
 
 if (!place_meeting(x,y,obj_player1) or obj_player1.state == states.victory) && drawing
 {
+	obj_camera.panto = [0, 0];
+	
 	drawing = false
 	obj_tv.manualhide = false
 }
@@ -67,21 +69,37 @@ if drawing
 	{
 		scory = -160;
 		if level != "freezer" && level != "sewer" && level != "factory" && level != "dragonlair"
+		{
+			if sprite_index == spr_entrancegate
+				obj_camera.panto = [0, -32];
 			draw_text(x, y - 200, string(secret) + " OF " + string(outof) + " SECRET");
+		}
 		
 		if toppin1
 		{
 			if level == "strongcold"
 				draw_sprite(spr_xmasshroomtoppin_idle, -1, x - 75, y - 120)
+			else if level == "steamcc"
+				draw_sprite(spr_toppinmallow, -1, x - 75, y - 120)
 			else
-				draw_sprite(spr_toppinshroom, -1, x - 75, y - 120)
+			{
+				if global.gameplay == 0
+					draw_sprite(spr_toppinshroom, -1, x - 75, y - 120)
+				else
+					draw_sprite(spr_toppinshroom_NEW, 3, x - 75, y - 120)
+			}
 		}
 		else
 		{
 			if level == "steamcc"
 				draw_sprite(spr_toppinSP_startgate, 0, x - 75, y - 120);
 			else
-				draw_sprite(spr_toppinshroom_pause, -1, x- 75, y - 120)
+			{
+				if global.gameplay == 0
+					draw_sprite(spr_toppinshroom_pause, -1, x- 75, y - 120)
+				else
+					draw_sprite(spr_toppinNEW_startgate, 4, x- 75, y - 120)
+			}
 		}
 
 
@@ -89,15 +107,27 @@ if drawing
 		{
 			if level == "strongcold"
 				draw_sprite(spr_xmascheesetoppin_idle, -1, x - 35, y - 120)
+			else if level == "steamcc"
+				draw_sprite(spr_toppinchoc, -1, x - 35, y - 120)
 			else
-				draw_sprite(spr_toppincheese,-1, x - 35, y - 120)
+			{
+				if global.gameplay == 0
+					draw_sprite(spr_toppincheese, -1, x - 35, y - 120)
+				else
+					draw_sprite(spr_toppincheese_NEW, 5, x - 35, y - 120)
+			}
 		}
 		else
 		{
 			if level == "steamcc"
 				draw_sprite(spr_toppinSP_startgate, 1, x - 35, y - 120);
 			else
-				draw_sprite(spr_toppincheese_pause,-1,x- 35, y - 120)
+			{
+				if global.gameplay == 0
+					draw_sprite(spr_toppincheese_pause, -1, x- 35, y - 120)
+				else
+					draw_sprite(spr_toppinNEW_startgate, 2, x- 35, y - 120)
+			}
 		}
 
 
@@ -106,14 +136,24 @@ if drawing
 			if level == "strongcold"
 				draw_sprite(spr_xmastomatotoppin_idle, -1, x, y - 120)
 			else
-				draw_sprite(spr_toppintomato,-1,x, y - 120)
+			{
+				if global.gameplay == 0
+					draw_sprite(spr_toppintomato, -1, x, y - 120)
+				else
+					draw_sprite(spr_toppintomato_NEW, 2, x, y - 120)
+			}
 		}
 		else
 		{
 			if level == "steamcc"
 				draw_sprite(spr_toppinSP_startgate, 2, x, y - 120);
 			else
-				draw_sprite(spr_toppintomato_pause,-1,x, y - 120)
+			{
+				if global.gameplay == 0
+					draw_sprite(spr_toppintomato_pause, -1, x, y - 120)
+				else
+					draw_sprite(spr_toppinNEW_startgate, 3, x, y - 120)
+			}
 		}
 
 		if toppin4
@@ -121,14 +161,24 @@ if drawing
 			if level == "strongcold"
 				draw_sprite(spr_xmassausagetoppin_idle, -1, x + 35, y - 120)
 			else
-				draw_sprite(spr_toppinsausage,-1, x + 35, y - 120)
+			{
+				if global.gameplay == 0
+					draw_sprite(spr_toppinsausage, -1, x + 35, y - 120)
+				else
+					draw_sprite(spr_toppinsausage_NEW, 0, x + 35, y - 120)
+			}
 		}
 		else
 		{
 			if level == "steamcc"
 				draw_sprite(spr_toppinSP_startgate, 3, x + 35, y - 120);
 			else
-				draw_sprite(spr_toppinsausage_pause,-1, x + 35, y - 120)
+			{
+				if global.gameplay == 0
+					draw_sprite(spr_toppinsausage_pause, -1, x + 35, y - 120)
+				else
+					draw_sprite(spr_toppinNEW_startgate, 1, x + 35, y - 120)
+			}
 		}
 	
 		if toppin5
@@ -136,14 +186,24 @@ if drawing
 			if level == "strongcold"
 				draw_sprite(spr_xmaspineappletoppin_idle, -1, x + 75, y - 120)
 			else
-				draw_sprite(spr_toppinpineapple,-1, x + 75, y - 120)
+			{
+				if global.gameplay == 0
+					draw_sprite(spr_toppinpineapple, -1, x + 75, y - 120)
+				else
+					draw_sprite(spr_toppinpineapple_NEW, 0, x + 75, y - 120)
+			}
 		}
 		else
 		{
 			if level == "steamcc"
 				draw_sprite(spr_toppinSP_startgate, 4, x + 75, y - 120);
 			else
-				draw_sprite(spr_toppinpineapple_pause, -1, x + 75, y - 120)
+			{
+				if global.gameplay == 0
+					draw_sprite(spr_toppinpineapple_pause, -1, x + 75, y - 120)
+				else
+					draw_sprite(spr_toppinNEW_startgate, 0, x + 75, y - 120)
+			}
 		}
 	}
 	
@@ -152,4 +212,3 @@ if drawing
 	
 	ini_close();
 }
-

@@ -3,8 +3,6 @@ function scr_player_mach2()
 	if windingAnim < 2000 && character == "P"
 		windingAnim++
 	
-	hsp = xscale * movespeed
-
 	var railh = 0, railmeet = instance_place(x, y + 1, obj_railparent);
 	if railmeet then railh = railmeet.spdh;
 	hsp = xscale * movespeed + railh;
@@ -130,26 +128,28 @@ function scr_player_mach2()
 	if key_down && !place_meeting(x,y,obj_dashpad) && (sprite_index != spr_mach2jump or character != "SP")
 	{
 		with instance_create(x,y,obj_jumpdust)
-		image_xscale = other.xscale
+			image_xscale = other.xscale
+		
 		flash = false
 		state = states.machroll
 		vsp = 10
+		
 		if character = "V"
-		sprite_index =spr_playerV_divekickstart 
+			sprite_index =spr_playerV_divekickstart 
 	}
-
+	
 	//Climbwall
 	if (!grounded && scr_solid(x+hsp,y,false) && (!place_meeting(x+hsp,y,obj_destructibles) or character == "V") && !place_meeting(x+sign(hsp),y,obj_slope))
 	or (grounded &&  scr_solid(x+hsp,y-64,false) && (!place_meeting(x+hsp,y,obj_destructibles) or character == "V")  && !place_meeting(x+hsp,y,obj_metalblock) && place_meeting(x,y+1,obj_slope))
-	  {
-	wallspeed = movespeed
-	 state =states.climbwall
-	  }
+	{
+		wallspeed = movespeed
+		state = states.climbwall
+	}
   
-	if (grounded ) && !scr_slope() && scr_solid(x+hsp,y,false) && (!place_meeting(x+hsp,y,obj_destructibles) or character == "V") && !place_meeting(x+sign(hsp),y,obj_slope)
+	if grounded && !scr_slope() && scr_solid(x+hsp,y,false) && (!place_meeting(x+hsp,y,obj_destructibles) or character == "V") && !place_meeting(x+sign(hsp),y,obj_slope)
 	{
 		movespeed = 0
-	state =states.normal	
+		state = states.normal	
 	}
 
 
@@ -189,23 +189,19 @@ function scr_player_mach2()
 
 
 	//Snick peelout
-	    if key_attack  && !scr_solid(x+xscale,y,false) && character = "S" && grounded
-	    {
-	state = states.handstandjump
-	movespeed = 0
-
-	    }
+	if key_attack  && !scr_solid(x+xscale,y,false) && character = "S" && grounded
+	{
+		state = states.handstandjump
+		movespeed = 0
+	}
 
 	//Back to other states
-
 	if (!key_attack && move != xscale && grounded && character != "S") or (character == "S" && move != xscale && grounded)
 	{
-
 		image_index = 0
-		state =states.machslide
+		state = states.machslide
 		scr_soundeffect(sfx_break)
 		sprite_index =spr_machslidestart
-
 	}
 
 	if move = -xscale && grounded && character != "S" && vsp >= 0
@@ -213,29 +209,30 @@ function scr_player_mach2()
 		scr_soundeffect(sfx_machslideboost)
 		image_index = 0
 		state = states.machslide
-
-		sprite_index =spr_machslideboost
+		
+		sprite_index = spr_machslideboost
 	}
 	
-		//Vigilante revolver
+	//Vigilante revolver
 	if key_slap2 && character = "V"
 	{
-	vsp = -5
-	state = states.revolver	
-	image_index = 0
+		vsp = -5
+		state = states.revolver	
+		image_index = 0
 		sprite_index = spr_playerV_airrevolver
 		image_index = 0
 		instance_create(x+image_xscale*20,y+20,obj_shotgunbullet)
-	scr_soundeffect(sfx_killingblow)
+		scr_soundeffect(sfx_killingblow)
 	}
+	
 	//Vigilante Dynamite
 	if key_shoot2 && character = "V" && !instance_exists(obj_dynamite)
 	{
 		vsp = -5
 
-	state = states.dynamite
-	image_index = 0
-	sprite_index = spr_playerV_dynamitethrow
+		state = states.dynamite
+		image_index = 0
+		sprite_index = spr_playerV_dynamitethrow
 		with instance_create(x,y,obj_dynamite)
 		{
 			image_xscale = other.xscale

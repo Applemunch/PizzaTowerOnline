@@ -3,13 +3,21 @@ with obj_player1
 	if (place_meeting(x - 1, y, other) or place_meeting(x + 1, y, other))
 	&& (state == states.mort or global.mort) && !other.eaten
 	{
-		other.eaten = true
-		other.x = -100
-		other.y = -100
-		other.sprite_index = spr_corneaten
-		grav = 0.5
-		state = states.normal
+		other.eaten = true;
+		
+		mort = false;
+		global.mort = false;
+		
+		grav = 0.5;
+		state = states.normal;
 	}
+}
+
+if eaten
+{
+	x = -1000;
+	y = -1000;
+	sprite_index = spr_corneaten;
 }
 
 /*

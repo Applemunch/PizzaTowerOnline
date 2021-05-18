@@ -106,8 +106,8 @@
     "PhysicsWorldPixToMetres": 0.1,
   },
   "parent": {
-    "name": "Title Screen",
-    "path": "folders/Rooms/Title Screen.yy",
+    "name": "Test Levels",
+    "path": "folders/Rooms/Test Levels.yy",
   },
   "resourceVersion": "1.0",
   "name": "rm_test",

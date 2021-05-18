@@ -1,5 +1,6 @@
 function scr_player_boxxedpep()
 {
+	image_speed = 0.35;
 	mask_index = spr_crouchmask
 	key_particles = false
 
@@ -93,21 +94,19 @@ function scr_player_boxxedpep()
 	//Effects
 	if !(instance_exists(obj_cloudeffect)) && grounded && move != 0 && (floor(image_index) = 4 or floor(image_index) = 10)
 	{
-	instance_create(x,y+43,obj_cloudeffect)
+		instance_create(x,y+43,obj_cloudeffect)
 	}
 
 	if !(instance_exists(obj_cloudeffect)) && grounded && move != 0 && (sprite_index = spr_player_downslopes or sprite_index = spr_player_upslopes)
 	{
-	instance_create(x,y+43,obj_cloudeffect)
+		instance_create(x,y+43,obj_cloudeffect)
 	}
 	if move != 0 && (floor(image_index) = 3 or floor(image_index) = 8) && steppy = false
 	{
-	//scr_sound(sound_step)
-	steppy = true
+		//scr_sound(sound_step)
+		steppy = true
 	}
 
 	if move != 0 && floor(image_index) != 3 && floor(image_index) != 8
-	steppy = false
-
-
+		steppy = false
 }

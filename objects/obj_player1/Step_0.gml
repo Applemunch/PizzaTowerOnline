@@ -613,6 +613,8 @@ if y > room_height + 200 && !cutscene
 && room != custom_lvl_room && room != rank_room
 && state != states.gameover && state != states.door
 {
+	grav = 0.5;
+	
 	x = roomstartx;
 	y = roomstarty;
 	

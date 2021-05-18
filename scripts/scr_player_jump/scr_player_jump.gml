@@ -364,7 +364,7 @@ function scr_player_jump()
 	//Suplex Dash
 	if key_slap2 && (character != "S" && character != "V")
 	{
-		if key_up && global.gameplay == 1 && character == "SP"
+		if key_up && global.gameplay == 1 && character == "SP" && sprite_index != spr_breakdanceuppercutend
 		{
 			// Breakdance up
 			scr_soundeffect(sfx_suplexdash);

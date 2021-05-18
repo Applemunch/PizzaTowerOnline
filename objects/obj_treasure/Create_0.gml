@@ -12,10 +12,9 @@ if obj_player1.character == "S"
 		instance_change(obj_snicklevelend, true);
 		x -= sprite_xoffset;
 		y -= sprite_yoffset;
-		x += 50;
-		y += 50;
 		
-		y += 14;
+		x += 50 + 16;
+		y += 50 - 12;
 	}
 }
 

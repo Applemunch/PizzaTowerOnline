@@ -27,15 +27,13 @@ repeat 3
 	instance_create(x,y,obj_baddiegibs)
 	instance_create(x,y,obj_slapstar)
 }
-instance_create(x,y+30,obj_bangeffect)
+instance_create(x, y + 30, obj_bangeffect)
 
 with (obj_camera)
 {
 	shake_mag=5;
 	shake_mag_acc=20/room_speed;
-}
 	
-hsp = 0
-vsp = 0
-
-event_perform(ev_alarm, 4);
+	targetoverride = noone;
+	targetgoingback = true;
+}

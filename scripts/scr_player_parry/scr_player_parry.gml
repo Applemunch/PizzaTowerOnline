@@ -23,6 +23,8 @@ function scr_player_parry()
 	    {
 	        if distance_to_object(other.id) < parry_threshold && state != states.grabbed && parryable && !(state == states.stun && thrown == true)
 	        {
+				if hp > 1
+					hp = 1;
 	            grabbedby = _grabbedby;
 	            state = states.grabbed;
 	        }

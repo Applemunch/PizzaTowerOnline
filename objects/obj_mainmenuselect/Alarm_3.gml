@@ -13,6 +13,7 @@ if instance_exists(obj_gms)
 				alarm[0] = 200;
 			}
 			
+			loading = false;
 			obj_file1.sprite_index = spr_file1
 			selected = false
 		}

@@ -51,6 +51,7 @@ switch character
 			["CHUNGUS", "Big."],
 			["MR ORANGE", "I'm seeing double! Four Noise!"],
 			["NEO", "Neo is the new."],
+			["DR. BAD BREAKFAST", "Snooping as usual, I see!"],
 		];
 		break;
 	
@@ -152,7 +153,10 @@ switch character
 			["PAINTLAD", "Very original, Jacko."],
 			["ENA", "Cheese and rice, Moony!"],
 			["TRANS", "Laugh."],
+			["GREEN APPLE", "Why is this the least favorite candy flavor?"],
 		];
+		if irandom_range(0, 200) == 5 // 0.5% chance
+			palettenames[1] = ["TRANNY", "From the hit game Transgender Shithole!"];
 		break;
 		
 		//["PAINTLAD", "Did you know Jacko suggested the name Paintlad\nand is probably never going to be credited for it?"],

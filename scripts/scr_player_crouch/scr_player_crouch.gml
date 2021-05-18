@@ -20,28 +20,28 @@ function scr_player_crouch()
 	//Fall off
 	if !(grounded) && !key_jump  
 	{
-	jumpAnim = false
-	state = states.crouchjump
-	movespeed = 4
-	crouchAnim = true
-	image_index = 0
+		jumpAnim = false
+		state = states.crouchjump
+		movespeed = 4
+		crouchAnim = true
+		image_index = 0
 	}
 
 
 
 
 	///Back to other states
-	    //Normal
-	    if grounded && !key_down && !(scr_solid(x,y-16)) && !(scr_solid(x,y-32)) && !key_jump
-	    {
-	    state = states.normal
-	    movespeed = 0
-	    crouchAnim = true
-	    jumpAnim = true
+	//Normal
+	if grounded && !key_down && !(scr_solid(x,y-16)) && !(scr_solid(x,y-32)) && !key_jump
+	{
+		state = states.normal
+		movespeed = 0
+		crouchAnim = true
+		jumpAnim = true
     
-	    image_index = 0
-	    mask_index = spr_player_mask
-	    }
+		image_index = 0
+		mask_index = spr_player_mask
+	}
 
 
 
@@ -89,14 +89,13 @@ function scr_player_crouch()
 	//Crouch Jump
 	if key_jump && grounded && !(scr_solid(x,y-16)) && !(scr_solid(x,y-32)) 
 	{
-	scr_soundeffect(sfx_jump)
-	vsp = -8
-	state = states.crouchjump
-	movespeed = 4
-	image_index = 0
-	crouchAnim = true
-	jumpAnim = true
-
+		scr_soundeffect(sfx_jump)
+		vsp = -8
+		state = states.crouchjump
+		movespeed = 4
+		image_index = 0
+		crouchAnim = true
+		jumpAnim = true
 	}
 
 	if scr_slope()

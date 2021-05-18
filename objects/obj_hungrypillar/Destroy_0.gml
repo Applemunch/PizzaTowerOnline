@@ -39,7 +39,7 @@ if ds_list_find_index(global.saveroom, id) = -1 && global.snickchallenge = false
 	}
 
 	with instance_create(x,y,obj_sausageman_dead)
-	sprite_index = spr_hungrypillar_dead
+		sprite_index = spr_hungrypillar_dead
 
 	scr_soundeffect(sfx_killenemy)
 
@@ -222,7 +222,10 @@ if ds_list_find_index(global.saveroom, id) = -1 && global.snickchallenge = false
 	ds_list_add(global.saveroom, id)
 
 	with obj_panicdebris
+	{
+		canflash = true;
 		event_perform(ev_other, ev_room_start);
+	}
 }
 
 if song != -1

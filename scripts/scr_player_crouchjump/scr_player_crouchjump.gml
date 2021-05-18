@@ -47,23 +47,32 @@ function scr_player_crouchjump() {
 			scr_soundeffect(sfx_step)
 	    }
 	//Animations
-	if jumpAnim = true
-	 {
-	 
-	if shotgunAnim = false
-	sprite_index = spr_crouchjump
-	else
-	sprite_index = spr_crouchjump
-	if floor(image_index) = image_number - 1
-	jumpAnim = false
-	}
-
-	if jumpAnim = false
+	if jumpAnim
 	{
-	if shotgunAnim = false
-	sprite_index = spr_crouchfall
+		if !shotgunAnim
+			sprite_index = spr_crouchjump
+		else
+		{
+			if character == "P"
+				sprite_index = spr_shotgun_crouchjump1;
+			else
+				sprite_index = spr_crouchjump
+		}
+		
+		if floor(image_index) = image_number - 1
+			jumpAnim = false
+	}
 	else
-	sprite_index = spr_crouchfall
+	{
+		if !shotgunAnim
+			sprite_index = spr_crouchfall
+		else
+		{
+			if character == "P"
+				sprite_index = spr_shotgun_crouchjump2;
+			else
+				sprite_index = spr_crouchfall;
+		}
 	}
 
 

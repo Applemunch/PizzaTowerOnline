@@ -40,4 +40,5 @@ if place_meeting(x, y + 32, obj_slope) && !place_meeting(x, y + yslope + 1, obj_
 */
 
 image_alpha = leader.image_alpha;
-visible = leader.visible;
+if object_index != obj_geromefollow or !instance_exists(obj_geromeanim)
+	visible = leader.visible;

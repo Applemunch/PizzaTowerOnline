@@ -56,7 +56,7 @@ function scr_enemy_stun()
 	
 	if grounded && vsp > 0
 	{ 
-		if thrown == true && hp <= 0
+		if thrown == true && hp <= 0 && object_index != obj_pizzaballOLD
 			instance_destroy()
 
 		thrown = false
@@ -72,12 +72,12 @@ function scr_enemy_stun()
 		with instance_create(x,y,obj_bulletimpact)
 			image_xscale = -other.image_xscale
 
-		if thrown == true && hp <= 0
+		if thrown == true && hp <= 0 && object_index != obj_pizzaballOLD
 			instance_destroy()
 		
 		grav = 0.5
 		image_xscale *= -1
-		hsp = -image_xscale *4
+		hsp = -image_xscale * 4
 	}
 
 	if floor(image_index) = image_number-1 && stunned <= 0 && (object_index != obj_peasanto or angry)

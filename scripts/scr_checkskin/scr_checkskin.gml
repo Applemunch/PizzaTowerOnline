@@ -13,7 +13,7 @@ function scr_checkskin(argument0)
 	}
 
 	if argument0 == checkskin.p_anton
-		return (obj_player1.character == "P" && obj_player1.paletteselect == 13) or (obj_player1.character == "SP" && obj_player1.paletteselect == 8);
+		return (obj_player1.character == "P" && obj_player1.paletteselect == 13) or (obj_player1.character == "SP" && obj_player1.paletteselect == 13);
 	if argument0 == checkskin.p_antononly
 		return obj_player1.character == "P" && obj_player1.paletteselect == 13;
 	if argument0 == checkskin.p_peter

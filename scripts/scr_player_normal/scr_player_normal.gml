@@ -257,7 +257,7 @@ function scr_player_normal()
 		}
 	
 		//Crouch
-		if (key_down or scr_solid(x, y - 3)) && character != "S"
+		if (key_down or scr_solid(x, y - 3)) && character != "S" && sprite_index != spr_playerV_revolverend
 		{
 			state = states.crouch
 			landAnim = false
@@ -267,7 +267,7 @@ function scr_player_normal()
 		}
 		
 		//Snick peelout
-		if key_attack && character = "S"
+		if key_attack && character == "S"
 		{
 			state = states.handstandjump
 			movespeed = 0

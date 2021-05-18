@@ -13,7 +13,7 @@ function scr_knightbump()
 	}
 	
 	// knight armor debris
-	if character == "P" or character == "N"
+	if character == "P" or character == "N" or character == "SP"
 	{
 		for(var i = 0; i < 5 - (character == "N"); i++)
 		{
@@ -24,6 +24,8 @@ function scr_knightbump()
 					sprite_index = spr_knightdebris;
 				else if other.character == "N"
 					sprite_index = spr_playerN_knightarmor;
+				else if other.character == "SP"
+					sprite_index = spr_knightdebrisSP;
 			}
 		}
 	}

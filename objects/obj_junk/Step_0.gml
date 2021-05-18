@@ -7,8 +7,11 @@ if grabbed == true
 	grav = 0
 	
 	playerid.baddiegrabbedID = id
+	var _state = playerid.state;
+	if _state == states.hitlag
+		_state = playerid.tauntstoredstate;
 	
-	if playerid.state = states.finishingblow or playerid.state = states.grabbing or playerid.state = states.grab or playerid.state = states._throw or playerid.state = states.slam or playerid.state = states.tacklecharge
+	if _state = states.finishingblow or _state = states.grabbing or _state = states.grab or _state = states._throw or _state = states.slam or _state = states.tacklecharge
 	{
 		thrown = false
 		grav = 0
@@ -38,14 +41,14 @@ if grabbed == true
 	hsp = 0
 
 
-	if playerid.state = states.finishingblow
+	if _state = states.finishingblow
 	{
 		x = playerid.x + playerid.xscale * 50
 		y = playerid.y 
 	}
 
 
-	if (playerid.state = states.grab && playerid.sprite_index = playerid.spr_swingding)
+	if (_state = states.grab && playerid.sprite_index = playerid.spr_swingding)
 	{
 		if floor(playerid.image_index) = 0
 		{
@@ -103,7 +106,7 @@ if grabbed == true
 
 
 
-	if playerid.state = states.shoulder 
+	if _state = states.shoulder 
 	{
 	grav = 0.5
 	instance_create(x , y+20, obj_bumpeffect)
@@ -140,7 +143,7 @@ if grabbed == true
 
 
 
-	if playerid.state = states._throw 
+	if _state = states._throw 
 	{
 	grav = 0.5
 	grabbed = false
@@ -157,7 +160,7 @@ if grabbed == true
 
 
 
-	if playerid.state = states.uppunch
+	if _state = states.uppunch
 	{
 
 
@@ -185,13 +188,13 @@ if grabbed == true
 	}
 
 
-	//if playerid.state = states.backbreaker && floor(playerid.image_index) < 2
+	//if _state = states.backbreaker && floor(playerid.image_index) < 2
 	//{
 	//x = playerid.x + (-image_xscale *8)
 	//y = playerid.y - 45
 	//}
 
-	//if playerid.state = states.backbreaker && floor(playerid.image_index) >= 2
+	//if _state = states.backbreaker && floor(playerid.image_index) >= 2
 	//{ 
 	//x = playerid.x
 	//y = playerid.y 
@@ -202,7 +205,7 @@ if grabbed == true
 	//}
 
 	//Charge
-	if playerid.state = states.tacklecharge 
+	if _state = states.tacklecharge 
 	{
 
 	x = playerid.x + (playerid.xscale * 15)
@@ -211,7 +214,7 @@ if grabbed == true
 
 
 
-	if playerid.state = states.superslam
+	if _state = states.superslam
 	{
 		scr_enemy_driverpos(playerid);
 

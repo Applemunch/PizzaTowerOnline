@@ -43,8 +43,13 @@ if gms_ini_player_read("saveData", "customlock") == "P"
 audio_stop_all();
 
 scr_soundeffect(sfx_collecttoppin);
-with instance_create(x,y,obj_fadeout)
+with obj_player1
 {
-	obj_player1.targetRoom = hub_room1
-	obj_player1.state = states.normal
+	targetRoom = hub_room1
+	state = states.normal
 }
+instance_create(x, y, obj_fadeout);
+
+// spawn in world controller
+if gms_self_admin_rights()
+	instance_create(0, 0, obj_wc);

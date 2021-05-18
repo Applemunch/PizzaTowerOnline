@@ -3,7 +3,7 @@
     "name": "spr_corn",
     "path": "sprites/spr_corn/spr_corn.yy",
   },
-  "solid": true,
+  "solid": false,
   "visible": true,
   "spriteMaskId": null,
   "persistent": false,

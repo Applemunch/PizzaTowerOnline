@@ -15,6 +15,7 @@ if instance_exists(obj_gms)
 				alarm[0] = 200;
 			}
 			
+			loading = false;
 			obj_player1.state = states.normal;
 		}
 		else

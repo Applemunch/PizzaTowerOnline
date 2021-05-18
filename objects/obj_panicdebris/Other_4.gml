@@ -55,7 +55,8 @@ if global.panic && global.panicnightmare
 				var bgspr = asset_get_index(sprite_get_name(layer_background_get_sprite(layers_e[j])) + "escape");
 				if sprite_exists(bgspr)
 				{
-					flasha = 1;
+					if canflash
+						flasha = 1;
 					
 					sprite_set_speed(bgspr, 1, spritespeed_framespergameframe);
 					layer_background_change(layers_e[j], bgspr);
@@ -73,3 +74,4 @@ if global.panic && global.panicnightmare
 	if tilemap_get_tileset(map_id) == tile_desert_tileset
 		tilemap_tileset(map_id, tile_desertescape_tileset);
 }
+canflash = false;

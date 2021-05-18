@@ -12,7 +12,7 @@
 #region report last crash to discord
 
 global.crashed = [false, ""];
-if file_exists("lastcrash") && os_is_network_connected(false)
+if file_exists("lastcrash")
 {
 	var _e = file_text_open_read("lastcrash");
 	var e = string(base64_decode(string(file_text_readln(_e))));
@@ -20,7 +20,8 @@ if file_exists("lastcrash") && os_is_network_connected(false)
 	
 	global.crashed = [true, e];
 	
-	file_delete("lastcrash");
+	if !file_delete("lastcrash")
+		show_debug_message("last crash file didnt delete you dumbass lmfao");
 }
 
 #endregion

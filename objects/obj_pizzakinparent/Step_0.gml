@@ -23,7 +23,7 @@ if sc_check()
 	}
 }
 
-if sprite_index = _spr_intro && floor(image_index) == image_number - 1
+if sprite_index == _spr_intro && floor(image_index) == image_number - 1 && _spr_intro != _spr_run
 	sprite_index = _spr_idle
 
 if sprite_index != _spr_intro or _spr_intro == _spr_run

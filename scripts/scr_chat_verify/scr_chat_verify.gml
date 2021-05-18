@@ -4,7 +4,7 @@ function scr_getuser(argument0)
 {
 	var __uservar = ds_list_find_value(argument0, 1);
 	var __uservar2 = false;
-		
+	
 	if string_isnumber(__uservar)
 	{
 		if gms_other_find(real(__uservar)) != -1
@@ -267,7 +267,7 @@ function scr_chat_verify(argument0)
 			}
 			else
 			{
-				__user = scr_getuser(__uservar);
+				__user = scr_getuser(list);
 				if __user == false
 				{
 					gms_chat_local("User doesn't exist", merge_colour(c_red, c_white, 0.25));
@@ -297,7 +297,7 @@ function scr_chat_verify(argument0)
 				return false;
 			}
 			
-			__user = scr_getuser(list[| 1]);
+			__user = scr_getuser(list);
 			if __user == false
 			{
 				gms_chat_local("User doesn't exist", merge_colour(c_red, c_white, 0.25));
@@ -402,6 +402,7 @@ function scr_chat_verify(argument0)
 	#endregion
 	#region /tp pos & room
 	
+	/*
 	else if string_startswith(argument0, "/tpos ")
 	{
 		if gms_self_admin_rights() or debug
@@ -458,6 +459,7 @@ function scr_chat_verify(argument0)
 			return false;
 		}
 	}
+	*/
 	
 	#endregion
 	

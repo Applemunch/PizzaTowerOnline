@@ -1,4 +1,4 @@
-if global.timeattack == false
+if !global.timeattack
 {
     global.timeattack = true;
     scr_soundeffect(sfx_killingblow);

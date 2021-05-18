@@ -199,13 +199,13 @@ if global.gameplay == 0
 		if obj_player1.character = "SP"
 		{
 			if obj_player1.sprite_index = obj_player1.spr_knightpepthunder
-				draw_sprite_ext(spr_pepinoHUDthunder,-1,125,100, 1, 1, 0, c_white, alpha) // REPLACE
+				draw_sprite_ext(spr_pizzyHUDstun,-1,125,100, 1, 1, 0, c_white, alpha) // REPLACE
 			else if obj_player1.sprite_index != obj_player1.spr_knightpepstart && (obj_player1.state = states.knightpep or obj_player1.state = states.knightpepslopes)
-				draw_sprite_ext(spr_pepinoHUDknight,-1,125,100, 1, 1, 0, c_white, alpha) // REPLACE
+				draw_sprite_ext(spr_pizzyHUDknight,-1,125,100, 1, 1, 0, c_white, alpha)
 			else if obj_player1.sprite_index = obj_player1.spr_bombpepend
 				draw_sprite_ext(spr_pizzyHUDbombend,-1,125,100, 1, 1, 0, c_white, alpha) 
 			else if instance_exists(obj_itspizzatime)  or obj_player1.sprite_index = obj_player1.spr_bombpepintro or obj_player1.sprite_index = obj_player1.spr_bombpeprunabouttoexplode or obj_player1.sprite_index = obj_player1.spr_bombpeprun or obj_player1.sprite_index = obj_player1.spr_fireass // REPLACE
-				draw_sprite_ext(spr_pepinoHUDscream,-1,125,100, 1, 1, 0, c_white, alpha) // REPLACE
+				draw_sprite_ext(spr_pizzyHUDhurt,-1,125,100, 1, 1, 0, c_white, alpha) // REPLACE
 			else if obj_player1.state = states.Sjumpland or (obj_player1.state = states.freefallland && shake_mag > 0)  
 				draw_sprite_ext(spr_pizzyHUDstun,-1,125,100, 1, 1, 0, c_white, alpha)
 			else if obj_player1.sprite_index = obj_player1.spr_victory or obj_player1.state = states.keyget or obj_player1.state = states.smirk or obj_player1.state = states.gottreasure or (obj_player1.state = states.bossintro && obj_player1.sprite_index = spr_player_levelcomplete)
@@ -239,43 +239,41 @@ if global.gameplay == 0
 			else if obj_player1.angry = true
 				draw_sprite_ext(spr_pizzyHUD3hp,-1,125,100, 1, 1, 0, c_white, alpha)
 			else if obj_player1.sprite_index = spr_player_hurtidle or obj_player1.sprite_index = spr_player_hurtwalk // REPLACE
-				draw_sprite_ext(spr_pepinoHUD1hp,-1,125,100, 1, 1, 0, c_white, alpha) // REPLACE
-			else if global.panic = true or global.snickchallenge = true or global.miniboss = true
-				draw_sprite_ext(spr_pepinoHUDpanic,-1,125,100, 1, 1, 0, c_white, alpha) // REPLACE 
-			else if obj_player1.sprite_index = spr_shotgun_pullout // REPLACE
+				draw_sprite_ext(spr_pizzyHUDhurt,-1,125,100, 1, 1, 0, c_white, alpha) // REPLACE
+			else if global.panic or global.snickchallenge or global.miniboss
+				draw_sprite_ext(spr_pizzyHUD,-1,125,100, 1, 1, 0, c_white, alpha) // REPLACE 
+			else if obj_player1.sprite_index = obj_player1.spr_shotgunpullout
 				draw_sprite_ext(spr_pizzyHUDmenacing,-1,125,100, 1, 1, 0, c_white, alpha)
 			else
 				draw_sprite_ext(spr_pizzyHUD,-1,125,100, 1, 1, 0, c_white, alpha)
 		}
-
-
 		shader_reset()
 
 	
 
-		if (obj_player1.character = "P" or obj_player1.character == "S" or obj_player1.character == "SP" or (obj_player1.character == "N" && obj_player1.noisetype == 1) or obj_player1.character == "G")
+		if (obj_player1.character = "P" or obj_player1.character == "S"/* or obj_player1.character == "SP"*/ or (obj_player1.character == "N" && obj_player1.noisetype == 1) or obj_player1.character == "G")
 		{
 			var yy = 140;
 			if obj_player1.character == "SP"
 				yy = 164;
-		
+			
 			if obj_player1.movespeed < 2.4 or !(obj_player1.state = states.mach1 or obj_player1.state = states.mach2 or obj_player1.state = states.mach3 or obj_player1.state = states.climbwall or obj_player1.state = states.machslide or obj_player1.state = states.machroll or obj_player1.state = states.handstandjump)
-			draw_sprite_ext(spr_speedbar,0,125,yy, 1, 1, 0, c_white, alpha)
+				draw_sprite_ext(spr_speedbar,0,125,yy, 1, 1, 0, c_white, alpha)
 
 			else if obj_player1.movespeed >= 2.4 && obj_player1.movespeed < 4.8 && (obj_player1.state = states.mach1 or obj_player1.state = states.mach2 or obj_player1.state = states.mach3 or obj_player1.state = states.climbwall or obj_player1.state = states.machslide or obj_player1.state = states.machroll or obj_player1.state = states.handstandjump)
-			draw_sprite_ext(spr_speedbar,1,125,yy, 1, 1, 0, c_white, alpha)
+				draw_sprite_ext(spr_speedbar,1,125,yy, 1, 1, 0, c_white, alpha)
 
 			else if obj_player1.movespeed >= 4.8 && obj_player1.movespeed < 7.2 && (obj_player1.state = states.mach1 or obj_player1.state = states.mach2 or obj_player1.state = states.mach3 or obj_player1.state = states.climbwall or obj_player1.state = states.machslide or obj_player1.state = states.machroll or obj_player1.state = states.handstandjump)
-			draw_sprite_ext(spr_speedbar,2,125,yy, 1, 1, 0, c_white, alpha)
+				draw_sprite_ext(spr_speedbar,2,125,yy, 1, 1, 0, c_white, alpha)
 
 			else if obj_player1.movespeed >= 7.2 && obj_player1.movespeed < 9.6 && (obj_player1.state = states.mach1 or obj_player1.state = states.mach2 or obj_player1.state = states.mach3 or obj_player1.state = states.climbwall or obj_player1.state = states.machslide or obj_player1.state = states.machroll or obj_player1.state = states.handstandjump)
-			draw_sprite_ext(spr_speedbar,3,125,yy, 1, 1, 0, c_white, alpha)
+				draw_sprite_ext(spr_speedbar,3,125,yy, 1, 1, 0, c_white, alpha)
 
 			else if obj_player1.movespeed >= 9.6 && obj_player1.movespeed < 12 && (obj_player1.state = states.mach1 or obj_player1.state = states.mach2 or obj_player1.state = states.mach3 or obj_player1.state = states.climbwall or obj_player1.state = states.machslide or obj_player1.state = states.machroll or obj_player1.state = states.handstandjump)
-			draw_sprite_ext(spr_speedbar,4,125,yy, 1, 1, 0, c_white, alpha)
+				draw_sprite_ext(spr_speedbar,4,125,yy, 1, 1, 0, c_white, alpha)
 
 			else if obj_player1.movespeed >= 12 && (obj_player1.state = states.mach1 or obj_player1.state = states.mach2 or obj_player1.state = states.mach3 or obj_player1.state = states.climbwall or obj_player1.state = states.machslide or obj_player1.state = states.machroll or obj_player1.state = states.handstandjump)
-			draw_sprite_ext(spr_speedbarmax,-1,125,yy, 1, 1, 0, c_white, alpha)
+				draw_sprite_ext(spr_speedbarmax,-1,125,yy, 1, 1, 0, c_white, alpha)
 		 }
 	 
 		 /*

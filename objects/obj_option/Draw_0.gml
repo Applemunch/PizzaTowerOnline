@@ -749,7 +749,7 @@ if menu == 2
 			draw_set_colour(c_ltgray);
 			draw_text(640, 96, "Show some fancy stuff in your Discord status.");
 			
-			draw_set_colour($CF826C);
+			draw_set_colour($E66054);
 			draw_set_alpha(0.25);
 			draw_roundrect(460 + 5, 180 + 5, 820 + 5, 340 + 5, false);
 			draw_set_alpha(1);

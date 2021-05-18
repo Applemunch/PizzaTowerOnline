@@ -4,7 +4,7 @@ function scr_characterspr()
 	switch character
 	{
 		#region PEPPINO
-	
+			
 			case "P":
 			default:
 				spr_idle = spr_player_idle
@@ -1188,13 +1188,13 @@ function scr_characterspr()
 				spr_fightball = spr_player_fightball
 
 				spr_squished = spr_player_squished
-				spr_supertaunt1 = spr_player_supertaunt1
-				spr_supertaunt2 = spr_player_supertaunt2
-				spr_supertaunt3 = spr_player_supertaunt3
-				spr_supertaunt4 = spr_player_supertaunt4
-
+				spr_supertaunt1 = spr_playerSP_supertaunt
+				spr_supertaunt2 = spr_playerSP_supertaunt
+				spr_supertaunt3 = spr_playerSP_supertaunt
+				spr_supertaunt4 = spr_playerSP_supertaunt
+				
 				spr_taunt = spr_playerSP_taunt
-
+				
 				spr_rideweenie = spr_player_weeniemount
 				spr_barrelroll = spr_player_barrelroll
 				

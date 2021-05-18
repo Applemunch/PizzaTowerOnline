@@ -17,11 +17,22 @@ if global.gameplay != 0
 	var _x = x - 48;
     var _y = y - 48;
     var _xstart = _x;
+	
     for (var yy = 0; yy < 4; yy++)
     {
         for (var xx = 0; xx < 4; xx++)
         {
-            create_collect(_x, _y, choose(spr_sausagecollect, spr_shroomcollect, spr_shrimpcollect, spr_tomatocollect));
+			var spr;
+			if other.character == "N"
+				spr = choose(spr_halloweencollectibles1,spr_halloweencollectibles2,spr_halloweencollectibles3,spr_halloweencollectibles4,spr_halloweencollectibles5)
+			else if other.character == "S"
+				spr = spr_snickcollectible1
+			else if other.character == "SP"
+				spr = choose(spr_sugarycollectibles1, spr_sugarycollectibles2, spr_sugarycollectibles3, spr_sugarycollectibles4, spr_sugarycollectibles5, spr_sugarycollectibles6, spr_sugarycollectibles7, spr_sugarycollectibles8, spr_sugarycollectibles9, spr_sugarycollectibles10);
+			else
+				spr = choose(spr_sausagecollect, spr_shroomcollect, spr_shrimpcollect, spr_tomatocollect);
+			
+            create_collect(_x, _y, spr);
             _x += 16;
         }
         _x = _xstart;

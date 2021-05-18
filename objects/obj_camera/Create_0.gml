@@ -25,6 +25,9 @@ alpha = 1
 zoomh = 540
 zoomw = 960
 
+panto = [0, 0];
+pancur = [0, 0];
+
 edge_indicator = ds_queue_create()
 
 //DDP Set this to false to disable background effects to save FPS
