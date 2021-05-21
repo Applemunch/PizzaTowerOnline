@@ -68,25 +68,6 @@ state = states.pizzagoblinthrow
 }
 }
 
-/*
-if instance_exists(obj_player2)
-{
-	if x != obj_player2.x && obj_player2.state != states.bombpep && state != states.pizzagoblinthrow && bombreset = 0  && grounded
-{
-if ((obj_player2.x > x - 400) && (obj_player2.x < x + 400)) && (y <= obj_player2.y+20 && y >= obj_player2.y- 20)
-{
-if (state = states.walk or state = states.idle) 
-{
-
-image_index = 0
-image_xscale = -sign(x - obj_player2.x)
-state = states.pizzagoblinthrow
-}
-}
-}
-}
-*/
-
 if boundbox = false
 {
 with instance_create(x,y,obj_baddiecollisionbox)

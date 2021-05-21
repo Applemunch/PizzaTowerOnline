@@ -36,10 +36,10 @@ landspr = spr_slimebounce
 idlespr = spr_treasureguy_idle
 fallspr = spr_slimefall
 stunfallspr = spr_treasureguy_stun
-walkspr =spr_treasureguy_idle
+walkspr = spr_treasureguy_idle
 turnspr = spr_slimeturn
 recoveryspr = spr_treasureguy_stun
-grabbedspr = spr_treasureguy_idle
+grabbedspr = spr_treasureguy_stun
 scaredspr = spr_treasureguy_escapestart
 
 image_xscale = -1

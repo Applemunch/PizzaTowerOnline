@@ -4,10 +4,8 @@ global.snickchallenge = false;
 scr_soundeffect(sfx_pizzatime);
 scr_soundeffect(sfx_secretfound);
 fade = 0;
-if instance_exists(obj_gms)
-	depth = obj_gms.depth + 1;
-else
-	depth = -10000;
+
+depth = -1000;
 
 with obj_player1
 {

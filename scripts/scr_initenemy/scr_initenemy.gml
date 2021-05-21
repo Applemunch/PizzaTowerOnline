@@ -70,4 +70,5 @@ function scr_initenemy()
 	
 	haspalette = false
 	rematchscare = false
+	clipin = 60
 }

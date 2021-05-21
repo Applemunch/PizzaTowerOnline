@@ -1,5 +1,5 @@
 // no internet
-if (gms_info_isloggedin() == false or os_is_network_connected(false) == false)
+if (!gms_info_isloggedin() or !os_is_network_connected(false))
 && ((instance_exists(obj_player1) && obj_player1.state != states.titlescreen) or !instance_exists(obj_player1))
 && room != Realtitlescreen && room != characterselect
 {

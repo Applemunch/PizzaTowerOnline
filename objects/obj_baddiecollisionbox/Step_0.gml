@@ -83,7 +83,8 @@ if instance_exists(baddieID) && place_meeting(x,y,obj_player1) && !obj_player1.c
 					machpunchAnim = true
 					image_index = 0
 				}
-				if state = states.mach3 or (state == states.freefall && freefallsmash > 10) or state == states.knightpepslopes
+				if state = states.mach3 or (state == states.freefall && freefallsmash > 10)
+				or state == states.knightpep or state == states.knightpepslopes
 					other.baddieID.hp = -10;
 				
 				if state != states.hurt

@@ -1,5 +1,6 @@
 function scr_player_handstandjump()
 {
+	var predir = dir;
 	if character == "SP"
 	{
 		#region pizzelle golf grab
@@ -27,6 +28,7 @@ function scr_player_handstandjump()
 				state = states.mach2;
 			else
 				state = states.normal;
+			dir = predir;
 			
 			image_speed = 0.35
 			grav = 0.5
@@ -42,6 +44,7 @@ function scr_player_handstandjump()
 			machhitAnim = false
 			state = states.crouchslide
 			movespeed = 16
+			dir = predir;
 		}
 		
 		// Jump
@@ -52,7 +55,8 @@ function scr_player_handstandjump()
 		    sprite_index = spr_mach2jump
 		    instance_create(x, y, obj_jumpdust)
 		    state = states.mach2
-		    vsp = -11	
+		    vsp = -11
+			dir = predir;
 		}
 		
 		image_speed = 0.5
@@ -60,7 +64,7 @@ function scr_player_handstandjump()
 		//Effects
 		if !(instance_exists(obj_slidecloud)) && grounded && movespeed > 5
 		with instance_create(x,y,obj_slidecloud)
-		image_xscale = other.xscale
+			image_xscale = other.xscale
 	
 		#endregion
 	}
@@ -85,13 +89,14 @@ function scr_player_handstandjump()
 			movespeed = 10;
 
 		//Jump Stop
-		if (!key_jump2) && jumpstop = false && vsp < 0.5 && stompAnim =false 
+		if (!key_jump2) && !jumpstop && vsp < 0.5 && !stompAnim
 		{
 			vsp /= 10
 			jumpstop = true
 		}
 
 		if move != xscale && move != 0 && character != "S"
+		&& state == states.handstandjump // dont remove this its not pointless
 		{
 			xscale = move;
 			state = states.normal;
@@ -104,8 +109,9 @@ function scr_player_handstandjump()
 				grav = 0.5;
 				state = states.jump;
 			}
+			exit;
 		}
-
+		
 		if (floor(image_index) == image_number - 1 or ((sprite_index == spr_suplexdashjump or sprite_index == spr_suplexdashjumpstart) && !scr_slope())) && grounded
 		{
 			if (!key_attack or character = "N") && vsp >= 0
@@ -138,6 +144,7 @@ function scr_player_handstandjump()
 			machhitAnim = false
 			state = states.crouchslide
 			movespeed = 16
+			dir = predir;
 		}
 		
 		//Input jumping
@@ -153,6 +160,8 @@ function scr_player_handstandjump()
 
 		if (grounded && (input_buffer_jump < 8)) && character != "S"
 		{
+			input_buffer_jump = 8;
+			
 			image_index = 0
 			if state == states.crouchslide
 			{
@@ -163,7 +172,7 @@ function scr_player_handstandjump()
 			}
 			else
 				sprite_index = spr_suplexdashjumpstart
-
+			
 			jumpstop = 0
 			vsp = -11
 			
@@ -180,6 +189,7 @@ function scr_player_handstandjump()
 				scr_soundeffect(sfx_jump)
 				instance_create(x,y,obj_highjumpcloud2)
 			}
+			dir = predir;
 		}
 		
 		//Effects
@@ -194,6 +204,7 @@ function scr_player_handstandjump()
 			state = states._throw
 			sprite_index = spr_playerN_noisebombthrow
 			image_index = 0
+			
 			with instance_create(x,y,obj_playerbomb)
 			{
 				movespeed = 7

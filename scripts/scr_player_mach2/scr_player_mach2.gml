@@ -29,7 +29,7 @@ function scr_player_mach2()
 		input_buffer_jump = 0
 
 	//Jump
-	if (input_buffer_jump < 8) && grounded && !(move == 1 && xscale == -1) && !(move == -1 && xscale == 1) 
+	if (input_buffer_jump < 8) && grounded && move == xscale
 	{
 		input_buffer_jump = 8;
 		
@@ -204,7 +204,7 @@ function scr_player_mach2()
 		sprite_index =spr_machslidestart
 	}
 
-	if move = -xscale && grounded && character != "S" && vsp >= 0
+	if move == -xscale && grounded && character != "S" && vsp >= 0
 	{
 		scr_soundeffect(sfx_machslideboost)
 		image_index = 0

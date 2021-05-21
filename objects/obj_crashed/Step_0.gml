@@ -1,6 +1,6 @@
 scr_getinput();
 
-if (key_start or key_jump or key_slap)
+if (key_start or key_jump or key_slap or keyboard_check_pressed(vk_enter))
 && !fading
 {
 	scr_soundeffect(sfx_contin);

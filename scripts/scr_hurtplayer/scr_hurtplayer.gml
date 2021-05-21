@@ -225,14 +225,6 @@ function scr_hurtplayer(argument0)
 			}
 			
 			//scr_soundeffect(sfx_oh, sfx_ohman,sfx_hurt1,sfx_hurt2,sfx_hurt3, sfx_mammamia)
-
-			if state == states.grabbed
-			{
-				if object_index = obj_player1
-					y = obj_player2.y
-				else
-					y = obj_player1.y
-			}
 			
 			scr_soundeffect(sfx_pephurt)
 

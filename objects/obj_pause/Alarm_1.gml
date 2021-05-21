@@ -25,12 +25,8 @@ if (room == hub_room1 or room == cowboytask or room == Titlescreen or room == Sc
 	scr_playerreset()
 
 	obj_player1.state = states.titlescreen
-	obj_player2.state = states.titlescreen
 	global.cowboyhat = false
 	obj_player1.targetDoor = "A"
-	if instance_exists(obj_player2)
-		obj_player2.targetDoor = "A"
-	global.coop = false
 }
 else if room == custom_lvl_room
 {
@@ -56,7 +52,5 @@ else
 	instance_activate_all();
 	scr_playerreset()
 	obj_player.targetDoor = "A"
-	if instance_exists(obj_player2)
-		obj_player2.targetDoor = "A"
 	room = hub_room1
 }

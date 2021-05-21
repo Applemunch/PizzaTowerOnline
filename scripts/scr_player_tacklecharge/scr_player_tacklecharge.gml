@@ -139,6 +139,9 @@ function scr_player_tacklecharge()
 			vsp = -8;
 			
 			if baddiegrabbedID.object_index != obj_otherplayer
+			&& baddiegrabbedID.object_index != obj_pizzaballOLD
+			&& baddiegrabbedID.object_index != obj_junk
+			&& !object_is_ancestor(baddiegrabbedID.object_index, obj_junk)
 			{
 				baddiegrabbedID.hp--;
 				if baddiegrabbedID.hp <= 0

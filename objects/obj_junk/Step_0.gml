@@ -28,7 +28,7 @@ if grabbed == true
 		move = key_left2 + key_right2;
 
 
-		if !((state = states.finishingblow) or(state = states.grab) or (state = states.grabbing) or (state = states._throw) or (state = states.slam) or (state = states.tacklecharge) or (state = states.superslam) or (state = states.backkick) or (state = states.uppunch) or (state = states.shoulder))
+		if !((_state = states.finishingblow) or(_state = states.grab) or (_state = states.grabbing) or (_state = states._throw) or (_state = states.slam) or (_state = states.tacklecharge) or (_state = states.superslam) or (_state = states.backkick) or (_state = states.uppunch) or (_state = states.shoulder))
 		{
 			other.grav =0.5
 			other.x = x
@@ -207,9 +207,8 @@ if grabbed == true
 	//Charge
 	if _state = states.tacklecharge 
 	{
-
-	x = playerid.x + (playerid.xscale * 15)
-	y = playerid.y 
+		x = playerid.x + (playerid.xscale * 15)
+		y = playerid.y
 	}
 
 

@@ -2,6 +2,7 @@ fadealpha = 0
 AT = false
 HAT = false
 fadein = false
+depth = -1000;
 
 if scr_checkskin(checkskin.p_anton)
 	obj_endlevelfade.alarm[0] = 150

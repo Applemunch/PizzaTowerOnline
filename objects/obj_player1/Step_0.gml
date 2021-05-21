@@ -337,12 +337,16 @@ if (global.playerhealth <= 0 && state != states.gameover)
 	state = states.gameover
 }
 
-if state = states.gameover && y > room_height * 2
+if state == states.gameover && y > room_height * 2
 {
 	room = global.checkpointroom
 	
 	if global.checkpointroom == editor_entrance
+	{
 		obj_onlinemenu.menu = menutypes.leveldetails;
+		state = states.titlescreen;
+		targetDoor = "A";
+	}
 	
     var old_checkroom = global.checkpointroom
     var old_checkDoor = global.checkpointDoor
@@ -583,8 +587,7 @@ if state != states.jump
 	stompAnim = false
 
 //Too much alarm 1
-if (state = states.mach3 or (state = states.grabbed && instance_exists(obj_player2) && obj_player2.state = states.mach3) 
-or pizzapepper > 0  or sprite_index = spr_barrelroll or state == states.parry or state = states.rideweenie or (state = states.punch && global.gameplay == 0) or state = states.climbwall or (state = states.jump && sprite_index = spr_playerN_noisebombspinjump) or pogochargeactive = true or (state = states.hookshot) or state = states.mach2 or state = states.tacklecharge or state = states.machslide or state = states.machroll or (state = states.handstandjump && global.gameplay == 0) or (state == states.Sjump && global.gameplay != 0) or (state = states.chainsaw && mach2 >= 100))
+if (state = states.mach3 or pizzapepper > 0 or sprite_index = spr_barrelroll or state == states.parry or state = states.rideweenie or (state = states.punch && global.gameplay == 0) or state = states.climbwall or (state = states.jump && sprite_index = spr_playerN_noisebombspinjump) or pogochargeactive = true or (state = states.hookshot) or state = states.mach2 or state = states.tacklecharge or state = states.machslide or state = states.machroll or (state = states.handstandjump && global.gameplay == 0) or (state == states.Sjump && global.gameplay != 0) or (state = states.chainsaw && mach2 >= 100))
 {
 	if !macheffect
 	{

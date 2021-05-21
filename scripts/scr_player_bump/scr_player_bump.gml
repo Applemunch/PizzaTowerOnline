@@ -7,8 +7,12 @@ function scr_player_bump()
 	start_running = true
 	alarm[4] = 14
 	
-	if grounded && vsp > 0
-	hsp = 0
+	if grounded && vsp >= 0
+	{
+		var railh = 0, railmeet = instance_place(x, y + 1, obj_railparent);
+		if railmeet then railh = railmeet.spdh;
+		hsp = railh;
+	}
 
 	var can_end = true;
 	if sprite_index == spr_tumbleend

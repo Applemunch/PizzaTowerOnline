@@ -19,6 +19,9 @@ layer_y("Backgrounds_2", _cam_y * 0.15);
 layer_x("Backgrounds_3", _cam_x * 0.05);
 layer_y("Backgrounds_3", _cam_y * 0.05);
 
+layer_x("Backgrounds_fore1", _cam_x * -0.1);
+layer_y("Backgrounds_fore1", _cam_y * -0.1);
+
 layer_x("Backgrounds_Ground1", _cam_x * 0.25);
 layer_x("Backgrounds_Ground2", _cam_x * 0.25);
 

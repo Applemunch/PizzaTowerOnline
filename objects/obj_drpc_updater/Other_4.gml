@@ -103,7 +103,7 @@ else
 	
 	else if room == custom_lvl_room
 	{
-		if obj_onlinemenu.level_id == 1
+		if obj_onlinemenu.level_id == 1 && obj_onlinemenu.paging_type != 3
 		{
 			det = "Testing a level";
 			state = "";

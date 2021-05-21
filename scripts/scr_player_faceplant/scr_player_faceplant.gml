@@ -1,4 +1,5 @@
-function scr_player_faceplant() {
+function scr_player_faceplant()
+{
 	hsp = xscale * movespeed 
 
 	move = key_right + key_left

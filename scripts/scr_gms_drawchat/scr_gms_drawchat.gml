@@ -23,6 +23,7 @@ function scr_gms_drawchat(_x, _y, username, userid, message, width, yscale, colo
 	finalstr = string_replace_all(finalstr, ":fedora:", "\\e00");
 	finalstr = string_replace_all(finalstr, ":awful:", "\\e01");
 	finalstr = string_replace_all(finalstr, ":trolled:", "\\e02");
+	// also add it in the discord message sending bullshit!!!!
 	
 	// text effects
 	if (gms_self_admin_rights() && gms_self_playerid() == userid)

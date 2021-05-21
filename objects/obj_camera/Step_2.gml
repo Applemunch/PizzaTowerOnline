@@ -19,30 +19,7 @@ if healthold != global.playerhealth
 	healthshaketime = 30
 	healthold = global.playerhealth	
 }
-
-/*
-if global.coop = true
-{
-	if obj_player1.spotlight = true
-	{
-p2pdistance = point_distance(obj_player1.x, 0, obj_player2.x, 0)
-if obj_player1.x >= obj_player2.x
-p2pdistancex = -p2pdistance/2
-else
-p2pdistancex = p2pdistance/2
-	}
-else
-{
-p2pdistance = point_distance(obj_player2.x, 0, obj_player1.x, 0)
-
-if obj_player2.x >= obj_player1.x
-p2pdistancex = -p2pdistance/2
-else
-p2pdistancex = p2pdistance/2
-}
-
-}
-else */p2pdistancex = 0
+p2pdistancex = 0
 
 if floor(image_index) = 10
  shoving = false

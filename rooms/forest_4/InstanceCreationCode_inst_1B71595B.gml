@@ -1,7 +1,7 @@
 instance_destroy();
 exit;
 
-if !global.pizzadelivery && global.pizzasdelivered < 5 && global.panic == false
+if !global.pizzadelivery && global.pizzasdelivered < 5 && !global.panic
 {
     if !global.failcutscene
     {

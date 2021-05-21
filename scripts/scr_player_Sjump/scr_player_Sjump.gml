@@ -14,7 +14,7 @@ function scr_player_Sjump() {
 
 	move = key_right + key_left
 	
-	if global.gameplay == 0 or springsjump
+	if global.gameplay == 0 or springsjump or sprite_index == spr_playerV_superjump2
 		sjumpvsp = -15;
 
 	if (sprite_index == spr_superjump or sprite_index == spr_playerV_superjump2 or sprite_index == spr_superspringplayer) && (character != "V" or springsjump)

@@ -17,8 +17,7 @@ with other
 			if other.targetRoom == room
 			{
 				hallwaydirection *= -1;
-				hsp *= -1;
-				movespeed *= -1;
+				xscale *= -1;
 			}
 		}
 		else

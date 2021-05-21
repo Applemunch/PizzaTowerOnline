@@ -2,7 +2,7 @@
 global.logged = true;
 if !gms_self_isguest()
 {
-	if gms_ini_player_exists("saveData", "lastversion") == false
+	if !gms_ini_player_exists("saveData", "lastversion")
 	or gms_ini_player_read("saveData", "lastversion") != obj_gms.gameversion
 		gms_ini_player_write("saveData", "lastversion", obj_gms.gameversion);
 }
@@ -12,7 +12,7 @@ if gms_ini_player_exists("saveData", "pizzacoin")
 	scr_setcoin(gms_ini_player_read("saveData", "pizzacoin"));
 else
 {
-	if gms_self_isguest() == false
+	if !gms_self_isguest()
 		gms_ini_player_write("saveData", "pizzacoin", 0);
 	scr_setcoin(0);
 }

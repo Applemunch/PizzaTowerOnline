@@ -13,8 +13,8 @@
     "name": "audiogroup_default",
     "path": "audiogroups/audiogroup_default",
   },
-  "soundFile": "mu_noiseentrance_pc.wav",
-  "duration": 102.812691,
+  "soundFile": "mu_noiseentrance_pc.ogg",
+  "duration": 113.689217,
   "parent": {
     "name": "pizza castle",
     "path": "folders/Sounds/pizza castle.yy",

@@ -34,8 +34,17 @@ function scr_player_barrel()
 			scr_soundeffect(sfx_breakblock1, sfx_breakblock2)
 			
 			mask_index = spr_player_mask;
+			
+			var yo = y;
 			while scr_solid(x, y)
+			{
 				y++;
+				if y >= room_height
+				{
+					y = yo;
+					break;
+				}
+			}
 		}
 		else
 		{

@@ -363,13 +363,7 @@ if(global.__chat)
     {
         if(keyboard_string != "")
         {
-			// CHANGED
-			if gms_self_name() == "loypoll"
-				gms_chat(keyboard_string, merge_colour(c_blue, c_white, 0.75));
-			else if gms_self_admin_rights()
-				gms_chat(keyboard_string, merge_colour(c_yellow, c_white, 0.5));
-			else
-				gms_chat(keyboard_string, global.__chat_textcol);
+			gms_chat(keyboard_string, global.__chat_textcol);
             global.__chat_directclose = 1;
             global.__chat_highl = 1;
 			chat_lastmessage = keyboard_string;

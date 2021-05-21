@@ -6,6 +6,7 @@ with instance_place(x, y - 1, obj_player1)
 		{
 			scr_knightbump(true, false);
 			
+			image_blend = c_white
 	        image_index = 0
 	        state = states.fireass
 	        vsp = -21

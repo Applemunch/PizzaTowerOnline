@@ -2,9 +2,19 @@
 var color = make_color_rgb(121, 103, 151);
 draw_set_alpha(0.85);
 draw_rectangle_color(0, 0, 960, 540, color, color, color, color, 0);
-draw_set_alpha(0.25);
-draw_sprite_tiled(pizza, 0, floor(x), floor(y));
-draw_set_alpha(1);
+
+if surface_exists(pizzasurf)
+{
+	surface_set_target(pizzasurf);
+	draw_set_alpha(0.25);
+	draw_sprite_tiled(pizza, 0, floor(x), floor(y));
+	draw_set_alpha(1);
+	surface_reset_target();
+	
+	draw_surface(pizzasurf, 0, 0);
+}
+else
+	pizzasurf = surface_create(960, 540);
 
 y -= 0.5;
 x += 0.5;

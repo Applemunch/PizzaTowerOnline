@@ -1,6 +1,6 @@
 player = other.object_index
 
-if start = 1
+if start
 {
 	if stopmusic
 		audio_stop_sound(global.music);
@@ -14,7 +14,7 @@ if start = 1
 		storedimageindex = player.image_index
 		storedspriteindex = player.sprite_index
 		storedfreefallsmash = player.freefallsmash
-		repeat (8) with instance_create(x+random_range(50,-50),y+random_range(50,-50),obj_cloudeffect)
+		repeat 8 with instance_create(x+random_range(50,-50),y+random_range(50,-50),obj_cloudeffect)
 		{
 			sprite_index = spr_teleporteffect
 			if instance_exists(obj_gms) && gms_info_isloggedin()

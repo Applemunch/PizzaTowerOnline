@@ -31,6 +31,7 @@ WC_modkp = -1;
 WC_consoleopen = false;
 
 WC_consolelist = ds_list_create();
+ds_list_insert(WC_consolelist, 0, "Welcome to PTO dev console");
 
 WC_consoletext = "";
 WC_consoleenter = "%startup";

@@ -1,6 +1,6 @@
 function scr_enemy_grabbed()
 {
-	if object_index == obj_treasureguy
+	if object_index == obj_treasureguy && global.gameplay == 0
 	{
 	    var player = asset_get_index("obj_player" + string(grabbedby));
 	    with player
@@ -108,9 +108,19 @@ function scr_enemy_grabbed()
 
 		if _state = states.finishingblow && obj_player1.image_index < 5
 		{
-			x = obj_player1.x + (obj_player1.xscale * 60)
-			y = obj_player1.y	
+			x = obj_player1.x + (obj_player1.xscale * clipin);
+			y = obj_player1.y
 			obj_player1.baddiegrabbedID = id
+			
+			// clip in bounds
+			var clipchange = false;
+			while scr_solid(x, y) && clipin > 0
+			{
+				clipchange = true;
+				clipin--;
+			}
+			if clipchange
+				x = obj_player1.x + (obj_player1.xscale * clipin);
 		}
 		
 		if _state = states.backkick 

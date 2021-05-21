@@ -273,7 +273,7 @@ function scr_player_normal()
 			movespeed = 0
 		}
 	}
-	else if !key_jump
+	else if !key_jump // fall off
 	{
 		if !shotgunAnim
 		{
@@ -293,7 +293,7 @@ function scr_player_normal()
 	//Suplex Dash
 	if key_slap2
 	{
-		if key_up && global.gameplay == 1
+		if key_up && global.gameplay == 1 && state != states.jump
 		{
 			// Breakdance up
 			if character == "P" or character == "SP"
@@ -325,7 +325,7 @@ function scr_player_normal()
 				}
 			}
 		}
-		else if character != "S" && character != "V"
+		else if character != "S" && character != "V" && !suplexmove
 		{
 			suplexmove = true
 			if character != "SP"
@@ -347,7 +347,12 @@ function scr_player_normal()
 					movespeed = 4
 				
 				if global.gameplay == 1
-					instance_create(x, y, obj_crazyrunothereffect)
+				{
+					with instance_create(x, y, obj_crazyrunothereffect)
+						image_xscale = other.xscale;
+					with instance_create(x + (xscale * -50), y, obj_superdashcloud)
+				        image_xscale = other.xscale;
+				}
 			}
 			else
 			{
@@ -430,8 +435,7 @@ function scr_player_normal()
 			vsp = 0
 		}
 	}
-
-
+	
 	//Noise Bomb
 	if key_shoot2 && character = "N" && !shotgunAnim && global.gameplay == 0
 	{

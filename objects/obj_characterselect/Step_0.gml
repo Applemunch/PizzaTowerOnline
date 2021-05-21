@@ -28,18 +28,6 @@ if (obj_player1.key_jump) && selected = 0 && obj_peppinoselect.sprite_index != s
 	scr_characterspr()
 	}
 	
-
-		with obj_player2
-	{
-	character = "N"
-	scr_characterspr()
-		if global.coop = true
-		{
-		obj_noiseselect.sprite_index = spr_noiseselected
-	obj_noiseselect.image_index = 0
-		}
-	}
-	
 	alarm[0] = 100
 }
 
@@ -53,18 +41,6 @@ if  (obj_player1.key_jump) && selected = 1 && obj_noiseselect.sprite_index != sp
 	{
 	character = "N"
 	scr_characterspr()
-	}
-	
-	
-		with obj_player2
-	{
-	character = "P"
-	scr_characterspr()
-		if global.coop = true
-		{
-		obj_peppinoselect.sprite_index = spr_peppinoselected
-	obj_peppinoselect.image_index = 0
-		}
 	}
 	
 	alarm[0] = 100

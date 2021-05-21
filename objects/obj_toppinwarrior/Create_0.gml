@@ -1,12 +1,7 @@
 image_speed = 0.1
 followQueue = ds_queue_create();
 
-
-
-if obj_player1.spotlight = true
 playerid = obj_player1
-else
-playerid = obj_player2
 
 
 followid = playerid

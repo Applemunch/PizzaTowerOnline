@@ -6,7 +6,7 @@ function scr_enemy_idle()
 		image_index = 0
 	}
 
-	if vsp >= 0 && sprite_index = scaredspr && scaredbuffer = 0
+	if vsp >= 0 && sprite_index == scaredspr && scaredbuffer <= 0
 	{
 		state = states.walk
 		sprite_index = walkspr

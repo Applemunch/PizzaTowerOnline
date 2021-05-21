@@ -22,11 +22,8 @@ switch menu
 		#endregion
 		#region starting menu
 		
-		if debug
-		{
-			if draw_editorbutton(384, 200, "ONLINE")
-				menu = menutypes.menuonline;
-		}
+		if draw_editorbutton(384, 200 + (!debug * 64), "ONLINE")
+			menu = menutypes.menuonline;
 		
 		if debug
 		{
@@ -54,25 +51,25 @@ switch menu
 				if instance_exists(obj_editor_cursor)
 					window_set_cursor(cr_none);
 			}
-		}
-		
-		if draw_editorbutton(384, 200 + 64 + (debug * 64), "BUILD")
-		{
-			/*
-			window_set_cursor(cr_default);
-			scr_playerreset();
-			room = hub_outside2;
-			obj_player1.targetDoor = "B";
-			*/
-			with obj_roomname
+			
+			if draw_editorbutton(384, 200 + 64, "BUILD")
 			{
-				showtext = true;
-				message = "UNFINISHED!!!";
-				alarm[0] = 200;
+				/*
+				window_set_cursor(cr_default);
+				scr_playerreset();
+				room = hub_outside2;
+				obj_player1.targetDoor = "B";
+				*/
+				with obj_roomname
+				{
+					showtext = true;
+					message = "UNFINISHED!!!";
+					alarm[0] = 200;
+				}
 			}
 		}
 		
-		if draw_editorbutton(384, 200 + 64 + 64 + (debug * 64), "BACK")
+		if draw_editorbutton(384, 200 + 64 + 64, "BACK")
 		{
 			scr_playerreset();
 			room = hub_outside2;
@@ -323,15 +320,24 @@ switch menu
 		{
 			if draw_editorbutton(704, 64, "UPLOAD")
 			{
-				if global.auth == ""
+				if debug
 				{
-					records = undefined;
-					menu = menutypes.login;
-					searchstring = "";
+					if global.auth == ""
+					{
+						records = undefined;
+						menu = menutypes.login;
+						searchstring = "";
+					}
+					else
+					{
+						// upload level dumbass
+					}
 				}
-				else
+				else with obj_roomname
 				{
-					// upload level dumbass
+					showtext = true;
+					message = "UNFINISHED!!!";
+					alarm[0] = 200;
 				}
 			}
 		}
@@ -370,6 +376,7 @@ switch menu
 			if draw_editorbutton(384, 296, "PLAY") && viewpos == 0
 			{
 				scr_playerreset();
+				obj_player1.targetDoor = "A";
 				room_goto(custom_lvl_room);
 			}
 			
@@ -482,6 +489,8 @@ switch menu
 	case menutypes.login:
 	{
 		var lg_name = string_copy(gms_self_name(), 1, 30);
+		if lg_name == "" && debug
+			lg_name = "admin";
 		
 		#region black box
 		

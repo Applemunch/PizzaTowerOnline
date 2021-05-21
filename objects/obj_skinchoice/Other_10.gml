@@ -1,10 +1,10 @@
 /// @description palettes & reset choice
-switch character
+switch sel[1]
 {
 	default:
 		spr_palette = spr_peppalette;
 		spr_idle = spr_player_idle;
-		palettenames = [
+		selarray = [
 			["YELLOW", "Palette zero.\nLegends say he was pissed on..."],
 			["PEPPINO", "A somewhat overweight Italian chef."],
 			["BLUE", "He's rocking a blue outfit."],
@@ -32,7 +32,7 @@ switch character
 	case "N":
 		spr_palette = spr_noisepalette;
 		spr_idle = spr_playerN_idle;
-		palettenames = [
+		selarray = [
 			["THE NOISE", "The mischievous gremlin."],
 			["HALLOWEEN", "Scary."],
 			["PEPPINO", "...The classic?"],
@@ -58,7 +58,7 @@ switch character
 	case "V":
 		spr_palette = spr_vigipalette;
 		spr_idle = spr_playerV_idle;
-		palettenames = [
+		selarray = [
 			["THE VIGILANTE", "AKA Vigert Ebenezer Lantte."],
 			["HALLOWEEN", "Trick or treat.\nThis is a threat."],
 			["MM8BDM", "What an exciting night."],
@@ -81,7 +81,7 @@ switch character
 	case "S":
 		spr_palette = spr_snickpalette;
 		spr_idle = spr_snick_idle;
-		palettenames = [
+		selarray = [
 			["SNICK", "It's him."],
 			["TAIL", "A single tail."],
 			["SHADER", "im the greatest living thing my duderino"],
@@ -103,7 +103,7 @@ switch character
 	case "G":
 		spr_palette = spr_gladepalette;
 		spr_idle = spr_playerG_idle;
-		palettenames = [
+		selarray = [
 			["???", "If you see this, I messed up."],
 			["GLADE", "She's a blue wolf."],
 			["BRAZ", "Glade's brother."],
@@ -133,7 +133,7 @@ switch character
 	case "SP":
 		spr_palette = spr_pizzpalette;
 		spr_idle = spr_playerSP_idle;
-		palettenames = [
+		selarray = [
 			["YELLOW", "Read the first 4 letters of Pizzelle,\nbut replace Pizz with fuck you."],
 			["PIZZELLE", "It's the Candy-making pizzano!"],
 			["WILD STRAWBERRY", "Also known as \"pink\"."],
@@ -155,8 +155,8 @@ switch character
 			["TRANS", "Laugh."],
 			["GREEN APPLE", "Why is this the least favorite candy flavor?"],
 		];
-		if irandom_range(0, 200) == 5 // 0.5% chance
-			palettenames[1] = ["TRANNY", "From the hit game Transgender Shithole!"];
+		if irandom_range(0, 1000) == 1 && !global.streamer // 0.01% chance
+			selarray[1] = ["TRANNY", "It's the Candy-making tranny!"];
 		break;
 		
 		//["PAINTLAD", "Did you know Jacko suggested the name Paintlad\nand is probably never going to be credited for it?"],
@@ -166,7 +166,7 @@ switch character
 	case "CHEESESLIME":
 		spr_palette = palette_cheeseslime;
 		spr_idle = spr_slimemove;
-		palettenames = [
+		selarray = [
 			["CHEESESLIME", "Totally useless. Cannon fodder."],
 			["HALLOWEEN", "Don't worry, he'll be dead soon.\nIs that too grim?"],
 		]
@@ -174,7 +174,7 @@ switch character
 	case "FORKNIGHT":
 		spr_palette = palette_forknight;
 		spr_idle = spr_forknight_walk;
-		palettenames = [
+		selarray = [
 			["FORKNIGHT", "His variant is Battle Royale."],
 			["HALLOWEEN", "Slightly darker, I pissed my pants."],
 		]
@@ -182,7 +182,7 @@ switch character
 	case "PEPGOBLIN":
 		spr_palette = palette_pepgoblin;
 		spr_idle = spr_pepgoblin;
-		palettenames = [
+		selarray = [
 			["PEPPERONI GOBLIN", "He will take any opportunity to practice kicks."],
 			["HALLOWEEN", "A nice purple tint."],
 		]
@@ -190,7 +190,7 @@ switch character
 	case "PIZZARD":
 		spr_palette = palette_pizzard;
 		spr_idle = spr_pizzard_walk;
-		palettenames = [
+		selarray = [
 			["PIZZARD", "The pizzard circle studies pizzamancy."],
 			["HALLOWEEN", "Inverting colors is spooky."],
 			["DOUGIE", "Bowtie."],
@@ -204,7 +204,7 @@ switch character
 	case "M":
 		spr_palette = spr_manpalette;
 		spr_idle = spr_playerM_idle;
-		palettenames = [
+		selarray = [
 			["PEPPERMAN", "A giant red pepper with limbs."],
 			["2 HP", "Spooky?"],
 			["1 HP", "568 percent vitamin C!"],
@@ -215,7 +215,7 @@ switch character
 	case "W":
 		spr_palette = spr_peppalette;
 		spr_idle = spr_playerW_idle;
-		palettenames = [
+		selarray = [
 			["WEENIE", "Wieners don't use drugs!"]
 		];
 		break;
@@ -229,11 +229,11 @@ custompal_update(palcolors);
 if instance_exists(obj_gms) && gms_info_isloggedin()
 	gms_self_set("palcolors", dsread);
 
-switch character
+switch sel[1]
 {
 	default:
 		if instance_exists(obj_gms) && gms_info_isloggedin()
-			locked = gms_ini_player_read("saveData", "customlock") == character;
+			locked = gms_ini_player_read("saveData", "customlock") == sel[1];
 		else
 			locked = false;
 		break;
@@ -253,17 +253,17 @@ switch character
 		break;
 }
 
-if character != obj_player1.character
-	paletteselect = ((character == "P" or character == "SP" or character == "G") ? 1 : 0);
+if sel[1] != obj_player1.character
+	sel[0] = ((sel[1] == "P" or sel[1] == "SP" or sel[1] == "G") ? 1 : 0);
 else
-	paletteselect = obj_player1.paletteselect;
+	sel[0] = obj_player1.paletteselect;
 
-palettemin = (character == "SP" or character == "G" ? 1 : 0);
-palettemax = pal_swap_get_pal_count(spr_palette) - 1;
+selmin = (sel[1] == "SP" or sel[1] == "G" ? 1 : 0);
+selmax = pal_swap_get_pal_count(spr_palette) - 1;
 
 if !check_shaders()
 {
-	paletteselect = 0;
-	if character == "P" or character == "SP"
-		palettenames[0] = palettenames[1];
+	sel[0] = 0;
+	if character == "P" or character == "SP" or character == "G"
+		selarray[0] = selarray[1];
 }

@@ -10,7 +10,10 @@ if thrown
 		grav = 0.35;
 }
 if state != states.grabbed
+{
+	clipin = 60;
 	scr_collide();
+}
 else
 	scr_enemy_grabbed();
 

@@ -39,6 +39,9 @@ function scr_playerreset()
 	global.raceid = 0;
 	global.golfhit = 0;
 	global.funmode = false;
+	
+	global.minutes = 2;
+	global.seconds = 59;
 
 	ds_list_clear(global.old_baddieroom)
 	ds_list_clear(global.old_saveroom)
@@ -125,6 +128,7 @@ function scr_playerreset()
 	with (obj_player1) 
 	{
 		image_blend = c_white;
+		
 		supercharged = false
 		pizzapepper = 0
 		pizzashield = false

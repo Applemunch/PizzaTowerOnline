@@ -29,7 +29,6 @@ if obj_player1.hatsprite != -1
 }
 
 locked = false;
-event_user(0);
 
 xoffset = 0;
 yoffset = 0;
@@ -41,3 +40,6 @@ if irandom_range(0, 100) >= 80
 	pizza = spr_pizzacollect2;
 if irandom_range(0, 100) >= 90
 	pizza = spr_pizzacollect3;
+pizzasurf = surface_create(960, 540);
+
+event_user(0);

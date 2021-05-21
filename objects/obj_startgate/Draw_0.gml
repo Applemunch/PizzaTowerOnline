@@ -70,7 +70,7 @@ if drawing
 		scory = -160;
 		if level != "freezer" && level != "sewer" && level != "factory" && level != "dragonlair"
 		{
-			if sprite_index == spr_entrancegate
+			if sprite_index == spr_entrancegate && obj_player1.state == states.normal
 				obj_camera.panto = [0, -32];
 			draw_text(x, y - 200, string(secret) + " OF " + string(outof) + " SECRET");
 		}

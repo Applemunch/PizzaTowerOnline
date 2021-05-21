@@ -831,31 +831,19 @@ function scr_player_mach3()
 	#endregion
 	
 	// dash cloud effects
-	if instance_exists(dashcloudid) == false && grounded
+	if !instance_exists(dashcloudid) && grounded
 	{
-		if !place_meeting(x, y + 1, obj_water)
+		var dashcloud = instance_create(x,y,obj_superdashcloud);
+		with dashcloud
 		{
-			with instance_create(x,y,obj_superdashcloud)
-			{
-				if other.fightball = true
-					instance_create(obj_player.x,obj_player.y,obj_slapstar)
+			if other.fightball = true
+				instance_create(obj_player.x,obj_player.y,obj_slapstar)
 	
-				image_xscale = other.xscale
-				other.dashcloudid = id
-			}
+			image_xscale = other.xscale
+			other.dashcloudid = id
 		}
-		else
-		{
-			with instance_create(x,y,obj_superdashcloud)
-			{
-				if other.fightball = true
-					instance_create(obj_player.x,obj_player.y,obj_slapstar)
-	
-				image_xscale = other.xscale
-				sprite_index = spr_watereffect;
-				other.dashcloudid = id
-			}
-		}
+		if place_meeting(x, y + 1, obj_water)
+			dashcloud.sprite_index = spr_watereffect;
 	}
 
 	/*
@@ -871,7 +859,7 @@ function scr_player_mach3()
 	*/
 
 	// charge effect
-	if instance_exists(chargeeffectid) == false
+	if !instance_exists(chargeeffectid)
 	{
 		with instance_create(x,y,obj_chargeeffect)
 		{
@@ -889,7 +877,7 @@ function scr_player_mach3()
 		image_speed = 0.75
 
 	//Super Jump
-	if key_up && fightball == false && (!(character == "N" && noisetype == 0) && character != "V") && grounded && sprite_index != spr_dashpadmach
+	if key_up && !fightball && (!(character == "N" && noisetype == 0) && character != "V") && grounded && sprite_index != spr_dashpadmach
 	{
 		sprite_index = spr_superjumpprep
 		scr_soundeffect(sfx_superjumpprep);

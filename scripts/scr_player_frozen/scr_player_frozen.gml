@@ -23,6 +23,7 @@ function scr_player_frozen()
 	    }
 		
 		image_blend = c_white;
+		audio_sound_pitch(global.music, 1);
 		exit;
 	}
 	
@@ -34,8 +35,6 @@ function scr_player_frozen()
 		
 		if hitLag <= 0
 		{
-			image_blend = c_white;
-		
 			scr_soundeffect(sfx_punch);
 			scr_soundeffect(sfx_breakblock2);
 		
@@ -47,6 +46,8 @@ function scr_player_frozen()
 			vsp = -12;
 			sprite_index = spr_machfreefall;
 			
+			image_blend = c_white;
+			audio_sound_pitch(global.music, 1);
 			exit;
 		}
 	}

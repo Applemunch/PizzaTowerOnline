@@ -22,11 +22,11 @@ gms_settings_declare_syncable_object(obj_baddiegibs);
 */
 
 // settings
-gameversion = 5.4;
+gameversion = 5.5;
 gms_settings(true, gameversion, obj_player1, obj_otherplayer);
 
 // scripts
-gms_script_set_chat_verify(scr_chat_verify);
+//gms_script_set_chat_verify(scr_chat_verify);
 gms_script_set_p2p(scr_gms_p2p);
 gms_script_set_roomid(scr_gms_room);
 gms_script_set_drawchat(scr_gms_drawchat);

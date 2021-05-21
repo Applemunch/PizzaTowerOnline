@@ -84,6 +84,7 @@ else
 	{
 		if paletteselect < 0
 		{
+			/*
 			var getread = gms_other_get_string(player_id, "palcolors");
 			if getread != ""
 			{
@@ -101,13 +102,13 @@ else
 				else
 					pal_swap_set(palsurf, 1, true);
 			}
+			*/
 		}
 		else
 			pal_swap_set(spr_palette, paletteselect, false);
 	}
 	draw_sprite_ext(sprit, image_index, x, y, xscale, yscale, image_angle, pausedcolor, image_alpha);
-	
-	shader_reset()
+	pal_swap_reset();
 
 	//Flash
 	if !pause && check_shaders()
