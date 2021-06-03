@@ -1,1 +1,2 @@
-scr_hurtplayer(other)
+if global.gameplay == 0
+	scr_hurtplayer(other)

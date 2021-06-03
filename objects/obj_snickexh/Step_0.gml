@@ -76,7 +76,8 @@ else
 		{
 			if appear == 0
 			{
-				sprite_index = spr_snick_exh_shadow;
+				sprite_index = (appeared ? spr_snick_exh : spr_snick_exh_shadow);
+				
 				popfrom = irandom(3);
 				if popfrom == 0 // top left corner
 				{
@@ -146,6 +147,7 @@ else
 			}
 			if appear == 2
 			{
+				appeared = true;
 				lockcam = true;
 			
 				if sprite_index != spr_snick_exhattack

@@ -27,6 +27,13 @@ global.richpresence = ini_read_real("online", "richpresence", true);
 global.streamer = ini_read_real("online", "streamer", false);
 global.showfps = ini_read_real("online", "showfps", false);
 global.pvp = /*ini_read_real("online", "pvp", false)*/ false;
+global.drawborder = ini_read_real("online", "drawborder", true)
+
+global.panicbg = ini_read_real("online", "panicbg", false); // waving background
+global.panicmelt = ini_read_real("online", "panicmelt", false) // motion blur
+global.panicshake = ini_read_real("online", "panicshake", true) // shaking
+global.panicnightmare = ini_read_real("online", "panicnightmare", true) // panic backgrounds
+global.panictilt = ini_read_real("online", "panictilt", false) // panic screen tilt
 
 // loaded?
 global.loaded_mus = true;

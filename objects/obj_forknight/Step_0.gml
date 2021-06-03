@@ -11,6 +11,7 @@ switch (state)
     case states.stun: scr_enemy_stun (); break;
     case states.pizzagoblinthrow: scr_pizzagoblin_throw (); break;
     // grabbed state here
+	case states.rage: scr_enemy_rage (); break;
 }
 
 if  state = states.stun && stunned > 100 && birdcreated = false
@@ -34,9 +35,42 @@ if (flash == true && alarm[2] <= 0) {
    alarm[2] = 0.15 * room_speed; // Flashes for 0.8 seconds before turning back to normal
 }
 
+// Heat attack
+var player = instance_nearest(x, y, obj_player1);
+if global.stylethreshold >= 3 && ragecooldown == 0 && object_index == obj_forknight
+{
+    if state == states.walk
+    {
+        if player.x > x - 400 && player.x < x + 400
+		&& player.y <= y + 60 && player.y >= y - 60
+        {
+            sprite_index = spr_forknight_ragestart
+			if global.snickrematch
+				sprite_index = spr_forknight_ragestart_re
+				
+            if player.x != x
+                image_xscale = -sign(x - player.x);
+				
+            image_index = 0;
+            flash = true;
+            alarm[4] = 5;
+			state = states.rage
+			ragedash = 50;
+				
+            with instance_create(x, y, obj_enemyafterimage)
+			{
+				parent = other.id;
+				sprite_index = other.sprite_index;
+				image_index = other.image_index;
+				image_xscale = other.image_xscale;
+			}
+        }
+    }
+}
+if ragecooldown > 0
+    ragecooldown--;
 
-
-if hitboxcreate == false && state == states.walk && !rematchscare
+if hitboxcreate == false && ((state == states.walk && !rematchscare) or state == states.rage)
 {
 	hitboxcreate = true
 	with instance_create(x, y, obj_forkhitbox)
@@ -53,7 +87,7 @@ if !boundbox
 {
 	with instance_create(x,y,obj_baddiecollisionbox)
 	{
-		sprite_index = other.sprite_index
+		sprite_index = spr_forknight_walk
 		mask_index = other.sprite_index
 		baddieID = other.id
 		other.boundbox = true

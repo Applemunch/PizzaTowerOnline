@@ -35,38 +35,38 @@ ID = other.id
 }
 }
 
-
-if attack == false
-sprite_index = spr_pizzaboy
-
-if attack == false && state != states.grabbed && state != states.stun && !thrown
+if !attack
 {
-state = states.idle
-roaming = false
+	sprite_index = spr_pizzaboy
+	if state != states.grabbed && state != states.stun && state != states.hit && !thrown
+	{
+		state = states.idle
+		roaming = false
+	}
 }
 
 if state != states.idle
 	roaming = true
 
 //Charge
-if (x != obj_player.x && ((obj_player.x > x - 200) && (obj_player.x < x + 200)) && obj_player.y = y)
+if (x != obj_player1.x && ((obj_player1.x > x - 200) && (obj_player1.x < x + 200)) && obj_player1.y = y)
 or (obj_player1.sprite_index == obj_player1.spr_taunt && state != states.pizzagoblinthrow && ((obj_player1.x > x - 400) && (obj_player1.x < x + 400)) && (y <= obj_player1.y+20 && y >= obj_player1.y- 20))
 {
-if (state = states.walk or state = states.idle) 
-{
-if sprite_index = spr_pizzaboy
-instance_create(x,y,obj_balloonpop)
+	if (state = states.walk or state = states.idle)
+	{
+		if sprite_index == spr_pizzaboy
+			instance_create(x,y,obj_balloonpop)
 
-image_xscale = -sign(x - obj_player.x)
-roaming = true
+		image_xscale = -sign(x - obj_player.x)
+		roaming = true
 
-attack = true
-vsp = -11
-scr_soundeffect(sfx_enemyprojectile)
-image_index = 0
-image_xscale = -sign(x - obj_player.x)
-state = states.charge
-}
+		attack = true
+		vsp = -11
+		scr_soundeffect(sfx_enemyprojectile)
+		image_index = 0
+		image_xscale = -sign(x - obj_player.x)
+		state = states.charge
+	}
 }
 
 

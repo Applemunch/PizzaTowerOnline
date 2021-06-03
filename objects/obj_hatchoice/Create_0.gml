@@ -1,45 +1,28 @@
-depth = -9999;
-instance_destroy(obj_pausefadeout);
+event_inherited();
 
-img = 0;
-hatselect = 0;
-
-hatnames = [
+selarray = [
 	[spr_nohat, "NO HAT", "Don't you already have a hat?"],
 	[spr_cowboyhat1, "COWBOY HAT", "Yeehaw."],
 	[spr_hat_snickcrown, "SNICK CROWN", "For the king of the 4 Snicks."],
 	[spr_hat_cowboy2, "SHERIFF HAT", "Weirdly western."]
 ];
-spr_idle = hatnames[0][0];
+spr_idle = selarray[0][0];
 
 if obj_player1.character == "G"
-	hatnames[0][2] = "Go Bald";
+	selarray[0][2] = "Go Bald";
 
 // auto select current hat
 if obj_player1.hatsprite != -1
 {
-	for(var i = 0; i < array_length(hatnames); i++)
+	for(var i = 0; i < array_length(selarray); i++)
 	{
-		if hatnames[i][0] == obj_player1.hatsprite
+		if selarray[i][0] == obj_player1.hatsprite
 		{
-			hatselect = i;
+			sel[0] = i;
 			break;
 		}
 	}
 }
-
-locked = false;
-
-xoffset = 0;
-yoffset = 0;
-
-stickpressed = false;
-
-pizza = spr_pizzacollect1;
-if irandom_range(0, 100) >= 80
-	pizza = spr_pizzacollect2;
-if irandom_range(0, 100) >= 90
-	pizza = spr_pizzacollect3;
-pizzasurf = surface_create(960, 540);
+selvert = false;
 
 event_user(0);

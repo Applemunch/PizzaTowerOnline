@@ -1,4 +1,7 @@
 depth = 12;
+if place_meeting(x, y, obj_destructibles)
+	depth = 112;
+
 image_speed = 0;
 
 var roomname = room_get_name(room);

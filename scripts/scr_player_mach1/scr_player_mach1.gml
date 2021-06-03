@@ -64,16 +64,15 @@ function scr_player_mach1()
 
 	if grounded
 	{
-	
-	if movespeed <= 8
-	movespeed += 0.075
-	if movespeed >= 8
-	{
+		if movespeed < 8
+			movespeed += 0.075
+		else
+		{
 
-	state = states.mach2
-	with instance_create(x,y,obj_jumpdust)
-	image_xscale = other.xscale
-	}
+			state = states.mach2
+			with instance_create(x,y,obj_jumpdust)
+			image_xscale = other.xscale
+		}
 	}
 
 	//Fall off

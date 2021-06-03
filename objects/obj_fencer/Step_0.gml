@@ -97,7 +97,7 @@ if boundbox = false
 {
 with instance_create(x,y,obj_baddiecollisionbox)
 {
-sprite_index = other.sprite_index
+sprite_index = spr_fencer
 mask_index = other.mask_index
 baddieID = other.id
 other.boundbox = true

@@ -2,6 +2,12 @@ if ds_list_find_index(global.baddieroom, id) == -1
 {
     with instance_create(x, y, obj_treasureguybox)
     {
+		if scr_solid(x, y) && !scr_solid(x, y - 32)
+		{
+			while scr_solid(x, y)
+				y--;
+		}
+		
         vsp = -3;
 		image_xscale = other.image_xscale;
         mask_index = other.mask_index;

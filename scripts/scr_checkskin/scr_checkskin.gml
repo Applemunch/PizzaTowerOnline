@@ -8,10 +8,11 @@ function scr_checkskin(argument0)
 		p_sage,
 		p_gray,
 		n_big,
+		n_nose,
 		s_shit,
 		s_sbombic
 	}
-
+	
 	if argument0 == checkskin.p_anton
 		return (obj_player1.character == "P" && obj_player1.paletteselect == 13) or (obj_player1.character == "SP" && obj_player1.paletteselect == 13);
 	if argument0 == checkskin.p_antononly
@@ -24,10 +25,12 @@ function scr_checkskin(argument0)
 		return obj_player1.character == "P" && obj_player1.paletteselect == 5;
 	if argument0 == checkskin.n_big
 		return obj_player1.character == "N" && obj_player1.paletteselect == 15;
+	if argument0 == checkskin.n_nose
+		return obj_player1.character == "N" && obj_player1.paletteselect == 19;
 	if argument0 == checkskin.s_shit
 		return obj_player1.character == "S" && obj_player1.paletteselect == 11;
 	if argument0 == checkskin.s_sbombic
 		return obj_player1.character == "S" && obj_player1.paletteselect == 13;
-
+	
 	return false;
 }

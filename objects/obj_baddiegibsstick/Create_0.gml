@@ -5,7 +5,6 @@ grounded = false;
 storedx = noone;
 storedy = noone;
 grav = 0.4;
-collisioned = false;
 depth = 16;
 
 sprite_index = choose(spr_goop, spr_goop2);

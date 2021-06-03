@@ -9,13 +9,13 @@ with other
 		scr_soundeffect(sfx_door)
 
 		obj_camera.chargecamera = 0
-		ds_list_add(global.saveroom, id) 
-
+		ds_list_add(global.saveroom, other.id)
+		
 		sprite_index = spr_lookdoor
-
+		
 		targetDoor = other.targetDoor
 		targetRoom = other.targetRoom
-
+		
 		image_index = 0		
 		state = states.door		
 		mach2 = 0

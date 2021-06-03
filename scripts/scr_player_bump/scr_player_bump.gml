@@ -13,7 +13,7 @@ function scr_player_bump()
 		if railmeet then railh = railmeet.spdh;
 		hsp = railh;
 	}
-
+	
 	var can_end = true;
 	if sprite_index == spr_tumbleend
 		can_end = !place_meeting(x, y, obj_pepgoblin_kickhitbox);
@@ -39,5 +39,4 @@ function scr_player_bump()
 	//Animations
 	if sprite_index != spr_player_catched && sprite_index != spr_rockethitwall && sprite_index != spr_tumbleend && sprite_index != spr_hitwall
 		sprite_index = ((!skateboarding) ? spr_bump : spr_clownbump);
-	image_speed = 0.35
 }

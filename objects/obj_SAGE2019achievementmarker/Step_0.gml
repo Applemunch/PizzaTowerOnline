@@ -85,25 +85,27 @@ else if treasure  = false && global.SAGEtreasure  = true
 }
 */
 
-if !funny && instance_exists(obj_ranksign)
-	ini_open("saveData.ini")
+	/*
+	if !funny && instance_exists(obj_ranksign)
+		ini_open("saveData.ini")
 
-if !funny && instance_exists(obj_ranksign) &&
-((ini_read_string("Ranks","medieval","none") == "a" && ini_read_string("Ranks","ruin","none") == "s" && ini_read_string("Ranks","dungeon","none") == "s")
-or (ini_read_string("Ranks","entrance","none") == "a" && ini_read_string("Ranks","medieval","none") == "s" && ini_read_string("Ranks","ruin","none") == "s"))
-{
-	up = true
-	sprite = bg_SAGEsrank
-	funny = true
-	alarm[0] = 250
-	ini_write_real("online", "funny", true)
+	if !funny && instance_exists(obj_ranksign) &&
+	((ini_read_string("Ranks","medieval","none") == "a" && ini_read_string("Ranks","ruin","none") == "s" && ini_read_string("Ranks","dungeon","none") == "s")
+	or (ini_read_string("Ranks","entrance","none") == "a" && ini_read_string("Ranks","medieval","none") == "s" && ini_read_string("Ranks","ruin","none") == "s"))
+	{
+		up = true
+		sprite = bg_SAGEsrank
+		funny = true
+		alarm[0] = 250
+		ini_write_real("online", "funny", true)
 	
-	scr_soundeffect(sfx_collectgiantpizza)
-	ini_close();
-}
+		scr_soundeffect(sfx_collectgiantpizza)
+		ini_close();
+	}
 
-if !funny && instance_exists(obj_ranksign)
-	ini_close();
+	if !funny && instance_exists(obj_ranksign)
+		ini_close();
+	*/
 }
 
 if picy = 300

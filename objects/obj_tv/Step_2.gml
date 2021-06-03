@@ -57,8 +57,16 @@ if global.gameplay == 0
 		tvsprite = spr_tvexit
 	}
 
-
-	else if global.collect > global.arank && shownranka = false && obj_player1.character = "P"
+	else if global.collect >= global.srank && !shownranks && obj_player1.character != "S" && global.srank > 0
+	{
+		image_speed = 0
+		message = "YOU GOT ENOUGH FOR RANK S"
+		showtext = true
+		alarm[0] = 200
+		tvsprite = spr_tvranks
+		shownranks = true
+	}
+	else if global.collect >= global.arank && !shownranka && obj_player1.character != "S" && global.srank > 0
 	{
 		image_speed = 0
 		message = "YOU GOT ENOUGH FOR RANK A"
@@ -67,7 +75,7 @@ if global.gameplay == 0
 		tvsprite = spr_tvranka
 		shownranka = true
 	}
-	else if global.collect > global.brank && shownrankb = false && obj_player1.character = "P"
+	else if global.collect >= global.brank && !shownrankb && obj_player1.character != "S" && global.srank > 0
 	{
 		image_speed = 0
 		message = "YOU GOT ENOUGH FOR RANK B"
@@ -76,7 +84,7 @@ if global.gameplay == 0
 		tvsprite = spr_tvrankb
 		shownrankb = true
 	}
-	else if global.collect > global.crank && shownrankc = false && obj_player1.character = "P"
+	else if global.collect >= global.crank && !shownrankc && obj_player1.character != "S" && global.srank > 0
 	{
 		image_speed = 0
 		message = "YOU GOT ENOUGH FOR RANK C"
@@ -86,7 +94,7 @@ if global.gameplay == 0
 		shownrankc = true
 	}
 	else
-	 //Clap
+	//Clap
 	if obj_player1.sprite_index = spr_player_levelcomplete
 	{
 		image_speed = 0.1
@@ -128,22 +136,34 @@ if global.gameplay == 0
 		tvsprite = spr_tvnoise
 	}
 
-	/*
 	else //Hurt message
-	if global.hurtcounter >= global.hurtmilestone && obj_player1.character = "P"
+	if global.hurtcounter >= global.hurtmilestone
 	{
 		alarm[0] = 150
 		image_speed = 0.1
-		if obj_player1.character = "P"
+		
+		if obj_player1.character == "P"
 			character = "PEPPINO"
-		else
+		else if obj_player1.character == "N"
 			character = "THE NOISE"
-			message = "YOU HAVE HURT " + string(character) + " " + string(global.hurtmilestone) + " TIMES..."
+		else if obj_player1.character == "S"
+			character = "SNICK"
+		else if obj_player1.character == "V"
+			character = "VIGILANTE"
+		else if obj_player1.character == "G"
+			character = "GLADE"
+		else if obj_player1.character == "SP"
+			character = "PIZZELLE"
+		else if obj_player1.character == "M"
+			character = "PEPPERMAN"
+		else
+			character = "NULLINO"
+		
+		message = "YOU HAVE HURT " + string(character) + " " + string(global.hurtmilestone) + " TIMES..."
 		if tvsprite != spr_tvtalking1 && tvsprite != spr_tvtalking2 && tvsprite != spr_tvtalking3 && tvsprite != spr_tvtalking4
 			tvsprite = choose(spr_tvtalking1,spr_tvtalking2,spr_tvtalking3,spr_tvtalking4)
-		global.hurtmilestone += 3
+		global.hurtmilestone += 10
 	}
-	*/
 	else //Skateboard
 	if obj_player1.state = states.skateboard 
 	{
@@ -546,6 +566,9 @@ else
 	
 	if manualhide
 		change_pos = true;
+	
+	if instance_exists(obj_fadeout)
+		change_pos = false;
 	
 	var spd = 15;
 	if change_pos

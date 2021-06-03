@@ -16,13 +16,20 @@ if sel[1] == "N"
 	if global.gameplay == 1 && noisetype == 0
 		_spr = spr_playerN_pogofall;
 	
-	if sel[0] == 15
+	if sel[0] == 15 or sel[0] == 19
 	{
-		_spr = spr_playerN_chungus;
+		if sel[0] == 19
+		{
+			_spr = spr_playerN_idle;
+			img = 0;
+		}
+		else
+			_spr = spr_playerN_chungus;
+		
 		draw_set_font(global.font_small);
 		if noisetype == 1 && global.gameplay == 0
 			draw_text((960 / 2) + xoffset, ((540 / 2) + yoffset) - sprite_get_height(_spr) + 32, "Skateboard");
-		else if noisetype == 0
+		else if noisetype == 0 && global.gameplay != 0
 			draw_text((960 / 2) + xoffset, ((540 / 2) + yoffset) - sprite_get_height(_spr) + 32, "Pogo");
 	}
 }
@@ -38,10 +45,12 @@ if sel[0] != -1
 }
 else
 {
+	/*
 	if !surface_exists(palsurf)
 		custompal_update(palcolors);
 	else
 		pal_swap_set(palsurf, 1, true);
+	*/
 }
 if sprite_exists(_spr)
 	draw_sprite_ext(_spr, img, (960 / 2) + xoffset, (540 / 2) + yoffset, 2, 2, 0, (locked ? merge_colour(c_white, c_black, 0.75) : c_white), (100 - abs(xoffset)) / 100);

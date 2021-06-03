@@ -108,6 +108,7 @@ function scr_player_handstandjump()
 				jumpAnim = true;
 				grav = 0.5;
 				state = states.jump;
+				suplexmove = false;
 			}
 			exit;
 		}

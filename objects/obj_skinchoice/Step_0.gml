@@ -25,6 +25,7 @@ if fade == 0
 	}
 }
 */
+
 event_inherited();
 if sel[1] == "N" && key_taunt2
 {

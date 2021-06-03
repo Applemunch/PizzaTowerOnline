@@ -14,6 +14,7 @@ shake_mag = 0;
 shake_mag_panic = 0;
 shake_mag_acc = 0;
 zoom = false
+hudframe = 0
 
 chargecamera = 0
 chargeprev = 0
@@ -29,16 +30,11 @@ panto = [0, 0];
 pancur = [0, 0];
 
 edge_indicator = ds_queue_create()
+drawhud = true
 
 //DDP Set this to false to disable background effects to save FPS
 // I suggest creating a menu option to set this to false
-ini_open("saveData.ini");
-global.panicbg = ini_read_real("online", "panicbg", false); // waving background
-global.panicmelt = ini_read_real("online", "panicmelt", false) // motion blur
-global.panicshake = ini_read_real("online", "panicshake", true) // shaking
-global.panicnightmare = ini_read_real("online", "panicnightmare", true) // panic backgrounds
-global.panictilt = ini_read_real("online", "panictilt", false) // panic screen tilt
-ini_close();
+// moved to obj_load
 
 //DDP During runbacks, waveamount slowly increases
 global.maxwave = 0

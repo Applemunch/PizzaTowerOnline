@@ -83,7 +83,7 @@
     "spriteId": {"name":"spr_gerome_keyidle","path":"sprites/spr_gerome_keyidle/spr_gerome_keyidle.yy",},
     "timeUnits": 1,
     "playback": 1,
-    "playbackSpeed": 0.35,
+    "playbackSpeed": 1.0,
     "playbackSpeedType": 1,
     "autoRecord": true,
     "volume": 1.0,

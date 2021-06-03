@@ -13,3 +13,4 @@ image_index = random_range(0, image_number -1)
 mask_index = spr_player_mask
 depth = -5
 stuntouchbuffer = 0
+clipin = 50

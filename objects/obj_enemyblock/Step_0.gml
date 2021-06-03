@@ -1,30 +1,13 @@
-with (obj_baddie)
+with obj_baddie
 {
-	if (place_meeting(x+hsp,y,obj_enemyblock)) && thrown = true
-	{
-		instance_destroy(instance_place(x + hsp, y, obj_enemyblock));
-	
-	}
-		if (place_meeting(x,y+vsp,obj_enemyblock)) && thrown = true
-	{
-		instance_destroy(instance_place(x , y + vsp, obj_enemyblock));
-	
-	}
+	if (place_meeting(x + hsp, y, other) or place_meeting(x, y + vsp, other))
+	&& thrown
+		instance_destroy(other);
 }
 
 with (obj_junk)
 {
-	if (place_meeting(x+hsp,y,obj_enemyblock)) && thrown = true
-	{
-		instance_destroy(instance_place(x + hsp, y, obj_enemyblock));
-	
-	}
-		if (place_meeting(x,y+vsp,obj_enemyblock))  && thrown = true
-	{
-		instance_destroy(instance_place(x , y+vsp, obj_enemyblock));
-	
-	}
+	if (place_meeting(x + hsp, y, other) or place_meeting(x, y + vsp, other))
+	&& thrown
+		instance_destroy(other);
 }
-
-if obj_player1.character == "S"
-	instance_destroy();

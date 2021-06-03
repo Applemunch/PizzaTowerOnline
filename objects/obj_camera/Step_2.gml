@@ -21,55 +21,25 @@ if healthold != global.playerhealth
 }
 p2pdistancex = 0
 
-if floor(image_index) = 10
- shoving = false
-
-
-
-
 if room == strongcold_endscreen or room == rank_room or room == timesuproom or room == Oldtitlescreen or room == characterselect or room == editor_entrance
 or (instance_exists(obj_gms) && global.__chat)
-	visible = false
+	drawhud = false
 else 
-	visible = true
-
-
-
-
-if global.combo >= 10
-{
-global.SAGEcombo10 = true
-	ini_open("saveData.ini")
-	ini_write_string("SAGE2019","combo10",true);
-	ini_close()
-	
-}
+	drawhud = true
+visible = true;
 
 /*
-if shoving = true &&  image_index >= 3 && bang = false
+if global.combo >= 10
 {
-	with instance_create(x,y,obj_fallingHUDface)
-	{
-	if (obj_player1.spotlight = false && obj_player1.character = "P") or (obj_player1.spotlight = true && obj_player2.character = "P")
-	{
-	sprite = spr_pepinoHUDscream
-	hsp = random_range(-1,-5)
-	}
-		else
-		{
-		sprite = spr_noiseHUD_panic
-		hsp = random_range(1,5)
-		}
-	}
-	bang = true
+	global.SAGEcombo10 = true
+	ini_open("saveData.ini")
+	ini_write_string("SAGE2019","combo10",true);
+	ini_close()	
 }
-if shoving = false
-bang = false
 */
 
-if (room == timesuproom)
-timestop = true
-
+if room == timesuproom
+	timestop = true;
 
 if global.seconds <= 0 && global.minutes <= 0 && !ded
 {
@@ -109,12 +79,8 @@ else
 ///snap view to the section of the room that the player's in
 
 //calculate the shake magnitude here
-if (shake_mag > 0) {
-    shake_mag-=shake_mag_acc;
-    if (shake_mag<0) {
-        shake_mag=0;
-    }
-}
+if shake_mag > 0
+    shake_mag = max(shake_mag - shake_mag_acc, 0);
 
 // target override
 if targetoverride != noone
@@ -183,7 +149,8 @@ if player.state != states.timesup && player.state != states.rotate && player.sta
 		}
 		
 		// crouch
-		if (player.state = states.crouch && player.hsp == 0) && !crouchcameragoingback && player.key_down
+		if ((player.state == states.crouch or (player.character == "S" && player.state == states.normal)) && player.hsp == 0)
+		&& !crouchcameragoingback && player.key_down
 		{
 			if crouchcamera < 1
 				crouchcamera += 0.02;
@@ -334,5 +301,5 @@ if global.panic or global.snickchallenge
 	if obj_camera.alarm[1] == -1 or global.minutes == 0 && global.seconds == 0
 		camsmooth = 0;
 	
-	global.wave = global.maxwave - (global.minutes * 60 + global.seconds + camsmooth) * 60;
+	global.wave = max(global.maxwave - (global.minutes * 60 + global.seconds + camsmooth) * 60, 0);
 }

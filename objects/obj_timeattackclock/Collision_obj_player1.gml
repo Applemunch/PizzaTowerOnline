@@ -1,12 +1,15 @@
-if !global.timeattack
+if other.state == states.handstandjump
 {
-    global.timeattack = true;
-    scr_soundeffect(sfx_killingblow);
-    instance_deactivate_object(id);
+	with other
+		scr_pummel();
 	
-	with obj_timeattack
+	global.timeattack = !global.timeattack;
+	scr_soundeffect(sfx_punch);
+	
+	if global.timeattack
 	{
-		alarm[1] = -1;
-		event_perform(ev_other, ev_room_start);
+		scr_soundeffect(sfx_killingblow);
+		with obj_timeattack
+			alarm[1] = -1;
 	}
 }

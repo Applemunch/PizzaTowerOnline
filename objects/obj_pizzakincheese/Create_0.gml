@@ -19,5 +19,5 @@ else
 spr_intro_strongcold = spr_xmascheesetoppin_intro;
 spr_idle_strongcold = spr_xmascheesetoppin_idle;
 spr_run_strongcold = spr_xmascheesetoppin_walk;
-spr_panic_strongcold = spr_xmascheesetoppin_panicidle;
+spr_panic_strongcold = spr_xmascheesetoppin_panic;
 spr_panicidle_strongcold = spr_xmascheesetoppin_panicidle;

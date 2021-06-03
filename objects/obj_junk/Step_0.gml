@@ -11,7 +11,7 @@ if grabbed == true
 	if _state == states.hitlag
 		_state = playerid.tauntstoredstate;
 	
-	if _state = states.finishingblow or _state = states.grabbing or _state = states.grab or _state = states._throw or _state = states.slam or _state = states.tacklecharge
+	if _state = states.finishingblow or _state = states.grabbing or _state = states.grab or _state = states._throw or _state = states.slam or _state = states.tacklecharge or _state == states.backbreaker
 	{
 		thrown = false
 		grav = 0
@@ -19,7 +19,11 @@ if grabbed == true
 		x = playerid.x 
 		
 		scr_enemy_grabpos(playerid);
+		visible = _state != states.backbreaker;
 	}
+	else
+		visible = true;
+	
 	with (playerid)
 	{
 		//Suplex mash
@@ -43,8 +47,21 @@ if grabbed == true
 
 	if _state = states.finishingblow
 	{
-		x = playerid.x + playerid.xscale * 50
-		y = playerid.y 
+		x = playerid.x + (playerid.xscale * clipin);
+		y = playerid.y
+			
+		// clip in bounds
+		with playerid
+			if scr_solid(x + xscale, y)
+			{
+				other.clipin = 1;
+				other.x = x;
+			}
+		while scr_solid(x, y) && clipin > 0
+		{
+			clipin--;
+			x = playerid.x + (playerid.xscale * clipin);
+		}
 	}
 
 
@@ -216,9 +233,11 @@ if grabbed == true
 	if _state = states.superslam
 	{
 		scr_enemy_driverpos(playerid);
-
+		
 		if playerid.sprite_index = playerid.spr_piledriverland 
+		&& (floor(playerid.image_index) = playerid.image_number - 1)
 		{
+			depth = -5
 			instance_create(x,y,obj_slapstar)
 			instance_create(x,y,obj_baddiegibs)
 
@@ -229,10 +248,21 @@ if grabbed == true
 			grav = 0.5
 			hsp = -image_xscale * 10
 			vsp = -10
+			
+			with obj_player1
+			{
+				jumpAnim = true;
+			    state = states.jump;
+			    sprite_index = spr_suplexland;
+			    vsp = -11;
+			    jumpstop = true;
+			    image_index = 0;
+			}
 		}
 	}
-
 }
+else
+	clipin = 50;
 
 if vsp > 0 && grounded 
 	hsp = 0
@@ -245,6 +275,9 @@ else if sprite_index == spr_punchball
 
 if grounded && !g && sprite_index == spr_punchball
 	scr_soundeffect(sfx_punchball_bounce);
+
+if place_meeting(x, y, obj_boilingsauce)
+	depth = 106;
 
 if place_meeting(x,y,obj_swordhitbox) && thrown == false && stuntouchbuffer <= 0
 && !(object_index == obj_tombstone && unpickable)

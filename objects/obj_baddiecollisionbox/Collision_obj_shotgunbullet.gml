@@ -6,6 +6,8 @@ if other.sync
 if instance_exists(baddieID) && baddieID.object_index != obj_pizzaballOLD
 && (baddieID.hp <= 1 or obj_player1.character != "V")
 {
+	increase_combo();
+	
 	instance_destroy()
 	instance_destroy(baddieID)
 }

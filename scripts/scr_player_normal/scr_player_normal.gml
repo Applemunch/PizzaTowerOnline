@@ -51,6 +51,7 @@ function scr_player_normal()
 				if mort
 					sprite_index = spr_pmortwalk
 				else if global.minutes <= 0 && global.seconds <= 0
+				&& !instance_exists(obj_toppinwarrior)
 					sprite_index = spr_hurtwalk
 				else if global.stylethreshold == 2
 		            sprite_index = spr_3hpwalk
@@ -107,8 +108,11 @@ function scr_player_normal()
 							
 							if sprite_index != spr_playerV_revolverend
 							{
-								if global.minutes <= 0 && global.seconds <= 0
-									sprite_index = spr_hurtidle  
+								if mort
+									sprite_index = spr_pmortidle
+								else if global.minutes <= 0 && global.seconds <= 0
+								&& !instance_exists(obj_toppinwarrior)
+									sprite_index = spr_hurtidle
 								else if global.panic or global.snickchallenge
 									sprite_index = spr_panic
 								else if global.stylethreshold == 2
@@ -237,7 +241,8 @@ function scr_player_normal()
 			
 			if shotgunAnim
 				sprite_index = spr_shotgunjump
-			else if global.minutes = 0 && global.seconds = 0 && character == "P"
+			else if global.minutes <= 0 && global.seconds <= 0 && character == "P"
+			&& !instance_exists(obj_toppinwarrior)
 				sprite_index = spr_player_hurtjump
 			else
 				sprite_index = spr_jump
@@ -277,7 +282,8 @@ function scr_player_normal()
 	{
 		if !shotgunAnim
 		{
-			if global.minutes = 0 && global.seconds = 0 && character == "P"
+			if global.minutes <= 0 && global.seconds <= 0 && character == "P"
+			&& !instance_exists(obj_toppinwarrior)
 				sprite_index = spr_player_hurtjump2
 			else
 				sprite_index = spr_fall
@@ -293,7 +299,7 @@ function scr_player_normal()
 	//Suplex Dash
 	if key_slap2
 	{
-		if key_up && global.gameplay == 1 && state != states.jump
+		if key_up && global.gameplay != 0 && state != states.jump
 		{
 			// Breakdance up
 			if character == "P" or character == "SP"
@@ -346,7 +352,7 @@ function scr_player_normal()
 				else
 					movespeed = 4
 				
-				if global.gameplay == 1
+				if global.gameplay != 0
 				{
 					with instance_create(x, y, obj_crazyrunothereffect)
 						image_xscale = other.xscale;
@@ -360,43 +366,61 @@ function scr_player_normal()
 			    sprite_index = spr_mach2jump
 			    instance_create(x, y, obj_jumpdust)
 			    state = states.mach2
-			    vsp = -9
+			    vsp = -11
 			}
 		}
 	}
 
 	// Breakdance
-	if key_shoot2 && !shotgunAnim && (character == "P" or character == "SP" or character == "G")
+	if key_shoot2 && !shotgunAnim
 	{
-		if !scr_checkskin(checkskin.p_anton)
+		if scr_checkskin(checkskin.p_anton)
 		{
-			if character != "SP" && global.gameplay == 0
+			if !instance_exists(obj_antonball)
 			{
-			    scr_soundeffect(sfx_breakdance);
-			    movespeed = 9;
-			    state = states.punch;
-			    sprite_index = spr_player_breakdancestart;
-			    with instance_create(x, y, obj_dashcloud2)
-			        image_xscale = other.xscale;
-			    breakdance = 35;
-			    image_index = 0;
-			    instance_create(x, y, obj_swingdinghitbox);
+				scr_soundeffect(sfx_enemyprojectile);
+				with instance_create(x, y, obj_antonball)
+				{
+					hsp = 6 * other.xscale;
+					if other.key_up
+						vsp = -6;
+					canhit = false;
+					alarm[0] = 15;
+				}
 			}
+			else
+				instance_destroy(obj_antonball);
 		}
-		else if !instance_exists(obj_antonball)
+		else if global.gameplay == 0
 		{
-			scr_soundeffect(sfx_enemyprojectile);
-			with instance_create(x, y, obj_antonball)
+			if character == "P"
 			{
-				hsp = 6 * other.xscale;
-				if other.key_up
-					vsp = -6;
-				canhit = false;
-				alarm[0] = 15;
+				scr_soundeffect(sfx_breakdance);
+				movespeed = 9;
+				state = states.punch;
+				sprite_index = spr_player_breakdancestart;
+				with instance_create(x, y, obj_dashcloud2)
+					image_xscale = other.xscale;
+				breakdance = 35;
+				image_index = 0;
+				instance_create(x, y, obj_swingdinghitbox);
 			}
 		}
 		else
-			instance_destroy(obj_antonball);
+		{
+			if global.mort
+		    {
+		        with instance_create(x + xscale * 20, y, obj_shotgunbullet)
+				{
+			        image_xscale = other.xscale;
+			        sprite_index = spr_mortprojectile;
+				}
+		    }
+			else if character == "P"
+			{
+				// funny
+			}
+		}
 	}
 
 	// Shotgun
@@ -468,7 +492,7 @@ function scr_player_normal()
 	//}
 
 	//Mach1
-	if key_attack && !scr_solid(x+xscale,y)  && (!(character == "N" && noisetype == 0) && character != "S")
+	if key_attack && !scr_solidwall(x + xscale, y) && (!(character == "N" && noisetype == 0) && character != "S")
 	{
 		if pizzapepper = 0
 		{
@@ -496,7 +520,7 @@ function scr_player_normal()
 	}
 	
 	//Snick walk
-	if character = "S" && move != 0 && !scr_solid(x+xscale,y) 
+	if character = "S" && move != 0 && !scr_solidwall(x + xscale, y)
 	{
 		movespeed = 6
 		sprite_index = spr_mach1

@@ -29,7 +29,7 @@ if instance_exists(ID)
 				if object_index == obj_sausageman
 					other.y = y - 20
 	
-				if state != states.walk 
+				if state != states.walk && state != states.rage
 				{
 					hitboxcreate = false
 					instance_destroy(other)

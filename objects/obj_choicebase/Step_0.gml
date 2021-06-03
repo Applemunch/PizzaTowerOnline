@@ -1,10 +1,10 @@
+scr_getinput(true);
 if room == Realtitlescreen or room == characterselect
 {
 	instance_destroy();
 	exit;
 }
 
-scr_getinput(true);
 if key_start or key_slap2
 {
 	scr_soundeffect(sfx_enemyprojectile);
@@ -21,12 +21,18 @@ if check_shaders() or !selvert
 		scr_soundeffect(sfx_step);
 		sel[0] -= 1;
 		xoffset = -100;
+		
+		if !selvert
+			event_user(0);
 	}
 	else if key_right2 && sel[0] < selmax
 	{
 		scr_soundeffect(sfx_step);
 		sel[0] += 1;
 		xoffset = 100;
+		
+		if !selvert
+			event_user(0);
 	}
 	sel[0] = clamp(sel[0], selmin, selmax);
 }

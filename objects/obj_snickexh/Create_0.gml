@@ -10,6 +10,7 @@ popfrom = 0;
 xcam = 960;
 ycam = 540;
 lockcam = false;
+appeared = false;
 
 if global.snickrematch && global.gameplay == 0
 	alarm[3] = 50

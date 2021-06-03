@@ -182,10 +182,6 @@ function scr_player_grab()
 		
 	    if movespeed == 0
 	        sprite_index = spr_haulingidle;
-		
-		//Jump Stop
-		if !key_jump2 && vsp < 0.5
-			vsp /= 10
 	}
 	
 	//Input buffer jumping
@@ -270,6 +266,10 @@ function scr_player_grab()
 			sprite_index = spr_swingding;
 			movespeed = 12;
 			instance_create(x, y, obj_swingdinghitbox);
+			
+			//Jump Stop
+			if !key_jump2 && vsp < 0.5
+				vsp /= 10;
 		}
 		
 		if baddiegrabbedID.object_index == obj_pizzaballOLD

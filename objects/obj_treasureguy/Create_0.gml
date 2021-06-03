@@ -43,7 +43,7 @@ grabbedspr = spr_treasureguy_stun
 scaredspr = spr_treasureguy_escapestart
 
 image_xscale = -1
-hp =1
+hp = 1
 slapped = false
 grounded = true
 birdcreated = false
@@ -52,7 +52,7 @@ spr_dead = spr_treasureguy_dead
 important = false
 
 heavy = false
-depth =0
+depth = 0
 
 spr_palette = palette_cheeseslime
 sprite_index = spr_slimemove

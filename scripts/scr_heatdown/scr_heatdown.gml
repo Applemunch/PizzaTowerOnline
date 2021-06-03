@@ -1,14 +1,15 @@
 function scr_heatdown()
 {
-	global.baddiespeed -= 1
-
+	global.baddiespeed = max(global.baddiespeed - 1, 1);
+	
 	if global.stylethreshold != 2
 		global.baddiepowerup = false
 
 	if global.stylethreshold < 2
 	{
 		global.baddierage = false
-		obj_heatafterimage.visible = false
+		with obj_heatafterimage
+			visible = false
 	}
 	
 	with obj_tv

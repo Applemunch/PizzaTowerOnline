@@ -69,6 +69,7 @@ else
 	if !is_real(sprit) or !sprite_exists(sprit) or sprit == 0
 		sprit = spr_player_idle;
 	
+	var _img = image_index;
 	if state != states.cheeseball
 	{
 		if spr_palette == spr_peppalette && paletteselect == 17
@@ -77,6 +78,27 @@ else
 			sprit = spr_playerN_chungus;
 		if spr_palette == spr_snickpalette && paletteselect == 13
 			sprit = spr_sbombic;
+		
+		if spr_palette == spr_noisepalette && paletteselect == 19
+		&& !(instance_exists(obj_pause) && obj_pause.pause)
+		{
+			_img = 0;
+			sprit = spr_playerN_idle;
+			if !scr_solid(x, y + 1) or state == states.machroll or state == states.crouch or state == states.crouchjump
+			or state == states.crouchslide or sprite_index == spr_playerN_tumble or state == states.boxxedpep
+				sprit = spr_playerN_head;
+			
+			if (x != xprevious or y != yprevious)
+			&& global.synceffect
+			{
+				with instance_create(x, y, obj_noseafterimage)
+				{
+					image_xscale = other.xscale;
+					sprite_index = sprit;
+					depth = other.depth + 1;
+				}
+			}
+		}
 	}
 	
 	if is_real(spr_palette) && spr_palette != 0 && sprite_exists(spr_palette)
@@ -107,7 +129,7 @@ else
 		else
 			pal_swap_set(spr_palette, paletteselect, false);
 	}
-	draw_sprite_ext(sprit, image_index, x, y, xscale, yscale, image_angle, pausedcolor, image_alpha);
+	draw_sprite_ext(sprit, _img, x, y, xscale, yscale, image_angle, pausedcolor, image_alpha);
 	pal_swap_reset();
 
 	//Flash
@@ -116,7 +138,7 @@ else
 		if (gms_other_get_real(player_id, "flash")) {
 		    shader_set(shd_hit);    // Sets the shader to our shader file we created earlier
 		    //Draw
-		draw_sprite_ext(sprit, image_index, x, y, xscale, yscale, image_angle, pausedcolor, image_alpha);
+		draw_sprite_ext(sprit, _img, x, y, xscale, yscale, image_angle, pausedcolor, image_alpha);
 		  // Draws the sprite, but now we have a shader set so it draws it as white
 		    shader_reset(); // Resets the shader to the default one (does nothing)
 

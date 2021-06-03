@@ -1,13 +1,19 @@
-function scr_player_freefall() {
-
+function scr_player_freefall()
+{
 	landAnim = true
 	vsp = 15
-
+	
+	if global.gameplay != 0
+	{
+		vsp = freefallvsp
+		freefallvsp += 0.2
+		if freefallvsp > 35
+			freefallvsp = 35;
+	}
+	
 	move = key_left + key_right;
 	if !grounded
 	{
-
-
 		hsp = move * movespeed;
 
 		
@@ -113,26 +119,26 @@ function scr_player_freefall() {
 		    jumpAnim = true
 		    jumpstop = false
     
-	    with (obj_baddie)
-		{
-			if grounded && point_in_camera(x, y, view_camera[0]) && !invincible && groundpound
+		    with (obj_baddie)
 			{
-				state =states.stun
-				if stunned < 60
-				stunned= 60
-			vsp = -11
-			image_xscale *= -1
-			hsp = 0
-			momentum = 0
+				if grounded && point_in_camera(x, y, view_camera[0]) && !invincible && groundpound
+				{
+					state =states.stun
+					if stunned < 60
+					stunned= 60
+				vsp = -11
+				image_xscale *= -1
+				hsp = 0
+				momentum = 0
+				}
 			}
-		}
-	            with (obj_camera) {
-
-	    shake_mag=10;
-	    shake_mag_acc=30/room_speed;
-	}
+	        with (obj_camera) {
+			    shake_mag=10;
+			    shake_mag_acc=30/room_speed;
+			}
+			
 	    combo = 0
-	     bounce = false
+	    bounce = false
     
 
    
@@ -141,7 +147,7 @@ function scr_player_freefall() {
 	    freefallstart = 0
 
 
-	    }
+	}
 
 	image_speed = 0.35
 }

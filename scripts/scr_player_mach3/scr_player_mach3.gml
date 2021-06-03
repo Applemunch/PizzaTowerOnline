@@ -78,7 +78,7 @@ function scr_player_mach3()
 				jumpstop = false
 
 			//Jump
-			if input_buffer_jump < 8 && grounded && (move == xscale or move == 0) && sprite_index != spr_dashpadmach
+			if input_buffer_jump < 8 && grounded && (move == xscale or move == 0)
 			{
 				input_buffer_jump = 8;
 				
@@ -171,7 +171,7 @@ function scr_player_mach3()
 				vsp = 10
 				
 				if character = "V"
-					sprite_index =spr_playerV_divekickstart
+					sprite_index = spr_playerV_divekickstart
 			}
 
 			//Climbwall
@@ -179,7 +179,7 @@ function scr_player_mach3()
 			or (grounded && place_meeting(x + hsp,y - 32, obj_solid) && !place_meeting(x + hsp, y, obj_destructibles) && !place_meeting(x + hsp, y, obj_metalblock) && place_meeting(x, y + 1, obj_slope))
 			{
 				wallspeed = movespeed;
-				if global.gameplay == 0
+				if global.gameplay == 0// && character != "SP"
 					wallspeed = 10
 				state = states.climbwall
 			}
@@ -623,11 +623,13 @@ function scr_player_mach3()
 
 		//Climbwall
 		if (!grounded && scr_solid(x+hsp,y, false)   && !place_meeting(x+sign(hsp),y,obj_slope) )
-			or (grounded &&  scr_solid(x+hsp,y-32, false)   && place_meeting(x,y+1,obj_slope)  )
-			{
-		wallspeed = 10
-			state =states.climbwall
-			}
+		or (grounded &&  scr_solid(x+hsp,y-32, false)   && place_meeting(x,y+1,obj_slope)  )
+		{
+			wallspeed = movespeed
+			if global.gameplay == 0
+				wallspeed = 10
+			state = states.climbwall
+		}
 				//Bump
 
 			if (scr_solid(x+1,y, false) && xscale == 1) && !scr_slope() && (!place_meeting(x+sign(hsp),y,obj_slope) or scr_solid(x+sign(hsp),y, false))  && (grounded or fightball = true)
@@ -871,9 +873,9 @@ function scr_player_mach3()
 	// animation speeds
 	if sprite_index == spr_mach4 or sprite_index == spr_fightball or sprite_index == spr_mach3jump or sprite_index == spr_mach2jump
 		image_speed = 0.35
-	if sprite_index == spr_crazyrun or sprite_index == spr_rollgetup
+	if sprite_index == spr_rollgetup
 		image_speed = 0.5
-	if sprite_index == spr_mach3hit or sprite_index == spr_dashpadmach
+	if sprite_index == spr_mach3hit or sprite_index == spr_dashpadmach or sprite_index == spr_crazyrun
 		image_speed = 0.75
 
 	//Super Jump

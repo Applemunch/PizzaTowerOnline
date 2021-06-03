@@ -4,7 +4,7 @@ x=median(x-maxspeed,playerid.x,x+maxspeed)
 y=median(y-maxspeed,playerid.y,y+maxspeed)
 
 
-if place_meeting(x,y,playerid) && !instance_exists(obj_fadeout) && !instance_exists(obj_endlevelfade) && playerid.state != states.portal
+if place_meeting(x,y,playerid) && !instance_exists(obj_fadeout) && !instance_exists(obj_endlevelfade) && playerid.state != states.portal && playerid.state != states.door
 {
 	if instance_exists(obj_toppinwarrior)
 	{
@@ -30,6 +30,7 @@ if place_meeting(x,y,playerid) && !instance_exists(obj_fadeout) && !instance_exi
 		with playerid
 		{
 			image_blend = c_white;
+			grav = 0.5;
 			a = 0;
 			targetDoor = "A"
 			room = timesuproom

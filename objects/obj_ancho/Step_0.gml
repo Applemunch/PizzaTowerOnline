@@ -23,9 +23,9 @@ if state != states.stun
 birdcreated = false
 
 
-if state = states.walk && y > ystart && !scr_solid(x,y-1)
+if state == states.walk && y > ystart && !scr_solid(x,y-1)
 y--
-if state = states.walk && y < ystart && !scr_solid(x,y+1)
+if state == states.walk && y < ystart && !scr_solid(x,y+1)
 y++
 
 
@@ -118,7 +118,7 @@ if boundbox = false
 {
 with instance_create(x,y,obj_baddiecollisionbox)
 {
-sprite_index = other.sprite_index
+sprite_index = spr_ancho
 mask_index = other.sprite_index
 baddieID = other.id
 other.boundbox = true

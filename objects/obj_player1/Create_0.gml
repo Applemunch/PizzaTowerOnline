@@ -374,6 +374,7 @@ keydoor = false;
 storedstate = states.normal;
 grabbedby = -1;
 shake = 0;
+drawspr = sprite_index;
 
 // hat
 hatsprite = -1;

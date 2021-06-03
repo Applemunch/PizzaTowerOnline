@@ -1957,10 +1957,12 @@ function scr_wcevaluate(argument0)
 				ds_list_clear(global.baddieroom);
 			if variable_global_exists("baddietomb") && ds_exists(global.baddietomb, ds_type_list) // april build
 				ds_list_clear(global.baddietomb);
-				
+			
 			with obj_player1
 				targetDoor = "none";
-				
+			with all
+				if !persistent && id != other.id then instance_destroy(id, false);
+			
 			room_restart();
 				
 			if !WC_consoleopen

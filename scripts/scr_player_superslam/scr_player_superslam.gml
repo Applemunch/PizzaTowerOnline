@@ -37,8 +37,7 @@ function scr_player_superslam()
 
 		bounce = false
 
-		with instance_create(x,y+35,obj_bangeffect)
-			xscale = obj_player.xscale
+		instance_create(x,y+35,obj_bangeffect)
 	    instance_create(x,y,obj_landcloud)
 	    freefallstart = 0
 
@@ -71,10 +70,11 @@ function scr_player_superslam()
 	{
 		if sprite_index == spr_playerSP_piledriverstart
 			sprite_index = spr_piledriver;
+		
 		if sprite_index = spr_piledriverland
+		&& (!instance_exists(baddiegrabbedID) or baddiegrabbedID == obj_otherplayer)
 		{
 			state = states.normal;
-			
 			if baddiegrabbedID == obj_otherplayer
 			{
 				state = states.jump

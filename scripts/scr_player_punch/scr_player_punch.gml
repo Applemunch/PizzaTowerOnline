@@ -3,16 +3,20 @@ function scr_player_punch()
 	switch (character)
 	{
 		default:
-			hsp = xscale * movespeed
 			move = key_left + key_right
 			jumpstop = 0
 			
 			if sprite_index == spr_breakdanceuppercut or sprite_index == spr_breakdanceuppercutend
 			{
-				hsp = move * movespeed;
+				if abs(hsp) <= movespeed or move != xscale
+					hsp = move * movespeed;
 				
 				if floor(image_index) == image_number - 1
 				{
+					if move != 0
+						xscale = move;
+					movespeed = abs(hsp);
+					
 					jumpstop = true;
 					state = states.jump;
 					sprite_index = spr_breakdanceuppercutend;
@@ -21,6 +25,8 @@ function scr_player_punch()
 				if grounded && vsp > 0
 					state = states.jump;
 			}
+			else
+				hsp = xscale * movespeed
 			
 			if sprite_index == spr_player_breakdancesuper && key_shoot2
 			    movespeed = 14

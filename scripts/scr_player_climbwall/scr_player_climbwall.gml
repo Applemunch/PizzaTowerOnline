@@ -14,6 +14,7 @@ function scr_player_climbwall()
 
 			vsp = -wallspeed + (place_meeting(x + xscale, y, obj_railv) * -3);
 			
+			/*
 			if character == "SP"
 			{
 				if wallspeed > 0
@@ -28,6 +29,7 @@ function scr_player_climbwall()
 				image_speed = lerp(0, 1, mv); // limit to 2 decimal places
 			}
 			else
+			*/
 			{
 				if wallspeed < 24 && move == xscale
 				{

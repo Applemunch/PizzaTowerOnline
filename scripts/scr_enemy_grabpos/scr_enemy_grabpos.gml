@@ -77,6 +77,9 @@ function scr_enemy_grabpos(player)
 }
 function scr_enemy_driverpos(player)
 {
+	if live_call() return live_result;
+	
+	player = obj_player1;
 	if player.character == "P"
 	{
 		y = player.y
@@ -138,6 +141,14 @@ function scr_enemy_driverpos(player)
 			}
 			if floor(player.image_index) >= 1
 				y -= 26;
+		}
+		else if player.sprite_index == spr_playerSP_piledriverland
+		{
+			x -= image_xscale * 32;
+			if floor(player.image_index) == 0
+				y += 20;
+			else
+				y += 45;
 		}
 		else
 		{

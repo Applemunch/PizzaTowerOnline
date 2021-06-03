@@ -1,1 +1,1 @@
-instance_destroy()
+vsp = -10;

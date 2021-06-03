@@ -27,7 +27,7 @@ function scr_panicbg_init() {
 				if layer_get_depth(l[i]) >= 0
 				{
 					var bgspr = layer_background_get_sprite(layers_e[j]);
-					if bgspr != bg_etbbrick
+					if bgspr != bg_etbbrick && bgspr != bg_select
 						layers[layernum++] = layer_get_name(l[i]);
 				}
 			}

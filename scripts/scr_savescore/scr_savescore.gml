@@ -68,17 +68,9 @@ function scr_savescore(namestring)
 	}
 }
 
-function endlevel()
-{	
-	audio_stop_sound(global.music)
-	if global.timeattack
-		obj_timeattack.stop = true
-
-	with obj_player1
-		targetDoor = "none"
-	obj_camera.alarm[2] = -1
-	
-	// get the level name
+function scr_levelname()
+{
+	// returns level name
 	var namestring;
 	if room == snick_challengeend
 	{
@@ -104,27 +96,40 @@ function endlevel()
 
 	if string_endswith(namestring, "treasure")
 		namestring = string_replace(namestring, "treasure", "");
+	return namestring;
+}
+
+function endlevel()
+{	
+	audio_stop_sound(global.music)
+	if global.timeattack
+		obj_timeattack.stop = true
+
+	with obj_player1
+		targetDoor = "none"
+	obj_camera.alarm[2] = -1
+	
+	// get the level name
+	var namestring = scr_levelname();
 
 	// calculate ranks
 	if namestring == "golf" && global.funmode
 		global.rank = "yousuck";
-	else if (global.collect + global.collectN) >= global.srank
+	else if global.srank > 0
 	{
-		global.rank = "s"
-	
-		// SAGE2019
-	
-		if global.snickchallenge = true
-			global.SAGEsnicksrank = true
+		if global.collect >= global.srank
+			global.rank = "s"
+		else if global.collect > global.arank
+			global.rank = "a"
+		else if global.collect > global.brank
+			global.rank = "b"
+		else if global.collect > global.crank
+			global.rank = "c"
+		else 
+			global.rank = "d"
 	}
-	else if (global.collect + global.collectN) > global.arank
-		global.rank = "a"
-	else if (global.collect + global.collectN) > global.brank
-		global.rank = "b"
-	else if (global.collect + global.collectN) > global.crank
-		global.rank = "c"
-	else 
-		global.rank = "d"
+	else
+		global.rank = "d";
 
 	if namestring == "snickrematch" && global.rank == "s"
 	{

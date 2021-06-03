@@ -1,11 +1,18 @@
 if other.state != states.boxxedpep
 {
-	if sprite_index == spr_boxcrusher_fall
+	if sprite_index == spr_boxcrusher_fall && other.character != "V"
 	{
-		other.image_index = 0
-		other.state = states.bump
-		other.x = x
-		other.y = y
+		with other
+		{
+			image_index = 0;
+			state = states.bump;
+			
+			if !scr_solid(other.x, other.y)
+			{
+				x = other.x;
+				y = other.y;
+			}
+		}
 	}
 
 	if sprite_index == spr_boxcrusher_land

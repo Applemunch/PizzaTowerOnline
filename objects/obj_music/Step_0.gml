@@ -1,29 +1,29 @@
 if global.musicvolume <= 0
 	exit;
 
-if global.gameplay == 1
+if global.gameplay != 0
 {
-	if !global.panic && !global.snickchallenge && room != Realtitlescreen
+	if !global.panic && !global.snickchallenge && !global.miniboss && room != Realtitlescreen
 	{
 		with obj_player1
 		{
 			var _state = state;
-			if state == states.backbreaker
+			if state == states.backbreaker or state == states.hitlag
 				_state = tauntstoredstate;
 			switch _state
 			{
 				case states.knightpep:
-					musicpitch = 0.9;
+					other.musicpitch = 0.9;
 					break;
 				case states.knightpepslopes:
-					musicpitch = 1.2;
+					other.musicpitch = 1.2;
 					break;
 				case states.tumble:
-					musicpitch = 1.2;
+					other.musicpitch = 1.2;
 					break;
 				
 				default:
-					musicpitch = 1;
+					other.musicpitch = 1;
 					break;
 			}
 		}
@@ -38,7 +38,7 @@ if global.gameplay == 1
 		if state == states.frozen pitch = false;
 	
 	if pitch
-		audio_sound_pitch(global.music, lerp(audio_sound_get_pitch(global.music), musicpitch, 0.5));
+		audio_sound_pitch(global.music, lerp(audio_sound_get_pitch(global.music), musicpitch, 0.35));
 }
 
 if global.musicgame == 0
@@ -161,7 +161,7 @@ else if global.musicgame == 1
 	var _mu_snickchallenge = (global.snickrematch ? mu_snickrematch_pc : mu_snickchallenge_pc);
 	var _mu_snickchallengeend = (global.snickrematch ? mu_snickrematch_pc : mu_snickchallengeend_pc);
 	
-	if !audio_is_playing(mu_antonescape) && !audio_is_playing(mu_pizzatime_pc)
+	if !audio_is_playing(mu_antonescape_pc) && !audio_is_playing(mu_pizzatime_pc)
 	&& !audio_is_playing(mu_noiseescape_pc) && !audio_is_playing(mu_snickescape_pc)
 	&& !audio_is_playing(mu_pizzyescape_pc) && !audio_is_playing(mu_pizzatime_pc) // glade escape here
 	&& (string_letters(roomname) != "dragonlair" or audio_is_playing(mu_antonlevel_pc))
@@ -172,8 +172,8 @@ else if global.musicgame == 1
 		// antonball
 		if scr_checkskin(checkskin.p_anton)
 		{
-			scr_sound(mu_antonescape)
-			pausedmusic = mu_antonescape
+			scr_sound(mu_antonescape_pc)
+			pausedmusic = mu_antonescape_pc
 		}
 		// peppino or vigilante
 		else if obj_player1.character == "P"
@@ -209,11 +209,11 @@ else if global.musicgame == 1
 	}
    
 	//Stop miniboss music
-	if global.miniboss = false && audio_is_playing(mu_miniboss_pc)
+	if !global.miniboss && audio_is_playing(mu_miniboss_pc)
 		audio_stop_sound(mu_miniboss_pc)
    
 	//SAGE2019
-	if global.snickchallenge = true && obj_pause.pause = 0 && obj_camera.ded = false
+	if global.snickchallenge && obj_pause.pause = 0 && obj_camera.ded = false
 	{
 		if global.minutes >= 2 or (global.snickrematch && global.musicgame == 1)
 		{

@@ -131,9 +131,9 @@ if instance_exists(followid)
 
 
 if xprevious - x != 0 
-image_xscale = -sign(xprevious - x)
-else if playerid.hsp = 0 
-image_xscale = playerid.xscale
+	image_xscale = -sign(xprevious - x)
+else if playerid.hsp == 0
+	image_xscale = playerid.xscale
 
 if dir != playerid.xscale
 {
@@ -230,9 +230,9 @@ sprite_index = spr_pose
 
 //Effect
 if sprite_index = spr_run  && scr_solid(x,y+1) && visible = true
-steppy --
+	steppy --
 if steppy = 0
 {
-instance_create(x,y+43,obj_cloudeffect)
-steppy = 20
+	instance_create(x,y+43,obj_cloudeffect)
+	steppy = 20
 }

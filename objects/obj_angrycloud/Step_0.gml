@@ -4,6 +4,5 @@ x = playerid.x
 y = playerid.y
 
 
-if playerid.angry = false or playerid.state != states.normal
-instance_destroy()
-
+if (!playerid.angry && global.stylethreshold < 2) or playerid.state != states.normal
+	instance_destroy()

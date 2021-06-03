@@ -13,8 +13,8 @@
     "name": "audiogroup_default",
     "path": "audiogroups/audiogroup_default",
   },
-  "soundFile": "mu_miniboss_pc.wav",
-  "duration": 136.589828,
+  "soundFile": "mu_miniboss_pc.ogg",
+  "duration": 135.433578,
   "parent": {
     "name": "pizza castle",
     "path": "folders/Sounds/pizza castle.yy",

@@ -7,3 +7,5 @@ if global.panic
 	if randomer >= 11
 		randomer -= 11;
 }
+else
+	image_index = 1;

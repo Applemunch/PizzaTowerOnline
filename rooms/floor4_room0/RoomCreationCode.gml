@@ -1,3 +1,3 @@
 
 
-global.roommessage = "PIZZA TOWER IN THE SEWAGE!"
+global.roommessage = "PIZZA TOWER IN THE SEWAGE"

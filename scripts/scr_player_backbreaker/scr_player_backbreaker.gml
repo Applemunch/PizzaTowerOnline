@@ -19,6 +19,9 @@ function scr_player_backbreaker()
 		sprite_index = spr_player_crouchslide
 	}
 	
+	if !visible
+		vsp = 0;
+	
 	//Taunt
 	if sprite_index = spr_taunt or sprite_index = spr_supertaunt1 or sprite_index = spr_supertaunt2
 	or sprite_index = spr_supertaunt3 or sprite_index = spr_supertaunt4
@@ -127,10 +130,10 @@ function scr_player_backbreaker()
 					paletteselect += 1
 				else
 					paletteselect = 0;
-		
+				
 				taunttimer = 20
 				*/
-			
+				
 				if instance_exists(obj_skinchoice) == false
 					instance_create(0, 0, obj_skinchoice);
 			}
@@ -144,9 +147,27 @@ function scr_player_backbreaker()
 			{
 				if object_index != obj_pizzaballOLD && point_in_camera(x, y, view_camera[0])
 				{
-					if other.character == "S" or other.character == "G"
-						increase_combo();
-					instance_destroy();
+					if global.gameplay == 0
+						instance_destroy();
+					else
+					{
+						global.combo += 1;
+						
+						hp = 0;
+						state = states.hit;
+						hitLag = 20;
+						hitX = x;
+						hitY = y;
+						
+						instance_create(x, y, obj_parryeffect);
+						alarm[3] = 3;
+						
+						repeat 3
+						{
+							instance_create(x, y, obj_slapstar);
+							create_particle(x, y, particles.baddiegibs);
+						}
+					}
 				}
 			}
 			with obj_snickexe
@@ -157,7 +178,7 @@ function scr_player_backbreaker()
 					{
 						repeat(6) with instance_create(x+random_range(-100,100), y+random_range(-100,100),obj_balloonpop)
 							sprite_index= spr_shotgunimpact
-		
+						
 						deactivate = true;
 						alarm[1] = room_speed * 5;
 					}
@@ -171,7 +192,7 @@ function scr_player_backbreaker()
 			    shake_mag = 10;
 			    shake_mag_acc = 30 / room_speed;
 			}
-		
+			
 			if character != "S"
 				supercharged = false
 		}
@@ -186,7 +207,8 @@ function scr_player_backbreaker()
 	if floor(image_index) = image_number -1 && (sprite_index = spr_supertaunt1 or sprite_index =  spr_supertaunt2 or
 	sprite_index = spr_supertaunt3 or sprite_index = spr_supertaunt4) && character != "S" && character != "G"
 	{
-		if global.combotime != 0 && global.combo > 0
+		if global.gameplay == 0
+		&& global.combotime != 0 && global.combo > 0
 		{
 			global.combo = 0
 			global.combotime = 0
@@ -194,14 +216,26 @@ function scr_player_backbreaker()
 	
 		movespeed = tauntstoredmovespeed 
 		sprite_index = tauntstoredsprite 
-		state = tauntstoredstate 
+		state = tauntstoredstate
+		
+		if instance_exists(parry_inst)
+		{
+			instance_destroy(parry_inst);
+			parry_inst = noone;
+		}
 	}
 
 	if sprite_index = spr_taunt && taunttimer = 0
 	{
-		movespeed = tauntstoredmovespeed 
+		movespeed = tauntstoredmovespeed
 		sprite_index = tauntstoredsprite 
-		state = tauntstoredstate 
+		state = tauntstoredstate
+		
+		if instance_exists(parry_inst)
+		{
+			instance_destroy(parry_inst);
+			parry_inst = noone;
+		}
 	}
 
 
@@ -222,10 +256,7 @@ function scr_player_backbreaker()
 
 	//Level intro
 	if floor(image_index) = image_number -1 && sprite_index = spr_Timesup && place_meeting(x,y,obj_exitgate)
-	{
-	state = states.normal
-
-	}
+		state = states.normal
 
 	//Ball goal
 	if floor(image_index) = image_number -1 && (sprite_index = spr_player_levelcomplete or sprite_index = spr_victory)
@@ -239,8 +270,8 @@ function scr_player_backbreaker()
 		image_index = 0
 		with instance_create(x,y,obj_debris)
 		{
-		image_index = 0
-		sprite_index = spr_phonedebris
+			image_index = 0
+			sprite_index = spr_phonedebris
 		}
 	}
 

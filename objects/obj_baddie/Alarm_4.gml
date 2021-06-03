@@ -5,3 +5,5 @@ with instance_create(x, y, obj_enemyafterimage)
 	image_index = other.image_index;
 	image_xscale = other.image_xscale;
 }
+if state == states.rage
+	alarm[4] = 5;

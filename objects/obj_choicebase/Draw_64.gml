@@ -1,7 +1,7 @@
 // background
 var color = make_color_rgb(121, 103, 151);
 draw_set_alpha(0.85);
-draw_rectangle_color(0, 0, 960, 540, color, color, color, color, 0);
+draw_rectangle_color(0, 0, 960 - 1, 540 - 1, color, color, color, color, 0);
 
 if surface_exists(pizzasurf)
 {

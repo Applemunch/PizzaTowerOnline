@@ -1,7 +1,10 @@
 /// @description teleport player
 var keeptrying = false;
-with obj_otherplayer
-	if player_id == other.__user keeptrying = true;
+try
+{
+	with obj_otherplayer
+		if player_id == other.__user keeptrying = true;
+}
 
 if keeptrying
 {

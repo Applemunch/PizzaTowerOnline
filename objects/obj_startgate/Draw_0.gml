@@ -40,7 +40,7 @@ if drawing
 		readsave = true;
 	}
 	
-	if tamin >= 0
+	if tamin >= 0 && global.timeattack
 	{
 		draw_set_colour(c_yellow);
 		draw_set_font(global.font_small);
@@ -64,11 +64,10 @@ if drawing
 	
 	var scory = -90;
 	
-	if level != "snickchallenge" && level != "snickrematch"
-	&& level != "golf" && level != "eatery" && level != ""
+	if level != "snickchallenge" && level != "snickrematch" && level != "eatery" && level != ""
 	{
 		scory = -160;
-		if level != "freezer" && level != "sewer" && level != "factory" && level != "dragonlair"
+		if level != "freezer" && level != "sewer" && level != "factory" && level != "dragonlair" && level != "golf"
 		{
 			if sprite_index == spr_entrancegate && obj_player1.state == states.normal
 				obj_camera.panto = [0, -32];

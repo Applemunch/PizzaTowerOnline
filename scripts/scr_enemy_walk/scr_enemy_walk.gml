@@ -1,4 +1,5 @@
-function scr_enemy_walk() {
+function scr_enemy_walk()
+{
 	if object_index != obj_pickle && object_index != obj_tankOLD && movespeed != 0
 	    hsp = image_xscale * (movespeed + (global.baddiespeed - 1));
 	else if object_index == obj_pickle
@@ -27,9 +28,19 @@ function scr_enemy_walk() {
 	else
 		hsp = 0;
 	
+	var railmeet = instance_place(x, y + 1, obj_railparent);
+	if railmeet then hsp += railmeet.spdh;
+	
+	if !grounded &&	object_index != obj_noisey && object_index != obj_ancho && object_index != obj_miniufo// && object_index != obj_clownmato
+	&& global.gameplay != 0
+	{
+		state = states.stun;
+		hsp = 0;
+	}
+	
 	//Animation
 	image_speed = 0.35
-
+	
 	if (scr_solid(x+image_xscale,y) or place_meeting(x+hsp,y,obj_hallway))
 	if !place_meeting(x+sign(hsp),y,obj_slope)
 	{

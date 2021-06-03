@@ -183,6 +183,8 @@ if global.combotime <= 0 && global.combo != 0
 }
 if global.heattime <= 0 && global.style > -1 && !global.stylelock
     global.style -= 0.05;
+if state == states.victory && place_meeting(x, y, obj_startgate) && global.style > -1
+	global.style -= 5;
 
 if cutscene
     global.heattime = 60
@@ -472,7 +474,7 @@ else
 
 //Stop winding up
 if sprite_index =spr_winding && state != states.normal 
-windingAnim = 0
+	windingAnim = 0
 
 if state != states.grab && state != states.grabbed
 	swingdingbuffer = 0
@@ -489,17 +491,20 @@ with instance_create(x+random_range(-5,5), y+ 46, obj_vomit)
 sprite_index = spr_vomit2
 }
 
-
 //Sweat
 if global.playerhealth <= 30 && !instance_exists(obj_sweat) && obj_player.state = states.normal
 instance_create(x,y,obj_sweat)
+
 //Angry cloud
-if angry = true && !instance_exists(angryeffectid) && state = states.normal && character != "V"
-with instance_create(x,y,obj_angrycloud)
- {
-	 playerid = other.object_index
-other.angryeffectid = id	 
- }
+if (angry or global.stylethreshold >= 2) && !instance_exists(angryeffectid)
+&& state == states.normal && character != "V"
+{
+	with instance_create(x,y,obj_angrycloud)
+	{
+		playerid = other.object_index
+		other.angryeffectid = id	 
+	}
+}
 
 //Input buffer jumping
 if (input_buffer_jump < 8)
@@ -532,7 +537,7 @@ else
 	grabbing = false
 
 //Instant-Kill Attack
-if (state == states.barrel) or (state = states.crouchslide) or (state = states.faceplant) or (state = states.rideweenie) or (state = states.mach3) or (state = states.jump && sprite_index = spr_playerN_noisebombspinjump) or (state = states.slipnslide) or (state = states.hurt && thrown = true) or (state = states.mach2) or (state = states.climbwall) or (state = states.freefall) or (state = states.tumble) or (state = states.fireass) or (state = states.firemouth) or (state = states.hookshot) or (state = states.skateboard) or  (state = states.mach4) or (state = states.Sjump) or (state = states.machroll) or (state = states.machfreefall) or (state = states.tacklecharge)  or (state = states.superslam && sprite_index = spr_piledriver) or (state = states.knightpep) or (state = states.knightpepattack) or (state = states.knightpepslopes)  or (state = states.boxxedpep) or (state = states.cheesepep) or (state = states.cheeseball) 
+if (state == states.barrel) or (state = states.crouchslide) or (state = states.faceplant) or (state = states.rideweenie) or (state = states.mach3) or (state = states.jump && sprite_index = spr_playerN_noisebombspinjump) or (state = states.slipnslide) or (state = states.hurt && thrown = true) or (state = states.mach2) or (state = states.climbwall) or (state = states.freefall) or (state = states.tumble) or (state = states.fireass) or (state = states.firemouth) or (state = states.hookshot) or (state = states.skateboard) or  (state = states.mach4) or (state = states.Sjump) or (state = states.machroll) or (state = states.machfreefall) or (state = states.tacklecharge)  or (state = states.superslam && sprite_index = spr_piledriver) or (state = states.knightpep) or (state = states.knightpepattack) or (state = states.knightpepslopes)  or (state = states.boxxedpep) or (state = states.cheesepep) or (state = states.cheeseball) or (state == states.slipbanan)
 	instakillmove = true
 else
 	instakillmove = false
@@ -545,6 +550,9 @@ if (flash == true && alarm[0] <= 0 ) {
 //Reset Variables
 if state != states.Sjump
 	sjumpvsp = -12;
+
+if state != states.freefall
+	freefallvsp = 15;
 
 if state != states.mach3 && state != states.machslide
 	autodash = false
@@ -579,12 +587,16 @@ if state != states.freefall && state != states.facestomp && state != states.supe
 if state != states.mach2
 	machpunchAnim = false
 
-
 if state != states.jump 
 	ladderbuffer = 0
 
 if state != states.jump
 	stompAnim = false
+
+if state != states.grabbing && state != states.barrel && state != states.tumble && state != states.ghost && sprite_index != spr_pmortjump
+    grav = 0.5;
+else if state == states.barrel or state == states.tumble
+    grav = 0.6;
 
 //Too much alarm 1
 if (state = states.mach3 or pizzapepper > 0 or sprite_index = spr_barrelroll or state == states.parry or state = states.rideweenie or (state = states.punch && global.gameplay == 0) or state = states.climbwall or (state = states.jump && sprite_index = spr_playerN_noisebombspinjump) or pogochargeactive = true or (state = states.hookshot) or state = states.mach2 or state = states.tacklecharge or state = states.machslide or state = states.machroll or (state = states.handstandjump && global.gameplay == 0) or (state == states.Sjump && global.gameplay != 0) or (state = states.chainsaw && mach2 >= 100))
@@ -602,8 +614,10 @@ if (state = states.mach3 or pizzapepper > 0 or sprite_index = spr_barrelroll or 
 		{
 			playerid = other.object_index
 			image_index = other.image_index
+			if scr_checkskin(checkskin.n_nose)
+				image_index = 0;
 			image_xscale = other.xscale
-			sprite_index = other.sprite_index
+			sprite_index = other.drawspr
 		}
 		toomuchalarm1 = 6
     }
@@ -614,7 +628,7 @@ else
 // Bottomless pits
 if y > room_height + 200 && !cutscene
 && room != custom_lvl_room && room != rank_room
-&& state != states.gameover && state != states.door
+&& state != states.gameover && state != states.comingoutdoor && visible
 {
 	grav = 0.5;
 	
@@ -643,7 +657,11 @@ else
 	if !scr_solid_player(x, y)
 	{
 		if state != states.bump && state != states.ghost && sprite_index != spr_player_barrelslipnslide && sprite_index != spr_barrelroll  && sprite_index != spr_bombpepintro && sprite_index != spr_knightpepthunder && state != states.tumble && state != states.stunned   && state != states.crouch && state != states.boxxedpep && (state != states.pistol && sprite_index != spr_player_crouchshoot) && state != states.Sjumpprep && state != states.crouchslide && state != states.chainsaw && state != states.machroll && state != states.hurt && state != states.crouchjump && sprite_index != spr_player_breakdancesuper
-			mask_index = spr_player_mask
+		{
+			mask_index = spr_player_mask;
+			if scr_solid_player(x, y)
+				mask_index = spr_crouchmask;
+		}
 		else
 			mask_index = spr_crouchmask
 	}

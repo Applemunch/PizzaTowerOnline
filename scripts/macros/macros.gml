@@ -1,3 +1,15 @@
+if live_call() return live_result;
+
+// macros
+#macro debug false
+#macro debug:debug true
+
+#macro c_owner merge_colour(c_blue, c_white, 0.75)
+#macro c_admin merge_colour(c_yellow, c_white, 0.5)
+#macro c_eatery merge_colour(c_orange, c_white, 0.25)
+#macro c_beebawp merge_colour(c_fuchsia, c_white, 0.5)
+#macro c_pvp merge_colour(c_red, c_white, 0.5)
+
 enum states
 {
 	normal,

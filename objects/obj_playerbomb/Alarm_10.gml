@@ -1,4 +1,5 @@
 /// @description sync
+/*
 if !(instance_exists(obj_gms) && gms_info_isloggedin())
 	exit;
 

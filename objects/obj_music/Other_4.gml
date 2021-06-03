@@ -645,24 +645,23 @@ else if (global.musicgame == 0 or !global.loaded_pc) && global.panic = false && 
 			}
 		}
 	}
-	/*
+	
 	if string_startswith(roomname, "eatery_")
 	{
 		for (i = 0; i < 20; ++i)
 		{
 			if roomname == "eatery_" + string(i)
 			{
-				if !audio_is_playing(mu_eatery)
+				if !audio_is_playing(mu_kidsparty)
 				{
 					audio_stop_sound(global.music)
-					scr_sound(mu_eatery)
+					scr_sound(mu_kidsparty)
 					audio_sound_set_track_position(global.music, fadeoff)
-					pausedmusic = mu_eatery
+					pausedmusic = mu_kidsparty
 				}
 			}
 		}
 	}
-	*/
 	
 	// mansion
 	if string_startswith(roomname, "floor2_room")
@@ -1426,11 +1425,26 @@ else if global.loaded_pc && global.panic = false && global.snickchallenge = fals
 	// sewer
 	if string_startswith(roomname, "floor4_room")
 	{
-		if !audio_is_playing(mu_sewer_pc)
+		for (i = 0; i < 20; ++i)
 		{
-			audio_stop_sound(global.music)
-			scr_sound(mu_sewer_pc)
-			pausedmusic = mu_sewer_pc
+			if roomname = "floor4_room" + string(i) && i <= 5
+			{
+				if !audio_is_playing(mu_sewer_pc)
+				{
+					audio_stop_sound(global.music)
+					scr_sound(mu_sewer_pc)
+					pausedmusic = mu_sewer_pc
+				}
+			}
+			else if roomname = "floor4_room" + string(i) && i > 5
+			{
+				if !audio_is_playing(mu_sewer2_pc)
+				{
+					audio_stop_sound(global.music)
+					scr_sound(mu_sewer2_pc)
+					pausedmusic = mu_sewer2_pc
+				}
+			}
 		}
 	}
 

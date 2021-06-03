@@ -1,23 +1,4 @@
-// background
-var color = make_color_rgb(121, 103, 151);
-draw_set_alpha(0.85);
-draw_rectangle_color(0, 0, 960, 540, color, color, color, color, 0);
-
-if surface_exists(pizzasurf)
-{
-	surface_set_target(pizzasurf);
-	draw_set_alpha(0.25);
-	draw_sprite_tiled(pizza, 0, floor(x), floor(y));
-	draw_set_alpha(1);
-	surface_reset_target();
-	
-	draw_surface(pizzasurf, 0, 0);
-}
-else
-	pizzasurf = surface_create(960, 540);
-
-y -= 0.5;
-x += 0.5;
+event_inherited();
 
 // draw the skins
 if !locked
@@ -46,8 +27,7 @@ else if sprite_exists(_spr)
 	draw_sprite_ext(_spr, img, (960 / 2) + xoffset, (540 / 2) + yoffset + 48, 2, 2, 0, c_white, (100 - abs(xoffset)) / 100);
 
 // text
-draw_text((960 / 2) + random_range(-1, 1), 540 - 100, ((hatselect < array_length(hatnames) && array_length(hatnames[hatselect]) >= 2) ? hatnames[hatselect][1] : "UNKNOWN HAT"));
-
-draw_set_font(global.font_small);
+palname = ((sel[0] < array_length(selarray) && array_length(selarray[sel[0]]) >= 2) ? selarray[sel[0]][1] : "UNKNOWN HAT");
+paldesc = "";
 if !locked
-	draw_text(960 / 2, 540 - 64, ((hatselect < array_length(hatnames) && array_length(hatnames[hatselect]) >= 3) ? hatnames[hatselect][2] : "loypoll please add details"));
+	paldesc = ((sel[0] < array_length(selarray) && array_length(selarray[sel[0]]) >= 3) ? selarray[sel[0]][2] : "loypoll please add details");

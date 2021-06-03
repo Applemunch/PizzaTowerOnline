@@ -4,6 +4,9 @@ with obj_player1
 	{
 		x = 960 / 2
 		y = 540 / 2
+		
+		state = states.door;
+		sprite_index = spr_lookdoor;
 		doorx = x;
 	}
 }

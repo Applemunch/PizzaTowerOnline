@@ -24,7 +24,7 @@ function scr_collide_destructibles()
 		}
 
 		//Destroy Destructibles
-		if state == states.punch or state = states.faceplant or state == states.rideweenie or state = states.tacklecharge or sprite_index = spr_barrelroll or state = states.mach2 or state = states.mach3 or state = states.machroll or state = states.knightpepslopes or state = states.tumble or state = states.hookshot or state == states.crouchslide or (state == states.firemouth && global.gameplay != 0) or (state == states.grab && sprite_index == spr_swingding) or state == states.cheeseball
+		if (state == states.punch && sprite_index != spr_breakdanceuppercut) or state = states.faceplant or state == states.rideweenie or state = states.tacklecharge or sprite_index = spr_barrelroll or state = states.mach2 or state = states.mach3 or state = states.machroll or state = states.knightpepslopes or state = states.tumble or state = states.hookshot or state == states.crouchslide or (state == states.firemouth && global.gameplay != 0) or (state == states.grab && sprite_index == spr_swingding) or state == states.cheeseball
 		{
 			if place_meeting(x + hsp, y, obj_destructibles)
 			{
@@ -163,7 +163,6 @@ function scr_collide_destructibles()
 								state = states.tackle
 								movespeed = 3
 								vsp = -3
-								instance_destroy(other)
 							}
 							else
 							{
@@ -178,8 +177,9 @@ function scr_collide_destructibles()
 									with instance_create(x+image_xscale*20,y+20,obj_shotgunbullet)
 										spdh= -4
 								}
-								instance_destroy(other)
 							}
+							suplexmove = false
+							instance_destroy(other)
 						}
 						else if other.object_index != obj_bigdestructibles
 							instance_destroy(other)

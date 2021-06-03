@@ -12,3 +12,5 @@ spr_dead = spr_gumslime_dead
 
 sprite_index = walkspr
 movespeed = 2
+
+sugaryenemy = true

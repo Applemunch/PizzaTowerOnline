@@ -19,5 +19,5 @@ else
 spr_intro_strongcold = spr_xmaspineappletoppin_intro;
 spr_idle_strongcold = spr_xmaspineappletoppin_idle;
 spr_run_strongcold = spr_xmaspineappletoppin_walk;
-spr_panic_strongcold = spr_xmaspineappletoppin_panicidle;
+spr_panic_strongcold = spr_xmaspineappletoppin_panic;
 spr_panicidle_strongcold = spr_xmaspineappletoppin_panicidle;

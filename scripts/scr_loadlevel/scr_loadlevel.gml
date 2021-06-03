@@ -1,5 +1,6 @@
 /// @param {string} levelstring
-function scr_loadlevel(argument0) {
+function scr_loadlevel(argument0)
+{
 	var _wrapper = json_decode(argument0);
 
 	// level doesn't even exist

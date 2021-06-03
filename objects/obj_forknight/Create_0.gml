@@ -45,6 +45,9 @@ spr_palette = palette_forknight
 grabbedby = 0
 stuntouchbuffer = 0
 
+ragedash = 0
+ragecooldown = 0
+
 if global.snickrematch
 {
 	idlespr = spr_forknight_walk_re

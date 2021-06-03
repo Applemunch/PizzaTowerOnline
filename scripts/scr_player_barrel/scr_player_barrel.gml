@@ -65,11 +65,11 @@ function scr_player_barrel()
 	if ((!key_jump2) && ((jumpstop == 0) && ((vsp < 0.5) && (stompAnim == 0))))
 	{
 	    vsp /= 2
-	    jumpstop = 1
+	    jumpstop = true
 	}
-	if (grounded && (vsp > 0))
-	    jumpstop = 0
-	if ((input_buffer_jump < 8) && (grounded && (hsp != 0)))
+	if grounded && vsp > 0
+	    jumpstop = false
+	if input_buffer_jump < 8 && grounded && hsp != 0
 	{
 		input_buffer_jump = 8
 	    vsp = -11

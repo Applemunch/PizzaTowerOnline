@@ -38,20 +38,21 @@ switch sel[1]
 			["PEPPINO", "...The classic?"],
 			["SNICK", "Legends say he was involved in slaughter..."],
 			["XMAS", "Merry."],
-			["INVERTED HALLOWEEN", ".yracS"],
+			["INVERTED", ".yracS"],
 			["NAKED", "Yikes."],
 			["NOIK", "He's canon."],
 			["CONCEPT", "The original."],
 			["THE DOISE", "Do not steal."],
-			["NOISETTE", "It takes a noiser noise than The Noise's noise to annoy The Noise."],
+			["NOISETTE", "It takes a noiser noise than\nThe Noise's noise to annoy The Noise."],
 			["RAINBOW", "My eyes."],
 			["SKETCH", "He's closing his eyes...!"],
 			["THE NOID", "Avoid him."],
 			["GALAXY", "Stunning."],
 			["CHUNGUS", "Big."],
 			["MR ORANGE", "I'm seeing double! Four Noise!"],
-			["NEO", "Neo is the new."],
-			["DR. BAD BREAKFAST", "Snooping as usual, I see!"],
+			["NEO", "Neo is the new!"],
+			["DR.B.B.", "Snooping as usual, I see!"],
+			["NOSE", "Repeat after me! N. I. G-"],
 		];
 		break;
 	
@@ -88,9 +89,9 @@ switch sel[1]
 			["BOOTS", "Unlike Snick..."],
 			["SNICKETTE", "Not to be confused with Satan."],
 			["SONIC", "YEAH FAST"],
-			["SHADOW", "Edgy."],
-			["CYAN", "Faker."],
-			["TRANSPARENT", "Colorful."],
+			["SHADOW", "Can you even see his eyes?"],
+			["CYAN", "RGB 0 255 255"],
+			["TRANSPARENT", "(cough sound)"],
 			["MANUAL", "This is Snick the porcupine.\nHe hosts his own event."],
 			["SKETCH", "Let's just say he likes burgers."],
 			["SHITK", "Acting sus!"],
@@ -118,7 +119,7 @@ switch sel[1]
 			["PUMP", "It's spooky month!!!"],
 			["PURO", "Why?"],
 			["ISABELLE", "You wouldn't get it."],
-			["KAPI", "Hi paperkitty."],
+			["KAPI", "Hi, PaperKitty."],
 			["MONSTER", "And then I'm gonna eat your girlfriend~"],
 			["DARK WORLD", "Only eyes blinded by darkness can see the way..."],
 			["MINEKEN", "You don't deserve a choice."],
@@ -224,10 +225,12 @@ switch sel[1]
 	#endregion
 }
 pal_swap_index_palette(spr_palette);
-custompal_update(palcolors);
 
+/*
+custompal_update(palcolors);
 if instance_exists(obj_gms) && gms_info_isloggedin()
 	gms_self_set("palcolors", dsread);
+*/
 
 switch sel[1]
 {

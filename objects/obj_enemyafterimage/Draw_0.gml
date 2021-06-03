@@ -1,4 +1,4 @@
-if image_alpha > 0 && global.surfacemach && parent.haspalette && parent.paletteselect > 0
+if instance_exists(parent) && image_alpha > 0 && global.surfacemach && parent.haspalette && parent.paletteselect > 0
 {
 	// target surface
 	if !surface_exists(surf)

@@ -19,5 +19,5 @@ else
 spr_intro_strongcold = spr_xmastomatotoppin_intro;
 spr_idle_strongcold = spr_xmastomatotoppin_idle;
 spr_run_strongcold = spr_xmastomatotoppin_walk;
-spr_panic_strongcold = spr_xmastomatotoppin_panicidle;
+spr_panic_strongcold = spr_xmastomatotoppin_panic;
 spr_panicidle_strongcold = spr_xmastomatotoppin_panicidle;

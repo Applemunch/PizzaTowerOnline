@@ -4,6 +4,10 @@ if !object_exists(content)
 	exit;
 }
 
+with obj_player1
+	if (other.content == obj_shotgun or other.content == obj_woodbarrel) && character == "V"
+		instance_destroy(other.id);
+
 if (!instance_exists(baddieid) && content != obj_shotgun) or (!instance_exists(baddieid) && content == obj_shotgun && !obj_player1.shotgunAnim)
 	refresh--;
 

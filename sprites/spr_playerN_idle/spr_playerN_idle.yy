@@ -127,7 +127,7 @@
     "eventStubScript": null,
     "parent": {"name":"spr_playerN_idle","path":"sprites/spr_playerN_idle/spr_playerN_idle.yy",},
     "resourceVersion": "1.3",
-    "name": "",
+    "name": "spr_playerN_idle",
     "tags": [],
     "resourceType": "GMSequence",
   },

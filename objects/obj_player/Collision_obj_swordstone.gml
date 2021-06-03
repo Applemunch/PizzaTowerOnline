@@ -10,6 +10,8 @@ if grounded && other.sprite_index == spr_swordstone && (((state = states.handsta
 	sprite_index = spr_knightpepstart
 	state = states.knightpep
 	hsp = 0
+	if global.gameplay != 0
+		vsp = 0
 	
 	tv_push_prompt_once(tv_create_prompt("This is the knight transformation text", 2, spr_tv_knight, 3), "knight");
 }

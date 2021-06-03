@@ -24,18 +24,21 @@ function create_particle(x, y, par)
 	switch par
 	{
 		case particles.baddiegibs:
-			with instance_create(x, y, obj_baddiegibs)
+			var bad = id;
+			if bad == obj_baddiecollisionbox
+				bad = bad.baddieID;
+			
+			if instance_exists(bad) && bad.object_index != obj_robot && bad.object_index != obj_cheeserobot
 			{
-				var bad = other.object_index;
-				if bad == obj_baddiecollisionbox && instance_exists(baddieID)
-					bad = bad.baddieID.object_index;
-				
-				if bad == obj_gumslime or bad == obj_burgknight
+				with instance_create(x, y, obj_baddiegibs)
 				{
-					sprite_index = spr_baddiegibs_ss;
-					image_index = irandom_range(0, image_number - 1);
-					angspd = random(2);
-					hsp = random_range(-10, 10);
+					if bad.sugaryenemy
+					{
+						sprite_index = spr_baddiegibs_ss;
+						image_index = irandom_range(0, image_number - 1);
+						angspd = random(2);
+						hsp = random_range(-10, 10);
+					}
 				}
 			}
 			break;

@@ -28,6 +28,7 @@ turnspr = spr_slimeturn
 recoveryspr = spr_slimerecovery
 grabbedspr = spr_slimegrabbed
 scaredspr = spr_slime_scared
+ragespr = spr_cheeseslime_rage
 
 //image_xscale = -1
 hp = 1

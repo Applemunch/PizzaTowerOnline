@@ -7,7 +7,7 @@ function scr_hurtplayer(argument0)
 	{
 		// Auto parry
 		if (state == states.mach3 or state == states.grab && sprite_index == spr_swingding)
-		&& (character != "S" && character != "V" && global.gameplay == 1)
+		&& (character != "S" && character != "V" && global.gameplay != 0)
 		{
 			// kill baddie if grabbing
 			if state == states.grab
@@ -20,17 +20,8 @@ function scr_hurtplayer(argument0)
 				}
 			}
 			
-			scr_soundeffect(sfx_parry);
-		    state = states.parry
-			sprite_index = choose(spr_parry1, spr_parry2, spr_parry3)
-		    image_index = 0
-		    image_speed = 0.35
-		    taunttimer = 20
-		    movespeed = 8
-		    parry_inst = noone
-		    parry_count = parry_max
-		    with instance_create(x, y, obj_parryeffect)
-		        image_xscale = other.xscale
+			if !instance_exists(parry_inst)
+				parry_inst = instance_create(x, y, obj_parryhitbox);
 		}
 		
 		//Knight armor remove
@@ -40,7 +31,7 @@ function scr_hurtplayer(argument0)
 		}
 		
 		// custom
-		else if state == states.parry or state == states.backbreaker or state == states.bump or state == states.firemouth or state == states.barrel or state == states.hitlag or state == states.rotate or state == states.frozen or instance_exists(obj_parryhitbox)
+		else if state == states.parry or state == states.backbreaker or state == states.bump or state == states.firemouth or state == states.barrel or state == states.hitlag or state == states.rotate or state == states.frozen or state == states.door or state == states.victory or instance_exists(obj_parryhitbox)
 		{
 		
 		}

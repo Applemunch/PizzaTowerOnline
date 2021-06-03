@@ -13,8 +13,8 @@
     "name": "audiogroup_default",
     "path": "audiogroups/audiogroup_default",
   },
-  "soundFile": "mu_ruinremix_pc.wav",
-  "duration": 232.1515,
+  "soundFile": "mu_ruinremix_pc.ogg",
+  "duration": 232.146378,
   "parent": {
     "name": "pizza castle",
     "path": "folders/Sounds/pizza castle.yy",

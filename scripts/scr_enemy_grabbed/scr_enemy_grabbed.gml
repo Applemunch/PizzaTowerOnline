@@ -32,7 +32,7 @@ function scr_enemy_grabbed()
 		}
 		else
 			visible = true;
-	
+		
 		with (obj_player1)
 		{
 			suplexhavetomash = other.hp - 1
@@ -113,14 +113,17 @@ function scr_enemy_grabbed()
 			obj_player1.baddiegrabbedID = id
 			
 			// clip in bounds
-			var clipchange = false;
+			with obj_player1
+				if scr_solid(x + xscale, y)
+				{
+					other.clipin = 1;
+					other.x = x;
+				}
 			while scr_solid(x, y) && clipin > 0
 			{
-				clipchange = true;
 				clipin--;
-			}
-			if clipchange
 				x = obj_player1.x + (obj_player1.xscale * clipin);
+			}
 		}
 		
 		if _state = states.backkick 
@@ -246,22 +249,10 @@ function scr_enemy_grabbed()
 			
 			if global.gameplay != 0
 			{
-				increase_combo();
-				instance_create(x, y, obj_bangeffect)
-				
-				var lag = 5;
-				
-				hitLag = lag;
-				hitX = x;
-				hitY = --y;
-				state = states.hit;
-				
 				hithsp = hsp;
 				hitvsp = vsp;
-				hsp = 0;
-				vsp = 0;
 				
-				grounded = false;
+				scr_hitthrow(id, noone);
 			}
 		}
 
@@ -360,32 +351,63 @@ function scr_enemy_grabbed()
 				x = obj_player1.x + (obj_player1.xscale * 15)
 		}
 
-		if obj_player1.sprite_index = obj_player1.spr_piledriverland && (floor(obj_player1.image_index) = obj_player1.image_number - 1 or obj_player1.character == "SP")
+		if obj_player1.sprite_index = obj_player1.spr_piledriverland
 		{
-			with (obj_player1)
-			{
-				state = states.jump
-				vsp = -8
-				sprite_index = spr_machfreefall
-			}
+			if obj_player1.character == "SP"
+				scr_enemy_driverpos(obj_player1);
 			
-			repeat 3
-				instance_create(x,y,obj_slapstar)
-			repeat 3
-				create_particle(x, y, particles.baddiegibs)
-			flash = true
-			global.combotime = 60
-			if object_index == obj_pizzaballOLD
-				global.golfhit += 1
-			global.hit += 1
-			hp -= 5
-			alarm[1] = 5
-			thrown = true
-			x = obj_player1.x
-			y = obj_player1.y
-			state = states.stun
-			hsp = -image_xscale * 10
-			vsp = -10
+			if floor(obj_player1.image_index) = obj_player1.image_number - 1
+			{
+				flash = true
+				global.combotime = 60
+				if object_index == obj_pizzaballOLD
+					global.golfhit += 1
+				else
+					hp -= 5
+			
+				global.hit += 1
+				alarm[1] = 5
+				thrown = true
+				x = obj_player1.x
+				y = obj_player1.y
+				state = states.stun
+			
+				hsp = -image_xscale * 10
+				vsp = -10
+			
+				if global.gameplay != 0
+				{
+					hithsp = hsp;
+					hitvsp = vsp;
+				
+					hp = -6;
+					scr_hitthrow(id, noone);
+				
+					with obj_player1
+					{
+						jumpAnim = true;
+				        state = states.jump;
+				        sprite_index = spr_suplexland;
+				        vsp = -11;
+				        jumpstop = true;
+				        image_index = 0;
+					}
+				}
+				else
+				{
+					repeat 3
+						instance_create(x,y,obj_slapstar)
+					repeat 3
+						create_particle(x, y, particles.baddiegibs)
+				
+					with obj_player1
+					{
+						state = states.jump
+						vsp = -8
+						sprite_index = spr_machfreefall
+					}
+				}
+			}
 		}
 		
 		if (_state == states.superslam

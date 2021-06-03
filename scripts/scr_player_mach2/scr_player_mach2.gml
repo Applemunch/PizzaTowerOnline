@@ -12,7 +12,7 @@ function scr_player_mach2()
 	move = key_right + key_left
 
 	crouchslideAnim = true
-
+	
 
 	//Jump Stop
 	if (!key_jump2) && jumpstop = false && vsp < 0.5 
@@ -29,7 +29,7 @@ function scr_player_mach2()
 		input_buffer_jump = 0
 
 	//Jump
-	if (input_buffer_jump < 8) && grounded && move == xscale
+	if (input_buffer_jump < 8) && grounded && move != -xscale
 	{
 		input_buffer_jump = 8;
 		
@@ -41,7 +41,7 @@ function scr_player_mach2()
 	}
 
 	//Animations
-	if grounded  && vsp > 0
+	if grounded && vsp > 0
 	{
 		if machpunchAnim = false && sprite_index != spr_mach && sprite_index != spr_mach4 && sprite_index != spr_player_machhit
 		{
@@ -97,6 +97,8 @@ function scr_player_mach2()
 	//Mach3
 	if grounded
 	{
+		if movespeed < 8
+			movespeed = 8;
 		if movespeed < 12
 		{
 			/*
@@ -109,8 +111,7 @@ function scr_player_mach2()
 			if movespeed < 8
 				movespeed += 1
 		}
-		
-		if movespeed >= 12
+		else
 		{
 			movespeed = 12
 			machhitAnim = false

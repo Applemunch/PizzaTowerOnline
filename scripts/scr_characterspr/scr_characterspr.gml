@@ -259,6 +259,7 @@ function scr_characterspr()
 				spr_pmortidle = spr_player_mortidle;
 				spr_pmortjump = spr_player_mortjump;
 				spr_pmortattack = spr_player_mortattack;
+				spr_pmortjumpstart = spr_player_mortjumpstart;
 				
 				spr_superspringplayer = spr_player_presentbox;
 				
@@ -766,7 +767,7 @@ function scr_characterspr()
 				spr_boxxed_dash = spr_playerV_hurt;
 				spr_boxxed_jump = spr_playerV_hurt;
 				
-				spr_dashpadmach = spr_player_dashpad;
+				spr_dashpadmach = spr_playerV_move;
 				spr_dead = spr_playerV_dead
 				
 				spr_rocketstart = spr_playerV_hurt;

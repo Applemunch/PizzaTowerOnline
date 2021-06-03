@@ -33,7 +33,7 @@ if hitboxcreate = false && state == states.charge && scr_solid(x, y + 1) && obj_
 }
 
 //Charge
-if state != states.walk && state != states.idle && state != states.grabbed && (state != states.stun or stunned <= 0) && angry == false && !thrown && hp > 0
+if state != states.walk && state != states.idle && state != states.grabbed && state != states.hit && (state != states.stun or stunned <= 0) && angry == false && !thrown && hp > 0
 {
 	grav = 0.5	
 	vsp = -5
@@ -48,7 +48,7 @@ if state == states.charge
 if state == states.walk
 	movespeed = 1;
 
-if state != states.stun && state != states.grabbed && state != states.idle && state != states.charge
+if state != states.stun && state != states.grabbed && state != states.idle && state != states.charge && state != states.hit
 	angry = false
 
 scr_scareenemy();

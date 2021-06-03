@@ -5,11 +5,7 @@ alarm[0] = 5
 cigar= false
 stomped = false
 if x != obj_player.x
-{
-image_xscale = -sign(x - obj_player.x)
-}
-
-
+	image_xscale = -sign(x - obj_player.x)
 
 paletteselect = 0
 spr_palette = 0

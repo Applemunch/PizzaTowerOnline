@@ -6,7 +6,7 @@ function scr_enemy_idle()
 		image_index = 0
 	}
 
-	if vsp >= 0 && sprite_index == scaredspr && scaredbuffer <= 0
+	if grounded && sprite_index == scaredspr && scaredbuffer <= 0
 	{
 		state = states.walk
 		sprite_index = walkspr
@@ -19,9 +19,13 @@ function scr_enemy_idle()
 			bombreset = 0
 		}
 	}
-
+	
 	if scaredbuffer > 0
-		scaredbuffer --
+	{
+		scaredbuffer = max(scaredbuffer - 1, 0);
+		if sugaryenemy && grounded
+			vsp = -5;
+	}
 	
 	if ((variable_instance_exists(id, "turnspr") && sprite_index == turnspr) or sprite_index == spr_indiancheese_turn)
 	&& floor(image_index) == image_number- 1

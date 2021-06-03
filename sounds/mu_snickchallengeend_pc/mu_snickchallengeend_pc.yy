@@ -13,7 +13,7 @@
     "name": "audiogroup_default",
     "path": "audiogroups/audiogroup_default",
   },
-  "soundFile": "mu_snickchallengeend_pc.wav",
+  "soundFile": "mu_snickchallengeend_pc.ogg",
   "duration": 146.131149,
   "parent": {
     "name": "pizza castle",

@@ -86,9 +86,14 @@ function scr_playerreset()
 
 	with obj_tv
 	{
+		shownranks = false
 		shownranka = false
 		shownrankb = false
 		shownrankc = false
+		global.srank = 0
+		global.arank = 0
+		global.brank = 0
+		global.crank = 0
 		
 		ds_list_clear(tvprompts_list);
 		state = states.normal

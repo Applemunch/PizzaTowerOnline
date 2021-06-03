@@ -19,5 +19,5 @@ else
 spr_intro_strongcold = spr_xmassausagetoppin_intro;
 spr_idle_strongcold = spr_xmassausagetoppin_idle;
 spr_run_strongcold = spr_xmassausagetoppin_walk;
-spr_panic_strongcold = spr_xmassausagetoppin_panicidle;
+spr_panic_strongcold = spr_xmassausagetoppin_panic;
 spr_panicidle_strongcold = spr_xmassausagetoppin_panicidle;

@@ -19,5 +19,5 @@ else
 spr_intro_strongcold = spr_xmasshroomtoppin_intro;
 spr_idle_strongcold = spr_xmasshroomtoppin_idle;
 spr_run_strongcold = spr_xmasshroomtoppin_walk;
-spr_panic_strongcold = spr_xmasshroomtoppin_panicidle;
+spr_panic_strongcold = spr_xmasshroomtoppin_panic;
 spr_panicidle_strongcold = spr_xmasshroomtoppin_panicidle;

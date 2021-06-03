@@ -1,2 +1,2 @@
 
-global.roommessage = "ESCAPE ROUTE"
+global.roommessage = "UP TO JOHN"

@@ -81,8 +81,10 @@ function scr_enemy_stun()
 	}
 
 	if floor(image_index) = image_number-1 && stunned <= 0 && (object_index != obj_peasanto or angry)
+	&& (grounded or global.gameplay == 0)
 	{
 		if object_index != obj_miniufo && object_index != obj_ancho && object_index != obj_pizzaboy
+		&& global.gameplay == 0
 		{
 			vsp = -4
 			grav = 0.5
@@ -98,4 +100,7 @@ function scr_enemy_stun()
 		if object_index == obj_banditochicken && !activated
 			sprite_index = spr_banditochicken_sleep
 	}
+	
+	var railmeet = instance_place(x, y + 1, obj_railparent);
+	if railmeet then hsp = railmeet.spdh;
 }

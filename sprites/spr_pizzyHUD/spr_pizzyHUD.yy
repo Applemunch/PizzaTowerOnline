@@ -188,7 +188,7 @@
     "spriteId": {"name":"spr_pizzyHUD","path":"sprites/spr_pizzyHUD/spr_pizzyHUD.yy",},
     "timeUnits": 1,
     "playback": 1,
-    "playbackSpeed": 0.35,
+    "playbackSpeed": 0.25,
     "playbackSpeedType": 1,
     "autoRecord": true,
     "volume": 1.0,

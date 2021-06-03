@@ -23,6 +23,8 @@ with (player)
 			sprite_index = spr_lookdoor
 		else
 			sprite_index = spr_entergate
+		
+		global.collect = 0;
 	}
 }
 

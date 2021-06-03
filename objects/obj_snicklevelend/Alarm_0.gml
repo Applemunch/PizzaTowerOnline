@@ -15,6 +15,8 @@ else
 	
 	if global.timeattack
 	{
+		var namestring = scr_levelname();
+		
 		ini_open("saveData.ini");
 		if ((ini_read_real("TAmin", namestring, -1) * 60) + ini_read_real("TAsec", namestring, -1) > (global.taminutes * 60) + global.taseconds)
 		or ini_read_real("TAmin", namestring, -1) == -1

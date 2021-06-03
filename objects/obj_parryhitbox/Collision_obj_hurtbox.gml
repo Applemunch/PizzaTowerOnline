@@ -49,6 +49,17 @@ else if other.object_index == obj_movingoutlet
 			vsp = -4;
 	}
 }
+else if other.object_index == obj_forkhitbox
+{
+	with other.id
+	{
+		if ID.object_index == obj_weeniesquire
+		{
+			instance_destroy(ID);
+			instance_destroy();
+		}
+	}
+}
 
 if !collisioned
     event_user(0);

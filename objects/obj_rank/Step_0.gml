@@ -1,9 +1,3 @@
-
-
-if floor(image_index) = image_number-1
-	image_speed = 0
-
-
 //if global.collect >= global.collectN
 {
 	if obj_player1.character = "P"
@@ -56,8 +50,13 @@ if floor(image_index) = image_number-1
 
 		if global.rank = "d"
 		sprite_index = spr_rankND
+		
+		if scr_checkskin(checkskin.n_nose)
+			image_index = image_number - 1;
 	}
 	
 	if global.rank = "yousuck"
 		sprite_index = spr_yousuck
 }
+if floor(image_index) = image_number-1
+	image_speed = 0

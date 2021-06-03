@@ -8,7 +8,8 @@ function scr_heatup() {
 	if global.stylethreshold >= 2
 	{
 		global.baddierage = true
-		obj_heatafterimage.visible = true
+		with obj_heatafterimage
+			visible = true
 	}
 
 	with obj_tv
