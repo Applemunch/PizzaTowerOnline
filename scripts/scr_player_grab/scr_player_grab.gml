@@ -5,7 +5,12 @@ function scr_player_grab()
 		state = states.normal;
 		exit;
 	}
-
+	else with baddiegrabbedID
+	{
+		state = states.grabbed;
+		grabbedby = 1;
+	}
+	
 	grav = 0.5
 	move = key_left + key_right;
 	

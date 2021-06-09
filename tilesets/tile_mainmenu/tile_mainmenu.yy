@@ -2012,8 +2012,8 @@
     "TileSerialiseData": [],
   },
   "parent": {
-    "name": "Tile Sets",
-    "path": "folders/Tile Sets.yy",
+    "name": "title",
+    "path": "folders/Tile Sets/title.yy",
   },
   "resourceVersion": "1.0",
   "name": "tile_mainmenu",

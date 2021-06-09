@@ -1136,8 +1136,8 @@
     "TileSerialiseData": [],
   },
   "parent": {
-    "name": "Tile Sets",
-    "path": "folders/Tile Sets.yy",
+    "name": "city",
+    "path": "folders/Tile Sets/city.yy",
   },
   "resourceVersion": "1.0",
   "name": "tile_jail",

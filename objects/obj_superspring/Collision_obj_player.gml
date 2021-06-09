@@ -6,6 +6,7 @@ with other
 		if state = states.bombpep
 			instance_create(x,y,obj_bombexplosion)
 		
+		audio_stop_sound(sfx_superjumprelease)
 		scr_soundeffect(sfx_superjumprelease)
 		sprite_index = spr_superjump
 		state = states.Sjump

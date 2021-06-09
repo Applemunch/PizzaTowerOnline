@@ -9,7 +9,7 @@ if (!global.panic or global.gerome) && (!global.treasure or global.gameplay == 0
 	if !instance_exists(obj_snicklevelend) or !obj_snicklevelend.visible
 	{
 		sprite_index = spr_minipillarwoke
-		if string_startswith(room_get_name(room), "steamcc_")
+		if check_sugary()
 			sprite_index = spr_minipillarwoke_ss;
 	}
 	
@@ -23,7 +23,7 @@ else
 	x = -10000
 	y = -10000
 	sprite_index = spr_minipillarsleep
-	if string_startswith(room_get_name(room), "steamcc_")
+	if check_sugary()
 		sprite_index = spr_minipillarsleep_ss;
 	image_alpha = 1;
 }

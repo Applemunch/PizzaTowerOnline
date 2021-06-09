@@ -6,6 +6,7 @@ hub_array = [
 	["SUGARY", hub_roomSP],
 	["FLOOR 2", hub_room2],
 	["FLOOR 1", hub_room1],
+	["ARCADE", hub_roomMOD],
 ]
 
 sel = 0;

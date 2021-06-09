@@ -7,10 +7,10 @@
   "edgeFiltering": false,
   "collisionTolerance": 0,
   "swfPrecision": 2.525,
-  "bbox_left": 1,
-  "bbox_right": 29,
-  "bbox_top": 0,
-  "bbox_bottom": 30,
+  "bbox_left": 2,
+  "bbox_right": 28,
+  "bbox_top": 1,
+  "bbox_bottom": 29,
   "HTile": false,
   "VTile": false,
   "For3D": false,
@@ -27,12 +27,12 @@
     {"compositeImage":{"FrameId":{"name":"f298e7a8-4c2f-423d-8864-9b75e2b88ff9","path":"sprites/spr_sugarycollectibles9/spr_sugarycollectibles9.yy",},"LayerId":null,"resourceVersion":"1.0","name":"composite","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
         {"FrameId":{"name":"f298e7a8-4c2f-423d-8864-9b75e2b88ff9","path":"sprites/spr_sugarycollectibles9/spr_sugarycollectibles9.yy",},"LayerId":{"name":"f439fb72-f8fc-4347-ae50-d03ea4927740","path":"sprites/spr_sugarycollectibles9/spr_sugarycollectibles9.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
       ],"parent":{"name":"spr_sugarycollectibles9","path":"sprites/spr_sugarycollectibles9/spr_sugarycollectibles9.yy",},"resourceVersion":"1.0","name":"f298e7a8-4c2f-423d-8864-9b75e2b88ff9","tags":[],"resourceType":"GMSpriteFrame",},
-    {"compositeImage":{"FrameId":{"name":"421a6634-4e68-4208-8c7f-d944057b12b5","path":"sprites/spr_sugarycollectibles9/spr_sugarycollectibles9.yy",},"LayerId":null,"resourceVersion":"1.0","name":"composite","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"421a6634-4e68-4208-8c7f-d944057b12b5","path":"sprites/spr_sugarycollectibles9/spr_sugarycollectibles9.yy",},"LayerId":{"name":"f439fb72-f8fc-4347-ae50-d03ea4927740","path":"sprites/spr_sugarycollectibles9/spr_sugarycollectibles9.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"spr_sugarycollectibles9","path":"sprites/spr_sugarycollectibles9/spr_sugarycollectibles9.yy",},"resourceVersion":"1.0","name":"421a6634-4e68-4208-8c7f-d944057b12b5","tags":[],"resourceType":"GMSpriteFrame",},
-    {"compositeImage":{"FrameId":{"name":"98b641e9-a06f-49cf-b472-5b6282c80073","path":"sprites/spr_sugarycollectibles9/spr_sugarycollectibles9.yy",},"LayerId":null,"resourceVersion":"1.0","name":"composite","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"98b641e9-a06f-49cf-b472-5b6282c80073","path":"sprites/spr_sugarycollectibles9/spr_sugarycollectibles9.yy",},"LayerId":{"name":"f439fb72-f8fc-4347-ae50-d03ea4927740","path":"sprites/spr_sugarycollectibles9/spr_sugarycollectibles9.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"spr_sugarycollectibles9","path":"sprites/spr_sugarycollectibles9/spr_sugarycollectibles9.yy",},"resourceVersion":"1.0","name":"98b641e9-a06f-49cf-b472-5b6282c80073","tags":[],"resourceType":"GMSpriteFrame",},
+    {"compositeImage":{"FrameId":{"name":"75cb7951-8cd4-4d6a-988a-0076bc9ea31e","path":"sprites/spr_sugarycollectibles9/spr_sugarycollectibles9.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
+        {"FrameId":{"name":"75cb7951-8cd4-4d6a-988a-0076bc9ea31e","path":"sprites/spr_sugarycollectibles9/spr_sugarycollectibles9.yy",},"LayerId":{"name":"f439fb72-f8fc-4347-ae50-d03ea4927740","path":"sprites/spr_sugarycollectibles9/spr_sugarycollectibles9.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
+      ],"parent":{"name":"spr_sugarycollectibles9","path":"sprites/spr_sugarycollectibles9/spr_sugarycollectibles9.yy",},"resourceVersion":"1.0","name":"75cb7951-8cd4-4d6a-988a-0076bc9ea31e","tags":[],"resourceType":"GMSpriteFrame",},
+    {"compositeImage":{"FrameId":{"name":"dec96c47-a6f6-431b-96c6-2d190a18d0a2","path":"sprites/spr_sugarycollectibles9/spr_sugarycollectibles9.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
+        {"FrameId":{"name":"dec96c47-a6f6-431b-96c6-2d190a18d0a2","path":"sprites/spr_sugarycollectibles9/spr_sugarycollectibles9.yy",},"LayerId":{"name":"f439fb72-f8fc-4347-ae50-d03ea4927740","path":"sprites/spr_sugarycollectibles9/spr_sugarycollectibles9.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
+      ],"parent":{"name":"spr_sugarycollectibles9","path":"sprites/spr_sugarycollectibles9/spr_sugarycollectibles9.yy",},"resourceVersion":"1.0","name":"dec96c47-a6f6-431b-96c6-2d190a18d0a2","tags":[],"resourceType":"GMSpriteFrame",},
   ],
   "sequence": {
     "spriteId": {"name":"spr_sugarycollectibles9","path":"sprites/spr_sugarycollectibles9/spr_sugarycollectibles9.yy",},
@@ -48,11 +48,11 @@
     "tracks": [
       {"name":"frames","spriteId":null,"keyframes":{"Keyframes":[
             {"id":"7c146236-4d9d-4fff-bd11-69ed44d497e2","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"f298e7a8-4c2f-423d-8864-9b75e2b88ff9","path":"sprites/spr_sugarycollectibles9/spr_sugarycollectibles9.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
-            {"id":"b2493bc9-3a04-45ee-af8e-58b16bb23f0c","Key":1.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"421a6634-4e68-4208-8c7f-d944057b12b5","path":"sprites/spr_sugarycollectibles9/spr_sugarycollectibles9.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
-            {"id":"fbe6e363-c096-4f9b-9842-80399fc926df","Key":2.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"98b641e9-a06f-49cf-b472-5b6282c80073","path":"sprites/spr_sugarycollectibles9/spr_sugarycollectibles9.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
+            {"id":"a974bc86-d121-40dd-a757-1f42c25383a6","Key":1.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"75cb7951-8cd4-4d6a-988a-0076bc9ea31e","path":"sprites/spr_sugarycollectibles9/spr_sugarycollectibles9.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
+            {"id":"0b35919c-6052-4158-ac0c-773f72a39056","Key":2.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"dec96c47-a6f6-431b-96c6-2d190a18d0a2","path":"sprites/spr_sugarycollectibles9/spr_sugarycollectibles9.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
           ],"resourceVersion":"1.0","resourceType":"KeyframeStore<SpriteFrameKeyframe>",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"modifiers":[],"isCreationTrack":false,"resourceVersion":"1.0","tags":[],"resourceType":"GMSpriteFramesTrack",},
     ],
-    "visibleRange": {"x":0.0,"y":0.0,},
+    "visibleRange": null,
     "lockOrigin": false,
     "showBackdrop": true,
     "showBackdropImage": false,

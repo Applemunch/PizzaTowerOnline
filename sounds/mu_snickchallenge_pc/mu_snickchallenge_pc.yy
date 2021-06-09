@@ -14,7 +14,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "mu_snickchallenge_pc.wav",
-  "duration": 255.524033,
+  "duration": 255.044861,
   "parent": {
     "name": "pizza castle",
     "path": "folders/Sounds/pizza castle.yy",

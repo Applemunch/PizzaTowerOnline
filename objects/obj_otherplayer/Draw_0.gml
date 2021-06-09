@@ -102,7 +102,7 @@ else
 	}
 	
 	if is_real(spr_palette) && spr_palette != 0 && sprite_exists(spr_palette)
-	&& (state != states.cheeseball or sprite_index == spr_playerSP_cheeseball) && (state != states.ghost or sprite_index == spr_player_ghostend && image_index >= 12)
+	&& (state != states.cheeseball or sprite_index == spr_playerSP_cheeseball) && (state != states.ghost or (sprite_index == spr_player_ghostend && image_index >= 12) or spr_palette == spr_noisepalette)
 	{
 		if paletteselect < 0
 		{

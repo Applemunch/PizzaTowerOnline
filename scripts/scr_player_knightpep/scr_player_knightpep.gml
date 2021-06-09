@@ -113,7 +113,7 @@ function scr_player_knightpep()
 		xscale = move
 
 	if scr_slope() && sprite_index != spr_knightpepthunder
-	&& (!string_startswith(room_get_name(room), "etb_") or room == etb_5b)
+	&& (!string_startswith(room_get_name(room), "etb_") or room == etb_5b or key_down)
 	{
 		with instance_place(x,y+1,obj_slope)
 			other.xscale = -sign(image_xscale)

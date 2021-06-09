@@ -12,5 +12,5 @@ if i == 4
 {
 	draw_set_halign(fa_middle);
 	draw_text(280, 132, "- Pizza Tower -\nPizzaTowerGuy\n\n- Antonball -\nSummitsphere\n\n- Peppino's Leaning Nightmare -\nDrexyl\nMarcus Does Miscellaneous\nPLN Contributors\n\n- Sugary Spire -\nSugarySpireGuy\nPinPanPaint - Assets\nRodMod - Music");
-	draw_text(680, 132, "- Other -\n\nSnick Escape - [c]ness\nSmart Debris - MrUnown\nExtra rooms - bepmaster\n\n- NPC -\nChester - Chester Doggo\nThe Silence - SlushX, 175HayStacks\n\n- Characters and Palettes -\nGlade, Noik - peic\nAlmost every other palette - bepmaster");
+	draw_text(680, 132, "- Other -\n\nSnick Escape - [c]ness\nSmart Debris - MrUnown\nExtra rooms - bepmaster\n\n- NPC -\nPlaceholder\n\n- Characters and Palettes -\nGlade, Noik - Sanssul\nAlmost every palette - bepmaster");
 }

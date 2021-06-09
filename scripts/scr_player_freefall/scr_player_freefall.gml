@@ -106,6 +106,7 @@ function scr_player_freefall()
 	    if grounded  && !(input_buffer_jump < 8) && (!place_meeting(x, y + 1, obj_destructibles)
 		or (!place_meeting(x, y, obj_platform) && place_meeting(x, y + 1, obj_platform)))
 	    {
+			audio_stop_sound(sfx_groundpound)
 			scr_soundeffect(sfx_groundpound)
 			freefallsmash= 0
 		

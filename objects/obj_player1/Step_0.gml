@@ -587,15 +587,17 @@ if state != states.freefall && state != states.facestomp && state != states.supe
 if state != states.mach2
 	machpunchAnim = false
 
-if state != states.jump 
+if state != states.jump && state != states.ladder
 	ladderbuffer = 0
+else if ladderbuffer > 0 //Ladder Buffer
+	ladderbuffer --
 
 if state != states.jump
 	stompAnim = false
 
 if state != states.grabbing && state != states.barrel && state != states.tumble && state != states.ghost && sprite_index != spr_pmortjump
     grav = 0.5;
-else if state == states.barrel or state == states.tumble
+else if state == states.barrel or (state == states.tumble && global.gameplay != 0)
     grav = 0.6;
 
 //Too much alarm 1

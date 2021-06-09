@@ -7,8 +7,13 @@ if obj_player1.character = "N"
 if obj_player1.character = "S"
 	sprite_index = spr_snickcollectible1
 if obj_player1.character = "SP"
-	sprite_index = choose(spr_sugarycollectibles1, spr_sugarycollectibles2, spr_sugarycollectibles3, spr_sugarycollectibles4, spr_sugarycollectibles5, spr_sugarycollectibles6, spr_sugarycollectibles7, spr_sugarycollectibles8, spr_sugarycollectibles9, spr_sugarycollectibles10);
-	
+{
+	if global.gameplay == 0
+		sprite_index = choose(spr_sugarycollectibles1, spr_sugarycollectibles2, spr_sugarycollectibles3, spr_sugarycollectibles4, spr_sugarycollectibles5, spr_sugarycollectibles6, spr_sugarycollectibles7, spr_sugarycollectibles8, spr_sugarycollectibles9, spr_sugarycollectibles10);
+	else
+		sprite_index = choose(spr_sugarycollect1_NEW, spr_sugarycollect2_NEW, spr_sugarycollect3_NEW, spr_sugarycollect4_NEW, spr_sugarycollect5_NEW, spr_sugarycollect6_NEW, spr_sugarycollect7_NEW, spr_sugarycollect8_NEW, spr_sugarycollect9_NEW, spr_sugarycollect10_NEW);
+}
+
 if string_startswith(room_get_name(room), "strongcold")
 	sprite_index = choose(spr_xmastopping1,spr_xmastopping2,spr_xmastopping3,spr_xmastopping4,spr_xmastopping5)
 if global.snickrematch

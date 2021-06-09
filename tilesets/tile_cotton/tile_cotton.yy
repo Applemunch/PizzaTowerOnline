@@ -1,7 +1,7 @@
 {
   "spriteId": {
-    "name": "sprite_cottontile",
-    "path": "sprites/sprite_cottontile/sprite_cottontile.yy",
+    "name": "spr_cottontile",
+    "path": "sprites/spr_cottontile/spr_cottontile.yy",
   },
   "tileWidth": 32,
   "tileHeight": 32,

@@ -11,7 +11,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "mu_steamcc_pc.ogg",
-  "duration": 128.005,
+  "duration": 144.005,
   "parent": {
     "name": "pizza castle",
     "path": "folders/Sounds/extra/sugary spire/pizza castle.yy",

@@ -1,4 +1,7 @@
 /// @description restart
+with all
+	if !persistent instance_destroy(id, false);
+
 var timeattack = global.timeattack
 var roomname = room_get_name(room)
 

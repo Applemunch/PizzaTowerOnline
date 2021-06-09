@@ -154,7 +154,8 @@ if instance_exists(baddieID) && place_meeting(x,y,obj_player1) && !obj_player1.c
 			//Attack
 			if instance_exists(other.baddieID) && state == states.handstandjump && !other.baddieID.invincible && character != "S"
 			{
-				if !other.baddieID.thrown or global.gameplay != 0 // && (character = "P" or character = "N" or character == "SP" or other.baddieID.object_index == obj_pizzaballOLD)
+				if (!other.baddieID.thrown or global.gameplay != 0) // && (character = "P" or character = "N" or character == "SP" or other.baddieID.object_index == obj_pizzaballOLD)
+				&& !(character == "G" && !key_slap)
 				{
 					movespeed = 0
 					image_index = 0

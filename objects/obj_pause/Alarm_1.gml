@@ -1,4 +1,7 @@
 /// @description title screen
+with all
+	if !persistent instance_destroy(id, false);
+
 var title = true;
 with obj_player1
 {

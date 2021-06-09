@@ -77,7 +77,7 @@
     "spriteId": {"name":"spr_minipillarwoke_ss","path":"sprites/spr_minipillarwoke_ss/spr_minipillarwoke_ss.yy",},
     "timeUnits": 1,
     "playback": 1,
-    "playbackSpeed": 1.0,
+    "playbackSpeed": 0.7,
     "playbackSpeedType": 1,
     "autoRecord": true,
     "volume": 1.0,

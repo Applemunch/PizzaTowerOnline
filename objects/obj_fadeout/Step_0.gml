@@ -35,6 +35,10 @@ if fadealpha > 1
 				with obj_player1
 					event_perform(ev_other, ev_room_start);
 			}
+			
+			with obj_player1
+				if state == states.ladder
+					ladderbuffer = 10;
 		}
 		else
 		{

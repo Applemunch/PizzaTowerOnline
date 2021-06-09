@@ -29,7 +29,7 @@ with other
 			repeat _max
 			{
 				if scr_solid(x, y)
-					x += xscale;
+					x -= xscale;
 				else break;
 			}
 			repeat _max

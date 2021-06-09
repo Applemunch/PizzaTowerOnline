@@ -33,24 +33,29 @@ layer_y("Backgrounds_scroll", (_cam_y * 0.25) + bgscrolly);
 bgscrollx = (bgscrollx + layer_get_hspeed("Backgrounds_scroll")) % (sprite_get_width(layer_background_get_sprite(layer_background_get_id("Backgrounds_scroll"))));
 bgscrolly = (bgscrolly + layer_get_vspeed("Backgrounds_scroll")) % (sprite_get_height(layer_background_get_sprite(layer_background_get_id("Backgrounds_scroll"))));
 
-#region pinpan moment
+if check_sugary()
+{
+	#region pinpan moment
 
-layer_x("Backgrounds_steamcc1", (_cam_x * 0.95) + bgscroll2x);
-layer_y("Backgrounds_steamcc1", (_cam_y * 0.95) + bgscroll2y);
-bgscroll2x = (bgscroll2x + layer_get_hspeed("Backgrounds_steamcc1")) % (sprite_get_width(layer_background_get_sprite(layer_background_get_id("Backgrounds_steamcc1"))));
-bgscroll2y = (bgscroll2y + layer_get_vspeed("Backgrounds_steamcc1")) % (sprite_get_height(layer_background_get_sprite(layer_background_get_id("Backgrounds_steamcc1"))));
+	layer_x("Backgrounds_steamcc1", (_cam_x * 0.95) + bgscroll2x);
+	layer_y("Backgrounds_steamcc1", (_cam_y * 0.95) + bgscroll2y);
+	bgscroll2x = (bgscroll2x + layer_get_hspeed("Backgrounds_steamcc1")) % (sprite_get_width(layer_background_get_sprite(layer_background_get_id("Backgrounds_steamcc1"))));
+	bgscroll2y = (bgscroll2y + layer_get_vspeed("Backgrounds_steamcc1")) % (sprite_get_height(layer_background_get_sprite(layer_background_get_id("Backgrounds_steamcc1"))));
 
-layer_x("Backgrounds_steamcc2", (_cam_x * 0.85) + bgscroll3x);
-layer_y("Backgrounds_steamcc2", (_cam_y * 0.85) + bgscroll3y);
-bgscroll3x = (bgscroll3x + layer_get_hspeed("Backgrounds_steamcc2")) % (sprite_get_width(layer_background_get_sprite(layer_background_get_id("Backgrounds_steamcc2"))));
-bgscroll3y = (bgscroll3y + layer_get_vspeed("Backgrounds_steamcc2")) % (sprite_get_height(layer_background_get_sprite(layer_background_get_id("Backgrounds_steamcc2"))));
+	layer_x("Backgrounds_steamcc2", (_cam_x * 0.8) + bgscroll3x);
+	layer_y("Backgrounds_steamcc2", (_cam_y * 0.8) + bgscroll3y);
+	bgscroll3x = (bgscroll3x + layer_get_hspeed("Backgrounds_steamcc2")) % (sprite_get_width(layer_background_get_sprite(layer_background_get_id("Backgrounds_steamcc2"))));
+	bgscroll3y = (bgscroll3y + layer_get_vspeed("Backgrounds_steamcc2")) % (sprite_get_height(layer_background_get_sprite(layer_background_get_id("Backgrounds_steamcc2"))));
 
-layer_x("Backgrounds_steamcc3", (_cam_x * -0.1) + bgscroll4x);
-layer_y("Backgrounds_steamcc3", 170 + (_cam_y * -0.1) + bgscroll4y);
-bgscroll4x = (bgscroll4x + layer_get_hspeed("Backgrounds_steamcc3")) % (sprite_get_width(layer_background_get_sprite(layer_background_get_id("Backgrounds_steamcc3"))));
-bgscroll4y = (bgscroll4y + layer_get_vspeed("Backgrounds_steamcc3")) % (sprite_get_height(layer_background_get_sprite(layer_background_get_id("Backgrounds_steamcc3"))));
+	layer_x("Backgrounds_steamcc3", (_cam_x * -0.1) + bgscroll4x);
+	layer_y("Backgrounds_steamcc3", (room_height * 1.1) - 600 + (_cam_y * -0.1));
+	bgscroll4x = (bgscroll4x + layer_get_hspeed("Backgrounds_steamcc3")) % (sprite_get_width(layer_background_get_sprite(layer_background_get_id("Backgrounds_steamcc3"))));
+	
+	layer_x("Backgrounds_steamcc4", _cam_x * 0.75);
+	layer_y("Backgrounds_steamcc4", 20 + (_cam_y * 0.75));
 
-#endregion
+	#endregion
+}
 
 layer_x("Backgrounds_sky",  _cam_x * 0.85);
 layer_y("Backgrounds_sky",  _cam_y * 0.85);

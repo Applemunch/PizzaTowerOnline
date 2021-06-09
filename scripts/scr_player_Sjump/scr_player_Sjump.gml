@@ -68,6 +68,8 @@ function scr_player_Sjump() {
 					vsp = -7
 			}
 		}
+		
+		audio_stop_sound(sfx_groundpound)
 		scr_soundeffect(sfx_groundpound)
 		image_index = 0
 		state = states.Sjumpland

@@ -817,6 +817,21 @@ function scr_wcevaluate(argument0)
 			        obj_player1.state = real(arg1);
 			        ds_list_insert(WC_consolelist, 0, "Set player 1 state to " + arg1);
 			    }
+				else if string_startswith(arg1, "states.") && variable_global_exists("states") && is_struct(states)
+				// pt online exclusive
+				{
+					var stat = string_replace(arg1, "states.", "");
+					if variable_instance_exists(states, stat)
+					{
+						obj_player1.state = variable_instance_get(states, stat);
+				        ds_list_insert(WC_consolelist, 0, "Set player 1 state to " + arg1 + " (state " + string(obj_player1.state) + ")");
+					}
+					else
+					{
+						WC_consoleopen = true;
+						ds_list_insert(WC_consolelist, 0, arg1 + " doesn't exist. Check for typos");
+					}
+				}
 			    else
 				{
 					WC_consoleopen = true;
@@ -829,7 +844,7 @@ function scr_wcevaluate(argument0)
 			    ds_list_insert(WC_consolelist, 0, "Player 1 object doesn't exist");
 			}
 			break;
-			
+		
 		case "player2state":
 		case "state2":
 		case "setstate2": // pt exclusive
@@ -872,7 +887,6 @@ function scr_wcevaluate(argument0)
 		case "oobcamera":
 		case "boundarybreak": // pt exclusive
 			WC_oobcam = !WC_oobcam;
-				
 			if !WC_consoleopen // pt exclusive
 			{
 				with obj_tv
@@ -1861,8 +1875,7 @@ function scr_wcevaluate(argument0)
 		case "extrahud":
 		case "debughud":
 		case "debugview":
-			arg1 = ds_list_find_value(arg, 1);
-				
+			arg1 = ds_list_find_value(arg, 1);	
 			if is_undefined(arg1)
 			{
 			    if keyboard_check(vk_shift) or keyboard_check(vk_control) && !WC_consoleopen
@@ -2353,7 +2366,7 @@ function scr_wcevaluate(argument0)
 			
 		case "monitorvar":
 		case "monitorvariable":
-			tempobj = ds_list_find_value(arg, 1)
+			tempobj = ds_list_find_value(arg, 1);
 			if is_undefined(tempobj)
 			{
 			    if WC_varmonitor != undefined
@@ -2453,7 +2466,64 @@ function scr_wcevaluate(argument0)
 					}
 				}
 			}
-			break
+			break;
+		
+		case "list":
+		case "lookup":
+			arg1 = ds_list_find_value(arg, 1);
+			if is_undefined(arg1)
+			{
+				ds_list_insert(WC_consolelist, 0, "Usage: list ASSET SORT");
+				WC_consoleopen = true;
+			}
+			else
+			{
+				if string_upper(arg1) == "ROOM"
+				{
+					if ds_exists(WC_assetlist, ds_type_list)
+						ds_list_destroy(WC_assetlist);
+					WC_assetlist = ds_list_create();
+					
+					// retrieve room list
+					for(var i = 0; room_exists(i); i++)
+						ds_list_add(WC_assetlist, room_get_name(i));
+					
+					WC_assetfinder = 0;
+					WC_consoleopen = false;
+				}
+				else if string_upper(arg1) == "OBJECT"
+				{
+					if ds_exists(WC_assetlist, ds_type_list)
+						ds_list_destroy(WC_assetlist);
+					WC_assetlist = ds_list_create();
+					
+					// retrieve room list
+					for(var i = 0; object_exists(i); i++)
+						ds_list_add(WC_assetlist, object_get_name(i));
+					
+					WC_assetfinder = 1;
+					WC_consoleopen = false;
+				}
+				else
+				{
+					WC_assetfinder = -1;
+					
+					ds_list_insert(WC_consolelist, 0, "Asset list for " + arg1 + " doesn't exist. Check for typos");
+					WC_consoleopen = true;
+				}
+				keyboard_clear(vk_enter);
+				
+				if WC_assetfinder > -1
+				{
+					WC_consolescroll = 0;
+					
+					arg2 = string_lower(string(ds_list_find_value(arg, 2)));
+					if arg2 == "true" or arg2 == "1"
+						ds_list_sort(WC_assetlist, true);
+					WC_assetsel = 0;
+				}
+			}
+			break;
 			
 		case "bind":
 			arg1 = ds_list_find_value(arg, 1);
@@ -2707,13 +2777,16 @@ function scr_wcevaluate(argument0)
 				
 			ds_list_add(WC_bindkey, vk_numpad3);
 			ds_list_add(WC_bindmap, "delete");
-		
+			
 			ds_list_add(WC_bindkey, vk_numpad4);
 			ds_list_add(WC_bindmap, "monitorvar");
-		
+			
+			ds_list_add(WC_bindkey, vk_numpad5);
+			ds_list_add(WC_bindmap, "list room");
+			
 			ds_list_insert(WC_consolelist, 0, "Rebinded default keys");
 			break;
-	
+		
 		default: // no command
 			WC_consoleopen = true;
 			ds_list_insert(WC_consolelist, 0, "Invalid command " + arg0);
@@ -2723,4 +2796,5 @@ function scr_wcevaluate(argument0)
 		
 	if WC_consoleopen && WC_consoleenter == eval
 		keyboard_string = "";
+	keyboard_clear(vk_enter);
 }

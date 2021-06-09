@@ -132,8 +132,8 @@
     "TileSerialiseData": [],
   },
   "parent": {
-    "name": "Tile Sets",
-    "path": "folders/Tile Sets.yy",
+    "name": "freezer",
+    "path": "folders/Tile Sets/freezer.yy",
   },
   "resourceVersion": "1.0",
   "name": "tile_freezer",

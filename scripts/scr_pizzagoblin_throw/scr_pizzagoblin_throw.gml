@@ -172,7 +172,12 @@ function scr_pizzagoblin_throw() {
 				break
 		
 			case obj_swedishmonkey:
-				with instance_create(x, y, obj_slipnslide)
+				if global.stylethreshold >= 3
+					var banan = instance_create(x, y, obj_evilbanana);
+				else
+					banan = instance_create(x, y, obj_slipnslide);
+				
+				with banan
 				{
 					baddieID = other.id
 					if other.image_xscale != 0
@@ -184,9 +189,9 @@ function scr_pizzagoblin_throw() {
 						instance_destroy();
 					else
 					{
-						with obj_slipnslide
-							if baddieID = other.baddieID
-								banana += 1
+						with object_index
+							if baddieID == other.baddieID
+								banana += 1;
 					}
 				}
 				break

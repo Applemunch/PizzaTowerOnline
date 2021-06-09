@@ -1,4 +1,4 @@
-
+/*
 if instance_exists(obj_gms)
 {
 	gms_logout();
@@ -8,7 +8,7 @@ if instance_exists(obj_gms)
 
 global.optimize = 0;
 global.autotile = true;
-global.font_small = font_add_sprite_ext(spr_smallfont, "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!._1234567890:?▯|*/',\"()=-+@:;█", true, -2)//"ABCDEFGHIJKLMNOPQRSTUVWXYZ!.1234567890:"
+global.font_small = font_add_sprite_ext(spr_smallfont, "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!._1234567890:?▯|',\"()=-+@:;█", true, -2)//"ABCDEFGHIJKLMNOPQRSTUVWXYZ!.1234567890:"
 
 
 /*

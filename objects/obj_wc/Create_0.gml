@@ -57,6 +57,9 @@ WC_saveversion = 0;
 WC_togglekey = ord("º");
 
 WC_consolescroll = 0;
+WC_assetfinder = -1;
+WC_assetlist = -1;
+WC_assetsel = 0;
 
 // pt exclusive
 WC_oobcam = false;

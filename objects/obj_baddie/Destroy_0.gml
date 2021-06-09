@@ -14,6 +14,9 @@ if ds_list_find_index(global.baddieroom, id) = -1 && important = false
 		sfx_scream9,sfx_scream10)
 	}
 	
+	if object_index == obj_swedishmonkey && irandom_range(0, 100) == 5
+		scr_soundeffect(sfx_monkey);
+	
 	scr_soundeffect(sfx_killenemy)
 	if global.gameplay == 0
 	{

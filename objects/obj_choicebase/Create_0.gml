@@ -27,3 +27,5 @@ if irandom_range(0, 100) >= 80
 if irandom_range(0, 100) >= 90
 	pizza = spr_pizzacollect3;
 pizzasurf = -1;
+
+holdt = -1;

@@ -8,7 +8,7 @@ if obj_player.character = "S"
 
 spr_closed = spr_pizzaboxunopen;
 spr_open = spr_pizzaboxopen;
-if string_startswith(room_get_name(room), "steamcc_")
+if check_sugary()
 {
 	spr_closed = spr_pizzaboxunopen_ss;
 	spr_open = spr_pizzaboxopen_ss;

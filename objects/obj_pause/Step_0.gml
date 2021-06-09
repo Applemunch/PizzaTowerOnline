@@ -38,7 +38,7 @@ if pause = 1
     }
 
 	if key_jump && selected = 1 {
-		if global.snickchallenge = false
+		if !global.snickchallenge
 		{
 			var roomname = room_get_name(room)
 

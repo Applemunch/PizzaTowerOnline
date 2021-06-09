@@ -8,3 +8,5 @@ if place_meeting(x, y, obj_destructibles)
 	depth = 104;
 
 targetDoor = "A"
+if check_sugary()
+	sprite_index = spr_keydoor_ss

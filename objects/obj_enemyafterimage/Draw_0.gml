@@ -2,7 +2,7 @@ if instance_exists(parent) && image_alpha > 0 && global.surfacemach && parent.ha
 {
 	// target surface
 	if !surface_exists(surf)
-		surf = surface_create(room_width, room_height);
+		surf = surface_create(960, 540);
 	else
 	{
 		surface_set_target(surf);
@@ -13,15 +13,15 @@ if instance_exists(parent) && image_alpha > 0 && global.surfacemach && parent.ha
 		
 		// draw to surface
 		if sprite_exists(sprite_index)
-			draw_sprite_ext(sprite_index, floor(image_index), x, y, image_xscale, image_yscale, image_angle, c_white, 1)
+			draw_sprite_ext(sprite_index, floor(image_index), x - drawx, y - drawy, image_xscale, image_yscale, image_angle, c_white, 1)
 		else
-			draw_sprite_ext(spr_player_mach, floor(image_index), x, y, image_xscale, image_yscale, image_angle, c_white, 1)
+			draw_sprite_ext(spr_player_mach, floor(image_index), x - drawx, y - drawy, image_xscale, image_yscale, image_angle, c_white, 1)
 		
 		pal_swap_reset();
 		
 		// draw surface
 		surface_reset_target();
-		draw_surface_ext(surf, 0, 0, 1, 1, 0, image_blend, 1);
+		draw_surface_ext(surf, drawx, drawy, 1, 1, 0, image_blend, 1);
 	}
 }
 else if image_alpha > 0

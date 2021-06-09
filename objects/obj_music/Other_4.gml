@@ -143,6 +143,16 @@ else if (global.musicgame == 0 or !global.loaded_pc) && global.panic = false && 
 			pausedmusic = mu_hub2
 		}
 	}
+	if string_startswith(roomname, "hub_roomMOD")
+	{
+		if !audio_is_playing(mu_hubarcade)
+		{
+			audio_stop_sound(global.music)
+			scr_sound(mu_hubarcade)
+			audio_sound_set_track_position(global.music, fadeoff)
+			pausedmusic = mu_hubarcade
+		}
+	}
 	if string_startswith(roomname, "hub_roomE")
 	{
 		if room == hub_roomE2
@@ -967,6 +977,16 @@ else if global.loaded_pc && global.panic = false && global.snickchallenge = fals
 	if string_startswith(roomname, "hub_outside")
 	{
 		if !audio_is_playing(mu_characterselect_pc)
+		{
+			audio_stop_sound(global.music)
+			scr_sound(mu_characterselect_pc)
+			audio_sound_set_track_position(global.music, fadeoff)
+			pausedmusic = mu_characterselect_pc
+		}
+	}
+	if string_startswith(roomname, "hub_roomMOD")
+	{
+		if !audio_is_playing(mu_characterselect_pc) // REPLACE
 		{
 			audio_stop_sound(global.music)
 			scr_sound(mu_characterselect_pc)

@@ -146,7 +146,7 @@ if global.gameplay == 0
 			else if obj_player1.sprite_index = obj_player1.spr_bombpepend
 				hudface = spr_pizzyHUDbombend
 			else if instance_exists(obj_itspizzatime)  or obj_player1.sprite_index = obj_player1.spr_bombpepintro or obj_player1.sprite_index = obj_player1.spr_bombpeprunabouttoexplode or obj_player1.sprite_index = obj_player1.spr_bombpeprun or obj_player1.sprite_index = obj_player1.spr_fireass // REPLACE
-				hudface = spr_pizzyHUDhurt // REPLACE
+				hudface = spr_pizzyHUD_panic
 			else if _state = states.Sjumpland or (_state = states.freefallland && shake_mag > 0)  
 				hudface = spr_pizzyHUDstun
 			else if obj_player1.sprite_index = obj_player1.spr_victory or _state = states.keyget or _state = states.smirk or _state = states.gottreasure or (_state = states.bossintro && obj_player1.sprite_index = spr_player_levelcomplete)
@@ -410,8 +410,8 @@ if obj_player1.character == "V" && showhud
 //Key
 if showhud
 {
-	if global.key_inv == true
-		draw_sprite_ext(spr_key, -1, 50, 30, 1, 1, 0, c_white, alpha)
+	if global.key_inv
+		draw_sprite_ext((check_sugary() ? spr_key_ss : spr_key), -1, 50, 30, 1, 1, 0, c_white, alpha)
 	draw_sprite_ext(spr_inv, -1, 50, 30, 1, 1, 0, c_white, alpha)
 }
 

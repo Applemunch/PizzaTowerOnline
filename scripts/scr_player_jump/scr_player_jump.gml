@@ -54,10 +54,6 @@ function scr_player_jump()
 		jumpstop = true
 	}
 
-	//Ladder Buffer
-	if ladderbuffer > 0
-		ladderbuffer --
-
 	//Hit head
 	if scr_solid(x,y-1) && jumpstop = false && jumpAnim = true
 	{
@@ -352,6 +348,8 @@ function scr_player_jump()
 			shake_mag=10;
 			shake_mag_acc=30/room_speed;
 		}
+		
+		audio_stop_sound(sfx_groundpound)
 		scr_soundeffect(sfx_groundpound)
 		image_index = 0
 		if character == "SP"

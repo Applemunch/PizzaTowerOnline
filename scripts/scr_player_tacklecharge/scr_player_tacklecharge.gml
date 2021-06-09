@@ -96,7 +96,8 @@ function scr_player_tacklecharge()
 					repeat 3
 					{
 						instance_create(x,y,obj_slapstar)
-						create_particle(x,y,particles.baddiegibs)
+						if object_is_ancestor(object_index, obj_baddie)
+							create_particle(x,y,particles.baddiegibs)
 					}
 					flash = true
 						

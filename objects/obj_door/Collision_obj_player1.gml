@@ -9,7 +9,8 @@ with other
 		scr_soundeffect(sfx_door)
 
 		obj_camera.chargecamera = 0
-		ds_list_add(global.saveroom, other.id)
+		if ds_list_find_index(global.saveroom, other.id) == -1
+			ds_list_add(global.saveroom, other.id)
 		
 		sprite_index = spr_lookdoor
 		

@@ -16,25 +16,40 @@ if key_start or key_slap2
 xoffset = lerp(xoffset, 0, 0.25);
 if check_shaders() or !selvert
 {
-	if -key_left2 && sel[0] > selmin
+	if (-key_left2 or (holdt == 0 && -key_left)) && sel[0] > selmin
 	{
 		scr_soundeffect(sfx_step);
 		sel[0] -= 1;
 		xoffset = -100;
 		
+		if holdt == -1
+			holdt = 30;
+		else
+			holdt = 5;
+		
 		if !selvert
 			event_user(0);
 	}
-	else if key_right2 && sel[0] < selmax
+	else if (key_right2 or (holdt == 0 && key_right)) && sel[0] < selmax
 	{
 		scr_soundeffect(sfx_step);
 		sel[0] += 1;
 		xoffset = 100;
 		
+		if holdt == -1
+			holdt = 30;
+		else
+			holdt = 5;
+		
 		if !selvert
 			event_user(0);
 	}
 	sel[0] = clamp(sel[0], selmin, selmax);
+	
+	if key_left + key_right == 0
+		holdt = -1;
+	else if holdt > 0
+		holdt--;
 }
 else
 {

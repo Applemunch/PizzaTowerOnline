@@ -12,7 +12,7 @@ switch sel[1]
 			["GREEN", "That's right, he's rocking a green outfit."],
 			["GRAY", "A Leaning Nightmare."],
 			["GBC", "What a ripoff."],
-			["GB", "Grayscale."],
+			["GRAYSCALE", "Depresso spaghetto."],
 			["XMAS", "Give me a break."],
 			["THE NOISE", "...woag?"],
 			["SKETCH", "He crashed into somebody."],
@@ -26,6 +26,9 @@ switch sel[1]
 			["SAGE", "Reminds him of bad memories..."],
 			["BLACK", "Not the clothes."],
 			["MASSACRE", "Forgot his chainsaw at home, but still unstable."],
+			["BURNT PIZZA", "Oh, god damn it."],
+			["DREXYL", "D'AW HELL NAH"],
+			["GB", "One of his greatest achievements."]
 		];
 		break;
 	
@@ -52,7 +55,8 @@ switch sel[1]
 			["MR ORANGE", "I'm seeing double! Four Noise!"],
 			["NEO", "Neo is the new!"],
 			["DR.B.B.", "Snooping as usual, I see!"],
-			["NOSE", "Repeat after me! N. I. G-"],
+			["NOSE", "Repeat after me! NI-"],
+			["SALAD", "You know what to do."],
 		];
 		break;
 	
@@ -98,6 +102,7 @@ switch sel[1]
 			["HALLOWEEN", "Don't worry, he's not dead yet."],
 			["SOCK", "Sock is without description."],
 			["ELMO", "Homosexual, the sixty-ninth."],
+			["GB", "Published by Snicksoft."],
 		];
 		break;
 	
@@ -128,6 +133,9 @@ switch sel[1]
 			["WII DOG", "HEHA"],
 			["CHRIS", "Furry."],
 			["BLUE MARIO", "loypoll's OC...??"],
+			["RITZ", "E-girl approved."],
+			["RED", "Vote him out."],
+			["FRITZ", "NO"],
 		];
 		break;
 	
@@ -156,11 +164,13 @@ switch sel[1]
 			["TRANS", "Laugh."],
 			["GREEN APPLE", "Why is this the least favorite candy flavor?"],
 		];
-		if irandom_range(0, 1000) == 1 && !global.streamer // 0.01% chance
-			selarray[1] = ["TRANNY", "It's the Candy-making tranny!"];
-		break;
 		
 		//["PAINTLAD", "Did you know Jacko suggested the name Paintlad\nand is probably never going to be credited for it?"],
+		/*
+		if irandom_range(0, 1000) == 1 && !global.streamer // 0.01% chance
+			selarray[1] = ["TRANNY", "It's the Candy-making tranny!"];
+		*/
+		break;
 	
 	#region roleplay
 	

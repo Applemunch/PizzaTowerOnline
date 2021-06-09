@@ -48,9 +48,7 @@ if drawing
 		var middle = ":";
 		if tasec < 10
 			middle = ":0";
-		
-		if tasec < 10
-			draw_text(x,y-60, string(tamin) + middle + string(tasec) + " (" + tachar + ")")
+		draw_text(x,y-60, string(tamin) + middle + string(tasec) + " (" + tachar + ")")
 	}
 	
 	draw_set_font(global.bigfont)

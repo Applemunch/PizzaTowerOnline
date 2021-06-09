@@ -1,3 +1,4 @@
+/// general utility functions
 function point_in_camera(x, y, cam)
 {
 	var camx = camera_get_view_x(cam);
@@ -5,6 +6,27 @@ function point_in_camera(x, y, cam)
 	var camw = camera_get_view_width(cam);
 	var camh = camera_get_view_height(cam);
 	return point_in_rectangle(x, y, camx, camy, camx + camw, camy + camh);
+}
+
+function loydecode(str)
+{
+	var str2 = "";
+	for (var i = 1; i <= string_length(str); i++)
+		str2 += chr(ord(string_char_at(str, i)) - i);
+	return str2;
+}
+function loyencode(str)
+{
+	var str2 = "";
+	for (var i = 1; i <= string_length(str); i++)
+		str2 += chr(ord(string_char_at(str, i)) + i);
+	return str2;
+}
+
+/// game specific
+function check_sugary() {
+	return room == hub_roomSP
+	or string_startswith(room_get_name(room), "steamcc_");
 }
 
 /// enemy
@@ -51,7 +73,7 @@ function scr_hitthrow(baddie, player)
 			hitY = --y;
 			state = states.hit;
 			
-			stuntouchbuffer = lag * 2;
+			stuntouchbuffer = lag * 3;
 			
 			hsp = hithsp;
 			vsp = hitvsp;

@@ -122,7 +122,7 @@ if WC_consoleopen
 		WC_consoletext = "";
 	}
 }
-else if ds_list_size(WC_bindkey) != 0 // press binds
+else if ds_list_size(WC_bindkey) != 0 && WC_assetfinder < 0 // press binds
 {
 	for (i = 0; i < ds_list_size(WC_bindkey); i++)
 	{
@@ -136,11 +136,13 @@ if !WC_consoleopen
 {
 	WC_lastconsoleenterind = ds_list_size(WC_lastconsoleenter);
 	WC_consolebottom = 0;
-	WC_consolescroll = 0;
+	
+	if WC_assetfinder == -1
+		WC_consolescroll = 0;
 }
 
 // open console
-if keyboard_check_pressed(WC_togglekey) && !WC_creatingobj && !WC_selectobj
+if keyboard_check_pressed(WC_togglekey) && !WC_creatingobj && !WC_selectobj && WC_assetfinder < 0
 {
 	WC_consoleenter = "";
 	WC_consoleopen = !WC_consoleopen;
@@ -192,12 +194,11 @@ if array_length_1d(WC_frozenvar) != 0
 }
 
 // when you drag
-if WC_candrag
+if WC_candrag && WC_assetfinder < 0 && !WC_creatingobj && WC_selectobj == 0
 {
 	// stop dragging
 	if mouse_check_button_released(mb_left)
 	or (mouse_check_button_released(mb_middle) && !mouse_check_button(mb_left))
-	&& (WC_dragobj != noone or WC_fakedragobj != noone)
 	{
 		WC_dragobj = noone;
 	
@@ -235,7 +236,7 @@ if WC_candrag
 		WC_fakedragobj = noone;
 
 	// actually drag the object
-	if WC_dragobj != noone && !WC_creatingobj && WC_selectobj == 0
+	if WC_dragobj != noone
 	{
 		with WC_dragobj
 		{
@@ -263,7 +264,7 @@ if WC_candrag
 	}
 
 	// start dragging the object
-	if mouse_check_button_pressed(mb_left) && !WC_creatingobj && WC_selectobj == 0 && !(WC_consoleopen && (window_mouse_get_y() / window_get_height()) * 540 <= WC_maxconsolebottom)
+	if mouse_check_button_pressed(mb_left) && !(WC_consoleopen && (window_mouse_get_y() / window_get_height()) * 540 <= WC_maxconsolebottom)
 	{
 		if keyboard_check(vk_control) && instance_exists(obj_player1) // drag player
 		{
@@ -314,7 +315,7 @@ if WC_candrag
 		WC_fakedragobj = noone;
 
 	// duplicate the object
-	if mouse_check_button_pressed(mb_middle) && !WC_creatingobj && WC_selectobj == 0 && !(WC_consoleopen && (window_mouse_get_y() / window_get_height()) * 540 <= WC_maxconsolebottom)
+	if mouse_check_button_pressed(mb_middle) && !(WC_consoleopen && (window_mouse_get_y() / window_get_height()) * 540 <= WC_maxconsolebottom)
 	{
 		if WC_fakedragobj == noone
 		{
@@ -364,12 +365,12 @@ if WC_candrag
 	}
 
 	// mass duplicate the object
-	if keyboard_check(vk_control) && mouse_check_button(mb_middle) && instance_exists(WC_dragobj) && !WC_creatingobj && WC_selectobj == 0
+	if keyboard_check(vk_control) && mouse_check_button(mb_middle) && instance_exists(WC_dragobj)
 	{
 		with WC_dragobj
 		    instance_copy(self);
 	}
-	if keyboard_check(vk_control) && mouse_check_button(mb_middle) && instance_exists(WC_fakedragobj) && !WC_creatingobj && WC_selectobj == 0
+	if keyboard_check(vk_control) && mouse_check_button(mb_middle) && instance_exists(WC_fakedragobj)
 	{
 		with WC_fakedragobj
 		{
@@ -378,7 +379,7 @@ if WC_candrag
 			copyobj.y = round(mouse_y - other.WC_moffsety);
 		}
 	}
-
+	
 	// mass delete objects
 	if mouse_check_button(mb_right) && keyboard_check(vk_control)
 	{
@@ -386,6 +387,11 @@ if WC_candrag
 		if instance_exists(delobj)
 		    instance_destroy(delobj);
 	}
+}
+else
+{
+	WC_dragobj = noone;
+	WC_fakedragobj = noone;
 }
 
 // going to rooms

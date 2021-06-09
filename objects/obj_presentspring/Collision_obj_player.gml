@@ -11,7 +11,8 @@ with other
 			x = xprevious;
 		
 		instance_create(x, y - 20, obj_bangeffect);
-
+		
+		audio_stop_sound(sfx_superjumprelease)
 		scr_soundeffect(sfx_superjumprelease)
 		sprite_index = spr_superspringplayer
 		state = states.Sjump

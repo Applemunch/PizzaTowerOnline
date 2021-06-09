@@ -35,6 +35,11 @@ if !oldhallway
 	
 	if verticalhallway
 		y += vhallwaydirection * 50;
+	if state == states.climbwall
+	{
+		while !scr_solid(x + xscale, y)
+			x += xscale;
+	}
 	
 	if targetDoor = "CH" && instance_exists(obj_checkpoint)
 	{
@@ -66,6 +71,9 @@ else
 	x = target_x
 	y = target_y
 }
+
+if state == states.ladder
+	doorx = x;
 
 if box
 	grounded = false;

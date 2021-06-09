@@ -24,9 +24,11 @@ if !ds_list_empty(global.baddietomb)
 				{
 					storedx = X;
 	                storedy = Y;
-	                collisioned = true;
+	                grounded = true;
 	                hsp = 0;
 	                vsp = 0;
+					saveable = false;
+					
 	                image_index = image_number - 1;
 					if !is_undefined(spr)
 						sprite_index = spr;

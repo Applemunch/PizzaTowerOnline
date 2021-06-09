@@ -10,8 +10,8 @@
     "name": "audiogroup_default",
     "path": "audiogroups/audiogroup_default",
   },
-  "soundFile": "mu_steamcc.ogg",
-  "duration": 136.005,
+  "soundFile": "mu_steamcc.wav",
+  "duration": 143.990463,
   "parent": {
     "name": "sugary spire",
     "path": "folders/Sounds/extra/sugary spire.yy",

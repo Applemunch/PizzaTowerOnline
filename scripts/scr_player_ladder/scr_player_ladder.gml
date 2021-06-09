@@ -17,6 +17,8 @@ function scr_player_ladder()
 	{
 		sprite_index = spr_laddermove
 		vsp = -2
+		if global.gameplay != 0
+			vsp = -4
 		image_speed = 0.35
 	}
 	else if key_down
@@ -31,9 +33,11 @@ function scr_player_ladder()
 		vsp = 0
 	}
 	
-	if x != doorx
+	if x != doorx && doorx != 0
 		x = Approach(x, doorx, 3);
-
+	else
+		doorx = 0;
+	
 	mach2 = 0
 	jumpAnim = true
 	dashAnim = true
@@ -45,16 +49,32 @@ function scr_player_ladder()
 	machhitAnim = false
 	
 	//Fall off
-	if !place_meeting(doorx, y, obj_ladder) 
+	if !place_meeting((doorx == 0 ? x : doorx), y, obj_ladder) && ladderbuffer <= 0
 	{
 		hooked = false;
 		landAnim = false
 		jumpAnim = false
 		state = states.normal
 		image_index = 0
+		
+		if vsp < 0 && place_meeting(x, y + abs(vsp), obj_ladder)
+		{
+			var ytry = y;
+			while !scr_solid(x, ytry + 1)
+			{
+				if ++ytry > room_height
+				{
+					ytry = y;
+					break;
+				}
+			}
+			y = ytry;
+			
+			grounded = true;
+		}
 		vsp = 0
 	}
-
+	
 	if key_jump or (input_buffer_jump < 8 && key_jump2)
 	{
 		input_buffer_jump = 8;

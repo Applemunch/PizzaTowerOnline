@@ -161,9 +161,18 @@ function check_hat(index)
 
 function room_goto_new(index)
 {
-	if asset_get_type(room_get_name(index) + "_NEW") == asset_room
-	&& global.gameplay != 0 && !global.snickchallenge
-		index = asset_get_index(room_get_name(index) + "_NEW");
+	if global.gameplay != 0 && !global.snickchallenge
+	{
+		if asset_get_type(room_get_name(index) + "_NEW") == asset_room
+			index = asset_get_index(room_get_name(index) + "_NEW");
+	}
+	if string_endswith(room_get_name(index), "_NEW") && global.gameplay == 0
+	{
+		var r = string_replace(room_get_name(index), "_NEW", "");
+		if asset_get_type(r) == asset_room
+			index = asset_get_index(r);
+	}
+	
 	room_goto(index);
 	return index;
 }

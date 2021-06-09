@@ -71,4 +71,7 @@ if check_bysync() == false
 
 sprite_index = playerid.sprite_index;
 if global.surfacemach
-	surf = surface_create(room_width, room_height);
+	surf = surface_create(960, 540);
+
+drawx = camera_get_view_x(view_camera[view_current]);
+drawy = camera_get_view_y(view_camera[view_current]);

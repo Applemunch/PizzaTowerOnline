@@ -1,5 +1,5 @@
 if room == rm_editor exit;
-if ds_list_find_index(global.saveroom, id) = -1 && global.snickchallenge = false
+//if ds_list_find_index(global.saveroom, id) == -1 && global.snickchallenge
 {
 	if global.gameplay != 0
 	{
@@ -219,7 +219,7 @@ if ds_list_find_index(global.saveroom, id) = -1 && global.snickchallenge = false
 		global.maxwave = (global.minutes * 60 + global.seconds) * 60
 	}
 
-	ds_list_add(global.saveroom, id)
+	//ds_list_add(global.saveroom, id)
 
 	with obj_panicdebris
 	{

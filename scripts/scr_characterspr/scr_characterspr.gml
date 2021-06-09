@@ -29,6 +29,7 @@ function scr_characterspr()
 				spr_laddermove = spr_player_laddermove
 				spr_ladderdown = spr_player_ladderdown
 				spr_keyget = spr_player_keyget
+				spr_keyget_ss = spr_player_keyget_ss
 				spr_crouchslip = spr_player_crouchslip
 
 				spr_mach1 = spr_player_mach1
@@ -73,8 +74,6 @@ function scr_characterspr()
 				spr_tackle = spr_player_tackle
 				spr_airdash1 = spr_player_airdash1
 				spr_airdash2 = spr_player_airdash2
-
-				spr_keyget = spr_player_keyget
 
 				spr_idle1 = spr_player_idlefrown
 				spr_idle2 = spr_player_idledance
@@ -294,6 +293,7 @@ function scr_characterspr()
 				spr_laddermove = spr_playerN_laddermove
 				spr_ladderdown = spr_playerN_ladderdown
 				spr_keyget = spr_playerN_keyget
+				spr_keyget_ss = spr_playerN_keyget_ss
 				spr_crouchslip = spr_playerN_crouchslip
 
 				spr_mach1 = spr_playerN_mach1
@@ -339,8 +339,6 @@ function scr_characterspr()
 				spr_tackle = spr_playerN_tackle
 				spr_airdash1 = spr_playerN_airdash1
 				spr_airdash2 = spr_playerN_airdash2
-
-				spr_keyget = spr_playerN_keyget
 
 				spr_idle1 = spr_playerN_idleface
 				spr_idle2 = spr_playerN_idlegun
@@ -561,6 +559,7 @@ function scr_characterspr()
 				spr_laddermove = spr_playerV_climb
 				spr_ladderdown = spr_playerV_downladder
 				spr_keyget = spr_playerV_gotkey
+				spr_keyget_ss = spr_playerV_gotkey_ss
 				spr_crouchslip = spr_playerV_revolverslide
 
 				spr_mach1 = spr_playerV_mach1
@@ -606,8 +605,6 @@ function scr_characterspr()
 				spr_tackle = spr_player_tackle
 				spr_airdash1 = spr_playerV_bootsfall
 				spr_airdash2 = spr_playerV_bootsfall
-
-				spr_keyget = spr_playerV_gotkey
 
 				spr_idle1 = spr_playerV_idle1
 				spr_idle2 = spr_playerV_idle2
@@ -823,6 +820,7 @@ function scr_characterspr()
 				spr_laddermove = spr_snick_climbladder
 				spr_ladderdown = spr_snick_climbladder
 				spr_keyget = spr_snick_gotkey
+				spr_keyget_ss = spr_snick_gotkey_ss
 				spr_crouchslip = spr_snick_slide
 
 				spr_mach1 = spr_snick_walk
@@ -867,8 +865,6 @@ function scr_characterspr()
 				spr_tackle = spr_snick_bump
 				spr_airdash1 = spr_snick_bodyslamstart
 				spr_airdash2 = spr_snick_fall
-
-				spr_keyget = spr_snick_gotkey
 
 				spr_idle1 = spr_snick_idleanim
 				spr_idle2 = spr_snick_idleanim
@@ -964,10 +960,10 @@ function scr_characterspr()
 				spr_suplexcancel = spr_snick_fall;
 				spr_suplexbump = spr_snick_bump;
 				
-				spr_firemouth = spr_player_firemouth;
-				spr_firemouthintro = spr_player_firemouthintro;
-				spr_firemouthshoot = spr_player_firemouthshoot;
-				spr_firemouthend = spr_player_firemouthend;
+				spr_firemouth = spr_snick_firemouthrun;
+				spr_firemouthintro = spr_snick_firemouthstart;
+				spr_firemouthshoot = spr_snick_firemouthrun;
+				spr_firemouthend = spr_snick_stunned;
 				
 				spr_boxxed_intro = spr_boxxedpep_intro;
 				spr_boxxed_idle = spr_boxxedpep_idle;
@@ -1031,6 +1027,7 @@ function scr_characterspr()
 				spr_laddermove = spr_playerSP_laddermove
 				spr_ladderdown = spr_playerSP_ladderdown
 				spr_keyget = spr_player_keyget
+				spr_keyget_ss = spr_player_keyget
 				spr_crouchslip = spr_playerSP_crouchslip
 				
 				spr_mach1 = spr_playerSP_mach1
@@ -1125,7 +1122,7 @@ function scr_characterspr()
 				spr_bombpepend = spr_playerSP_bombend
 				
 				spr_fireass = spr_playerSP_fireass
-				spr_fireassground = spr_player_fireassground
+				spr_fireassground = spr_playerSP_fireassground
 				spr_fireassend = spr_player_fireassend
 				spr_tumblestart = spr_playerSP_tumblestart
 				spr_tumbleend = spr_playerSP_tumbleend
@@ -1135,7 +1132,7 @@ function scr_characterspr()
 				spr_downpizzabox = spr_player_downpizzabox
 				spr_uppizzabox = spr_player_uppizzabox
 
-				spr_slipnslide = spr_player_slipnslide
+				spr_slipnslide = spr_playerSP_stunned
 
 				spr_facehurtup = spr_player_facehurtup
 				spr_facehurt = spr_player_facehurt
@@ -1212,7 +1209,7 @@ function scr_characterspr()
 				spr_parry2 = spr_playerSP_parry2;
 				spr_parry3 = spr_playerSP_parry3;
 				
-				spr_Current = spr_player_current;
+				spr_Current = spr_playerSP_current;
 				spr_suplexcancel = spr_player_suplexcancel;
 				spr_suplexbump = spr_player_suplexbump;
 				
@@ -1243,8 +1240,8 @@ function scr_characterspr()
 				spr_rageidle = spr_player_rageidle;
 				spr_ragemove = spr_player_ragemove;
 				
-				spr_breakdanceuppercut = spr_player_breakdanceuppercut;
-				spr_breakdanceuppercutend = spr_player_breakdanceuppercutend;
+				spr_breakdanceuppercut = spr_playerSP_uppercut;
+				spr_breakdanceuppercutend = spr_playerSP_uppercutend;
 				
 				spr_suplexland = spr_player_backflip;
 				
@@ -1253,7 +1250,7 @@ function scr_characterspr()
 				spr_pmortjump = spr_player_mortjump;
 				spr_pmortattack = spr_player_mortattack;
 				
-				spr_superspringplayer = spr_player_presentbox;
+				spr_superspringplayer = spr_playerSP_present;
 				
 				spr_palette = spr_pizzpalette;
 				paletteselect = check_shaders();
@@ -1289,6 +1286,7 @@ function scr_characterspr()
 				spr_laddermove = spr_player_laddermove // REPLACE
 				spr_ladderdown = spr_player_ladderdown // REPLACE
 				spr_keyget = spr_player_keyget // REPLACE
+				spr_keyget_ss = spr_player_keyget
 				spr_crouchslip = spr_playerG_crouchslip
 				
 				spr_idle1 = spr_playerG_idlephone
@@ -1339,8 +1337,6 @@ function scr_characterspr()
 				spr_tackle = spr_player_tackle
 				spr_airdash1 = spr_player_airdash1
 				spr_airdash2 = spr_player_airdash2
-
-				spr_keyget = spr_player_keyget
 
 				spr_piledriver = spr_player_piledriver
 				spr_piledriverland = spr_player_piledriverland

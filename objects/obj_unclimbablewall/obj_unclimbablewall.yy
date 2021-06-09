@@ -1,7 +1,7 @@
 {
   "spriteId": {
-    "name": "spr_hurtbox",
-    "path": "sprites/spr_hurtbox/spr_hurtbox.yy",
+    "name": "sprite1020",
+    "path": "sprites/sprite1020/sprite1020.yy",
   },
   "solid": false,
   "visible": false,

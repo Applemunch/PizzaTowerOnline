@@ -60,6 +60,7 @@ if global.snickrematch
 	grabbedspr = spr_slimegrabbed_re
 	scaredspr = spr_slimestun_re
 	spr_dead = spr_slimedead_re
+	ragespr = spr_cheeseslime_rage_re
 }
 
 sprite_index = walkspr

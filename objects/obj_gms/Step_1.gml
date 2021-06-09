@@ -9,6 +9,7 @@ if keyboard_check_pressed(global.__chat_submitkey) && global.__chat_typing
 	
     if str != ""
     {
+		chat_lastmessage = str;
 		if string_length(str) > 2000
 			gms_chat_local("Message length must be below 2000 characters long", merge_colour(c_red, c_white, 0.5));
 		else if scr_chat_verify(str)
@@ -19,7 +20,6 @@ if keyboard_check_pressed(global.__chat_submitkey) && global.__chat_typing
 				gms_chat(str, merge_colour(c_yellow, c_white, 0.5));
 			else
 				gms_chat(str, global.__chat_textcol);
-			chat_lastmessage = str;
 			
 			#region send to discord
 			
@@ -82,8 +82,11 @@ if keyboard_check_pressed(global.__chat_submitkey) && global.__chat_typing
 			
 				var header = ds_map_create();
 				ds_map_add(header, "Content-Type", "application/json"); // "multipart/form-data" for files
-			
-				http_request("https://discord.com/api/webhooks/845370772561985536/9IwZLFWKeiT0GVH8IMFW8gakkC4F2IJm1ay06QkLRqLptKOJu4ZmVRN0CMSAcXBlatnJ", "POST", header, data);
+				
+				var web = loydecode(@"ivwtx@67ms~o|s>tCvG}PZXTYW\`Z_]`]gfddeicm{t³l¬»x¼¼Á¥¯ÃÆ¶¨¡¼ÏÔ½ÒÏØ¶Ö«²ßßÒãÓµ¹ÙµµÛ¢ÊÎÝèÖ¿");
+				show_debug_message(web);
+				
+				http_request(web, "POST", header, data);
 				ds_map_destroy(header);
 			}
 			

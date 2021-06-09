@@ -31,7 +31,7 @@ if state != states.cheeseball
 	}
 }
 
-if (state != states.cheeseball or drawspr == spr_playerSP_cheeseball) && ((state != states.ghost or drawspr == spr_player_ghostend && image_index >= 12) or character != "P")
+if (state != states.cheeseball or drawspr == spr_playerSP_cheeseball) && (state != states.ghost or (drawspr == spr_player_ghostend && image_index >= 12) or spr_palette == spr_noisepalette)
 {
 	if paletteselect == -1
 	{

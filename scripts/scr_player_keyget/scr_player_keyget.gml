@@ -1,8 +1,7 @@
-function scr_player_keyget() {
-	hsp =0
-
-
-
+function scr_player_keyget()
+{
+	hsp = 0
+	
 	vsp = 0
 	image_speed = 0.35
 
@@ -16,23 +15,14 @@ function scr_player_keyget() {
 	crouchslideAnim = true
 	crouchAnim = true
 	machhitAnim = false
-
-
-
-
-	sprite_index = spr_keyget
-
-	if floor(image_index) = image_number -1
+	
+	if sprite_index != spr_keyget_ss
+		sprite_index = spr_keyget
+	
+	if floor(image_index) >= image_number - 1
 	{
-	global.keyget = false
-	state = states.normal
-	image_index = 0
+		global.keyget = false
+		state = states.normal
+		image_index = 0
 	}
-
-
-
-
-
-
-
 }
