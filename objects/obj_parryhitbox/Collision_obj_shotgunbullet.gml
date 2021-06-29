@@ -1,3 +1,4 @@
+/*
 if other.sync && !collisioned
 {
 	with other

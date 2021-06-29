@@ -1,5 +1,5 @@
 // panic
-if global.panic && global.panicnightmare
+if global.panic && global.panicnightmare && room != custom_lvl_room
 {
 	// panic backgrounds
 	/*
@@ -60,7 +60,7 @@ if global.panic && global.panicnightmare
 					
 					sprite_set_speed(bgspr, 1, spritespeed_framespergameframe);
 					layer_background_change(layers_e[j], bgspr);
-					layer_background_speed(layers_e[j], 0.2);
+					layer_background_speed(layers_e[j], 0.25);
 				}
 			}
 			break;

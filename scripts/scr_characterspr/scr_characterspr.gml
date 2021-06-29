@@ -49,7 +49,6 @@ function scr_characterspr()
 				spr_stomp = spr_player_stomp
 				spr_stompprep = spr_player_stompprep
 				spr_crouchslide = spr_player_crouchslide
-				spr_crouch = spr_player_crouch
 				spr_bump = spr_player_bump
 				spr_victory = spr_player_victory
 				spr_climbwall = spr_player_climbwall
@@ -259,8 +258,15 @@ function scr_characterspr()
 				spr_pmortjump = spr_player_mortjump;
 				spr_pmortattack = spr_player_mortattack;
 				spr_pmortjumpstart = spr_player_mortjumpstart;
+				spr_pmortland = spr_player_mortland;
+				spr_pmortthrow = spr_player_mortthrow;
 				
 				spr_superspringplayer = spr_player_presentbox;
+				
+				spr_pistolidle = spr_player_pistolidle;
+				spr_pistolwalk = spr_player_pistolwalk;
+				spr_pistolshot = spr_player_pistolshot;
+				spr_pistolshotend = spr_player_pistolshotend;
 				
 				spr_palette = spr_peppalette
 				paletteselect = check_shaders()
@@ -313,7 +319,6 @@ function scr_characterspr()
 				spr_stomp = spr_playerN_stomp
 				spr_stompprep = spr_playerN_stompprep
 				spr_crouchslide = spr_playerN_crouchslip
-				spr_crouch = spr_playerN_crouch
 				spr_bump = spr_playerN_bump
 				spr_victory = spr_playerN_victory
 				spr_hurt = spr_playerN_hurt
@@ -523,10 +528,18 @@ function scr_characterspr()
 				
 				spr_pmortwalk = spr_player_mortwalk;
 				spr_pmortidle = spr_player_mortidle;
-				spr_pmortjump = spr_player_mortjump;
+				spr_pmortjump = spr_playerN_mortjump;
 				spr_pmortattack = spr_player_mortattack;
+				spr_pmortjumpstart = spr_playerN_mortjump;
+				spr_pmortland = spr_player_mortland;
+				spr_pmortthrow = spr_playerN_mortthrow;
 				
 				spr_superspringplayer = spr_playerN_superspring;
+				
+				spr_pistolidle = spr_playerN_idle;
+				spr_pistolwalk = spr_playerN_move;
+				spr_pistolshot = spr_playerN_noisebombkick;
+				spr_pistolshotend = spr_playerN_idle;
 				
 				spr_palette = spr_noisepalette
 				paletteselect = 0
@@ -786,6 +799,9 @@ function scr_characterspr()
 				spr_pmortidle = spr_player_mortidle;
 				spr_pmortjump = spr_player_mortjump;
 				spr_pmortattack = spr_player_mortattack;
+				spr_pmortjumpstart = spr_player_mortjumpstart;
+				spr_pmortland = spr_player_mortland;
+				spr_pmortthrow = spr_player_mortthrow;
 				
 				spr_superspringplayer = spr_playerV_superjump2;
 				
@@ -972,7 +988,7 @@ function scr_characterspr()
 				spr_boxxed_dash = spr_boxxedpep_dash;
 				spr_boxxed_jump = spr_boxxedpep_jump;
 				
-				spr_dashpadmach = spr_player_dashpad;
+				spr_dashpadmach = spr_snick_walk;
 				spr_dead = spr_snick_stunned
 				
 				spr_rocketstart = spr_player_rocketstart;
@@ -990,10 +1006,15 @@ function scr_characterspr()
 				spr_breakdanceuppercut = spr_snick_bodyslamstart;
 				spr_breakdanceuppercutend = spr_snick_fall;
 				
+				spr_suplexland = spr_player_backflip;
+				
 				spr_pmortwalk = spr_player_mortwalk;
 				spr_pmortidle = spr_player_mortidle;
 				spr_pmortjump = spr_player_mortjump;
 				spr_pmortattack = spr_player_mortattack;
+				spr_pmortjumpstart = spr_player_mortjumpstart;
+				spr_pmortland = spr_player_mortland;
+				spr_pmortthrow = spr_player_mortthrow;
 				
 				spr_superspringplayer = spr_snick_superjump;
 				
@@ -1022,12 +1043,12 @@ function scr_characterspr()
 				spr_land2 = spr_playerSP_land2
 				spr_lookdoor = spr_playerSP_lookdoor
 				spr_walkfront = spr_playerSP_walkfront
-				spr_victory = spr_player_victory
+				spr_victory = spr_playerSP_victory
 				spr_Ladder = spr_playerSP_ladder
 				spr_laddermove = spr_playerSP_laddermove
 				spr_ladderdown = spr_playerSP_ladderdown
-				spr_keyget = spr_player_keyget
-				spr_keyget_ss = spr_player_keyget
+				spr_keyget = spr_playerSP_keyget
+				spr_keyget_ss = spr_playerSP_keyget_ss
 				spr_crouchslip = spr_playerSP_crouchslip
 				
 				spr_mach1 = spr_playerSP_mach1
@@ -1050,7 +1071,7 @@ function scr_characterspr()
 				spr_shoulder = spr_player_shoulder
 				spr_uppunch = spr_player_uppunch
 				spr_stomp = spr_playerSP_stomp
-				spr_stompprep = spr_playerSP_stomp
+				spr_stompprep = spr_playerSP_stompprep
 				spr_crouchslide = spr_playerSP_crouchslip
 				spr_climbwall = spr_playerSP_climbwall
 				spr_grab = spr_player_grab
@@ -1100,22 +1121,22 @@ function scr_characterspr()
 				spr_machfreefall = spr_playerSP_machfreefall
 				spr_mach3hit = spr_player_mach3hit
 
-				spr_knightpepwalk = spr_knightpep_walk
-				spr_knightpepjump = spr_knightpep_jump
-				spr_knightpepfall = spr_knightpep_fall
+				spr_knightpepwalk = spr_playerSP_knightwalk
+				spr_knightpepjump = spr_playerSP_knightjump
+				spr_knightpepfall = spr_playerSP_knightfall
 				spr_knightpepidle = spr_playerSP_knightidle
-				spr_knightpepjumpstart = spr_knightpep_jumpstart
-				spr_knightpepthunder = spr_knightpep_thunder
-				spr_knightpepland = spr_knightpep_land
-				spr_knightpepdownslope = spr_knightpep_downslope
-				spr_knightpepstart =  spr_knightpep_start
-				spr_knightpepcharge = spr_knightpep_charge
+				spr_knightpepjumpstart = spr_playerSP_knightjumpstart
+				spr_knightpepthunder = spr_playerSP_knightthunder
+				spr_knightpepland = spr_playerSP_knightland
+				spr_knightpepdownslope = spr_playerSP_knightslope
+				spr_knightpepstart = spr_playerSP_knightstart
+				spr_knightpepcharge = spr_playerSP_knightcharge
 				
 				spr_bodyslamstart = spr_playerSP_bodyslamstart
 				spr_bodyslamfall = spr_playerSP_bodyslamfall
 				spr_bodyslamland = spr_playerSP_bodyslamland
 				spr_crazyrun = spr_playerSP_crazyrun
- 
+				
 				spr_bombpeprun = spr_playerSP_bombrun
 				spr_bombpepintro = spr_playerSP_bombintro
 				spr_bombpeprunabouttoexplode = spr_playerSP_bombrunabouttoexplode
@@ -1132,19 +1153,19 @@ function scr_characterspr()
 				spr_downpizzabox = spr_player_downpizzabox
 				spr_uppizzabox = spr_player_uppizzabox
 
-				spr_slipnslide = spr_playerSP_stunned
-
+				spr_slipnslide = spr_playerSP_slipnslide
+				
 				spr_facehurtup = spr_player_facehurtup
 				spr_facehurt = spr_player_facehurt
-
+				
 				spr_walljumpend = spr_playerSP_mach2jump
 				spr_suplexdash = spr_playerSP_suplexdash
 				spr_suplexdashjumpstart = spr_playerSP_suplexgrabjump
 				spr_suplexdashjump = spr_playerSP_suplexgrabjump
 				spr_shotgunsuplexdash = spr_shotgun_suplexdash
-
+				
 				spr_rollgetup = spr_playerSP_rollgetup
-
+				
 				spr_swingding = spr_player_swingding
 				spr_swingdingend = spr_player_swingdingend
 				spr_haulingjump = spr_playerSP_haulingjump
@@ -1159,15 +1180,15 @@ function scr_characterspr()
 				spr_finishingblow3 = spr_playerSP_finishingblow3
 				spr_finishingblow4 = spr_playerSP_finishingblow4
 				spr_finishingblow5 = spr_playerSP_finishingblow1
-
+				
 				spr_winding = spr_player_winding
 				spr_3hpwalk = spr_playerSP_3hpwalk
 				spr_3hpidle = spr_playerSP_3hpidle
 				spr_panic = spr_player_panic
-
+				
 				spr_facestomp = spr_playerSP_machfreefall1
 				spr_freefall = spr_playerSP_machfreefall2
-
+				
 				spr_shotgunland = spr_shotgun_land
 				spr_shotgunshoot = spr_player_shotgun
 				spr_shotgunidle = spr_shotgun_idle
@@ -1196,10 +1217,10 @@ function scr_characterspr()
 				spr_rideweenie = spr_player_weeniemount
 				spr_barrelroll = spr_player_barrelroll
 				
-				spr_ghostidle = spr_player_ghostidle
-				spr_ghostjump = spr_player_ghostjump
+				spr_ghostidle = spr_playerSP_ghost
+				spr_ghostjump = spr_playerSP_ghostjump
 				spr_ghostend = spr_player_ghostend
-				spr_ghostdash = spr_player_ghostdash
+				spr_ghostdash = spr_playerSP_ghostdash
 				
 				spr_scaredjump1 = spr_player_scaredjump1
 				spr_scaredjump2 = spr_player_scaredjump2
@@ -1232,8 +1253,8 @@ function scr_characterspr()
 				spr_rocket = spr_player_rocket;
 				spr_rockethitwall = spr_player_rockethitwall;
 				
-				spr_slipbanan1 = spr_player_slipbanan1;
-				spr_slipbanan2 = spr_player_slipbanan2;
+				spr_slipbanan1 = spr_playerSP_slipbanan;
+				spr_slipbanan2 = spr_playerSP_slipbanan2;
 				
 				spr_cheeseballed = spr_playerSP_cheeseball;
 				
@@ -1249,6 +1270,9 @@ function scr_characterspr()
 				spr_pmortidle = spr_player_mortidle;
 				spr_pmortjump = spr_player_mortjump;
 				spr_pmortattack = spr_player_mortattack;
+				spr_pmortjumpstart = spr_player_mortjumpstart;
+				spr_pmortland = spr_player_mortland;
+				spr_pmortthrow = spr_player_mortthrow;
 				
 				spr_superspringplayer = spr_playerSP_present;
 				
@@ -1260,7 +1284,6 @@ function scr_characterspr()
 				break;
 	
 		#endregion
-		
 		#region GLADE
 		
 			case "G":
@@ -1268,17 +1291,17 @@ function scr_characterspr()
 				spr_move = spr_playerG_move
 				spr_crawl = spr_player_crawl // REPLACE
 				spr_hurt = spr_playerG_hurt
-				spr_jump = spr_player_jump // REPLACE
+				spr_jump = spr_playerG_jump
 				spr_jump2 = spr_player_jump2 // unused
-				spr_fall = spr_player_fall // REPLACE
+				spr_fall = spr_playerG_fall // REPLACE
 				spr_fall2 = spr_player_fall2 // unused
-				spr_crouch = spr_player_crouch // REPLACE
+				spr_crouch = spr_playerG_crouch // REPLACE
 				spr_crouchjump = spr_player_crouchjump // REPLACE
 				spr_crouchfall = spr_player_crouchfall // REPLACE
-				spr_couchstart = spr_player_couchstart // REPLACE
+				spr_couchstart = spr_playerG_crouchstart // REPLACE
 				spr_bump = spr_player_bump // REPLACE
-				spr_land = spr_player_land // REPLACE
-				spr_land2 = spr_player_land2 // REPLACE
+				spr_land = spr_playerG_land // REPLACE
+				spr_land2 = spr_playerG_land2 // REPLACE
 				spr_lookdoor = spr_player_lookdoor // REPLACE
 				spr_walkfront = spr_player_walkfront // REPLACE
 				spr_victory = spr_player_victory // REPLACE
@@ -1286,7 +1309,7 @@ function scr_characterspr()
 				spr_laddermove = spr_player_laddermove // REPLACE
 				spr_ladderdown = spr_player_ladderdown // REPLACE
 				spr_keyget = spr_player_keyget // REPLACE
-				spr_keyget_ss = spr_player_keyget
+				spr_keyget_ss = spr_player_keyget_ss
 				spr_crouchslip = spr_playerG_crouchslip
 				
 				spr_idle1 = spr_playerG_idlephone
@@ -1312,7 +1335,6 @@ function scr_characterspr()
 				spr_stomp = spr_player_stomp
 				spr_stompprep = spr_player_stompprep
 				spr_crouchslide = spr_player_crouchslide
-				spr_crouch = spr_player_crouch
 				spr_bump = spr_player_bump
 				spr_victory = spr_player_victory
 				spr_climbwall = spr_player_climbwall
@@ -1506,6 +1528,21 @@ function scr_characterspr()
 				spr_breakdanceuppercutend = spr_player_breakdanceuppercutend;
 				
 				spr_suplexland = spr_player_backflip;
+				
+				spr_pmortwalk = spr_player_mortwalk;
+				spr_pmortidle = spr_player_mortidle;
+				spr_pmortjump = spr_player_mortjump;
+				spr_pmortattack = spr_player_mortattack;
+				spr_pmortjumpstart = spr_player_mortjumpstart;
+				spr_pmortland = spr_player_mortland;
+				spr_pmortthrow = spr_player_mortthrow;
+				
+				spr_superspringplayer = spr_player_presentbox;
+				
+				spr_pistolidle = spr_player_pistolidle;
+				spr_pistolwalk = spr_player_pistolwalk;
+				spr_pistolshot = spr_player_pistolshot;
+				spr_pistolshotend = spr_player_pistolshotend;
 				
 				spr_palette = spr_gladepalette;
 				paletteselect = 0;

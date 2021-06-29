@@ -1,20 +1,40 @@
-if obj_player.character = "S" && character == 0
-	instance_destroy()
+// deactivate temporarily
+if obj_player1.character = "S" && character == 0
+{
+	visible = false;
+	active = false;
+	
+	exit;
+}
+else if !active
+{
+	visible = true;
+	active = true;
+}
 
+// switch sprite based on character
 if character == 0
-	sprite_index = spr_snick_idle
+{
+	if room == halloween_entrance
+		sprite_index = spr_snicknpc_idle
+	else
+		sprite_index = spr_snick_idle
+}
 if character == 1
 	sprite_index = spr_snacknpc
 if character == 2
 	sprite_index = spr_snecknpc
 
+// turn to face player
 if x != obj_player1.x
 && obj_player1.y <= y + 64 && obj_player1.y >= y - 100
 	image_xscale = -sign(x - obj_player1.x)
 
-if place_meeting(x,y,obj_player)
+// dialogue
+var p = instance_place(x, y, obj_player1);
+if p
 {
-	with obj_player
+	with p
 	{
 		if key_up2
 			other.dialogue += 1
@@ -22,13 +42,14 @@ if place_meeting(x,y,obj_player)
 
 	with obj_tv
 	{
-		/*
-		if global.chateaurank = "none"
+		#region snick
+		
+		if room == halloween_entrance //global.chateaurank = "none"
 		{
 			if other.dialogue = 0
 				message = ""
 			if other.dialogue = 1
-				message = "BOO	!"
+				message = "BOO!"
 			if other.dialogue = 2
 				message = "HAHA DONT WORRY IM NOT DEAD YET"
 			if other.dialogue = 3
@@ -46,7 +67,7 @@ if place_meeting(x,y,obj_player)
 			showtext = true
 			alarm[0] = 2
 		}
-	
+		/*
 		else  if global.chateaurank != "s"
 		{
 			if other.dialogue = 0
@@ -78,6 +99,8 @@ if place_meeting(x,y,obj_player)
 			alarm[0] = 2
 		}
 		*/
+		
+		#endregion
 		
 		if other.character == 1
 		{

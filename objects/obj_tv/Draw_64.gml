@@ -41,10 +41,11 @@ if global.gameplay == 0
 			surf = surface_create(960, 540);
 	
 		surface_set_target(surf);
+		draw_clear_alpha(c_black, 0);
 		draw_sprite_ext(spr_tvcomboclear, -1, 832, 74, 1, 1, 0, c_white, 1);
 		draw_sprite_part_ext(tvsprite, -1, 0, 0, 16 + (global.combotime / 60) * 148, 177, 832 - 82, 74 - 88, 1, 1, c_white, 1);
 		surface_reset_target();
-	
+		
 		draw_surface_ext(surf, 0, 0, 1, 1, 0, c_white, alpha);
 	}
 	else if room != strongcold_endscreen && room != Realtitlescreen
@@ -52,18 +53,13 @@ if global.gameplay == 0
 
 	if global.combo != 0 && global.combotime != 0 && (tvsprite = spr_tvdefault or tvsprite = spr_tvcombo)
 		draw_text(852,75, string(global.combo))
-
-	if tvsprite = spr_tvdefault && room != strongcold_endscreen && global.miniboss =false //Default 
+	
+	if tvsprite = spr_tvdefault && room != strongcold_endscreen && !global.miniboss //Default 
 	{
 		chose = false
-	if global.coop = false
 		draw_text(832,60, string(global.collect))
-	else{
-		draw_text(832,40, string(global.collect))
-		draw_text(832,80, string(global.collectN))
 	}
-	}
-	else if global.miniboss =true
+	else if global.miniboss
 		draw_text(832,60, string(global.boxhp))
 }
 
@@ -72,7 +68,7 @@ if global.gameplay == 0
 
 else
 {
-	if obj_player1.state != states.rotate
+	if !(instance_exists(obj_player1) && obj_player1.state == states.rotate)
 	{
 		/*
 		if global.use_temperature
@@ -98,16 +94,19 @@ else
 			
 			if sprite_exists(sprite_index)
 			{
-				if obj_player1.character != "N"
-					pal_swap_set(spr_peppalette, 1, false);
+				with obj_player1
+				{
+					if character == "P"
+						pal_swap_set(spr_peppalette, 1, false);
+				}
 				
-			    draw_sprite_ext(sprite_index, image_index, 833 + collect_x, 107 + collect_y + hud_posY, 1, 1, 1, c_white, alpha)
+			    draw_sprite_ext(sprite_index, image_index, 833 + collect_x, 107 + collect_y + hud_posY, 1, 1, 0, c_white, alpha)
 				pal_swap_reset();
 			}
 			
-			if (global.combo != 0 && sprite_index != spr_tv_open && sprite_index != spr_tv_off)
+			if global.combo != 0 && sprite_index != spr_tv_open && sprite_index != spr_tv_off
 			{
-			    draw_sprite_ext(spr_tv_combo, image_index, 833 + collect_x, 107 + collect_y + hud_posY, 1, 1, 1, c_white, alpha)
+			    draw_sprite_ext(sugary ? spr_tv_comboSP : spr_tv_combo, image_index, 833 + collect_x, 107 + collect_y + hud_posY, 1, 1, 0, c_white, alpha)
 	    
 				var str = string(global.combo);
 			    if global.combo < 10
@@ -172,7 +171,7 @@ else
 #endregion
 
 draw_set_valign(fa_top);
-if room == hub_room1 && obj_player1.state != states.victory
+if room == hub_room1 && !(instance_exists(obj_player1) && obj_player1.state == states.victory)
 {
 	draw_set_halign(fa_right);
 	pizzacoinframe = (pizzacoinframe + 0.35) % sprite_get_number(spr_pizzacoin);
@@ -180,8 +179,8 @@ if room == hub_room1 && obj_player1.state != states.victory
 	if scr_getcoin() < 0
 		draw_set_colour(c_red);
 	
-	draw_text(960 - 64 - 32, 148 + (global.gameplay == 1 ? 64 : 0), string(scr_getcoin()));
-	draw_sprite_ext(spr_pizzacoin, pizzacoinframe, 960 - 56 - 32, 148 + (global.gameplay == 1 ? 64 : 0), 1, 1, 0, c_white, alpha);
+	draw_text(960 - 64 - 32, 148 + (global.gameplay != 0 ? (64 + (sugary ? 16 : 0)) : 0), string(scr_getcoin()));
+	draw_sprite_ext(spr_pizzacoin, pizzacoinframe, 960 - 64 - 24, 148 + (global.gameplay != 0 ? (64 + (sugary ? 16 : 0)) : 0), 1, 1, 0, c_white, alpha);
 	
 	draw_set_halign(fa_center);
 }

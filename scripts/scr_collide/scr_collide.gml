@@ -32,8 +32,7 @@ function scr_collide() {
 	}
 
 	//Gravity
-	if (vsp < 10)
-	vsp += grav;
+	vsp = min(vsp + grav, 10);
 
 	// Check if a wall is below me
 	grounded |= scr_solid(x, y + 1)

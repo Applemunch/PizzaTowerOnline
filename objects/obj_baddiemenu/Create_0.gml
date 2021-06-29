@@ -8,6 +8,7 @@ vsp = 0
 grounded = false
 grav = 0.5
 
+/*
 baddiemenu = [
 	obj_cheeseslime,
 	obj_treasureguy,
@@ -44,4 +45,6 @@ baddiemenu = [
 	obj_burgknight
 ];
 baddiesel = -1;
+*/
+
 showbaddie = false;

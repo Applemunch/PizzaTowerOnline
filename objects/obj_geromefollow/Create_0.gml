@@ -1,4 +1,5 @@
 event_inherited();
+
 image_speed = 0.35;
 yoffset = 0;
 hsp = 0;

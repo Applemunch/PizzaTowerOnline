@@ -32,19 +32,19 @@ if grabbed == true
 		move = key_left2 + key_right2;
 
 
-		if !((_state = states.finishingblow) or(_state = states.grab) or (_state = states.grabbing) or (_state = states._throw) or (_state = states.slam) or (_state = states.tacklecharge) or (_state = states.superslam) or (_state = states.backkick) or (_state = states.uppunch) or (_state = states.shoulder))
+		if !((_state = states.finishingblow) or(_state = states.grab) or (_state = states.grabbing) or (_state = states._throw) or (_state = states.slam) or (_state = states.tacklecharge) or (_state = states.superslam) or (_state = states.backkick) or (_state = states.uppunch) or (_state = states.shoulder) or _state == states.backbreaker)
 		{
-			other.grav =0.5
+			other.grav = 0.5
 			other.x = x
 			other.y = y - 1
-
+			
 			other.grabbed = false
 		}
 	}
-
+	
 	hsp = 0
-
-
+	
+	
 	if _state = states.finishingblow
 	{
 		x = playerid.x + (playerid.xscale * clipin);
@@ -57,6 +57,7 @@ if grabbed == true
 				other.clipin = 1;
 				other.x = x;
 			}
+		
 		while scr_solid(x, y) && clipin > 0
 		{
 			clipin--;
@@ -69,55 +70,55 @@ if grabbed == true
 	{
 		if floor(playerid.image_index) = 0
 		{
-		depth = -8
-		x = playerid.x + (playerid.xscale * 25)
-		y = playerid.y
+			depth = -8
+			x = playerid.x + (playerid.xscale * 25)
+			y = playerid.y
 		}
 		if floor(playerid.image_index) = 1
 		{
-		depth = -8
-		x = playerid.x 
-		y = playerid.y
+			depth = -8
+			x = playerid.x 
+			y = playerid.y
 		}
 		if floor(playerid.image_index) = 2
 		{
-		depth = -8
-		x = playerid.x + (playerid.xscale * -25)
-		y = playerid.y
+			depth = -8
+			x = playerid.x + (playerid.xscale * -25)
+			y = playerid.y
 		}
 		if floor(playerid.image_index) = 3
 		{
-		depth = 0
-		x = playerid.x + (playerid.xscale * -50)
-		y = playerid.y
+			depth = 0
+			x = playerid.x + (playerid.xscale * -50)
+			y = playerid.y
 		}
 		if floor(playerid.image_index) = 4
 		{
-		depth = 0
-		x = playerid.x + (playerid.xscale * -25)
-		y = playerid.y
+			depth = 0
+			x = playerid.x + (playerid.xscale * -25)
+			y = playerid.y
 		}
 		if floor(playerid.image_index) = 5
 		{
-		depth = 0
-		x = playerid.x 
-		y = playerid.y
+			depth = 0
+			x = playerid.x 
+			y = playerid.y
 		}
 		if floor(playerid.image_index) = 6
 		{
-		depth = 0
-		x = playerid.x + (playerid.xscale * 25)
-		y = playerid.y
+			depth = 0
+			x = playerid.x + (playerid.xscale * 25)
+			y = playerid.y
 		}
 		if floor(playerid.image_index) = 7
 		{
-		depth = 0
-		x = playerid.x + (playerid.xscale * 50)
-		y = playerid.y
+			depth = 0
+			x = playerid.x + (playerid.xscale * 50)
+			y = playerid.y
 		}
-		}
-		else
-			depth = -6
+	}
+	else
+		depth = -6
 
 
 
@@ -125,36 +126,35 @@ if grabbed == true
 
 	if _state = states.shoulder 
 	{
-	grav = 0.5
-	instance_create(x , y+20, obj_bumpeffect)
-	grabbed = false
-	thrown = true
-	x =playerid.x
-	y = playerid.y
+		grav = 0.5
+		instance_create(x , y+20, obj_bumpeffect)
+		grabbed = false
+		thrown = true
+		x = playerid.x
+		y = playerid.y
 
 
-	if playerid.sprite_index = spr_player_shoulder
-	vsp = 15
-	if playerid.sprite_index = spr_player_diagonaldownthrow
-	{
-		hsp  = -image_xscale  * 10
-	vsp = 15
-	}
-	if playerid.sprite_index = spr_player_diagonalupthrow
-	{
+		if playerid.sprite_index = spr_player_shoulder
+			vsp = 15
+		if playerid.sprite_index = spr_player_diagonaldownthrow
+		{
 			hsp  = -image_xscale  * 10
-	vsp = -15
-	}
+			vsp = 15
+		}
+		if playerid.sprite_index = spr_player_diagonalupthrow
+		{
+			hsp  = -image_xscale  * 10
+			vsp = -15
+		}
 
+		repeat 6
+			instance_create(x,y,obj_slapstar)
 
-	instance_create(x,y,obj_slapstar)
-	instance_create(x,y,obj_baddiegibs)
+	    with (obj_camera) {
 
-	        with (obj_camera) {
-
-	    shake_mag=3;
-	    shake_mag_acc=3/room_speed;
-	}
+		    shake_mag=3;
+		    shake_mag_acc=3/room_speed;
+		}
 
 	}
 
@@ -162,15 +162,15 @@ if grabbed == true
 
 	if _state = states._throw 
 	{
-	grav = 0.5
-	grabbed = false
+		grav = 0.5
+		grabbed = false
 
-	thrown = true
-	x =playerid.x
-	y = playerid.y
+		thrown = true
+		x = playerid.x
+		y = playerid.y
 
-	hsp = -image_xscale * 10
-	vsp = -10
+		hsp = -image_xscale * 10
+		vsp = -10
 	}
 
 
@@ -179,29 +179,24 @@ if grabbed == true
 
 	if _state = states.uppunch
 	{
+		instance_create(x +(-playerid.xscale * 15), y-50, obj_bumpeffect)
+
+		grav = 0.5
+		thrown = true
 
 
-	instance_create(x +(-playerid.xscale * 15), y-50, obj_bumpeffect)
+		hsp = -image_xscale * 2
+		grabbed = false
+		vsp = -20
+		
+		instance_create(x,y,obj_slapstar)
+		flash = true
+		
+	    with (obj_camera) {
 
-	grav = 0.5
-	thrown = true
-
-
-	hsp = -image_xscale * 2
-	grabbed = false
-	vsp = -20
-
-
-	instance_create(x,y,obj_slapstar)
-	instance_create(x,y,obj_baddiegibs)
-	flash = true
-	        with (obj_camera) {
-
-	    shake_mag=3;
-	    shake_mag_acc=3/room_speed;
-	}
-
-
+		    shake_mag=3;
+		    shake_mag_acc=3/room_speed;
+		}
 	}
 
 
@@ -238,8 +233,8 @@ if grabbed == true
 		&& (floor(playerid.image_index) = playerid.image_number - 1)
 		{
 			depth = -5
-			instance_create(x,y,obj_slapstar)
-			instance_create(x,y,obj_baddiegibs)
+			repeat 6
+				instance_create(x,y,obj_slapstar)
 
 			grabbed = false
 			thrown = true
@@ -249,14 +244,26 @@ if grabbed == true
 			hsp = -image_xscale * 10
 			vsp = -10
 			
-			with obj_player1
+			if global.gameplay != 0
 			{
-				jumpAnim = true;
-			    state = states.jump;
-			    sprite_index = spr_suplexland;
-			    vsp = -11;
-			    jumpstop = true;
-			    image_index = 0;
+				with playerid
+				{
+					jumpAnim = true;
+				    state = states.jump;
+				    sprite_index = spr_suplexland;
+				    vsp = -11;
+				    jumpstop = true;
+				    image_index = 0;
+				}
+			}
+			else
+			{
+				with playerid
+				{
+					state = states.jump
+					vsp = -8
+					sprite_index = spr_machfreefall
+				}
 			}
 		}
 	}
@@ -285,12 +292,8 @@ if place_meeting(x,y,obj_swordhitbox) && thrown == false && stuntouchbuffer <= 0
 	grabbed = false
 	thrown = true
 	
-	instance_create(x,y,obj_slapstar)
-	instance_create(x,y,obj_slapstar)
-	instance_create(x,y,obj_slapstar)
-	instance_create(x,y,obj_baddiegibs)
-	instance_create(x,y,obj_baddiegibs)
-	instance_create(x,y,obj_baddiegibs)
+	repeat 6
+		instance_create(x,y,obj_slapstar)
 	with (obj_camera) {
 
 	    shake_mag=3;

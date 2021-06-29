@@ -1,7 +1,8 @@
 // random background
 if room == editor_entrance
 {
-	gms_chat_toggle(false);
+	if instance_exists(obj_gms) && gms_info_isloggedin()
+		gms_chat_toggle(false);
 	
 	var lbg = layer_get_id("Background");
 	var bg = layer_background_get_id(lbg);

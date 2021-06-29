@@ -1,4 +1,4 @@
-if  ds_list_find_index(global.saveroom, id) = -1
+if ds_list_find_index(global.saveroom, ID) = -1
 {
 	instance_create(x,y,obj_playerexplosion)
 
@@ -20,14 +20,16 @@ if  ds_list_find_index(global.saveroom, id) = -1
 
 	repeat 7
 	{
-		with instance_create(x+ 32,y+32,obj_debris)
+		with instance_create(x + sprite_width / 2, y + sprite_height / 2, obj_debris)
 		{
+			image_xscale = abs(other.image_xscale);
+			image_yscale = abs(other.image_yscale);
+			
 			if other.sprite_index == spr_tntblock
 				sprite_index = spr_tntblockdebris
 			else
 				sprite_index = spr_rockdebris
 		}
 	}
-	ds_list_add(global.saveroom, id) 
+	ds_list_add(global.saveroom, ID) 
 }
-

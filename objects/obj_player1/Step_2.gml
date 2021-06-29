@@ -2,13 +2,14 @@
 if instance_exists(obj_gms) && gms_info_isloggedin()
 {
 	gms_self_set("xscale", xscale);
+	gms_self_set("yscale", yscale);
 	
 	gms_self_set("spr_palette", spr_palette);
 	gms_self_set("paletteselect", paletteselect);
 	gms_self_set("flash", flash);
 	
 	gms_self_set("state", state);
-	gms_self_set("eatery", global.eatery);
+	//gms_self_set("eatery", global.eatery);
 	
 	gms_self_set("nickname", (nickname == "" ? gms_self_name() : nickname));
 	gms_self_set("chat", global.__chat);
@@ -67,4 +68,6 @@ if instance_exists(obj_gms) && gms_info_isloggedin()
 		gms_self_set("pvp_hurted", hurted);
 		gms_self_set("pvp_cutscene", cutscene);
 	}
+	
+	gms_self_set("petind", petfollow);
 }

@@ -4,13 +4,7 @@ function scr_enemy_grabbed()
 	{
 	    var player = asset_get_index("obj_player" + string(grabbedby));
 	    with player
-	    {
-	        sprite_index = choose(spr_suplexmash1, spr_suplexmash2, spr_suplexmash3, spr_suplexmash4, spr_punch)
-	        image_index = 0
-	        state = states.tackle
-	        movespeed = 3
-	        vsp = -3
-	    }
+	        scr_pummel();
 	    instance_destroy()
 	}
 	
@@ -72,7 +66,7 @@ function scr_enemy_grabbed()
 
 		hsp = 0
 		
-		if _state = states.punch or _state == states.parry
+		if _state = states.punch or _state == states.parry or _state == states.tackle
 		{
 			alarm[3] = 3
 			global.hit += 1
@@ -80,23 +74,24 @@ function scr_enemy_grabbed()
 				global.golfhit += 1
 			
 			hp -= 1
-			instance_create(x +(obj_player1.xscale * 30), y, obj_bumpeffect)
+			instance_create(x + obj_player1.xscale * 30, y, obj_bumpeffect)
 			alarm[1] = 5
-
+			
 			thrown = true
 			x = obj_player1.x
 			vsp = 0
 			y = obj_player1.y
-
+			
 			state = states.stun
 			hsp = -image_xscale * 25
 			grav = 0
 			
 			increase_combo();
 			repeat 3
+			{
 				instance_create(x,y,obj_slapstar)
-			repeat 3
 				create_particle(x, y, particles.baddiegibs)
+			}
 			flash = true
 			
 			with (obj_camera) 
@@ -356,7 +351,7 @@ function scr_enemy_grabbed()
 			if obj_player1.character == "SP"
 				scr_enemy_driverpos(obj_player1);
 			
-			if floor(obj_player1.image_index) = obj_player1.image_number - 1
+			if floor(obj_player1.image_index) == obj_player1.image_number - 1
 			{
 				flash = true
 				global.combotime = 60

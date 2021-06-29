@@ -33,7 +33,7 @@ if async_load[? "event_type"] == "gamepad lost"
 				showtext = true;
 				alarm[0] = room_speed;
 			}
-		
+			
 			global.cont = ind;
 		}
 		else
@@ -48,7 +48,7 @@ if async_load[? "event_type"] == "gamepad lost"
 			alarm[0] = room_speed;
 		}
 		
-		global.cont = 0;
+		global.cont = -1;
 		connected = false;
 	}
 	scr_soundeffect(sfx_contout);

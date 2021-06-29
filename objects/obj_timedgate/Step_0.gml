@@ -1,4 +1,9 @@
-if global.timedgate
+if instance_exists(mysolid)
+	mysolid.visible = false;
+else
+	event_user(0);
+
+if global.timedgatetime > 0
 {
 	x = -10000
 	y = -10000
@@ -6,7 +11,7 @@ if global.timedgate
 	mysolid.x = -10000;
 	mysolid.y = -10000;
 }
-else if x != xstart or y != ystart
+else if mysolid.x != mysolid.xstart or mysolid.y != mysolid.ystart
 {
 	x = xstart;
 	y = ystart;
@@ -17,9 +22,6 @@ else if x != xstart or y != ystart
 		mysolid.y = mysolid.ystart;
 	}
 }
-
-if instance_exists(mysolid)
-	mysolid.visible = false;
 
 if place_meeting(x, y, obj_otherplayer)
 	image_alpha = 0.5;

@@ -54,6 +54,8 @@ bubblespr = noone
 idleanim = 180
 collect_shake = 0
 
+sugary = false
+
 if global.gameplay != 0
 {
 	promptsurface = surface_create(290, 102)

@@ -1,6 +1,9 @@
 depth = -9999;
 instance_destroy(obj_pausefadeout);
 
+keyboard_clear(global.key_up);
+keyboard_clear(global.key_taunt);
+
 img = 0;
 xoffset = 0;
 yoffset = 0;
@@ -24,7 +27,7 @@ selvert = false;
 pizza = spr_pizzacollect1;
 if irandom_range(0, 100) >= 80
 	pizza = spr_pizzacollect2;
-if irandom_range(0, 100) >= 90
+if irandom_range(0, 100) >= 95
 	pizza = spr_pizzacollect3;
 pizzasurf = -1;
 

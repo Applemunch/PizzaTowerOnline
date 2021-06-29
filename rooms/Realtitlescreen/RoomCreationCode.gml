@@ -1,7 +1,6 @@
 global.roommessage = "";
 if instance_exists(obj_gms)
 {
-	gms_logout();
 	instance_destroy(obj_gms);
 	global.roommessage = "LOGGED OUT";
 }
@@ -9,16 +8,21 @@ if instance_exists(obj_gms)
 global.optimize = 0;
 global.autotile = true;
 
-
-
 if variable_global_exists("logged")
 	global.logged = false;
 
 global.loadeditor = false;
-
-obj_player1.targetDoor = "A";
-obj_player1.x = -500;
-obj_player1.character = "P";
-obj_player1.paletteselect = 1;
 with obj_player1
+{
+	targetDoor = "A";
+	character = "P";
+	paletteselect = 1;
+	petfollow = -1;
 	scr_characterspr();
+}
+
+if !debug
+	instance_destroy(obj_wc);
+global.panic = false;
+global.snickchallenge = false;
+global.snickrematch = false;

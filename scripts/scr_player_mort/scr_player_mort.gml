@@ -21,7 +21,7 @@ function scr_player_mort()
 	}
 
 
-	if scr_solid(x + hsp, y, false)
+	if scr_solidwall(x + hsp, y)
 		movespeed = 0
 
 	//Attack

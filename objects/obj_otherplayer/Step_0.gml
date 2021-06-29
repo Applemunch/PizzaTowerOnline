@@ -1,12 +1,14 @@
 xscale = gms_other_get(player_id, "xscale")
-yscale = 1
+yscale = gms_other_get(player_id, "yscale")
 
 state = gms_other_get(player_id, "state")
 
+/*
 if xscale == 0
 	xscale = 1;
 if yscale == 0
 	yscale = 1;
+*/
 
 spr_palette = gms_other_get(player_id, "spr_palette")
 paletteselect = gms_other_get(player_id, "paletteselect")

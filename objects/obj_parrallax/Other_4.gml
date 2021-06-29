@@ -5,6 +5,9 @@ if layer_exists("Tiles_2")
 if layer_exists("Tiles_3")
 	layer_depth("Tiles_3", 97)
 
+if layer_exists("Assets_1") && room == chateau_7
+	layer_depth("Assets_1", 96)
+
 if layer_exists("Tiles_1_NEW")
 	layer_depth("Tiles_1_NEW", 100)
 if layer_exists("Tiles_2_NEW")

@@ -1,5 +1,8 @@
-/// @description 
-if thrown
+/// @description
+if global.gameplay == 0 && hp > 1
+	hp = 1;
+
+if thrown && state != states.hit
 {
 	with obj_destructibles
 	{

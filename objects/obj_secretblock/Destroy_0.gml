@@ -41,7 +41,7 @@ if ds_list_find_index(global.saveroom, id) = -1
 	{
 		if data2 != 0 && data2 != -1
 		{
-			with instance_create(x+ 16,y,obj_secretdebris)
+			with instance_create(x + sprite_width / 2, y + sprite_height / 2, obj_secretdebris)
 			{
 				sprite_index = spr_secretdebris
 	            tile_dataid = data2
@@ -50,15 +50,18 @@ if ds_list_find_index(global.saveroom, id) = -1
 		}
 		else if data != 0 && data != -1
 		{
-			with instance_create(x+ 16,y,obj_secretdebris)
+			with instance_create(x + sprite_width / 2, y + sprite_height / 2, obj_secretdebris)
 			{
 				sprite_index = spr_secretdebris
 	            tile_dataid = data
 	            tile_dataset = tilemap_get_tileset(map_id)
 			}
 		}
-		else
-			instance_create(x+ 16,y,obj_debris);
+		else with instance_create(x + sprite_width / 2, y + sprite_height / 2, obj_debris)
+		{
+			image_xscale = abs(other.image_xscale);
+			image_yscale = abs(other.image_yscale);
+		}
 	}
 }
 

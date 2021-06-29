@@ -5,7 +5,10 @@
   },
   "solid": false,
   "visible": true,
-  "spriteMaskId": null,
+  "spriteMaskId": {
+    "name": "spr_breakabletv",
+    "path": "sprites/spr_breakabletv/spr_breakabletv.yy",
+  },
   "persistent": false,
   "parentObjectId": {
     "name": "obj_junk",

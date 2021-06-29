@@ -50,6 +50,7 @@ p2pdistancex  = 0
 
 bound_camera = false;
 global.timedgate = false
+global.timedgatetime = 0
 
 healthshake = 0
 healthold = 100

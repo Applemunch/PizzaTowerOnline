@@ -144,6 +144,7 @@ switch (state)
 	case states.dance: scr_player_dance (); break;
 	case states.rotate: scr_player_rotate (); break;
 	case states.frozen: scr_player_frozen (); break;
+	case states.spindash: scr_player_spindash (); break;
 }
 global.coop = false;
 
@@ -516,6 +517,8 @@ input_buffer_secondjump++
 if (input_buffer_highjump < 8)
 input_buffer_highjump++
 
+if shoot_buffer > 0
+    shoot_buffer--;
 
 //Key effect
 if key_particles
@@ -537,7 +540,7 @@ else
 	grabbing = false
 
 //Instant-Kill Attack
-if (state == states.barrel) or (state = states.crouchslide) or (state = states.faceplant) or (state = states.rideweenie) or (state = states.mach3) or (state = states.jump && sprite_index = spr_playerN_noisebombspinjump) or (state = states.slipnslide) or (state = states.hurt && thrown = true) or (state = states.mach2) or (state = states.climbwall) or (state = states.freefall) or (state = states.tumble) or (state = states.fireass) or (state = states.firemouth) or (state = states.hookshot) or (state = states.skateboard) or  (state = states.mach4) or (state = states.Sjump) or (state = states.machroll) or (state = states.machfreefall) or (state = states.tacklecharge)  or (state = states.superslam && sprite_index = spr_piledriver) or (state = states.knightpep) or (state = states.knightpepattack) or (state = states.knightpepslopes)  or (state = states.boxxedpep) or (state = states.cheesepep) or (state = states.cheeseball) or (state == states.slipbanan)
+if (state == states.barrel) or (state = states.crouchslide) or (state = states.faceplant) or (state = states.rideweenie) or (state = states.mach3) or (state = states.jump && sprite_index = spr_playerN_noisebombspinjump) or (state = states.slipnslide) or (state = states.hurt && thrown = true) or (state = states.mach2) or (state = states.climbwall) or (state = states.freefall) or (state = states.tumble) or (state = states.fireass) or (state = states.firemouth) or (state = states.hookshot) or (state = states.skateboard) or  (state = states.mach4) or (state = states.Sjump) or (state = states.machroll) or (state = states.machfreefall) or (state = states.tacklecharge)  or (state = states.superslam && sprite_index = spr_piledriver) or (state = states.knightpep) or (state = states.knightpepattack) or (state = states.knightpepslopes)  or (state = states.boxxedpep) or (state = states.cheesepep) or (state = states.cheeseball) or (state == states.slipbanan) or (state == states.spindash)
 	instakillmove = true
 else
 	instakillmove = false
@@ -600,6 +603,15 @@ if state != states.grabbing && state != states.barrel && state != states.tumble 
 else if state == states.barrel or (state == states.tumble && global.gameplay != 0)
     grav = 0.6;
 
+if state != states.pistol && state != states.normal
+	shot = false
+
+if mort
+{
+    if state != states.normal && state != states.jump && state != states.handstandjump && state != states.pistol
+        mort = false;
+}
+
 //Too much alarm 1
 if (state = states.mach3 or pizzapepper > 0 or sprite_index = spr_barrelroll or state == states.parry or state = states.rideweenie or (state = states.punch && global.gameplay == 0) or state = states.climbwall or (state = states.jump && sprite_index = spr_playerN_noisebombspinjump) or pogochargeactive = true or (state = states.hookshot) or state = states.mach2 or state = states.tacklecharge or state = states.machslide or state = states.machroll or (state = states.handstandjump && global.gameplay == 0) or (state == states.Sjump && global.gameplay != 0) or (state = states.chainsaw && mach2 >= 100))
 {
@@ -658,7 +670,7 @@ else
 {
 	if !scr_solid_player(x, y)
 	{
-		if state != states.bump && state != states.ghost && sprite_index != spr_player_barrelslipnslide && sprite_index != spr_barrelroll  && sprite_index != spr_bombpepintro && sprite_index != spr_knightpepthunder && state != states.tumble && state != states.stunned   && state != states.crouch && state != states.boxxedpep && (state != states.pistol && sprite_index != spr_player_crouchshoot) && state != states.Sjumpprep && state != states.crouchslide && state != states.chainsaw && state != states.machroll && state != states.hurt && state != states.crouchjump && sprite_index != spr_player_breakdancesuper
+		if state != states.bump && state != states.ghost && sprite_index != spr_player_barrelslipnslide && sprite_index != spr_barrelroll  && sprite_index != spr_bombpepintro && sprite_index != spr_knightpepthunder && state != states.tumble && state != states.stunned   && state != states.crouch && state != states.boxxedpep && (state != states.pistol or sprite_index != spr_player_crouchshoot) && state != states.Sjumpprep && state != states.crouchslide && state != states.chainsaw && state != states.machroll && state != states.hurt && state != states.crouchjump && sprite_index != spr_player_breakdancesuper
 		{
 			mask_index = spr_player_mask;
 			if scr_solid_player(x, y)
@@ -716,7 +728,7 @@ if instance_exists(obj_gms) && gms_info_isloggedin() && state != states.titlescr
 && !instance_exists(obj_skinchoice) && !instance_exists(obj_hatchoice)
 && !(instance_exists(obj_hubelevator) && obj_hubelevator.state != 0)
 && !(instance_exists(obj_wc) && obj_wc.WC_consoleopen)
-&& (room != editor_entrance or debug)
+&& (room != editor_entrance or instance_exists(obj_wc))
 {
 	if keyboard_check_pressed(ord("T")) && !global.__chat
 	{
@@ -744,3 +756,11 @@ if state == states.rotate
 
 if shake > 0
 	shake = max(shake - 0.5, 0);
+
+if petfollow > -1
+{
+	if !instance_exists(obj_petfollow)
+		instance_create(x, y, obj_petfollow);
+}
+else if instance_exists(obj_petfollow)
+	instance_destroy(obj_petfollow);

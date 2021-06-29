@@ -1,6 +1,6 @@
 image_speed = 0.35;
 xoffsetmax = 25;
-xoffset = 25;
+xoffset = 0;
 yoffset = 2;
 
 LAG_STEPS = 20;

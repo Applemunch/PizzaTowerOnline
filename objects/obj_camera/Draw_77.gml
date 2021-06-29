@@ -3,7 +3,7 @@ if live_call() return live_result;
 #macro MAX_BLUR 0.66
 
 var drawshit = false;
-if global.panic
+if global.panic or blurpreview
 {
 	var ang = 0;
 	if global.panictilt

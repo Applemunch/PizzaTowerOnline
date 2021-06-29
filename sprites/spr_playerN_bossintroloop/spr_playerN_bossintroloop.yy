@@ -77,8 +77,8 @@
   ],
   "nineSlice": null,
   "parent": {
-    "name": "cosmetic",
-    "path": "folders/Sprites/cosmetic.yy",
+    "name": "cosmetic or etc",
+    "path": "folders/Sprites/cosmetic or etc.yy",
   },
   "resourceVersion": "1.0",
   "name": "spr_playerN_bossintroloop",

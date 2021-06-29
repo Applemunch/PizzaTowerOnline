@@ -3,9 +3,18 @@ if instance_exists(obj_gms) && gms_info_isloggedin()
 
 if !pause && !instance_exists(obj_fadeout) && !instance_exists(obj_pausefadeout)
 {
-    if obj_player1.key_start && (room != rank_room && room != Realtitlescreen && room != timesuproom && room != characterselect && room != editor_entrance)
+	var kstart = false;
+	if instance_exists(obj_player1)
+		kstart = obj_player1.key_start;
+	else
 	{
-		if !check_race() && obj_player1.state != states.grabbed && obj_player1.baddiegrabbedID != obj_otherplayer
+		scr_getinput();
+		kstart = key_start;
+	}
+	
+    if kstart && (room != rank_room && room != Realtitlescreen && room != timesuproom && room != characterselect && room != editor_entrance)
+	{
+		if !check_race() && (!instance_exists(obj_player1) or (obj_player1.state != states.grabbed && obj_player1.baddiegrabbedID != obj_otherplayer))
 		{
 			selected = 0
 			instance_create(x,y,obj_pausefadeout)
@@ -18,7 +27,7 @@ if !pause && !instance_exists(obj_fadeout) && !instance_exists(obj_pausefadeout)
 if instance_exists(obj_pausefadeout) && instance_exists(obj_fadeout)
 	instance_destroy(obj_pausefadeout)
 
-if pause = 1
+if pause
 {
 	if !string_startswith(konami, "UUDDLRLR")
 	    scr_getinput()

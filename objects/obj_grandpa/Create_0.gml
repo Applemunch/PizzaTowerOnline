@@ -11,6 +11,11 @@ grounded = true
 hsp = 0
 vsp = 0
 hp = 1
+groundpound = false
+invincible = false
+parryable = false
+thrown = false
+sugaryenemy = false
 
 with obj_player1
 	if character == "S" instance_destroy(other.id, false);

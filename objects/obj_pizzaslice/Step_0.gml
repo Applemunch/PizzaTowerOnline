@@ -1,5 +1,4 @@
-if (scr_solidwall(x + hsp, y) && !place_meeting(x + hsp, y, obj_slope))
-or place_meeting(x + hsp, y, obj_hallway)
+if scr_solidwall(x + hsp, y) or place_meeting(x + hsp, y, obj_hallway)
 	hsp *= -1
 
 scr_collide()

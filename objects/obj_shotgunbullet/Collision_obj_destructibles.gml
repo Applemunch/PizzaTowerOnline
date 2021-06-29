@@ -1,4 +1,4 @@
-//if sync == false
+if other.object_index != obj_hungrypillar or !pistol
 {
 	if other.object_index == obj_onwaybigblock
 	{

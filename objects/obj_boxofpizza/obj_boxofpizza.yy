@@ -5,7 +5,10 @@
   },
   "solid": false,
   "visible": true,
-  "spriteMaskId": null,
+  "spriteMaskId": {
+    "name": "spr_boxofpizza",
+    "path": "sprites/spr_boxofpizza/spr_boxofpizza.yy",
+  },
   "persistent": false,
   "parentObjectId": {
     "name": "obj_solid",

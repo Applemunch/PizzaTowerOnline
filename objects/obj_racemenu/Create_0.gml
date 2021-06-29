@@ -1,5 +1,10 @@
-game_end();
-exit;
+if !debug
+{
+	scr_soundeffect(sfx_pephurt);
+	show_message("sorry nothing");
+	game_end();
+	exit;
+}
 
 instance_destroy(obj_fadeout);
 audio_stop_all();

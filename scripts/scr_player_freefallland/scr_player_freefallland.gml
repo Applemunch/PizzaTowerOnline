@@ -20,15 +20,17 @@ function scr_player_freefallland()
 	
 	if global.gameplay == 0
 	{
-		if floor(image_index) = image_number - 1
+		if floor(image_index) >= image_number - 1
 		{
-			if superslam <= 30
+			//if superslam <= 30
 				state = states.normal
+			/*
 			else
 			{
 				state = states.machfreefall
 				vsp = -7
 			}
+			*/
 		}
 	}
 	else
@@ -47,7 +49,7 @@ function scr_player_freefallland()
 			else
 				vsp = -8;
 			
-			jumpstop = 1;
+			jumpstop = true;
 			
 			image_index = 0;
 			if character == "S"

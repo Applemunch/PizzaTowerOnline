@@ -6,9 +6,9 @@ function scr_player_shotgun() {
 
 	if dir != xscale
 	{
-	dir = xscale
-	movespeed = 2 
-	facehurt = false
+		dir = xscale
+		movespeed = 2 
+		facehurt = false
 
 	}
 
@@ -16,7 +16,7 @@ function scr_player_shotgun() {
 
 
 
-		move = key_left + key_right;
+	move = key_left + key_right;
 	
 	var railh = 0, railmeet = instance_place(x, y + 1, obj_railparent);
 	if railmeet then railh = railmeet.spdh;
@@ -68,47 +68,46 @@ function scr_player_shotgun() {
 
 	if character = "N"
 	{
-	var shooting = false
+		var shooting = false
 
-	if image_index + image_speed >= image_number
-	shooting = true
+		if image_index + image_speed >= image_number
+			shooting = true
 
-	if shooting = true
-	with instance_create(x+(xscale*60),y+30,obj_shotgunbullet)
-	spdh= random_range(4,-1)
-
-
-	
+		if shooting = true
+		with instance_create(x+(xscale*60),y+30,obj_shotgunbullet)
+		{
+			shotgun = true
+			spdh= random_range(4,-1)
+		}
 	}
 
 
 	if floor(image_index) = image_number -1 && character != "N"
 	{
-
-	if grounded
-	{
-	sprite_index = spr_shotgunidle
-	state = states.normal
-	}
-	else
-	{
-	sprite_index = spr_shotgunfall
-	state = states.jump
-	}
+		if grounded
+		{
+			sprite_index = spr_shotgunidle
+			state = states.normal
+		}
+		else
+		{
+			sprite_index = spr_shotgunfall
+			state = states.jump
+		}
 	}
 
 	if (!key_shoot && character = "N" && sprite_index != spr_shotgunpullout) or (sprite_index = spr_shotgunpullout && floor(image_index) = image_number -1)
 	{
 		if grounded
-	{
-	sprite_index = spr_shotgunidle
-	state = states.normal
-	}
-	else
-	{
-	sprite_index = spr_shotgunfall
-	state = states.jump
-	}
+		{
+			sprite_index = spr_shotgunidle
+			state = states.normal
+		}
+		else
+		{
+			sprite_index = spr_shotgunfall
+			state = states.jump
+		}
 	}
 
 

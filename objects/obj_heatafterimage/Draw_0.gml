@@ -1,4 +1,7 @@
 var t = obj_player1;
+if !instance_exists(t)
+	exit;
+
 if !surface_exists(surf)
 	surf = surface_create(960, 540);
 else

@@ -11,7 +11,7 @@ function scr_player_tacklecharge()
 
 	if windingAnim < 2000 && character == "P"
 		windingAnim ++
-
+	
 	var railh = 0, railmeet = instance_place(x, y + 1, obj_railparent);
 	if railmeet then railh = railmeet.spdh;
 	hsp = xscale * movespeed + railh;
@@ -27,11 +27,25 @@ function scr_player_tacklecharge()
 
 	if movespeed < 24 && move = xscale
 		movespeed += 0.05
-
-
-
-
-
+	
+	if key_slap2 && character == "G"
+	{
+		scr_soundeffect(sfx_punch);
+		scr_soundeffect(sfx_killingblow);
+		
+		sprite_index = spr_punch
+	    state = states.tackle
+		movespeed = 3
+		
+		if grounded
+			vsp = -3
+		
+	    image_index = 1
+	    image_speed = 0.35
+	}
+	
+	
+	
 	//Jump Stop
 	if (!key_jump2) && jumpstop = false && vsp < 0.5 
 	{

@@ -11,7 +11,11 @@ function create_baddiegibsticks(x, y) {
 	if global.gameplay == 0
 		exit;
 	
-	instance_create(x, y, obj_baddiegibsstick);
+	with instance_create(x, y, obj_baddiegibsstick)
+	{
+		image_xscale = abs(other.image_xscale);
+		image_yscale = abs(other.image_yscale);
+	}
 }
 
 function create_particle(x, y, par)

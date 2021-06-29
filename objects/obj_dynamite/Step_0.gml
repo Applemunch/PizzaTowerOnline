@@ -8,7 +8,7 @@ if scr_solid(x,y+1) && vsp > 0
 		movespeed -= 1
 }
 
-if !sync && obj_player1.key_shoot2 && obj_player1.state != states.dynamite && obj_player1.character == "V"
+if obj_player1.key_shoot2 && obj_player1.state != states.dynamite && obj_player1.character == "V"
 	instance_destroy()
 
 if scr_solidwall(x+hsp,y) or place_meeting(x+hsp,y+vsp,obj_destructibles) or place_meeting(x,y,obj_baddie)

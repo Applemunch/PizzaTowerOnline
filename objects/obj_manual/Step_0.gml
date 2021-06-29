@@ -1,7 +1,8 @@
 if !visible
 {
 	i = 0;
-	if keyboard_check_pressed(vk_f5) && obj_player1.state != states.door
+	if keyboard_check_pressed(vk_f5)
+	&& (!instance_exists(obj_player1) or obj_player1.state != states.door)
 	{
 		scr_soundeffect(sfx_step);
 		visible = true;

@@ -7,6 +7,7 @@ function scr_player_grab()
 	}
 	else with baddiegrabbedID
 	{
+		grabbed = true;
 		state = states.grabbed;
 		grabbedby = 1;
 	}

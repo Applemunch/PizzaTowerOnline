@@ -1,5 +1,5 @@
 /// @description literal "controller" support
-global.cont = 0;
+global.cont = -1;
 connected = false;
 othergamepad = ds_list_create();
 

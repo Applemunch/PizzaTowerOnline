@@ -1,1 +1,0 @@
-//gms_instance_sync_destroy(id);

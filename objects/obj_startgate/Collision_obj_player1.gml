@@ -25,6 +25,7 @@ with (player)
 			sprite_index = spr_entergate
 		
 		global.collect = 0;
+		global.bullet = 3;
 	}
 }
 

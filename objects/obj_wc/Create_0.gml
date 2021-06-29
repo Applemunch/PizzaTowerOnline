@@ -60,6 +60,8 @@ WC_consolescroll = 0;
 WC_assetfinder = -1;
 WC_assetlist = -1;
 WC_assetsel = 0;
+WC_assetboxsel = false;
+WC_assetboxtext = "";
 
 // pt exclusive
 WC_oobcam = false;

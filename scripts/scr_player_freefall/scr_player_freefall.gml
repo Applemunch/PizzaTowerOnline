@@ -124,13 +124,13 @@ function scr_player_freefall()
 			{
 				if grounded && point_in_camera(x, y, view_camera[0]) && !invincible && groundpound
 				{
-					state =states.stun
+					state = states.stun
 					if stunned < 60
-					stunned= 60
-				vsp = -11
-				image_xscale *= -1
-				hsp = 0
-				momentum = 0
+						stunned = 60
+					vsp = -11
+					image_xscale *= -1
+					hsp = 0
+					momentum = 0
 				}
 			}
 	        with (obj_camera) {

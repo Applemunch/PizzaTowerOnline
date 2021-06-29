@@ -14,6 +14,7 @@ with obj_player1
 		}
 		else
 			vsp = -11;
+		suplexmove = false;
 		
 		with other
 		{

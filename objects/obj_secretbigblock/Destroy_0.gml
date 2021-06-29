@@ -1,25 +1,9 @@
-if  ds_list_find_index(global.saveroom, id) = -1
+if ds_list_find_index(global.saveroom, id) = -1
 {
-	/*
-with instance_create(x+ 32,y+32,obj_debris)
-sprite_index = spr_bigdebris
-with instance_create(x+ 32,y+32,obj_debris)
-sprite_index = spr_bigdebris
-with instance_create(x+ 32,y+32,obj_debris)
-sprite_index = spr_bigdebris
-with instance_create(x+ 32,y+32,obj_debris)
-sprite_index = spr_bigdebris
-with instance_create(x+ 32,y+32,obj_debris)
-sprite_index = spr_bigdebris
-with instance_create(x+ 32,y+32,obj_debris)
-sprite_index = spr_bigdebris
-with instance_create(x+ 32,y+32,obj_debris)
-sprite_index = spr_bigdebris
-*/
 	if audio_is_playing(sfx_breakblock1) or audio_is_playing(sfx_breakblock2)
 	{
-	audio_stop_sound(sfx_breakblock1)
-	audio_stop_sound(sfx_breakblock2) 
+		audio_stop_sound(sfx_breakblock1)
+		audio_stop_sound(sfx_breakblock2) 
 	}
 	scr_soundeffect(sfx_breakblock1, sfx_breakblock2)
 
@@ -54,8 +38,15 @@ sprite_index = spr_bigdebris
 			}
 		}
 		else if lay_id2 == -1
-			with instance_create(x+ 32,y+32,obj_debris)
+			with instance_create(x + sprite_width / 2, y + sprite_height / 2, obj_debris)
+			{
+				image_xscale = abs(other.image_xscale)
+				image_yscale = abs(other.image_yscale)
+				
 				sprite_index = spr_bigdebris
+				if check_sugary()
+					sprite_index = spr_bigdebris_ss
+			}
 		
 		if data2 != 0
 		{
@@ -66,8 +57,15 @@ sprite_index = spr_bigdebris
 			}
 		}
 		else if lay_id2 == -1
-			with instance_create(x+ 32,y+32,obj_debris)
+			with instance_create(x + sprite_width / 2, y + sprite_height / 2, obj_debris)
+			{
+				image_xscale = abs(other.image_xscale)
+				image_yscale = abs(other.image_yscale)
+				
 				sprite_index = spr_bigdebris
+				if check_sugary()
+					sprite_index = spr_bigdebris_ss
+			}
 	
 		if data3 != 0
 		{
@@ -78,8 +76,15 @@ sprite_index = spr_bigdebris
 			}
 		}
 		else if lay_id2 == -1
-			with instance_create(x+ 32,y+32,obj_debris)
+			with instance_create(x + sprite_width / 2, y + sprite_height / 2, obj_debris)
+			{
+				image_xscale = abs(other.image_xscale)
+				image_yscale = abs(other.image_yscale)
+				
 				sprite_index = spr_bigdebris
+				if check_sugary()
+					sprite_index = spr_bigdebris_ss
+			}
 	
 		if data4 != 0
 		{
@@ -90,8 +95,15 @@ sprite_index = spr_bigdebris
 			}
 		}
 		else if lay_id2 == -1
-			with instance_create(x+ 32,y+32,obj_debris)
+			with instance_create(x + sprite_width / 2, y + sprite_height / 2, obj_debris)
+			{
+				image_xscale = abs(other.image_xscale)
+				image_yscale = abs(other.image_yscale)
+				
 				sprite_index = spr_bigdebris
+				if check_sugary()
+					sprite_index = spr_bigdebris_ss
+			}
 	}
 	if lay_id2 != -1
 	{
@@ -119,8 +131,15 @@ sprite_index = spr_bigdebris
 			}
 		}
 		else if data == -1
-			with instance_create(x+ 32,y+32,obj_debris)
+			with instance_create(x + sprite_width / 2, y + sprite_height / 2, obj_debris)
+			{
+				image_xscale = abs(other.image_xscale)
+				image_yscale = abs(other.image_yscale)
+				
 				sprite_index = spr_bigdebris
+				if check_sugary()
+					sprite_index = spr_bigdebris_ss
+			}
 		
 		if data2_ != 0
 		{
@@ -131,8 +150,15 @@ sprite_index = spr_bigdebris
 			}
 		}
 		else if data2 == -1
-			with instance_create(x+ 32,y+32,obj_debris)
+			with instance_create(x + sprite_width / 2, y + sprite_height / 2, obj_debris)
+			{
+				image_xscale = abs(other.image_xscale)
+				image_yscale = abs(other.image_yscale)
+				
 				sprite_index = spr_bigdebris
+				if check_sugary()
+					sprite_index = spr_bigdebris_ss
+			}
 	
 		if data3_ != 0
 		{
@@ -143,8 +169,15 @@ sprite_index = spr_bigdebris
 			}
 		}
 		else if data3 == -1
-			with instance_create(x+ 32,y+32,obj_debris)
+			with instance_create(x + sprite_width / 2, y + sprite_height / 2, obj_debris)
+			{
+				image_xscale = abs(other.image_xscale)
+				image_yscale = abs(other.image_yscale)
+				
 				sprite_index = spr_bigdebris
+				if check_sugary()
+					sprite_index = spr_bigdebris_ss
+			}
 	
 		if data4_ != 0
 		{
@@ -155,7 +188,14 @@ sprite_index = spr_bigdebris
 			}
 		}
 		else if data4 == -1
-			with instance_create(x+ 32,y+32,obj_debris)
+			with instance_create(x + sprite_width / 2, y + sprite_height / 2, obj_debris)
+			{
+				image_xscale = abs(other.image_xscale)
+				image_yscale = abs(other.image_yscale)
+				
 				sprite_index = spr_bigdebris
+				if check_sugary()
+					sprite_index = spr_bigdebris_ss
+			}
 	}
 }

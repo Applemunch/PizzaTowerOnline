@@ -1,8 +1,7 @@
 if other.state == states.gameover exit;
 
 if obj_player1.character = "V" 
-	global.playerhealth = clamp(global.playerhealth+100, 0, 100)
-
+	global.playerhealth = clamp(global.playerhealth + 100, 0, 100)
 
 scr_soundeffect(sfx_collectgiantpizza)
 
@@ -11,6 +10,9 @@ global.heattime = 60
 
 with instance_create(x+16,y,obj_smallnumber)
 	number = string(1000)
+
+if global.bullet < 3
+    global.bullet += 1;
 
 if global.gameplay != 0
 {

@@ -1,5 +1,6 @@
-if place_meeting(x, y, obj_player1) && obj_player1.key_up2
+if place_meeting(x, y, obj_player1) && obj_player1.key_up2 && obj_player1.state == states.normal && !instance_exists(obj_baddiechoice)
 {
+	/*
 	scr_soundeffect(sfx_step);
 	showbaddie = true;
 	
@@ -11,6 +12,21 @@ if place_meeting(x, y, obj_player1) && obj_player1.key_up2
 	if baddiesel >= array_length_1d(baddiemenu)
 		baddiesel = 0;
 	content = baddiemenu[baddiesel];
+	*/
+	
+	with instance_create(0, 0, obj_baddiechoice)
+	{
+		baddiemenu = other.id;
+		for(var i = 0; i < array_length(selarray); i++)
+		{
+			if other.content == selarray[i][0]
+			{
+				sel[0] = i;
+				event_user(0);
+				break;
+			}
+		}
+	}
 }
 
 if content == noone
@@ -23,7 +39,7 @@ if refresh <= 0 && content != noone
 {
 	showbaddie = false;
 	image_speed = 0.35
-	if floor(image_index) = 5
+	if floor(image_index) == 5
 	{
 		with instance_create(x, y - 20, content)
 		{

@@ -53,4 +53,5 @@ obj_player1.image_index = 0
 global.panic = false
 global.snickchallenge = false
 
-instance_destroy(obj_followcharacter);
+with obj_followcharacter
+	if object_index != obj_petfollow instance_destroy();

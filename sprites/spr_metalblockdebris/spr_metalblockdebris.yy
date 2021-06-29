@@ -72,7 +72,7 @@
     "eventStubScript": null,
     "parent": {"name":"spr_metalblockdebris","path":"sprites/spr_metalblockdebris/spr_metalblockdebris.yy",},
     "resourceVersion": "1.3",
-    "name": "",
+    "name": "spr_metalblockdebris",
     "tags": [],
     "resourceType": "GMSequence",
   },

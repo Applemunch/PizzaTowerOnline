@@ -37,32 +37,60 @@ function scr_getinput()
 	if !variable_instance_exists(id, "stickpressed")
 		stickpressed = true;
 	
-	var deadzone = 0.4
-	gamepad_set_axis_deadzone(cont,deadzone)
-	key_up = (keyboard_check(global.key_up)) or gamepad_button_check(cont, global.key_upC) or gamepad_axis_value(cont, gp_axislv) < 0
-	key_up2 = (keyboard_check_pressed(global.key_up) or gamepad_button_check_pressed(cont, global.key_upC) or (gamepad_axis_value(cont, gp_axislv) < -deadzone && stickpressed == false))
-	key_right = (keyboard_check(global.key_right)) or gamepad_button_check(cont, global.key_rightC)  or gamepad_axis_value(cont, gp_axislh) > 0
-	key_right2 = (keyboard_check_pressed(global.key_right) or gamepad_button_check_pressed(cont, global.key_rightC) or (gamepad_axis_value(cont, gp_axislh) > deadzone && stickpressed == false))
-	key_left = -(keyboard_check(global.key_left) or gamepad_button_check(cont, global.key_leftC) or gamepad_axis_value(cont, gp_axislh) < 0)  
-	key_left2 = -(keyboard_check_pressed(global.key_left) or gamepad_button_check_pressed(cont, global.key_leftC) or (gamepad_axis_value(cont, gp_axislh) < -deadzone && stickpressed == false))
-	key_down = (keyboard_check(global.key_down)) or gamepad_button_check(cont, global.key_downC) or gamepad_axis_value(cont, gp_axislv) > 0
-	key_down2 = (keyboard_check_pressed(global.key_down)) or gamepad_button_check_pressed(cont, global.key_downC) or (gamepad_axis_value(cont, gp_axislv) > deadzone && stickpressed == false)
-	key_jump = (keyboard_check_pressed(global.key_jump)) or gamepad_button_check_pressed(cont, global.key_jumpC) 
-	key_jump2 = (keyboard_check(global.key_jump)) or gamepad_button_check(cont, global.key_jumpC)
-	key_slap = (keyboard_check(global.key_slap)) or gamepad_button_check(cont, global.key_slapC) 
-	key_slap2 = (keyboard_check_pressed(global.key_slap)) or gamepad_button_check_pressed(cont, global.key_slapC)
-	key_taunt = (keyboard_check(global.key_taunt)) or gamepad_button_check(cont, global.key_tauntC) 
-	key_taunt2 =  (keyboard_check_pressed(global.key_taunt)) or gamepad_button_check_pressed(cont, global.key_tauntC)
-	key_attack = (keyboard_check(global.key_attack)) or gamepad_button_check(cont, global.key_attackC) or gamepad_button_check(cont, gp_shoulderrb)
-	key_attack2 = (keyboard_check_pressed(global.key_attack)) or gamepad_button_check_pressed(cont, global.key_attackC)  or gamepad_button_check_pressed(cont, gp_shoulderrb)
-	key_shoot = (keyboard_check(global.key_shoot)) or gamepad_button_check(cont, global.key_shootC) 
-	key_shoot2 = (keyboard_check_pressed(global.key_shoot)) or gamepad_button_check_pressed(cont, global.key_shootC) 
-	key_start = (keyboard_check_pressed(global.key_start)) or gamepad_button_check_pressed(cont, global.key_startC) 
-	key_escape = (keyboard_check_pressed(vk_escape)) or gamepad_button_check(cont, gp_select)
+	key_up = keyboard_check(global.key_up)
+	key_up2 = keyboard_check_pressed(global.key_up)
+	key_right = keyboard_check(global.key_right)
+	key_right2 = keyboard_check_pressed(global.key_right)
+	key_left = -keyboard_check(global.key_left)
+	key_left2 = -keyboard_check_pressed(global.key_left)
+	key_down = keyboard_check(global.key_down)
+	key_down2 = keyboard_check_pressed(global.key_down)
+	key_jump = keyboard_check_pressed(global.key_jump)
+	key_jump2 = keyboard_check(global.key_jump)
+	key_slap = keyboard_check(global.key_slap)
+	key_slap2 = keyboard_check_pressed(global.key_slap)
+	key_taunt = keyboard_check(global.key_taunt)
+	key_taunt2 =  keyboard_check_pressed(global.key_taunt)
+	key_attack = keyboard_check(global.key_attack)
+	key_attack2 = keyboard_check_pressed(global.key_attack)
+	key_shoot = keyboard_check(global.key_shoot)
+	key_shoot2 = keyboard_check_pressed(global.key_shoot)
+	key_start = keyboard_check_pressed(global.key_start)
+	key_escape = keyboard_check_pressed(vk_escape)
 	
-	if (gamepad_axis_value(cont, gp_axislh) > deadzone or gamepad_axis_value(cont, gp_axislh) < -deadzone)
-	or (gamepad_axis_value(cont, gp_axislv) > deadzone or gamepad_axis_value(cont, gp_axislv) < -deadzone)
-		stickpressed = true
+	// gamepad
+	if cont > -1
+	{
+		var deadzone = 0.4
+		gamepad_set_axis_deadzone(cont, deadzone)
+		
+		key_up |= gamepad_button_check(cont, global.key_upC) or gamepad_axis_value(cont, gp_axislv) < 0;
+		key_up2 |= gamepad_button_check_pressed(cont, global.key_upC) or (gamepad_axis_value(cont, gp_axislv) < -deadzone && !stickpressed);
+		key_right |= gamepad_button_check(cont, global.key_rightC)  or gamepad_axis_value(cont, gp_axislh) > 0;
+		key_right2 |= gamepad_button_check_pressed(cont, global.key_rightC) or (gamepad_axis_value(cont, gp_axislh) > deadzone && !stickpressed);
+		key_left |= -(gamepad_button_check(cont, global.key_leftC) or gamepad_axis_value(cont, gp_axislh) < 0);
+		key_left2 |= -(gamepad_button_check_pressed(cont, global.key_leftC) or (gamepad_axis_value(cont, gp_axislh) < -deadzone && !stickpressed));
+		key_down |= gamepad_button_check(cont, global.key_downC) or gamepad_axis_value(cont, gp_axislv) > 0;
+		key_down2 |= gamepad_button_check_pressed(cont, global.key_downC) or (gamepad_axis_value(cont, gp_axislv) > deadzone && !stickpressed);
+		key_jump |= gamepad_button_check_pressed(cont, global.key_jumpC);
+		key_jump2 |= gamepad_button_check(cont, global.key_jumpC);
+		key_slap |= gamepad_button_check(cont, global.key_slapC);
+		key_slap2 |= gamepad_button_check_pressed(cont, global.key_slapC)
+		key_taunt |= gamepad_button_check(cont, global.key_tauntC)
+		key_taunt2 |=  gamepad_button_check_pressed(cont, global.key_tauntC)
+		key_attack |= gamepad_button_check(cont, global.key_attackC) or gamepad_button_check(cont, gp_shoulderrb)
+		key_attack2 |= gamepad_button_check_pressed(cont, global.key_attackC)  or gamepad_button_check_pressed(cont, gp_shoulderrb)
+		key_shoot |= gamepad_button_check(cont, global.key_shootC) 
+		key_shoot2 |= gamepad_button_check_pressed(cont, global.key_shootC) 
+		key_start |= gamepad_button_check_pressed(cont, global.key_startC) 
+		key_escape |= gamepad_button_check(cont, gp_select)
+		
+		if (gamepad_axis_value(cont, gp_axislh) > deadzone or gamepad_axis_value(cont, gp_axislh) < -deadzone)
+		or (gamepad_axis_value(cont, gp_axislv) > deadzone or gamepad_axis_value(cont, gp_axislv) < -deadzone)
+			stickpressed = true
+		else
+			stickpressed = false
+	}
 	else
-		stickpressed = false
+		stickpressed = true;
 }

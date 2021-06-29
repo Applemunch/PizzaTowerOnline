@@ -87,7 +87,7 @@ if boundbox = false
 with instance_create(x,y,obj_baddiecollisionbox)
 {
 sprite_index = spr_slimemove
-mask_index = other.sprite_index
+mask_index = sprite_index
 baddieID = other.id
 other.boundbox = true
 }

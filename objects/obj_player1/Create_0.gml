@@ -4,7 +4,14 @@ if instance_number(object_index) > 1
     exit;
 }
 
-global.saveroom = ds_list_create()
+if !variable_global_exists("saveroom")
+{
+	global.saveroom = ds_list_create()
+	global.baddieroom = ds_list_create()
+	global.followerlist = ds_list_create();
+	global.baddietomb = ds_list_create();
+}
+
 grav = 0.5;
 gravmult = 1;
 hsp = 0;
@@ -67,10 +74,12 @@ global.combotime = 0
 scr_setcoin(0)
 global.toppintotal = 1
 global.hit = 0
-global.baddieroom = ds_list_create()
 
-global.old_baddieroom = ds_list_create()
-global.old_saveroom = ds_list_create()
+if !variable_global_exists("old_saveroom")
+{
+	global.old_baddieroom = ds_list_create()
+	global.old_saveroom = ds_list_create()
+}
 global.checkpointDoor = "A"
 global.checkpointroom = hub_room1
 global.checkpointCollect = 0
@@ -229,7 +238,7 @@ roomstarty = 0
 
 global.secretfound = 0
 
-global.shotgunammo = 0
+//global.shotgunammo = 0
 
 swingdingbuffer = 0
 lastmove = 0
@@ -242,20 +251,20 @@ ini_open("saveData.ini");
 // SAGE2019 achievements
 if !ini_section_exists("SAGE2019")
 {
-ini_write_string("SAGE2019","shotgunsnick",false);
+	ini_write_string("SAGE2019","shotgunsnick",false);
 
 
-ini_write_string("SAGE2019","dungeonbackup",false);
-ini_write_string("SAGE2019","srank",false);
-ini_write_string("SAGE2019","snicksrank",false);
-ini_write_string("SAGE2019","combo10",false);
-ini_write_string("SAGE2019","secret",false);
+	ini_write_string("SAGE2019","dungeonbackup",false);
+	ini_write_string("SAGE2019","srank",false);
+	ini_write_string("SAGE2019","snicksrank",false);
+	ini_write_string("SAGE2019","combo10",false);
+	ini_write_string("SAGE2019","secret",false);
 
-ini_write_string("SAGE2019","knight",false);
+	ini_write_string("SAGE2019","knight",false);
 
  
-ini_write_string("SAGE2019","toppin",false);
-ini_write_string("SAGE2019","treasure",false);
+	ini_write_string("SAGE2019","toppin",false);
+	ini_write_string("SAGE2019","treasure",false);
 }
 
 
@@ -382,6 +391,9 @@ hatimg = 0;
 
 global.pizzacoinstart = global.pizzacoin;
 
+// pet
+petfollow = -1;
+
 // new shit
 skateboarding = false;
 
@@ -392,6 +404,13 @@ invhurt_max = 30;
 
 global.heattime = 0;
 global.style = 0;
+
+global.spaceblockswitch = true
+
+shot = false;
+shoot_buffer = 0;
+shoot_max = 20;
+global.bullet = 3;
 
 mort = false;
 sjumpvsp = -12;
@@ -412,8 +431,6 @@ verticalhallway = false;
 vhallwaydirection = 0;
 
 global.mort = false;
-global.followerlist = ds_list_create();
 global.gerome = false;
 
 global.stylelock = false;
-global.baddietomb = ds_list_create();

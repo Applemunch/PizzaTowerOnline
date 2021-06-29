@@ -460,7 +460,6 @@ function scr_wcevaluate(argument0)
 			}
 			else if string_length(string_digits(arg1)) + string_count("-", arg1) + string_count(".", arg1) == string_length(arg1) // index
 			{
-				arg1 = string_lower(arg1);
 			    tempsound = real(arg1);
 			    if audio_exists(tempsound)
 			    {
@@ -485,7 +484,6 @@ function scr_wcevaluate(argument0)
 			}
 			else // asset
 			{
-				arg1 = string_lower(arg1);
 			    tempsound = asset_get_index(arg1);
 			    if tempsound != -1
 			    {
@@ -522,7 +520,7 @@ function scr_wcevaluate(argument0)
 				}
 			}
 			break;
-	
+		
 		case "stopsound":
 		case "stopaudio":
 			arg1 = ds_list_find_value(arg, 1);
@@ -1401,8 +1399,8 @@ function scr_wcevaluate(argument0)
 				// activate pizza time
 				with instance_create(room_width, room_height + 2000, obj_hungrypillar)
 				{
-					visible = false;
-					instance_destroy();
+					event_perform(ev_destroy, 0);
+					instance_destroy(id, false);
 				}
 			}
 		
@@ -2098,6 +2096,10 @@ function scr_wcevaluate(argument0)
 				            __tempsomething = " with Snick sprites";
 				        else if arg2 == "M"
 				            __tempsomething = " with Pepperman sprites";
+				        else if arg2 == "G" // pt online exclusive
+				            __tempsomething = " with Glade sprites";
+				        else if arg2 == "SP" // pt online exclusive
+				            __tempsomething = " with Pizzelle sprites";
 				        else
 						{
 				            __tempsomething = " with unchanged sprites";
@@ -2124,6 +2126,10 @@ function scr_wcevaluate(argument0)
 				        arg1 = "Snick";
 				    else if arg1 == "M"
 				        arg1 = "Pepperman";
+				    else if arg1 == "G" // pt online exclusive
+				        arg1 = "Glade";
+				    else if arg1 == "SP" // pt online exclusive
+				        arg1 = "Pizzelle";
 				    else
 					{
 				        arg1 = ds_list_find_value(arg, 1);
@@ -2139,7 +2145,8 @@ function scr_wcevaluate(argument0)
 				WC_consoleopen = true;
 			}
 			break;
-			
+		
+		/*
 		case "character2":
 		case "char2": // pt exclusive
 			if instance_exists(obj_player2)
@@ -2211,6 +2218,7 @@ function scr_wcevaluate(argument0)
 				WC_consoleopen = true;
 			}
 			break;
+		*/
 			
 		case "resetwindow": // pt exclusive
 			if global.option_resolution == 0
@@ -2782,7 +2790,7 @@ function scr_wcevaluate(argument0)
 			ds_list_add(WC_bindmap, "monitorvar");
 			
 			ds_list_add(WC_bindkey, vk_numpad5);
-			ds_list_add(WC_bindmap, "list room");
+			ds_list_add(WC_bindmap, "list room 1");
 			
 			ds_list_insert(WC_consolelist, 0, "Rebinded default keys");
 			break;

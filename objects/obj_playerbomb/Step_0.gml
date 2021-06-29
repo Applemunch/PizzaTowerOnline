@@ -4,7 +4,7 @@ if !kick
 {
 	if scr_solid(x + image_xscale, y)
 		image_xscale *= -1
-	if grounded
+	if grounded && global.gameplay != 0
 		instance_destroy()
 	
 	mask_index = spr_player_mask

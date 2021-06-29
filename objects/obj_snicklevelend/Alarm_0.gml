@@ -12,7 +12,6 @@ if instance_exists(obj_onlinemenu)
 else
 {
 	global.pizzacoinstart = global.pizzacoin;
-	
 	if global.timeattack
 	{
 		var namestring = scr_levelname();
@@ -21,8 +20,13 @@ else
 		if ((ini_read_real("TAmin", namestring, -1) * 60) + ini_read_real("TAsec", namestring, -1) > (global.taminutes * 60) + global.taseconds)
 		or ini_read_real("TAmin", namestring, -1) == -1
 		{
-			ini_write_string("TAsec",namestring,global.taseconds);
-			ini_write_string("TAmin",namestring,global.taminutes);
+			ini_write_string("TAsec", namestring, global.taseconds);
+			ini_write_string("TAmin", namestring, global.taminutes);
+			
+			var char = "S";
+			if global.gameplay != 0
+				char += "-NEW";
+			ini_write_string("TAchar", namestring, char);
 		}
 		ini_close();
 	}

@@ -75,8 +75,8 @@
     "PhysicsWorldPixToMetres": 0.1,
   },
   "parent": {
-    "name": "Editor",
-    "path": "folders/Rooms/Editor.yy",
+    "name": "Test Levels",
+    "path": "folders/Rooms/Test Levels.yy",
   },
   "resourceVersion": "1.0",
   "name": "rm_blank",

@@ -1,3 +1,12 @@
+if pistol
+{
+    with instance_create(x, y, obj_sausageman_dead)
+	{
+	    sprite_index = spr_peppinobullet_dead
+	    image_xscale = other.image_xscale
+	}
+}
+
 if sprite_index == spr_mortprojectile
 {
     with instance_create(x, y, obj_sausageman_dead)

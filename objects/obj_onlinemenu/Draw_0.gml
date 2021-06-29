@@ -52,7 +52,7 @@ switch menu
 					window_set_cursor(cr_none);
 			}
 			
-			if draw_editorbutton(384, 200 + 64, "BUILD")
+			if draw_editorbutton(384, 200 + 64 + 64, "BUILD")
 			{
 				/*
 				window_set_cursor(cr_default);
@@ -69,7 +69,7 @@ switch menu
 			}
 		}
 		
-		if draw_editorbutton(384, 200 + 64 + 64, "BACK")
+		if draw_editorbutton(384, 200 + 64 + 64 + (debug * 64), "BACK")
 		{
 			scr_playerreset();
 			room = hub_outside2;
@@ -117,14 +117,20 @@ switch menu
 			}
 		}
 		
-		if draw_editorbutton(384, 200 + 64 + (debug * 64), "PTONLINE")
+		var pto = false;
+		if (instance_exists(obj_gms) && gms_info_isloggedin())
+		or debug
 		{
-			menu = menutypes.levelbrowser;
-			paging_type = 3;
-			scr_requestpage_alt(page);
+			pto = true;
+			if draw_editorbutton(384, 200 + 64 + (debug * 64), "PTONLINE")
+			{
+				menu = menutypes.levelbrowser;
+				paging_type = 3;
+				scr_requestpage_alt(page);
+			}
 		}
 		
-		if draw_editorbutton(384, 200 + 64 + 64 + (debug * 64), "BACK")
+		if draw_editorbutton(384, 200 + 64 + 64 + (pto * 64), "BACK")
 			menu = menutypes.menustart;
 		
 		#endregion

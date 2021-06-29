@@ -1,3 +1,10 @@
+if room != characterselect
+{
+	room_goto(room_of_dog);
+	exit;
+}
+
+// init
 gms_init(obj_gms);
 depth = -9999;
 
@@ -22,7 +29,7 @@ gms_settings_declare_syncable_object(obj_baddiegibs);
 */
 
 // settings
-gameversion = 6;
+gameversion = 6.5;
 gms_settings(true, gameversion, obj_player1, obj_otherplayer);
 
 // scripts
@@ -51,3 +58,4 @@ showmessage = false;
 __author = "author";
 
 minichatfade = 0;
+loadsave = false;

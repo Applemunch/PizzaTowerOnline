@@ -1,4 +1,4 @@
-if global.gameplay == 1
+if global.gameplay != 0
 	exit;
 
 image_xscale = playerid.xscale

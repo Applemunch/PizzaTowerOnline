@@ -1,2 +1,2 @@
-if abs(other.vsp) < abs(other.hsp)
+if abs(other.spdh) < abs(other.spd)
 	instance_destroy();

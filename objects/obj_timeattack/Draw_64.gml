@@ -1,4 +1,4 @@
-if global.timeattack
+if global.timeattack && !(instance_exists(obj_gms) && global.__chat)
 {
 	var middletext = ":";
 	if global.taseconds < 10

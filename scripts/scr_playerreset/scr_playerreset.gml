@@ -1,9 +1,10 @@
 function scr_playerreset()
 {
-	ds_list_clear(global.followerlist);
 	ds_list_clear(global.baddietomb);
-	instance_destroy(obj_followcharacter);
+	with obj_followcharacter
+		if object_index != obj_petfollow instance_destroy();
 	
+	global.bullet = 3;
 	global.mort = false;
 	global.stylethreshold = 0;
 	global.heattime = 0;
@@ -33,22 +34,19 @@ function scr_playerreset()
 	global.checkpoint_gnomecheck4 = false
 	global.checkpoint_pizzacoin = global.pizzacoinstart
 	
-	ds_list_destroy(global.followerlist);
-	global.followerlist = ds_list_create();
-
 	global.raceid = 0;
 	global.golfhit = 0;
 	global.funmode = false;
 	
 	global.minutes = 2;
 	global.seconds = 59;
-
+	
 	ds_list_clear(global.old_baddieroom)
 	ds_list_clear(global.old_saveroom)
-
+	
 	if instance_exists(obj_endlevelfade)
-	instance_destroy(obj_endlevelfade)
-
+		instance_destroy(obj_endlevelfade)
+	
 	instance_destroy(obj_pizzaball_slices);
 	global.timeractive = false
 	global.wave = 0
@@ -60,15 +58,15 @@ function scr_playerreset()
 	global.timeattack = false
 	global.giantkey = false
 	if instance_exists(obj_snickexe)
-	instance_destroy(obj_snickexe)
-
+		instance_destroy(obj_snickexe)
+	
 	obj_timeattack.stop = false
-
+	
 	if instance_exists(obj_pizzaface)
-	instance_destroy(obj_pizzaface)
+		instance_destroy(obj_pizzaface)
 
 	if instance_exists(obj_pizzashield)
-	instance_destroy(obj_pizzashield)
+		instance_destroy(obj_pizzashield)
 	global.timedgate = false
 	global.taseconds = 0
 	global.taminutes = 0
@@ -77,12 +75,12 @@ function scr_playerreset()
 
 	obj_player1.spotlight = true
 	if instance_exists(obj_coopflag)
-	instance_destroy(obj_coopflag)
+		instance_destroy(obj_coopflag)
 	if instance_exists(obj_cooppointer)
-	instance_destroy(obj_cooppointer)
+		instance_destroy(obj_cooppointer)
 
 	if instance_exists(obj_toppinwarrior)
-	instance_destroy(obj_toppinwarrior)
+		instance_destroy(obj_toppinwarrior)
 
 	with obj_tv
 	{
@@ -119,7 +117,7 @@ function scr_playerreset()
 
 
 	if instance_exists(obj_timesup)
-	instance_destroy(obj_timesup)
+		instance_destroy(obj_timesup)
 	global.seconds = 59
 	global.minutes = 1
 	obj_player1.state = states.comingoutdoor
@@ -152,6 +150,7 @@ function scr_playerreset()
 		alarm[9] = -1
 		alarm[10] = -1
 		grav = 0.5;
+		gravmult = 1;
 		hsp = 0;
 		vsp = 0;
 		global.playerhealth = 100
@@ -305,5 +304,6 @@ function scr_playerreset()
 		storedstate = states.normal;
 		
 		mort = false;
+		shot = false;
 	}
 }

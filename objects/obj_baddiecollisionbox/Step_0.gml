@@ -8,7 +8,7 @@ if instance_exists(baddieID)
 {
 	x = baddieID.x;
 	y = baddieID.y;
-	image_xscale  = baddieID.image_xscale;
+	image_xscale = baddieID.image_xscale;
 }
 
 if instance_exists(baddieID) && place_meeting(x,y,obj_player1) && !obj_player1.cutscene
@@ -150,12 +150,12 @@ if instance_exists(baddieID) && place_meeting(x,y,obj_player1) && !obj_player1.c
 				other.baddieID.state = states.stun
 				other.baddieID.image_index = 0
 			}
-
+			
 			//Attack
 			if instance_exists(other.baddieID) && state == states.handstandjump && !other.baddieID.invincible && character != "S"
 			{
 				if (!other.baddieID.thrown or global.gameplay != 0) // && (character = "P" or character = "N" or character == "SP" or other.baddieID.object_index == obj_pizzaballOLD)
-				&& !(character == "G" && !key_slap)
+				&& !(character == "G" && key_slap)
 				{
 					movespeed = 0
 					image_index = 0
@@ -170,34 +170,31 @@ if instance_exists(baddieID) && place_meeting(x,y,obj_player1) && !obj_player1.c
 				}
 				else
 				{
+					increase_combo();
+					
 					if other.baddieID.thrown == true && !key_up 
 					{
-						sprite_index = choose(spr_suplexmash1,spr_suplexmash2,spr_suplexmash3, spr_suplexmash4, spr_punch)
 						other.baddieID.hsp = xscale * 25
 						other.baddieID.vsp = 0
 					}
 					else if !key_up
 					{
-						sprite_index = choose(spr_suplexmash1,spr_suplexmash2,spr_suplexmash3, spr_suplexmash4, spr_punch)
 						other.baddieID.hsp = xscale * 6
-						
-						image_index = 0
-						state = states.tackle
-						movespeed = 0
-						
 						other.baddieID.vsp = -6
-						scr_throwenemy()
 					}
 					else
 					{
-						sprite_index = choose(spr_suplexmash1,spr_suplexmash2,spr_suplexmash3, spr_suplexmash4, spr_punch)
 						other.baddieID.vsp = -14
 						other.baddieID.hsp = 0
 					}
 					
+					if other.baddieID.object_index == obj_pizzaballOLD
+						global.golfhit += 1;
 					scr_soundeffect(sfx_killingblow)
 					
 					image_index = 0
+					sprite_index = choose(spr_suplexmash1,spr_suplexmash2,spr_suplexmash3, spr_suplexmash4, spr_punch)
+					
 					state = states.tackle
 					movespeed = 0
 					

@@ -62,7 +62,7 @@ function scr_player_ladder()
 			var ytry = y;
 			while !scr_solid(x, ytry + 1)
 			{
-				if ++ytry > room_height
+				if ++ytry > y + 32
 				{
 					ytry = y;
 					break;

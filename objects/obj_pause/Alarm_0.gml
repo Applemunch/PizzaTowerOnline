@@ -9,186 +9,80 @@ global.pizzacoin = global.pizzacoinstart
 
 audio_resume_all();
 audio_stop_all();
+instance_activate_all();
 global.music = -1;
 
 if string_startswith(roomname, "entrance")
-{
-	instance_activate_all();
-	scr_playerreset()
-	pause = 0
-	obj_player1.targetDoor = "A"
+// entrance
 	room_goto_new(entrance_1)
-}
-	
 else if string_startswith(roomname, "medieval")
-{
-	instance_activate_all();
-	scr_playerreset()
-	pause = 0;
-	obj_player1.targetDoor = "A"
+// medieval
 	room_goto_new(medieval_1)
-}	
-
 if string_startswith(roomname, "chateau")
-{
-	instance_activate_all();
-	scr_playerreset()
-	pause = 0;
-	obj_player1.targetDoor = "A"
+// chateau
 	room_goto_new(chateau_1)
-}	
-
 else if string_startswith(roomname, "ruin")
-{
-	instance_activate_all();
-	scr_playerreset()
-	pause = 0;
-	obj_player1.targetDoor = "A"
+// ruin
 	room_goto_new(ruin_1)
-}	
-
 else if string_startswith(roomname, "dungeon")
-{
-	instance_activate_all();
-	scr_playerreset()
-	pause = 0;
-	obj_player1.targetDoor = "A"
+// dungeon
 	room_goto_new(dungeon_1)
-}
-
 else if string_startswith(roomname, "floor1_")
-{
-	instance_activate_all();
-	scr_playerreset()
-	pause = 0
-	obj_player1.targetDoor = "A"
+// desert
 	room_goto_new(floor1_room0)
-}	
 else if string_startswith(roomname, "floor2_")
-{
-	instance_activate_all();
-	scr_playerreset()
-	pause = 0
-	obj_player1.targetDoor = "A"
+// mansion
 	room_goto_new(floor2_room9)
-}	
 else if string_startswith(roomname, "floor3_")
-{
-	instance_activate_all();
-	scr_playerreset()
-	pause = 0
-	obj_player1.targetDoor = "A"
+// factory
 	room_goto_new(floor3_room0)
-}	
 else if string_startswith(roomname, "floor4_")
-{
-	instance_activate_all();
-	scr_playerreset()
-	pause = 0
-	obj_player1.targetDoor = "A"
+// sewer
 	room_goto_new(floor4_room0)
-}	
 else if string_startswith(roomname, "floor5_")
-{
-	instance_activate_all();
-	scr_playerreset()
-	pause = 0
-	obj_player1.targetDoor = "A"
+// freezer
 	room_goto_new(floor5_room1)
-}	
 else if string_startswith(roomname, "golf_")
-{
-	instance_activate_all();
-	scr_playerreset()
-	pause = 0
-	obj_player1.targetDoor = "A"
+// original golf
 	room_goto_new(golf_room1)
-}
-
 else if string_startswith(roomname, "graveyard")
-{
-	instance_activate_all();
-	scr_playerreset()
-	pause = 0
-	obj_player1.targetDoor = "A"
+// graveyard
 	room_goto_new(graveyard_1)
-}	
-
 else if string_startswith(roomname, "farm")
-{
-	instance_activate_all();
-	scr_playerreset()
-	pause = 0
-	obj_player1.targetDoor = "A"
+// farm
 	room_goto_new(farm_1)
-}	
-
 else if string_startswith(roomname, "ufo")
-{
-	instance_activate_all();
+// pinball
 	room_goto_new(ufo_1)
-	scr_playerreset()
-	pause = 0
-	obj_player1.targetDoor = "A"
-}	
-
 else if string_startswith(roomname, "dragonlair")
-{
-	instance_activate_all();
+// dragon lair
 	room_goto_new(dragonlair_1)
-	scr_playerreset()
-	pause = 0
-	obj_player1.targetDoor = "A"
-}	
 else if string_startswith(roomname, "strongcold")
-{
-	instance_activate_all();
+// strongcold
 	room_goto_new(strongcold_10)
-	scr_playerreset()
-	pause = 0
-	obj_player1.targetDoor = "A"
-}
 else if string_startswith(roomname, "beach")
-{
-	instance_activate_all();
+// beach
 	room_goto_new(beach_1)
-	scr_playerreset()
-	pause = 0
-	obj_player1.targetDoor = "A"
-}
 else if string_startswith(roomname, "forest")
-{
-	instance_activate_all();
+// forest
 	room_goto_new(forest_1)
-	scr_playerreset()
-	pause = 0
-	obj_player1.targetDoor = "A"
-}
 else if string_startswith(roomname, "etb")
-{
-	instance_activate_all();
+// early test build
 	room_goto_new(etb_1)
-	scr_playerreset()
-	pause = 0
-	obj_player1.targetDoor = "A"
-}
 else if string_startswith(roomname, "steamcc")
-{
-	instance_activate_all();
+// steamy cotton candy
 	room_goto_new(steamcc_1)
-	scr_playerreset()
-	pause = 0
-	obj_player1.targetDoor = "A"
-}
 else if room == custom_lvl_room
-{
-	instance_activate_all();
+// level editor level
 	room_restart();
-	scr_playerreset()
-	pause = 0
-	obj_player1.targetDoor = "A"
-}
 
+// player reset shit
+pause = 0;
+scr_playerreset();
+with obj_player1
+	targetDoor = "A";
+
+// reset time attack
 global.timeattack = timeattack;
 if timeattack
 {

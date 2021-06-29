@@ -186,12 +186,20 @@ function scr_chat_verify(argument0)
 		}
 		else
 		{
-			gms_chat_local("There are " + string(gms_other_count()) + " other users online:", merge_colour(c_yellow, c_white, 0.25));
+			if gms_other_count() == 1
+				var str = "There is 1 other user online" + (global.streamer ? "" : ":");
+			else
+				str = "There are " + string(gms_other_count()) + " other users online" + (global.streamer ? "" : ":");
 			
-			var __str = "";
-			for(var i = 0; i < gms_other_count(); i++)
-				__str += (i != 0 ? ", " : "") + gms_other_get_string(gms_other_find(i), "name");
-			gms_chat_local(__str, merge_colour(c_yellow, c_white, 0.25));
+			if !global.streamer
+			{
+				gms_chat_local(str, merge_colour(c_yellow, c_white, 0.25));
+			
+				var __str = "";
+				for(var i = 0; i < gms_other_count(); i++)
+					__str += (i != 0 ? ", " : "") + gms_other_get_string(gms_other_find(i), "name");
+				gms_chat_local(__str, merge_colour(c_yellow, c_white, 0.25));
+			}
 		}
 		return false;
 	}

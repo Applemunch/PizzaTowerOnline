@@ -44,7 +44,7 @@ else if !global.snickrematch
 	}
 }
 
-if global.snickchallenge = false
+if !global.snickchallenge
 	instance_destroy()
 
 if global.snickrematch

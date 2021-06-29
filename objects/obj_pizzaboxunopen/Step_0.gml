@@ -83,10 +83,15 @@ if (place_meeting(x,y,obj_player1) or place_meeting(x,y,obj_antonball)) && obj_p
 				sprite_index = spr_intro;
 		}
 		
+		var toppinname = "TOPPINS";
+		if check_sugary()
+			toppinname = "CONFECTI";
+		
 		if global.toppintotal < 5
-			obj_tv.message = "YOU NEED " + string(5 - global.toppintotal) +" MORE TOPPINS!";
-		if global.toppintotal == 5
-			obj_tv.message = "YOU HAVE ALL TOPPINS!";
+			obj_tv.message = "YOU NEED " + string(5 - global.toppintotal) + " MORE " + toppinname + "!";
+		else
+			obj_tv.message = "YOU HAVE ALL " + toppinname + "!";
+		
 		obj_tv.showtext = true;
 		obj_tv.alarm[0] = 150;
 		global.toppintotal += 1;

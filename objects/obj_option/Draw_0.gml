@@ -6,13 +6,16 @@ var c1 = c_black;
 // square backgrund
 draw_rectangle_color(0, 0, 960, 540, c2, c2, c2, c2, false);
 
-mo = (mo + 0.5) % s;
-for(var i = -s; i < __view_get(e__VW.XView, 0) + __view_get(e__VW.WView, 0); i += s)
+if !debug
 {
-	for(var j = -s; j < __view_get(e__VW.YView, 0) + __view_get(e__VW.HView, 0); j += s)
+	mo = (mo + 0.5) % s;
+	for(var i = -s; i < __view_get(e__VW.XView, 0) + __view_get(e__VW.WView, 0); i += s)
 	{
-		if (i + j) % (s * 2) != 0
-			draw_rectangle_color(i + mo, j + mo, i + s + mo, j + s + mo, c1,c1,c1,c1, false)
+		for(var j = -s; j < __view_get(e__VW.YView, 0) + __view_get(e__VW.HView, 0); j += s)
+		{
+			if (i + j) % (s * 2) != 0
+				draw_rectangle_color(i + mo, j + mo, i + s + mo, j + s + mo, c1,c1,c1,c1, false)
+		}
 	}
 }
 
@@ -102,15 +105,8 @@ if menu == 1
 	var m1y = 50;
 	var m2y = m1y + 100;
 	
-	if optionselected = 0
-		draw_text_colour(960/2, m1y, "MASTER VOLUME", c_white, c_white, c_white, c_white, 1)
-	else
-		draw_text_colour(960/2, m1y, "MASTER VOLUME", c_white, c_white, c_white, c_white, 0.5)
-	
-	if optionselected = 1
-		draw_text_colour(960/2, m2y, "MUSIC VOLUME", c_white, c_white, c_white, c_white, 1)
-	else
-		draw_text_colour(960/2, m2y, "MUSIC VOLUME", c_white, c_white, c_white, c_white, 0.5)
+	draw_text_colour(960/2, m1y, "MASTER VOLUME", c_white, c_white, c_white, c_white, (optionselected == 0 ? 1 : 0.5));
+	draw_text_colour(960/2, m2y, "MUSIC VOLUME", c_white, c_white, c_white, c_white, (optionselected == 1 ? 1 : 0.5));
 	
 	draw_set_colour(c_gray);
 	draw_rectangle(230, m1y + 56, 730, m1y + 56 + 16, false);
@@ -129,6 +125,19 @@ if menu == 1
 	draw_circle(230 + (global.musicvolume * 500), m2y + 56 + 8, 21, false);
 	draw_set_colour(c_white);
 	draw_circle(230 + (global.musicvolume * 500), m2y + 56 + 8, 20, false);
+	
+	if optionselected == 0
+	{
+		draw_set_font(global.font_small);
+		draw_text(230 + (global.mastervolume * 500), m1y + 56 + 1, string(round(global.mastervolume * 100)) + "%");
+		draw_set_font(global.bigfont);
+	}
+	if optionselected == 1
+	{
+		draw_set_font(global.font_small);
+		draw_text(230 + (global.musicvolume * 500), m2y + 56 + 1, string(round(global.musicvolume * 100)) + "%");
+		draw_set_font(global.bigfont);
+	}
 	
 	if optionselected = 2
 		draw_text_colour(960/2, m2y + 125, "MACH SOUND", c_white, c_white, c_white, c_white, 1)

@@ -13,8 +13,8 @@
     "name": "audiogroup_default",
     "path": "audiogroups/audiogroup_default",
   },
-  "soundFile": "mu_tutorial_pc.wav",
-  "duration": 127.134453,
+  "soundFile": "mu_tutorial_pc.ogg",
+  "duration": 126.862144,
   "parent": {
     "name": "pizza castle",
     "path": "folders/Sounds/pizza castle.yy",

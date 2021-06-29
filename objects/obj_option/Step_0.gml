@@ -178,12 +178,12 @@ else if menu == 1
 	// master volume slider
 	if optionselected = 0
 	{
-		if -obj_player1.key_left
-			global.mastervolume -= 0.02;
-		if obj_player1.key_right
-			global.mastervolume += 0.02;
+		if keyboard_check(vk_shift)
+			var move = (obj_player1.key_left2 + obj_player1.key_right2) * 0.01;
+		else
+			var move = (obj_player1.key_left + obj_player1.key_right) * 0.02;
 		
-		global.mastervolume = clamp(global.mastervolume, 0, 1);
+		global.mastervolume = clamp(global.mastervolume + move, 0, 1);
 		audio_master_gain(global.mastervolume);
 		
 		if keyboard_check_pressed(ord("R"))
@@ -193,12 +193,12 @@ else if menu == 1
 	// music volume slider
 	if optionselected = 1
 	{
-		if -obj_player1.key_left
-			global.musicvolume -= 0.02;
-		if obj_player1.key_right
-			global.musicvolume += 0.02;
+		if keyboard_check(vk_shift)
+			var move = (obj_player1.key_left2 + obj_player1.key_right2) * 0.01;
+		else
+			var move = (obj_player1.key_left + obj_player1.key_right) * 0.02;
 		
-		global.musicvolume = clamp(global.musicvolume, 0, 1);
+		global.musicvolume = clamp(global.musicvolume + move, 0, 1);
 		audio_sound_gain(global.music, global.musicvolume, 0);
 		
 		if keyboard_check_pressed(ord("R"))

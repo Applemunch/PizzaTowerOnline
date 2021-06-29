@@ -51,7 +51,7 @@ function scr_player_knightpep()
 		sprite_index = spr_knightpepidle
 
 	//Jump
-	if ((input_buffer_jump < 8) && vsp > 0 ) && grounded && (sprite_index = spr_knightpepidle or sprite_index = spr_knightpepwalk) 
+	if ((input_buffer_jump < 8) && vsp > 0 ) && grounded && (sprite_index == spr_knightpepidle or sprite_index == spr_knightpepwalk or (sprite_index == spr_knightpepland && global.gameplay != 0)) 
 	{
 		image_index = 0
 		sprite_index = spr_knightpepjumpstart
@@ -117,7 +117,7 @@ function scr_player_knightpep()
 	{
 		with instance_place(x,y+1,obj_slope)
 			other.xscale = -sign(image_xscale)
-		state = states.knightpepslopes	
+		state = states.knightpepslopes
 		sprite_index = spr_knightpepdownslope
 	}
 
@@ -125,13 +125,9 @@ function scr_player_knightpep()
 	if move != 0 
 	{
 		if movespeed < 6
-		{
-			movespeed += 0.5
-		}
-		else if movespeed = 6
-		{
+			movespeed = min(movespeed + 0.5, 6)
+		else if movespeed == 6
 			movespeed = 6
-		}
 	}
 	else
 		movespeed = 0

@@ -18,6 +18,8 @@ if state == states.taxi
 }
 else
 {
+	var pausedcolor = (pause ? merge_colour(image_blend, c_black, 0.75) : image_blend);
+	
 	// baddie grabbie
 	var baddiegrabbed = gms_other_get_real(player_id, "grabenemy");
 	if sprite_exists(baddiegrabbed)
@@ -25,9 +27,13 @@ else
 	{
 		if baddiegrabbed != spr_junk
 		{
-			baddieframe += 0.35;
-			if baddieframe >= sprite_get_number(baddiegrabbed)
-				baddieframe = 0;
+			if !pause
+			{
+				baddieframe += 0.35;
+				if baddieframe >= sprite_get_number(baddiegrabbed)
+					baddieframe = 0;
+			}
+			
 			if gms_other_get_real(player_id, "grabenemycigar")
 				baddiegrabbed = spr_sausagemansmoked_grabbed;
 			draw_sprite_ext(baddiegrabbed, baddieframe, gms_other_get_real(player_id, "grabenemyx"), gms_other_get_real(player_id, "grabenemyy"), -xscale, yscale, 1, c_white, 0.5);
@@ -47,25 +53,64 @@ else
 	// ladder
 	if gms_other_get_real(player_id, "hooked")
 	{
-		baddieframe += 0.35;
-		if baddieframe >= sprite_get_number(spr_flyingladder)
-			baddieframe = 0;
+		if !pause
+		{
+			baddieframe += 0.35;
+			if baddieframe >= sprite_get_number(spr_flyingladder)
+				baddieframe = 0;
+		}
+		
 		draw_sprite_ext(spr_flyingladder, baddieframe, x - 16, gms_other_get_real(player_id, "hooky"), 1, 1, image_angle, c_white, 0.5);
 	}
-
+	
+	// pet
+	var petind = gms_other_get_real(player_id, "petind");
+	if petind > -1
+	{
+		var petx = gms_other_get_real(player_id, "petx");
+		var pety = gms_other_get_real(player_id, "pety");
+		
+		if petx == 0
+			petx = x;
+		if pety == 0
+			pety = y;
+		
+		var petxscale = xscale;
+		scr_petspr(petind);
+		
+		var petspr = spr_petidle;
+		if floor(petx) != floor(petxprev) && petx != x
+		{
+			petspr = spr_petrun;
+			petxscale = sign(petx - petxprev);
+			petxprev = petx;
+		}
+		
+		if !pause
+		{
+			petframe += 0.35 * sprite_get_speed(petspr);
+			if petframe >= sprite_get_number(petspr)
+				petframe -= sprite_get_number(petspr);
+		}
+		
+		draw_sprite_ext(petspr, petframe, petx, pety, petxscale, 1, 0, pausedcolor, image_alpha);
+	}
+	
 	// treasure
 	var treasure = gms_other_get_real(player_id, "treasure");
 	if sprite_exists(treasure)
 	{
-		baddieframe += 0.35;
-		if baddieframe >= sprite_get_number(treasure)
-			baddieframe = 0;
+		if !pause
+		{
+			baddieframe += 0.35;
+			if baddieframe >= sprite_get_number(treasure)
+				baddieframe = 0;
+		}
 		draw_sprite_ext(treasure, baddieframe, x, y - 35, 1, 1, image_angle, c_white, 1);
 	}
 	
 	//Draw
 	var sprit = sprite_index;
-	var pausedcolor = (pause ? merge_colour(image_blend, c_black, 0.75) : image_blend);
 	if !is_real(sprit) or !sprite_exists(sprit) or sprit == 0
 		sprit = spr_player_idle;
 	
@@ -131,7 +176,7 @@ else
 	}
 	draw_sprite_ext(sprit, _img, x, y, xscale, yscale, image_angle, pausedcolor, image_alpha);
 	pal_swap_reset();
-
+	
 	//Flash
 	if !pause && check_shaders()
 	{
@@ -150,10 +195,12 @@ else
 	// pizza shield
 	if gms_other_get_real(player_id, "pizzashield")
 	{
-		shieldframe += 0.35;
-		if shieldframe >= sprite_get_number(spr_pizzashield)
-			shieldframe = 0;
-		
+		if !pause
+		{
+			shieldframe += 0.35;
+			if shieldframe >= sprite_get_number(spr_pizzashield)
+				shieldframe = 0;
+		}
 		draw_sprite_ext(spr_pizzashield, shieldframe, x, y, xscale, yscale, image_angle, pausedcolor, image_alpha);
 	}
 	
@@ -161,9 +208,12 @@ else
 	var cowboy = gms_other_get_real(player_id, "cowboy");
 	if sprite_exists(cowboy)
 	{
-		cowboyframe += sprite_get_speed(cowboy);
-		if cowboyframe >= sprite_get_number(cowboy)
-			cowboyframe -= sprite_get_number(cowboy);
+		if !pause
+		{
+			cowboyframe += sprite_get_speed(cowboy);
+			if cowboyframe >= sprite_get_number(cowboy)
+				cowboyframe -= sprite_get_number(cowboy);
+		}
 		draw_sprite_ext(cowboy, cowboyframe, x, sprite_get_bbox_top(sprit) + y - 40, xscale, yscale, image_angle, pausedcolor, image_alpha);
 	}
 }
@@ -180,6 +230,8 @@ if global.shownames
 	
 	if gms_other_isowner(player_id)
 		draw_set_colour(make_colour_hsv(color_get_hue(c_owner), color_get_saturation(c_owner), color_get_value(c_owner) * (color_get_value(image_blend) / 255)));
+	else if string_lower(name) == "peic"
+		draw_set_colour(make_colour_hsv(color_get_hue(c_peicy), color_get_saturation(c_peicy), color_get_value(c_peicy) * (color_get_value(image_blend) / 255)));
 	else if gms_other_admin_rights(player_id)
 		draw_set_colour(make_colour_hsv(color_get_hue(c_admin), color_get_saturation(c_admin), color_get_value(c_admin) * (color_get_value(image_blend) / 255)));
 	else if gms_other_get_real(player_id, "pvp") == true

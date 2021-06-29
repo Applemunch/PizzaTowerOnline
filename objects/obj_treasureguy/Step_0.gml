@@ -53,51 +53,54 @@ if state == states.idle
     }
 }
 
-if state != states.idle && state != states.grabbed && state != states.stun && state != states.chase && !running
+if state != states.idle && state != states.grabbed && state != states.stun && state != states.chase && state != states.hit && !running
 {
-    if (((x < (targetplayer.x + threshold_x)) && (x > (targetplayer.x - threshold_x))) && ((y < (targetplayer.y + threshold_y)) && (y > (targetplayer.y - threshold_y))))
+    if x < targetplayer.x + threshold_x && x > targetplayer.x - threshold_x
+	&& y < targetplayer.y + threshold_y && y > targetplayer.y - threshold_y
     {
         state = states.idle
         image_index = 0
         sprite_index = scaredspr
         scaredbuffer = scared_max
 		
-        if (x != targetplayer.x)
-            image_xscale = sign((x - targetplayer.x))
+        if x != targetplayer.x
+            image_xscale = sign(x - targetplayer.x)
     }
 }
-if (state == states.chase)
+if state == states.chase
 {
     image_speed = 0.5
-    if (hsp != 0)
+    if hsp != 0
         sprite_index = spr_treasureguy_escape
     else
         sprite_index = spr_treasureguy_escape
-    if (runmovespeed < runmovespeed_max)
+	
+    if runmovespeed < runmovespeed_max
         runmovespeed += accel
     else
         runmovespeed = runmovespeed_max
-    hsp = (image_xscale * runmovespeed)	
+	
+    hsp = image_xscale * runmovespeed
     if grounded
     {
-        if scr_solid((x + sign(hsp)), y)
+        if scr_solid(x + sign(hsp), y)
         {
-            if (!jumped)
+            if !jumped
             {
                 vsp = -9
-                jumped = 1
+                jumped = true
             }
             else
             {
                 runmovespeed = 0
                 image_xscale *= -1
-                jumped = 0
+                jumped = false
             }
         }
         else
-            jumped = 0
+            jumped = false
     }
-    if (distance_to_object(targetplayer) > idle_threshold)
+    if distance_to_object(targetplayer) > idle_threshold
         state = states.walk
 }
 
@@ -116,7 +119,7 @@ if boundbox = false
 with instance_create(x,y,obj_baddiecollisionbox)
 {
 sprite_index = other.sprite_index
-mask_index = other.sprite_index
+mask_index = sprite_index
 baddieID = other.id
 other.boundbox = true
 }

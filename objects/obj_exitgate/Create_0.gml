@@ -1,7 +1,7 @@
 image_speed = 0
 hurtpoints=false
 timepoints= false
-escapetimepoints = false
+//escapetimepoints = false
 treasurepoints =false
 lastbesttimeminutes = 99
 lastbesthurt = 99

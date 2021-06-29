@@ -1,1 +1,2 @@
 
+global.roommessage = "HARDOWEEN HUB"

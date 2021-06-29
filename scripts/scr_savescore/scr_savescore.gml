@@ -6,16 +6,20 @@ function scr_savescore(namestring)
 	if !(namestring == "golf" && global.funmode)
 	{
 		ini_open("saveData.ini");
-
+		
+		// score
 		if ini_read_real("Highscore", namestring, 0) < global.collect
 		ini_write_real("Highscore",namestring,global.collect);
-
+		
+		// collected treasure
 		if ini_read_real("Treasure", namestring, 0) = 0
 		ini_write_real("Treasure",namestring,global.treasure);
-
+		
+		// secret count
 		if ini_read_real("Secret", namestring, 0) < global.secretfound
 		ini_write_string("Secret",namestring,global.secretfound);
 
+		// toppins
 		if ini_read_real("Toppin", namestring +"1", false) = 0
 		ini_write_real("Toppin",namestring + "1" ,global.shroomfollow);
 		if ini_read_real("Toppin", namestring +"2", false) = 0
@@ -27,6 +31,7 @@ function scr_savescore(namestring)
 		if ini_read_real("Toppin", namestring +"5", false) = 0
 		ini_write_real("Toppin",namestring + "5",global.pineapplefollow);
 		
+		// rank
 		if global.rank = "s"
 		ini_write_string("Ranks",namestring,global.rank)
 		if global.rank = "a" &&  "s"  !=  ini_read_string("Ranks",namestring,"none")
@@ -38,6 +43,7 @@ function scr_savescore(namestring)
 		if global.rank = "d" && "s"  !=  ini_read_string("Ranks",namestring,"none") && "a"  !=  ini_read_string("Ranks",namestring,"none") && "b"  !=  ini_read_string("Ranks",namestring,"none") && "c"  !=  ini_read_string("Ranks",namestring,"none") 
 		ini_write_string("Ranks",namestring,global.rank)
 		
+		// time attack score
 		if global.timeattack
 		{
 			if ((ini_read_real("TAmin", namestring, -1) * 60) + ini_read_real("TAsec", namestring, -1) > (global.taminutes * 60) + global.taseconds)
@@ -49,7 +55,7 @@ function scr_savescore(namestring)
 				var char = string(obj_player1.character);
 				if char == "N" && obj_player1.noisetype == 1
 					char += "S";
-				if global.gameplay == 1
+				if global.gameplay != 0
 					char += "-NEW";
 				ini_write_string("TAchar",namestring,char);
 			}
@@ -57,7 +63,8 @@ function scr_savescore(namestring)
 		
 		ini_close();
 	}
-
+	
+	// save pizzacoin
 	if instance_exists(obj_gms) && !gms_self_isguest()
 		gms_ini_player_write("saveData", "pizzacoin", scr_getcoin());
 	else

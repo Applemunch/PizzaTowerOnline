@@ -3,19 +3,23 @@ if room == Realtitlescreen
 or !drawhud
 	exit;
 
-var showhud = obj_player1.state != states.rotate && obj_player1.state != states.gameover;
+var showhud = !instance_exists(obj_player1) or (obj_player1.state != states.rotate && obj_player1.state != states.gameover);
 if global.pizzadelivery && global.hp > 0
 	draw_sprite(spr_pizzahealthbar, 8 - global.hp, 190, 70)
+
+var sugary = false;
+with obj_player1
+	if character == "SP" sugary = true;
 
 #region old hud
 
 if global.gameplay == 0
 {
 	//Backup Weapon
-	if obj_player.backupweapon
+	if instance_exists(obj_player1) && obj_player1.backupweapon
 		draw_sprite_ext(spr_shotgunbackup,-1,50, 100, 1, 1, 0, c_white, alpha)
-
-	if obj_player.state != states.gameover
+	
+	if instance_exists(obj_player1) && obj_player1.state != states.gameover
 	{
 		var _state = obj_player1.state;
 		if _state == states.backbreaker
@@ -263,9 +267,10 @@ if global.gameplay == 0
 
 else
 {
-	if obj_player1.state != states.gameover && showhud
+	if (!instance_exists(obj_player1) or obj_player1.state != states.gameover) && showhud
 	{
-		if ((obj_player1.x < camera_get_view_x(view_camera[0]) + 250
+		if ((instance_exists(obj_player1)
+		&& obj_player1.x < camera_get_view_x(view_camera[0]) + 250
 		&& obj_player1.y < camera_get_view_y(view_camera[0]) + 169)
 		or manualhide) && !instance_exists(obj_fadeout)
 			hud_posY = Approach(hud_posY, -300, 15);
@@ -283,32 +288,37 @@ else
 	            pizzascore_index = 0;
 	    }
 		
-	    var sw = sprite_get_width(spr_heatmeter_fill);
-	    var sh = sprite_get_height(spr_heatmeter_fill);
+		var heatfill = sugary ? spr_heatmeter_candyfill : spr_heatmeter_fill;
+		
+	    var sw = sprite_get_width(heatfill);
+	    var sh = sprite_get_height(heatfill);
 	    var b = global.style / 55;
 	    var hud_xx = 149 + irandom_range(-collect_shake, collect_shake);
 	    var hud_yy = 105 + irandom_range(-collect_shake, collect_shake) + hud_posY;
-	    draw_sprite_part(spr_heatmeter_fill, pizzascore_index, 0, 0, sw * b, sh, hud_xx - 95, hud_yy + 24);
-	   
+	    draw_sprite_part(heatfill, pizzascore_index, 0, 0, sw * b, sh, hud_xx - 95, hud_yy + 24);
+		
 	    pal_swap_set(spr_heatmeter_palette, global.stylethreshold, 0);
-	    draw_sprite_ext(spr_heatmeter, pizzascore_index, hud_xx, hud_yy, 1, 1, 0, c_white, alpha);
+	    draw_sprite_ext(sugary ? spr_heatmeter_candy : spr_heatmeter, pizzascore_index, hud_xx, hud_yy, 1, 1, 0, c_white, alpha);
 	    shader_reset();
 		
-	    draw_sprite_ext(spr_pizzascore, pizzascore_index, hud_xx, hud_yy, 1, 1, 0, c_white, alpha);
+	    draw_sprite_ext(sugary ? spr_candyscore : spr_pizzascore, pizzascore_index, hud_xx, hud_yy, 1, 1, 0, c_white, alpha);
 		
-	    var _score = global.collect
-	    if _score >= global.crank
-	        draw_sprite_ext(spr_pizzascore_pepper, pizzascore_index, hud_xx, hud_yy, 1, 1, 0, c_white, alpha);
-	    if _score >= global.brank
-	        draw_sprite_ext(spr_pizzascore_pepperoni, pizzascore_index, hud_xx, hud_yy, 1, 1, 0, c_white, alpha);
-	    if _score >= global.arank
-	        draw_sprite_ext(spr_pizzascore_olive, pizzascore_index, hud_xx, hud_yy, 1, 1, 0, c_white, alpha);
-	    if _score >= global.srank
-	        draw_sprite_ext(spr_pizzascore_shroom, pizzascore_index, hud_xx, hud_yy, 1, 1, 0, c_white, alpha);
+		var _score = global.collect;
+		if !sugary
+		{
+		    if _score >= global.crank
+		        draw_sprite_ext(spr_pizzascore_pepper, pizzascore_index, hud_xx, hud_yy, 1, 1, 0, c_white, alpha);
+		    if _score >= global.brank
+		        draw_sprite_ext(spr_pizzascore_pepperoni, pizzascore_index, hud_xx, hud_yy, 1, 1, 0, c_white, alpha);
+		    if _score >= global.arank
+		        draw_sprite_ext(spr_pizzascore_olive, pizzascore_index, hud_xx, hud_yy, 1, 1, 0, c_white, alpha);
+		    if _score >= global.srank
+		        draw_sprite_ext(spr_pizzascore_shroom, pizzascore_index, hud_xx, hud_yy, 1, 1, 0, c_white, alpha);
+		}
 		
 		draw_set_valign(fa_top)
 	    draw_set_halign(fa_left)
-	    draw_set_font(global.collectfont)
+	    draw_set_font(sugary ? global.candyfont : global.collectfont)
 		
 		var text_y = 0;
 	    switch floor(pizzascore_index)
@@ -359,24 +369,35 @@ else
 		draw_set_alpha(1)
 	    shader_reset()
 		
-		/*
-	    var bx = (hud_xx - 63)
-	    var by = (hud_yy + 20)
-	    var bpad = 25
-	    var bspr = spr_peppinobullet_collectible
-	    if (!obj_player1.ispeppino)
-	    {
-	        bx = (hud_xx - 69)
-	        by = (hud_yy + 77)
-	        bspr = spr_playerN_noisebomb
-	    }
-	    bx += (bpad * global.bullet)
-	    for (i = 0; i < global.bullet; i++)
-	    {
-	        bx -= bpad
-	        draw_sprite_ext(bspr, -1, bx, by, 1, 1, 0, c_white, alpha)
-	    }
-		*/
+		if instance_exists(obj_player1)
+		{
+			var char = obj_player1.character;
+			if (char == "P" or char == "N")
+			&& !scr_checkskin(checkskin.p_anton)
+			{
+			    var bx = hud_xx - 25;
+			    var by = hud_yy + 20;
+			    var bpad = 25;
+			    var bspr = spr_peppinobullet_collectible;
+			
+			    if char == "N"
+			    {
+			        bx -= 6;
+			        by += 57;
+			        bspr = spr_playerN_noisebomb;
+			    }
+			
+				var b = min(global.bullet, 960);
+			
+			    bx += bpad * b;
+			    for (i = 0; i < b; i++)
+			    {
+			        bx -= bpad;
+					if bx <= 960 + 32
+						draw_sprite_ext(bspr, -1, bx, by, 1, 1, 0, c_white, alpha);
+			    }
+			}
+		}
 	}
 }
 
@@ -401,7 +422,7 @@ if global.panic or global.snickchallenge or global.miniboss or global.timedgate
 	draw_text_color(random_range(1, -1) + 480, random_range(1, -1) + (global.gameplay == 0 ? 65 : 480 + ((obj_tv.yi - obj_tv.panicy) / 2)), string(_minutes) + _middletext + string(_seconds), _color, _color, _color, _color, image_alpha);
 }
 
-if obj_player1.character == "V" && showhud
+if instance_exists(obj_player1) && obj_player1.character == "V" && showhud
 {
 	draw_set_colour(c_white);
 	draw_text(200 + healthshake, 100 + healthshake + (global.gameplay == 0 ? 0 : 25), global.playerhealth)
@@ -410,9 +431,19 @@ if obj_player1.character == "V" && showhud
 //Key
 if showhud
 {
+	var xx = 50;
+	var yy = 30;
+	if global.gameplay != 0
+	{
+		xx = 69;
+		yy = 185 + hud_posY;
+		if sugary
+			yy += 10;
+	}
+	
 	if global.key_inv
-		draw_sprite_ext((check_sugary() ? spr_key_ss : spr_key), -1, 50, 30, 1, 1, 0, c_white, alpha)
-	draw_sprite_ext(spr_inv, -1, 50, 30, 1, 1, 0, c_white, alpha)
+		draw_sprite_ext((check_sugary() ? spr_key_ss : spr_key), -1, xx, yy, 1, 1, 0, c_white, alpha)
+	draw_sprite_ext(spr_inv, -1, xx, yy, 1, 1, 0, c_white, alpha)
 }
 
 draw_set_blend_mode(bm_normal);

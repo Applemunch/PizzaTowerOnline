@@ -2,10 +2,14 @@ if room == rm_editor exit;
 
 if ds_list_find_index(global.saveroom, id) == -1 && !global.snickchallenge
 {
-	repeat 6 with instance_create(x + 16, y, obj_pizzadebris)
+	repeat 6 with instance_create(x + sprite_width / 2, y + sprite_height / 2, obj_pizzadebris)
 	{
-		if other.sprite_index = spr_halloweensmallblock
+		image_xscale = abs(other.image_xscale);
+		image_yscale = abs(other.image_yscale);
+		
+		if other.sprite_index == spr_halloweensmallblock
 		or other.sprite_index == spr_xmasblock
+		or other.sprite_index == spr_destroyable2_ss_noise
 			sprite_index = spr_halloweendebris;
 		else if other.sprite_index == spr_destroyable2_ss
 			sprite_index = spr_pizzadebris_ss;
@@ -14,7 +18,7 @@ if ds_list_find_index(global.saveroom, id) == -1 && !global.snickchallenge
 		else
 			sprite_index = spr_pizzadebris;
 	}
-	create_baddiegibsticks(x + 16, y + 16);
+	create_baddiegibsticks(x + sprite_width / 2, y + sprite_height / 2);
 	
 	with instance_create(x, y, obj_collect)
 		ID = other.id;

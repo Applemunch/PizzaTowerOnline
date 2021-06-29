@@ -338,7 +338,7 @@ function scr_player_mach3()
 					state = states.pogo
 					pogospeed = movespeed
 				}
-	
+			
 			if fightball = false
 			{
 			if movespeed > 20 && sprite_index != spr_crazyrun 
@@ -382,72 +382,69 @@ function scr_player_mach3()
 			//Jump Stop
 			if (!key_jump2) && jumpstop = false && vsp < 0.5 && fightball = true
 			{
-			vsp /= 10
-			jumpstop = true
+				vsp /= 10
+				jumpstop = true
 			}
 
 			if grounded && vsp > 0 && fightball = true
 			{
-			jumpstop = false
+				jumpstop = false
 			}
 
 
 			//Jump
-			if (input_buffer_jump < 8) && grounded && !(move == 1 && xscale == -1) && !(move == -1 && xscale == 1)   && fightball = true
+			if (input_buffer_jump < 8) && grounded && !(move == 1 && xscale == -1) && !(move == -1 && xscale == 1) && fightball
 			{
-			scr_soundeffect(sfx_jump)
-			if sprite_index != spr_fightball
-			{
-			image_index =0
-			sprite_index = spr_mach3jump
-			}
-
-			vsp = -11
-
-			}
-
-
-
-
-					//Bump
-
-				if (scr_solid(x+sign(hsp),y, false))  &&   (!place_meeting(x+sign(hsp),y,obj_slope) or scr_solid(x+sign(hsp),y, false)) && (!place_meeting(x+sign(hsp),y,obj_metalblock) && character != "V")  && (!place_meeting(x+sign(hsp),y,obj_destructibles) && character != "V")  && !place_meeting(x+sign(hsp),y,obj_hungrypillar) 
+				scr_soundeffect(sfx_jump)
+				if sprite_index != spr_fightball
 				{
+				image_index =0
+				sprite_index = spr_mach3jump
+				}
 
-			sprite_index = spr_hitwall
-			scr_soundeffect(sfx_groundpound)
-			scr_soundeffect(sfx_bumpwall)
-				with (obj_camera) {
+				vsp = -11
 
-				shake_mag=20;
-				shake_mag_acc=40/room_speed;
 			}
 
-			hsp = 0
-			image_speed = 0.35
 
-				with (obj_baddie)
+
+
+			//Bump
+			if (scr_solid(x+sign(hsp),y, false))  &&   (!place_meeting(x+sign(hsp),y,obj_slope) or scr_solid(x+sign(hsp),y, false)) && (!place_meeting(x+sign(hsp),y,obj_metalblock) && character != "V")  && (!place_meeting(x+sign(hsp),y,obj_destructibles) && character != "V")  && !place_meeting(x+sign(hsp),y,obj_hungrypillar) 
 			{
-			if point_in_camera(x, y, view_camera[0]) {
 
-			stun = true
-			alarm[0] = 200
-			ministun = false
-			vsp = -5
-			hsp = 0
-			}
-			}
+				sprite_index = spr_hitwall
+				scr_soundeffect(sfx_groundpound)
+				scr_soundeffect(sfx_bumpwall)
+					with (obj_camera) {
 
-			flash = false
+					shake_mag=20;
+					shake_mag_acc=40/room_speed;
+				}
 
-			state = states.bump
-			hsp = 2.5
-			vsp = -3
-			mach2 = 0
-			image_index = 0
-			instance_create(x-10,y+10,obj_bumpeffect)
+				hsp = 0
+				image_speed = 0.35
 
-	
+					with (obj_baddie)
+				{
+					if point_in_camera(x, y, view_camera[0]) {
+
+						stun = true
+						alarm[0] = 200
+						ministun = false
+						vsp = -5
+						hsp = 0
+					}
+				}
+
+				flash = false
+
+				state = states.bump
+				hsp = 2.5 * -xscale
+				vsp = -3
+				mach2 = 0
+				image_index = 0
+				instance_create(x-10,y+10,obj_bumpeffect)
 			}
 		}
 	}
@@ -510,15 +507,14 @@ function scr_player_mach3()
 		//Jump
 		if (input_buffer_jump < 8) && grounded && !(move == 1 && xscale == -1) && !(move == -1 && xscale == 1)  
 		{
-		scr_soundeffect(sfx_jump)
-		if sprite_index != spr_fightball
-		{
-		image_index =0
-		sprite_index = spr_mach3jump
-		}
+			scr_soundeffect(sfx_jump)
+			if sprite_index != spr_fightball
+			{
+				image_index =0
+				sprite_index = spr_mach3jump
+			}
 
-		vsp = -11
-
+			vsp = -11
 		}
 
 

@@ -5,6 +5,7 @@ if obj_player1.state == states.normal
 		
 	with obj_player1
 	{
+		shot = false;
 		shotgunAnim = false;
 		global.gotshotgun = false;
 		pogochargeactive = false;

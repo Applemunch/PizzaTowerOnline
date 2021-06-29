@@ -1,3 +1,9 @@
+if room != characterselect
+{
+	room_goto(room_of_dog);
+	exit;
+}
+
 if !(instance_exists(obj_gms) && gms_info_isloggedin()) && room == characterselect
 {
 	keyboard_string = "";

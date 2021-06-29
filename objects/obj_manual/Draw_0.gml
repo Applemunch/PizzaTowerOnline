@@ -10,7 +10,12 @@ if i == 2
 }
 if i == 4
 {
-	draw_set_halign(fa_middle);
-	draw_text(280, 132, "- Pizza Tower -\nPizzaTowerGuy\n\n- Antonball -\nSummitsphere\n\n- Peppino's Leaning Nightmare -\nDrexyl\nMarcus Does Miscellaneous\nPLN Contributors\n\n- Sugary Spire -\nSugarySpireGuy\nPinPanPaint - Assets\nRodMod - Music");
-	draw_text(680, 132, "- Other -\n\nSnick Escape - [c]ness\nSmart Debris - MrUnown\nExtra rooms - bepmaster\n\n- NPC -\nPlaceholder\n\n- Characters and Palettes -\nGlade, Noik - Sanssul\nAlmost every palette - bepmaster");
+	draw_set_halign(fa_center);
+	if global.streamer
+		draw_text(960 / 2, 132, "You can't see the credits\nin streamer mode. For safety.");
+	else
+	{
+		draw_text(280, 132, "- Pizza Tower -\nPizzaTowerGuy\n\n- Antonball -\nSummitsphere\n\n- Peppino's Leaning Nightmare -\nDrexyl\nMarcus Does Miscellaneous\nPLN Contributors\n\n- Sugary Spire -\nSlim\nPinPan, Ching, etc - Assets\nRodMod, Red - Music");
+		draw_text(680, 132, "- Other -\nSnick Escape - [c]ness\nSmart Debris - MrUnown\nExtra rooms - bepmaster\nLadders - Blugar23\nSugary Blocks - Randy\n\n- NPC -\nPlaceholder\n\n- Characters and Palettes -\nPalettes - Planet Pizza Discord\nGlade, Noik & Peic - Sanssul\nNoah - lightninghawk, Sanssul\nGerald - Random\nCaptions - Croatian Commander, Potato");
+	}
 }

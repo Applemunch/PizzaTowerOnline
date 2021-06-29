@@ -1,6 +1,6 @@
 /// @description Perform collisions, but also do extra checks for grinding and ladder-climbing
-function scr_collide_player() {
-
+function scr_collide_player()
+{
 	grounded = false
 	grinding = false
 
@@ -28,7 +28,14 @@ function scr_collide_player() {
 	    // Move down slope
 	    if !scr_solid_player(x + sign(hsp), y) && !scr_solid_player(x + sign(hsp), y + 1) && scr_solid_player(x + sign(hsp), y + 2)
 	        y++;
-
+		
+		// Cheese platforms
+		with instance_place(x, y + 1, obj_destructibleplatform)
+		{
+			falling = true;
+			image_speed = 0.35;
+		}
+		
 	    if !scr_solid_player(x + sign(hsp), y)
 	        x += sign(hsp); 
 	    else
@@ -39,8 +46,7 @@ function scr_collide_player() {
 	}
 
 	//Gravity
-	if (vsp < 20 * gravmult)
-		vsp += grav * gravmult;
+	vsp = min(vsp + (grav * gravmult), 20 * gravmult);
 
 	// Check if a wall is below me	
 	grounded |= scr_solid_player(x, y + 1)

@@ -1,2 +1,1 @@
-targetDoor = "A";
 targetRoom = characterselect;

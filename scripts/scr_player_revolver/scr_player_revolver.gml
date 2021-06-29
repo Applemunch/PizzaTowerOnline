@@ -22,11 +22,11 @@ function scr_player_revolver()
 			sprite_index = spr_playerV_airrevolver
 		
 		image_index = 0
-		instance_create(x+image_xscale*20,y+20,obj_shotgunbullet)
+		instance_create(x+xscale*20,y+20,obj_shotgunbullet)
 		scr_soundeffect(sfx_killingblow)
 
 	}
-
+	
 	if floor(image_index) = image_number - 1 && sprite_index = spr_playerV_revolvershoot 
 	{
 		image_index = 0

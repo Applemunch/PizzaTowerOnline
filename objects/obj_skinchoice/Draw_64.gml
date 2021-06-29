@@ -13,7 +13,7 @@ if sel[1] == "N"
 {
 	if global.gameplay == 0 && noisetype == 1
 		_spr = spr_playerN_mach;
-	if global.gameplay == 1 && noisetype == 0
+	if global.gameplay != 0 && noisetype == 0
 		_spr = spr_playerN_pogofall;
 	
 	if sel[0] == 15 or sel[0] == 19

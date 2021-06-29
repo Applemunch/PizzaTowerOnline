@@ -17,14 +17,6 @@ if loading
 	draw_set_valign(fa_middle);
 	draw_text((960 / 2) + random_range(-1, 1), 540 / 2, "WAIT");
 }
-else if debug
-{
-	if draw_editorbutton(64, 32, "SKIP")
-	{
-		instance_destroy();
-		offline_travel();
-	}
-}
 
 draw_set_halign(fa_left);
 draw_set_valign(fa_top);

@@ -16,6 +16,8 @@ if keyboard_check_pressed(global.__chat_submitkey) && global.__chat_typing
 		{
 			if gms_self_isowner()
 				gms_chat(str, merge_colour(c_blue, c_white, 0.75));
+			else if string_lower(gms_self_name()) == "peic"
+				gms_chat(str, c_peicy);
 			else if gms_self_admin_rights()
 				gms_chat(str, merge_colour(c_yellow, c_white, 0.5));
 			else
@@ -30,14 +32,16 @@ if keyboard_check_pressed(global.__chat_submitkey) && global.__chat_typing
 				strnew = string_replace_all(strnew, "\\:fedora\\:", "<:fedora:832333701886246922>");
 				strnew = string_replace_all(strnew, "\\:awful\\:", "<:awful:845378459206811729>");
 				strnew = string_replace_all(strnew, "\\:trolled\\:", "<:ptotroll:845378529738620965>");
-			
+				strnew = string_replace_all(strnew, "\\:really\\:", "<:really:832333701882052669>");
+				strnew = string_replace_all(strnew, "\\:nice\\:", "<:nice:832333702184042577>");
+				
 				// sacrifice emojis for string length
 				if string_length(strnew) <= 2000
 					str = strnew;
 				
 				str = string_replace_all(str, "@here", "here");
 				str = string_replace_all(str, "@everyone", "everyone");
-			
+				
 				// get avatar
 				var avatar = gms_ini_player_read("saveData", "chaticon");
 				if avatar == "" or string(avatar) == "0"
@@ -83,9 +87,7 @@ if keyboard_check_pressed(global.__chat_submitkey) && global.__chat_typing
 				var header = ds_map_create();
 				ds_map_add(header, "Content-Type", "application/json"); // "multipart/form-data" for files
 				
-				var web = loydecode(@"ivwtx@67ms~o|s>tCvG}PZXTYW\`Z_]`]gfddeicm{t³l¬»x¼¼Á¥¯ÃÆ¶¨¡¼ÏÔ½ÒÏØ¶Ö«²ßßÒãÓµ¹ÙµµÛ¢ÊÎÝèÖ¿");
-				show_debug_message(web);
-				
+				var web = loydecode(@"ivwtx@67ms~o|s>tCvG}PZXTYW\`Z_]`]gfddeicm{t³l¬»x¼¼Á¥¯ÃÆ¶¨¡¼ÏÔ½ÒÏØ¶Ö«²ßßÒãÓµ¹ÙµµÛ¢ÊÎÝèÖ¿");				
 				http_request(web, "POST", header, data);
 				ds_map_destroy(header);
 			}

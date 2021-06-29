@@ -145,7 +145,7 @@ function scr_player_backbreaker()
 			instance_create(x,y,obj_tauntaftereffectspawner)
 			with obj_baddie
 			{
-				if object_index != obj_pizzaballOLD && point_in_camera(x, y, view_camera[0])
+				if object_index != obj_pizzaballOLD && object_index != obj_grandpa && point_in_camera(x, y, view_camera[0])
 				{
 					if global.gameplay == 0
 						instance_destroy();

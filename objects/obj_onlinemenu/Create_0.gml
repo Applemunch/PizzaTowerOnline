@@ -1,11 +1,5 @@
 if !debug
 {
-	/*
-	show_message("sorry nothing");
-	game_end();
-	exit;
-	*/
-	
 	if (!instance_exists(obj_gms) or !gms_info_isloggedin() or gms_ini_game_read("game", "leveleditor") == false)
 	{
 		event_perform(ev_alarm, 2);
@@ -76,10 +70,13 @@ selectedpassword = false;
 registering = false;
 passconfirm1 = "";
 
-if gms_ini_player_exists("saveData", "regedit")
-	regedit = gms_ini_player_read("saveData", "regedit");
-else
-	regedit = false;
+regedit = false;
+if instance_exists(obj_gms) && gms_info_isloggedin()
+{
+	if gms_ini_player_exists("saveData", "regedit")
+		regedit = gms_ini_player_read("saveData", "regedit");
+	gms_chat_toggle(false);
+}
 
 // etc
 textline = false;
@@ -100,7 +97,6 @@ if !variable_global_exists("auth")
 	global.auth = "";
 
 obj_player1.state = states.titlescreen;
-gms_chat_toggle(false);
 
 global.pizzacoinstart = global.pizzacoin;
 alarm[2] = 10;

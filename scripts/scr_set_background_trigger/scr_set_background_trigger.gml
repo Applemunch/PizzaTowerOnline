@@ -213,9 +213,9 @@ function scr_set_background_trigger(argument0) {
 	        break
 	
 	    case 25:
-	        layer_background_sprite(back_id_bg1, bg_desert)
+	        layer_background_sprite(back_id_stillH1, bg_desert)
 	        break
-	
+		
 	    case 26:
 	        layer_background_sprite(back_id_bg1, bg_ravine)
 	        break
@@ -223,7 +223,7 @@ function scr_set_background_trigger(argument0) {
 	    case 27:
 	        layer_background_sprite(back_id_bg1, bg_cavern)
 	        break
-	
+		
 	    case 28:
 	        layer_background_sprite(back_id_bg1, bg_ufo)
 	        break

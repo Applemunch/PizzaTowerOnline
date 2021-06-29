@@ -43,21 +43,15 @@ function scr_player_mach2()
 	//Animations
 	if grounded && vsp > 0
 	{
-		if machpunchAnim = false && sprite_index != spr_mach && sprite_index != spr_mach4 && sprite_index != spr_player_machhit
+		if machpunchAnim
 		{
-			if sprite_index != spr_player_machhit && (sprite_index != spr_rollgetup or character == "S")
-				sprite_index = spr_mach
-		}
-
-		if machpunchAnim = true
-		{
-			if punch = false && sprite_index != spr_machpunch1
+			if !punch && sprite_index != spr_machpunch1
 			{
 				image_index = 0;
 				sprite_index = spr_machpunch1
 			}
 
-			if punch = true && sprite_index != spr_machpunch2
+			if punch && sprite_index != spr_machpunch2
 			{
 				image_index = 0;
 				sprite_index = spr_machpunch2
@@ -75,14 +69,20 @@ function scr_player_mach2()
 				machpunchAnim = false
 			}
 		}
+		else if sprite_index != spr_mach && sprite_index != spr_mach4 && sprite_index != spr_player_machhit
+		&& sprite_index != spr_snick_tumble && (sprite_index != spr_snick_bodyslamstart or grounded)
+		{
+			if sprite_index != spr_rollgetup or character == "S"
+				sprite_index = spr_mach
+		}
 	}
-
-
 	if !grounded
+	{
 		machpunchAnim = false
-
-
-
+		if sprite_index == spr_snick_tumble
+			sprite_index = spr_snick_bodyslamstart;
+	}
+	
 	//Mach Freefall
 	//if !(grounded) && vsp > 0 
 	//{
@@ -143,8 +143,19 @@ function scr_player_mach2()
 	if (!grounded && scr_solid(x+hsp,y,false) && (!place_meeting(x+hsp,y,obj_destructibles) or character == "V") && !place_meeting(x+sign(hsp),y,obj_slope))
 	or (grounded &&  scr_solid(x+hsp,y-64,false) && (!place_meeting(x+hsp,y,obj_destructibles) or character == "V")  && !place_meeting(x+hsp,y,obj_metalblock) && place_meeting(x,y+1,obj_slope))
 	{
-		wallspeed = movespeed
-		state = states.climbwall
+		if (!key_attack && character != "S") or (character == "S" && move == 0)
+		{
+			instance_create(x,y+43,obj_cloudeffect)
+			
+			vsp = -movespeed
+			state = states.normal
+			movespeed = 0
+		}
+		else
+		{
+			wallspeed = movespeed
+			state = states.climbwall
+		}
 	}
   
 	if grounded && !scr_slope() && scr_solid(x+hsp,y,false) && (!place_meeting(x+hsp,y,obj_destructibles) or character == "V") && !place_meeting(x+sign(hsp),y,obj_slope)

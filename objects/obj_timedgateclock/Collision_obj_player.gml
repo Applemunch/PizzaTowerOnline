@@ -1,3 +1,4 @@
+/*
 if !(global.timedgate && !replace)
 {
 	global.timedgate = true
@@ -7,7 +8,17 @@ if !(global.timedgate && !replace)
 	
 	with obj_timedgateclock
 	{
-		if sprite_index != spr_button_pressed && sprite_index != spr_button_goingpressed
+		if sprite_index != spr_button_pressed
 			sprite_index = spr_button_goingpressed
 	}
 }
+*/
+
+with obj_timedgateclock
+{
+	if sprite_index != spr_button_pressed
+		sprite_index = spr_button_goingpressed
+}
+global.timedgatetime = time;
+global.timedgatetime += seconds * room_speed;
+global.timedgatetime += minutes * room_speed * room_speed;

@@ -126,25 +126,24 @@ function scr_player_jump()
 	{
 		input_buffer_jump = 8;
 		scr_soundeffect(sfx_jump)
+		
+		if sprite_index != spr_shotgunshoot
+		{
+			if global.minutes <= 0 && global.seconds <= 0
+			&& character == "P" && !instance_exists(obj_toppinwarrior)
+				sprite_index = spr_player_hurtjump
+			else
+				sprite_index = spr_jump
 
-		if global.minutes <= 0 && global.seconds <= 0
-		&& character == "P" && !instance_exists(obj_toppinwarrior)
-			sprite_index = spr_player_hurtjump
-		else
-			sprite_index = spr_jump
-
-		if shotgunAnim
-			sprite_index = spr_shotgunjump
+			if shotgunAnim
+				sprite_index = spr_shotgunjump
+		}
 
 		instance_create(x,y,obj_highjumpcloud2)
 		stompAnim = false
-
-
-
+		
 		vsp = -11
-
-
-
+		
 		state = states.jump
 		jumpAnim = true
 		jumpstop = false
@@ -162,23 +161,23 @@ function scr_player_jump()
 	if (grounded && vsp > 0) && (!key_attack or character == "S")
 	{
 		scr_soundeffect(sfx_step)
-		if key_attack
+		if key_attack or sprite_index == spr_shotgunshoot
 			landAnim = false
+		if sprite_index == spr_pmortjump or sprite_index == spr_pmortjumpstart
+			sprite_index = spr_pmortland;
+		if sprite_index != spr_shotgunshoot
+			image_index = 0;
 		
 		instance_create(x,y,obj_landcloud)
 		input_buffer_secondjump = 0
 		state = states.normal
 		jumpAnim = true
 		jumpstop = false
-		image_index = 0
 
 		freefallstart = 0
 		grav = 0.5;
 	}
-
-
-
-
+	
 	//Dynamite jump effect
 	if floor(image_index) = image_number -1 && sprite_index = spr_playerV_superjump
 	{
@@ -189,7 +188,7 @@ function scr_player_jump()
 	//Input buffer jumping
 	if key_jump
 		input_buffer_jump = 0
-
+	
 	//Falling Animation
 	if character != "S" && sprite_index != spr_pmortjump
 	{
@@ -243,6 +242,9 @@ function scr_player_jump()
 
 			if sprite_index = spr_suplexland
 				sprite_index = spr_fall
+
+			if sprite_index = spr_shotgunshoot
+				sprite_index = spr_shotgunfall
 		}
 	}
 	else
@@ -271,43 +273,42 @@ function scr_player_jump()
 	//Manual Freefall
 	if key_down2
 	{
-		if shotgunAnim == false
-		{
-			image_index= 0
-			state = states.freefallprep
+		image_index= 0
+		state = states.freefallprep
+		if character != "N" && character != "V" && character != "SP"
+			vsp = -5
+		else
+			vsp = -7
+		
+		if !shotgunAnim
 			sprite_index = spr_bodyslamstart
-			if character != "N" && character != "V"
-				vsp = -5
-			else
-				vsp = -7
-		}
 		else
 		{
 			scr_soundeffect(sfx_killingblow)
-			image_index= 0
-			state = states.freefallprep
 			sprite_index = spr_shotgunjump1
-			vsp = -5
 			
-			if character != "N"
+			if character != "N" or global.gameplay != 0
 			{
 				with instance_create(x +xscale*30,y+60,obj_shotgunbullet)
 				{
 					sprite_index = sprite10391
 					spdh = -10
 					spd = 0
+					shotgun = true
 				}
 				with instance_create(x +xscale*30,y+60,obj_shotgunbullet)
 				{
 					sprite_index = sprite10391
 					spdh = -10
 					spd = 5
+					shotgun = true
 				}
 				with instance_create(x +xscale*30,y+60,obj_shotgunbullet)
 				{
 					sprite_index = sprite10391
 					spdh = -10
 					spd = -5
+					shotgun = true
 				}
 			}
 		}
@@ -316,7 +317,7 @@ function scr_player_jump()
 	
 	image_speed = 0.35
 	if sprite_index == spr_suplexcancel
-		image_speed = 0.5;
+		image_speed = 0.4;
 
 	//Chainsaw Pogo
 	//if key_chainsaw2 && !grounded
@@ -387,7 +388,7 @@ function scr_player_jump()
 	//Suplex Dash
 	if key_slap2 && (character != "S" && character != "V")
 	{
-		if key_up && global.gameplay == 1 && character == "SP" && sprite_index != spr_breakdanceuppercutend
+		if key_up && global.gameplay != 0 && character == "SP" && sprite_index != spr_breakdanceuppercutend
 		{
 			// Breakdance up
 			scr_soundeffect(sfx_suplexdash);
@@ -426,14 +427,14 @@ function scr_player_jump()
 			else
 				movespeed = 4
 		
-			if global.gameplay == 1
+			if global.gameplay != 0
 				instance_create(x, y, obj_crazyrunothereffect)
 			grav = 0.5;
 		}
 	}
 
 	// Breakdance
-	if key_shoot2 && !shotgunAnim && (character == "P" or character == "SP")
+	if key_shoot2 && !shotgunAnim
 	{
 		if scr_checkskin(checkskin.p_anton)
 		{
@@ -477,37 +478,130 @@ function scr_player_jump()
 			        image_xscale = other.xscale;
 			        sprite_index = spr_mortprojectile;
 				}
-		    }
-			else if character == "P"
-			{
-				// shoot
 				
+				sprite_index = spr_pmortthrow
+				image_index = 0
+				state = states.pistol
+				mort = true
+				
+				with obj_camera
+				{
+				    shake_mag = 3
+				    shake_mag_acc = 3 / room_speed
+				}
+		    }
+			else if (character == "P" or character == "N") && global.bullet > 0
+			{
+				if !scr_solid_player(x + xscale * 20, y) or place_meeting(x + xscale * 20, y, obj_destructibles)
+				{
+					global.bullet--;
+					sprite_index = spr_pistolshot
+					image_index = 0
+					state = states.pistol
+					shot = true
+					
+					with obj_camera
+					{
+						shake_mag = 3;
+						shake_mag_acc = 3 / room_speed;
+					}
+					
+					scr_soundeffect(sfx_killingblow);
+					if character == "N"
+					{
+						with instance_create(x, y, obj_playerbomb)
+						{
+			                kick = true
+			                movespeed = 15
+			                image_xscale = other.xscale
+						}
+					}
+					else
+					{
+						with instance_create(x + xscale * 20, y, obj_shotgunbullet)
+						{
+							while scr_solid(x, y)
+								y++;
+			                pistol = true
+							if other.character == "P"
+								sprite_index = spr_peppinobullet
+			                image_xscale = other.xscale
+						}
+					}
+				}
+				else
+				{
+					image_index = 0
+					state = states.bump
+					hsp = -xscale * 2
+					vsp = -2
+				}
 			}
 		}
 	}
 
 	// Shotgun
-	if key_shoot2 && shotgunAnim = true
+	if shotgunAnim && state == states.jump
 	{
-		scr_soundeffect(sfx_killingblow)
-		state = states.shotgun
-		grav = 0.5;
-		
-		with instance_create(x,y,obj_pistoleffect)
-			image_xscale = other.image_xscale
-
-		image_index = 0
-		sprite_index = spr_shotgunshoot
-		if character != "N"
+		if shoot_buffer <= 0 && key_shoot2
 		{
-			instance_create(x+image_xscale*20,y+20,obj_shotgunbullet)
-			with instance_create(x+image_xscale*20,y+20,obj_shotgunbullet)
-				spdh = 4
-			with instance_create(x+image_xscale*20,y+20,obj_shotgunbullet)
-				spdh = -4
+			grav = 0.5;
+			if global.gameplay == 0
+			{
+				// shoot in old gameplay
+				state = states.shotgun
+				
+				with instance_create(x+xscale*20,y+20,obj_shotgunbullet)
+					shotgun = true;
+				if character != "N"
+				{
+					with instance_create(x+xscale*20,y+20,obj_shotgunbullet)
+					{
+						spdh= 4
+						shotgun = true;
+					}
+					with instance_create(x+xscale*20,y+20,obj_shotgunbullet)
+					{
+						spdh= -4
+						shotgun = true;
+					}
+				}
+			}
+			else
+			{
+				// shoot in new gameplay
+				shoot_buffer = shoot_max;
+				with instance_create(x + xscale * 20, y + 20, obj_shotgunbullet)
+				{
+					image_xscale = other.xscale;
+					shotgun = true;
+				}
+				with instance_create(x + xscale * 20, y + 20, obj_shotgunbullet)
+				{
+					image_xscale = other.xscale;
+					shotgun = true;
+					spdh = 4;
+				}
+				with instance_create(x + xscale * 20, y + 20, obj_shotgunbullet)
+				{
+					image_xscale = other.xscale;
+					shotgun = true;
+					spdh = -4;
+				}
+			}
+			
+			// detail
+			jumpAnim = true;
+			
+			sprite_index = spr_shotgunshoot;
+			image_index = 0;
+			scr_soundeffect(sfx_killingblow);
+			
+			with instance_create(x, y, obj_pistoleffect)
+				image_xscale = other.xscale;
 		}
 	}
-
+	
 	//Jetpack flash
 	if character == "N" && (pogochargeactive = true or pizzapepper > 0)
 	{
@@ -597,7 +691,7 @@ function scr_player_jump()
 
 	if floor(image_index) == image_number -1
 		jumpAnim = false
-
+	
 	//Vigilante revolver
 	if key_slap2 && character = "V"
 	{
@@ -614,4 +708,14 @@ function scr_player_jump()
 	//Taunt
 	if key_taunt2 
 		scr_player_taunt();
+	
+	if sprite_index == spr_shotgunshoot
+	{
+	    landAnim = false
+	    machslideAnim = false
+	    image_speed = 0.45
+		
+	    if image_index > image_number - 1
+	        sprite_index = spr_shotgunfall
+	}
 }

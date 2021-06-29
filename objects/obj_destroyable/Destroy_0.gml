@@ -5,9 +5,14 @@ if room == custom_lvl_room {
 if  ds_list_find_index(global.saveroom, id) = -1
 {
 	repeat 4
-		with instance_create(x + 16, y, obj_debris)
+		with instance_create(x + sprite_width / 2, y + sprite_height / 2, obj_debris)
+		{
+			image_xscale = abs(other.image_xscale);
+			image_yscale = abs(other.image_yscale);
+			
 			if other.sprite_index == spr_destroyable_ss
 				sprite_index = spr_debris_ss;
+		}
 	
 	//tile_layer_delete_at(1, x, y);
 	if audio_is_playing(sfx_breakblock1) or audio_is_playing(sfx_breakblock2)
@@ -28,4 +33,3 @@ if  ds_list_find_index(global.saveroom, id) = -1
 				hsp = choose(-2,2)
 	}
 }
-

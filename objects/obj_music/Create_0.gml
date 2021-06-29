@@ -17,3 +17,4 @@ audio_master_gain(global.mastervolume);
 
 wait = false
 musicpitch = 1
+lemusic = -1

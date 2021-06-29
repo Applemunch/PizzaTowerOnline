@@ -8,8 +8,8 @@ function scr_sound(snd)
 	
 	if room != rm_disclaimer
 	{
-		if snd == mu_medievalremix or snd == mu_snickescape or global.musicgame == 1
-			audio_sound_gain(global.music, min(global.musicvolume * 1.7, 1), 1);
+		if global.musicgame == 1
+			audio_sound_gain(global.music, min(global.musicvolume * 1.6, 1), 1);
 		else
 			audio_sound_gain(global.music, global.musicvolume, 1);
 	}

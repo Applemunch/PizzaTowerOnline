@@ -5,6 +5,7 @@ depth = -6;
 baddieframe = 0;
 cowboyframe = 0;
 shieldframe = 0;
+petframe = 0;
 viewable = true;
 
 xscale = 1
@@ -26,3 +27,5 @@ pause = false;
 palcolors = ds_list_create();
 palsurf = -1;
 dsread = "";
+
+petxprev = x;

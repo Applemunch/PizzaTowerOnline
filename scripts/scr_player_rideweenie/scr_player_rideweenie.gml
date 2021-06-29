@@ -32,7 +32,7 @@ function scr_player_rideweenie()
 	{
 		with instance_create(x,y,obj_sausageman_dead)
 			sprite_index = spr_weeniemount_dead
-
+		
 		sprite_index = spr_hitwall
 		scr_soundeffect(sfx_groundpound)
 		scr_soundeffect(sfx_bumpwall)

@@ -15,6 +15,7 @@ playercollision = true
 kick = false
 mask_index = spr_player_mask
 
+/*
 if check_bysync() == false && global.pvp
 	alarm[10] = 1;
 if check_bysync() == true && !global.pvp
@@ -24,3 +25,5 @@ if check_bysync() == true && !global.pvp
 }
 sync = check_bysync();
 rmstart = room;
+*/
+sync = false

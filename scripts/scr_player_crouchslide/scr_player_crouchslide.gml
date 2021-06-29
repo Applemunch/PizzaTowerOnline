@@ -185,9 +185,7 @@ function scr_player_crouchslide()
 	    sprite_index = spr_rollgetup
 	}
 	
-	if (movespeed <= 5 or ((scr_solid(x + 1, y) && xscale == 1) or (scr_solid(x - 1, y) && xscale == -1)) && !place_meeting(x + sign(hsp), y, obj_slope) && !place_meeting(x + sign(hsp), y, obj_destructibles) or movespeed <= 0)
-	or (scr_solid(x + 1, y) && xscale == 1 && !place_meeting(x + sign(hsp), y, obj_slope) && !place_meeting(x + sign(hsp), y, obj_destructibles))
-	or (scr_solid(x - 1, y) && xscale == -1 && !place_meeting(x + sign(hsp), y, obj_slope) && !place_meeting(x + sign(hsp), y, obj_destructibles))
+	if (movespeed <= 5 or (scr_solidwall(x + xscale, y) && !place_meeting(x + sign(hsp), y, obj_destructibles)))
 	{
 		if !key_down && grounded
 			state = states.normal

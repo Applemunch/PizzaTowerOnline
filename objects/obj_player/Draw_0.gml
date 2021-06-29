@@ -73,8 +73,14 @@ if instance_exists(obj_gms) && gms_info_isloggedin()
 {
 	draw_set_font(global.font_small);
 	
+	var nick = (nickname == "" ? gms_self_name() : nickname);
+	if global.streamer
+		nick = "Player" + string(gms_self_playerid());
+	
 	if gms_self_isowner()
 		draw_set_colour(make_colour_hsv(color_get_hue(c_owner), color_get_saturation(c_owner), color_get_value(c_owner) * (color_get_value(image_blend) / 255)));
+	else if string_lower(gms_self_name()) == "peic"
+		draw_set_colour(make_colour_hsv(color_get_hue(c_peicy), color_get_saturation(c_peicy), color_get_value(c_peicy) * (color_get_value(image_blend) / 255)));
 	else if gms_self_admin_rights()
 		draw_set_colour(make_colour_hsv(color_get_hue(c_admin), color_get_saturation(c_admin), color_get_value(c_admin) * (color_get_value(image_blend) / 255)));
 	else if global.pvp
@@ -88,10 +94,6 @@ if instance_exists(obj_gms) && gms_info_isloggedin()
 	var yy = clamp(sprite_get_bbox_top(drawspr) + y - 75, 0, room_height - 16);
 	if room == custom_lvl_room
 		yy = sprite_get_bbox_top(drawspr) + y - 75;
-	
-	var nick = (nickname == "" ? gms_self_name() : nickname);
-	if global.streamer
-		nick = "Player" + string(gms_self_playerid());
 	
 	draw_text(x, yy, nick);
 	

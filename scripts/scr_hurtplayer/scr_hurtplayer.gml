@@ -143,7 +143,7 @@ function scr_hurtplayer(argument0)
 		else if state != states.grabbed && cutscene == false && invhurt_buffer <= 0
 		&& ((state != states.hurt && hurted == false)/* or global.gameplay != 0*/)
 		{
-			if hurt_buffer == -1 && global.gameplay == 1
+			if hurt_buffer == -1 && global.gameplay != 0
 		        hurt_buffer = hurt_max;
 			
 			//Pizza delivery HP
@@ -205,15 +205,6 @@ function scr_hurtplayer(argument0)
 					sprite_index = spr_feather
 				grav = 0.5
 			}
-
-			if global.pizzadelivery == false && !hurted
-			{
-				with instance_create(x, y, obj_smallnumber)
-			    {
-			        negative = 1
-			        number = "-50"
-			    }
-			}
 			
 			//scr_soundeffect(sfx_oh, sfx_ohman,sfx_hurt1,sfx_hurt2,sfx_hurt3, sfx_mammamia)
 			
@@ -251,7 +242,7 @@ function scr_hurtplayer(argument0)
 				}
 			
 			var loseamount = 50;
-			if global.pizzadelivery == false or global.gameplay == 0
+			if !global.pizzadelivery or global.gameplay == 0
 			{
 				if !(global.snickchallenge && shotgunAnim)
 				{
@@ -262,6 +253,12 @@ function scr_hurtplayer(argument0)
 					{
 						global.hurtcounter += 1;
 						global.collect = max(global.collect - loseamount, 0);
+						
+						with instance_create(x, y, obj_smallnumber)
+					    {
+					        negative = 1
+					        number = string(-loseamount)
+					    }
 					}
 				}
 				else

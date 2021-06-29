@@ -1,4 +1,4 @@
-if  ds_list_find_index(global.saveroom, id) = -1
+if ds_list_find_index(global.saveroom, ID) == -1
 { 
 	instance_create(x+32,y+32,obj_playerexplosion)
 
@@ -19,5 +19,5 @@ if  ds_list_find_index(global.saveroom, id) = -1
 	alarm[1] = 8
 
 	repeat(6) instance_create(x+32,y+32,obj_tntblockdebris)
-	ds_list_add(global.saveroom, id) 
+	ds_list_add(global.saveroom, ID) 
 }

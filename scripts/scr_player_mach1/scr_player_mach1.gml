@@ -15,16 +15,9 @@ function scr_player_mach1()
 	move = key_left + key_right;
 
 	landAnim = false
-	if scr_solid(x+1,y) && xscale == 1 && !place_meeting(x+1,y,obj_slope)
+	if scr_solid(x+xscale,y) && (!place_meeting(x+xscale,y,obj_slope) or scr_solidwall(x, y - 1))
 	{
-	    mach2 =0 
-	    state = states.normal
-		movespeed = 0
-	}
-
-	if scr_solid(x-1,y) && xscale == -1 && !place_meeting(x-1,y,obj_slope)
-	{
-	    mach2 =0 
+	    mach2 = 0 
 	    state = states.normal
 		movespeed = 0
 	}
@@ -37,31 +30,17 @@ function scr_player_mach1()
 	hsp = xscale * movespeed + railh;
 	
 	//Turn
-	if  xscale == 1 && move == -1 
+	if xscale == -move
 	{
 		sprite_index = spr_mach1
-	momemtum = false
-	mach2 = 0
-	movespeed = 6
-	image_index = 0
-	xscale = -1
+		momemtum = false
+		mach2 = 0
+		movespeed = 6
+		image_index = 0
+		xscale = move
 	}
-
-	if xscale == -1 && move == 1
-	{
-			sprite_index = spr_mach1
-	momemtum = false
-	mach2 = 0
-	movespeed = 6
-	image_index = 0
-	xscale = 1
-	}
-
-
-
-
+	
 	//Mach2
-
 	if grounded
 	{
 		if movespeed < 8
@@ -77,42 +56,37 @@ function scr_player_mach1()
 
 	//Fall off
 	if !(grounded) && sprite_index != spr_airdash1 
-	{
-	sprite_index = spr_airdash2
-	}
+		sprite_index = spr_airdash2
 
 	if sprite_index = spr_airdash1 && floor(image_index) = image_number - 1
-	sprite_index = spr_airdash2
+		sprite_index = spr_airdash2
 
 
 
 
 	//Back to other states
-	    //Normal
-	    if (!key_attack && character != "S") or (character == "S" && move == 0)
-	    {
+	//Normal
+	if (!key_attack && character != "S") or (character == "S" && move == 0)
+	{
 	    state = states.normal
 	    image_index = 0
-    
-	    }
+	}
 
 
 	//Jump Stop
 	if (!key_jump2) && jumpstop = false && vsp < 0.5 
 	{
-	vsp /= 10
-	jumpstop = true
+		vsp /= 10
+		jumpstop = true
 	}
 
 	if grounded && vsp > 0
-	{
-	jumpstop = false
-	}
+		jumpstop = false
 
 	if scr_solid(x+xscale,y)  && !place_meeting(x+sign(hsp),y,obj_slope)
 	{
 		movespeed = 0
-	state =states.normal	
+		state = states.normal	
 	}
 
 

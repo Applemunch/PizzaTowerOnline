@@ -1,7 +1,7 @@
 {
   "spriteId": {
-    "name": "spr_slimeidle",
-    "path": "sprites/spr_slimeidle/spr_slimeidle.yy",
+    "name": "spr_slimemove",
+    "path": "sprites/spr_slimemove/spr_slimemove.yy",
   },
   "solid": false,
   "visible": true,

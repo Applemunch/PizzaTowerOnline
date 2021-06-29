@@ -38,7 +38,7 @@
     "spriteId": {"name":"spr_snick_exi","path":"sprites/spr_snick_exi/spr_snick_exi.yy",},
     "timeUnits": 1,
     "playback": 1,
-    "playbackSpeed": 20.0,
+    "playbackSpeed": 1.0,
     "playbackSpeedType": 1,
     "autoRecord": true,
     "volume": 1.0,

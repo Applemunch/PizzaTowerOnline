@@ -80,6 +80,7 @@ switch sel[1]
 			["BLOODSAUCE", "Smells like ketchup."],
 			["VIGILATEX", "What the fuck"],
 			["THE BARTENDER", "Give me a drink, Bartender."],
+			["MORSHU", "It's yours, my friend."],
 		];
 		break;
 	
@@ -103,6 +104,9 @@ switch sel[1]
 			["SOCK", "Sock is without description."],
 			["ELMO", "Homosexual, the sixty-ninth."],
 			["GB", "Published by Snicksoft."],
+			["HELLSNICK", "Si."],
+			["SPIRIT", "Thorns_Inst.ogg"],
+			["MAJIN", "Fun is infinite."],
 		];
 		break;
 	
@@ -131,19 +135,27 @@ switch sel[1]
 			["CORRUPTION", "At least they're smiling."],
 			["BLUEBERRY", "But it's not a berry!"],
 			["WII DOG", "HEHA"],
-			["CHRIS", "Furry."],
 			["BLUE MARIO", "loypoll's OC...??"],
 			["RITZ", "E-girl approved."],
 			["RED", "Vote him out."],
 			["FRITZ", "NO"],
+			["PINK", "Bismuth subsalicylate."],
+			["VOLCANO", "Bursting at the seams."],
+			["GIRLFRIEND", "That's how you do it!"],
 		];
+		
+		with obj_player1
+		{
+			if petfollow == 5 // captions
+				other.selarray[1][1] = "No. Stop. Don't.";
+		}
 		break;
 	
 	case "SP":
 		spr_palette = spr_pizzpalette;
 		spr_idle = spr_playerSP_idle;
 		selarray = [
-			["YELLOW", "Read the first 4 letters of Pizzelle,\nbut replace Pizz with fuck you."],
+			["YELLOW", "Are you happy now?"],
 			["PIZZELLE", "It's the Candy-making pizzano!"],
 			["WILD STRAWBERRY", "Also known as \"pink\"."],
 			["CHERRY", "Lucky!"],
@@ -161,8 +173,14 @@ switch sel[1]
 			["BLURPLE", "Also known as \"test\"."],
 			["PAINTLAD", "Very original, Jacko."],
 			["ENA", "Cheese and rice, Moony!"],
-			["TRANS", "Laugh."],
+			["TRANS", "I'm sorry."],
 			["GREEN APPLE", "Why is this the least favorite candy flavor?"],
+			["GRAPE SODA", "There's more purple than actual soda in this."],
+			["NOIK", "The obligatory Noik palette."],
+			["STUPID RAT", "Our beloved."],
+			["PASTEL", "Soft on the eyes."],
+			["BURNT", "You. Fucking. DONKEY."],
+			["CRAZY FROG", "Ding ding."],
 		];
 		
 		//["PAINTLAD", "Did you know Jacko suggested the name Paintlad\nand is probably never going to be credited for it?"],
@@ -271,7 +289,7 @@ if sel[1] != obj_player1.character
 else
 	sel[0] = obj_player1.paletteselect;
 
-selmin = (sel[1] == "SP" or sel[1] == "G" ? 1 : 0);
+selmin = (sel[1] == "G" ? 1 : 0);
 selmax = pal_swap_get_pal_count(spr_palette) - 1;
 
 if !check_shaders()

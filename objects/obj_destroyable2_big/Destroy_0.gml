@@ -1,11 +1,15 @@
 if room == rm_editor exit;
 
-if  ds_list_find_index(global.saveroom, id) = -1 && global.snickchallenge = false
+if ds_list_find_index(global.saveroom, id) = -1 && !global.snickchallenge
 {
-	repeat (6) with instance_create(x+ 32,y+32,obj_debris)
+	repeat (6) with instance_create(x + sprite_width / 2, y + sprite_height / 2, obj_debris)
 	{
+		image_xscale = abs(other.image_xscale)
+		image_yscale = abs(other.image_yscale)
+		
 		if other.sprite_index == spr_halloweenbigblock
 		or other.sprite_index == spr_xmasbigblock
+		or other.sprite_index == spr_destroyable2big_ss_noise
 			sprite_index = spr_halloweenbigdebris
 		else if other.sprite_index == spr_destroyable2big_ss
 			sprite_index = spr_bigpizzadebris_ss
@@ -15,16 +19,15 @@ if  ds_list_find_index(global.saveroom, id) = -1 && global.snickchallenge = fals
 	
 	if content == obj_null
 	{
-		with instance_create(x+32,y+32,obj_pizzaslice)
+		with instance_create(x + sprite_width / 2, y + sprite_height / 2, obj_pizzaslice)
 			hsp = 2
-		with instance_create(x+32,y+32,obj_pizzaslice)
+		with instance_create(x + sprite_width / 2, y + sprite_height / 2, obj_pizzaslice)
 			hsp = -2
 	}
 	else
-		instance_create(x + 32, y + 32, content);
+		instance_create(x + sprite_width / 2, y + sprite_height / 2, content);
 	
-	repeat 3
-		create_baddiegibsticks(x + 32, y + 32);
+	create_baddiegibsticks(x + sprite_width / 2, y + sprite_height / 2);
 	
 	/*
 	tile_layer_delete_at(1, x, y);
@@ -41,4 +44,3 @@ if  ds_list_find_index(global.saveroom, id) = -1 && global.snickchallenge = fals
 	scr_soundeffect(sfx_breakblock1, sfx_breakblock2)
 	ds_list_add(global.saveroom, id) 
 }
-

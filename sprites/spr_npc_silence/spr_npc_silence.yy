@@ -70,7 +70,7 @@
   "nineSlice": null,
   "parent": {
     "name": "npc",
-    "path": "folders/Sprites/cosmetic/npc.yy",
+    "path": "folders/Sprites/cosmetic or etc/npc.yy",
   },
   "resourceVersion": "1.0",
   "name": "spr_npc_silence",

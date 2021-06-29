@@ -64,11 +64,16 @@ if global.seconds > 59
 	global.seconds -= 59
 }
 
+if global.timedgatetime > 0
+	global.timedgatetime--;
+else
+	global.timedgatetime = 0;
+
 if global.panicshake
 {
-	if (global.panic = true && global.minutes < 1) or player.sprite_index = player.spr_Timesup
+	if global.panic && global.minutes < 1
 		shake_mag_panic = 1.5;
-	else if global.panic = true && basement = false
+	else if global.panic && !basement
 		shake_mag_panic = 1;
 	else
 		shake_mag_panic = 0;
@@ -95,7 +100,7 @@ else
 }
 
 // actual camera
-if player.state != states.timesup && player.state != states.rotate && player.state != states.gameover && room != editor_entrance
+if instance_exists(player) && player.state != states.timesup && player.state != states.rotate && player.state != states.gameover && room != editor_entrance
 {
 	var WC_oobcam = instance_exists(obj_wc) ? obj_wc.WC_oobcam : false;
 	
@@ -127,7 +132,7 @@ if player.state != states.timesup && player.state != states.rotate && player.sta
 		if (player.state = states.mach3 or player.state = states.tumble or player.state = states.rideweenie or player.state = states.machroll)
 		{
 			var ch = 100;
-			if global.gameplay == 1
+			if global.gameplay != 0
 				ch = 300;
 			
 			if (sign(player.xscale) == 1 && chargecamera < ch)
@@ -140,7 +145,7 @@ if player.state != states.timesup && player.state != states.rotate && player.sta
 			if ch != 0
 			{
 				chargecamera -= ch * 2;
-				if global.gameplay == 1 && player.state == states.machslide
+				if global.gameplay != 0 && player.state == states.machslide
 					chargecamera -= ch * 4;
 			
 				if sign(chargecamera) != ch
@@ -244,12 +249,12 @@ if player.state != states.timesup && player.state != states.rotate && player.sta
 	{
 		#region EDITOR CAMERA
 		
-		if bound_camera == true && !WC_oobcam
+		if bound_camera && !WC_oobcam
 		{
-			__view_set( e__VW.XView, 0, clamp(__view_get( e__VW.XView, 0 ), obj_player1.cam.x, obj_player1.cam.x + obj_player1.cam_width - __view_get( e__VW.WView, 0 )) + shkh)
-			__view_set( e__VW.YView, 0, clamp(__view_get( e__VW.YView, 0 ), obj_player1.cam.y, obj_player1.cam.y + obj_player1.cam_height - __view_get( e__VW.HView, 0 )) + shkv)
+			__view_set( e__VW.XView, 0, clamp(__view_get( e__VW.XView, 0 ), player.cam.x, player.cam.x + player.cam_width - __view_get( e__VW.WView, 0 )) + shkh)
+			__view_set( e__VW.YView, 0, clamp(__view_get( e__VW.YView, 0 ), player.cam.y, player.cam.y + player.cam_height - __view_get( e__VW.HView, 0 )) + shkv)
 			
-			if obj_player1.cam != noone // render
+			if player.cam != noone // render
 			{
 				instance_deactivate_object(obj_forkhitbox);
 				instance_deactivate_object(obj_baddiecollisionbox);
@@ -258,7 +263,7 @@ if player.state != states.timesup && player.state != states.rotate && player.sta
 				instance_deactivate_object(obj_baddiespawner);
 				
 				var offset = 64;
-				instance_activate_region(obj_player1.cam.x - offset, obj_player1.cam.y - offset, obj_player1.cam_width + offset, obj_player1.cam_height + offset, true);
+				instance_activate_region(player.cam.x - offset, player.cam.y - offset, player.cam_width + offset, player.cam_height + offset, true);
 			}
 		}
 		

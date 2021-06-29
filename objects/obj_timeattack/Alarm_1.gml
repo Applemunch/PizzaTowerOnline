@@ -1,11 +1,13 @@
-if global.timeattack = true && stop = false && !obj_pause.pause
+if global.timeattack
 {
-	global.taseconds += 1
-
-	if global.taseconds >= 60
+	if !stop && !obj_pause.pause
 	{
-		global.taseconds -= 60
-		global.taminutes += 1
+		global.taseconds += 1
+		if global.taseconds >= 60
+		{
+			global.taseconds -= 60
+			global.taminutes += 1
+		}
 	}
+	alarm[1] = 60
 }
-alarm[1] = 60

@@ -2,24 +2,24 @@ function scr_collide_destructibles()
 {
 	with obj_player1
 	{
-		if (state = states.jump && sprite_index = spr_playerN_noisebombspinjump) or (state = states.pogo && pogochargeactive = true)
+		if (state == states.jump && sprite_index == spr_playerN_noisebombspinjump) or (state == states.pogo && pogochargeactive)
 		{
 			with instance_place(x + xscale , y, obj_destructibles) 
 				instance_destroy();
 			
-			with instance_place(x + hsp + (xscale) , y, obj_destructibles) 
+			with instance_place(x + hsp + xscale, y, obj_destructibles)
 				instance_destroy();
 			
-			with instance_place(x, y+vsp + 1, obj_destructibles) 
+			with instance_place(x, y + vsp + 1, obj_destructibles) 
 				instance_destroy();
 			
-			with instance_place(x, y+vsp - 1, obj_destructibles)
+			with instance_place(x, y + vsp - 1, obj_destructibles)
 				instance_destroy();
 			
-			with instance_place(x, y+1, obj_destructibles) 
+			with instance_place(x, y + 1, obj_destructibles) 
 				instance_destroy();
 			
-			with instance_place(x, y-1, obj_destructibles) 
+			with instance_place(x, y - 1, obj_destructibles) 
 				instance_destroy();
 		}
 
@@ -52,17 +52,6 @@ function scr_collide_destructibles()
 			{
 				with instance_place(x, y + 1, obj_destructibles)
 					instance_destroy();
-			}
-		}
-
-		// Cheese platforms
-		if place_meeting(x, y + 1, obj_destructibleplatform)
-		{
-			with instance_place(x, y + 1, obj_destructibleplatform)
-			{
-				falling = true;
-				if falling = true
-					image_speed = 0.35
 			}
 		}
 
@@ -127,6 +116,13 @@ function scr_collide_destructibles()
 				with instance_place(x, y - 1, obj_metalblock)
 					instance_destroy();
 			}
+		}
+		
+		// Cheese platforms
+		with instance_place(x, y + 1, obj_destructibleplatform)
+		{
+			falling = true;
+			image_speed = 0.35;
 		}
 		
 		// Firemouth destroys tnt block

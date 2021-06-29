@@ -67,20 +67,24 @@ function scr_enemy_stun()
 	var railmeet = instance_place(x, y + 1, obj_railparent);
 	if railmeet then hsp = railmeet.spdh;
 	
-	if scr_solid(x-image_xscale,y) && !place_meeting(x-image_xscale,y,obj_destructibles)
+	var xx = sign(hsp);
+	if thrown && hp <= 0
+		xx = -image_xscale;
+	
+	if scr_solid(x + xx, y) && !place_meeting(x + xx, y, obj_destructibles)
 	{
 		with instance_create(x,y,obj_bulletimpact)
 			image_xscale = -other.image_xscale
 
-		if thrown == true && hp <= 0 && object_index != obj_pizzaballOLD
+		if thrown && hp <= 0 && object_index != obj_pizzaballOLD
 			instance_destroy()
 		
 		grav = 0.5
 		image_xscale *= -1
 		hsp = -image_xscale * 4
 	}
-
-	if floor(image_index) = image_number-1 && stunned <= 0 && (object_index != obj_peasanto or angry)
+	
+	if floor(image_index) == image_number - 1 && stunned <= 0 && (object_index != obj_peasanto or angry)
 	&& (grounded or global.gameplay == 0)
 	{
 		if object_index != obj_miniufo && object_index != obj_ancho && object_index != obj_pizzaboy

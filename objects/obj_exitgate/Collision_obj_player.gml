@@ -3,20 +3,24 @@ with other
 {
 	if other.image_index == 1 && !global.panic && other.visible
 	{
-		if state == states.comingoutdoor && floor(image_index) == image_number - 2
+		if state == states.comingoutdoor
 		{
-			scr_soundeffect(sfx_groundpound);
-			sprite_index = spr_Timesup;
-			image_index = 0;
-			
-			with obj_camera
+			xscale = 1;
+			if floor(image_index) == image_number - 2
 			{
-				shake_mag = 10;
-				shake_mag_acc = 30 / room_speed;
-			}
+				scr_soundeffect(sfx_groundpound);
+				sprite_index = spr_Timesup;
+				image_index = 0;
 			
-			other.image_index = 0;
-			ds_list_add(global.saveroom, other.id) ;
+				with obj_camera
+				{
+					shake_mag = 10;
+					shake_mag_acc = 30 / room_speed;
+				}
+			
+				other.image_index = 0;
+				ds_list_add(global.saveroom, other.id);
+			}
 		}
 	}
 	

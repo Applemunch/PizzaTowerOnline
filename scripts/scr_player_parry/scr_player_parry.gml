@@ -21,7 +21,8 @@ function scr_player_parry()
 	
 	    with obj_baddie
 	    {
-	        if distance_to_object(other.id) < parry_threshold && state != states.grabbed && parryable && !(state == states.stun && thrown == true)
+	        if object_index != obj_grandpa && object_index != obj_pizzaballOLD
+			&& distance_to_object(other.id) < parry_threshold && state != states.grabbed && parryable && !(state == states.stun && thrown == true)
 	        {
 				if hp > 1
 					hp = 1;

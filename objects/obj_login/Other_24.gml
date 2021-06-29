@@ -1,2 +1,5 @@
-audio_stop_all();
-game_restart();
+instance_destroy(obj_gms);
+instance_destroy();
+
+with obj_prelogin
+	con = 0;

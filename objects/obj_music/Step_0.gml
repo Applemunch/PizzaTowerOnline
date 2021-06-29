@@ -8,8 +8,17 @@ if global.gameplay != 0
 		with obj_player1
 		{
 			var _state = state;
-			if state == states.backbreaker or state == states.hitlag
+			if _state == states.hitlag
 				_state = tauntstoredstate;
+			if _state == states.backbreaker
+			{
+				with obj_teleporter
+				{
+					if alarm[0] > -1 or alarm[1] > -1
+						_state = storedstate;
+				}
+			}
+			
 			switch _state
 			{
 				case states.knightpep:
@@ -47,9 +56,10 @@ if global.musicgame == 0
 	
 	var _mu_snickchallenge = (global.snickrematch ? mu_snickrematch : mu_snickchallenge);
 	var _mu_snickchallengeend = (global.snickrematch ? mu_snickrematchend : mu_snickchallengeend);
+	var _mu_noiseescape = (global.pestoanchovi ? mu_noiseescape_OLD : mu_noiseescape);
 	
 	if !audio_is_playing(mu_antonescape) && !audio_is_playing(mu_pizzatime)
-	&& !audio_is_playing(mu_noiseescape) && !audio_is_playing(mu_snickescape)
+	&& !audio_is_playing(_mu_noiseescape) && !audio_is_playing(mu_snickescape)
 	&& !audio_is_playing(mu_gladeescape) && !audio_is_playing(mu_pizzyescape)
 	&& (string_letters(roomname) != "dragonlair" or audio_is_playing(mu_antonlevel))
 	&& global.panic && !obj_pause.pause && !obj_camera.ded
@@ -72,8 +82,8 @@ if global.musicgame == 0
 		// noise
 		else if obj_player1.character == "N"
 		{
-			scr_sound(mu_noiseescape)
-			pausedmusic = mu_noiseescape
+			scr_sound(_mu_noiseescape)
+			pausedmusic = _mu_noiseescape
 		}
 		// snick
 		else if obj_player1.character == "S"
@@ -160,9 +170,10 @@ else if global.musicgame == 1
 	
 	var _mu_snickchallenge = (global.snickrematch ? mu_snickrematch_pc : mu_snickchallenge_pc);
 	var _mu_snickchallengeend = (global.snickrematch ? mu_snickrematch_pc : mu_snickchallengeend_pc);
+	var _mu_noiseescape = (global.pestoanchovi ? mu_noiseescape_OLD_pc : mu_noiseescape_pc);
 	
 	if !audio_is_playing(mu_antonescape_pc) && !audio_is_playing(mu_pizzatime_pc)
-	&& !audio_is_playing(mu_noiseescape_pc) && !audio_is_playing(mu_snickescape_pc)
+	&& !audio_is_playing(_mu_noiseescape) && !audio_is_playing(mu_snickescape_pc)
 	&& !audio_is_playing(mu_pizzyescape_pc) && !audio_is_playing(mu_pizzatime_pc) // glade escape here
 	&& (string_letters(roomname) != "dragonlair" or audio_is_playing(mu_antonlevel_pc))
 	&& global.panic && !obj_pause.pause && !obj_camera.ded
@@ -185,8 +196,8 @@ else if global.musicgame == 1
 		// noise
 		else if obj_player1.character == "N"
 		{
-			scr_sound(mu_noiseescape_pc)
-			pausedmusic = mu_noiseescape_pc
+			scr_sound(_mu_noiseescape)
+			pausedmusic = _mu_noiseescape
 		}
 		// snick
 		else if obj_player1.character == "S"

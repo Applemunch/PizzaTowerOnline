@@ -46,13 +46,16 @@ if object_index == obj_title
 {
 	var lay_id = layer_get_id("Backgrounds_2");
 	var back_id = layer_background_get_id(lay_id);
-
-	if obj_player1.x <= 242
-		layer_background_index(back_id, 0);
-
-	if obj_player1.x >= 352 && obj_player1.x <= 562
-		layer_background_index(back_id, 1);
-
-	if obj_player1.x >= 704
-		layer_background_index(back_id, 2);
+	
+	with obj_player1
+	{
+		if x <= 242
+			layer_background_index(back_id, 0);
+		
+		if x >= 352 && x <= 562
+			layer_background_index(back_id, 1);
+		
+		if x >= 704
+			layer_background_index(back_id, 2);
+	}
 }

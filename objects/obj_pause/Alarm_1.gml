@@ -21,10 +21,12 @@ if (room == hub_room1 or room == cowboytask or room == Titlescreen or room == Sc
 
 	with obj_player1
 	{
+		petfollow = -1
+		gravmult = 1
 		character = "P"
 		scr_characterspr()
 	}
-			
+	
 	scr_playerreset()
 
 	obj_player1.state = states.titlescreen

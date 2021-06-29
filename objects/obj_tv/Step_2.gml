@@ -13,6 +13,9 @@ or (instance_exists(obj_gms) && global.__chat)
 else
 	visible = true
 
+with obj_player1
+	other.sugary = (character == "SP");
+
 //Text
 panicy = 600 + (string_height(message) - 16)
 if showtext
@@ -32,12 +35,10 @@ else
 
 if global.gameplay == 0
 {
-	if !(obj_player1.state = states.knightpep && obj_player1.state = states.knightpepattack && obj_player1.state = states.knightpepslopes)
-	once = false
 
 	// More logic
-
-	if (obj_player1.y < camera_get_view_y(view_camera[0]) + 200 && obj_player1.x > camera_get_view_x(view_camera[0]) + camera_get_view_width(view_camera[0]) - 200) or manualhide
+	if (instance_exists(obj_player1) && obj_player1.y < camera_get_view_y(view_camera[0]) + 200 && obj_player1.x > camera_get_view_x(view_camera[0]) + camera_get_view_width(view_camera[0]) - 200)
+	or manualhide
 		alpha = 0.5
 	else if !( room == rank_room or room == timesuproom or room == boss_room1 or room == Realtitlescreen or room == characterselect)
 		alpha = 1
@@ -95,7 +96,7 @@ if global.gameplay == 0
 	}
 	else
 	//Clap
-	if obj_player1.sprite_index = spr_player_levelcomplete
+	if instance_exists(obj_player1) && obj_player1.sprite_index = spr_player_levelcomplete
 	{
 		image_speed = 0.1
 		alarm[0] = 50
@@ -107,7 +108,7 @@ if global.gameplay == 0
 
 
 	 //Hurt
-	if obj_player1.state = states.hurt 
+	if instance_exists(obj_player1) && obj_player1.state = states.hurt 
 	{
 		image_speed = 0.1
 		showtext = true
@@ -119,7 +120,8 @@ if global.gameplay == 0
 		once = true
 	}
 	else //Times Up
-	if obj_player1.state = states.timesup or obj_player1.state = states.ejected
+	if instance_exists(obj_player1)
+	&& (obj_player1.state = states.timesup or obj_player1.state = states.ejected)
 	{
 		alarm[0] = 50
 		image_speed = 0.1
@@ -142,19 +144,23 @@ if global.gameplay == 0
 		alarm[0] = 150
 		image_speed = 0.1
 		
-		if obj_player1.character == "P"
+		var char = "P";
+		if instance_exists(obj_player1)
+			char = obj_player1.character;
+		
+		if char == "P"
 			character = "PEPPINO"
-		else if obj_player1.character == "N"
+		else if char == "N"
 			character = "THE NOISE"
-		else if obj_player1.character == "S"
+		else if char == "S"
 			character = "SNICK"
-		else if obj_player1.character == "V"
+		else if char == "V"
 			character = "VIGILANTE"
-		else if obj_player1.character == "G"
+		else if char == "G"
 			character = "GLADE"
-		else if obj_player1.character == "SP"
+		else if char == "SP"
 			character = "PIZZELLE"
-		else if obj_player1.character == "M"
+		else if char == "M"
 			character = "PEPPERMAN"
 		else
 			character = "NULLINO"
@@ -165,7 +171,7 @@ if global.gameplay == 0
 		global.hurtmilestone += 10
 	}
 	else //Skateboard
-	if obj_player1.state = states.skateboard 
+	if instance_exists(obj_player1) && obj_player1.state = states.skateboard 
 	{
 		showtext = true
 		message = "SWEET DUDE!!"
@@ -228,7 +234,7 @@ if global.gameplay == 0
 		*/
 	}
 
-	if obj_player1.state = states.keyget
+	if instance_exists(obj_player1) && obj_player1.state = states.keyget
 	{
 	showtext = true
 	message = "GOT THE KEY!"
@@ -282,16 +288,19 @@ else
 	        {
 		        idlespr = spr_tv_idle;
 			
-				if obj_player1.character != "P"
-				&& obj_player1.character != "N"
-				&& (obj_player1.character != "SP" or global.streamer)
+				if !instance_exists(obj_player1)
+				or (obj_player1.character != "P" && obj_player1.character != "N" && obj_player1.character != "SP")
 					idlespr = spr_tv_placeholder;
 				else
 				{
-					var _state = obj_player1.state;
-			        if _state == states.backbreaker or _state == states.hitlag
-			            _state = obj_player1.tauntstoredstate;
-			
+					var _state = states.normal;
+					if instance_exists(obj_player1)
+					{
+						_state = obj_player1.state;
+				        if _state == states.backbreaker or _state == states.hitlag
+				            _state = obj_player1.tauntstoredstate;
+					}
+					
 			        switch _state
 			        {
 						default:
@@ -318,10 +327,13 @@ else
 			
 			            case states.fireass:
 			                idlespr = spr_tv_fireass;
-			                if obj_player1.sprite_index == obj_player1.spr_scaredjump1
-							or obj_player1.sprite_index == obj_player1.spr_scaredjump2
-							or obj_player1.sprite_index == obj_player1.spr_scaredjump3
-			                    idlespr = spr_tv_scaredjump;
+							with obj_player1
+							{
+								if sprite_index == spr_scaredjump1
+								or sprite_index == spr_scaredjump2
+								or sprite_index == spr_scaredjump3
+									other.idlespr = spr_tv_scaredjump;
+							}
 			                break;
 			
 			            case states.tumble:
@@ -337,8 +349,11 @@ else
 			                break;
 			
 			            case states.stunned:
-			                if obj_player1.sprite_index == obj_player1.spr_squished
-			                    idlespr = spr_tv_squished;
+							with obj_player1
+							{
+								if sprite_index == spr_squished
+									other.idlespr = spr_tv_squished;
+							}
 			                break;
 			
 			            case states.barrel:
@@ -396,7 +411,7 @@ else
 		                if animset != idlespr
 		                    animset = idlespr;
 				
-		                if (idleanim <= 0 && floor(image_index) == (image_number - 1))
+		                if idleanim <= 0 && floor(image_index) == image_number - 1
 		                {
 		                    animset = choose(spr_tv_idleanim1, spr_tv_idleanim2);
 		                    image_index = 0
@@ -483,7 +498,7 @@ else
 			
 			if tvsprite != spr_tv_open && animset != spr_tv_open
 			{
-				if obj_player1.character != "P"
+				if instance_exists(obj_player1) && obj_player1.character != "P"
 				{
 				    var spr = sprite_get_name(animset);
 				    spr = asset_get_index(spr + obj_player1.character);
@@ -492,8 +507,16 @@ else
 				        sprite_index = spr;
 					else
 					{
-						animset = spr_tv_placeholder;
-						sprite_index = spr_tv_placeholder;
+						if sugary
+						{
+							animset = spr_tv_placeholderSP;
+							sprite_index = spr_tv_placeholderSP;
+						}
+						else
+						{
+							animset = spr_tv_placeholder;
+							sprite_index = spr_tv_placeholder;
+						}
 					}
 				}
 				else
@@ -557,11 +580,15 @@ else
 	// hide tv if player overlapping it
 	var change_pos = false;
 	
-	if obj_player1.x > camera_get_view_x(view_camera[0]) + camera_get_view_width(view_camera[0]) - 224
+	if instance_exists(obj_player1)
+	&& obj_player1.x > camera_get_view_x(view_camera[0]) + camera_get_view_width(view_camera[0]) - 224
 	&& obj_player1.y < camera_get_view_y(view_camera[0]) + 187
 	    change_pos = true;
 	
-	if bubblespr != noone && obj_player1.x > 316 && obj_player1.y < 101
+	if bubblespr != noone
+	&& instance_exists(obj_player1)
+	&& obj_player1.x > camera_get_view_x(view_camera[0]) + 316
+	&& obj_player1.y < camera_get_view_y(view_camera[0]) + 101
 	    change_pos = true;
 	
 	if manualhide

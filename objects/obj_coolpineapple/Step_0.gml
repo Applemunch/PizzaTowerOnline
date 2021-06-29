@@ -83,7 +83,7 @@ if (state == states.walk)
     }
 }
 
-if (state == states.backbreaker)
+if state == states.backbreaker
 {
     image_speed = 0
     inv_timer = inv_max
@@ -91,7 +91,8 @@ if (state == states.backbreaker)
     killbyenemy = 0
     hsp = 0
     vsp = 0
-    if (taunt_count > 0)
+	
+    if taunt_count > 0
         taunt_count--
     else
     {
@@ -105,36 +106,44 @@ if (state == states.backbreaker)
         movespeed = taunt_storedmovespeed
     }
 }
-else if (state == states.parry)
+else if state == states.parry
 {
 	if !audio_is_playing(sfx_parry)
+	{
 		scr_soundeffect(sfx_parry);
+		with instance_create(x, y, obj_parryeffect)
+			image_xscale = other.image_xscale
+	}
+	
     image_speed = 0.35
-    if (trail_count > 0)
+    if trail_count > 0
         trail_count--
     else
     {
-        with (instance_create(x, y, obj_afterimage))
+        with instance_create(x, y, obj_afterimage)
         {
             sprite_index = other.sprite_index
             image_xscale = other.image_xscale
         }
         trail_count = trail_max
     }
-    if (instance_exists(taunteffect_inst) && (taunteffect_inst.object_index == obj_baddietaunteffect))
+    if instance_exists(taunteffect_inst) && taunteffect_inst.object_index == obj_baddietaunteffect
     {
         instance_destroy(taunteffect_inst)
         taunteffect_inst = -4
     }
+	
     inv_timer = inv_max
     invincible = 1
     killbyenemy = 0
-    if (movespeed > 0)
+	
+    if movespeed > 0
         movespeed -= 0.5
     else
         movespeed = 0
-    hsp = (movespeed * (-image_xscale))
-    if (image_index > (image_number - 1))
+    hsp = movespeed * -image_xscale
+	
+    if image_index > image_number - 1
     {
         sprite_index = walkspr
         invincible = 0
@@ -185,7 +194,7 @@ if boundbox = false
 with instance_create(x,y,obj_baddiecollisionbox)
 {
 sprite_index = other.sprite_index
-mask_index = other.sprite_index
+mask_index = sprite_index
 baddieID = other.id
 other.boundbox = true
 }

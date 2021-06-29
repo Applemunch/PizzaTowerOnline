@@ -8,21 +8,24 @@ selarray = [
 ];
 spr_idle = selarray[0][0];
 
-if obj_player1.character == "G"
-	selarray[0][2] = "Go Bald";
-
-// auto select current hat
-if obj_player1.hatsprite != -1
+with obj_player1
 {
-	for(var i = 0; i < array_length(selarray); i++)
+	if character == "G"
+		other.selarray[0][2] = "Go Bald";
+	
+	// auto select current hat
+	if hatsprite != -1
 	{
-		if selarray[i][0] == obj_player1.hatsprite
+		for(var i = 0; i < array_length(other.selarray); i++)
 		{
-			sel[0] = i;
-			break;
+			if other.selarray[i][0] == hatsprite
+			{
+				other.sel[0] = i;
+				break;
+			}
 		}
 	}
 }
-selvert = false;
 
+selvert = false;
 event_user(0);

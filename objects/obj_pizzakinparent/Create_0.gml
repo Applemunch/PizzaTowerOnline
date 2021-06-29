@@ -1,6 +1,9 @@
 depth = 50;
 event_inherited();
+
 image_speed = 0.35;
+image_index = 0;
+
 yoffset = 2;
 hsp = 0;
 vsp = 0;

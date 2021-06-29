@@ -33,7 +33,7 @@ with (other)
 			mach2 = 0
 			
 			doorx = other.x + 50
-		
+			
 			other.visited = true
 			other.alarm[0] = 15;
 		}

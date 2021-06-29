@@ -1,3 +1,9 @@
+if room != rm_disclaimer
+{
+	instance_destroy();
+	exit;
+}
+
 con = -1;
 size = 0;
 

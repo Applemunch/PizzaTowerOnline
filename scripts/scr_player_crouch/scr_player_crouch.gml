@@ -98,13 +98,13 @@ function scr_player_crouch()
 		jumpAnim = true
 	}
 
-	if scr_slope()
+	if scr_slope() && key_down
 	{
 		movespeed = 14
 		with instance_place(x+xscale,y+1,obj_slope)
-		other.xscale = -sign(image_xscale)
+			other.xscale = -sign(image_xscale)
 	
-	state = states.tumble
+		state = states.tumble
 		sprite_index = spr_tumblestart
 	}
 

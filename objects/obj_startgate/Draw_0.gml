@@ -62,10 +62,11 @@ if drawing
 	
 	var scory = -90;
 	
-	if level != "snickchallenge" && level != "snickrematch" && level != "eatery" && level != ""
+	if level != "snickchallenge" && level != "snickrematch" && level != "eatery" && level != "dragonlair" && level != ""
 	{
 		scory = -160;
-		if level != "freezer" && level != "sewer" && level != "factory" && level != "dragonlair" && level != "golf"
+		if level != "freezer" && level != "sewer" && level != "factory" && level != "golf"
+		&& global.gameplay == 0
 		{
 			if sprite_index == spr_entrancegate && obj_player1.state == states.normal
 				obj_camera.panto = [0, -32];

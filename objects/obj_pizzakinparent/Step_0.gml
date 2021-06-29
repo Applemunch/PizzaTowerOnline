@@ -16,14 +16,14 @@ if sc_check()
 	_spr_idle = spr_idle_strongcold;
 	_spr_run = spr_run_strongcold;
 	
-	if global.panic
+	if global.panic or playerid.state == states.frozen
 	{
 		_spr_idle = spr_panicidle_strongcold;
 		_spr_run = spr_panic_strongcold;
 	}
 }
 
-if sprite_index == _spr_intro && floor(image_index) == image_number - 1 && _spr_intro != _spr_run
+if sprite_index == _spr_intro && floor(image_index) >= image_number - 1 && _spr_intro != _spr_run
 	sprite_index = _spr_idle
 
 if sprite_index != _spr_intro or _spr_intro == _spr_run

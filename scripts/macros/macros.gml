@@ -9,6 +9,7 @@ if live_call() return live_result;
 #macro c_eatery merge_colour(c_orange, c_white, 0.25)
 #macro c_beebawp merge_colour(c_fuchsia, c_white, 0.5)
 #macro c_pvp merge_colour(c_red, c_white, 0.5)
+#macro c_peicy make_colour_rgb(0, 215, 232)
 
 globalvar states;
 states = {
@@ -143,6 +144,7 @@ states = {
 	dance : 127,
 	rotate : 128,
 	frozen : 129,
+	spindash : 130
 }
 
 /*

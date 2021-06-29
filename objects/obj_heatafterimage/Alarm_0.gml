@@ -1,10 +1,13 @@
-x = obj_player1.x;
-y = obj_player1.y;
+if instance_exists(obj_player1)
+{
+	x = obj_player1.x;
+	y = obj_player1.y;
 
-if global.stylethreshold < 2
-    visible = false;
-else
-    visible = obj_player1.visible;
+	if global.stylethreshold < 2
+	    visible = false;
+	else
+	    visible = obj_player1.visible;
+}
 
 if room == rank_room
     visible = false;

@@ -2,8 +2,8 @@ function scr_player_bump()
 {
 	movespeed = 0
 	mach2 = 0
-
-
+	landAnim = false
+	
 	start_running = true
 	alarm[4] = 14
 	

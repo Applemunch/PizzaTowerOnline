@@ -74,15 +74,8 @@ function scr_player_boots() {
 	xscale = move
 	}
 
-	if scr_solid(x+sign(hsp),y) && xscale == 1 && move == 1 && !place_meeting(x+1,y,obj_slope)
-	{
-	movespeed = 0
-
-	}
-	if scr_solid(x+sign(hsp),y) && xscale == -1 && move == -1 && !place_meeting(x-1,y,obj_slope)
-	{
-	movespeed = 0
-	}
+	if scr_solid(x+sign(hsp),y) && xscale == move && !place_meeting(x+xscale,y,obj_slope)
+		movespeed = 0
 
 	//Move animation
 	if grounded && move != 0 && sprite_index = spr_playerV_bootsidle

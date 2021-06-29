@@ -85,7 +85,7 @@ function scr_player_handstandjump()
 		else if !grounded
 			movespeed = 10
 		
-		if global.gameplay == 1 && character != "S"
+		if global.gameplay != 0 && character != "S"
 			movespeed = 10;
 
 		//Jump Stop
@@ -101,7 +101,7 @@ function scr_player_handstandjump()
 			xscale = move;
 			state = states.normal;
 			
-			if global.gameplay == 1 && !grounded
+			if global.gameplay != 0 && !grounded
 			{
 				image_index = 0;
 				sprite_index = spr_suplexcancel;
@@ -177,7 +177,7 @@ function scr_player_handstandjump()
 			jumpstop = 0
 			vsp = -11
 			
-			if global.gameplay == 1 && !(obj_player1.character == "N" && obj_player1.noisetype == 0)
+			if global.gameplay != 0 && !(obj_player1.character == "N" && obj_player1.noisetype == 0)
 			{
 				if state == states.crouchslide
 					movespeed = 8;
@@ -277,7 +277,7 @@ function scr_player_handstandjump()
 		ledge_bump();
 		
 		// Bump
-		if scr_solid(x + xscale, y) && (!place_meeting(x + xscale, y, obj_slope) or scr_solidwall(x + xscale, y))
+		if scr_solid(x + xscale, y) && (!place_meeting(x + xscale, y, obj_slope) or scr_solidwall(x + xscale, y) or scr_solidwall(x, y - 1))
 		{
 			grav = 0.5
 			movespeed = 0

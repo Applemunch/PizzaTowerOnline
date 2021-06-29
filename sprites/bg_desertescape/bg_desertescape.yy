@@ -38,7 +38,7 @@
     "spriteId": {"name":"bg_desertescape","path":"sprites/bg_desertescape/bg_desertescape.yy",},
     "timeUnits": 1,
     "playback": 1,
-    "playbackSpeed": 1.0,
+    "playbackSpeed": 0.25,
     "playbackSpeedType": 1,
     "autoRecord": true,
     "volume": 1.0,

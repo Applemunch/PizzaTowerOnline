@@ -5,7 +5,8 @@ if scr_checkskin(checkskin.p_anton)
 	exit;
 }
 
-if !audio_is_playing(obj_music_set.music_editor)
+if (lemusic != obj_music_set.music_editor && audio_is_playing(pausedmusic))
+or lemusic == -1
 {
 	var mus = obj_music_set.music_editor;
 	if mus == mu_entrance
@@ -26,13 +27,30 @@ if !audio_is_playing(obj_music_set.music_editor)
 				break
 		}
 	}
-			
+	var musfinal = mus;
+	
+	// pizza castle
+	if global.musicgame == 1
+	{
+		// placeholders
+		if musfinal == mu_snickentrance or musfinal == mu_vigientrance
+			musfinal = mu_entrance_pc
+		else
+		{
+			// replace the sound
+			var sndrep = asset_get_index(audio_get_name(musfinal) + "_pc");
+			if audio_exists(sndrep)
+				musfinal = sndrep;
+		}
+	}
+	
 	audio_stop_all()
-	scr_sound(obj_music_set.music_editor)
+	scr_sound(musfinal)
 	if continuous
     {
         audio_sound_set_track_position(global.music, fadeoff)
         continuous = false
     }
-	pausedmusic = obj_music_set.music_editor
+	pausedmusic = musfinal
+	lemusic = mus
 }

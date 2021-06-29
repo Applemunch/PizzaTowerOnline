@@ -1,4 +1,5 @@
-function scr_player_comingoutdoor() {
+function scr_player_comingoutdoor()
+{
 	mach2 = 0
 	jumpAnim = true
 	dashAnim = true
@@ -20,8 +21,7 @@ function scr_player_comingoutdoor() {
 	}
 	else
 		image_blend = c_white;
-
-
+	
 	//Back to normal
 	if floor(image_index) = image_number-1 
 	{
@@ -49,13 +49,8 @@ function scr_player_comingoutdoor() {
 
 
 	//Animations
-
 	if sprite_index != spr_Timesup && sprite_index != spr_player_idlelook
-	sprite_index = spr_walkfront
+		sprite_index = spr_walkfront
 
 	image_speed = 0.35
-
-
-
-
 }

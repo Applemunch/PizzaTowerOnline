@@ -53,7 +53,9 @@ else if other.object_index == obj_forkhitbox
 {
 	with other.id
 	{
-		if instance_exists(ID) && ID.object_index == obj_weeniesquire
+		if instance_exists(ID)
+		&& (ID.object_index == obj_weeniesquire
+		or ID.object_index == obj_piraneapple)
 		{
 			instance_destroy(ID);
 			instance_destroy();

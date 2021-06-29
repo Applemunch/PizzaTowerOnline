@@ -14,6 +14,7 @@ global.smallfont = font_add_sprite_ext(spr_smallerfont, "ABCDEFGHIJKLMNOPQRSTUVW
 global.font_small = font_add_sprite_ext(spr_smallfont, "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!._1234567890:;?▯|*/',\"()=-+@█%~", true, -2)
 global.smallnumber = font_add_sprite_ext(spr_smallnumber, "1234567890-.", true, 0)
 global.collectfont = font_add_sprite_ext(spr_font_collect, "0123456789", true, 0)
+global.candyfont = font_add_sprite_ext(spr_font_candycollect, "0123456789", true, 0)
 global.combofont = font_add_sprite_ext(spr_font_combo, "0123456789", true, 0)
 
 // variable
@@ -28,6 +29,7 @@ global.streamer = ini_read_real("online", "streamer", false);
 global.showfps = ini_read_real("online", "showfps", false);
 global.pvp = /*ini_read_real("online", "pvp", false)*/ false;
 global.drawborder = ini_read_real("online", "drawborder", true)
+global.pestoanchovi = ini_read_real("online", "pestoanchovi", false)
 
 global.panicbg = ini_read_real("online", "panicbg", false); // waving background
 global.panicmelt = ini_read_real("online", "panicmelt", false) // motion blur

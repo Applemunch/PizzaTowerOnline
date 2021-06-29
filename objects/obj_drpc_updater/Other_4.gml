@@ -26,6 +26,18 @@ else
 			state = "";
 	}
 	
+	else if string_startswith(r, "halloween_entrance")
+	{
+		det = "Hardoween Hub";
+		state = "";
+	}
+	
+	else if string_startswith(r, "Titlescreen")
+	{
+		det = "Tower Outside";
+		state = "";
+	}
+	
 	else if string_startswith(r, "PP_room")
 		det = "Tutorial";
 	

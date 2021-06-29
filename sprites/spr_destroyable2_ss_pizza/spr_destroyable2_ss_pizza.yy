@@ -69,8 +69,8 @@
   ],
   "nineSlice": null,
   "parent": {
-    "name": "destroyable",
-    "path": "folders/Sprites/players/pizzelle/object/destroyable.yy",
+    "name": "other players",
+    "path": "folders/Sprites/players/pizzelle/object/destroyable/other players.yy",
   },
   "resourceVersion": "1.0",
   "name": "spr_destroyable2_ss_pizza",

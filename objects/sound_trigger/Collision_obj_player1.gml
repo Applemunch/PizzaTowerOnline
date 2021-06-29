@@ -1,9 +1,8 @@
 if room == rm_editor
     return;
 
-if global.panic == 1 && global.disableescapemusic == 0
+if global.panic && !global.disableescapemusic
     exit;
-
 if scr_checkskin(checkskin.p_anton)
 	exit;
 

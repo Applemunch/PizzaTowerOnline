@@ -189,7 +189,10 @@ function scr_pizzagoblin_throw() {
 						instance_destroy();
 					else
 					{
-						with object_index
+						with obj_evilbanana
+							if baddieID == other.baddieID
+								banana += 1;
+						with obj_slipnslide
 							if baddieID == other.baddieID
 								banana += 1;
 					}
