@@ -5,7 +5,7 @@ grav = 0.5;
 hsp = 0;
 vsp = 0;
 movespeed = 0
-state = states.walk
+state = states.idle
 stunned = 0
 alarm[0] = 150
 roaming = true
@@ -41,7 +41,7 @@ important = false
 heavy = false
 depth =0
 
-paletteselect = 1
+paletteselect = 0
 spr_palette = palette_cheeseslime
 
 grabbedby = 0
@@ -56,3 +56,9 @@ activated = false
 projectileID = obj_null
 
 bonebuffer = 30
+
+if global.gameplay != 0
+{
+	movespeed = 12
+	bonebuffer = 100
+}

@@ -1,5 +1,5 @@
-if (vsp < 20) 
-vsp += grav;
+if vsp < 20
+	vsp += grav;
 
 //Horizontal Collision
 if (place_meeting(x+floor(hsp),y,obj_null))
@@ -25,4 +25,7 @@ y = floor(y);
 }
 y += floor(vsp);
 
-
+if global.gameplay != 0
+{
+	image_angle -= hsp / 20;
+}

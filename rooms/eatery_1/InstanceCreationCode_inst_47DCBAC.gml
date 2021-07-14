@@ -1,0 +1,4 @@
+dialogue = [
+	"cannibalism",
+	"funy"
+];

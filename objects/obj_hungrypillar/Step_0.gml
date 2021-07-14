@@ -1,12 +1,15 @@
 if room == rm_editor exit;
 
 //Scared
-if ((obj_player1.x > x - 400) && (obj_player1.x < x + 400)) && sprite_index != spr_hungrypillar_angry
-	sprite_index = spr_hungrypillar_angry
-else if  !((obj_player1.x > x - 400) && (obj_player1.x < x + 400)) && sprite_index =  spr_hungrypillar_angry
+if global.gameplay == 0 && sprite_index != spr_hungrypillar_ss
 {
-	sprite_index = spr_hungrypillar_happy
-	alarm[0] = 100
+	if ((obj_player1.x > x - 400) && (obj_player1.x < x + 400)) && sprite_index != spr_hungrypillar_angry
+		sprite_index = spr_hungrypillar_angry
+	else if  !((obj_player1.x > x - 400) && (obj_player1.x < x + 400)) && sprite_index =  spr_hungrypillar_angry
+	{
+		sprite_index = spr_hungrypillar_happy
+		alarm[0] = 100
+	}
 }
 
 if place_meeting(x, y, obj_otherplayer)
@@ -14,6 +17,7 @@ if place_meeting(x, y, obj_otherplayer)
 else
 	image_alpha = 1;
 
+// fade meatophobia
 if song != -1 && audio_is_playing(song)
 {
 	if global.panic

@@ -89,8 +89,8 @@
   ],
   "nineSlice": null,
   "parent": {
-    "name": "demo_event",
-    "path": "folders/Sprites/demo_event.yy",
+    "name": "cosmetic or etc",
+    "path": "folders/Sprites/cosmetic or etc.yy",
   },
   "resourceVersion": "1.0",
   "name": "spr_dresser",

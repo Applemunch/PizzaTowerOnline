@@ -15,7 +15,6 @@ function tv_push_prompt_once(array, saved)
 {
 	// @param array Array containing prompt data made with tv_create_prompt
 	// @param saved String containing path to saved TV prompt
-	
 	if global.gameplay != 0
 	{
 		with obj_tv
@@ -27,7 +26,7 @@ function tv_push_prompt_once(array, saved)
 				// save
 				ds_map_set(special_prompts, saved, true);
 				
-				ini_open("saveData.ini");
+				ini_open("saveData" + string(global.saveslot) + ".ini");
 				ini_write_real("Prompts", saved, true);
 				ini_close();
 			}

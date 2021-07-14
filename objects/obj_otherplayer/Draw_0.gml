@@ -96,19 +96,6 @@ else
 		draw_sprite_ext(petspr, petframe, petx, pety, petxscale, 1, 0, pausedcolor, image_alpha);
 	}
 	
-	// treasure
-	var treasure = gms_other_get_real(player_id, "treasure");
-	if sprite_exists(treasure)
-	{
-		if !pause
-		{
-			baddieframe += 0.35;
-			if baddieframe >= sprite_get_number(treasure)
-				baddieframe = 0;
-		}
-		draw_sprite_ext(treasure, baddieframe, x, y - 35, 1, 1, image_angle, c_white, 1);
-	}
-	
 	//Draw
 	var sprit = sprite_index;
 	if !is_real(sprit) or !sprite_exists(sprit) or sprit == 0
@@ -216,6 +203,27 @@ else
 		}
 		draw_sprite_ext(cowboy, cowboyframe, x, sprite_get_bbox_top(sprit) + y - 40, xscale, yscale, image_angle, pausedcolor, image_alpha);
 	}
+	
+	// treasure
+	var treasure = gms_other_get_real(player_id, "treasure");
+	if sprite_exists(treasure)
+	{
+		if !pause
+		{
+			baddieframe += 0.35;
+			if baddieframe >= sprite_get_number(treasure)
+				baddieframe = 0;
+		}
+		var treasure_x = x;
+		var treasure_y = y - 35;
+		
+		if sprit == spr_playerSP_gottreasure
+		{
+			treasure_x -= 25;
+			treasure_y -= 25;
+		}
+		draw_sprite_ext(treasure, baddieframe, treasure_x, treasure_y, 1, 1, image_angle, c_white, 1);
+	}
 }
 
 // draw name
@@ -255,18 +263,18 @@ else
 	typingy = sprite_get_bbox_top(sprit) + y - 75;
 
 // typing indicator
-var panicy;
-if gms_other_get_real(player_id, "chat")
+var panicy = typingy;
+
+var get_chat = gms_other_get_real(player_id, "chat");
+if get_chat or gms_other_get_real(player_id, "busy")
 {
 	draw_set_font(global.font_small);
 	draw_set_colour(c_white);
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_top);
-	draw_text(x, typingy, "...");
-	panicy = typingy - 16;
+	draw_text(x, typingy, (get_chat ? "..." : "(...)"));
+	panicy -= 16;
 }
-else
-	panicy = typingy;
 
 // panic timer
 var panic = gms_other_get_real(player_id, "panic");

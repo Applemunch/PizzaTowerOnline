@@ -67,7 +67,6 @@ function scr_player_machroll()
 					vsp = 10
 				}
 			}
-		
 			image_speed = 0.8
 		
 			if (!key_down && !(scr_solid(x+27,y-32)) && !(scr_solid(x-27,y-32)) && !(scr_solid(x,y-32)) && !(scr_solid(x,y-16))) 
@@ -76,15 +75,21 @@ function scr_player_machroll()
 				scr_soundeffect(sfx_rollgetup)
 				if character != "S"
 					sprite_index = spr_rollgetup
-				else
-					sprite_index = spr_mach4
 				
 				if movespeed < 12 or global.gameplay == 0
+				{
 					state = states.mach2;
+					if character = "S"
+						sprite_index = spr_mach;
+				}
 				else
+				{
 					state = states.mach3;
+					if character = "S"
+						sprite_index = spr_mach4;
+				}
 			}
-		
+			
 			// Breakdance
 			if key_shoot2 && character == "P" && !scr_checkskin(checkskin.p_anton) && global.gameplay == 0
 		    {

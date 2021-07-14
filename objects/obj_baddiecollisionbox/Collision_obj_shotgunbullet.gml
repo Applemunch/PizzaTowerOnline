@@ -8,6 +8,8 @@ if instance_exists(baddieID) && baddieID.object_index != obj_pizzaballOLD
 {
 	increase_combo();
 	
+	baddieID.hsp = other.spd / 2;
+	
 	instance_destroy()
 	instance_destroy(baddieID)
 }

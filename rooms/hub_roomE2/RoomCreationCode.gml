@@ -1,2 +1,2 @@
 
-global.roommessage = "HAT SHOP";
+global.roommessage = "DRESSER";

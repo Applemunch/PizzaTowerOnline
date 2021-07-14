@@ -6,7 +6,16 @@ xdef = image_xscale;
 tmr = 0;
 
 dialogue = [
-	"sup"
+	"..."
 ]
+face = -1;
+
+mybox = noone;
 func = -1;
 donefunc = -1;
+
+instant = false;
+faceplayer = true;
+
+basespr = sprite_index;
+talkspr = -1;

@@ -15,8 +15,7 @@ if other.object_index = obj_player1 && other.character != "S" && other.character
 		with obj_tv
 		{
 			image_speed = 0.25
-			message = choose( "ITS TIME TO KICK ASS", "...AND IM ALL OUT OF ASS", "KICKING ASS AND CHEWING ASS", "ITS TIME TO ASS", "IM ALL OUT OF BUBBLE GUM",
-			"ITS TIME TO CHEW BUBBLE GUM AND KICK ASS", "ITS TIME TO KICK BUBBLE GUM", "ITS TIME FOR AN ASS KICKING", "ITS TIME FOR BUBBLE GUM",  "ITS TIME TO CHEW ASS")
+			message = choose("ITS TIME TO KICK ASS", "ITS TIME TO ASS", "ITS TIME TO CHEW ASS")
 			alarm[0] = 200
 			showtext = true
 			tvsprite = spr_tvdook

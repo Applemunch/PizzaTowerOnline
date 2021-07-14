@@ -42,7 +42,7 @@ if obj_player1.state == states.parry && distance_to_object(obj_player1) < 50 && 
 		vspeed = -16;
 }
 
-if hitboxcreate = false && (obj_player1.instakillmove = false && obj_player1.state != states.handstandjump)
+if hitboxcreate = false && (obj_player1.instakillmove = false && obj_player1.state != states.handstandjump && obj_player1.state != states.punch)
 {
 	hitboxcreate = true
 	with instance_create(x,y,obj_forkhitbox)

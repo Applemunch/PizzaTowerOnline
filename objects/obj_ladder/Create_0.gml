@@ -99,7 +99,7 @@ else
 
 	if string_startswith(roomname, "steamcc_")
 		sprite_index = spr_ladderSP_rope
-	if room == hub_roomSP
+	else if check_sugary()
 		sprite_index = spr_ladderSP
 }
 

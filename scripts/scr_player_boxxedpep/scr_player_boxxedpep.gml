@@ -7,7 +7,7 @@ function scr_player_boxxedpep()
 	//Input buffer jumping
 	if key_jump
 	{
-	input_buffer_jump = 0
+		input_buffer_jump = 0
 	}
 
 	//Jump Stop
@@ -48,10 +48,7 @@ function scr_player_boxxedpep()
 		sprite_index = spr_boxxed_jump;
 		image_index = 0;
 	}
-
-
-
-
+	
 	if move != 0 
 	{
 		if movespeed < 8
@@ -68,9 +65,14 @@ function scr_player_boxxedpep()
 
 	if movespeed > 8
 		movespeed -= 0.1
-
-
-
+	
+	//Land
+	if grounded && (sprite_index == spr_boxxed_jump or sprite_index == spr_boxxed_air)
+	{
+		scr_soundeffect(sfx_step)
+		instance_create(x, y, obj_landcloud)
+	}
+	
 	//Sprites
 	if sprite_index = spr_boxxed_intro && floor(image_index) = image_number -1
 		sprite_index = spr_boxxed_idle

@@ -66,6 +66,9 @@ else if string_startswith(roomname, "beach")
 else if string_startswith(roomname, "forest")
 // forest
 	room_goto_new(forest_1)
+else if string_startswith(roomname, "kungfu")
+// kung fu
+	room_goto_new(kungfu_1)
 else if string_startswith(roomname, "etb")
 // early test build
 	room_goto_new(etb_1)

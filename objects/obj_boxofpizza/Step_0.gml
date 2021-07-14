@@ -51,12 +51,14 @@ with (obj_player1)
 
 
 if place_meeting(x,y+1,obj_doorA) or place_meeting(x,y-1,obj_doorA)
-targetDoor = "A"
+	targetDoor = "A"
 if place_meeting(x,y+1,obj_doorB) or place_meeting(x,y-1,obj_doorB)
-targetDoor = "B"
+	targetDoor = "B"
 if place_meeting(x,y+1,obj_doorC) or place_meeting(x,y-1,obj_doorC)
-targetDoor = "C"
+	targetDoor = "C"
 if place_meeting(x,y+1,obj_doorD) or place_meeting(x,y-1,obj_doorD)
-targetDoor = "D"
+	targetDoor = "D"
 if place_meeting(x,y+1,obj_doorE) or place_meeting(x,y-1,obj_doorE)
-targetDoor = "E"
+	targetDoor = "E"
+if place_meeting(x, y - image_yscale, obj_doorANY)
+	targetDoor = instance_place(x, y - image_yscale, obj_doorANY).door

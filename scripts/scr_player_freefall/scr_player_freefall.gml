@@ -19,43 +19,43 @@ function scr_player_freefall()
 		
 		if move != xscale && momemtum = true && movespeed != 0 
 		{
-		movespeed -= 0.05
+			movespeed -= 0.05
 		}
 
 		if movespeed = 0
-		momemtum = false
+			momemtum = false
 
 		if (move = 0 && momemtum = false) or scr_solid(x+(hsp),y)
 		{
-		movespeed = 0
-		mach2 = 0
+			movespeed = 0
+			mach2 = 0
 		}
 		if move != 0 && movespeed < 7
-		movespeed += 0.25
+			movespeed += 0.25
 		if movespeed > 7 
-		movespeed -= 0.05
+			movespeed -= 0.05
 
 		if ((scr_solid(x+1,y) && move == 1) or (scr_solid(x-1,y) && move == -1))
 		{
-		movespeed = 0
+			movespeed = 0
 		}
 
 		//Turn
 
 		if dir != xscale 
 		{
-		mach2 = 0
-		dir = xscale
-		movespeed = 0 
+			mach2 = 0
+			dir = xscale
+			movespeed = 0 
 		}
 		if move = -xscale
 		{
-		mach2 = 0
-		movespeed = 0 
-		momemtum = false
+			mach2 = 0
+			movespeed = 0 
+			momemtum = false
 		}
-			if move != 0
-		xscale = move
+		if move != 0
+			xscale = move
 	
 		if key_attack2 && character = "SP" && freefallsmash > 10
 		{
@@ -98,29 +98,31 @@ function scr_player_freefall()
 	if freefallsmash > 10 &&  !instance_exists(superslameffectid) 
 		with instance_create(x,y,obj_superslameffect)
 		{
-		playerid = other.object_index	
-		other.superslameffectid = id
+			playerid = other.object_index	
+			other.superslameffectid = id
 		}
 
-	        //Normal
-	    if grounded  && !(input_buffer_jump < 8) && (!place_meeting(x, y + 1, obj_destructibles)
-		or (!place_meeting(x, y, obj_platform) && place_meeting(x, y + 1, obj_platform)))
-	    {
-			audio_stop_sound(sfx_groundpound)
-			scr_soundeffect(sfx_groundpound)
-			freefallsmash= 0
+	//Normal
+	if grounded  && !(input_buffer_jump < 8) && (!place_meeting(x, y + 1, obj_destructibles)
+	or (!place_meeting(x, y, obj_platform) && place_meeting(x, y + 1, obj_platform)))
+	{
+		audio_stop_sound(sfx_groundpound)
+		scr_soundeffect(sfx_groundpound)
+		freefallsmash= 0
 		
-			if shotgunAnim = false
+		if shotgunAnim = false
 			sprite_index = spr_bodyslamland
-			else
+		else
 			sprite_index = spr_shotgunjump2
-
-			image_index = 0
-			state = states.freefallland
-		    jumpAnim = true
-		    jumpstop = false
-    
-		    with (obj_baddie)
+		
+		image_index = 0
+		state = states.freefallland
+		jumpAnim = true
+		jumpstop = false
+			
+		with (obj_baddie)
+		{
+			if global.gameplay == 0 or object_index == obj_pizzaballOLD
 			{
 				if grounded && point_in_camera(x, y, view_camera[0]) && !invincible && groundpound
 				{
@@ -133,10 +135,11 @@ function scr_player_freefall()
 					momentum = 0
 				}
 			}
-	        with (obj_camera) {
-			    shake_mag=10;
-			    shake_mag_acc=30/room_speed;
-			}
+		}
+	    with (obj_camera) {
+			shake_mag=10;
+			shake_mag_acc=30/room_speed;
+		}
 			
 	    combo = 0
 	    bounce = false

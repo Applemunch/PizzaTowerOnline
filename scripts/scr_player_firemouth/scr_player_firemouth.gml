@@ -56,7 +56,7 @@ function scr_player_firemouth()
 	
 	if global.gameplay == 0
 	{
-		if key_slap2 && sprite_index = spr_firemouth && sprite_index != spr_firemouthshoot && !instance_exists(obj_firemouth_projectile)
+		if key_slap2 && sprite_index == spr_firemouth && sprite_index != spr_firemouthshoot && !instance_exists(obj_firemouth_projectile)
 		{
 			movespeed = 0
 			image_index = 0
@@ -69,7 +69,7 @@ function scr_player_firemouth()
 		//Fireball
 		scr_soundeffect(sfx_enemyprojectile)
 		with instance_create(x,y, obj_firemouth_projectile)
-		image_xscale = other.xscale
+			image_xscale = other.xscale
 	}
 	
 	if sprite_index = spr_firemouthshoot && floor(image_index) = image_number -1

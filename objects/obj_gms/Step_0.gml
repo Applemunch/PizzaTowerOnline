@@ -1,9 +1,11 @@
 // no internet
 if (!gms_info_isloggedin() or !os_is_network_connected(false))
-&& ((instance_exists(obj_player1) && obj_player1.state != states.titlescreen) or !instance_exists(obj_player1))
+//&& ((instance_exists(obj_player1) && obj_player1.state != states.titlescreen) or !instance_exists(obj_player1))
 && room != Realtitlescreen && room != characterselect
 {
+	instance_destroy(obj_fadeout);
 	instance_destroy(obj_pause);
+	instance_destroy(obj_pausefadeout);
 	instance_activate_all();
 	
 	gms_logout();

@@ -137,8 +137,20 @@ if ds_map_find_value(async_load, "id") == request
 		if requestype == reqtypes.login_alt
 		{
 			var auth_get = ds_map_find_value(map, "auth");
+			var userid_get = ds_map_find_value(map, "id");
+			
 			if auth_get != undefined
+			{
 				global.auth = auth_get;
+				if userid_get != undefined
+					userid = userid_get;
+			}
+			else
+			{
+				message = "UNAUTHORIZED";
+				showtext = true;
+				alarm[0] = room_speed * 2;
+			}
 		}
 		
 		if requestype == reqtypes.register_alt
@@ -173,12 +185,9 @@ if ds_map_find_value(async_load, "id") == request
 		var msg = ds_map_find_value(json_decode(asyncresult), "message");
 		if msg != undefined && string(msg) != ""
 		{
-			with obj_roomname
-			{
-				showtext = true;
-				message = string_upper(string(msg));
-				alarm[0] = 200;
-			}
+			showtext = true;
+			message = string_upper(string(msg));
+			alarm[0] = 200;
 		}
 		
 		#endregion

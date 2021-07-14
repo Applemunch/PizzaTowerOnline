@@ -11,6 +11,7 @@ if !(other.state = states.knightpep or other.state = states.knightpepattack or o
 		other.y = y
 		other.state = states.cheeseball
 		other.image_speed = 0.35
+		other.sprite_index = other.spr_cheeseballed
 		
 		tv_push_prompt_once(tv_create_prompt("This is the cheeseball transformation text", 2, spr_tv_cheeseball, 3), "cheeseball");
 	}

@@ -9,6 +9,9 @@ function scr_scareenemy()
 		{
 			if !(global.snickchallenge && global.snickrematch)
 			{
+				if object_index == obj_spitcheese
+					throwdir = image_xscale;
+				
 				state = states.idle
 				sprite_index = scaredspr
 				if x != player.x
@@ -16,7 +19,7 @@ function scr_scareenemy()
 				scaredbuffer = 100 / (global.stylethreshold + 1)
 				if grounded
 					vsp = -5
-			
+				
 				if object_index == obj_coolpineapple
 				{
 					invincible = false

@@ -117,11 +117,9 @@ switch menu
 			}
 		}
 		
-		var pto = false;
 		if (instance_exists(obj_gms) && gms_info_isloggedin())
 		or debug
 		{
-			pto = true;
 			if draw_editorbutton(384, 200 + 64 + (debug * 64), "PTONLINE")
 			{
 				menu = menutypes.levelbrowser;
@@ -130,7 +128,7 @@ switch menu
 			}
 		}
 		
-		if draw_editorbutton(384, 200 + 64 + 64 + (pto * 64), "BACK")
+		if draw_editorbutton(384, 200 + 64 + 64 + (debug * 64), "BACK")
 			menu = menutypes.menustart;
 		
 		#endregion
@@ -337,6 +335,7 @@ switch menu
 					else
 					{
 						// upload level dumbass
+						gmsroom = global.lastroom + irandom_range(10000, 900000);
 					}
 				}
 				else with obj_roomname
@@ -494,8 +493,10 @@ switch menu
 	
 	case menutypes.login:
 	{
-		var lg_name = string_copy(gms_self_name(), 1, 30);
-		if lg_name == "" && debug
+		var lg_name = "";
+		if instance_exists(obj_gms) && gms_info_isloggedin()
+			lg_name = string_copy(gms_self_name(), 1, 30);
+		if debug
 			lg_name = "admin";
 		
 		#region black box
@@ -608,12 +609,9 @@ switch menu
 			{
 				if passwordstring == ""
 				{
-					with obj_roomname
-					{
-						message = "INPUT A PASSWORD";
-						showtext = true;
-						alarm[0] = room_speed * 2;
-					}
+					message = "INPUT A PASSWORD";
+					showtext = true;
+					alarm[0] = room_speed * 2;
 				}
 				else
 				{
@@ -631,12 +629,9 @@ switch menu
 				{
 					if passwordstring == ""
 					{
-						with obj_roomname
-						{
-							message = "INPUT A PASSWORD";
-							showtext = true;
-							alarm[0] = room_speed * 2;
-						}
+						message = "INPUT A PASSWORD";
+						showtext = true;
+						alarm[0] = room_speed * 2;
 					}
 					else
 					{
@@ -665,12 +660,9 @@ switch menu
 			{
 				if passwordstring != passconfirm1
 				{
-					with obj_roomname
-					{
-						message = "PASSWORDS DONT MATCH!";
-						showtext = true;
-						alarm[0] = room_speed * 2;
-					}
+					message = "PASSWORDS DONT MATCH!";
+					showtext = true;
+					alarm[0] = room_speed * 2;
 				}
 				else
 				{
@@ -691,6 +683,10 @@ switch menu
 			menu = menutypes.levelbrowser;
 			request = undefined;
 			records = undefined;
+			
+			message = "LOGGED IN!";
+			showtext = true;
+			alarm[0] = room_speed * 2;
 			
 			if paging_type != 3 // normal
 				scr_requestpage(page);

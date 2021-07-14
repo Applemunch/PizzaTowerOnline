@@ -1,10 +1,12 @@
 if shotgun
 {
-	with instance_place(x + spd, y, obj_shotgunblock)
-		instance_destroy()
-
-	with instance_place(x, y - spdh, obj_shotgunblock)
-		instance_destroy()
+	with obj_shotgunblock
+	{
+		if place_meeting(x - other.spd, y, other)
+			instance_destroy();
+		if place_meeting(x, y + other.spdh, other)
+			instance_destroy();
+	}
 }
 
 with instance_place(x+spd,y,obj_destructibles)
@@ -19,6 +21,12 @@ with instance_place(x+spd,y,obj_destructibles)
 		else
 			instance_destroy()
 	}
+}
+
+with instance_place(x+spd,y,obj_mortblock)
+{
+	if other.sprite_index == spr_mortprojectile
+		instance_destroy();
 }
 
 x += spd

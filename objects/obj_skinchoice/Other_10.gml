@@ -28,8 +28,14 @@ switch sel[1]
 			["MASSACRE", "Forgot his chainsaw at home, but still unstable."],
 			["BURNT PIZZA", "Oh, god damn it."],
 			["DREXYL", "D'AW HELL NAH"],
-			["GB", "One of his greatest achievements."]
+			["GB", "One of his greatest achievements."],
+			["HYPOTHERMIA", "Lesson learned, don't bathe inside a freezer."],
 		];
+		if global.streamer
+		{
+			selarray[0][1] = "Palette zero.\nDon't make comparisons.";
+			selarray[22] = ["BLACK N RED", "That's a cool one."];
+		}
 		break;
 	
 	case "N":
@@ -58,6 +64,8 @@ switch sel[1]
 			["NOSE", "Repeat after me! NI-"],
 			["SALAD", "You know what to do."],
 		];
+		if global.streamer
+			selarray[19][1] = "No he can't jump infinitely.";
 		break;
 	
 	case "V":
@@ -82,6 +90,11 @@ switch sel[1]
 			["THE BARTENDER", "Give me a drink, Bartender."],
 			["MORSHU", "It's yours, my friend."],
 		];
+		if global.streamer
+		{
+			selarray[11][1] = "Johnson gag.";
+			selarray[14][1] = "What";
+		}
 		break;
 	
 	case "S":
@@ -94,7 +107,7 @@ switch sel[1]
 			["BOOTS", "Unlike Snick..."],
 			["SNICKETTE", "Not to be confused with Satan."],
 			["SONIC", "YEAH FAST"],
-			["SHADOW", "Can you even see his eyes?"],
+			["SHADOW", "Nice sneakers tho."],
 			["CYAN", "RGB 0 255 255"],
 			["TRANSPARENT", "(cough sound)"],
 			["MANUAL", "This is Snick the porcupine.\nHe hosts his own event."],
@@ -107,7 +120,13 @@ switch sel[1]
 			["HELLSNICK", "Si."],
 			["SPIRIT", "Thorns_Inst.ogg"],
 			["MAJIN", "Fun is infinite."],
+			["NEON", "Eh, I've seen OC's brighter than this."],
 		];
+		if global.streamer
+		{
+			selarray[4][1] = "No, not that one.";
+			selarray[14][1] = "Hilarious.";
+		}
 		break;
 	
 	case "G":
@@ -118,7 +137,7 @@ switch sel[1]
 			["GLADE", "She's a blue wolf."],
 			["BRAZ", "Glade's brother."],
 			["RANDOM", "Effortlessly bright."],
-			["EDGY", "Literally just edgy I have nothing else to say."],
+			["EDGY", "Yep."],
 			["LOONA", "Shut up, dear furry!"],
 			["PEPPINO", "Italian cosplay, let's go!"],
 			["THE NOISE", "Fortunately not as noisy."],
@@ -142,7 +161,11 @@ switch sel[1]
 			["PINK", "Bismuth subsalicylate."],
 			["VOLCANO", "Bursting at the seams."],
 			["GIRLFRIEND", "That's how you do it!"],
+			["SANS", "Turn around and shake his hand."],
+			["BURNT", "Crispy wolf."],
 		];
+		if global.streamer
+			selarray[17] = ["FELIX", "Definitely not the Mineken palette I swear"];
 		
 		with obj_player1
 		{
@@ -155,8 +178,8 @@ switch sel[1]
 		spr_palette = spr_pizzpalette;
 		spr_idle = spr_playerSP_idle;
 		selarray = [
-			["YELLOW", "Are you happy now?"],
-			["PIZZELLE", "It's the Candy-making pizzano!"],
+			["YELLOW", "Take the first 4 letters of Pizzelle."],
+			["PIZZELLE", "It's the Candy-making patisje!"],
 			["WILD STRAWBERRY", "Also known as \"pink\"."],
 			["CHERRY", "Lucky!"],
 			["LIME", "Make margaritas."],
@@ -173,7 +196,7 @@ switch sel[1]
 			["BLURPLE", "Also known as \"test\"."],
 			["PAINTLAD", "Very original, Jacko."],
 			["ENA", "Cheese and rice, Moony!"],
-			["TRANS", "I'm sorry."],
+			["COTTON CANDY", "Or as I like to call it, the Trans flag.\n\nI'm sorry."],
 			["GREEN APPLE", "Why is this the least favorite candy flavor?"],
 			["GRAPE SODA", "There's more purple than actual soda in this."],
 			["NOIK", "The obligatory Noik palette."],
@@ -181,7 +204,15 @@ switch sel[1]
 			["PASTEL", "Soft on the eyes."],
 			["BURNT", "You. Fucking. DONKEY."],
 			["CRAZY FROG", "Ding ding."],
+			["FACTORY", "DOOR STUCK"],
+			["PINJ", "End my suffering."],
 		];
+		if global.streamer
+		{
+			selarray[16][1] = "Very original.";
+			selarray[18][1] = "Reminds you of anything?";
+			selarray[24][1] = "You. Effing. DONKEY.";
+		}
 		
 		//["PAINTLAD", "Did you know Jacko suggested the name Paintlad\nand is probably never going to be credited for it?"],
 		/*
@@ -191,6 +222,15 @@ switch sel[1]
 		break;
 	
 	#region roleplay
+	
+	case "PP":
+		spr_palette = spr_peppalette;
+		spr_idle = spr_playerPP_idle;
+		selarray = [
+			["PISSINO", "God is dead and we killed him."],
+			["GO BACK", "reatrd"],
+		]
+		break;
 	
 	case "CHEESESLIME":
 		spr_palette = palette_cheeseslime;
@@ -227,8 +267,7 @@ switch sel[1]
 		break;
 	
 	#endregion
-	
-	#region scrapped
+	#region scrapped (for now)
 	
 	case "M":
 		spr_palette = spr_manpalette;

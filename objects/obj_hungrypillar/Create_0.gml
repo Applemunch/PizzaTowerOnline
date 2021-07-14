@@ -11,3 +11,5 @@ if room == rm_editor {
 }
 
 song = -1;
+if check_sugary()
+	sprite_index = spr_hungrypillar_ss;

@@ -69,6 +69,7 @@ if pause
 			or string_startswith(roomname, "strongcold")
 			or string_startswith(roomname, "beach")
 			or string_startswith(roomname, "forest")
+			or string_startswith(roomname, "kungfu")
 			or string_startswith(roomname, "etb")
 			or string_startswith(roomname, "steamcc")
 			or room == custom_lvl_room

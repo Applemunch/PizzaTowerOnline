@@ -9,7 +9,7 @@ function scr_wcevaluate(argument0)
 	var arg = ds_list_create();
 	var substr = "";
 	var quote = false;
-		
+	
 	for (i = 1; i <= string_length(eval); i++)
 	{
 		var next_char = string_char_at(eval, i);
@@ -28,12 +28,12 @@ function scr_wcevaluate(argument0)
 		if i == string_length(eval) && substr != ""
 			ds_list_add(arg, substr);
 	}
-
+	
 	// argument variables
 	arg0 = string(ds_list_find_value(arg, 0));
 	arg1 = ds_list_find_value(arg, 1);
 	var commandargs = string_replace(eval, arg0 + " ", "");
-
+	
 	// execute the commands
 	switch arg0
 	{
@@ -779,15 +779,15 @@ function scr_wcevaluate(argument0)
 		case "objectlist":
 		case "instancelist":
 			temp_fetchobjects = "There are " + string(instance_count) + " instances in this room: ";
-			for (i = 0; i < instance_count; i++)
-			    temp_fetchobjects = temp_fetchobjects + object_get_name((instance_find(all, i)).object_index) + ", ";
+			with all
+				temp_fetchobjects += object_get_name(object_index) + ", ";
 				
 			if !WC_consoleopen
 				show_message(string_replace_all(string_replace_all(temp_fetchobjects, ", ", "\n"), "room: ", "room:\n"));
 			else
 				ds_list_insert(WC_consolelist, 0, temp_fetchobjects);
 			break
-			
+		
 		case "playerstate":
 		case "state":
 		case "setstate": // pt exclusive
@@ -2545,6 +2545,8 @@ function scr_wcevaluate(argument0)
 			else
 			{
 				var finalkey = -1;
+				var keycode = false;
+				
 				switch string_upper(arg1)
 				{
 					case "F1":
@@ -2616,24 +2618,43 @@ function scr_wcevaluate(argument0)
 						break;
 					
 					default:
-						if string_length(arg1) > 1
+						// keycode
+						if string_digits(arg1) == arg1 && real(arg1) > 9
 						{
-							ds_list_insert(WC_consolelist, 0, "Unknown key " + string(arg1));
-							WC_consoleopen = true;
+							keycode = true;
+							finalkey = real(arg1);
 						}
 						else
-							finalkey = ord(string_upper(arg1));
+						{
+							// string
+							if string_length(arg1) > 1
+							{
+								ds_list_insert(WC_consolelist, 0, "Unknown key " + string(arg1));
+								WC_consoleopen = true;
+							}
+							else
+								finalkey = ord(string_upper(arg1));
+						}
 						break;
 				}
 				if finalkey != -1
 				{
-				    ds_list_add(WC_bindkey, finalkey);
-				    ds_list_add(WC_bindmap, string_replace(commandargs, arg1 + " ", ""));
-				    ds_list_insert(WC_consolelist, 0, "Bound " + string_upper(arg1) + " to execute " + string_replace(commandargs, arg1 + " ", ""));
+					var command = string_replace(commandargs, arg1 + " ", "");
+					if command == "openconsole"
+					{
+						WC_togglekey = finalkey;
+						ds_list_insert(WC_consolelist, 0, "Rebound " + (keycode ? "keycode " : "") + string_upper(arg1) + " to open the console");
+					}
+					else
+					{
+					    ds_list_add(WC_bindkey, finalkey);
+					    ds_list_add(WC_bindmap, command);
+						ds_list_insert(WC_consolelist, 0, "Bound " + (keycode ? "keycode " : "") + string_upper(arg1) + " to execute " + command);
+					}
 				}
 			}
 			break;
-			
+		
 		case "unbind":
 			arg1 = ds_list_find_value(arg, 1);
 			if !is_undefined(arg1)
@@ -2682,7 +2703,7 @@ function scr_wcevaluate(argument0)
 			{
 				// read savefile
 				wc_save = file_text_open_read("wc_save");
-			
+				
 				if WC_saveversion != file_text_read_real(wc_save)
 				{
 					// different version
@@ -2732,57 +2753,59 @@ function scr_wcevaluate(argument0)
 		case "saveconfig":
 		case "save": // pt exclusive
 			scr_wcsave();
-		
+			
 			if !WC_consolesilence
 				ds_list_insert(WC_consolelist, 0, "Saved settings");
 			break;
 		
 		case "defaultbinds": // pt exclusive
+			WC_togglekey = 220;
+			
 			ds_list_clear(WC_bindkey);
 			ds_list_clear(WC_bindmap);
-				
+			
 			ds_list_add(WC_bindkey, vk_tab);
 			ds_list_add(WC_bindmap, "room");
-				
+			
 			ds_list_add(WC_bindkey, ord("1"));
 			ds_list_add(WC_bindmap, "object");
-				
+			
 			ds_list_add(WC_bindkey, ord("2"));
 			ds_list_add(WC_bindmap, "state");
-				
+			
 			ds_list_add(WC_bindkey, ord("3"));
 			ds_list_add(WC_bindmap, "variable");
-				
+			
 			ds_list_add(WC_bindkey, ord("4"));
 			ds_list_add(WC_bindmap, "oobcam");
-				
+			
 			ds_list_add(WC_bindkey, ord("5"));
 			ds_list_add(WC_bindmap, "panic 2 59");
-				
+			
 			ds_list_add(WC_bindkey, ord("6"));
 			ds_list_add(WC_bindmap, "freeze");
-				
+			
 			ds_list_add(WC_bindkey, ord("7"));
 			ds_list_add(WC_bindmap, "showinvisible");
-				
+			
 			ds_list_add(WC_bindkey, ord("8"));
 			ds_list_add(WC_bindmap, "script");
-				
+			
 			ds_list_add(WC_bindkey, ord("9"));
 			ds_list_add(WC_bindmap, "debughud");
-				
+			
 			ds_list_add(WC_bindkey, ord("0"));
 			ds_list_add(WC_bindmap, "live_execute");
-				
+			
 			ds_list_add(WC_bindkey, vk_numpad0);
 			ds_list_add(WC_bindmap, "resetwindow");
-				
+			
 			ds_list_add(WC_bindkey, vk_numpad1);
 			ds_list_add(WC_bindmap, "resetsaveroom");
-				
+			
 			ds_list_add(WC_bindkey, vk_numpad2);
 			ds_list_add(WC_bindmap, "beatlevel");
-				
+			
 			ds_list_add(WC_bindkey, vk_numpad3);
 			ds_list_add(WC_bindmap, "delete");
 			

@@ -119,8 +119,8 @@
     "PhysicsWorldPixToMetres": 0.1,
   },
   "parent": {
-    "name": "Cotton",
-    "path": "folders/Rooms/Extra Levels/Sugary Spire/Cotton.yy",
+    "name": "Cotton Town",
+    "path": "folders/Rooms/Extra Levels/Sugary Spire/Cotton Town.yy",
   },
   "resourceVersion": "1.0",
   "name": "steamcc_secret1",

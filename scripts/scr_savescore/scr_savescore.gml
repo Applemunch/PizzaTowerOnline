@@ -1,47 +1,45 @@
 function scr_savescore(namestring)
 {
 	//Level rank saves
-	ini_open("saveData.ini");
-
+	ini_open("saveData" + string(global.saveslot) + ".ini");
+	
 	if !(namestring == "golf" && global.funmode)
 	{
-		ini_open("saveData.ini");
-		
 		// score
 		if ini_read_real("Highscore", namestring, 0) < global.collect
-		ini_write_real("Highscore",namestring,global.collect);
+			ini_write_real("Highscore",namestring,global.collect);
 		
 		// collected treasure
 		if ini_read_real("Treasure", namestring, 0) = 0
-		ini_write_real("Treasure",namestring,global.treasure);
+			ini_write_real("Treasure",namestring,global.treasure);
 		
 		// secret count
 		if ini_read_real("Secret", namestring, 0) < global.secretfound
-		ini_write_string("Secret",namestring,global.secretfound);
-
+			ini_write_string("Secret",namestring,global.secretfound);
+		
 		// toppins
 		if ini_read_real("Toppin", namestring +"1", false) = 0
-		ini_write_real("Toppin",namestring + "1" ,global.shroomfollow);
+			ini_write_real("Toppin",namestring + "1" ,global.shroomfollow);
 		if ini_read_real("Toppin", namestring +"2", false) = 0
-		ini_write_real("Toppin",namestring + "2",global.cheesefollow );
+			ini_write_real("Toppin",namestring + "2",global.cheesefollow );
 		if ini_read_real("Toppin", namestring +"3", false) = 0
-		ini_write_real("Toppin",namestring + "3",global.tomatofollow);
+			ini_write_real("Toppin",namestring + "3",global.tomatofollow);
 		if ini_read_real("Toppin", namestring +"4", false) = 0
-		ini_write_real("Toppin",namestring + "4",global.sausagefollow);
+			ini_write_real("Toppin",namestring + "4",global.sausagefollow);
 		if ini_read_real("Toppin", namestring +"5", false) = 0
-		ini_write_real("Toppin",namestring + "5",global.pineapplefollow);
+			ini_write_real("Toppin",namestring + "5",global.pineapplefollow);
 		
 		// rank
 		if global.rank = "s"
-		ini_write_string("Ranks",namestring,global.rank)
+			ini_write_string("Ranks",namestring,global.rank)
 		if global.rank = "a" &&  "s"  !=  ini_read_string("Ranks",namestring,"none")
-		ini_write_string("Ranks",namestring,global.rank)
+			ini_write_string("Ranks",namestring,global.rank)
 		if global.rank = "b" && "s"  !=  ini_read_string("Ranks",namestring,"none") && "a"  !=  ini_read_string("Ranks",namestring,"none")
-		ini_write_string("Ranks",namestring,global.rank)
+			ini_write_string("Ranks",namestring,global.rank)
 		if global.rank = "c" && "s"  !=  ini_read_string("Ranks",namestring,"none") && "a"  !=  ini_read_string("Ranks",namestring,"none") && "b"  !=  ini_read_string("Ranks",namestring,"none") 
-		ini_write_string("Ranks",namestring,global.rank)
+			ini_write_string("Ranks",namestring,global.rank)
 		if global.rank = "d" && "s"  !=  ini_read_string("Ranks",namestring,"none") && "a"  !=  ini_read_string("Ranks",namestring,"none") && "b"  !=  ini_read_string("Ranks",namestring,"none") && "c"  !=  ini_read_string("Ranks",namestring,"none") 
-		ini_write_string("Ranks",namestring,global.rank)
+			ini_write_string("Ranks",namestring,global.rank)
 		
 		// time attack score
 		if global.timeattack
@@ -61,18 +59,13 @@ function scr_savescore(namestring)
 			}
 		}
 		
-		ini_close();
+		// save pizzacoin
+		if instance_exists(obj_gms) && !gms_self_isguest()
+			gms_ini_player_write("saveData", "pizzacoin", scr_getcoin());
+		else
+			ini_write_real("online", "pizzacoin", scr_getcoin());
 	}
-	
-	// save pizzacoin
-	if instance_exists(obj_gms) && !gms_self_isguest()
-		gms_ini_player_write("saveData", "pizzacoin", scr_getcoin());
-	else
-	{
-		ini_open("saveData.ini");
-		ini_write_real("online", "pizzacoin", scr_getcoin());
-		ini_close();
-	}
+	ini_close();
 }
 
 function scr_levelname()
@@ -118,7 +111,7 @@ function endlevel()
 	
 	// get the level name
 	var namestring = scr_levelname();
-
+	
 	// calculate ranks
 	if namestring == "golf" && global.funmode
 		global.rank = "yousuck";

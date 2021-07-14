@@ -1,5 +1,5 @@
 //Draw
-haspalette = (object_index == obj_cheeseslime or object_index == obj_forknight or object_index == obj_pepgoblin or object_index == obj_pizzard);
+haspalette = (object_index == obj_cheeseslime or object_index == obj_forknight or object_index == obj_pepgoblin or object_index == obj_pizzard or object_index == obj_thug_blue or object_index == obj_thug_green);
 
 if haspalette
 	pal_swap_set(spr_palette, paletteselect, false)

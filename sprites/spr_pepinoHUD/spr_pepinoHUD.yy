@@ -207,7 +207,7 @@
     "eventStubScript": null,
     "parent": {"name":"spr_pepinoHUD","path":"sprites/spr_pepinoHUD/spr_pepinoHUD.yy",},
     "resourceVersion": "1.3",
-    "name": "",
+    "name": "spr_pepinoHUD",
     "tags": [],
     "resourceType": "GMSequence",
   },

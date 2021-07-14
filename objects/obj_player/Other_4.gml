@@ -10,17 +10,23 @@ if place_meeting(x, y, obj_boxofpizza) or place_meeting(x, y - 1, obj_boxofpizza
 
 if !oldhallway
 {
-	var doortarget = -1;
+	var doortarget = noone;
 	if targetDoor == "A"
 		doortarget = obj_doorA;
-	if targetDoor == "B"
+	else if targetDoor == "B"
 		doortarget = obj_doorB;
-	if targetDoor == "C"
+	else if targetDoor == "C"
 		doortarget = obj_doorC;
-	if targetDoor == "D"
+	else if targetDoor == "D"
 		doortarget = obj_doorD;
-	if targetDoor == "E"
+	else if targetDoor == "E"
 		doortarget = obj_doorE;
+	
+	if !instance_exists(doortarget) && instance_exists(obj_doorANY)
+	{
+		with obj_doorANY
+			if door == other.targetDoor doortarget = id;
+	}
 	
 	if doortarget != -1 && instance_exists(doortarget)
 	{
@@ -35,11 +41,6 @@ if !oldhallway
 	
 	if verticalhallway
 		y += vhallwaydirection * 50;
-	if state == states.climbwall
-	{
-		while !scr_solid(x + xscale, y)
-			x += xscale;
-	}
 	
 	if targetDoor = "CH" && instance_exists(obj_checkpoint)
 	{
@@ -70,6 +71,11 @@ else
 {
 	x = target_x
 	y = target_y
+}
+if state == states.climbwall
+{
+	while !scr_solid(x + xscale, y)
+		x += xscale;
 }
 
 if state == states.ladder

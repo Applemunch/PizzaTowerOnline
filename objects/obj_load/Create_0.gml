@@ -42,12 +42,37 @@ global.loaded_mus = true;
 global.loaded_pc = true;
 global.loaded_anton = true;
 
-// etc
-window_set_size(960, 540);
-alarm[0] = 1;
+// other variables
+global.lastroom = 0;
+while room_exists(global.lastroom)
+	global.lastroom++;
+global.lastroom -= 1;
 
-alarm[0] = 2;
+global.saveslot = "";
+
+// language
+global.language = ini_read_string("online", "language", "en") // language
+global.langmap = -1;
+
+try
+{
+	var _buf = buffer_load("lang/lang-" + global.language + ".json");
+	global.langmap = json_decode(string(buffer_read(_buf, buffer_string)));
+	buffer_delete(_buf);
+}
+
+if global.langmap == -1
+{
+	show_message("Language file failed to load");
+	game_end();
+	exit;
+}
+
+// prepare
 ini_close();
+
+window_set_size(960, 540);
+alarm[0] = 2;
 
 loadwhat = -1;
 prog = -1;

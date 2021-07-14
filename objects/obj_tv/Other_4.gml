@@ -1,29 +1,3 @@
-// Transformation prompts
-if room != Realtitlescreen && global.gameplay != 0
-{
-	if !ds_exists(special_prompts, ds_type_map)
-	{
-	    special_prompts = ds_map_create();
-	
-	    ini_open("saveData.ini");
-	    ds_map_set(special_prompts, "knight", ini_read_real("Prompts", "knight", 0));
-	    ds_map_set(special_prompts, "boxxedpep", ini_read_real("Prompts", "boxxedpep", 0));
-	    ds_map_set(special_prompts, "mort", ini_read_real("Prompts", "mort", 0));
-	    ds_map_set(special_prompts, "squished", ini_read_real("Prompts", "squished", 0));
-	    ds_map_set(special_prompts, "skateboard", ini_read_real("Prompts", "skateboard", 0));
-	    ds_map_set(special_prompts, "cheeseball", ini_read_real("Prompts", "cheeseball", 0));
-	    ds_map_set(special_prompts, "shotgun", ini_read_real("Prompts", "shotgun", 0));
-	    ds_map_set(special_prompts, "ghost", ini_read_real("Prompts", "ghost", 0));
-	    ds_map_set(special_prompts, "firemouth", ini_read_real("Prompts", "firemouth", 0));
-	    ds_map_set(special_prompts, "fireass", ini_read_real("Prompts", "fireass", 0));
-	    ds_map_set(special_prompts, "bombpep", ini_read_real("Prompts", "bombpep", 0));
-	    ds_map_set(special_prompts, "rocket", ini_read_real("Prompts", "rocket", 0));
-	    ini_close();
-	}
-}
-else
-	special_prompts = noone;
-
 //Ranking && milestone
 if room == entrance_1
 	global.srank = 11500
@@ -40,16 +14,16 @@ if room == ruin_1 && !global.snickchallenge
 	global.srank = 11200
 if room == ufo_1
 	global.srank = 10950
-if room == floor1_room0
+if room == floor1_room0 // desert
 	global.srank = 13400
-if room == floor2_room0
-    global.srank = 3000
-if room == floor3_room0
-    global.srank = 2300
-if room == floor4_room0
-    global.srank = 1480
-if room == floor5_room1
-    global.srank = 2430
+if room == floor2_room0 // mansion
+    global.srank = 10000
+if room == floor3_room0 // factory
+    global.srank = 6500
+if room == floor4_room0 // sewer
+    global.srank = 5800
+if room == floor5_room1 // freezer
+    global.srank = 7800
 if room == golf_room1
 {
 	global.srank = 4500;
@@ -58,7 +32,7 @@ if room == golf_room1
 }
 if room == farm_1
 	global.srank = 10300
-if room == graveyard_1
+if room == graveyard_1 or room == graveyard_1_NEW
 	global.srank = 11855
 if room == dungeon_1 && !global.snickchallenge
 	global.srank = 10300

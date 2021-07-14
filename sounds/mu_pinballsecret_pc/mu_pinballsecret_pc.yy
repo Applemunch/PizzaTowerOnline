@@ -14,7 +14,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "mu_pinballsecret_pc.wav",
-  "duration": 71.49436,
+  "duration": 71.4893646,
   "parent": {
     "name": "secret",
     "path": "folders/Sounds/pizza castle/secret.yy",

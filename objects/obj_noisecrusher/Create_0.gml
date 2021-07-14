@@ -1,3 +1,5 @@
+scr_initenemy();
+
 grav = 0.5;
 hsp = 0;
 vsp = 0;
@@ -28,6 +30,7 @@ jumpprepspr = spr_noisecrusher_jumpprep
 jumpspr = spr_noisecrusher_jump
 landspr = spr_noisecrusher_land
 airspr = spr_noisecrusher_air
+scaredspr = spr_noisecrusher_stun
 image_xscale = -1
 flash = false
 slapped = false

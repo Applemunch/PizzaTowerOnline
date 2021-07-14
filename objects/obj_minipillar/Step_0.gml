@@ -29,6 +29,12 @@ else
 	x = xstart
 	y = ystart
 	
+	if place_meeting(x, y, obj_player1)
+	{
+		with obj_player1
+			scr_pushout(-1);
+	}
+	
 	if place_meeting(x, y, obj_otherplayer)
 		image_alpha = 0.5;
 	else

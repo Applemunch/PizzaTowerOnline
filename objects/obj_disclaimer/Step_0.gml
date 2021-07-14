@@ -2,8 +2,8 @@ function outback(arg0, arg1, arg2, arg3)
 {
 	var _s = 1;
 
-	argument0 = argument0/argument3 - 1;
-	return argument2 * (argument0 * argument0 * ((_s + 1) * argument0 + _s) + 1) + argument1;
+	arg0 = arg0/arg3 - 1;
+	return arg2 * (arg0 * arg0 * ((_s + 1) * arg0 + _s) + 1) + arg1;
 }
 function incubic(arg0, arg1, arg2, arg3) {
 	return arg2 * power(arg0/arg3, 3) + arg1;

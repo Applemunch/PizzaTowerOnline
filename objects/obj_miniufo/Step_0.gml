@@ -49,7 +49,8 @@ if laserbuffer <= 0 && state == states.walk
 		laser.vsp = 2;
 	else
 	{
-		scr_soundeffect(sfx_enemyprojectile);
+		if !audio_is_playing(sfx_enemyprojectile) && point_in_camera(x, y, view_camera[0])
+			scr_soundeffect(sfx_enemyprojectile);
 		laser.vsp = 5;
 	}
 	

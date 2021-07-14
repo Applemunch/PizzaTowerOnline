@@ -1,6 +1,6 @@
 {
   "ConfigValues": {
-    "debug": {"audioGroupId":"{\"name\":\"ag_pcmusic\",\"path\":\"audiogroups/ag_pcmusic\"}",},
+    "debug": {"audioGroupId":"{\"name\":\"audiogroup_default\",\"path\":\"audiogroups/audiogroup_default\"}",},
   },
   "compression": 0,
   "volume": 1.0,
@@ -14,7 +14,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "mu_pizzatime_pc.wav",
-  "duration": 220.865891,
+  "duration": 220.860886,
   "parent": {
     "name": "pizza castle",
     "path": "folders/Sounds/pizza castle.yy",

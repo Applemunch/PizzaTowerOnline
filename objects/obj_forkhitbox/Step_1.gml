@@ -1,4 +1,4 @@
 if !instance_exists(ID)
-instance_destroy()
+	instance_destroy()
 
 

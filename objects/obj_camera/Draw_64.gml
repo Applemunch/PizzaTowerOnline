@@ -85,7 +85,12 @@ if global.gameplay == 0
 		}
 
 		if obj_player1.character = "S"
-			hudface = spr_snickHUD
+		{
+			if _state = states.hurt
+				hudface = spr_snickHUDhurt
+			else
+				hudface = spr_snickHUD
+		}
 		
 		if obj_player1.character = "G"
 		{
@@ -290,12 +295,16 @@ else
 		
 		var heatfill = sugary ? spr_heatmeter_candyfill : spr_heatmeter_fill;
 		
-	    var sw = sprite_get_width(heatfill);
+		var sw = sprite_get_width(heatfill);
 	    var sh = sprite_get_height(heatfill);
 	    var b = global.style / 55;
 	    var hud_xx = 149 + irandom_range(-collect_shake, collect_shake);
 	    var hud_yy = 105 + irandom_range(-collect_shake, collect_shake) + hud_posY;
-	    draw_sprite_part(heatfill, pizzascore_index, 0, 0, sw * b, sh, hud_xx - 95, hud_yy + 24);
+		
+		if sugary
+			draw_sprite_part(heatfill, pizzascore_index, 0, 0, sw * b, sh, hud_xx - 95, hud_yy - 87);
+		else
+			draw_sprite_part(heatfill, pizzascore_index, 0, 0, sw * b, sh, hud_xx - 95, hud_yy + 24);
 		
 	    pal_swap_set(spr_heatmeter_palette, global.stylethreshold, 0);
 	    draw_sprite_ext(sugary ? spr_heatmeter_candy : spr_heatmeter, pizzascore_index, hud_xx, hud_yy, 1, 1, 0, c_white, alpha);
@@ -321,7 +330,7 @@ else
 	    draw_set_font(sugary ? global.candyfont : global.collectfont)
 		
 		var text_y = 0;
-	    switch floor(pizzascore_index)
+	    switch floor(pizzascore_index - sugary)
 	    {
 	        case 1:
 	        case 2:
@@ -431,19 +440,27 @@ if instance_exists(obj_player1) && obj_player1.character == "V" && showhud
 //Key
 if showhud
 {
-	var xx = 50;
-	var yy = 30;
-	if global.gameplay != 0
+	if !sugary or global.gameplay == 0
 	{
-		xx = 69;
-		yy = 185 + hud_posY;
-		if sugary
-			yy += 10;
+		var xx = 50;
+		var yy = 30;
+		if global.gameplay != 0
+		{
+			xx = 69;
+			yy = 185 + hud_posY;
+		}
+		
+		if global.key_inv
+			draw_sprite_ext((check_sugary() ? spr_key_ss : spr_key), -1, xx, yy, 1, 1, 0, c_white, alpha)
+		draw_sprite_ext(spr_inv, -1, xx, yy, 1, 1, 0, c_white, alpha)
 	}
-	
-	if global.key_inv
-		draw_sprite_ext((check_sugary() ? spr_key_ss : spr_key), -1, xx, yy, 1, 1, 0, c_white, alpha)
-	draw_sprite_ext(spr_inv, -1, xx, yy, 1, 1, 0, c_white, alpha)
+	if sugary && global.gameplay != 0
+	{
+		if global.key_inv
+			draw_sprite_ext((check_sugary() ? spr_keyinvSP_ss : spr_keyinvSP), 0, 696, 86 + obj_tv.hud_posY, 1, 1, 0, c_white, alpha);
+		else
+			draw_sprite_ext(spr_invSP, 0, 696, 86 + obj_tv.hud_posY, 1, 1, 0, c_white, alpha);
+	}
 }
 
 draw_set_blend_mode(bm_normal);

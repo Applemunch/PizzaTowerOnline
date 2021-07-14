@@ -1,6 +1,7 @@
 // random background
 if room == editor_entrance
 {
+	gmsroom = -1;
 	if instance_exists(obj_gms) && gms_info_isloggedin()
 		gms_chat_toggle(false);
 	

@@ -1,4 +1,6 @@
 image_speed = 0.35
+
+arenalayer = layer
 depth = 0
 
 state = states.idle

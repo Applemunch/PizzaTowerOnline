@@ -74,6 +74,42 @@ function scr_enemy_rage()
 				}
 	        }
 	        break;
+		
+		case obj_minijohn:
+			hsp = movespeed * image_xscale
+	        if sprite_index == spr_minijohn_rage1 && floor(image_index) >= image_number - 1
+	            sprite_index = spr_minijohn_rage2
+			
+	        if grounded && vsp > 0
+	        {
+	            var targetplayer = obj_player1;
+	            movespeed = 4;
+	            image_xscale = -sign(x - targetplayer.x);
+	            state = states.chase;
+	            sprite_index = spr_minijohn_charge;
+	        }
+			break;
+		
+		case obj_thug_red:
+		case obj_thug_blue:
+		case obj_thug_green:
+			if !shot && floor(image_index) == 9
+	        {
+	            shot = true;
+				
+	            with instance_create(x + (8 * image_xscale), y, obj_robotknife)
+				{
+		            image_xscale = other.image_xscale;
+		            hsp = other.image_xscale * 5;
+				}
+	        }
+	        if floor(image_index) >= image_number - 1
+	        {
+	            ragecooldown = 100;
+	            state = states.walk;
+				sprite_index = idlespr
+	        }
+			break;
 	}
 	
 	var railmeet = instance_place(x, y + 1, obj_railparent);

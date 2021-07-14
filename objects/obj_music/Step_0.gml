@@ -62,7 +62,7 @@ if global.musicgame == 0
 	&& !audio_is_playing(_mu_noiseescape) && !audio_is_playing(mu_snickescape)
 	&& !audio_is_playing(mu_gladeescape) && !audio_is_playing(mu_pizzyescape)
 	&& (string_letters(roomname) != "dragonlair" or audio_is_playing(mu_antonlevel))
-	&& global.panic && !obj_pause.pause && !obj_camera.ded
+	&& global.panic && !obj_pause.pause && !obj_camera.ded && !(room == custom_lvl_room && global.disableescapemusic)
 	{
 		audio_stop_sound(global.music)
 		
@@ -176,7 +176,7 @@ else if global.musicgame == 1
 	&& !audio_is_playing(_mu_noiseescape) && !audio_is_playing(mu_snickescape_pc)
 	&& !audio_is_playing(mu_pizzyescape_pc) && !audio_is_playing(mu_pizzatime_pc) // glade escape here
 	&& (string_letters(roomname) != "dragonlair" or audio_is_playing(mu_antonlevel_pc))
-	&& global.panic && !obj_pause.pause && !obj_camera.ded
+	&& global.panic && !obj_pause.pause && !obj_camera.ded && !(room == custom_lvl_room && global.disableescapemusic)
 	{
 		audio_stop_sound(global.music)
 	

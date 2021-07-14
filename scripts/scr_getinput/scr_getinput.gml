@@ -1,37 +1,45 @@
-/// @param skinchoice
+/// @param force
 function scr_getinput()
 {
+	with obj_player1
+		online_busy = false;
+	
 	var cont = global.cont;
 	if ((instance_exists(obj_gms) && global.__chat)
 	or (instance_exists(obj_manual) && obj_manual.visible)
 	or (instance_exists(obj_wc) && (obj_wc.WC_consoleopen or obj_wc.WC_assetfinder > -1))
 	or (instance_exists(obj_choicebase))
-	or (instance_exists(obj_hubelevator) && obj_hubelevator.state == 1))
-	&& !(argument_count > 0 && argument[0] == true)
+	or (instance_exists(obj_hubelevator) && obj_hubelevator.state == 1)
+	or instance_exists(obj_dialoguebox))
 	{
-		key_up = false
-		key_up2 = false
-		key_right = false
-		key_right2 = false
-		key_left = false
-		key_left2 = false
-		key_down = false
-		key_down2 = false
-		key_jump = false
-		key_jump2 = false
-		key_slap = false
-		key_slap2 = false
-		key_taunt = false
-		key_taunt2 =  false
-		key_attack = false
-		key_attack2 = false
-		key_shoot = false
-		key_shoot2 = false
-		key_start = false
-		key_escape = false
+		with obj_player1
+			online_busy = true;
+		if !(argument_count > 0 && argument[0] == true)
+		{
+			key_up = false
+			key_up2 = false
+			key_right = false
+			key_right2 = false
+			key_left = false
+			key_left2 = false
+			key_down = false
+			key_down2 = false
+			key_jump = false
+			key_jump2 = false
+			key_slap = false
+			key_slap2 = false
+			key_taunt = false
+			key_taunt2 =  false
+			key_attack = false
+			key_attack2 = false
+			key_shoot = false
+			key_shoot2 = false
+			key_start = false
+			key_escape = false
 		
-		stickpressed = true;
-		exit;
+			stickpressed = true;
+			exit;
+		}
 	}
 	
 	if !variable_instance_exists(id, "stickpressed")

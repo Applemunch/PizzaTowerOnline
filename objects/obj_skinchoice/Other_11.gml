@@ -17,7 +17,7 @@ if obj_player1.state == states.normal
 	
 		ds_list_copy(palcolors, other.palcolors);
 		custompal_update(palcolors);
-			
+		
 		noisetype = other.noisetype;
 	
 		if character != prev
@@ -29,12 +29,12 @@ if obj_player1.state == states.normal
 					depth = other.depth - 1;
 			}
 				
-			if global.gameplay != 0
+			if global.gameplay != 0 && character != prev
 			{
 				with obj_tv
 				{
 					if sprite_index != spr_tv_open
-						sprite_index = idlespr;
+						tvsprite = idlespr;
 				}
 			}
 		}

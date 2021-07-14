@@ -1,6 +1,6 @@
 /// @description Move the object and check for collisions with walls and solids
-function scr_collide() {
-
+function scr_collide()
+{
 	grounded = false
 
 	// Vertical

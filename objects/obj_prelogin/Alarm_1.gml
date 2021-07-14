@@ -10,7 +10,7 @@ if instance_exists(obj_gms)
 			scr_soundeffect(sfx_enemyprojectile)
 			with obj_roomname
 			{
-				message = "CANNOT CONNECT TO NETWORK";
+				message = lang_string("prelogin.loadfail");
 				showtext = true;
 				alarm[0] = 200;
 			}

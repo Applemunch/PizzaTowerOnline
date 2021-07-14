@@ -19,3 +19,5 @@ if obj_player1.character == "S"
 }
 
 player = 0
+if global.gameplay != 0
+	global.panic = false;

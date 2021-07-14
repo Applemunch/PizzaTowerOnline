@@ -105,7 +105,10 @@ else
 		det = "ETB Tower";
 	
 	else if string_startswith(r, "steamcc")
-		det = "Steamy Cotton Candy";
+		det = "Cotton Town";
+	
+	else if string_startswith(r, "eatery")
+		det = "The Endless Eatery";
 	
 	else if room == editor_entrance
 	{

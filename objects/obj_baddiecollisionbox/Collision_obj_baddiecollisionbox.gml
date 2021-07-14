@@ -9,6 +9,8 @@ if instance_exists(baddieID) && instance_exists(other.baddieID)
 		    if baddieID.state == states.stun && baddieID.thrown
 			{
 				increase_combo();
+				
+				other.baddieID.hsp = baddieID.hsp;
 				instance_destroy(other.baddieID);
 			}
 		}

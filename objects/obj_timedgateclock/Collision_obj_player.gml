@@ -16,7 +16,7 @@ if !(global.timedgate && !replace)
 
 with obj_timedgateclock
 {
-	if sprite_index != spr_button_pressed
+	if sprite_index != spr_button_pressed && sprite_index != spr_button_goingpressed
 		sprite_index = spr_button_goingpressed
 }
 global.timedgatetime = time;

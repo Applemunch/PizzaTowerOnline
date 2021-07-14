@@ -1,47 +1,72 @@
-
-
-image_speed = 0.35
-
-/*
-if  (obj_player1.key_right2 or -obj_player2.key_left2) && selected = 0 && ready = false
+image_speed = 0;
+if !goback
 {
-selected += 1
-	scr_soundeffect(sfx_step)
-}
-
-if (-obj_player1.key_left2 or obj_player2.key_right2) && selected = 1 && ready = false
-{
-selected -= 1
-	scr_soundeffect(sfx_step)
-}
-*/
-
-if (obj_player1.key_jump) && selected = 0 && obj_peppinoselect.sprite_index != spr_peppinoselected
-{
-	ready = true
-	scr_soundeffect(sfx_collecttoppin)
-	obj_peppinoselect.sprite_index = spr_peppinoselected
-	obj_peppinoselect.image_index = 0
-	with obj_player1
+	if y < 94
+		y += 12;
+	else
 	{
-	character = "P"
-	scr_characterspr()
+		image_speed = 0.35;
+		y = 94;
 	}
-	
-	alarm[0] = 100
-}
 
-if  (obj_player1.key_jump) && selected = 1 && obj_noiseselect.sprite_index != spr_noiseselected
-{
-	ready = true
-		scr_soundeffect(sfx_collecttoppin)
-	obj_noiseselect.sprite_index = spr_noiseselected
-	obj_noiseselect.image_index = 0
-	with obj_player1
+	if !ready
 	{
-	character = "N"
-	scr_characterspr()
-	}
+		scr_getinput();
+		if (key_right2 or -key_left2) && selected == 0
+		{
+			selected += 1
+			scr_soundeffect(sfx_step)
+		}
+		else if (-key_left2 or key_right2) && selected == 1
+		{
+			selected -= 1
+			scr_soundeffect(sfx_step)
+		}
 	
-	alarm[0] = 100
-} 
+		if key_jump
+		{
+			if selected == 0
+			{
+				with obj_peppinoselect
+				{
+					depth = 0
+					sprite_index = spr_peppinoselected
+					image_index = 0
+				}
+			
+				with obj_player1
+				{
+					character = "P";
+					scr_characterspr();
+				}
+			}
+			else if selected == 1
+			{
+				with obj_noiseselect
+				{
+					depth = 0
+					sprite_index = spr_noiseselected
+					image_index = 0
+				}
+			
+				with obj_player1
+				{
+					character = "N";
+					scr_characterspr();
+				}
+			}
+			ready = true
+			scr_soundeffect(sfx_collecttoppin)
+	
+			alarm[0] = 100
+		}
+	}
+}
+else
+{
+	image_index = 0;
+	
+	y -= 12;
+	if y < -sprite_height
+		instance_destroy();
+}

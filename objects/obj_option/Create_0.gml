@@ -11,8 +11,6 @@ curf = 0;
 img = 0;
 img2 = 0;
 
-font = font_add_sprite_ext(spr_font, "ABCDEFGHIJKLMNOPQRSTUVWXYZ!.1234567890:", true, 0)
-
 if !check_shaders()
 	global.panicbg = false;
 

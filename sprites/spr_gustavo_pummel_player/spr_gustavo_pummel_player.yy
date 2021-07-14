@@ -1,6 +1,6 @@
 {
   "ConfigValues": {
-    "debug": {"textureGroupId":"{\"name\":\"tg_peppino\",\"path\":\"texturegroups/tg_peppino\"}",},
+    "debug": {"textureGroupId":"{\"name\":\"Default\",\"path\":\"texturegroups/Default\"}",},
   },
   "bboxMode": 0,
   "collisionKind": 1,
@@ -47,7 +47,7 @@
             {"id":"68f4b979-ba11-4904-a6b6-7274a62d8b74","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"da226839-6fe0-4320-a4a6-5edfa1eabb1f","path":"sprites/spr_gustavo_pummel_player/spr_gustavo_pummel_player.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
           ],"resourceVersion":"1.0","resourceType":"KeyframeStore<SpriteFrameKeyframe>",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"modifiers":[],"isCreationTrack":false,"resourceVersion":"1.0","tags":[],"resourceType":"GMSpriteFramesTrack",},
     ],
-    "visibleRange": {"x":0.0,"y":0.0,},
+    "visibleRange": null,
     "lockOrigin": false,
     "showBackdrop": true,
     "showBackdropImage": false,

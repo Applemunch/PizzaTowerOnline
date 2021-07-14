@@ -268,6 +268,8 @@ function scr_player_grab()
 		}
 		else
 		{
+			if move != 0
+				xscale = move
 			swingdingbuffer = 0;
 			sprite_index = spr_swingding;
 			movespeed = 12;
@@ -308,20 +310,23 @@ function scr_player_grab()
 		hsp = 0
 		movespeed = 0
 	}
-		
+	
 	if key_down && !grounded
 	{
 		if character == "SP"
-			sprite_index = spr_playerSP_piledriverstart
+		{
+			scr_soundeffect(sfx_jump);
+			sprite_index = spr_playerSP_piledriverstart;
+		}
 		else
-			sprite_index = spr_piledriver
-
-		vsp = -6
-		state = states.superslam
-		image_index = 0
-		image_speed = 0.35
+			sprite_index = spr_piledriver;
+		
+		vsp = -6;
+		state = states.superslam;
+		image_index = 0;
+		image_speed = 0.35;
 	}
-
+	
 	//Effects
 	var step1 = 4;
 	var step2 = 10;

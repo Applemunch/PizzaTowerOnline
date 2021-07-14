@@ -6,11 +6,13 @@ function scr_enemy_idle()
 		image_index = 0
 	}
 
-	if grounded && sprite_index == scaredspr && scaredbuffer <= 0
+	if (grounded or object_index == obj_ancho) && sprite_index == scaredspr && scaredbuffer <= 0
 	{
 		state = states.walk
 		sprite_index = walkspr
 		
+		if object_index == obj_spitcheese
+			image_xscale = throwdir
 		if object_index == obj_treasureguy
 			state = states.chase
 		if object_index == obj_pickle && attacking

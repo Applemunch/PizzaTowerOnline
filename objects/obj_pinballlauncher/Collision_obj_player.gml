@@ -7,7 +7,7 @@ with other
 		b = 0
 	
 	if b = 1
-	if /*grounded && */state != states.tumble && state != states.knightpep && state != states.knightpepslopes && state != states.gotoplayer && (state != states.bump or grounded)
+	if /*grounded && state != states.tumble && */state != states.knightpep && state != states.knightpepslopes && state != states.gotoplayer && (state != states.bump or grounded)
 	{
 		//scr_soundeffect(sfx_oh, sfx_ohman,sfx_hurt1,sfx_hurt2,sfx_hurt3, sfx_mammamia)
 		state = states.tumble

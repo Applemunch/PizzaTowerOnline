@@ -14,7 +14,7 @@ function scr_wcsave()
 				
 	file_text_writeln(wc_save);
 	file_text_write_real(wc_save, WC_maxconsolebottom);
-					
+	
 	file_text_writeln(wc_save);
 	file_text_write_string(wc_save, ds_list_write(WC_bindkey));
 	file_text_writeln(wc_save);

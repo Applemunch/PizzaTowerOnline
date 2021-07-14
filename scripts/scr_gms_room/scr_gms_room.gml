@@ -14,8 +14,10 @@ function scr_gms_room()
 	}
 	else
 	{
-		if obj_onlinemenu.paging_type == 3
-			return custom_lvl_room + 32 + obj_onlinemenu.level_id;
+		if obj_onlinemenu.gmsroom > -1
+			return obj_onlinemenu.gmsroom;
+		else if obj_onlinemenu.paging_type == 3
+			return global.lastroom + obj_onlinemenu.level_id + 1;
 		else
 			return -obj_onlinemenu.level_id;
 	}

@@ -11,7 +11,7 @@ with instance_place(x, y - 1, obj_player1)
 	        state = states.fireass
 	        vsp = -21
 	        instance_create(x, y + 20, obj_piranneapplewater)
-			if character == "P" or character == "N"
+			if character == "P" or character == "N" or character == "SP"
 				sprite_index = spr_scaredjump1
 			else
 				sprite_index = spr_fireass

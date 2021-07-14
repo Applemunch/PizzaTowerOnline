@@ -81,11 +81,14 @@ function scr_player_normal()
 					
 					if idle >= 150
 					{
-					    if sprite_index != spr_idle1 && sprite_index != spr_idle2 && sprite_index != spr_idle3 && sprite_index != spr_idle4  && sprite_index != spr_idle5  && sprite_index != spr_idle6 && sprite_index != spr_player_idlelook
+					    if sprite_index != spr_idle1 && sprite_index != spr_idle2 && sprite_index != spr_idle3 && sprite_index != spr_idle4  && sprite_index != spr_idle5  && sprite_index != spr_idle6 && sprite_index != spr_player_idlelook && sprite_index != spr_playerSP_keyidle
 					    {
 						    randomise()
 							sprite_index = choose(spr_idle1, spr_idle2, spr_idle3, spr_idle4, spr_idle5, spr_idle6);
 						    image_index = 0
+							
+							if global.key_inv && character == "SP" && irandom_range(1, 100) <= 25 && check_sugary()
+								sprite_index = spr_playerSP_keyidle;
 					    }
 						else if floor(image_index) >= image_number - 1
 						{
@@ -218,7 +221,7 @@ function scr_player_normal()
 	    else
 	    {
 		    sprite_index = spr_shotgunland
-		    if floor(image_index) = image_number - 1
+		    if floor(image_index) >= image_number - 1
 		    {
 			    landAnim = false
 			    sprite_index = spr_shotgunidle
@@ -228,16 +231,20 @@ function scr_player_normal()
 		    }
 	    }
 	}
-	
-	if !landAnim && shotgunAnim && sprite_index != spr_shotgunshoot
-		sprite_index = (move != 0 ? spr_shotgunwalk : spr_shotgunidle);
 
 	//MachSlide End Anim
 	if machslideAnim
 		sprite_index = spr_machslideend
+	else if !landAnim && shotgunAnim && sprite_index != spr_shotgunshoot
+		sprite_index = (move != 0 ? spr_shotgunwalk : spr_shotgunidle);
 	
 	if floor(image_index) >= image_number - 1
 	{
+		if machslideAnim
+		{
+			landAnim = false;
+			machslideAnim = false;
+		}
 		switch sprite_index
 		{
 			case spr_playerV_revolverend:
@@ -245,10 +252,6 @@ function scr_player_normal()
 				break;
 			case spr_shotgunshoot:
 				sprite_index = spr_shotgunidle;
-				break;
-			case spr_machslideend:
-				machslideAnim = false;
-				landAnim = false;
 				break;
 		}
 	}

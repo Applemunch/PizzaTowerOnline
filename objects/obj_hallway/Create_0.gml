@@ -4,3 +4,4 @@ visited = false
 targetRoom = room
 targetDoor = "A"
 old = false
+sameroom = false

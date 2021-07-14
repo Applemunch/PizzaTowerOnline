@@ -16,7 +16,8 @@ with (obj_player1)
 			with obj_camera
 				chargecamera = 0
 			
-			x = other.x
+			doorx = other.x
+			x = doorx;
 
 			sprite_index = spr_downpizzabox
 			image_index = 0
@@ -39,7 +40,7 @@ with (obj_player1)
 			with obj_camera
 				chargecamera = 0
 			
-			x = other.x
+			doorx = other.x
 			y = other.y + 24
 			
 			sprite_index = spr_uppizzabox

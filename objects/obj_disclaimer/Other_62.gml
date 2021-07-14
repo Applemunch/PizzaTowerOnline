@@ -15,7 +15,7 @@ if ds_map_find_value(async_load, "id") == req
 		if ver != version
 		{
 			cancon = false;
-			str = "Outdated version.";
+			str = lang_string("disclaimer.outdated");
 		}
 		else
 		{
@@ -33,6 +33,6 @@ if ds_map_find_value(async_load, "id") == req
 		}
 	}
 	else
-		str = "Status not success, error.\nServers might be unavailable.";
+		str = lang_string("disclaimer.error");
 	event_user(1);
 }

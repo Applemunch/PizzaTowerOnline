@@ -19,7 +19,7 @@ if con == 1
 
 	draw_set_colour(merge_colour(c_red, c_white, 0.25));
 	draw_set_font(global.bigfont);
-	draw_text((960 / 2) + random_range(-1, 1), 100, "DISCLAIMER");
+	draw_text((960 / 2) + random_range(-1, 1), 100, lang_string("disclaimer.title"));
 
 	// actual text
 	draw_set_colour(c_white);
@@ -31,6 +31,6 @@ if con == 1
 	if cancon
 	{
 		draw_set_font(global.font_small);
-		draw_text(960 / 2, 420, "Press ENTER to play");
+		draw_text(960 / 2, 420, lang_string("disclaimer.continue"));
 	}
 }

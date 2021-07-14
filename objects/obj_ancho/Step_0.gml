@@ -47,27 +47,25 @@ if (flash == true && alarm[2] <= 0) {
 
 
 if state != states.grabbed
-depth = 0
+	depth = 0
 
 
 //Scared
 if state != states.charge
-scr_scareenemy()
+	scr_scareenemy()
 
 //Charge sprite
 if sprite_index = spr_chargestart && floor(image_index) = image_number -1
 {
-//Chargehitbox
-if  hitboxcreate = false && (state = states.charge)  
-{
-hitboxcreate = true
-with instance_create(x,y,obj_forkhitbox)
-{
-ID = other.id
-}
-}
-sprite_index = spr_charge
-movespeed = 10
+	//Chargehitbox
+	if  hitboxcreate = false && (state = states.charge)  
+	{
+		hitboxcreate = true
+		with instance_create(x,y,obj_forkhitbox)
+			ID = other.id
+	}
+	sprite_index = spr_charge
+	movespeed = 10
 }
 
 
@@ -78,17 +76,17 @@ var targetplayer = instance_nearest(x,y ,obj_player)
 //Charge
 if x != targetplayer.x && state != states.charge  && y = ystart
 {
-if ((targetplayer.x > x - 200) && (targetplayer.x < x + 200)) && (y <= targetplayer.y+50 && y >= targetplayer.y- 50)
-{
-if (state = states.walk) 
-{
-image_index = 0
-image_xscale = -sign(x - obj_player.x)
+	if ((targetplayer.x > x - 200) && (targetplayer.x < x + 200)) && (y <= targetplayer.y+50 && y >= targetplayer.y- 50)
+	{
+		if (state = states.walk) 
+		{
+			image_index = 0
+			image_xscale = -sign(x - obj_player.x)
 
-state = states.charge
-sprite_index = spr_chargestart
-}
-}
+			state = states.charge
+			sprite_index = spr_chargestart
+		}
+	}
 }
 
 

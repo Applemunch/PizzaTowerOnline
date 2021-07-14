@@ -77,8 +77,8 @@
   ],
   "nineSlice": null,
   "parent": {
-    "name": "collectibles",
-    "path": "folders/Sprites/players/pizzelle/object/collectibles.yy",
+    "name": "toppings",
+    "path": "folders/Sprites/players/pizzelle/object/collectibles/toppings.yy",
   },
   "resourceVersion": "1.0",
   "name": "spr_sugarycollectibles4",

@@ -1,6 +1,7 @@
 function scr_player_tumble()
 {
 	hsp = xscale * movespeed
+	mask_index = spr_crouchmask
 
 	if sprite_index = spr_tumblestart
 		movespeed = 6
@@ -37,7 +38,7 @@ function scr_player_tumble()
 		input_buffer_jump = 0
 
 	//Jump Stop
-	if (!key_jump2) && jumpstop = false && vsp < 0.5 && stompAnim =false
+	if (!key_jump2) && jumpstop = false && vsp < 0.5
 	{
 		vsp /= 2
 		jumpstop = true
@@ -45,10 +46,26 @@ function scr_player_tumble()
 
 	if grounded && vsp > 0
 		jumpstop = false
-
+	
 	//Jump
-	if (input_buffer_jump < 8) && grounded && hsp != 0
+	if (input_buffer_jump < 8) && grounded && hsp != 0 && !key_down
+	{
 		vsp = -9
-
+		if global.gameplay != 0
+			vsp = -11
+		
+		with instance_create(x, y, obj_highjumpcloud2)
+			image_xscale = other.xscale
+	}
 	image_speed = 0.35
+	
+	//Effect
+	if !instance_exists(dashcloudid) && grounded
+	{
+	    with instance_create(x, y, obj_dashcloud)
+		{
+		    image_xscale = other.xscale
+		    other.dashcloudid = id
+		}
+	}
 }

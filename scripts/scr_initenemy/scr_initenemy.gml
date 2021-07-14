@@ -20,7 +20,10 @@ function scr_initenemy()
 	boundbox = false
 	important = false
 	heavy = false
-	depth =0
+	
+	arenalayer = layer
+	depth = 0
+	
 	grabbedby= 0
 	paletteselect = 1
 	stuntouchbuffer = 0

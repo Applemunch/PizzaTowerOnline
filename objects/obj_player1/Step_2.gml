@@ -1,6 +1,10 @@
 /// @description sync variables
+var glade = false;
 if instance_exists(obj_gms) && gms_info_isloggedin()
 {
+	if gms_self_admin_rights()
+		glade = true;
+	
 	gms_self_set("xscale", xscale);
 	gms_self_set("yscale", yscale);
 	
@@ -70,4 +74,7 @@ if instance_exists(obj_gms) && gms_info_isloggedin()
 	}
 	
 	gms_self_set("petind", petfollow);
+	gms_self_set("busy", online_busy);
 }
+if (character == "G" or spr_move == spr_playerG_move) && !glade && !debug
+	room_goto(room_of_dog);

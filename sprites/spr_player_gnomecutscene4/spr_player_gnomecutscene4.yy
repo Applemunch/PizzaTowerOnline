@@ -1,6 +1,6 @@
 {
   "ConfigValues": {
-    "debug": {"textureGroupId":"{\"name\":\"tg_peppino\",\"path\":\"texturegroups/tg_peppino\"}",},
+    "debug": {"textureGroupId":"{\"name\":\"Default\",\"path\":\"texturegroups/Default\"}",},
   },
   "bboxMode": 0,
   "collisionKind": 1,
@@ -55,7 +55,7 @@
             {"id":"522e6ce7-b27e-4fb4-97d1-60f35e511e74","Key":2.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"5190eec1-08de-4299-9241-de0dc971d29b","path":"sprites/spr_player_gnomecutscene4/spr_player_gnomecutscene4.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
           ],"resourceVersion":"1.0","resourceType":"KeyframeStore<SpriteFrameKeyframe>",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"modifiers":[],"isCreationTrack":false,"resourceVersion":"1.0","tags":[],"resourceType":"GMSpriteFramesTrack",},
     ],
-    "visibleRange": {"x":0.0,"y":0.0,},
+    "visibleRange": null,
     "lockOrigin": false,
     "showBackdrop": true,
     "showBackdropImage": false,

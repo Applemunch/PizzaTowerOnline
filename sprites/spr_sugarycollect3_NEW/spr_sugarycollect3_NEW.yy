@@ -114,7 +114,7 @@
   "nineSlice": null,
   "parent": {
     "name": "NEW",
-    "path": "folders/Sprites/players/pizzelle/object/collectibles/NEW.yy",
+    "path": "folders/Sprites/players/pizzelle/object/collectibles/toppings/NEW.yy",
   },
   "resourceVersion": "1.0",
   "name": "spr_sugarycollect3_NEW",

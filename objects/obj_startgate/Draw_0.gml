@@ -21,7 +21,7 @@ if drawing
 {
 	if !readsave
 	{
-		ini_open("saveData.ini");
+		ini_open("saveData" + string(global.saveslot) + ".ini");
 		
 		tamin = ini_read_real("TAmin", string(level), -1);
 		tasec = ini_read_real("TAsec", string(level), -1);

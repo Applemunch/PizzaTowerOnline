@@ -978,7 +978,7 @@ function scr_characterspr()
 				
 				spr_firemouth = spr_snick_firemouthrun;
 				spr_firemouthintro = spr_snick_firemouthstart;
-				spr_firemouthshoot = spr_snick_firemouthrun;
+				spr_firemouthshoot = spr_snick_hurt;
 				spr_firemouthend = spr_snick_stunned;
 				
 				spr_boxxed_intro = spr_boxxedpep_intro;
@@ -1081,7 +1081,7 @@ function scr_characterspr()
 				spr_deathend = spr_player_deathend
 				spr_hurtjump = spr_playerSP_hurt
 				spr_entergate = spr_playerSP_entergate
-				spr_gottreasure = spr_player_gottreasure
+				spr_gottreasure = spr_playerSP_gottreasure
 				spr_bossintro = spr_playerSP_bossintro
 				spr_hurtidle = spr_player_hurtidle
 				spr_hurtwalk = spr_player_hurtwalk
@@ -1184,7 +1184,7 @@ function scr_characterspr()
 				spr_winding = spr_player_winding
 				spr_3hpwalk = spr_playerSP_3hpwalk
 				spr_3hpidle = spr_playerSP_3hpidle
-				spr_panic = spr_player_panic
+				spr_panic = spr_playerSP_panic
 				
 				spr_facestomp = spr_playerSP_machfreefall1
 				spr_freefall = spr_playerSP_machfreefall2
@@ -1222,8 +1222,8 @@ function scr_characterspr()
 				spr_ghostend = spr_player_ghostend
 				spr_ghostdash = spr_playerSP_ghostdash
 				
-				spr_scaredjump1 = spr_player_scaredjump1
-				spr_scaredjump2 = spr_player_scaredjump2
+				spr_scaredjump1 = spr_playerSP_scaredjump1
+				spr_scaredjump2 = spr_playerSP_scaredjump2
 				spr_scaredjump3 = spr_player_scaredjump3
 				
 				spr_parry1 = spr_playerSP_parry1;

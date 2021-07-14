@@ -1,1 +1,1 @@
-global.roommessage = "HELLO!"
+global.roommessage = "FREERUN"

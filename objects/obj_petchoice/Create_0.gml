@@ -11,6 +11,7 @@ selarray = [
 	[spr_petpeic_idle, "PEIC", "MY EHWEHREN THE HEHA HRIDFO SHGJHSJKHDSFJK,,"],
 	[spr_petgrunt_idle, "GRUNT", "Do you ever just need some Madness?"],
 	[spr_petsneck_idle, "SNECK", "Sneck is here for you."],
+	[spr_petmario_idle, "MARIO", "He's 4 parallel universes ahead of you."],
 ];
 spr_idle = selarray[0][0];
 

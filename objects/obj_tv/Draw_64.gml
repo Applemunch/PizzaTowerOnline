@@ -94,10 +94,10 @@ else
 			
 			if sprite_exists(sprite_index)
 			{
-				with obj_player1
+				if sprite_index != spr_tv_placeholder && sprite_index != spr_tv_placeholderSP
 				{
-					if character == "P"
-						pal_swap_set(spr_peppalette, 1, false);
+					with obj_player1
+						pal_swap_set(spr_palette, paletteselect, false);
 				}
 				
 			    draw_sprite_ext(sprite_index, image_index, 833 + collect_x, 107 + collect_y + hud_posY, 1, 1, 0, c_white, alpha)

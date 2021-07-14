@@ -34,7 +34,7 @@ if ds_list_find_index(global.saveroom, id) = -1
 		var pizzacoin = irandom_range(0, 25)
 		if pizzacoin == 5
 			with instance_create(x+16,y+16,obj_pizzacoin)
-				hsp = choose(-2,2)
+				hsp = choose(-2, 2)
 	}
 }
 

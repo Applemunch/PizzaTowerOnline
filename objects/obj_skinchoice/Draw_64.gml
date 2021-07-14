@@ -74,6 +74,15 @@ if sel[0] == -1
 }
 else
 {
-	palname = (sel[0] < array_length(selarray) ? selarray[sel[0]][0] : "PALETTE");
-	paldesc = ((sel[0] < array_length(selarray) && array_length(selarray[sel[0]]) == 2) ? selarray[sel[0]][1] : "loypoll please add details");
+	try
+	{
+		palname = selarray[sel[0]][0];
+		paldesc = selarray[sel[0]][1];
+	}
+	catch (e)
+	{
+		palname = "PALETTE";
+		paldesc = "loypoll please add details";
+		e = "";
+	}
 }

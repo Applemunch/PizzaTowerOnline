@@ -36,7 +36,8 @@ function create_particle(x, y, par)
 			{
 				with instance_create(x, y, obj_baddiegibs)
 				{
-					if object_is_ancestor(bad.object_index, obj_baddie) && bad.sugaryenemy
+					if (object_is_ancestor(bad.object_index, obj_baddie) && bad.sugaryenemy)
+					or (bad.sprite_index == spr_hungrypillar_ss)
 					{
 						sprite_index = spr_baddiegibs_ss;
 						image_index = irandom_range(0, image_number - 1);

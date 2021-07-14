@@ -54,19 +54,19 @@ if instance_exists(ID)
 			//SAGE2019
 			if object_index == obj_snickexe or object_index == obj_snickexg
 			{
-				if obj_player1.instakillmove == true or obj_player1.state == states.handstandjump
+				if obj_player1.instakillmove or obj_player1.state == states.handstandjump or obj_player1.state == states.punch
 				{
 					instance_destroy(other)
 					hitboxcreate = false
 				}
 			}
-
+			
 			if object_index == obj_pickle
 			{
 				if state != states.pizzagoblinthrow
 					instance_destroy(other)
 			}
-
+			
 			if object_index == obj_noisecrusher
 			{
 				if state != states.bounce
@@ -87,6 +87,23 @@ if instance_exists(ID)
 					hitboxcreate = false
 					instance_destroy(other)
 				}
+			}
+			
+			if object_index == obj_thug_red
+			or object_index == obj_thug_blue
+			or object_index == obj_thug_green
+			{
+				if state != states.punch
+				{
+					instance_destroy(other);
+					punchinst = noone;
+				}
+			}
+			
+			if object_index == obj_minijohn
+			{
+				if state != states.rage
+					instance_destroy(other);
 			}
 		}
 	}

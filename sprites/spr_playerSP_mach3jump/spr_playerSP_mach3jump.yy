@@ -47,7 +47,7 @@
     "spriteId": {"name":"spr_playerSP_mach3jump","path":"sprites/spr_playerSP_mach3jump/spr_playerSP_mach3jump.yy",},
     "timeUnits": 1,
     "playback": 1,
-    "playbackSpeed": 0.8,
+    "playbackSpeed": 0.9,
     "playbackSpeedType": 1,
     "autoRecord": true,
     "volume": 1.0,

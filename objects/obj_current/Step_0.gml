@@ -1,4 +1,3 @@
-
 with instance_place(x,y-1,obj_player1)
 {
 	scr_knightbump(true, false);
@@ -21,8 +20,14 @@ with obj_baddie
 		if !(instance_exists(obj_balloonpop)) && grounded
 		with instance_create(x,y,obj_balloonpop)
 		{
-		image_xscale = other.image_xscale
-		sprite_index = spr_watereffect
+			image_xscale = other.image_xscale
+			sprite_index = spr_watereffect
 		}
 	}
+}
+
+with obj_pizzacoin
+{
+	if place_meeting(x, y + 1, other)
+		hsp = 16 * sign(other.image_xscale);
 }

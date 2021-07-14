@@ -15,6 +15,8 @@ obj_player1.targetDoor = "A";
 instance_destroy(obj_otherplayer);
 instance_destroy(obj_skinchoice);
 instance_destroy(obj_hatchoice);
+instance_destroy(obj_fadeout);
+instance_destroy(obj_pausefadeout);
 
 gms_logout();
 scr_soundeffect(sfx_pephurt);

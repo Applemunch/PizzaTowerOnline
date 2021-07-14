@@ -1,0 +1,2 @@
+sameroom = true;
+targetDoor = "A";

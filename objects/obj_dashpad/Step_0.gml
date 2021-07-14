@@ -1,4 +1,4 @@
-if global.panic && turned == false
+if global.panic && !turned
 {
 	image_xscale *= -1
 	turned = true

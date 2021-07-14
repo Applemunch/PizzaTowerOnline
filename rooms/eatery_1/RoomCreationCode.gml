@@ -1,2 +1,2 @@
 
-global.roommessage = "WORK IN PROGRESS"
+global.roommessage = "DINING ROOM"

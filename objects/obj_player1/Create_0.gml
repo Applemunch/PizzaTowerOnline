@@ -330,6 +330,8 @@ doublejump = false
 pogospeedprev = false
  fightballadvantage = false
 coopdelay = 0
+
+supercharge = 0
 supercharged = false
 superchargedeffectid = obj_null
 
@@ -376,7 +378,7 @@ breakdance = 50;
 hooked = false;
 sprgot = -1;
 nickname = "";
-noisetype = global.gameplay;
+noisetype = (global.gameplay == 0 ? 0 : 1);
 noisebombcooldown = 0;
 springsjump = false;
 keydoor = false;
@@ -384,6 +386,7 @@ storedstate = states.normal;
 grabbedby = -1;
 shake = 0;
 drawspr = sprite_index;
+online_busy = false;
 
 // hat
 hatsprite = -1;
@@ -434,3 +437,4 @@ global.mort = false;
 global.gerome = false;
 
 global.stylelock = false;
+suplextrail = 0;

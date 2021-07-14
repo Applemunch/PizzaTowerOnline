@@ -26,7 +26,7 @@ if instance_exists(baddieID) && place_meeting(x,y,obj_player1) && !obj_player1.c
 				var bad = other.baddieID;
 				if state == states.mach3 && sprite_index != spr_mach3hit && (character = "P" or character = "V" or (character == "N" && noisetype == 1))
 				{
-					if fightball = false
+					if !fightball
 						sprite_index = spr_mach3hit
 					image_index = 0
 				}
@@ -36,8 +36,9 @@ if instance_exists(baddieID) && place_meeting(x,y,obj_player1) && !obj_player1.c
 					image_index = 0
 				}
 				if state = states.mach3 or (state == states.freefall && freefallsmash > 10)
-				or state == states.knightpep or state == states.knightpepslopes or movespeed > 12
-					bad.hp = -10;
+				or state == states.knightpep or state == states.knightpepslopes
+				or state == states.superslam or state == states.tumble
+					bad.hp -= 99;
 				
 				if state != states.hurt
 					bad.grabbedby = 1
@@ -45,7 +46,7 @@ if instance_exists(baddieID) && place_meeting(x,y,obj_player1) && !obj_player1.c
 				global.hit += 1
 				if !grounded && state != states.freefall && key_jump2
 				{
-					if state = states.mach2 or (state = states.mach3 && fightball = false)
+					if state = states.mach2 or (state = states.mach3 && !fightball)
 						sprite_index = spr_mach2jump
 					suplexmove = false
 					vsp = -11
@@ -63,6 +64,9 @@ if instance_exists(baddieID) && place_meeting(x,y,obj_player1) && !obj_player1.c
 					}
 					else
 						bad.hitvsp = 8;
+					
+					if state == states.mach3
+						bad.hithsp = hsp;
 					
 					scr_hitthrow(bad, id);
 				}

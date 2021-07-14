@@ -1,3 +1,3 @@
 targetRoom = steamcc_1;
-msg = "STEAMY COTTON CANDY WIP";
+msg = "COTTON TOWN";
 level = "steamcc";

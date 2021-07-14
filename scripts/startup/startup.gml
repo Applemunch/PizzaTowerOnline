@@ -52,6 +52,15 @@ exception_unhandled_handler
 )
 
 // functions
+function lang_string(str)
+{
+	var ret = global.langmap[? str];
+	if is_undefined(ret)
+		ret = str;
+	
+	return ret;
+}
+
 function check_bysync()
 {
 	if instance_exists(obj_gms)
@@ -104,7 +113,7 @@ function offline_travel()
 	// travel
 	audio_stop_all();
 	
-	scr_soundeffect(sfx_collecttoppin);
+	//scr_soundeffect(sfx_collecttoppin);
 	with instance_create(x,y,obj_fadeout)
 	{
 		obj_player1.targetRoom = hub_room1
@@ -219,6 +228,10 @@ function scr_petspr(index)
 		case 8:
 			spr_petidle = spr_petsneck_idle;
 			spr_petrun = spr_petsneck_move;
+			break;
+		case 9:
+			spr_petidle = spr_petmario_idle;
+			spr_petrun = spr_petmario_move;
 			break;
 	}
 }

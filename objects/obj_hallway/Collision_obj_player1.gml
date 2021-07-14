@@ -14,7 +14,7 @@ with other
 			hallway = true
 			hallwaydirection = other.image_xscale;
 			
-			if other.targetRoom == room
+			if other.targetRoom == room && !other.sameroom
 			{
 				hallwaydirection *= -1;
 				xscale *= -1;
@@ -28,9 +28,11 @@ with other
 		}
 		
 		other.visited = true
+		/*
 		if state = states.machslide
 			state = states.normal
-
+		*/
+		
 		scr_soundeffect(sfx_door)
 		instance_create(x,y,obj_fadeout)
 	}

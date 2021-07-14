@@ -180,7 +180,7 @@ if global.combotime <= 0 && global.combo != 0
 {
     global.combotime = 0;
     global.combo = 0;
-    supercharge = false;
+    supercharge = 0;
 }
 if global.heattime <= 0 && global.style > -1 && !global.stylelock
     global.style -= 0.05;
@@ -233,7 +233,8 @@ if global.gameplay != 0
 }
  
 //Supercharge
-if global.combo >= 3 && state != states.backbreaker && character != "S"
+if ((global.combo >= 3 && global.gameplay == 0) or (supercharge == 4 && global.gameplay != 0))
+&& state != states.backbreaker && character != "S"
 {
 	if character != "V"
 		supercharged = true
@@ -612,8 +613,14 @@ if mort
         mort = false;
 }
 
+if state != states.comingoutdoor && c < 255
+{
+	c = 255;
+	image_blend = c_white;
+}
+
 //Too much alarm 1
-if (state = states.mach3 or pizzapepper > 0 or sprite_index = spr_barrelroll or state == states.parry or state = states.rideweenie or (state = states.punch && global.gameplay == 0) or state = states.climbwall or (state = states.jump && sprite_index = spr_playerN_noisebombspinjump) or pogochargeactive = true or (state = states.hookshot) or state = states.mach2 or state = states.tacklecharge or state = states.machslide or state = states.machroll or (state = states.handstandjump && global.gameplay == 0) or (state == states.Sjump && global.gameplay != 0) or (state = states.chainsaw && mach2 >= 100))
+if (state = states.mach3 or pizzapepper > 0 or sprite_index = spr_barrelroll or state == states.parry or state = states.rideweenie or (state = states.punch && global.gameplay == 0) or state = states.climbwall or (state = states.jump && sprite_index = spr_playerN_noisebombspinjump) or pogochargeactive = true or (state = states.hookshot) or state = states.mach2 or state = states.tacklecharge or state = states.machslide or (state = states.machroll && global.gameplay == 0) or (state = states.handstandjump && global.gameplay == 0) or (state == states.Sjump && global.gameplay != 0) or (state = states.chainsaw && mach2 >= 100))
 {
 	if !macheffect
 	{
@@ -638,6 +645,27 @@ if (state = states.mach3 or pizzapepper > 0 or sprite_index = spr_barrelroll or 
 }
 else
 	macheffect = false;
+
+// suplex trail
+if global.gameplay != 0 && !scr_checkskin(checkskin.n_nose)
+{
+	if state == states.handstandjump or state == states.tumble or state == states.machroll
+	{
+		suplextrail -= 1;
+		if suplextrail <= 0
+		{
+			suplextrail = 4;
+			with instance_create(x, y, obj_suplextrail)
+			{
+				sprite_index = other.drawspr;
+				image_index = other.image_index;
+				image_xscale = other.xscale;
+				image_yscale = other.yscale;
+				depth = other.depth + 1;
+			}
+		}
+	}
+}
 
 // Bottomless pits
 if y > room_height + 200 && !cutscene
@@ -698,7 +726,7 @@ else
 
 //SAGE2019
 //Up arrow
-if ((place_meeting(x,y,obj_door) && !place_meeting(x,y,obj_doorblocked)) or place_meeting(x,y,obj_dresser) or place_meeting(x,y,obj_menuphone) or place_meeting(x,y,obj_filedoor) or place_meeting(x,y,obj_snick) or place_meeting(x,y,obj_keydoor) or place_meeting(x, y, obj_door_editor) or place_meeting(x, y, obj_keydoor_editor) or place_meeting(x, y, obj_baddiemenu) or place_meeting(x, y, obj_npcparent) or (place_meeting(x, y, obj_hubelevator) && instance_place(x, y, obj_hubelevator).state == 0) or (place_meeting(x, y, obj_geromedoor) && global.gerome) or (place_meeting(x,y,obj_exitgate) && (global.panic or global.snickchallenge) && character != "S"))
+if ((place_meeting(x,y,obj_door) && !place_meeting(x,y,obj_doorblocked)) or place_meeting(x,y,obj_dresser) or place_meeting(x,y,obj_menuphone) or place_meeting(x,y,obj_filedoor) or place_meeting(x,y,obj_snick) or place_meeting(x,y,obj_keydoor) or place_meeting(x, y, obj_door_editor) or place_meeting(x, y, obj_keydoor_editor) or place_meeting(x, y, obj_baddiemenu) or place_meeting(x, y, obj_npcparent) or place_meeting(x, y, obj_eatery_cashreg) or (place_meeting(x, y, obj_hubelevator) && instance_place(x, y, obj_hubelevator).state == 0) or (place_meeting(x, y, obj_geromedoor) && global.gerome) or (place_meeting(x,y,obj_exitgate) && (global.panic or global.snickchallenge) && character != "S"))
 && scr_solid(x, y + 1) && state == states.normal
 {
 	if !instance_exists(obj_uparrow)
@@ -728,6 +756,7 @@ if instance_exists(obj_gms) && gms_info_isloggedin() && state != states.titlescr
 && !instance_exists(obj_skinchoice) && !instance_exists(obj_hatchoice)
 && !(instance_exists(obj_hubelevator) && obj_hubelevator.state != 0)
 && !(instance_exists(obj_wc) && obj_wc.WC_consoleopen)
+&& !(instance_exists(obj_dialoguebox))
 && (room != editor_entrance or instance_exists(obj_wc))
 {
 	if keyboard_check_pressed(ord("T")) && !global.__chat

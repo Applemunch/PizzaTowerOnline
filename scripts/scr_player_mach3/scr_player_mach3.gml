@@ -1,5 +1,15 @@
 function scr_player_mach3()
 {
+	// hit wall sprite
+	if character == "N"
+	{
+		if noisetype == 0
+			spr_hitwall = spr_playerN_mach3hitwall;
+		if noisetype == 1
+			spr_hitwall = spr_playerN_mach3hitwall_skate;
+	}
+	
+	// character specific
 	if character != "N" or (character == "N" && noisetype == 1)
 	{
 		#region not noise
@@ -34,7 +44,6 @@ function scr_player_mach3()
 		*/
 		#endregion
 	}
-	
 	#region not noise, not vigi & noise
 	if character != "V"
 	{
@@ -96,7 +105,7 @@ function scr_player_mach3()
 			}
 
 			//Sprites
-			if !fightball
+			if !fightball && state == states.mach3
 			{
 				if sprite_index = spr_mach3jump && floor(image_index) == image_number - 1 
 					sprite_index = spr_mach4
@@ -107,12 +116,12 @@ function scr_player_mach3()
 				if sprite_index = spr_mach2jump && grounded && vsp > 0
 					sprite_index = spr_mach4
 
-				if movespeed > 20 && sprite_index != spr_crazyrun 
+				if movespeed > 20 && sprite_index != spr_crazyrun && sprite_index != spr_snick_tumble
 				{
 					flash = true
 					sprite_index = spr_crazyrun
 				}
-				else if movespeed <= 20 && sprite_index = spr_crazyrun
+				else if movespeed <= 20 && sprite_index == spr_crazyrun
 					sprite_index = spr_mach4
 			}
 
@@ -175,8 +184,8 @@ function scr_player_mach3()
 			}
 
 			//Climbwall
-			if (!grounded && place_meeting(x + hsp, y, obj_solid) && !place_meeting(x + hsp, y, obj_destructibles) && !place_meeting(x + hsp, y, obj_metalblock) && !place_meeting(x + sign(hsp), y, obj_slope))
-			or (grounded && place_meeting(x + hsp,y - 32, obj_solid) && !place_meeting(x + hsp, y, obj_destructibles) && !place_meeting(x + hsp, y, obj_metalblock) && place_meeting(x, y + 1, obj_slope))
+			if (!grounded && scr_solidwall(x + hsp, y) && !place_meeting(x + hsp, y, obj_destructibles) && !place_meeting(x + hsp, y, obj_metalblock) && !place_meeting(x + sign(hsp), y, obj_slope))
+			or (grounded && scr_solidwall(x + hsp, y - (global.gameplay == 0 ? 32 : 31)) && !place_meeting(x + hsp, y, obj_destructibles) && !place_meeting(x + hsp, y, obj_metalblock) && scr_slope())
 			{
 				wallspeed = movespeed;
 				if global.gameplay == 0// && character != "SP"
@@ -185,7 +194,7 @@ function scr_player_mach3()
 			}
 			
 			//Bump
-			if (scr_solid(x + xscale, y, false)) && !scr_slope() && (!place_meeting(x + sign(hsp), y, obj_slope) or place_meeting(x + sign(hsp), y, obj_solid)) && !place_meeting(x + sign(hsp), y, obj_metalblock) && !place_meeting(x + sign(hsp), y, obj_destructibles) && (grounded or fightball)
+			if (scr_solidwall(x + xscale, y)) && !scr_slope() && (!place_meeting(x + sign(hsp), y, obj_slope) or place_meeting(x + sign(hsp), y, obj_solid)) && !place_meeting(x + sign(hsp), y, obj_metalblock) && !place_meeting(x + sign(hsp), y, obj_destructibles) && (grounded or fightball)
 			{
 				if !fightball
 				{
@@ -265,12 +274,8 @@ function scr_player_mach3()
 					}
 					fightball = false
 				}
-	
 			}
-    
-
-
-    
+			
 					//Freefall
 			//   if key_down2 && !grounded
 			//   {
@@ -290,93 +295,80 @@ function scr_player_mach3()
 			move = key_right + key_left
 
 			if fightball = false
-			vsp = 0
+				vsp = 0
 
-				//Move slightly
-
+			//Move slightly
 			if key_up  && fightball = false
-			vsp = -3
+				vsp = -3
 
 			if key_down  && fightball = false
-			vsp = 3
-
+				vsp = 3
 
 			if movespeed < 24 && move = xscale
 			{
+				if sprite_index != spr_snick_tumble
+					movespeed += 0.1
+
+				if !(instance_exists(crazyruneffectid)) && grounded
 				{
-
-			movespeed += 0.1
-
+					with instance_create(x,y,obj_crazyruneffect)
+					{
+						playerid = other.object_index	
+						other.crazyruneffectid = id
+					}
+					
+					if sprite_index = spr_crazyrun
+					with instance_create(x,y,obj_dashcloud) 
+					{
+						image_xscale = other.xscale
+						sprite_index = spr_flamecloud
+					}
 				}
+			}
+			else if movespeed > 12 && move != xscale && pizzapepper == 0
+				movespeed -= 0.1
 
-			if !(instance_exists(crazyruneffectid)) && grounded
+			//Pogo
+			if key_attack2 && character = "N"  && fightball = false
 			{
-			with instance_create(x,y,obj_crazyruneffect)
-			{
-				playerid = other.object_index	
-				other.crazyruneffectid = id
-	
+				sprite_index = spr_playerN_pogostart
+				image_index = 0
+				state = states.pogo
+				pogospeed = movespeed
 			}
-			if sprite_index = spr_crazyrun
-			with instance_create(x,y,obj_dashcloud) 
-			{
-				image_xscale = other.xscale
-				sprite_index = spr_flamecloud
-	
-			}
-			}
-
-			}
-			else if movespeed > 12 && move != xscale && pizzapepper = 0
-			movespeed -= 0.1
-
-				//Pogo
-				if key_attack2 && character = "N"  && fightball = false
-				{
-					sprite_index = spr_playerN_pogostart
-					image_index = 0
-					state = states.pogo
-					pogospeed = movespeed
-				}
 			
 			if fightball = false
 			{
-			if movespeed > 20 && sprite_index != spr_crazyrun 
-			{
-
-				flash = true
-			sprite_index = spr_crazyrun
-
+				if movespeed > 20 && sprite_index != spr_crazyrun 
+				{
+					flash = true
+					sprite_index = spr_crazyrun
+				}
+				else if movespeed <= 20 && sprite_index = spr_crazyrun
+					sprite_index = spr_playerN_jetpackboost	
 			}
-			else if movespeed <= 20 && sprite_index = spr_crazyrun
-			sprite_index = spr_playerN_jetpackboost	
-			}
-
-	
-
-	
-				if character = "N"  && key_jump2  && fightball = false
+			
+			if character = "N"  && key_jump2  && fightball = false
 			{
-						scr_soundeffect(sfx_jump)
-					scr_soundeffect(sfx_woosh)
-					jumpstop = false
-			vsp = -15
-			state = states.jump
-			sprite_index = spr_playerN_noisebombspinjump
-			image_index = 0
-			with instance_create(x,y,obj_jumpdust)
-			image_xscale = other.xscale
+				scr_soundeffect(sfx_jump)
+				scr_soundeffect(sfx_woosh)
+				jumpstop = false
+				vsp = -15
+				state = states.jump
+				sprite_index = spr_playerN_noisebombspinjump
+				image_index = 0
+				with instance_create(x,y,obj_jumpdust)
+				image_xscale = other.xscale
 			}
 
 				//Machroll
 			if key_down && fightball = false && !place_meeting(x,y,obj_dashpad) && grounded
 			{
-			with instance_create(x,y,obj_jumpdust)
-			image_xscale = other.xscale
-			flash = false
-			sprite_index = spr_playerN_jetpackslide
-			state = states.machroll
-
+				with instance_create(x,y,obj_jumpdust)
+				image_xscale = other.xscale
+				flash = false
+				sprite_index = spr_playerN_jetpackslide
+				state = states.machroll
 			}
 
 			//Jump Stop
@@ -454,35 +446,29 @@ function scr_player_mach3()
 	{
 		if movespeed < 24 && move = xscale
 		{
+			if character = "P"
+				movespeed += 0.1
+			else
+				movespeed += 0.05
+
+			if !(instance_exists(crazyruneffectid)) && grounded
 			{
-
-		if character = "P"
-		movespeed += 0.1
-		else
-		movespeed += 0.05
-
+				with instance_create(x,y,obj_crazyruneffect)
+				{
+					playerid = other.object_index
+					other.crazyruneffectid = id
+				}
+				
+				if sprite_index == spr_crazyrun
+				with instance_create(x,y,obj_dashcloud) 
+				{
+					image_xscale = other.xscale
+					sprite_index = spr_flamecloud
+				}
 			}
-
-		if !(instance_exists(crazyruneffectid)) && grounded
-		{
-		with instance_create(x,y,obj_crazyruneffect)
-		{
-			playerid = other.object_index
-			other.crazyruneffectid = id
-   
-	
-		}
-		if sprite_index = spr_crazyrun
-		with instance_create(x,y,obj_dashcloud) 
-		{
-			image_xscale = other.xscale
-			sprite_index = spr_flamecloud
-	
-		}
-		}
 		}
 		else if movespeed > 12 && move != xscale && pizzapepper = 0
-		movespeed -= 0.1
+			movespeed -= 0.1
 
 
 
@@ -494,15 +480,12 @@ function scr_player_mach3()
 		//Jump Stop
 		if (!key_jump2) && jumpstop = false && vsp < 0.5 
 		{
-		vsp /= 10
-		jumpstop = true
+			vsp /= 10
+			jumpstop = true
 		}
 
 		if grounded && vsp > 0
-		{
-		jumpstop = false
-		}
-
+			jumpstop = false
 
 		//Jump
 		if (input_buffer_jump < 8) && grounded && !(move == 1 && xscale == -1) && !(move == -1 && xscale == 1)  
@@ -520,29 +503,26 @@ function scr_player_mach3()
 
 
 		//Sprites
-
-		if fightball = false
+		if !fightball && state == states.mach3
 		{
-		if sprite_index = spr_mach3jump && floor(image_index) = image_number-1 
-		{
-		sprite_index = spr_mach4
-		}
+			if sprite_index = spr_mach3jump && floor(image_index) = image_number-1 
+				sprite_index = spr_mach4
 
 			if floor(image_index) = image_number - 1 && (sprite_index = spr_rollgetup or sprite_index = spr_mach3hit)
-		sprite_index = spr_mach4
+				sprite_index = spr_mach4
 
-		if sprite_index = spr_mach2jump && grounded && vsp > 0
-		sprite_index = spr_mach4
+			if sprite_index = spr_mach2jump && grounded && vsp > 0
+				sprite_index = spr_mach4
 
-		if movespeed > 20 && sprite_index != spr_crazyrun 
-		{
+			if movespeed > 20 && sprite_index != spr_crazyrun 
+			{
 
-			flash = true
-		sprite_index = spr_crazyrun
+				flash = true
+				sprite_index = spr_crazyrun
 
-		}
-		else if movespeed <= 20 && sprite_index = spr_crazyrun
-		sprite_index = spr_mach4
+			}
+			else if movespeed <= 20 && sprite_index = spr_crazyrun
+				sprite_index = spr_mach4
 		}
 
 		if sprite_index = spr_crazyrun && !(instance_exists(crazyruneffectid))
@@ -550,8 +530,6 @@ function scr_player_mach3()
 		{
 			playerid = other.object_index	
 			other.crazyruneffectid = id
-  
-	
 		}
 
 
@@ -572,230 +550,142 @@ function scr_player_mach3()
 
 		//Input buffer jumping
 		if key_jump
-		input_buffer_jump = 0
-
-
-
-
+			input_buffer_jump = 0
 
 		//Back to other states
 
     
-				    //Machslide
-			if ((!key_attack && fightball = false) && grounded  ) or (character = "S" && (move = 0 or move != xscale) && grounded) && fightball = false
-			{
-    
-    
+		//Machslide
+		if ((!key_attack && fightball = false) && grounded  ) or (character = "S" && (move = 0 or move != xscale) && grounded) && fightball = false
+		{
 
 			sprite_index = spr_machslidestart
-		scr_soundeffect(sfx_break)
+			scr_soundeffect(sfx_break)
 			state = states.machslide
 			image_index = 0
-
-			}
+		}
 	
-			if move = -xscale && grounded  && fightball = false && vsp >= 0
-				{
-    
+		if move = -xscale && grounded  && fightball = false && vsp >= 0
+		{
 			scr_soundeffect(sfx_machslideboost)
 
 			sprite_index = spr_mach3boost
 
 			state = states.machslide
 			image_index = 0
-
-			}
+		}
     
-			//Machroll
+		//Machroll
 		if key_down && fightball = false && !place_meeting(x,y,obj_dashpad)
 		{
-		with instance_create(x,y,obj_jumpdust)
-		image_xscale = other.xscale
-		flash = false
-		state = states.machroll
-		vsp = 10
+			with instance_create(x,y,obj_jumpdust)
+				image_xscale = other.xscale
+			flash = false
+			state = states.machroll
+			vsp = 10
 		}
 
 
 		//Climbwall
-		if (!grounded && scr_solid(x+hsp,y, false)   && !place_meeting(x+sign(hsp),y,obj_slope) )
-		or (grounded &&  scr_solid(x+hsp,y-32, false)   && place_meeting(x,y+1,obj_slope)  )
+		if (!grounded && scr_solidwall(x + hsp, y) && !place_meeting(x+sign(hsp),y,obj_slope))
+		or (grounded && scr_solidwall(x + hsp, y - (global.gameplay == 0 ? 32 : 0)) && scr_slope())
 		{
 			wallspeed = movespeed
 			if global.gameplay == 0
 				wallspeed = 10
 			state = states.climbwall
 		}
-				//Bump
-
-			if (scr_solid(x+1,y, false) && xscale == 1) && !scr_slope() && (!place_meeting(x+sign(hsp),y,obj_slope) or scr_solid(x+sign(hsp),y, false))  && (grounded or fightball = true)
-			{
-		if fightball = false
-		{
-		sprite_index = spr_hitwall
-		scr_soundeffect(sfx_groundpound)
-		scr_soundeffect(sfx_bumpwall)
-			with (obj_camera) {
-
-			shake_mag=20;
-			shake_mag_acc=40/room_speed;
-		}
-
-		hsp = 0
-		image_speed = 0.35
-
-			with (obj_baddie)
-		{
-		if point_in_camera(x, y, view_camera[0]) {
 		
-		stun = true
-		alarm[0] = 200
-		ministun = false
-		vsp = -5
-		hsp = 0
-		}
-		}
-			flash = false
+		//Bump
+		if scr_solidwall(x + xscale, y) && !scr_slope() && (!place_meeting(x+sign(hsp),y,obj_slope) or scr_solid(x+sign(hsp),y, false)) && (grounded or fightball)
+		{
+			if !fightball
+			{
+				sprite_index = spr_hitwall
+				scr_soundeffect(sfx_groundpound)
+				scr_soundeffect(sfx_bumpwall)
+				
+				with (obj_camera)
+				{
+					shake_mag=20;
+					shake_mag_acc=40/room_speed;
+				}
 
-			state = states.bump
-			hsp = -2.5
-			vsp = -3
-			mach2 = 0
-			image_index = 0
-			instance_create(x+10,y+10,obj_bumpeffect)
+				hsp = 0
+				image_speed = 0.35
 
-		}
-			else if fightball = true
+				with (obj_baddie)
+				{
+					if point_in_camera(x, y, view_camera[0])
+					{
+						stun = true
+						alarm[0] = 200
+						ministun = false
+						vsp = -5
+						hsp = 0
+					}
+				}
+				flash = false
+
+				state = states.bump
+				hsp = 2.5 * -xscale
+				vsp = -3
+				mach2 = 0
+				image_index = 0
+				instance_create(x + 10 * xscale, y + 10, obj_bumpeffect)
+			}
+			else
 			{
 				with obj_player
 				{
 					sprite_index = spr_hitwall
-			scr_soundeffect(sfx_groundpound)
-			scr_soundeffect(sfx_bumpwall)
-				with (obj_camera) {
+					scr_soundeffect(sfx_groundpound)
+					scr_soundeffect(sfx_bumpwall)
+					
+					with (obj_camera)
+					{
+						shake_mag=20;
+						shake_mag_acc=40/room_speed;
+					}
 
-				shake_mag=20;
-				shake_mag_acc=40/room_speed;
-			}
+					hsp = 0
+					image_speed = 0.35
 
-			hsp = 0
-			image_speed = 0.35
+					with (obj_baddie)
+					{
+						if point_in_camera(x, y, view_camera[0])
+						{
+							stun = true
+							alarm[0] = 200
+							ministun = false
+							vsp = -5
+							hsp = 0
+						}
+					}
+					flash = false
 
-				with (obj_baddie)
-			{
-			if point_in_camera(x, y, view_camera[0]) {
-
-			stun = true
-			alarm[0] = 200
-			ministun = false
-			vsp = -5
-			hsp = 0
-			}
-			}
-				flash = false
-
-				state = states.bump
-				hsp = -2.5
-				vsp = -3
-				mach2 = 0
-				image_index = 0
-				instance_create(x+10,y+10,obj_bumpeffect)
+					state = states.bump
+					hsp = 2.5 * -xscale
+					vsp = -3
+					mach2 = 0
+					image_index = 0
+					instance_create(x + 10 * xscale, y + 10, obj_bumpeffect)
 		
 				}
 				fightball = false
-	
 			}
-	
 		}
-			if (scr_solid(x-1,y, false) && xscale == -1) && !scr_slope() && (!place_meeting(x+sign(hsp),y,obj_slope) or scr_solid(x+sign(hsp),y, false))   && (grounded or fightball = true)
-			{
-				if fightball = false
-		{
-		sprite_index = spr_hitwall
-		scr_soundeffect(sfx_groundpound)
-		scr_soundeffect(sfx_bumpwall)
-			with (obj_camera) {
-
-			shake_mag=20;
-			shake_mag_acc=40/room_speed;
-		}
-
-		hsp = 0
-		image_speed = 0.35
-
-				with (obj_baddie)
-			{
-			if point_in_camera(x, y, view_camera[0]) {
-
-			stun = true
-			alarm[0] = 200
-			ministun = false
-			vsp = -5
-			hsp = 0
-			}
-			}
-
-			flash = false
-
-			state = states.bump
-			hsp = 2.5
-			vsp = -3
-			mach2 = 0
-			image_index = 0
-			instance_create(x-10,y+10,obj_bumpeffect)
-		}
-			else if fightball = true
-			{
-				with obj_player
-				{
-					sprite_index = spr_hitwall
-			scr_soundeffect(sfx_groundpound)
-			scr_soundeffect(sfx_bumpwall)
-				with (obj_camera) {
-
-				shake_mag=20;
-				shake_mag_acc=40/room_speed;
-			}
-
-			hsp = 0
-			image_speed = 0.35
-
-				with (obj_baddie)
-			{
-			if point_in_camera(x, y, view_camera[0]) {
-
-			stun = true
-			alarm[0] = 200
-			ministun = false
-			vsp = -5
-			hsp = 0
-			}
-			}
-				flash = false
-
-				state = states.bump
-				hsp = -2.5
-				vsp = -3
-				mach2 = 0
-				image_index = 0
-				instance_create(x+10,y+10,obj_bumpeffect)
-		
-				}
-				fightball = false
-	
-			}
-			}
     
-			//Vigilante revolver
+		//Vigilante revolver
 		if key_slap2 && character = "V"
 		{
-		vsp = -5
-		state = states.revolver	
-		image_index = 0
+			vsp = -5
+			state = states.revolver	
+			image_index = 0
 			sprite_index = spr_playerV_airrevolver
 			image_index = 0
-			instance_create(x+image_xscale*20,y+20,obj_shotgunbullet)
-		scr_soundeffect(sfx_killingblow)
+			instance_create(x+xscale*20,y+20,obj_shotgunbullet)
+			scr_soundeffect(sfx_killingblow)
 		}
 
 		//Vigilante Dynamite
@@ -803,9 +693,9 @@ function scr_player_mach3()
 		{
 			vsp = -5
 
-		state = states.dynamite
-		image_index = 0
-		sprite_index = spr_playerV_dynamitethrow
+			state = states.dynamite
+			image_index = 0
+			sprite_index = spr_playerV_dynamitethrow
 			with instance_create(x,y,obj_dynamite)
 			{
 				image_xscale = other.xscale
@@ -867,7 +757,7 @@ function scr_player_mach3()
 	}
 
 	// animation speeds
-	if sprite_index == spr_mach4 or sprite_index == spr_fightball or sprite_index == spr_mach3jump or sprite_index == spr_mach2jump
+	if sprite_index == spr_mach4 or sprite_index == spr_fightball or sprite_index == spr_mach3jump or sprite_index == spr_mach2jump or sprite_index == spr_snick_tumble
 		image_speed = 0.35
 	if sprite_index == spr_rollgetup
 		image_speed = 0.5

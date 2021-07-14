@@ -20,7 +20,17 @@ function scr_player_handstandjump()
 			movespeed -= 1;
 		
 		if move != xscale && move != 0
+		{
 			state = states.normal
+			if global.gameplay != 0 && !grounded
+			{
+				image_index = 0;
+				sprite_index = spr_suplexcancel;
+				jumpAnim = true;
+				grav = 0.5;
+				state = states.jump;
+			}
+		}
 		
 		if floor(image_index) = image_number -1
 		{
@@ -149,12 +159,12 @@ function scr_player_handstandjump()
 		}
 		
 		//Input jumping
-		if !grounded && (sprite_index == spr_suplexdash or sprite_index == spr_shotgunsuplexdash) 
+		if !grounded && (sprite_index == spr_suplexdash or sprite_index == spr_shotgunsuplexdash)
 		{
 			image_index = 0
 			sprite_index = spr_suplexdashjumpstart	
 		}
-
+		
 		//Input buffer jumping
 		if key_jump && character != "S"
 			input_buffer_jump = 0

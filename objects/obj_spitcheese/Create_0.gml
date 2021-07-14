@@ -33,4 +33,6 @@ boundbox = false
 spr_dead = spr_spitcheese_dead
 important = false
 heavy = false
-depth =0
+depth = 0
+
+throwdir = image_xscale

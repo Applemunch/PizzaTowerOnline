@@ -2,7 +2,7 @@ function scr_collide_destructibles()
 {
 	with obj_player1
 	{
-		if (state == states.jump && sprite_index == spr_playerN_noisebombspinjump) or (state == states.pogo && pogochargeactive)
+		if (state == states.jump && sprite_index == spr_playerN_noisebombspinjump) or (state == states.pogo && pogochargeactive) or (state == states.knightpep && global.gameplay != 0)
 		{
 			with instance_place(x + xscale , y, obj_destructibles) 
 				instance_destroy();
@@ -22,7 +22,7 @@ function scr_collide_destructibles()
 			with instance_place(x, y - 1, obj_destructibles) 
 				instance_destroy();
 		}
-
+		
 		//Destroy Destructibles
 		if (state == states.punch && sprite_index != spr_breakdanceuppercut) or state = states.faceplant or state == states.rideweenie or state = states.tacklecharge or sprite_index = spr_barrelroll or state = states.mach2 or state = states.mach3 or state = states.machroll or state = states.knightpepslopes or state = states.tumble or state = states.hookshot or state == states.crouchslide or (state == states.firemouth && global.gameplay != 0) or (state == states.grab && sprite_index == spr_swingding) or state == states.cheeseball
 		{
@@ -82,7 +82,7 @@ function scr_collide_destructibles()
 					with obj_player1
 					{
 						if place_meeting(x,y + vsp + 2, obj_bigdestructibles)
-						&& freefallsmash <= 10
+						&& (freefallsmash <= 10 or global.gameplay == 0)
 						{
 							if shotgunAnim = false
 								sprite_index = spr_bodyslamland
@@ -134,7 +134,8 @@ function scr_collide_destructibles()
 		}
 		
 		//Roll blocks
-		if state == states.tumble && place_meeting(x + hsp, y, obj_rollblock)
+		if (state == states.tumble or ((state == states.mach2 or state == states.mach3) && sprite_index == spr_snick_tumble))
+		&& place_meeting(x + hsp, y, obj_rollblock)
 		{
 			with instance_place(x + hsp, y, obj_rollblock)
 				instance_destroy();

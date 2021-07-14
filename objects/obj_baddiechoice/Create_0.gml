@@ -33,7 +33,7 @@ selarray = [
 	[obj_sausageman, "SAUSAGE MAN", " "],
 	[obj_weeniesquire, "WEENIE SQUIRE", " "],
 	[obj_gumslime, "GUMSLIME", " "],
-	[obj_burgknight, "BURGKNIGHT", " "]
+	[obj_burgknight, "WHATEVER THIS IS CALLED", " "]
 ];
 spr_idle = -1;
 

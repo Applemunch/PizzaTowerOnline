@@ -54,7 +54,7 @@ WC_drawline = true;
 WC_drawlinetimer = 30;
 
 WC_saveversion = 0;
-WC_togglekey = ord("º");
+WC_togglekey = 220;
 
 WC_consolescroll = 0;
 WC_assetfinder = -1;

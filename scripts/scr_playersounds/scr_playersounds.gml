@@ -12,22 +12,23 @@ function scr_playersounds()
 		
 		// mach1 sound
 		if state == states.mach1 && !audio_is_playing(_sfx_mach1) && grounded
-			mach1snd = audio_play_sound(_sfx_mach1,1,false)
+			mach1snd = audio_play_sound(_sfx_mach1, 1, false)
 		else if (state != states.mach1 or !grounded or move == -xscale)
 		&& audio_is_playing(mach1snd)
 			audio_stop_sound(mach1snd)
 		
 		// mach2 sound
 		if (sprite_index == spr_mach or sprite_index == spr_player_machhit or state == states.climbwall)
-		&& !audio_is_playing(_sfx_mach2)
+		&& !audio_is_playing(_sfx_mach2) && state != states.backbreaker
 			mach2snd = audio_play_sound(_sfx_mach2, 1, false)
-		else if sprite_index != spr_mach && state != states.climbwall && audio_is_playing(mach2snd)
+		else if ((sprite_index != spr_mach && state != states.climbwall) or state == states.backbreaker) && audio_is_playing(mach2snd)
 			audio_stop_sound(mach2snd)
 		
 		// mach3 sound
-		if (state == states.mach3 or sprite_index == spr_mach3boost) && sprite_index != spr_crazyrun && !audio_is_playing(_sfx_mach3)
+		if (state == states.mach3 or sprite_index == spr_mach3boost) && sprite_index != spr_crazyrun
+		&& !audio_is_playing(_sfx_mach3) && state != states.backbreaker
 			mach3snd = audio_play_sound(_sfx_mach3, 1, false)
-		else if ((state != states.mach3 && sprite_index != spr_mach3boost) or sprite_index == spr_crazyrun)
+		else if ((state != states.mach3 && sprite_index != spr_mach3boost) or sprite_index == spr_crazyrun or state == states.backbreaker)
 		&& audio_is_playing(mach3snd)
 			audio_stop_sound(mach3snd)
 		
@@ -39,14 +40,15 @@ function scr_playersounds()
 		
 		// bombpep
 		if (sprite_index == spr_bombpeprun or sprite_index == spr_bombpeprunabouttoexplode) && !audio_is_playing(sfx_bombpep1)
+		 && state != states.backbreaker
 			bombpep1snd = audio_play_sound(sfx_bombpep1, 1, false)
-		else if sprite_index != spr_bombpeprun && sprite_index != spr_bombpeprunabouttoexplode && audio_is_playing(bombpep1snd)
+		else if ((sprite_index != spr_bombpeprun && sprite_index != spr_bombpeprunabouttoexplode) or state == states.backbreaker) && audio_is_playing(bombpep1snd)
 			audio_stop_sound(bombpep1snd)
 		
 		// mach4
-		if sprite_index = spr_crazyrun && !audio_is_playing(_sfx_mach4)
+		if sprite_index = spr_crazyrun && !audio_is_playing(_sfx_mach4) && state != states.backbreaker
 			mach4snd = audio_play_sound(_sfx_mach4, 1, false)
-		else if sprite_index != spr_crazyrun && audio_is_playing(mach4snd)
+		else if (sprite_index != spr_crazyrun or state == states.backbreaker) && audio_is_playing(mach4snd)
 			audio_stop_sound(mach4snd)
 		
 		// sjump prep
@@ -64,7 +66,7 @@ function scr_playersounds()
 		// tumble start
 		if sprite_index == spr_tumblestart && floor(image_index) >= 11 && !audio_is_playing(sfx_tumble2)
 		{
-			tumble2snd =audio_play_sound(sfx_tumble2,1,false)
+			tumble2snd = audio_play_sound(sfx_tumble2,1,false)
 			audio_stop_sound(tumble1snd)
 		}
 		
@@ -73,7 +75,7 @@ function scr_playersounds()
 			tumble3snd = audio_play_sound(_sfx_tumble3, 1, false)
 		
 		// stop tumbling sounds
-		if state != states.tumble &&  (sprite_index != spr_machroll)
+		if state != states.tumble && (sprite_index != spr_machroll or state == states.backbreaker)
 		{
 			audio_stop_sound(tumble1snd)
 			audio_stop_sound(tumble2snd)

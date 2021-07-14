@@ -26,7 +26,8 @@ function loyencode(str)
 /// game specific
 function check_sugary() {
 	return room == hub_roomSP
-	or string_startswith(room_get_name(room), "steamcc_");
+	or string_startswith(room_get_name(room), "steamcc_")
+	or string_startswith(room_get_name(room), "ssmines_");
 }
 
 /// enemy
@@ -45,6 +46,9 @@ function increase_combo()
 		global.combotime = 60;
 		global.heattime = 60;
 		global.style += 5 + global.combo;
+		
+		with obj_player1
+			if supercharge < 10 then supercharge++;
 	}
 	else
 		global.combotime = 60;

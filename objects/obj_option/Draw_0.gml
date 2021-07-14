@@ -20,83 +20,30 @@ if !debug
 }
 
 //Draw Text
-draw_set_font(font)
+draw_set_font(global.bigfont)
 draw_set_halign(fa_center);
 draw_set_color(c_white)
 
 #region option
 if menu == 0
 {
-	if optionselected = 0
-	draw_text_colour(960/2, 100, "FULLSCREEN", c_white, c_white, c_white, c_white, 1)
-	else
-	draw_text_colour(960/2, 100, "FULLSCREEN", c_white, c_white, c_white, c_white, 0.5)
-
-		if optionsaved_fullscreen = 0
-		{
-		draw_text_colour(960/2 - 100, 150, "ON", c_white, c_white, c_white, c_white, 1);
-		}
-		else
-		draw_text_colour(960/2- 100, 150, "ON", c_white, c_white, c_white, c_white, 0.5);
+	draw_text_colour(960/2, 100, lang_string("options.fullscreen"), c_white, c_white, c_white, c_white, (optionselected == 0 ? 1 : 0.5))
+	draw_text_colour(960/2 - 100, 150, lang_string("options.on"), c_white, c_white, c_white, c_white, (optionsaved_fullscreen == 0 ? 1 : 0.5));
+	draw_text_colour(960/2 + 100, 150, lang_string("options.off"), c_white, c_white, c_white, c_white, (optionsaved_fullscreen == 1 ? 1 : 0.5));
 	
-
+	draw_text_colour(960/2, 250, lang_string("options.resolution"), c_white, c_white, c_white, c_white, (optionselected == 1 ? 1 : 0.5))
+	draw_text_colour(960/2 - 180, 300, "480X270", c_white, c_white, c_white, c_white, (optionsaved_resolution == 0 ? 1 : 0.5));
+	draw_text_colour(960/2 , 300, "960X540", c_white, c_white, c_white, c_white, (optionsaved_resolution == 1 ? 1 : 0.5));
+	draw_text_colour(960/2 + 200, 300, "1920X1080", c_white, c_white, c_white, c_white, (optionsaved_resolution == 2 ? 1 : 0.5));
 	
-		if optionsaved_fullscreen = 1
-		{
-		draw_text_colour(960/2 + 100, 150, "OFF", c_white, c_white, c_white, c_white, 1);
-		}
-		else
-		draw_text_colour(960/2 + 100, 150, "OFF", c_white, c_white, c_white, c_white, 0.5);
-	
-
-
-
-	if optionselected = 1
-		draw_text_colour(960/2, 250, "RESOLUTION", c_white, c_white, c_white, c_white, 1)
-	else
-		draw_text_colour(960/2, 250, "RESOLUTION", c_white, c_white, c_white, c_white, 0.5)
-
-
-	if optionsaved_resolution = 0
-	{
-		draw_text_colour(960/2 - 180, 300, "480X270", c_white, c_white, c_white, c_white, 1);
-	}
-	else
-		draw_text_colour(960/2- 180, 300, "480X270", c_white, c_white, c_white, c_white, 0.5);
-	
-
-	if optionsaved_resolution = 1
-	{
-		draw_text_colour(960/2 , 300, "960X540", c_white, c_white, c_white, c_white, 1);
-	}
-	else
-		draw_text_colour(960/2 , 300, "960X540", c_white, c_white, c_white, c_white, 0.5);
-	
-	if optionsaved_resolution = 2
-	{
-		draw_text_colour(960/2 + 200, 300, "1920X1080", c_white, c_white, c_white, c_white, 1);
-	}
-	else
-		draw_text_colour(960/2 + 200, 300, "1920X1080", c_white, c_white, c_white, c_white, 0.5);
-
-
 	// key config
-	if optionselected = 2
-		draw_text_colour(960/2, 375, "KEY CONFIG", c_white, c_white, c_white, c_white, 1)
-	else
-		draw_text_colour(960/2, 375, "KEY CONFIG", c_white, c_white, c_white, c_white, 0.5)
-
+	draw_text_colour(960/2, 375, lang_string("options.keyconfig"), c_white, c_white, c_white, c_white, (optionselected == 2 ? 1 : 0.5))
+	
 	// sound config
-	if optionselected = 3
-		draw_text_colour(960/2, 415, "SOUND CONFIG", c_white, c_white, c_white, c_white, 1)
-	else
-		draw_text_colour(960/2, 415, "SOUND CONFIG", c_white, c_white, c_white, c_white, 0.5)
-
-	// sound config
-	if optionselected = 4
-		draw_text_colour(960/2, 455, "OTHER CONFIG", c_white, c_white, c_white, c_white, 1)
-	else
-		draw_text_colour(960/2, 455, "OTHER CONFIG", c_white, c_white, c_white, c_white, 0.5)
+	draw_text_colour(960/2, 415, lang_string("options.soundconfig"), c_white, c_white, c_white, c_white, (optionselected == 3 ? 1 : 0.5))
+	
+	// other config
+	draw_text_colour(960/2, 455, lang_string("options.otherconfig"), c_white, c_white, c_white, c_white, (optionselected == 4 ? 1 : 0.5))
 }
 #endregion
 #region sound options
@@ -105,8 +52,8 @@ if menu == 1
 	var m1y = 50;
 	var m2y = m1y + 100;
 	
-	draw_text_colour(960/2, m1y, "MASTER VOLUME", c_white, c_white, c_white, c_white, (optionselected == 0 ? 1 : 0.5));
-	draw_text_colour(960/2, m2y, "MUSIC VOLUME", c_white, c_white, c_white, c_white, (optionselected == 1 ? 1 : 0.5));
+	draw_text_colour(960/2, m1y, lang_string("options.sound.master"), c_white, c_white, c_white, c_white, (optionselected == 0 ? 1 : 0.5));
+	draw_text_colour(960/2, m2y, lang_string("options.sound.music"), c_white, c_white, c_white, c_white, (optionselected == 1 ? 1 : 0.5));
 	
 	draw_set_colour(c_gray);
 	draw_rectangle(230, m1y + 56, 730, m1y + 56 + 16, false);
@@ -139,27 +86,16 @@ if menu == 1
 		draw_set_font(global.bigfont);
 	}
 	
-	if optionselected = 2
-		draw_text_colour(960/2, m2y + 125, "MACH SOUND", c_white, c_white, c_white, c_white, 1)
-	else
-		draw_text_colour(960/2, m2y + 125, "MACH SOUND", c_white, c_white, c_white, c_white, 0.5)
-	
-	if global.machsound = 1
-		draw_text_colour(960/2 - 100, m2y + 175, "OLD", c_white, c_white, c_white, c_white, 1);
-	else
-		draw_text_colour(960/2- 100, m2y + 175, "OLD", c_white, c_white, c_white, c_white, 0.5);
-	
-	if global.machsound = 0
-		draw_text_colour(960/2 + 100, m2y + 175, "NEW", c_white, c_white, c_white, c_white, 1);
-	else
-		draw_text_colour(960/2 + 100, m2y + 175, "NEW", c_white, c_white, c_white, c_white, 0.5);
+	draw_text_colour(960/2, m2y + 125, lang_string("options.sound.mach"), c_white, c_white, c_white, c_white, (optionselected == 2 ? 1 : 0.5))
+	draw_text_colour(960/2 - 100, m2y + 175, lang_string("options.sound.machold"), c_white, c_white, c_white, c_white, (global.machsound == 1 ? 1 : 0.5));
+	draw_text_colour(960/2 + 100, m2y + 175, lang_string("options.sound.machnew"), c_white, c_white, c_white, c_white, (global.machsound == 0 ? 1 : 0.5));
 	
 	if global.loaded_pc
 	{
-		draw_text_colour(960/2, m2y + 250, "MUSIC TYPE", c_white, c_white, c_white, c_white, (optionselected == 3 ? 1 : 0.5));
+		draw_text_colour(960/2, m2y + 250, lang_string("options.sound.game"), c_white, c_white, c_white, c_white, (optionselected == 3 ? 1 : 0.5));
 	
-		draw_text_colour(960/2 - 100, m2y + 300, "NORMAL", c_white, c_white, c_white, c_white, (global.musicgame == 0 ? 1 : 0.5));
-		draw_text_colour(960/2 + 100, m2y + 300, "MIDIS", c_white, c_white, c_white, c_white, (global.musicgame == 1 ? 1 : 0.5));
+		draw_text_colour(960/2 - 100, m2y + 300, lang_string("options.sound.normal"), c_white, c_white, c_white, c_white, (global.musicgame == 0 ? 1 : 0.5));
+		draw_text_colour(960/2 + 100, m2y + 300, lang_string("options.sound.castle"), c_white, c_white, c_white, c_white, (global.musicgame == 1 ? 1 : 0.5));
 	}
 }
 #endregion
@@ -182,25 +118,25 @@ if menu == 2
 		+ ((optionselected > 11) * 16)
 	);
 	
-	draw_text_colour(72, 32 + (16 * 0), "Erase Game", c_red, c_red, c_red, c_red, (optionselected == 0 ? 1 : 0.5));
-	draw_text_colour(72, 32 + (16 * 1), "Gameplay Style", c_white, c_white, c_white, c_white, (optionselected == 1 ? 1 : 0.5));
+	draw_text_colour(72, 32 + (16 * 0), lang_string("options.other.erase"), c_red, c_red, c_red, c_red, (optionselected == 0 ? 1 : 0.5));
+	draw_text_colour(72, 32 + (16 * 1), lang_string("options.other.gameplay"), c_white, c_white, c_white, c_white, (optionselected == 1 ? 1 : 0.5));
 	
-	draw_text_colour(72, 32 + (16 * 3), "Escape - Wavy BG", c_white, c_white, c_white, c_white, (optionselected == 2 ? 1 : 0.5));
-	draw_text_colour(72, 32 + (16 * 4), "Escape - Motion Blur", c_white, c_white, c_white, c_white, (optionselected == 3 ? 1 : 0.5));
-	draw_text_colour(72, 32 + (16 * 5), "Escape - Shaky", c_white, c_white, c_white, c_white, (optionselected == 4 ? 1 : 0.5));
-	draw_text_colour(72, 32 + (16 * 6), "Escape - Backgrounds", c_white, c_white, c_white, c_white, (optionselected == 5 ? 1 : 0.5));
+	draw_text_colour(72, 32 + (16 * 3), lang_string("options.other.wavybg"), c_white, c_white, c_white, c_white, (optionselected == 2 ? 1 : 0.5));
+	draw_text_colour(72, 32 + (16 * 4), lang_string("options.other.blur"), c_white, c_white, c_white, c_white, (optionselected == 3 ? 1 : 0.5));
+	draw_text_colour(72, 32 + (16 * 5), lang_string("options.other.shaky"), c_white, c_white, c_white, c_white, (optionselected == 4 ? 1 : 0.5));
+	draw_text_colour(72, 32 + (16 * 6), lang_string("options.other.panicbg"), c_white, c_white, c_white, c_white, (optionselected == 5 ? 1 : 0.5));
 	
-	draw_text_colour(72, 32 + (16 * 8), "Visual - Fancy Afterimages", c_white, c_white, c_white, c_white, (optionselected == 6 ? 1 : 0.5));
-	draw_text_colour(72, 32 + (16 * 9), "Visual - Fancy Debris", c_white, c_white, c_white, c_white, (optionselected == 7 ? 1 : 0.5));
+	draw_text_colour(72, 32 + (16 * 8), lang_string("options.other.afterimage"), c_white, c_white, c_white, c_white, (optionselected == 6 ? 1 : 0.5));
+	draw_text_colour(72, 32 + (16 * 9), lang_string("options.other.demo3"), c_white, c_white, c_white, c_white, (optionselected == 7 ? 1 : 0.5));
 	
-	draw_text_colour(72, 32 + (16 * 11), "Online - Show Names", c_white, c_white, c_white, c_white, (optionselected == 8 ? 1 : 0.5));
-	draw_text_colour(72, 32 + (16 * 12), "Online - Chat Bubbles", c_white, c_white, c_white, c_white, (optionselected == 9 ? 1 : 0.5));
-	draw_text_colour(72, 32 + (16 * 13), "Online - Sync Effects", c_white, c_white, c_white, c_white, (optionselected == 10 ? 1 : 0.5));
-	draw_text_colour(72, 32 + (16 * 14), "Online - Streamer Mode", c_white, c_white, c_white, c_white, (optionselected == 11 ? 1 : 0.5));
-	//draw_text_colour(72, 32 + (16 * 13), "Online - PvP", c_white, c_white, c_white, c_white, (optionselected == 10 ? 1 : 0.5));
+	draw_text_colour(72, 32 + (16 * 11), lang_string("options.other.playernames"), c_white, c_white, c_white, c_white, (optionselected == 8 ? 1 : 0.5));
+	draw_text_colour(72, 32 + (16 * 12), lang_string("options.other.chatbubbles"), c_white, c_white, c_white, c_white, (optionselected == 9 ? 1 : 0.5));
+	draw_text_colour(72, 32 + (16 * 13), lang_string("options.other.synceffects"), c_white, c_white, c_white, c_white, (optionselected == 10 ? 1 : 0.5));
+	draw_text_colour(72, 32 + (16 * 14), lang_string("options.other.fuckoffptd"), c_white, c_white, c_white, c_white, (optionselected == 11 ? 1 : 0.5));
+	//draw_text_colour(72, 32 + (16 * 15), lang_string("options.other.onlinepvp"), c_white, c_white, c_white, c_white, (optionselected == 12 ? 1 : 0.5));
 	
-	draw_text_colour(72, 32 + (16 * 16), "Other - Discord Rich Presence", c_white, c_white, c_white, c_white, (optionselected == 12 ? 1 : 0.5));
-	draw_text_colour(72, 32 + (16 * 17), "Other - FPS Counter", c_white, c_white, c_white, c_white, (optionselected == 13 ? 1 : 0.5));
+	draw_text_colour(72, 32 + (16 * 16), lang_string("options.other.drpc"), c_white, c_white, c_white, c_white, (optionselected == 12 ? 1 : 0.5));
+	draw_text_colour(72, 32 + (16 * 17), lang_string("options.other.fpscount"), c_white, c_white, c_white, c_white, (optionselected == 13 ? 1 : 0.5));
 	
 	switch optionselected
 	{
@@ -210,11 +146,11 @@ if menu == 2
 			draw_set_colour(c_white);
 			draw_set_font(global.bigfont);
 			draw_set_halign(fa_center);
-			draw_text(640 + random_range(-1, 1), 64, "ERASE GAME");
+			draw_text(640 + random_range(-1, 1), 64, string_upper(lang_string("options.other.erase")));
 			
 			draw_set_font(global.font_small);
 			draw_set_colour(c_ltgray);
-			draw_text(640, 96, "All your progress, gone.");
+			draw_text(640, 96, lang_string("options.other.erase.desc"));
 			
 			pal_swap_set(spr_peppalette, 1, false);
 			draw_sprite_ext(spr_pepinoHUDhurt, img * .35, 640, 320, -2, 2, 0, c_white, 1)
@@ -228,18 +164,18 @@ if menu == 2
 			draw_set_colour(c_white);
 			draw_set_font(global.bigfont);
 			draw_set_halign(fa_center);
-			draw_text(640 + random_range(-1, 1), 64, "GAMEPLAY STYLE");
+			draw_text(640 + random_range(-1, 1), 64, string_upper(lang_string("options.other.gameplay")));
 			
 			draw_set_font(global.smallfont);
 			
 			var sagecol = (global.gameplay == 0 ? merge_colour(c_lime, c_white, 0.5) : c_white);
 			var finalcol = (global.gameplay == 1 ? merge_colour(c_lime, c_white, 0.5) : c_white);
-			draw_text_colour(640 - 50, 100, "OLD", sagecol, sagecol, sagecol, sagecol, (global.gameplay == 0 ? 1 : 0.5));
-			draw_text_colour(640 + 50, 100, "FINAL", finalcol, finalcol, finalcol, finalcol, (global.gameplay == 1 ? 1 : 0.5));
+			draw_text_colour(640 - 50, 100, lang_string("options.other.gameplay.old"), sagecol, sagecol, sagecol, sagecol, (global.gameplay == 0 ? 1 : 0.5));
+			draw_text_colour(640 + 50, 100, lang_string("options.other.gameplay.final"), finalcol, finalcol, finalcol, finalcol, (global.gameplay == 1 ? 1 : 0.5));
 			
 			draw_set_font(global.font_small);
 			draw_set_colour(c_ltgray);
-			draw_text(640, 128, "The game changed a lot almost last minute.\nSome people prefer the old gameplay.");
+			draw_text(640, 128, lang_string("options.other.gameplay.desc"));
 			
 			pal_swap_set(spr_peppalette, 1, false);
 			if global.gameplay == 0
@@ -257,11 +193,11 @@ if menu == 2
 			draw_set_colour(global.panicbg ? merge_colour(c_lime, c_white, 0.5) : c_white);
 			draw_set_font(global.bigfont);
 			draw_set_halign(fa_center);
-			draw_text(640 + random_range(-1, 1), 64, "WAVY BACKGROUND");
+			draw_text(640 + random_range(-1, 1), 64, lang_string("options.other.wavybg.title"));
 			
 			draw_set_font(global.font_small);
 			draw_set_colour(check_shaders() ? c_ltgray : merge_colour(c_red, c_white, 0.5));
-			draw_text(640, 96, (check_shaders() ? "When it's pizza time, the background distorts intensly." : "shit graphics mode on. This option is locked."));
+			draw_text(640, 96, (check_shaders() ? lang_string("options.other.wavybg.desc") : lang_string("options.other.wavybg.locked")));
 			
 			if check_shaders() && (global.panicbg or trans > 0.1) && shader_is_compiled(shd_panicbg)
 			{
@@ -307,7 +243,7 @@ if menu == 2
 					draw_set_colour(c_white);
 					draw_set_halign(fa_center);
 					draw_set_halign(fa_middle);
-					draw_text_transformed(400 + (1000 / 2), 200 + (540 / 2), "Shaders not compiled.\nPlease restart the game.", 2, 2, -0.5);
+					draw_text_transformed(400 + (1000 / 2), 200 + (540 / 2), lang_string("options.other.wavybg.shaderfail"), 2, 2, -0.5);
 					
 					draw_set_halign(fa_top);
 					draw_sprite_ext(bg_desert, img * 0.25, 400, 200, 0.5, 0.5, -0.5, c_black, 0.5);
@@ -322,14 +258,14 @@ if menu == 2
 			draw_set_colour(global.panicmelt ? merge_colour(c_lime, c_white, 0.5) : c_white);
 			draw_set_font(global.bigfont);
 			draw_set_halign(fa_center);
-			draw_text(640 + random_range(-1, 1), 64, "MOTION BLUR");
+			draw_text(640 + random_range(-1, 1), 64, lang_string("options.other.blur.title"));
 			
 			draw_set_font(global.font_small);
 			draw_set_colour(c_ltgray);
-			draw_text(640, 96, "When it's pizza time, the whole screen has motion blur.");
+			draw_text(640, 96, lang_string("options.other.blur.desc"));
 			
 			// player
-			if !variable_instance_exists(id, "movespeed") or keyboard_check_pressed(ord("R"))
+			if !variable_instance_exists(id, "movespeed") or (keyboard_check_pressed(ord("R")) && debug)
 			{
 				state = 0;
 				movespeed = 0;
@@ -413,11 +349,11 @@ if menu == 2
 			draw_set_colour(global.panicshake ? merge_colour(c_lime, c_white, 0.5) : c_white);
 			draw_set_font(global.bigfont);
 			draw_set_halign(fa_center);
-			draw_text(640 + random_range(-1, 1), 64, "ESCAPE SHAKE");
+			draw_text(640 + random_range(-1, 1), 64, lang_string("options.other.shaky.title"));
 			
 			draw_set_font(global.font_small);
 			draw_set_colour(c_ltgray);
-			draw_text(640, 96, "When it's pizza time, the screen shakes.");
+			draw_text(640, 96, lang_string("options.other.shaky.desc"));
 			
 			// player
 			var spr = spr_player_idle;
@@ -475,11 +411,11 @@ if menu == 2
 			draw_set_colour(global.panicnightmare ? merge_colour(c_lime, c_white, 0.5) : c_white);
 			draw_set_font(global.bigfont);
 			draw_set_halign(fa_center);
-			draw_text(640 + random_range(-1, 1), 64, "ESCAPE BACKGROUND");
+			draw_text(640 + random_range(-1, 1), 64, lang_string("options.other.panicbg.title"));
 			
 			draw_set_font(global.font_small);
 			draw_set_colour(c_ltgray);
-			draw_text(640, 96, "When it's pizza time, the background can change.");
+			draw_text(640, 96, lang_string("options.other.panicbg.desc"));
 			
 			draw_sprite_ext(bg_factory3, 0, 400 + 5, 200 + 5, 0.5, 0.5, -0.5, c_black, 0.25);
 			draw_sprite_ext(global.panicnightmare ? bg_factory3escape : bg_factory3, img * 0.25, 400, 200, 0.5, 0.5, -0.5, c_white, 1);
@@ -499,11 +435,11 @@ if menu == 2
 			draw_set_colour(global.surfacemach ? merge_colour(c_lime, c_white, 0.5) : c_white);
 			draw_set_font(global.bigfont);
 			draw_set_halign(fa_center);
-			draw_text(640 + random_range(-1, 1), 64, "FANCY AFTERIMAGES");
+			draw_text(640 + random_range(-1, 1), 64, lang_string("options.other.afterimage.title"));
 			
 			draw_set_font(global.font_small);
 			draw_set_colour(c_ltgray);
-			draw_text(640, 96, "Applies the current palette to the afterimages.\nResource intensive.");
+			draw_text(640, 96, lang_string("options.other.afterimage.desc"));
 			
 			spr = spr_player_mach;
 			alm--;
@@ -541,11 +477,11 @@ if menu == 2
 			draw_set_colour(global.secretdebris ? merge_colour(c_lime, c_white, 0.5) : c_white);
 			draw_set_font(global.bigfont);
 			draw_set_halign(fa_center);
-			draw_text(640 + random_range(-1, 1), 64, "FANCY DEBRIS");
+			draw_text(640 + random_range(-1, 1), 64, lang_string("options.other.demo3.title"));
 			
 			draw_set_font(global.font_small);
 			draw_set_colour(c_ltgray);
-			draw_text(640, 96, "Secret debris will have their respective tiles.");
+			draw_text(640, 96, lang_string("options.other.demo3.desc"));
 			
 			if global.secretdebris
 			{
@@ -579,7 +515,7 @@ if menu == 2
 				draw_sprite(tspr, 32, 32, -32);
 				draw_sprite(tspr, 32, -32, 32);
 				gpu_set_blendmode(bm_normal);
-
+				
 				surface_reset_target();
 				draw_surface_ext(surf, 660 - sprite_get_xoffset(spr) * 2, 280 - sprite_get_yoffset(spr) * 2, 2, 2, 0, c_white, 1);
 			}
@@ -598,11 +534,11 @@ if menu == 2
 			draw_set_colour(global.shownames ? merge_colour(c_lime, c_white, 0.5) : c_white);
 			draw_set_font(global.bigfont);
 			draw_set_halign(fa_center);
-			draw_text(640 + random_range(-1, 1), 64, "SHOW NAMES");
+			draw_text(640 + random_range(-1, 1), 64, lang_string("options.other.playernames.title"));
 			
 			draw_set_font(global.font_small);
 			draw_set_colour(c_ltgray);
-			draw_text(640, 96, "Show other people's usernames in gameplay.");
+			draw_text(640, 96, lang_string("options.other.playernames.desc"));
 			
 			pal_swap_set(spr_peppalette, 1, false);
 			draw_sprite_ext(spr_player_idle, img * .35, 640, 320, 2, 2, 0, c_white, 1)
@@ -614,7 +550,7 @@ if menu == 2
 			draw_set_colour(c_owner);
 			
 			if global.shownames
-				draw_text_transformed(640, sprite_get_bbox_top(spr_player_idle) + 320 - 120, "Player" + string(floor(current_year / 1000) * 1000), 2, 2, 0);
+				draw_text_transformed(640, sprite_get_bbox_top(spr_player_idle) + 320 - 120, lang_string("options.other.playernames.example") + string(floor(current_year / 1000) * 1000), 2, 2, 0);
 			break;
 		
 		#endregion
@@ -624,11 +560,11 @@ if menu == 2
 			draw_set_colour(global.chatbubbles ? merge_colour(c_lime, c_white, 0.5) : c_white);
 			draw_set_font(global.bigfont);
 			draw_set_halign(fa_center);
-			draw_text(640 + random_range(-1, 1), 64, "CHAT BUBBLES");
+			draw_text(640 + random_range(-1, 1), 64, lang_string("options.other.chatbubbles.title"));
 			
 			draw_set_font(global.font_small);
 			draw_set_colour(c_ltgray);
-			draw_text(640, 96, "Conveniently show other people's last message.");
+			draw_text(640, 96, lang_string("options.other.chatbubbles.desc"));
 			
 			pal_swap_set(spr_peppalette, 1, false);
 			draw_sprite_ext(spr_player_idle, img * .35, 640, 320, 2, 2, 0, c_white, 1)
@@ -640,7 +576,7 @@ if menu == 2
 			draw_set_colour(c_owner);
 			
 			if global.shownames
-				draw_text_transformed(640, sprite_get_bbox_top(spr_player_idle) + 320 - 120, "Player" + string(floor(current_year / 1000) * 1000), 2, 2, 0);
+				draw_text_transformed(640, sprite_get_bbox_top(spr_player_idle) + 320 - 120, lang_string("options.other.playernames.example") + string(floor(current_year / 1000) * 1000), 2, 2, 0);
 			
 			if global.chatbubbles
 			{
@@ -648,7 +584,7 @@ if menu == 2
 				draw_set_halign(fa_center);
 				draw_set_valign(fa_top);
 				
-				var message = "Pico Comedy";
+				var message = lang_string("options.other.chatbubbles.example");
 				
 		        _w = max(0.01, min(string_width(message), room_width / 4));
 		        _w = string_width_ext((message), -1, _w);
@@ -674,11 +610,11 @@ if menu == 2
 			draw_set_colour(global.pvp ? merge_colour(c_lime, c_white, 0.5) : c_white);
 			draw_set_font(global.bigfont);
 			draw_set_halign(fa_center);
-			draw_text(640 + random_range(-1, 1), 64, "PVP");
+			draw_text(640 + random_range(-1, 1), 64, lang_string("options.other.onlinepvp.title"));
 			
 			draw_set_font(global.font_small);
 			draw_set_colour(c_ltgray);
-			draw_text(640, 96, "Attack other players. The other player will need PVP enabled.");
+			draw_text(640, 96, lang_string("options.other.onlinepvp.desc"));
 			
 			pal_swap_set(spr_peppalette, 1, false);
 			draw_sprite_ext(spr_player_idle, img * .35, 640, 320, 2, 2, 0, c_white, 1)
@@ -695,11 +631,11 @@ if menu == 2
 			draw_set_colour(global.synceffect ? merge_colour(c_lime, c_white, 0.5) : c_white);
 			draw_set_font(global.bigfont);
 			draw_set_halign(fa_center);
-			draw_text(640 + random_range(-1, 1), 64, "SYNC EFFECTS");
+			draw_text(640 + random_range(-1, 1), 64, lang_string("options.other.synceffects.title"));
 			
 			draw_set_font(global.font_small);
 			draw_set_colour(c_ltgray);
-			draw_text(640, 96, "In online mode, sync effects like afterimages or taunt.");
+			draw_text(640, 96, lang_string("options.other.synceffects.desc"));
 			
 			if global.synceffect
 				draw_sprite_ext(spr_taunteffect, 10, 640, 320, 2, 2, 0, c_white, 1);
@@ -713,7 +649,7 @@ if menu == 2
 			draw_set_colour(c_owner);
 			
 			if global.shownames
-				draw_text_transformed(640, sprite_get_bbox_top(spr_player_taunt) + 320 - 120, "Player" + string(floor(current_year / 1000) * 1000), 2, 2, 0);
+				draw_text_transformed(640, sprite_get_bbox_top(spr_player_taunt) + 320 - 120, lang_string("options.other.playernames.example") + string(floor(current_year / 1000) * 1000), 2, 2, 0);
 			break;
 		
 		#endregion
@@ -723,11 +659,11 @@ if menu == 2
 			draw_set_colour(global.streamer ? merge_colour(c_lime, c_white, 0.5) : c_white);
 			draw_set_font(global.bigfont);
 			draw_set_halign(fa_center);
-			draw_text(640 + random_range(-1, 1), 64, "STREAMER MODE");
+			draw_text(640 + random_range(-1, 1), 64, lang_string("options.other.fuckoffptd.title"));
 			
 			draw_set_font(global.font_small);
 			draw_set_colour(c_ltgray);
-			draw_text(640, 96, "Should replace most appearances of player names with boring player IDs.");
+			draw_text(640, 96, lang_string("options.other.fuckoffptd.desc"));
 			
 			pal_swap_set(spr_peppalette, 1, false);
 			draw_sprite_ext(spr_player_idle, img * 0.35, 640, 320, 2, 2, 0, c_white, 1);
@@ -738,9 +674,11 @@ if menu == 2
 			draw_set_valign(fa_top);
 			draw_set_colour(c_owner);
 			
-			var name = "COOLSKELETON95";
-			if global.streamer
-				name = "Player2";
+			var name;
+			if !global.streamer
+				name = lang_string("options.other.fuckoffptd.example1");
+			else
+				name = lang_string("options.other.fuckoffptd.example2");
 			
 			draw_text_transformed(640, sprite_get_bbox_top(spr_player_idle) + 320 - 120, name, 2, 2, 0);
 			break;
@@ -752,11 +690,11 @@ if menu == 2
 			draw_set_colour(global.richpresence ? merge_colour(c_lime, c_white, 0.5) : c_white);
 			draw_set_font(global.bigfont);
 			draw_set_halign(fa_center);
-			draw_text(640 + random_range(-1, 1), 64, "RICH PRESENCE");
+			draw_text(640 + random_range(-1, 1), 64, lang_string("options.other.drpc.title"));
 			
 			draw_set_font(global.font_small);
 			draw_set_colour(c_ltgray);
-			draw_text(640, 96, "Show some fancy stuff in your Discord status.");
+			draw_text(640, 96, lang_string("options.other.drpc.desc"));
 			
 			draw_set_colour($E66054);
 			draw_set_alpha(0.25);
@@ -775,14 +713,14 @@ if menu == 2
 				draw_set_font(font1);
 				draw_text(600, 240, "Pizza Tower ONLINE");
 				draw_set_font(fnt_gms_small);
-				draw_text(600, 260, "In the titlescreen");
+				draw_text(600, 260, lang_string("options.other.drpc.example1"));
 			}
 			else
 			{
 				draw_set_colour(c_white);
 				draw_set_halign(fa_left);
 				draw_set_font(font0);
-				draw_text_transformed(560, 240, "boring shit", 2, 2, 0);
+				draw_text_transformed(560, 240, lang_string("options.other.drpc.example2"), 2, 2, 0);
 			}
 			break;
 		
@@ -793,11 +731,11 @@ if menu == 2
 			draw_set_colour(global.showfps ? merge_colour(c_lime, c_white, 0.5) : c_white);
 			draw_set_font(global.bigfont);
 			draw_set_halign(fa_center);
-			draw_text(640 + random_range(-1, 1), 64, "FPS COUNTER");
+			draw_text(640 + random_range(-1, 1), 64, lang_string("options.other.fpscount.title"));
 			
 			draw_set_font(global.font_small);
 			draw_set_colour(c_ltgray);
-			draw_text(640, 96, "A simple FPS counter at the bottom right of the screen.");
+			draw_text(640, 96, lang_string("options.other.fpscount.desc"));
 			
 			break;
 		

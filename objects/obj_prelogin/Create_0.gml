@@ -10,3 +10,4 @@ if !debug
 	instance_destroy(obj_wc);
 
 tryconnect = 0;
+alpha = 0;

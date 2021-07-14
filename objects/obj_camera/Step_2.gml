@@ -8,7 +8,7 @@ if healthshaketime > 0
 	healthshake = random_range(-2,2)
 }
 if healthshaketime <= 0
-	healthshake = 0					  
+	healthshake = 0
 
 if healthold != global.playerhealth
 {
@@ -83,6 +83,13 @@ else
 
 ///snap view to the section of the room that the player's in
 
+// hitlag shake
+if instance_exists(player) && player.state == states.hitlag
+{
+	shake_mag = 3;
+	shake_mag_acc = 0.5;
+}
+
 //calculate the shake magnitude here
 if shake_mag > 0
     shake_mag = max(shake_mag - shake_mag_acc, 0);
@@ -146,8 +153,8 @@ if instance_exists(player) && player.state != states.timesup && player.state != 
 			{
 				chargecamera -= ch * 2;
 				if global.gameplay != 0 && player.state == states.machslide
-					chargecamera -= ch * 4;
-			
+					chargecamera -= ch * 6;
+				
 				if sign(chargecamera) != ch
 					chargecamera = 0;
 			}

@@ -15,8 +15,8 @@ function scr_player_comingoutdoor()
 	if character != "S"
 	{
 		if c < 255
-		c += 5
-
+			c += 5
+		
 		image_blend = make_colour_hsv(0,0,c);
 	}
 	else

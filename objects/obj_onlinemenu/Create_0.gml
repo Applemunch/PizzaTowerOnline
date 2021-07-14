@@ -93,9 +93,15 @@ level_userid = undefined;
 level_author = undefined;
 level_created = undefined;
 
+// login status
 if !variable_global_exists("auth")
 	global.auth = "";
+userid = -1;
 
+// level verification
+gmsroom = -1;
+
+// other shit
 obj_player1.state = states.titlescreen;
 
 global.pizzacoinstart = global.pizzacoin;

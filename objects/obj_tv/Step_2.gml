@@ -1,3 +1,31 @@
+// Transformation prompts
+if room != Realtitlescreen && global.gameplay != 0
+{
+	if !ds_exists(special_prompts, ds_type_map)
+	or special_prompts == noone
+	{
+	    special_prompts = ds_map_create();
+	
+	    ini_open("saveData.ini");
+	    ds_map_set(special_prompts, "knight", ini_read_real("Prompts", "knight", 0));
+	    ds_map_set(special_prompts, "boxxedpep", ini_read_real("Prompts", "boxxedpep", 0));
+	    ds_map_set(special_prompts, "mort", ini_read_real("Prompts", "mort", 0));
+	    ds_map_set(special_prompts, "squished", ini_read_real("Prompts", "squished", 0));
+	    ds_map_set(special_prompts, "skateboard", ini_read_real("Prompts", "skateboard", 0));
+	    ds_map_set(special_prompts, "cheeseball", ini_read_real("Prompts", "cheeseball", 0));
+	    ds_map_set(special_prompts, "shotgun", ini_read_real("Prompts", "shotgun", 0));
+	    ds_map_set(special_prompts, "ghost", ini_read_real("Prompts", "ghost", 0));
+	    ds_map_set(special_prompts, "firemouth", ini_read_real("Prompts", "firemouth", 0));
+	    ds_map_set(special_prompts, "fireass", ini_read_real("Prompts", "fireass", 0));
+	    ds_map_set(special_prompts, "bombpep", ini_read_real("Prompts", "bombpep", 0));
+	    ds_map_set(special_prompts, "rocket", ini_read_real("Prompts", "rocket", 0));
+	    ini_close();
+	}
+}
+else
+	special_prompts = noone;
+
+// tv visibility
 if room == rank_room or room == timesuproom or room == boss_room1 or room == Oldtitlescreen or room == characterselect or room == editor_entrance
 or (instance_exists(obj_gms) && global.__chat)
 {
@@ -13,6 +41,7 @@ or (instance_exists(obj_gms) && global.__chat)
 else
 	visible = true
 
+// check if sugary tv
 with obj_player1
 	other.sugary = (character == "SP");
 

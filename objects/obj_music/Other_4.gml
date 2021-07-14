@@ -25,7 +25,7 @@ if scr_checkskin(checkskin.p_anton) && global.loaded_anton
 {
 	if !global.panic && !global.snickchallenge
 	{
-		if string_pos("secret", roomname) != 0
+		if string_contains(roomname, "secret")
 			musplay = mu_antonsecret;
 		else if room == hub_outside3b2
 			musplay = mu_antonpunchball;
@@ -69,6 +69,11 @@ else if !global.panic && !global.snickchallenge
 		{
 			fadeoff = 0
 			musplay = mu_mall
+		}
+		else if room == hub_roomE3
+		{
+			fadeoff = 0
+			musplay = mu_null
 		}
 		else
 		{
@@ -191,6 +196,8 @@ else if !global.panic && !global.snickchallenge
 	
 	if string_letters(roomname) == "steamcc"
 		musplay = mu_steamcc
+	if string_letters(roomname) == "ssmines"
+		musplay = mu_ssmines
 	
 	if string_startswith(roomname, "golf_room")
 	{

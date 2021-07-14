@@ -1,3 +1,4 @@
+/// @description show fps
 if global.showfps
 {
 	draw_set_font(global.font_small);

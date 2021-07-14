@@ -22,7 +22,7 @@ function scr_player_barrel()
 	if scr_solidwall(x+hsp,y) && sprite_index == spr_barrelroll
 	&& !place_meeting(x+hsp,y,obj_barrelblock) && !place_meeting(x+hsp,y,obj_destructibles)
 	{
-		if !scr_slope()
+		if !place_meeting(x, y + 2, obj_slope)
 		{
 			image_index = 0;
 			state = states.bump

@@ -31,8 +31,8 @@
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "adventureisland",
-    "path": "folders/Objects/level_structure/adventureisland.yy",
+    "name": "block",
+    "path": "folders/Objects/level_structure/block.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_barrelblock",

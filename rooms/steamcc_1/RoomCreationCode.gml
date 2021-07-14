@@ -1,1 +1,1 @@
-global.roommessage = "COTTON SHIP";
+global.roommessage = "COTTON TOWN";

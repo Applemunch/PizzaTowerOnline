@@ -1,1 +1,1 @@
-boulderID = obj_null
+boulderID = noone

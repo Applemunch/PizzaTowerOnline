@@ -18,6 +18,7 @@ with obj_player1
 	character = "P";
 	paletteselect = 1;
 	petfollow = -1;
+	noisetype = (global.gameplay == 0 ? 0 : 1);
 	scr_characterspr();
 }
 

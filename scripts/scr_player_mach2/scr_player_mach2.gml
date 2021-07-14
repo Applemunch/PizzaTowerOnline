@@ -136,12 +136,12 @@ function scr_player_mach2()
 		vsp = 10
 		
 		if character = "V"
-			sprite_index =spr_playerV_divekickstart 
+			sprite_index = spr_playerV_divekickstart 
 	}
 	
 	//Climbwall
-	if (!grounded && scr_solid(x+hsp,y,false) && (!place_meeting(x+hsp,y,obj_destructibles) or character == "V") && !place_meeting(x+sign(hsp),y,obj_slope))
-	or (grounded &&  scr_solid(x+hsp,y-64,false) && (!place_meeting(x+hsp,y,obj_destructibles) or character == "V")  && !place_meeting(x+hsp,y,obj_metalblock) && place_meeting(x,y+1,obj_slope))
+	if (!grounded && scr_solidwall(x + hsp, y) && (!place_meeting(x+hsp,y,obj_destructibles) or character == "V") && !place_meeting(x+sign(hsp),y,obj_slope))
+	or (grounded && scr_solidwall(x + hsp, y - (global.gameplay == 0 ? 32 : 31)) && (!place_meeting(x+hsp,y,obj_destructibles) or character == "V")  && !place_meeting(x+hsp,y,obj_metalblock) && scr_slope())
 	{
 		if (!key_attack && character != "S") or (character == "S" && move == 0)
 		{

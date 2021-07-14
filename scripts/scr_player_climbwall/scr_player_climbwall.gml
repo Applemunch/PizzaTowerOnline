@@ -55,7 +55,7 @@ function scr_player_climbwall()
 			}
 
 			//Hit head
-			if scr_solidwall(x,y-1) && !place_meeting(x, y - 1, obj_destructibles) //&& !place_meeting(x + sign(hsp), y, obj_slope) && !place_meeting(x - sign(hsp), y, obj_slope)
+			if scr_solidwall(x,y-1) && !place_meeting(x, y - 1, obj_destructibles) or place_meeting(x, y - 1, obj_slope) //&& !place_meeting(x + sign(hsp), y, obj_slope) && !place_meeting(x - sign(hsp), y, obj_slope)
 			{
 				image_speed = 0.6;
 				with (obj_camera)

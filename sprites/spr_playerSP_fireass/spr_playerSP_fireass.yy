@@ -96,8 +96,8 @@
   ],
   "nineSlice": null,
   "parent": {
-    "name": "transfo",
-    "path": "folders/Sprites/players/pizzelle/transfo.yy",
+    "name": "fireass",
+    "path": "folders/Sprites/players/pizzelle/transfo/fireass.yy",
   },
   "resourceVersion": "1.0",
   "name": "spr_playerSP_fireass",

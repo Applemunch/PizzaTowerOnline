@@ -13,12 +13,11 @@ function scr_player_ladder()
 	movespeed = 0
 	hsp = 0
 	
-	if key_up && !(place_meeting(x, y, obj_hookup) && !place_meeting(x, y - 2, obj_hookup))
+	var upspd = (global.gameplay == 0 ? -2 : -6);
+	if key_up && !(place_meeting(x, y, obj_hookup) && !place_meeting(x, y + upspd, obj_hookup))
 	{
 		sprite_index = spr_laddermove
-		vsp = -2
-		if global.gameplay != 0
-			vsp = -4
+		vsp = upspd
 		image_speed = 0.35
 	}
 	else if key_down
@@ -51,13 +50,12 @@ function scr_player_ladder()
 	//Fall off
 	if !place_meeting((doorx == 0 ? x : doorx), y, obj_ladder) && ladderbuffer <= 0
 	{
-		hooked = false;
 		landAnim = false
 		jumpAnim = false
 		state = states.normal
 		image_index = 0
 		
-		if vsp < 0 && place_meeting(x, y + abs(vsp), obj_ladder)
+		if vsp < 0 && place_meeting(x, y + abs(vsp), obj_ladder) && !hooked
 		{
 			var ytry = y;
 			while !scr_solid(x, ytry + 1)
@@ -73,6 +71,7 @@ function scr_player_ladder()
 			grounded = true;
 		}
 		vsp = 0
+		hooked = false;
 	}
 	
 	if key_jump or (input_buffer_jump < 8 && key_jump2)

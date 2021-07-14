@@ -65,7 +65,7 @@ function scr_player_jump()
 		xscale = move
 
 	//Wallcling
-	if character = "N"  && wallclingcooldown = 10 && global.gameplay == 0
+	if character == "N" && wallclingcooldown == 10 && noisetype == 0
 	{
 		if scr_solid(x+xscale,y) && key_jump
 		{
@@ -160,6 +160,9 @@ function scr_player_jump()
 	//Normal
 	if (grounded && vsp > 0) && (!key_attack or character == "S")
 	{
+		if suplexmove && character == "SP" && sprite_index != spr_suplexbump
+			flash = true
+		
 		scr_soundeffect(sfx_step)
 		if key_attack or sprite_index == spr_shotgunshoot
 			landAnim = false
@@ -210,46 +213,52 @@ function scr_player_jump()
 	{
 		if !jumpAnim
 		{
-			if sprite_index = spr_playerN_doublejump
+			if sprite_index == spr_playerN_doublejump
 				sprite_index = spr_playerN_doublejumpfall
 	
-			if sprite_index = spr_airdash1
+			if sprite_index == spr_airdash1
 				sprite_index = spr_airdash2
 
-			if sprite_index = spr_shotgunjump
+			if sprite_index == spr_shotgunjump
 				sprite_index = spr_shotgunfall
 
-			if sprite_index = spr_playerV_superjump
+			if sprite_index == spr_playerV_superjump
 				sprite_index = spr_playerV_fall
 
-			if sprite_index = spr_jump
+			if sprite_index == spr_jump
 				sprite_index = spr_fall
 
-			if sprite_index = spr_player_hurtjump
+			if sprite_index == spr_player_hurtjump
 				sprite_index = spr_player_hurtjump2
 
-			if sprite_index = spr_player_Sjumpstart
+			if sprite_index == spr_player_Sjumpstart
 				sprite_index = spr_player_Sjump
 
-			if sprite_index = spr_shotgunjump1
+			if sprite_index == spr_shotgunjump1
 				sprite_index = spr_shotgunjump2
 			
-			if sprite_index = spr_shotgun_shootair
+			if sprite_index == spr_shotgun_shootair
 				sprite_index = spr_shotgun_fall
 	
-			if sprite_index = spr_suplexcancel
+			if sprite_index == spr_suplexcancel
 				sprite_index = spr_fall
 
-			if sprite_index = spr_suplexland
+			if sprite_index == spr_suplexland
 				sprite_index = spr_fall
 
-			if sprite_index = spr_shotgunshoot
+			if sprite_index == spr_shotgunshoot
 				sprite_index = spr_shotgunfall
+
+			if sprite_index == spr_stompprep
+			{
+				stompAnim = true
+				sprite_index = spr_stomp
+			}
 		}
 	}
 	else
 	{
-		if sprite_index = spr_stompprep && floor(image_index) = image_number -1
+		if sprite_index == spr_stompprep && floor(image_index) == image_number -1
 			sprite_index = spr_stomp
 	}
 

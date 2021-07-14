@@ -274,6 +274,7 @@ else if menu == 1
 		
 		ini_open("saveData.ini");
 		ini_write_real("online","musicvolume",global.musicvolume)  
+		ini_write_real("online","mastervolume",global.mastervolume)
 		ini_write_real("online","machsound",global.machsound)
 		ini_write_real("online","musicgame",global.musicgame)
 		ini_close();

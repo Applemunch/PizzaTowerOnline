@@ -5,7 +5,10 @@
   },
   "solid": false,
   "visible": true,
-  "spriteMaskId": null,
+  "spriteMaskId": {
+    "name": "spr_pizzacutterstart",
+    "path": "sprites/spr_pizzacutterstart/spr_pizzacutterstart.yy",
+  },
   "persistent": false,
   "parentObjectId": {
     "name": "par_universal",

@@ -28,8 +28,8 @@ if room == rm_editor exit;
 	instance_create(x,y,obj_bangeffect)
 	repeat 3
 	{
-		instance_create(x,y,obj_baddiegibs)
-		instance_create(x,y,obj_slapstar)
+		create_particle(x, y, particles.baddiegibs);
+		instance_create(x, y, obj_slapstar)
 	}
 
 	with (obj_camera) {
@@ -39,7 +39,11 @@ if room == rm_editor exit;
 	}
 
 	with instance_create(x,y,obj_sausageman_dead)
+	{
 		sprite_index = spr_hungrypillar_dead
+		if other.sprite_index == spr_hungrypillar_ss
+			sprite_index = spr_hungrypillardead_ss;
+	}
 
 	scr_soundeffect(sfx_killenemy)
 
@@ -227,13 +231,6 @@ if room == rm_editor exit;
 		event_perform(ev_other, ev_room_start);
 	}
 }
-
-if song != -1
-{
-	audio_sound_gain(global.music, global.musicvolume, 0);
-	audio_stop_sound(song);
-}
-
 with obj_checkpoint
 {
 	if sprite_index == spr_checkpoint

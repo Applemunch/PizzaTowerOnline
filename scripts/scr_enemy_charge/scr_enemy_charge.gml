@@ -7,15 +7,14 @@ function scr_enemy_charge() {
 			hsp = 0
 		
 		image_speed = 0.35
-
+		
 		if scr_solid(x + image_xscale, y) && !place_meeting(x + image_xscale, y, obj_slope)
 			image_xscale *= -1
-
+		
 		if !(scr_solid(x + (16 * image_xscale), y + 1)) && abs(hsp) > 0
 			image_xscale *= -1
-
-
-		if !( (grounded or (grounded && !place_meeting(x,y,obj_platform)))) && hsp < 0
+		
+		if !((grounded or (grounded && !place_meeting(x,y,obj_platform)))) && hsp < 0
 			hsp += 0.1
 		else if !( (grounded or (grounded && !place_meeting(x,y,obj_platform)))) && hsp > 0
 			hsp -= 0.1
@@ -52,7 +51,7 @@ function scr_enemy_charge() {
 
 		sprite_index = spr_pizzice_walk
 	}
-
+	
 	//Fencer
 	if object_index = obj_fencer or object_index = obj_banditochicken
 	{
@@ -60,14 +59,17 @@ function scr_enemy_charge() {
 			hsp = image_xscale * (movespeed + (global.baddiespeed - 1))
 		else
 			hsp = 0
-
-		if ((scr_solid(x+1,y) && image_xscale = 1) or (scr_solid(x-1,y)&& image_xscale = -1)) && !place_meeting(x+sign(hsp),y,obj_slope) 
+		
+		if ((scr_solid(x+1,y) && image_xscale = 1) or (scr_solid(x-1,y)&& image_xscale = -1)) && !place_meeting(x+sign(hsp),y,obj_slope)
 			image_xscale *= -1
 	}
 
 	if object_index = obj_ancho
 	{
-		hsp = image_xscale * (movespeed + (global.baddiespeed - 1))
+		if sprite_index != spr_chargestart
+			hsp = image_xscale * (movespeed + (global.baddiespeed - 1))
+		else
+			hsp = 0
 		
 		if scr_solid(x+hsp,y)
 		{ 
@@ -75,7 +77,7 @@ function scr_enemy_charge() {
 			stunned = 100
 		}
 	}
-
+	
 	if object_index = obj_ninja
 	{
 		hsp = image_xscale * ((movespeed * 2) + (global.baddiespeed - 1))

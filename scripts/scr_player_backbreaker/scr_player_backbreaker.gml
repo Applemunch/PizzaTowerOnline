@@ -142,7 +142,14 @@ function scr_player_backbreaker()
 		// supertaunt kill
 		if (supercharged or ((character == "S" or character == "G") && global.combo >= 3)) && !instance_exists(obj_tauntaftereffectspawner)
 		{
+			vsp = 0
 			instance_create(x,y,obj_tauntaftereffectspawner)
+			if global.gameplay != 0 && character != "S"
+			{
+				supercharged = false;
+				supercharge = 0;
+			}
+			
 			with obj_baddie
 			{
 				if object_index != obj_pizzaballOLD && object_index != obj_grandpa && point_in_camera(x, y, view_camera[0])
@@ -153,19 +160,24 @@ function scr_player_backbreaker()
 					{
 						global.combo += 1;
 						
-						hp = 0;
-						state = states.hit;
-						hitLag = 20;
-						hitX = x;
-						hitY = y;
-						
-						instance_create(x, y, obj_parryeffect);
-						alarm[3] = 3;
-						
-						repeat 3
+						if hp <= 0
+							instance_destroy();
+						else
 						{
-							instance_create(x, y, obj_slapstar);
-							create_particle(x, y, particles.baddiegibs);
+							hp = 0;
+							state = states.hit;
+							hitLag = 20;
+							hitX = x;
+							hitY = y;
+						
+							instance_create(x, y, obj_parryeffect);
+							alarm[3] = 3;
+						
+							repeat 3
+							{
+								instance_create(x, y, obj_slapstar);
+								create_particle(x, y, particles.baddiegibs);
+							}
 						}
 					}
 				}
@@ -192,9 +204,6 @@ function scr_player_backbreaker()
 			    shake_mag = 10;
 			    shake_mag_acc = 30 / room_speed;
 			}
-			
-			if character != "S"
-				supercharged = false
 		}
 		
 		taunttimer -= 1
@@ -204,7 +213,7 @@ function scr_player_backbreaker()
 	else
 		image_speed = 0.4;
 
-	if floor(image_index) = image_number -1 && (sprite_index = spr_supertaunt1 or sprite_index =  spr_supertaunt2 or
+	if floor(image_index) >= image_number - 1 && (sprite_index = spr_supertaunt1 or sprite_index = spr_supertaunt2 or
 	sprite_index = spr_supertaunt3 or sprite_index = spr_supertaunt4) && character != "S" && character != "G"
 	{
 		if global.gameplay == 0
@@ -224,8 +233,8 @@ function scr_player_backbreaker()
 			parry_inst = noone;
 		}
 	}
-
-	if sprite_index = spr_taunt && taunttimer = 0
+	
+	if sprite_index == spr_taunt && taunttimer <= 0
 	{
 		movespeed = tauntstoredmovespeed
 		sprite_index = tauntstoredsprite 
@@ -251,9 +260,12 @@ function scr_player_backbreaker()
 
 	//Eat spag
 	if floor(image_index) = image_number -1 && sprite_index = spr_player_eatspaghetti
-	state = states.normal
-
-
+		state = states.normal
+	
+	//Throw bomb
+	if floor(image_index) = image_number -1 && sprite_index = spr_player_throw
+		state = states.normal
+	
 	//Level intro
 	if floor(image_index) = image_number -1 && sprite_index = spr_Timesup && place_meeting(x,y,obj_exitgate)
 		state = states.normal

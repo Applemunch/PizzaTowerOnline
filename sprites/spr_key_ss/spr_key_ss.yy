@@ -69,8 +69,8 @@
   ],
   "nineSlice": null,
   "parent": {
-    "name": "object",
-    "path": "folders/Sprites/players/pizzelle/object.yy",
+    "name": "collectibles",
+    "path": "folders/Sprites/players/pizzelle/object/collectibles.yy",
   },
   "resourceVersion": "1.0",
   "name": "spr_key_ss",

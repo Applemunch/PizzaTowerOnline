@@ -7,7 +7,7 @@ if image_index == 0 && (global.panic or room == snick_challengeend)
 		gms_ini_player_write("saveData", "pizzacoin", scr_getcoin());
 	else
 	{
-		ini_open("saveData.ini");
+		ini_open("saveData" + string(global.saveslot) + ".ini");
 		ini_write_real("online", "pizzacoin", scr_getcoin());
 		ini_close();
 	}
