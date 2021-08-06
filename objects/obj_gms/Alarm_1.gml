@@ -4,9 +4,15 @@ if debug
 
 if gms_info_isconnected()
 {
-	if gms_ini_game_read("game", "version") != gameversion
+	// already done on player alarm 11
+	disconnected = false;
+	
+	/*
+	if real(gms_ini_game_read("game", "version")) > obj_gms.gameversion
 	{
+		instance_destroy(obj_fadeout);
 		instance_destroy(obj_pause);
+		instance_destroy(obj_pausefadeout);
 		instance_activate_all();
 		
 		gms_logout();
@@ -14,6 +20,7 @@ if gms_info_isconnected()
 		
 		exit;
 	}
+	*/
 }
 else
 {

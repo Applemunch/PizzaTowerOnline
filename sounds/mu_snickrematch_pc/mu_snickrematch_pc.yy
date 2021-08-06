@@ -2,11 +2,11 @@
   "ConfigValues": {
     "debug": {"audioGroupId":"{\"name\":\"ag_pcmusic\",\"path\":\"audiogroups/ag_pcmusic\"}",},
   },
-  "compression": 0,
+  "compression": 1,
   "volume": 1.0,
   "preload": false,
-  "bitRate": 8,
-  "sampleRate": 5512,
+  "bitRate": 128,
+  "sampleRate": 44100,
   "type": 0,
   "bitDepth": 1,
   "audioGroupId": {
@@ -14,10 +14,10 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "mu_snickrematch_pc.wav",
-  "duration": 212.475143,
+  "duration": 212.470139,
   "parent": {
-    "name": "extras",
-    "path": "folders/Sounds/pizza castle/extras.yy",
+    "name": "extra",
+    "path": "folders/Sounds/pizza castle/extra.yy",
   },
   "resourceVersion": "1.0",
   "name": "mu_snickrematch_pc",

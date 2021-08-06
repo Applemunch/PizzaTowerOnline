@@ -17,4 +17,14 @@ draw_set_colour(c_white);
 draw_set_valign(fa_top);
 draw_set_halign(fa_center);
 draw_set_font(global.font_small);
-draw_text(room_width / 2, 90, "Congratulations!\nYou played yourself");
+
+if alarm[0] > -1
+	draw_text(room_width / 2, 90, lang_string("general.drm.wait"));
+else
+	draw_text(room_width / 2, 90, lang_string("general.drm"));
+
+if keyboard_check_pressed(ord("R")) && alarm[0] <= -1
+{
+	scr_soundeffect(sfx_step);
+	alarm[0] = 5;
+}

@@ -23,8 +23,7 @@ if global.__chat
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_middle);
 	
-	draw_text(__view_get(e__VW.XView, 0) + (__view_get(e__VW.WView, 0) / 2), __view_get(e__VW.YView, 0) + __view_get(e__VW.HView, 0) - 50, 
-	"Press ENTER to start typing, and again to send\nPress ESCAPE to exit the chat");
+	draw_text(__view_get(e__VW.XView, 0) + (__view_get(e__VW.WView, 0) / 2), __view_get(e__VW.YView, 0) + __view_get(e__VW.HView, 0) - 50, lang_string("online.chat"));
 	
 	draw_set_halign(fa_left);
 	draw_set_halign(fa_top);

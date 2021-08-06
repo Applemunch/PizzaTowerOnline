@@ -1,20 +1,20 @@
 {
   "ConfigValues": {
-    "debug": {"audioGroupId":"{\"name\":\"ag_pcmusic\",\"path\":\"audiogroups/ag_pcmusic\"}",},
+    "debug": {"audioGroupId":"{\"name\":\"audiogroup_default\",\"path\":\"audiogroups/audiogroup_default\"}",},
   },
-  "compression": 0,
+  "compression": 1,
   "volume": 1.0,
   "preload": false,
-  "bitRate": 8,
-  "sampleRate": 5512,
+  "bitRate": 128,
+  "sampleRate": 44100,
   "type": 0,
   "bitDepth": 1,
   "audioGroupId": {
     "name": "audiogroup_default",
     "path": "audiogroups/audiogroup_default",
   },
-  "soundFile": "mu_chateau_pc.wav",
-  "duration": 181.626633,
+  "soundFile": "mu_chateau_pc.ogg",
+  "duration": 181.621628,
   "parent": {
     "name": "pizza castle",
     "path": "folders/Sounds/pizza castle.yy",

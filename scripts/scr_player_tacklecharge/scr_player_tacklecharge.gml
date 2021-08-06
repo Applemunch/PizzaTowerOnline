@@ -9,7 +9,7 @@ function scr_player_tacklecharge()
 	sprite_index = spr_charge
 	image_speed = 0.5
 
-	if windingAnim < 2000 && character == "P"
+	if windingAnim < 2000 && (character == "P" or character == "SP")
 		windingAnim ++
 	
 	var railh = 0, railmeet = instance_place(x, y + 1, obj_railparent);

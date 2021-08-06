@@ -1,5 +1,5 @@
 // check version
-if gms_ini_game_read("game", "version") != obj_gms.gameversion
+if real(gms_ini_game_read("game", "version")) > obj_gms.gameversion
 {
 	if !debug
 	{
@@ -17,6 +17,12 @@ if gms_ini_game_read("game", "version") != obj_gms.gameversion
 			
 			showtext = true;
 			alarm[0] = -1;
+		}
+		
+		with obj_prelogin
+		{
+			con = 2;
+			playmusic = false;
 		}
 		
 		gms_logout();

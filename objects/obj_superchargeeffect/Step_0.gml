@@ -1,16 +1,7 @@
-image_xscale = playerid.xscale
-
-if playerid.supercharged = false
-instance_destroy() 
-x = playerid.x
-y= playerid.y
-
-
-
-visible = playerid.visible
-
-if global.combotime = 0
+if instance_exists(playerid)
 {
-playerid.supercharged = false
-instance_destroy()
+	image_xscale = playerid.xscale
+	x = playerid.x
+	y = playerid.y
+	visible = playerid.visible
 }

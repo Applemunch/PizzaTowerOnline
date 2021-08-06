@@ -9,6 +9,11 @@ hub_array = [
 	["ARCADE", hub_roomMOD],
 ]
 
+if debug
+	array_push(hub_array, ["TEST", rm_test]);
+if room == hub_room1
+	array_push(hub_array, ["TUTORIAL", PP_room1]);
+
 sel = 0;
 for(var i = 0; i < array_length(hub_array); i++)
 {
@@ -18,5 +23,3 @@ for(var i = 0; i < array_length(hub_array); i++)
 		break;
 	}
 }
-if room == hub_room1
-	array_push(hub_array, ["TUTORIAL", PP_room1]);

@@ -87,7 +87,7 @@ if con == 1
 		}
 		
 		xx += 8;
-		if cur_l == "l" or cur_l == "i" or cur_l == "!" or cur_l == "j" or cur_l == "I"
+		if cur_l == "l" or cur_l == "i" or cur_l == "!" or cur_l == "j" or cur_l == "I" or cur_l = "'"
 			xx -= 4;
 		if cur_l == "w" or cur_l == "m" or cur_l == "M" or cur_l == "W"
 			xx += 3;

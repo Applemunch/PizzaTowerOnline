@@ -10,8 +10,8 @@
   "edgeFiltering": false,
   "collisionTolerance": 0,
   "swfPrecision": 2.525,
-  "bbox_left": 0,
-  "bbox_right": 959,
+  "bbox_left": 248,
+  "bbox_right": 649,
   "bbox_top": 237,
   "bbox_bottom": 959,
   "HTile": false,
@@ -27,9 +27,9 @@
   "gridX": 0,
   "gridY": 0,
   "frames": [
-    {"compositeImage":{"FrameId":{"name":"fd2f031f-eed8-41a6-a4a5-4121911ff46c","path":"sprites/bg_dungeondark1/bg_dungeondark1.yy",},"LayerId":null,"resourceVersion":"1.0","name":"composite","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"fd2f031f-eed8-41a6-a4a5-4121911ff46c","path":"sprites/bg_dungeondark1/bg_dungeondark1.yy",},"LayerId":{"name":"a045e1a6-41c4-4da8-9676-a51088eca1c7","path":"sprites/bg_dungeondark1/bg_dungeondark1.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"bg_dungeondark1","path":"sprites/bg_dungeondark1/bg_dungeondark1.yy",},"resourceVersion":"1.0","name":"fd2f031f-eed8-41a6-a4a5-4121911ff46c","tags":[],"resourceType":"GMSpriteFrame",},
+    {"compositeImage":{"FrameId":{"name":"877104f0-d45a-444f-83f8-f06c97ca03bb","path":"sprites/bg_dungeondark1/bg_dungeondark1.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
+        {"FrameId":{"name":"877104f0-d45a-444f-83f8-f06c97ca03bb","path":"sprites/bg_dungeondark1/bg_dungeondark1.yy",},"LayerId":{"name":"a045e1a6-41c4-4da8-9676-a51088eca1c7","path":"sprites/bg_dungeondark1/bg_dungeondark1.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
+      ],"parent":{"name":"bg_dungeondark1","path":"sprites/bg_dungeondark1/bg_dungeondark1.yy",},"resourceVersion":"1.0","name":"877104f0-d45a-444f-83f8-f06c97ca03bb","tags":[],"resourceType":"GMSpriteFrame",},
   ],
   "sequence": {
     "spriteId": {"name":"bg_dungeondark1","path":"sprites/bg_dungeondark1/bg_dungeondark1.yy",},
@@ -44,7 +44,7 @@
     "moments": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore<MomentsEventKeyframe>",},
     "tracks": [
       {"name":"frames","spriteId":null,"keyframes":{"Keyframes":[
-            {"id":"3e6a7668-44f5-40d2-a205-eebcce69b019","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"fd2f031f-eed8-41a6-a4a5-4121911ff46c","path":"sprites/bg_dungeondark1/bg_dungeondark1.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
+            {"id":"83f5a5cb-5467-44f7-a759-0873ed593577","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"877104f0-d45a-444f-83f8-f06c97ca03bb","path":"sprites/bg_dungeondark1/bg_dungeondark1.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
           ],"resourceVersion":"1.0","resourceType":"KeyframeStore<SpriteFrameKeyframe>",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"modifiers":[],"isCreationTrack":false,"resourceVersion":"1.0","tags":[],"resourceType":"GMSpriteFramesTrack",},
     ],
     "visibleRange": null,

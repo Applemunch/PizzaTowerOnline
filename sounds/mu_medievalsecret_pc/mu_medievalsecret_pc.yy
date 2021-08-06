@@ -1,12 +1,12 @@
 {
   "ConfigValues": {
-    "debug": {"audioGroupId":"{\"name\":\"ag_pcmusic\",\"path\":\"audiogroups/ag_pcmusic\"}",},
+    "debug": {"audioGroupId":"{\"name\":\"audiogroup_default\",\"path\":\"audiogroups/audiogroup_default\"}",},
   },
-  "compression": 0,
+  "compression": 1,
   "volume": 1.0,
   "preload": false,
-  "bitRate": 8,
-  "sampleRate": 5512,
+  "bitRate": 128,
+  "sampleRate": 44100,
   "type": 0,
   "bitDepth": 1,
   "audioGroupId": {
@@ -14,7 +14,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "mu_medievalsecret_pc.wav",
-  "duration": 71.49436,
+  "duration": 71.4893646,
   "parent": {
     "name": "secret",
     "path": "folders/Sounds/pizza castle/secret.yy",

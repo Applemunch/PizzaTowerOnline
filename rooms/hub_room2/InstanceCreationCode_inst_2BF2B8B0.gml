@@ -1,3 +1,3 @@
 dialogue = [
-	"notice: please stop reporting farm bugs",
+	"notice: please don't report farm bugs",
 ]

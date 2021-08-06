@@ -2,7 +2,7 @@
   "ConfigValues": {
     "debug": {"audioGroupId":"{\"name\":\"ag_music\",\"path\":\"audiogroups/ag_music\"}",},
   },
-  "compression": 0,
+  "compression": 1,
   "volume": 1.0,
   "preload": false,
   "bitRate": 128,
@@ -14,7 +14,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "mu_ruinrace",
-  "duration": 32.005,
+  "duration": 32.0,
   "parent": {
     "name": "race",
     "path": "folders/Sounds/music/race.yy",

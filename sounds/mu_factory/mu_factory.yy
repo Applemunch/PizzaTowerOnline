@@ -2,7 +2,7 @@
   "ConfigValues": {
     "debug": {"audioGroupId":"{\"name\":\"ag_music\",\"path\":\"audiogroups/ag_music\"}",},
   },
-  "compression": 0,
+  "compression": 1,
   "volume": 0.75,
   "preload": false,
   "bitRate": 128,
@@ -14,7 +14,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "mu_factory.wav",
-  "duration": 143.98967,
+  "duration": 143.984665,
   "parent": {
     "name": "music",
     "path": "folders/Sounds/music.yy",

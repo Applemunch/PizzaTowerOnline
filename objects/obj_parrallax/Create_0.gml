@@ -1,4 +1,4 @@
-      /// @description Time uniform
+/// @description Time uniform
 bg = bg_desert
 bg2 = bg_null
 bg3 = bg_null
@@ -14,6 +14,9 @@ bgscroll3y = 0;
 
 bgscroll4x = 0;
 bgscroll4y = 0;
+
+bgscroll5x = 0;
+bgscroll5y = 0;
 
 ground1x = 0;
 ground1y = 0;

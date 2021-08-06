@@ -146,30 +146,33 @@ function scr_chat_verify(argument0)
 	
 	if argument0 == "/list"
 	{
-		if gms_other_count() == 0
+		if gms_other_count() <= 0
 		{
 			var choices = [
 				"You're alone.", 
 				"No one is playing.", 
 				"There's nobody around.",
 				"But nobody came.",
-				"There is 1 user online: You", 
-				//"Sounds like you need friends.",
+				"There is 1 user online: You",
 				"Sorry, it's currently Pizza Tower Offline.",
 				obj_player1.character != "S" ? "You're alone. Snick is here for you." : "You're alone. Sneck is here for you.",
 				"The list is empty.",
-				"List? What list?",
-				"Nope.",
+				//"List? What list?",
+				//"Nope.",
 				"No signs of life.",
 				//"Hate to break it to you, but...",
 				"Looking for players...",
 				//"It's " + string(current_hour) + ":" + string_replace_all(string_format(current_minute, 2, 0), " ", "0") + ", why are you playing?",
 				//"Everyone else is enjoying their life while you're playing this.",
 				"Sorry, everyone's busy fixing Mario.",
-				"You hava an aura so intensely unfunny everyone left before you came in.",
-				"Relatably empty.",
-				"Try again.",
-				"Don't you have anything better to do?",
+				//"You hava an aura so intensely unfunny everyone left before you came in.",
+				//"Relatably empty.",
+				//"Try again.",
+				//"Don't you have anything better to do?",
+				"Nobody. You're better off playing offline mode.",
+				"Nobody. You don't count.",
+				"Nobody. Sounds like you need friends.",
+				"Nobody. Insert passive aggressive comment here.",
 			]
 			
 			// conditional
@@ -277,10 +280,7 @@ function scr_chat_verify(argument0)
 			{
 				__user = scr_getuser(list);
 				if __user == false
-				{
-					gms_chat_local("User doesn't exist", merge_colour(c_red, c_white, 0.25));
 					return false;
-				}
 				
 				// do the thing
 				gms_p2p_send(p2p.tpother, __user, obj_player1.x, obj_player1.y, scr_gms_room());
@@ -307,10 +307,7 @@ function scr_chat_verify(argument0)
 			
 			__user = scr_getuser(list);
 			if __user == false
-			{
-				gms_chat_local("User doesn't exist", merge_colour(c_red, c_white, 0.25));
 				return false;
-			}
 			
 			// do the thing
 			scr_playerreset();

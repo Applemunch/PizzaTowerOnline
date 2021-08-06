@@ -2,7 +2,7 @@
   "ConfigValues": {
     "debug": {"audioGroupId":"{\"name\":\"ag_music\",\"path\":\"audiogroups/ag_music\"}",},
   },
-  "compression": 0,
+  "compression": 1,
   "volume": 1.0,
   "preload": false,
   "bitRate": 128,
@@ -14,7 +14,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "mu_beach",
-  "duration": 167.658875,
+  "duration": 167.653885,
   "parent": {
     "name": "music",
     "path": "folders/Sounds/music.yy",

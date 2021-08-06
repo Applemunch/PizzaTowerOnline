@@ -60,7 +60,7 @@
     "eventStubScript": null,
     "parent": {"name":"bg_cowboytask","path":"sprites/bg_cowboytask/bg_cowboytask.yy",},
     "resourceVersion": "1.3",
-    "name": "",
+    "name": "bg_cowboytask",
     "tags": [],
     "resourceType": "GMSequence",
   },

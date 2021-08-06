@@ -1,4 +1,5 @@
 randomize();
+show_debug_message("VM " + string(!code_is_compiled()));
 
 // no shader mode
 ini_open("saveData.ini");
@@ -10,8 +11,8 @@ if !check_shaders() && !ini_read_real("online", "shitgraphs", false)
 
 // fonts
 global.bigfont = font_add_sprite_ext(spr_font, "ABCDEFGHIJKLMNOPQRSTUVWXYZ!.1234567890:_-?", true, 0)
-global.smallfont = font_add_sprite_ext(spr_smallerfont, "ABCDEFGHIJKLMNOPQRSTUVWXYZ!.:?1234567890", true, 0)
-global.font_small = font_add_sprite_ext(spr_smallfont, "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!._1234567890:;?▯|*/',\"()=-+@█%~", true, -2)
+global.smallfont = font_add_sprite_ext(spr_smallerfont, "ABCDEFGHIJKLMNOPQRSTUVWXYZ!.:?1234567890?", true, 0)
+global.font_small = font_add_sprite_ext(spr_smallfont, "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!._1234567890:;?▯|*/',\"()=-+@█%~ÁÉÍÓÚáéíóúÑñ", true, -2)
 global.smallnumber = font_add_sprite_ext(spr_smallnumber, "1234567890-.", true, 0)
 global.collectfont = font_add_sprite_ext(spr_font_collect, "0123456789", true, 0)
 global.candyfont = font_add_sprite_ext(spr_font_candycollect, "0123456789", true, 0)
@@ -37,6 +38,13 @@ global.panicshake = ini_read_real("online", "panicshake", true) // shaking
 global.panicnightmare = ini_read_real("online", "panicnightmare", true) // panic backgrounds
 global.panictilt = ini_read_real("online", "panictilt", false) // panic screen tilt
 
+global.musicvolume = ini_read_real("online", "musicvolume", 0.6);
+global.mastervolume = ini_read_real("online", "mastervolume", 1);
+global.machsound = ini_read_real("online", "machsound", 0);
+global.musicgame = ini_read_real("online", "musicgame", 0);
+
+audio_master_gain(global.mastervolume);
+
 // loaded?
 global.loaded_mus = true;
 global.loaded_pc = true;
@@ -57,8 +65,11 @@ global.langmap = -1;
 try
 {
 	var _buf = buffer_load("lang/lang-" + global.language + ".json");
-	global.langmap = json_decode(string(buffer_read(_buf, buffer_string)));
-	buffer_delete(_buf);
+	if _buf > -1
+	{
+		global.langmap = json_decode(string(buffer_read(_buf, buffer_string)));
+		buffer_delete(_buf);
+	}
 }
 
 if global.langmap == -1

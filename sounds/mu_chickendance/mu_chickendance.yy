@@ -1,5 +1,5 @@
 {
-  "compression": 0,
+  "compression": 1,
   "volume": 1.0,
   "preload": false,
   "bitRate": 128,
@@ -11,7 +11,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "mu_chickendance.wav",
-  "duration": 124.399239,
+  "duration": 124.394241,
   "parent": {
     "name": "extra",
     "path": "folders/Sounds/extra.yy",

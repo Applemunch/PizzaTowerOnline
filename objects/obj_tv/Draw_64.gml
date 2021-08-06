@@ -54,7 +54,7 @@ if global.gameplay == 0
 	if global.combo != 0 && global.combotime != 0 && (tvsprite = spr_tvdefault or tvsprite = spr_tvcombo)
 		draw_text(852,75, string(global.combo))
 	
-	if tvsprite = spr_tvdefault && room != strongcold_endscreen && !global.miniboss //Default 
+	if tvsprite == spr_tvdefault && room != strongcold_endscreen && !global.miniboss //Default 
 	{
 		chose = false
 		draw_text(832,60, string(global.collect))
@@ -94,7 +94,7 @@ else
 			
 			if sprite_exists(sprite_index)
 			{
-				if sprite_index != spr_tv_placeholder && sprite_index != spr_tv_placeholderSP
+				if sprite_index != spr_tv_placeholder && sprite_index != spr_tv_placeholderSP && sprite_index != spr_tv_off && sprite_index != spr_tv_open
 				{
 					with obj_player1
 						pal_swap_set(spr_palette, paletteselect, false);

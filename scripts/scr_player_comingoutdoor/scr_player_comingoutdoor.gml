@@ -43,7 +43,7 @@ function scr_player_comingoutdoor()
 		}
 	
 		image_alpha = 1
-		c =0
+		c = 0
 		image_blend = make_colour_hsv(0,0,255);
 	}
 

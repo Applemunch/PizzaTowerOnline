@@ -12,19 +12,12 @@ if (!global.panic or global.gerome) && (!global.treasure or global.gameplay == 0
 	image_alpha = 1;
 	
 	if !instance_exists(obj_snicklevelend) or !obj_snicklevelend.visible
-	{
-		sprite_index = spr_minipillarsleep
-		if check_sugary()
-			sprite_index = spr_minipillarsleep_ss;
-	}
+		sprite_index = spr_sleep
 }
 else
 {
 	mask_index = spr_minipillarwoke
-	sprite_index = spr_minipillarwoke
-	
-	if check_sugary()
-		sprite_index = spr_minipillarwoke_ss;
+	sprite_index = spr_woke
 	
 	x = xstart
 	y = ystart
@@ -40,4 +33,3 @@ else
 	else
 		image_alpha = 1;
 }
-

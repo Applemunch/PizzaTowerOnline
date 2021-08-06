@@ -6,7 +6,7 @@ function scr_enemy_idle()
 		image_index = 0
 	}
 
-	if (grounded or object_index == obj_ancho) && sprite_index == scaredspr && scaredbuffer <= 0
+	if (grounded or object_index == obj_ancho or object_index == obj_miniufo) && sprite_index == scaredspr && scaredbuffer <= 0
 	{
 		state = states.walk
 		sprite_index = walkspr

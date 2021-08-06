@@ -31,7 +31,7 @@
   "overriddenProperties": [],
   "parent": {
     "name": "eatery",
-    "path": "folders/Objects/pto/eatery.yy",
+    "path": "folders/Objects/pto stuff/eatery.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_eatery_cashreg",

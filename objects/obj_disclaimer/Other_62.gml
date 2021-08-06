@@ -19,6 +19,8 @@ if ds_map_find_value(async_load, "id") == req
 		}
 		else
 		{
+			global.onlinemode = true;
+			
 			ini_open("saveData.ini");
 			if ini_read_real("online", "disclaimer", false)
 			{

@@ -95,20 +95,10 @@ switch state
                 if b[0] == wave
                 {
                     instance_activate_object(b[1]);
-                    if instance_exists(b[1])
-                    {
-						ds_list_add(currentarena, b[1].id);
-						
-                        with instance_create(b[1].x, b[1].y, obj_arena_pizzaportal)
-						{
-	                        stored_id = b[1];
-	                        alarm[0] = other.round_max;
-						}
-                        instance_deactivate_object(b[1])
-                    }
+                    alarm[1] = 1;
                 }
                 else
-                    instance_deactivate_object(b[1])
+                    instance_deactivate_object(b[1]);
             }
         }
 		

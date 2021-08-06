@@ -80,3 +80,16 @@ if global.__gotmessage[0] // global message
 	alarm[2] = room_speed * 5;
 }
 depth = -9999;
+
+if debug
+{
+	if keyboard_check(vk_control) && keyboard_check_pressed(vk_f1)
+	{
+		var ver = get_integer("Input version number", gameversion);
+		if ver != undefined && ver > 0
+		{
+			gameversion = ver;
+			gms_ini_game_write("game", "version", ver);
+		}
+	}
+}

@@ -11,7 +11,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "sfx_fireassend",
-  "duration": 2.214819,
+  "duration": 2.209819,
   "parent": {
     "name": "sfx",
     "path": "folders/Sounds/sfx.yy",

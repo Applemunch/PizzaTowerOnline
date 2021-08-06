@@ -143,8 +143,13 @@ function scr_player_backbreaker()
 		if (supercharged or ((character == "S" or character == "G") && global.combo >= 3)) && !instance_exists(obj_tauntaftereffectspawner)
 		{
 			vsp = 0
-			instance_create(x,y,obj_tauntaftereffectspawner)
-			if global.gameplay != 0 && character != "S"
+			with instance_create(x,y,obj_tauntaftereffectspawner)
+			{
+				if other.character == "S" or other.character == "G"
+					legacy = true;
+			}
+			
+			if character != "S"
 			{
 				supercharged = false;
 				supercharge = 0;
@@ -152,7 +157,7 @@ function scr_player_backbreaker()
 			
 			with obj_baddie
 			{
-				if object_index != obj_pizzaballOLD && object_index != obj_grandpa && point_in_camera(x, y, view_camera[0])
+				if object_index != obj_pizzaballOLD && object_index != obj_grandpa && instance_in_camera(id, view_camera[0])
 				{
 					if global.gameplay == 0
 						instance_destroy();

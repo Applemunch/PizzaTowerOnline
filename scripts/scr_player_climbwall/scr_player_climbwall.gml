@@ -5,7 +5,7 @@ function scr_player_climbwall()
 		default:
 		if character != "N" or (character == "N" && noisetype == 1)
 		{
-			if windingAnim < 200 && character == "P"
+			if windingAnim < 200 && (character == "P" or character == "SP")
 				windingAnim++
 
 			move = key_left + key_right;
@@ -89,7 +89,9 @@ function scr_player_climbwall()
 				}
 				y += yplus - 1;
 				
-				instance_create(x,y,obj_jumpdust)
+				with instance_create(x,y,obj_jumpdust)
+					image_xscale = other.xscale
+				
 				if movespeed >= 12
 				{
 					sprite_index = spr_mach4

@@ -191,20 +191,29 @@ else if !global.panic && !global.snickchallenge
 			musplay = mu_gnomeforest
 	}
 	
-	if string_letters(roomname) = "kungfu" 
+	if string_letters(roomname) == "kungfu" 
 		musplay = mu_kungfu
 	
-	if string_letters(roomname) == "steamcc"
-		musplay = mu_steamcc
-	if string_letters(roomname) == "ssmines"
-		musplay = mu_ssmines
-	
 	if string_startswith(roomname, "golf_room")
+	or string_letters(roomname) == "minigolf"
 	{
 		musplay = mu_minigolf;
 		if scr_checkskin(checkskin.s_shit)
 			musplay = mu_susgolf;
 	}
+	
+	if string_letters(roomname) == "war" 
+	{
+		if instance_exists(obj_hungrypillar)
+			musplay = mu_warintro
+		else
+			musplay = mu_war
+	}
+	
+	if string_letters(roomname) == "steamcc"
+		musplay = mu_steamcc
+	if string_letters(roomname) == "ssmines"
+		musplay = mu_ssmines
 
 	//desert
 	if string_startswith(roomname, "floor1_room")
@@ -274,6 +283,7 @@ else if !global.panic && !global.snickchallenge
 		}
 	}
 	
+	/*
 	if string_startswith(roomname, "eatery_")
 	{
 		for (i = 0; i < 20; ++i)
@@ -282,6 +292,7 @@ else if !global.panic && !global.snickchallenge
 				musplay = mu_kidsparty
 		}
 	}
+	*/
 	
 	// mansion
 	if string_startswith(roomname, "floor2_room")
@@ -299,31 +310,38 @@ else if !global.panic && !global.snickchallenge
 	}
 
 	// secrets
-	if global.gameplay == 0
+	//if global.gameplay == 0
 	{
-		if string_letters(roomname) = "entrancesecret" or string_letters(roomname) = "medievalsecret" 
+		if string_letters(roomname) == "entrancesecret"
+		{
+			musplay = mu_entrancesecret
+			with obj_player1
+				if character == "SP" musplay = mu_entrancesecretSP;
+		}
+		if string_letters(roomname) == "medievalsecret"
 			musplay = mu_medievalsecret
-		if string_letters(roomname) = "ruinsecret" 
+		if string_letters(roomname) == "ruinsecret" 
 			musplay = mu_ruinsecret
-		if string_letters(roomname) = "chateausecret" 
+		if string_letters(roomname) == "chateausecret" 
 			musplay = mu_chateausecret
-		if string_letters(roomname) = "dungeonsecret" or string_letters(roomname) = "strongcoldsecret"
+		if string_letters(roomname) == "dungeonsecret" or string_letters(roomname) = "strongcoldsecret"
 			musplay = mu_dungeonsecret
 		if string_startswith(roomname, "floor1_secret")
 			musplay = mu_desertsecret
-		if string_letters(roomname) = "graveyardsecret" 
+		if string_letters(roomname) == "graveyardsecret" 
 			musplay = mu_graveyardsecret
-		if string_letters(roomname) = "farmsecret" 
+		if string_letters(roomname) == "farmsecret" 
 			musplay = mu_farmsecret
-		if string_letters(roomname) = "ufosecret" 
+		if string_letters(roomname) == "ufosecret" 
 			musplay = mu_pinballsecret
-		if string_letters(roomname) = "forestsecret" 
+		if string_letters(roomname) == "forestsecret" 
 		or string_startswith(roomname, "floor2_secret")
 			musplay = mu_forestsecret
 	}
 	if string_letters(roomname) == "steamccsecret"
 		musplay = mu_cottonsecret
 	
+	/*
 	if obj_player1.character == "SP" && string_endswith(audio_get_name(musplay), "secret")
 	&& global.musicgame == 0
 	{
@@ -333,6 +351,7 @@ else if !global.panic && !global.snickchallenge
 		else
 			musplay = mu_cottonsecretSP
 	}
+	*/
 	
 	if room == custom_lvl_room {
 		alarm[0] = 4;
@@ -353,6 +372,8 @@ if global.musicgame == 1
 		musplay = mu_characterselect_pc
 	else if musplay == mu_snickentrance or musplay == mu_vigientrance
 		musplay = mu_entrance_pc
+	else if musplay == mu_susgolf
+		musplay = mu_minigolf_pc
 	else
 	{
 		// replace the sound

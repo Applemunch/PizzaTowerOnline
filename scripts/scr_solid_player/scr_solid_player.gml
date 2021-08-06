@@ -1,5 +1,5 @@
 /// @description Check if player is colliding, extra checks for ladders
-function scr_solid_player(argument0, argument1)
+function scr_solid_player(argX, argY)
 {
 	/// @param x
 	/// @param y
@@ -10,13 +10,17 @@ function scr_solid_player(argument0, argument1)
 	var old_y = y
 	var collide = false;
 	
-	x = argument0
-	y = argument1
+	x = argX
+	y = argY
 	
 	// Check if I'm over a tile
-	if place_meeting(x, y, obj_solid)
-	or (place_meeting(x, y, obj_ghostwall) && state != states.ghost)
-		collide = true;
+	var _solid = instance_place(x, y, obj_solid);
+	var _ghostwall = instance_place(x, y, obj_ghostwall);
+	
+	if _ghostwall && state != states.ghost
+		collide = _ghostwall;
+	if _solid
+		collide = _solid;
 	
 	// Check if I crossed a tile boundary and landed on a platform
 	if place_meeting(x, y, obj_platform)
@@ -30,14 +34,14 @@ function scr_solid_player(argument0, argument1)
 			{
 				if !place_meeting(x, old_y, instlist[| i]) && place_meeting(x, y, instlist[| i])
 				{
-					collide = true;
+					collide = instlist[| i];
 					break;
 				}
 			}
 		}
 		ds_list_destroy(instlist);
 	}
-		
+	
 	// Check if I'm on a grindrail
 	if y > old_y && bbox_bottom % 16 == 0
 	&& !place_meeting(x, old_y, obj_grindrail) && place_meeting(x, y, obj_grindrail)
@@ -78,11 +82,11 @@ function scr_solid_player(argument0, argument1)
 			if other.bbox_bottom >= slope
 			{
 				// Object is inside slope
-				collide = true;
+				collide = slope;
 			}
 		}
 	}
-
+	
 	x = old_x
 	y = old_y
 	return collide;

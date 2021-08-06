@@ -27,4 +27,15 @@ function scr_player_victory()
 		image_speed = 0
 	else
 		image_speed = 0.35
+	
+	if place_meeting(x, y, obj_startgate)
+	{
+		x = Approach(x, doorx, 10);
+		if x != xprevious
+		{
+			xscale = sign(x - xprevious);
+			if image_index >= 2
+				image_speed = 0;
+		}
+	}
 }

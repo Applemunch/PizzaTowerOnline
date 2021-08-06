@@ -1,5 +1,5 @@
 {
-  "compression": 0,
+  "compression": 1,
   "volume": 1.0,
   "preload": false,
   "bitRate": 128,
@@ -10,8 +10,8 @@
     "name": "audiogroup_default",
     "path": "audiogroups/audiogroup_default",
   },
-  "soundFile": "mu_mall.ogg",
-  "duration": 62.405,
+  "soundFile": "mu_mall.wav",
+  "duration": 62.4,
   "parent": {
     "name": "extra",
     "path": "folders/Sounds/extra.yy",

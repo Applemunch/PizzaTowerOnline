@@ -22,15 +22,15 @@ switch menu
 		#endregion
 		#region starting menu
 		
-		if draw_editorbutton(384, 200 + (!debug * 64), "ONLINE")
+		if draw_editorbutton(384, 200 + (!debug * 64), lang_string("editor.menu.online"))
 			menu = menutypes.menuonline;
 		
 		if debug
 		{
-			if draw_editorbutton(384, 200 + 64, "LOAD")
+			if draw_editorbutton(384, 200 + 64, lang_string("editor.menu.load"))
 			{
 				window_set_cursor(cr_default);
-				var fileopen = get_open_filename_ext("Level File (*.ptlv)|*.ptlv|All Files (*.*)|*.*", "", "%localappdata%\\PizzaTower_GM2\\Levels\\", "Load Level");
+				var fileopen = get_open_filename_ext(lang_string("editor.menu.filefilter"), "", "%localappdata%\\PizzaTower_GM2\\Levels\\", lang_string("editor.menu.loadtitle"));
 				if fileopen != ""
 				{
 					window_set_cursor(cr_default);
@@ -52,7 +52,7 @@ switch menu
 					window_set_cursor(cr_none);
 			}
 			
-			if draw_editorbutton(384, 200 + 64 + 64, "BUILD")
+			if draw_editorbutton(384, 200 + 64 + 64, lang_string("editor.menu.build"))
 			{
 				/*
 				window_set_cursor(cr_default);
@@ -63,13 +63,13 @@ switch menu
 				with obj_roomname
 				{
 					showtext = true;
-					message = "UNFINISHED!!!";
+					message = lang_string("editor.menu.wip");
 					alarm[0] = 200;
 				}
 			}
 		}
 		
-		if draw_editorbutton(384, 200 + 64 + 64 + (debug * 64), "BACK")
+		if draw_editorbutton(384, 200 + 64 + 64 + (debug * 64), lang_string("editor.menu.back"))
 		{
 			scr_playerreset();
 			room = hub_outside2;
@@ -93,7 +93,7 @@ switch menu
 		
 		if debug
 		{
-			if draw_editorbutton(384, 200, "BROWSE")
+			if draw_editorbutton(384, 200, lang_string("editor.menu.online.official"))
 			{
 				menu = menutypes.levelbrowser;
 				if paging_type != 0
@@ -104,7 +104,7 @@ switch menu
 				paging_type = 0;
 				scr_requestpage(page);
 			}
-			if draw_editorbutton(384, 200 + 64, "FEATURED")
+			if draw_editorbutton(384, 200 + 64, lang_string("editor.menu.online.featured"))
 			{
 				menu = menutypes.levelbrowser;
 				if paging_type != 1
@@ -120,7 +120,7 @@ switch menu
 		if (instance_exists(obj_gms) && gms_info_isloggedin())
 		or debug
 		{
-			if draw_editorbutton(384, 200 + 64 + (debug * 64), "PTONLINE")
+			if draw_editorbutton(384, 200 + 64 + (debug * 64), lang_string("editor.menu.online.pto"))
 			{
 				menu = menutypes.levelbrowser;
 				paging_type = 3;
@@ -128,7 +128,7 @@ switch menu
 			}
 		}
 		
-		if draw_editorbutton(384, 200 + 64 + 64 + (debug * 64), "BACK")
+		if draw_editorbutton(384, 200 + 64 + 64 + (debug * 64), lang_string("editor.menu.back"))
 			menu = menutypes.menustart;
 		
 		#endregion
@@ -162,7 +162,7 @@ switch menu
 				
 				draw_set_font(global.font_small);
 				draw_set_colour(c_white);
-			
+				
 				var yy = 38 + (i * 52) + yview;
 			
 				var sel = false;
@@ -198,13 +198,13 @@ switch menu
 				draw_text(56 + 4, yy + 4, string(name));
 			
 				draw_set_valign(fa_bottom);
-				draw_text(56 + 4, yy + 52 - 4, "ID: " + string(_id) + " LIKES: " + string(upvotes) + " DISLIKES: " + string(downvotes));
-			
+				draw_text(56 + 4, yy + 52 - 4, lang_string("editor.menu.search.preid") + string(_id) + lang_string("editor.menu.search.prelikes") + string(upvotes) + lang_string("editor.menu.search.predislikes") + string(downvotes));
+				
 				draw_set_halign(fa_right);
-				draw_text(56 + 512 - 5, yy + 52 - 4, "BY: " + string(author));
+				draw_text(56 + 512 - 5, yy + 52 - 4, lang_string("editor.menu.search.preby") + string(author));
 	
 				//draw_set_valign(fa_top);
-				//draw_text(56 + 512 - 5, yy + 4, "USERID: " + string(userid));
+				//draw_text(56 + 512 - 5, yy + 4, lang_string("editor.menu.search.preuserid") + string(userid));
 			
 				draw_set_halign(fa_left);
 				draw_set_valign(fa_top);
@@ -226,13 +226,13 @@ switch menu
 			draw_set_font(global.font_small);
 			draw_set_colour(pagelast <= 1 ? c_ltgray : c_white);
 			draw_set_halign(fa_right);
-			draw_text(960 - 15, 16, "Page " + string(page) + " of " + string(pagelast));
+			draw_text(960 - 15, 16, lang_string("editor.menu.search.page1") + string(page) + lang_string("editor.menu.search.page2") + string(pagelast));
 			draw_set_halign(fa_left);
 			
 			// page buttons
 			if page != pagelast
 			{
-				if draw_editorbutton(704, 388, "NEXT") && !loading
+				if draw_editorbutton(704, 388, lang_string("editor.menu.search.pagnext")) && !loading
 				{
 					records = undefined;
 					page++;
@@ -242,7 +242,7 @@ switch menu
 			
 			if page > 1
 			{
-				if draw_editorbutton(704, 324, "PREV") && !loading
+				if draw_editorbutton(704, 324, lang_string("editor.menu.search.pagprev")) && !loading
 				{
 					records = undefined;
 					page--;
@@ -290,7 +290,7 @@ switch menu
 			}
 			
 			// search button
-			if searchstring != "" && (draw_editorbutton(704, 98, "SEARCH") or (selectedsearch && keyboard_check_pressed(vk_enter)))
+			if searchstring != "" && (draw_editorbutton(704, 98, lang_string("editor.menu.search.search")) or (selectedsearch && keyboard_check_pressed(vk_enter)))
 			{
 				// search
 				page = 1;
@@ -302,7 +302,7 @@ switch menu
 		}
 		
 		// go back
-		if (draw_editorbutton(704, 458, "BACK") or (paging_type == 2 && searchstring == "" && draw_editorbutton(704, 98, "BACK"))) && !loading
+		if (draw_editorbutton(704, 458, lang_string("editor.menu.back")) or (paging_type == 2 && searchstring == "" && draw_editorbutton(704, 98, lang_string("editor.menu.back")))) && !loading
 		{
 			if paging_type != 2
 			{
@@ -322,7 +322,7 @@ switch menu
 		// upload level
 		if paging_type == 3 && !loading
 		{
-			if draw_editorbutton(704, 64, "UPLOAD")
+			if draw_editorbutton(704, 64, lang_string("editor.menu.search.upload"))
 			{
 				if debug
 				{
@@ -341,7 +341,7 @@ switch menu
 				else with obj_roomname
 				{
 					showtext = true;
-					message = "UNFINISHED!!!";
+					message = lang_string("editor.menu.wip");
 					alarm[0] = 200;
 				}
 			}
@@ -372,13 +372,13 @@ switch menu
 		draw_text(960 / 2, 128, string_upper(string(level_name))); // level name
 		
 		draw_set_font(global.font_small);
-		draw_text(960 / 2, 192, "By " + string(level_author)); // by whoever
+		draw_text(960 / 2, 192, lang_string("editor.menu.level.author") + string(level_author)); // by whoever
 		draw_text_ext(960 / 2, 256, string(level_desc), 18, 960 - 16); // description
 		
 		if level_string != undefined
 		{
 			// load level
-			if draw_editorbutton(384, 296, "PLAY") && viewpos == 0
+			if draw_editorbutton(384, 296, lang_string("editor.menu.level.play")) && viewpos == 0
 			{
 				scr_playerreset();
 				obj_player1.targetDoor = "A";
@@ -388,10 +388,10 @@ switch menu
 			#region debug
 			if debug
 			{
-				if draw_editorbutton(384, 360, "DOWNLOAD") && viewpos == 0
+				if draw_editorbutton(384, 360, lang_string("editor.menu.level.download")) && viewpos == 0
 				{
 					window_set_cursor(cr_default);
-					var fileopen = get_save_filename_ext("Level File (*.ptlv)|*.ptlv|All Files (*.*)|*.*", level_name + ".ptlv", "%localappdata%\\PizzaTower_GM2\\Levels\\", "Download Level");
+					var fileopen = get_save_filename_ext(lang_string("editor.menu.filefilter"), level_name + ".ptlv", "%localappdata%\\PizzaTower_GM2\\Levels\\", lang_string("editor.menu.savetitle"));
 					if fileopen != ""
 					{
 						var filewrite = file_text_open_write(fileopen);
@@ -399,7 +399,7 @@ switch menu
 						file_text_close(filewrite);
 					
 						showtext = true;
-						message = "LEVEL DOWNLOADED!";
+						message = lang_string("editor.menu.level.downloaded");
 						alarm[0] = 200;
 					}
 					if instance_exists(obj_editor_cursor)
@@ -416,7 +416,7 @@ switch menu
 					*/
 				}
 				
-				if draw_editorbutton(384, 424, "DETAILS") && map != undefined
+				if draw_editorbutton(384, 424, lang_string("editor.menu.level.debug")) && map != undefined
 				{
 					response = "";
 					var first = ds_map_find_first(map);
@@ -443,7 +443,7 @@ switch menu
 			{
 				camera_set_view_pos(view_camera[0], camera_get_view_x(view_camera[0]), lerp(camera_get_view_y(view_camera[0]), 540, 0.25));
 			
-				if draw_editorbutton(32, 540 + 32, "BACK")
+				if draw_editorbutton(32, 540 + 32, lang_string("editor.menu.back"))
 				{
 					alarm[0] = min(alarm[0], 1);
 					viewpos = 0;
@@ -453,7 +453,7 @@ switch menu
 				draw_set_font(global.font_small);
 				draw_set_halign(fa_center);
 				draw_set_valign(fa_top);
-				draw_text(960 / 2, 540 + 32, "CTRL C to copy full map");
+				draw_text(960 / 2, 540 + 32, lang_string("editor.menu.level.debugmap"));
 			
 				draw_set_halign(fa_left);
 				draw_set_valign(fa_top);
@@ -464,7 +464,7 @@ switch menu
 				{
 					clipboard_set_text(string(asyncresult));
 					showtext = true;
-					message = "COPIED";
+					message = lang_string("editor.menu.level.debugcopied");
 					alarm[0] = room_speed * 2;
 				}
 			}
@@ -472,7 +472,7 @@ switch menu
 				camera_set_view_pos(view_camera[0], camera_get_view_x(view_camera[0]), lerp(camera_get_view_y(view_camera[0]), 0, 0.25));
 		}
 		
-		if draw_editorbutton(32, 32, "BACK") && viewpos == 0
+		if draw_editorbutton(32, 32, lang_string("editor.menu.back")) && viewpos == 0
 		{
 			level_string = undefined;
 			menu = menutypes.levelbrowser;
@@ -509,7 +509,7 @@ switch menu
 		#endregion
 		#region back
 		
-		if draw_editorbutton(32, 32, "BACK") && viewpos == 0
+		if draw_editorbutton(32, 32, lang_string("editor.menu.back")) && viewpos == 0
 		{
 			if registering
 			{
@@ -596,7 +596,7 @@ switch menu
 		
 		draw_set_font(global.font_small);
 		draw_set_colour(c_white);
-		draw_text(352, 216, registering ? "Reenter password" : "Password");
+		draw_text(352, 216, registering ? lang_string("editor.menu.login.reenter") : lang_string("editor.menu.login.password"));
 		
 		#endregion
 		
@@ -604,12 +604,12 @@ switch menu
 		{
 			#region logging in
 		
-			if (draw_editorbutton(384, 296, "LOG IN") or (keyboard_check_pressed(vk_enter) && selectedpassword))
+			if (draw_editorbutton(384, 296, lang_string("editor.menu.login.login")) or (keyboard_check_pressed(vk_enter) && selectedpassword))
 			&& !loading
 			{
 				if passwordstring == ""
 				{
-					message = "INPUT A PASSWORD";
+					message = lang_string("editor.menu.login.dumbfuck");
 					showtext = true;
 					alarm[0] = room_speed * 2;
 				}
@@ -625,11 +625,11 @@ switch menu
 				
 			if !regedit
 			{
-				if draw_editorbutton(384, 296 + 64, "REGISTER") && !loading
+				if draw_editorbutton(384, 296 + 64, lang_string("editor.menu.login.register")) && !loading
 				{
 					if passwordstring == ""
 					{
-						message = "INPUT A PASSWORD";
+						message = lang_string("editor.menu.login.dumbfuck");
 						showtext = true;
 						alarm[0] = room_speed * 2;
 					}
@@ -656,11 +656,11 @@ switch menu
 				exit;
 			}
 			
-			if draw_editorbutton(384, 296, "REGISTER") && !loading
+			if draw_editorbutton(384, 296, lang_string("editor.menu.login.register")) && !loading
 			{
 				if passwordstring != passconfirm1
 				{
-					message = "PASSWORDS DONT MATCH!";
+					message = lang_string("editor.menu.login.dumbfuck2");
 					showtext = true;
 					alarm[0] = room_speed * 2;
 				}
@@ -684,7 +684,7 @@ switch menu
 			request = undefined;
 			records = undefined;
 			
-			message = "LOGGED IN!";
+			message = lang_string("editor.menu.login.success");
 			showtext = true;
 			alarm[0] = room_speed * 2;
 			

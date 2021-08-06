@@ -11,7 +11,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "mu_hubarcade.wav",
-  "duration": 157.899734,
+  "duration": 157.894745,
   "parent": {
     "name": "music",
     "path": "folders/Sounds/music.yy",

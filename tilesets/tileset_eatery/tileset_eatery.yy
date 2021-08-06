@@ -236,8 +236,8 @@
     "TileSerialiseData": [],
   },
   "parent": {
-    "name": "Tile Sets",
-    "path": "folders/Tile Sets.yy",
+    "name": "other",
+    "path": "folders/Tile Sets/other.yy",
   },
   "resourceVersion": "1.0",
   "name": "tileset_eatery",

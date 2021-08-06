@@ -96,6 +96,9 @@ function scr_player_crouch()
 		image_index = 0
 		crouchAnim = true
 		jumpAnim = true
+		
+		with instance_create(x,y,obj_highjumpcloud2)
+			image_xscale = other.xscale
 	}
 
 	if scr_slope() && key_down

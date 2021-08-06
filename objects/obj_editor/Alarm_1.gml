@@ -1,4 +1,4 @@
-/*
+
 
 /// @description 
 scr_save("autosave.lvl");

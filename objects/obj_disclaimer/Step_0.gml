@@ -28,14 +28,14 @@ if con == 2
 }
 
 // no net
-if nonet && os_is_network_connected(false)
+if nonet == os_is_network_connected(false)
 {
 	audio_stop_all();
 	room_restart();
 }
 
 // input
-if cancon or debug
+if cancon or debug or !drm
 {
 	scr_getinput();
 	if (keyboard_check_pressed(vk_enter) or key_jump) && con == 1

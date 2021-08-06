@@ -125,8 +125,8 @@ function scr_player_normal()
 					                    sprite_index = spr_3hpidle
 									else
 									{
-										if sprite_index != spr_idle
-											image_index = 2;
+										if sprite_index != spr_idle && character == "G"
+											image_index = choose(0, 8);
 										sprite_index = spr_idle
 									}
 								}
@@ -134,9 +134,11 @@ function scr_player_normal()
 							else
 							{
 								idle = 0
-								windingAnim--
 								sprite_index = spr_winding
 							}
+							
+							if windingAnim > 0
+								windingAnim--;
 						}
 						else
 						{
@@ -302,7 +304,7 @@ function scr_player_normal()
 		}
 		
 		//Snick peelout
-		if key_attack && character == "S" && state == states.normal
+		if key_attack && character == "S" && vsp >= 0
 		{
 			if move != 0
 				xscale = move
@@ -313,7 +315,7 @@ function scr_player_normal()
 		}
 		
 		// Snick spindash
-		if key_down && (key_jump or key_slap2) && character == "S" && state == states.normal
+		if key_down && (key_jump or key_slap2) && character == "S" && vsp >= 0
 		{
 			movespeed = 0
 			state = states.spindash

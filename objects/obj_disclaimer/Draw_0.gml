@@ -28,7 +28,7 @@ if con == 1
 	//draw_text(960 / 2, 160, "This mod makes use of a leaked build of the game. This goes against\nthe Pizza Tower's Discord rules.\n\nIf you don't want JhonnyKiller45 to kick your ass\nthen do not play this mod.");
 	draw_text(960 / 2, 160, str);
 	
-	if cancon
+	if cancon or !drm
 	{
 		draw_set_font(global.font_small);
 		draw_text(960 / 2, 420, lang_string("disclaimer.continue"));

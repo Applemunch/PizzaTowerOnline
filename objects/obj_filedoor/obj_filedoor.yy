@@ -30,8 +30,8 @@
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "pto",
-    "path": "folders/Objects/pto.yy",
+    "name": "pto stuff",
+    "path": "folders/Objects/pto stuff.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_filedoor",

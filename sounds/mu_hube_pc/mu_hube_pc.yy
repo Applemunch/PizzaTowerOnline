@@ -2,11 +2,11 @@
   "ConfigValues": {
     "debug": {"audioGroupId":"{\"name\":\"ag_pcmusic\",\"path\":\"audiogroups/ag_pcmusic\"}",},
   },
-  "compression": 0,
-  "volume": 1.0,
+  "compression": 1,
+  "volume": 0.7,
   "preload": false,
-  "bitRate": 8,
-  "sampleRate": 5512,
+  "bitRate": 128,
+  "sampleRate": 44100,
   "type": 0,
   "bitDepth": 1,
   "audioGroupId": {
@@ -14,7 +14,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "mu_hube_pc.wav",
-  "duration": 162.53241,
+  "duration": 162.52742,
   "parent": {
     "name": "pizza castle",
     "path": "folders/Sounds/pizza castle.yy",

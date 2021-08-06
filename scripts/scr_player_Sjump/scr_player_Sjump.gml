@@ -14,6 +14,7 @@ function scr_player_Sjump() {
 
 	move = key_right + key_left
 	
+	// set vsp
 	if global.gameplay == 0 or springsjump or sprite_index == spr_playerV_superjump2
 	{
 		sjumpvsp = -15;
@@ -34,6 +35,8 @@ function scr_player_Sjump() {
 		hsp = xscale * a
 		vsp = 0
 	}
+	
+	vsp *= gravmult;
 	
 	//Back to other states
 	//Freefallland

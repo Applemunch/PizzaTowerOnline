@@ -34,6 +34,8 @@ if fadealpha > 1
 			{
 				with obj_player1
 					event_perform(ev_other, ev_room_start);
+				with obj_door
+					event_perform(ev_other, ev_room_start);
 			}
 			
 			with obj_player1
@@ -91,19 +93,20 @@ if !fadein
 else if cont
 	fadealpha -= 0.1
 
-with obj_player1 
+with obj_player1
 {	
-	if other.fadein == true && (obj_player1.state == states.door or obj_player1.state == states.victory)
+	if other.fadein && (obj_player1.state == states.door or obj_player1.state == states.victory)
 	{
 		if obj_player1.sprite_index == spr_downpizzabox or obj_player1.sprite_index == spr_uppizzabox
 			state = states.crouchjump
 		else
 		{
+			c = 0;
 			state = states.comingoutdoor
 			image_index = 0
 		}
 	}
 }
 
-if fadein = true && fadealpha < 0 
+if fadein && fadealpha < 0 
 	instance_destroy()

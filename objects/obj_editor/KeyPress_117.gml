@@ -1,5 +1,4 @@
 
-/*
 /// @description 
 
 if global.optimize == 0 {

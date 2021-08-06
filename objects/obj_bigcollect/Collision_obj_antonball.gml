@@ -1,6 +1,7 @@
+audio_stop_sound(sfx_collectpizza)
 scr_soundeffect(sfx_collectpizza)
 
-global.collect +=  100
+global.collect += 100
 
 with instance_create(x+16,y,obj_smallnumber)
 	number = string(100)

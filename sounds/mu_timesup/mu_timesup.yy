@@ -1,5 +1,5 @@
 {
-  "compression": 0,
+  "compression": 1,
   "volume": 0.5,
   "preload": false,
   "bitRate": 128,
@@ -11,7 +11,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "mu_timesup",
-  "duration": 4.875544,
+  "duration": 4.870544,
   "parent": {
     "name": "music",
     "path": "folders/Sounds/music.yy",

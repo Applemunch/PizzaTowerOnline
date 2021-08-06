@@ -1,7 +1,7 @@
 if faceplayer
 {
 	if x != obj_player1.x
-	&& obj_player1.y <= y + 64 && obj_player1.y >= y - 100
+	&& obj_player1.y <= y + 100 && obj_player1.y >= y - 150
 		image_xscale = -sign(x - obj_player1.x);
 	else
 		image_xscale = xdef;

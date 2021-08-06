@@ -1,6 +1,8 @@
 /// @description 
+instance_destroy();
+exit;
 
-/*
+
 
 type = 0; // 0 = Level structure | 1 = Enemies | 2 = Transformations | 3 = Camera | 4 = Camera
 phase = 0;

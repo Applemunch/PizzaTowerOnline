@@ -1,5 +1,5 @@
 {
-  "compression": 0,
+  "compression": 1,
   "volume": 1.0,
   "preload": false,
   "bitRate": 128,
@@ -11,7 +11,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "mu_prelogin_pc.ogg",
-  "duration": 3.248243,
+  "duration": 3.243243,
   "parent": {
     "name": "pizza castle",
     "path": "folders/Sounds/pizza castle.yy",

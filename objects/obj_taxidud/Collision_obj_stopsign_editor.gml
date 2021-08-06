@@ -1,3 +1,6 @@
+if !instance_exists(playerid)
+	exit
+
 if other.id != sign_id exit;
 	if playerid.visible = false
 	{

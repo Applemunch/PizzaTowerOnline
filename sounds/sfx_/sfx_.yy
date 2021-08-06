@@ -11,7 +11,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "sfx_.wav",
-  "duration": 12.1396255,
+  "duration": 12.1346264,
   "parent": {
     "name": "extra",
     "path": "folders/Sounds/extra.yy",

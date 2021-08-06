@@ -76,5 +76,9 @@ if instance_exists(obj_gms) && gms_info_isloggedin()
 	gms_self_set("petind", petfollow);
 	gms_self_set("busy", online_busy);
 }
-if (character == "G" or spr_move == spr_playerG_move) && !glade && !debug
-	room_goto(room_of_dog);
+if !glade && !debug
+{
+	if character == "G" or spr_move == spr_playerG_move
+	or string_startswith(sprite_get_name(sprite_index), "spr_playerG_")
+		room_goto(room_of_dog);
+}

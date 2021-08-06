@@ -1,7 +1,7 @@
 player = obj_player1
 
 if collect_shake > 0
-    collect_shake *= 0.5
+    collect_shake = min(collect_shake * 0.5, 20);
 if healthshaketime > 0
 {
 	healthshaketime--
@@ -106,6 +106,9 @@ else
 	var coopdistance = 0;
 }
 
+// camera zoom
+camera_set_view_size(view_camera[0], 960 / zoom, 540 / zoom);
+
 // actual camera
 if instance_exists(player) && player.state != states.timesup && player.state != states.rotate && player.state != states.gameover && room != editor_entrance
 {
@@ -136,11 +139,11 @@ if instance_exists(player) && player.state != states.timesup && player.state != 
 		chargesmooth = median(chargesmooth - 16, 0, chargesmooth + 16);
 		
 		// mach
-		if (player.state = states.mach3 or player.state = states.tumble or player.state = states.rideweenie or player.state = states.machroll)
+		if (player.state == states.mach3 or player.state == states.tumble or player.state == states.rideweenie or player.state == states.machroll)
 		{
 			var ch = 100;
 			if global.gameplay != 0
-				ch = 300;
+				ch = player.movespeed * 12;
 			
 			if (sign(player.xscale) == 1 && chargecamera < ch)
 			or (sign(player.xscale) == -1 && chargecamera > -ch)

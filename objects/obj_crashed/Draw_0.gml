@@ -3,7 +3,7 @@ draw_set_alpha(1);
 draw_set_font(global.font_small);
 
 draw_set_halign(fa_center);
-draw_text((room_width / 2) + random_range(-1, 1), room_height - 64, "Press start to play");
+draw_text((room_width / 2) + random_range(-1, 1), room_height - 64, lang_string("general.crash.con"));
 
 draw_set_halign(fa_left);
 draw_set_valign(fa_top);

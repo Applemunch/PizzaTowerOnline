@@ -1,3 +1,4 @@
+/// @description wave seconds
 if state != 118
 {
     wave_seconds--;

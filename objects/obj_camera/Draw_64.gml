@@ -9,7 +9,7 @@ if global.pizzadelivery && global.hp > 0
 
 var sugary = false;
 with obj_player1
-	if character == "SP" sugary = true;
+	if (character == "SP" or character == "SN") sugary = true;
 
 #region old hud
 

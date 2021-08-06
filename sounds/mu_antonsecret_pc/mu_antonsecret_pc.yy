@@ -1,12 +1,12 @@
 {
   "ConfigValues": {
-    "debug": {"audioGroupId":"{\"name\":\"ag_pcmusic\",\"path\":\"audiogroups/ag_pcmusic\"}",},
+    "debug": {"audioGroupId":"{\"name\":\"audiogroup_default\",\"path\":\"audiogroups/audiogroup_default\"}",},
   },
-  "compression": 0,
+  "compression": 1,
   "volume": 1.0,
   "preload": false,
-  "bitRate": 8,
-  "sampleRate": 5512,
+  "bitRate": 128,
+  "sampleRate": 44100,
   "type": 0,
   "bitDepth": 1,
   "audioGroupId": {
@@ -14,10 +14,10 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "mu_antonsecret_pc.wav",
-  "duration": 88.89389,
+  "duration": 88.8888855,
   "parent": {
-    "name": "extras",
-    "path": "folders/Sounds/pizza castle/extras.yy",
+    "name": "extra",
+    "path": "folders/Sounds/pizza castle/extra.yy",
   },
   "resourceVersion": "1.0",
   "name": "mu_antonsecret_pc",

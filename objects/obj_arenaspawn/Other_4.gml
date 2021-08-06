@@ -32,6 +32,8 @@ else
             if wave > other.maxwave
                 other.maxwave = wave;
 			
+			boundbox = false;
+			visible = false;
 			instance_deactivate_object(id);
 		}
     }

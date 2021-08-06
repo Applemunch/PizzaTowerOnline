@@ -1,5 +1,2 @@
-
-if playerid.visible = true 
-{
-instance_destroy()
-}
+if !instance_exists(playerid) or playerid.visible 
+	instance_destroy()

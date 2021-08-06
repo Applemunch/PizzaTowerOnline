@@ -10,8 +10,10 @@ if deactivate
 	appeartimer = room_speed * 5;
 	gotoplayer = 0;
 	
-	obj_tv.manualhide = false;
-	obj_camera.manualhide = false;
+	with obj_tv
+		manualhide = false;
+	with obj_camera
+		manualhide = false;
 	exit;
 }
 
@@ -60,7 +62,7 @@ else
 		}
 		lockcam = false;
 		image_xscale = 1;
-	
+		
 	    // abilities
 		if appeartimer > 0
 		{
@@ -105,8 +107,10 @@ else
 			}
 			if appear == 1
 			{
-				obj_tv.manualhide = false;
-				obj_camera.manualhide = false;
+				with obj_tv
+					manualhide = false;
+				with obj_camera
+					manualhide = false;
 				var xx, yy;
 			
 				if popfrom == 0 // top left corner
@@ -114,14 +118,16 @@ else
 					xx = 150;
 					yy = 100;
 				
-					obj_camera.manualhide = true;
+					with obj_camera
+						manualhide = true;
 				}
 				if popfrom == 1 // top right corner
 				{
 					xx = 960 - 150;
 					yy = 100;
 				
-					obj_tv.manualhide = true;
+					with obj_tv
+						manualhide = true;
 				}
 				if popfrom == 2 // bottom left corner
 				{
@@ -163,8 +169,10 @@ else
 			}
 			if appear == 3
 			{
-				obj_tv.manualhide = false;
-				obj_camera.manualhide = false;
+				with obj_tv
+					manualhide = false;
+				with obj_camera
+					manualhide = false;
 			
 				if x != obj_player1.x
 					image_xscale = sign(obj_player1.x - x);

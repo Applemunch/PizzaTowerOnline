@@ -11,7 +11,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "sfx_wawa.ogg",
-  "duration": 3.440102,
+  "duration": 3.435102,
   "parent": {
     "name": "extra",
     "path": "folders/Sounds/extra.yy",

@@ -1,5 +1,6 @@
 if other.vsp > 0 && other.cutscene == false && other.state != states.freefall && other.state != states.freefallprep
 {
+	endtumble = true;
     sprite_index = spr_bigmushroom_bounce;
 	
     if other.state == states.jump or other.state == states.normal

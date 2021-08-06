@@ -4,6 +4,12 @@ if instance_number(object_index) > 1
     exit;
 }
 
+if !global.pastdisclaimer && !debug
+{
+	room_goto(room_of_dog);
+	exit;
+}
+
 if !variable_global_exists("saveroom")
 {
 	global.saveroom = ds_list_create()
@@ -438,3 +444,6 @@ global.gerome = false;
 
 global.stylelock = false;
 suplextrail = 0;
+
+endtumble = false
+hascollision = true

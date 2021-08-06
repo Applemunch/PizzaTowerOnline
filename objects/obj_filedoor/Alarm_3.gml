@@ -1,6 +1,7 @@
 /// @description fadeout
 //offline_travel();
 
+/*
 if instance_exists(obj_gms)
 {
 	if !gms_info_isconnected()

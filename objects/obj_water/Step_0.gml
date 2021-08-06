@@ -18,8 +18,8 @@ with instance_place(x, y - 1, obj_player1)
 	        with instance_create(x, y, obj_superdashcloud)
 	            sprite_index = spr_watereffect
 			
-			if !audio_is_playing(obj_player1.snd_fireass)
-				scr_soundeffect(obj_player1.snd_fireass)
+			audio_stop_sound(sfx_fireassend);
+			scr_soundeffect(sfx_fireassend);
 		}
 		else
 		{

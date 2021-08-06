@@ -1,8 +1,8 @@
 {
   "ConfigValues": {
-    "debug": {"audioGroupId":"{\"name\":\"ag_music\",\"path\":\"audiogroups/ag_music\"}",},
+    "debug": {"audioGroupId":"{\"name\":\"audiogroup_default\",\"path\":\"audiogroups/audiogroup_default\"}",},
   },
-  "compression": 0,
+  "compression": 1,
   "volume": 1.0,
   "preload": false,
   "bitRate": 128,
@@ -13,8 +13,8 @@
     "name": "audiogroup_default",
     "path": "audiogroups/audiogroup_default",
   },
-  "soundFile": "mu_forestsecret.wav",
-  "duration": 71.49438,
+  "soundFile": "mu_forestsecret.ogg",
+  "duration": 71.4893646,
   "parent": {
     "name": "secret",
     "path": "folders/Sounds/music/secret.yy",

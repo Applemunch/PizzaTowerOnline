@@ -11,7 +11,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "sfx_denied",
-  "duration": 0.965,
+  "duration": 0.96,
   "parent": {
     "name": "extra",
     "path": "folders/Sounds/extra.yy",

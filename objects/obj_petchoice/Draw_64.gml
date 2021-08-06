@@ -24,7 +24,7 @@ if locked
 		draw_sprite_ext(_spr, img, (960 / 2) + xoffset, (540 / 2) + yoffset, 2, 2, 0, c_black, 1);
 }
 else if sprite_exists(_spr)
-	draw_sprite_ext(_spr, img, (960 / 2) + xoffset, (540 / 2) + yoffset + (_spr == spr_nohat ? 48 : 0), 2, 2, 0, c_white, (100 - abs(xoffset)) / 100);
+	draw_sprite_ext(_spr, img, (960 / 2) + xoffset, (540 / 2) + yoffset + (_spr == spr_nohat ? 48 : 0), 2, 2, 0, c_white, (100 - abs(xoffset) - abs(yoffset)) / 100);
 
 // text
 palname = ((sel[0] < array_length(selarray) && array_length(selarray[sel[0]]) >= 2) ? selarray[sel[0]][1] : "UNDEFINED");

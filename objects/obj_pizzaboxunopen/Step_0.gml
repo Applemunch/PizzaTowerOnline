@@ -87,13 +87,15 @@ if (place_meeting(x,y,obj_player1) or place_meeting(x,y,obj_antonball)) && obj_p
 		if check_sugary()
 			toppinname = "CONFECTI";
 		
-		if global.toppintotal < 5
-			obj_tv.message = "YOU NEED " + string(5 - global.toppintotal) + " MORE " + toppinname + "!";
-		else
-			obj_tv.message = "YOU HAVE ALL " + toppinname + "!";
-		
-		obj_tv.showtext = true;
-		obj_tv.alarm[0] = 150;
+		with obj_tv
+		{
+			if global.toppintotal < 5
+				message = "YOU NEED " + string(5 - global.toppintotal) + " MORE " + toppinname + "!";
+			else
+				message = "YOU HAVE ALL " + toppinname + "!";
+			showtext = true;
+			alarm[0] = 150;
+		}
 		global.toppintotal += 1;
 	
 		if content == obj_pizzakinshroom or content == obj_toppinmallow

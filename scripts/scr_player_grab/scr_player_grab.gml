@@ -273,6 +273,7 @@ function scr_player_grab()
 			swingdingbuffer = 0;
 			sprite_index = spr_swingding;
 			movespeed = 12;
+			flash = true;
 			instance_create(x, y, obj_swingdinghitbox);
 			
 			//Jump Stop

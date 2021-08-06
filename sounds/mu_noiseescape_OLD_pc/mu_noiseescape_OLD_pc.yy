@@ -1,8 +1,8 @@
 {
-  "compression": 0,
+  "compression": 1,
   "volume": 1.0,
   "preload": false,
-  "bitRate": 8,
+  "bitRate": 128,
   "sampleRate": 5512,
   "type": 0,
   "bitDepth": 1,
@@ -11,7 +11,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "mu_noiseescape_OLD_pc.wav",
-  "duration": 137.788742,
+  "duration": 137.783737,
   "parent": {
     "name": "pizza castle",
     "path": "folders/Sounds/pizza castle.yy",

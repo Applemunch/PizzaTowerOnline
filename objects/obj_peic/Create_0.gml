@@ -1,8 +1,10 @@
 audio_stop_all();
 scr_soundeffect(sfx_pephurt);
 
-show_message("The game crashed! longMessage:\n\nthe peic is too powerful");
+show_message("The game crashed! longMessage:\n\npeic is too powerful");
+game_end();
 
+/*
 with all
 {
 	if id != other.id

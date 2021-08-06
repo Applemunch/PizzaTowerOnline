@@ -1,8 +1,10 @@
+working = false;
 if room != characterselect
 {
 	room_goto(room_of_dog);
 	exit;
 }
+working = true;
 
 // init
 gms_init(obj_gms);
@@ -29,7 +31,7 @@ gms_settings_declare_syncable_object(obj_baddiegibs);
 */
 
 // settings
-gameversion = 6.7;
+gameversion = 7;
 gms_settings(true, gameversion, obj_player1, obj_otherplayer);
 
 // scripts

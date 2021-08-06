@@ -10,7 +10,7 @@ if ds_map_find_value(async_load, "id") == request
 			with obj_roomname
 			{
 				showtext = true;
-				message = "INVALID DATA";
+				message = lang_string("editor.menu.async.invalid");
 				alarm[0] = 200;
 			}
 			exit;
@@ -63,12 +63,10 @@ if ds_map_find_value(async_load, "id") == request
 			else
 			{
 				pagelast = 0;
-				/*
+				
 				showtext = true;
-				message = "GOT UNEXPECTED RESULTS";
+				message = lang_string("editor.menu.async.unexpected");
 				alarm[0] = 200;
-				*/
-			
 			}
 		}
 		
@@ -128,8 +126,9 @@ if ds_map_find_value(async_load, "id") == request
 			else
 			{
 				pagelast = 0;
+				
 				showtext = true;
-				message = "GOT UNEXPECTED RESULTS";
+				message = lang_string("editor.menu.async.unexpected");
 				alarm[0] = 200;
 			}
 		}
@@ -147,7 +146,7 @@ if ds_map_find_value(async_load, "id") == request
 			}
 			else
 			{
-				message = "UNAUTHORIZED";
+				message = lang_string("editor.menu.async.unauthorized");
 				showtext = true;
 				alarm[0] = room_speed * 2;
 			}

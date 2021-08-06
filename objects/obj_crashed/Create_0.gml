@@ -5,7 +5,7 @@ if !variable_global_exists("crashed")
 }
 
 scr_soundeffect(sfx_pephurt);
-crashtext = "The game crashed last time.";
+crashtext = lang_string("general.crash");
 
 fading = false;
 image_alpha = 0;

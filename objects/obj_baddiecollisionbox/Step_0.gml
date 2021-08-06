@@ -35,10 +35,13 @@ if instance_exists(baddieID) && place_meeting(x,y,obj_player1) && !obj_player1.c
 					machpunchAnim = true
 					image_index = 0
 				}
-				if state = states.mach3 or (state == states.freefall && freefallsmash > 10)
-				or state == states.knightpep or state == states.knightpepslopes
-				or state == states.superslam or state == states.tumble
-					bad.hp -= 99;
+				if bad.object_index != obj_tankOLD
+				{
+					if state = states.mach3 or (state == states.freefall && freefallsmash > 10)
+					or state == states.knightpep or state == states.knightpepslopes
+					or state == states.superslam or state == states.tumble
+						bad.hp -= 99;
+				}
 				
 				if state != states.hurt
 					bad.grabbedby = 1

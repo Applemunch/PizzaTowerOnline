@@ -1,5 +1,6 @@
-if alarm[11] == -1
+if alarm[11] == -1 && !debug
 	alarm[11] = 15;
+global.pvp = false;
 
 if room == rm_editor {
 	visible = false;
@@ -172,16 +173,8 @@ if global.gameplay != 0
 }
 
 // heat meter
-if global.combotime > 0
-    global.combotime -= 0.5;
 if global.heattime > 0
     global.heattime -= 0.25;
-if global.combotime <= 0 && global.combo != 0
-{
-    global.combotime = 0;
-    global.combo = 0;
-    supercharge = 0;
-}
 if global.heattime <= 0 && global.style > -1 && !global.stylelock
     global.style -= 0.05;
 if state == states.victory && place_meeting(x, y, obj_startgate) && global.style > -1
@@ -241,7 +234,16 @@ if ((global.combo >= 3 && global.gameplay == 0) or (supercharge == 4 && global.g
 	else
 		anger = 100
 }
- 
+if global.combotime > 0
+    global.combotime -= 0.5;
+if global.combotime <= 0 && state != states.backbreaker
+{
+    global.combotime = 0;
+    global.combo = 0;
+    supercharge = 0;
+	supercharged = false;
+}
+
 //Supercharged effect
 if !instance_exists(superchargedeffectid) && supercharged
 {
@@ -251,6 +253,8 @@ if !instance_exists(superchargedeffectid) && supercharged
 		other.superchargedeffectid = id
 	}
 }
+if instance_exists(superchargedeffectid) && !supercharged
+	instance_destroy(superchargedeffectid);
  
 //Pizzashield
 if !instance_exists(pizzashieldid) && pizzashield
@@ -475,7 +479,7 @@ else
 	angry = false
 
 //Stop winding up
-if sprite_index =spr_winding && state != states.normal 
+if sprite_index == spr_winding && state != states.normal 
 	windingAnim = 0
 
 if state != states.grab && state != states.grabbed

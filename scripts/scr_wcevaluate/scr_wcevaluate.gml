@@ -45,10 +45,12 @@ function scr_wcevaluate(argument0)
 				WC_consoleopen = true;
 				ds_list_insert(WC_consolelist, 0, "thats not funny");
 			}
+			else if arg1 == "0"
+				instance_destroy();
 			else
 			{
 				WC_consoleopen = true;
-				ds_list_insert(WC_consolelist, 0, "Usage: dont use it");
+				ds_list_insert(WC_consolelist, 0, arg1 + " is not a valid bool");
 			}
 			break;
 			
@@ -62,7 +64,7 @@ function scr_wcevaluate(argument0)
 		case "help":
 		case "?":
 			WC_consoleopen = true;
-			ds_list_insert(WC_consolelist, 0, "Command help can be found in CONTROLS.txt");
+			ds_list_insert(WC_consolelist, 0, "Command help can be found in console-commands.txt");
 			break;
 	
 		case "impulse": // pt exclusive
@@ -661,10 +663,10 @@ function scr_wcevaluate(argument0)
 				if !WC_consoleopen // binded command
 				{
 					tempval = get_string("Input room speed", string(room_speed));
-						
-					if tempval == ""
-					{
 					
+					if tempval == "" or tempval == undefined
+					{
+						// do literally nothing dumbass
 					}
 					else if string_length(string_digits(tempval)) + string_count("-", tempval) + string_count(".", tempval) == string_length(tempval)
 					{
@@ -2100,6 +2102,8 @@ function scr_wcevaluate(argument0)
 				            __tempsomething = " with Glade sprites";
 				        else if arg2 == "SP" // pt online exclusive
 				            __tempsomething = " with Pizzelle sprites";
+				        else if arg2 == "SN" // pt online exclusive
+				            __tempsomething = " with Pizzano sprites";
 				        else
 						{
 				            __tempsomething = " with unchanged sprites";
@@ -2130,6 +2134,8 @@ function scr_wcevaluate(argument0)
 				        arg1 = "Glade";
 				    else if arg1 == "SP" // pt online exclusive
 				        arg1 = "Pizzelle";
+				    else if arg1 == "SN" // pt online exclusive
+				        arg1 = "Pizzano";
 				    else
 					{
 				        arg1 = ds_list_find_value(arg, 1);
@@ -2544,99 +2550,10 @@ function scr_wcevaluate(argument0)
 			}
 			else
 			{
-				var finalkey = -1;
-				var keycode = false;
+				var key = scr_wckeycode(arg1);
+				var finalkey = key[0];
+				var keycode = key[1];
 				
-				switch string_upper(arg1)
-				{
-					case "F1":
-						finalkey = vk_f1;
-						break;
-					case "F2":
-						finalkey = vk_f2;
-						break;
-					case "F3":
-						finalkey = vk_f3;
-						break;
-					case "F4":
-						finalkey = vk_f4;
-						break;
-					case "F5":
-						finalkey = vk_f5;
-						break;
-					case "F6":
-						finalkey = vk_f6;
-						break;
-					case "F7":
-						finalkey = vk_f7;
-						break;
-					case "F8":
-						finalkey = vk_f8;
-						break;
-					case "F9":
-						finalkey = vk_f9;
-						break;
-					case "F10":
-						finalkey = vk_f10;
-						break;
-					case "F11":
-						finalkey = vk_f11;
-						break;
-					case "F12":
-						finalkey = vk_f12;
-						break;
-					case "BACKSPACE":
-						finalkey = vk_backspace;
-						break;
-					case "SPACE":
-						finalkey = vk_space;
-						break;
-					case "TAB":
-						finalkey = vk_tab;
-						break;
-					case "SHIFT":
-						finalkey = vk_shift;
-						break;
-					case "CONTROL":
-						finalkey = vk_control;
-						break;
-					case "UP":
-						finalkey = vk_up;
-						break;
-					case "DOWN":
-						finalkey = vk_down;
-						break;
-					case "LEFT":
-						finalkey = vk_left;
-						break;
-					case "RIGHT":
-						finalkey = vk_right;
-						break;
-					case "ESCAPE":
-					case "ESC":
-						finalkey = vk_escape;
-						break;
-					
-					default:
-						// keycode
-						if string_digits(arg1) == arg1 && real(arg1) > 9
-						{
-							keycode = true;
-							finalkey = real(arg1);
-						}
-						else
-						{
-							// string
-							if string_length(arg1) > 1
-							{
-								ds_list_insert(WC_consolelist, 0, "Unknown key " + string(arg1));
-								WC_consoleopen = true;
-							}
-							else
-								finalkey = ord(string_upper(arg1));
-						}
-						break;
-				}
 				if finalkey != -1
 				{
 					var command = string_replace(commandargs, arg1 + " ", "");
@@ -2663,18 +2580,20 @@ function scr_wcevaluate(argument0)
 					scr_wcevaluate("unbindall");
 				else
 				{
+					var finalkey = scr_wckeycode(string_upper(arg1))[0];
+					
 					__tempsomething = false;
 					for (i = 0; i < ds_list_size(WC_bindkey); i++)
 					{
-						if ds_list_find_value(WC_bindkey, i) == ord(string_upper(arg1))
+						if ds_list_find_value(WC_bindkey, i) == finalkey
 						{
-						    ds_list_delete(WC_bindkey, i);
-						    ds_list_delete(WC_bindmap, i);
+							ds_list_delete(WC_bindkey, i);
+							ds_list_delete(WC_bindmap, i);
 							__tempsomething = true;
 							i = 0;
 						}
 					}
-			
+					
 					if !__tempsomething
 					{
 						ds_list_insert(WC_consolelist, 0, "Bind not found. You can try unbinding all.");
@@ -2828,4 +2747,102 @@ function scr_wcevaluate(argument0)
 	if WC_consoleopen && WC_consoleenter == eval
 		keyboard_string = "";
 	keyboard_clear(vk_enter);
+}
+
+function scr_wckeycode(key)
+{
+	var finalkey = -1;
+	var keycode = false;
+	
+	switch string_upper(key)
+	{
+		case "F1":
+			finalkey = vk_f1;
+			break;
+		case "F2":
+			finalkey = vk_f2;
+			break;
+		case "F3":
+			finalkey = vk_f3;
+			break;
+		case "F4":
+			finalkey = vk_f4;
+			break;
+		case "F5":
+			finalkey = vk_f5;
+			break;
+		case "F6":
+			finalkey = vk_f6;
+			break;
+		case "F7":
+			finalkey = vk_f7;
+			break;
+		case "F8":
+			finalkey = vk_f8;
+			break;
+		case "F9":
+			finalkey = vk_f9;
+			break;
+		case "F10":
+			finalkey = vk_f10;
+			break;
+		case "F11":
+			finalkey = vk_f11;
+			break;
+		case "F12":
+			finalkey = vk_f12;
+			break;
+		case "BACKSPACE":
+			finalkey = vk_backspace;
+			break;
+		case "SPACE":
+			finalkey = vk_space;
+			break;
+		case "TAB":
+			finalkey = vk_tab;
+			break;
+		case "SHIFT":
+			finalkey = vk_shift;
+			break;
+		case "CONTROL":
+			finalkey = vk_control;
+			break;
+		case "UP":
+			finalkey = vk_up;
+			break;
+		case "DOWN":
+			finalkey = vk_down;
+			break;
+		case "LEFT":
+			finalkey = vk_left;
+			break;
+		case "RIGHT":
+			finalkey = vk_right;
+			break;
+		case "ESCAPE":
+		case "ESC":
+			finalkey = vk_escape;
+			break;
+					
+		default:
+			// keycode
+			if string_digits(key) == key && real(key) > 9
+			{
+				keycode = true;
+				finalkey = real(key);
+			}
+			else
+			{
+				// string
+				if string_length(key) > 1
+				{
+					ds_list_insert(WC_consolelist, 0, "Unknown key " + string(key));
+					WC_consoleopen = true;
+				}
+				else
+					finalkey = ord(string_upper(key));
+			}
+			break;
+	}
+	return [finalkey, keycode];
 }

@@ -37,6 +37,9 @@ if !oldhallway
 		else
 			x = doortarget.x + 16;
 		y = doortarget.y - 14;
+		
+		if targetDoor == "A" && place_meeting(x, y, obj_exitgate)
+			x -= 16;
 	}
 	
 	if verticalhallway
@@ -74,8 +77,21 @@ else
 }
 if state == states.climbwall
 {
-	while !scr_solid(x + xscale, y)
-		x += xscale;
+	show_debug_message("climbwall state");
+	
+	var moves = xscale;
+	while !scr_solid(x + moves + sign(moves), y)
+	{
+		moves += xscale;
+		if abs(moves) >= room_width
+		{
+			moves = 0;
+			break;
+		}
+	}
+	
+	show_debug_message(string(moves) + " moves");
+	x += moves;
 }
 
 if state == states.ladder

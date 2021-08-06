@@ -5,7 +5,7 @@ function scr_player_freefall()
 	
 	if global.gameplay != 0
 	{
-		vsp = freefallvsp
+		vsp = freefallvsp * gravmult
 		freefallvsp += 0.2
 		if freefallvsp > 35
 			freefallvsp = 35;

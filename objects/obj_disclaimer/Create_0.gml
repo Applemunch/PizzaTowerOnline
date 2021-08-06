@@ -3,13 +3,15 @@ if room != rm_disclaimer
 	instance_destroy();
 	exit;
 }
+global.onlinemode = false;
 
 con = -1;
 size = 0;
 
 cancon = false;
 nonet = false;
-version = 1;
+version = 3;
+drm = false;
 
 req = -1;
 

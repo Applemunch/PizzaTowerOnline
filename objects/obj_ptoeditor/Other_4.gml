@@ -3,7 +3,8 @@ if instance_exists(obj_player)
 {
 	with all
 	{
-		persistent = false;
+		if object_index != obj_wc
+			persistent = false;
 	}
 	room_restart();
 }

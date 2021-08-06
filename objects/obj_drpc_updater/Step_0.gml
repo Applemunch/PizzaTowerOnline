@@ -27,8 +27,11 @@ if running
 				case "SP":
 					rousr_dissonance_set_small_image("char_sp", "Pizzelle");
 					break;
+				case "SN":
+					rousr_dissonance_set_small_image("char_sn", "Pizzano");
+					break;
 				default:
-					rousr_dissonance_set_small_image("char_unknown", "Playing as who?");
+					rousr_dissonance_set_small_image("char_unknown", lang_string("drpc.nullino"));
 					break;
 			}
 		}

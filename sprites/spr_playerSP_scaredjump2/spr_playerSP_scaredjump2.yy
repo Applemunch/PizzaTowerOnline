@@ -41,7 +41,7 @@
     "spriteId": {"name":"spr_playerSP_scaredjump2","path":"sprites/spr_playerSP_scaredjump2/spr_playerSP_scaredjump2.yy",},
     "timeUnits": 1,
     "playback": 1,
-    "playbackSpeed": 0.7,
+    "playbackSpeed": 1.0,
     "playbackSpeedType": 1,
     "autoRecord": true,
     "volume": 1.0,

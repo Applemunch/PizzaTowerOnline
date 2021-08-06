@@ -1,6 +1,8 @@
 function scr_playerreset()
 {
-	ds_list_clear(global.baddietomb);
+	if ds_exists(global.baddietomb, ds_type_list)
+		ds_list_clear(global.baddietomb);
+	
 	with obj_followcharacter
 		if object_index != obj_petfollow instance_destroy();
 	
@@ -41,13 +43,15 @@ function scr_playerreset()
 	global.minutes = 2;
 	global.seconds = 59;
 	
-	ds_list_clear(global.old_baddieroom)
-	ds_list_clear(global.old_saveroom)
+	if ds_exists(global.old_baddieroom, ds_type_list)
+		ds_list_clear(global.old_baddieroom)
+	if ds_exists(global.old_saveroom, ds_type_list)
+		ds_list_clear(global.old_saveroom)
 	
 	if instance_exists(obj_endlevelfade)
-		instance_destroy(obj_endlevelfade)
+		instance_destroy(obj_endlevelfade, false)
 	
-	instance_destroy(obj_pizzaball_slices);
+	instance_destroy(obj_pizzaball_slices, false);
 	global.timeractive = false
 	global.wave = 0
 	global.maxwave = 0
@@ -58,29 +62,30 @@ function scr_playerreset()
 	global.timeattack = false
 	global.giantkey = false
 	if instance_exists(obj_snickexe)
-		instance_destroy(obj_snickexe)
+		instance_destroy(obj_snickexe, false)
 	
-	obj_timeattack.stop = false
+	with obj_timeattack
+		stop = false
 	
 	if instance_exists(obj_pizzaface)
-		instance_destroy(obj_pizzaface)
+		instance_destroy(obj_pizzaface, false)
 
 	if instance_exists(obj_pizzashield)
-		instance_destroy(obj_pizzashield)
+		instance_destroy(obj_pizzashield, false)
 	global.timedgate = false
 	global.taseconds = 0
 	global.taminutes = 0
-
+	
 	global.miniboss = false
-
+	
 	obj_player1.spotlight = true
 	if instance_exists(obj_coopflag)
-		instance_destroy(obj_coopflag)
+		instance_destroy(obj_coopflag, false)
 	if instance_exists(obj_cooppointer)
-		instance_destroy(obj_cooppointer)
+		instance_destroy(obj_cooppointer, false)
 
 	if instance_exists(obj_toppinwarrior)
-		instance_destroy(obj_toppinwarrior)
+		instance_destroy(obj_toppinwarrior, false)
 
 	with obj_tv
 	{
@@ -117,7 +122,7 @@ function scr_playerreset()
 
 
 	if instance_exists(obj_timesup)
-		instance_destroy(obj_timesup)
+		instance_destroy(obj_timesup, false)
 	global.seconds = 59
 	global.minutes = 1
 	obj_player1.state = states.comingoutdoor
@@ -125,9 +130,11 @@ function scr_playerreset()
 
 	obj_camera.chargecamera = 0
 	obj_camera.crouchcamera = 0
-
-	ds_list_clear(global.saveroom)
-	ds_list_clear(global.baddieroom)
+	
+	if ds_exists(global.saveroom, ds_type_list)
+		ds_list_clear(global.saveroom)
+	if ds_exists(global.baddieroom, ds_type_list)
+		ds_list_clear(global.baddieroom)
 	with (obj_player1) 
 	{
 		image_blend = c_white;
@@ -305,5 +312,6 @@ function scr_playerreset()
 		
 		mort = false;
 		shot = false;
+		endtumble = false
 	}
 }

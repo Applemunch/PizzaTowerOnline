@@ -203,7 +203,7 @@ if WC_candrag && WC_assetfinder < 0 && !WC_creatingobj && WC_selectobj == 0
 	{
 		WC_dragobj = noone;
 	
-		if WC_fakedragobj != noone
+		if instance_exists(WC_fakedragobj)
 		{
 			with WC_fakedragobj
 			{
@@ -237,7 +237,7 @@ if WC_candrag && WC_assetfinder < 0 && !WC_creatingobj && WC_selectobj == 0
 		WC_fakedragobj = noone;
 
 	// actually drag the object
-	if WC_dragobj != noone
+	if instance_exists(WC_dragobj)
 	{
 		with WC_dragobj
 		{
@@ -318,32 +318,27 @@ if WC_candrag && WC_assetfinder < 0 && !WC_creatingobj && WC_selectobj == 0
 	// duplicate the object
 	if mouse_check_button_pressed(mb_middle) && !(WC_consoleopen && (window_mouse_get_y() / window_get_height()) * 540 <= WC_maxconsolebottom)
 	{
-		if WC_fakedragobj == noone
+		if !instance_exists(WC_fakedragobj)
 		{
 			if !instance_exists(WC_dragobj)
 			    WC_dragobj = collision_point(mouse_x, mouse_y, all, false, false);
 	
 			if instance_exists(WC_dragobj)
 			{
-			    if mouse_check_button(mb_left)
-			    {
-			        with WC_dragobj
+				with WC_dragobj
+				{
+					if other.WC_prioritizebaddies && object_index == obj_baddiecollisionbox // pt exclusive
 					{
-						if other.WC_prioritizebaddies && object_index == obj_baddiecollisionbox // pt exclusive
-							instance_copy(baddieID.object_index);
-						else
-							instance_copy(self);
+						var copy = noone;
+						with baddieID
+							copy = instance_copy(false);
+						other.WC_dragobj = copy;
 					}
-			    }
-			    else
+					else
+						other.WC_dragobj = instance_copy(false);
+				}
+			    if !mouse_check_button(mb_left)
 			    {
-			        with WC_dragobj
-					{
-						if other.WC_prioritizebaddies && object_index == obj_baddiecollisionbox // pt exclusive
-							other.WC_dragobj = instance_copy(baddieID.object_index);
-						else
-							other.WC_dragobj = instance_copy(self);
-					}
 			        WC_moffsetx = mouse_x - WC_dragobj.x;
 			        WC_moffsety = mouse_y - WC_dragobj.y;
 			    }
@@ -358,7 +353,7 @@ if WC_candrag && WC_assetfinder < 0 && !WC_creatingobj && WC_selectobj == 0
 		{
 		    with WC_fakedragobj
 			{
-		        var copyobj = instance_copy(self);
+		        var copyobj = instance_copy(false);
 				copyobj.x = round(mouse_x - other.WC_moffsetx);
 				copyobj.y = round(mouse_y - other.WC_moffsety);
 			}
@@ -369,13 +364,13 @@ if WC_candrag && WC_assetfinder < 0 && !WC_creatingobj && WC_selectobj == 0
 	if keyboard_check(vk_control) && mouse_check_button(mb_middle) && instance_exists(WC_dragobj)
 	{
 		with WC_dragobj
-		    instance_copy(self);
+		    instance_copy(false);
 	}
 	if keyboard_check(vk_control) && mouse_check_button(mb_middle) && instance_exists(WC_fakedragobj)
 	{
 		with WC_fakedragobj
 		{
-		    var copyobj = instance_copy(self);
+		    var copyobj = instance_copy(false);
 			copyobj.x = round(mouse_x - other.WC_moffsetx);
 			copyobj.y = round(mouse_y - other.WC_moffsety);
 		}
@@ -1280,6 +1275,7 @@ if WC_modkp == vk_numpad6
 }
 
 // travel rooms
+/*
 if keyboard_check_pressed(vk_insert) && room_exists(room_next(room))
 {
 	with obj_player // pt exclusive
@@ -1292,6 +1288,7 @@ if keyboard_check_pressed(vk_delete) && room_exists(room_previous(room))
 	    targetDoor = "none";
 	room_goto_previous();
 }
+*/
 
 // live execute exclusive
 if WC_livestep != undefined

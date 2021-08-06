@@ -11,3 +11,5 @@ petind = obj_player1.petfollow;
 scr_petspr(petind);
 yoffset = 0;
 xoffsetmax = 35;
+
+siner = 0;

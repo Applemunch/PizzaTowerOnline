@@ -15,13 +15,13 @@ switch (state)
 
 if  state = states.stun && stunned > 100 && birdcreated = false
 {
-birdcreated = true
-with instance_create(x,y, obj_enemybird)
-ID = other.id
+	birdcreated = true
+	with instance_create(x,y, obj_enemybird)
+		ID = other.id
 }
 
 if state != states.stun
-birdcreated = false
+	birdcreated = false
 
 // taunt
 if (inv_timer > 0)
@@ -187,17 +187,15 @@ depth = 0
 
 
 if state != states.stun
-thrown= false
+	thrown = false
 
-if boundbox = false
+if !boundbox
 {
-with instance_create(x,y,obj_baddiecollisionbox)
-{
-sprite_index = other.sprite_index
-mask_index = sprite_index
-baddieID = other.id
-other.boundbox = true
+	with instance_create(x, y, obj_baddiecollisionbox)
+	{
+		sprite_index = other.sprite_index
+		mask_index = sprite_index
+		baddieID = other.id
+		other.boundbox = true
+	}
 }
-}
-
-

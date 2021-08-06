@@ -1,11 +1,11 @@
 if room == rm_editor exit;
 
 //Scared
-if global.gameplay == 0 && sprite_index != spr_hungrypillar_ss
+if sprite_index != spr_hungrypillar_ss
 {
-	if ((obj_player1.x > x - 400) && (obj_player1.x < x + 400)) && sprite_index != spr_hungrypillar_angry
+	if obj_player1.x > x - 400 && obj_player1.x < x + 400 && sprite_index != spr_hungrypillar_angry
 		sprite_index = spr_hungrypillar_angry
-	else if  !((obj_player1.x > x - 400) && (obj_player1.x < x + 400)) && sprite_index =  spr_hungrypillar_angry
+	else if !(obj_player1.x > x - 400 && obj_player1.x < x + 400) && sprite_index == spr_hungrypillar_angry
 	{
 		sprite_index = spr_hungrypillar_happy
 		alarm[0] = 100
@@ -39,8 +39,10 @@ if song != -1 && audio_is_playing(song)
 				vol = 0;
 		}
 		var mult = 1;
+		/*
 		if global.musicgame == 1
 			mult = 1.7;
+		*/
 		
 		var mv = global.musicvolume * mult;
 		audio_sound_gain(song, vol * mv, 0);
@@ -52,7 +54,7 @@ else if !global.panic
 	audio_stop_sound(song);
 	song = -1;
 	
-	if ((room != dungeon_10 && !string_startswith(room_get_name(room), "dragonlair")) or scr_checkskin(checkskin.p_anton)) && global.musicvolume > 0
+	if ((room != dungeon_10 && !string_startswith(room_get_name(room), "dragonlair")) or scr_checkskin(checkskin.p_anton)) && !audio_is_playing(mu_warintro) && global.musicvolume > 0
 	{
 		if global.musicgame == 1
 			song = audio_play_sound(mu_dungeondepth_pc, 10, true);

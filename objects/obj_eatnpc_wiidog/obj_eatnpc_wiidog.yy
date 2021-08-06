@@ -30,7 +30,7 @@
   "overriddenProperties": [],
   "parent": {
     "name": "eatery",
-    "path": "folders/Objects/pto/npc/eatery.yy",
+    "path": "folders/Objects/pto stuff/npc/eatery.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_eatnpc_wiidog",

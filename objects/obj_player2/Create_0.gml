@@ -1,3 +1,6 @@
+instance_destroy();
+exit;
+
 scr_initinput2();
 
 grav = 0.5;

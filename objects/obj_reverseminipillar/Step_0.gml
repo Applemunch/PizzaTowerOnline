@@ -6,12 +6,9 @@ if (!global.panic or global.gerome) && (!global.treasure or global.gameplay == 0
 	x = xstart
 	y = ystart
 	mask_index = spr_minipillarwoke
+	
 	if !instance_exists(obj_snicklevelend) or !obj_snicklevelend.visible
-	{
-		sprite_index = spr_minipillarwoke
-		if check_sugary()
-			sprite_index = spr_minipillarwoke_ss;
-	}
+		sprite_index = spr_woke
 	
 	if place_meeting(x, y, obj_otherplayer)
 		image_alpha = 0.5;
@@ -22,8 +19,6 @@ else
 {
 	x = -10000
 	y = -10000
-	sprite_index = spr_minipillarsleep
-	if check_sugary()
-		sprite_index = spr_minipillarsleep_ss;
+	sprite_index = spr_sleep
 	image_alpha = 1;
 }

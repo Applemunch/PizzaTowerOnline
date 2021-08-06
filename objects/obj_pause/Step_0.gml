@@ -35,7 +35,9 @@ if pause
 	//DDP Always draw normally while paused
 	application_surface_draw_enable(true)
 	
-
+	if instance_exists(obj_pausefadeout) && !obj_pausefadeout.fadein
+		exit;
+	
     if key_down2 && selected < 2 {
         selected += 1
 		scr_soundeffect(sfx_step)
@@ -70,6 +72,8 @@ if pause
 			or string_startswith(roomname, "beach")
 			or string_startswith(roomname, "forest")
 			or string_startswith(roomname, "kungfu")
+			or string_startswith(roomname, "minigolf")
+			or string_startswith(roomname, "war")
 			or string_startswith(roomname, "etb")
 			or string_startswith(roomname, "steamcc")
 			or room == custom_lvl_room
@@ -98,7 +102,8 @@ if pause
         if !instance_exists(obj_pausefadeout)
 			instance_create(x,y,obj_pausefadeout)
     }
-		
+	
+	// konami code
 	if alarm[0] == -1 && alarm[1] == -1 && alarm[2] == -1 && !global.funmode && string_startswith(room_get_name(room), "golf") && !global.timeattack
 	{
 		switch keyboard_lastkey

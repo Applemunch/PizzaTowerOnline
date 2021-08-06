@@ -30,6 +30,15 @@ else
 if room == rank_room
 	visible = false;
 
+// misty float
+if petind == 10
+{
+	siner++;
+	yoffset = floor(-5 + sin(siner / 20) * -5);
+}
+else
+	yoffset = 0;
+
 // sync
 if instance_exists(obj_gms) && gms_info_isloggedin()
 {

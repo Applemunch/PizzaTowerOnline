@@ -11,11 +11,16 @@ ds_queue_enqueue(followqueue, target.y);
 xscale = leader.xscale
 if ds_queue_size(followqueue) > LAG_STEPS
 {
-	if leader.state != states.ladder && leader.state != states.climbwall && leader.state != states.cheesepepstickside && leader.state != states.comingoutdoor
-	//&& (!scr_solidwall(target.x + ((xoffsetmax * 2) * -xscale), y) or place_meeting(x, y + 1, obj_slope))
-		xoffset = clamp(xoffset - (xscale * 4), -xoffsetmax, xoffsetmax);
+	if xoffsetmax > 0
+	{
+		if leader.state != states.ladder && leader.state != states.climbwall && leader.state != states.cheesepepstickside && leader.state != states.comingoutdoor
+		//&& (!scr_solidwall(target.x + ((xoffsetmax * 2) * -xscale), y) or place_meeting(x, y + 1, obj_slope))
+			xoffset = clamp(xoffset - (xscale * 4), -xoffsetmax, xoffsetmax);
+		else
+			xoffset = max(abs(xoffset) - 4, 0) * sign(xoffset);
+	}
 	else
-		xoffset = max(abs(xoffset) - 4, 0) * sign(xoffset);
+		xoffset = 0;
 	
 	var xx = ds_queue_dequeue(followqueue);
 	var yy = ds_queue_dequeue(followqueue);

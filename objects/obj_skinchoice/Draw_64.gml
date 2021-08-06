@@ -53,7 +53,7 @@ else
 	*/
 }
 if sprite_exists(_spr)
-	draw_sprite_ext(_spr, img, (960 / 2) + xoffset, (540 / 2) + yoffset, 2, 2, 0, (locked ? merge_colour(c_white, c_black, 0.75) : c_white), (100 - abs(xoffset)) / 100);
+	draw_sprite_ext(_spr, img, (960 / 2) + xoffset, (540 / 2) + yoffset, 2, 2, 0, (locked ? merge_colour(c_white, c_black, 0.75) : c_white), (100 - abs(xoffset) - abs(yoffset)) / 100);
 
 draw_set_colour(c_white);
 draw_set_font(global.bigfont);
@@ -67,10 +67,14 @@ if locked
 // text
 if sel[0] == -1
 {
+	/*
 	palname = "CUSTOM PALETTE";
 	paldesc = "Sky's the limit.";
 	if !locked
 		paldesc += "\nPress SHIFT to customize.";
+	*/
+	
+	sel[0] = 0;
 }
 else
 {

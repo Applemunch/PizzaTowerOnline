@@ -1,5 +1,5 @@
 {
-  "compression": 0,
+  "compression": 1,
   "volume": 1.0,
   "preload": false,
   "bitRate": 128,
@@ -11,7 +11,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "mu_kungfu.wav",
-  "duration": 190.190216,
+  "duration": 190.185211,
   "parent": {
     "name": "music",
     "path": "folders/Sounds/music.yy",

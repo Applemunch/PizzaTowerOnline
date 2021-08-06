@@ -1,5 +1,6 @@
 /// @param {real} page
-function scr_requestpage() {
+function scr_requestpage()
+{
 	page = argument[0];
 
 	// send request
@@ -13,6 +14,4 @@ function scr_requestpage() {
 	request = http_get(requrl + string(page));
 	requestype = reqtypes.read_paging;
 	loading = true;
-
-
 }

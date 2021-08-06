@@ -1,15 +1,23 @@
 // deactivate temporarily
-if obj_player1.character = "S" && character == 0
-{
-	visible = false;
-	active = false;
-	
-	exit;
-}
-else if !active
+if !active
 {
 	visible = true;
 	active = true;
+}
+
+with obj_player1
+{
+	if character == "S" && other.character == 0
+	{
+		visible = false;
+		active = false;
+		exit;
+	}
+	
+	// turn to face player
+	if x != other.x
+	&& y <= other.y + 64 && y >= other.y - 100
+		other.image_xscale = -sign(other.x - x);
 }
 
 // switch sprite based on character
@@ -24,11 +32,6 @@ if character == 1
 	sprite_index = spr_snacknpc
 if character == 2
 	sprite_index = spr_snecknpc
-
-// turn to face player
-if x != obj_player1.x
-&& obj_player1.y <= y + 64 && obj_player1.y >= y - 100
-	image_xscale = -sign(x - obj_player1.x)
 
 // dialogue
 var p = instance_place(x, y, obj_player1);
@@ -107,7 +110,7 @@ if p
 			if other.dialogue = 0
 			{
 				message = ""
-				other.randommessage = choose("YOUR HAIR SMELLS NICE", "PLAY WITH ME", "", "");
+				other.randommessage = choose("YOUR HAIR SMELLS NICE");
 			}
 			if other.dialogue = 1
 				message = other.randommessage
@@ -119,7 +122,7 @@ if p
 			if other.dialogue = 0
 			{
 				message = ""
-				other.randommessage = choose("");
+				other.randommessage = choose("PLACEHOLDER");
 			}
 			if other.dialogue = 1
 				message = other.randommessage

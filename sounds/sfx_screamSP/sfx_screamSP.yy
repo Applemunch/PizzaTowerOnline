@@ -11,7 +11,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "sfx_screamSP",
-  "duration": 1.170714,
+  "duration": 1.165714,
   "parent": {
     "name": "extra",
     "path": "folders/Sounds/extra.yy",

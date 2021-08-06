@@ -2,8 +2,8 @@
   "ConfigValues": {
     "debug": {"audioGroupId":"{\"name\":\"audiogroup_default\",\"path\":\"audiogroups/audiogroup_default\"}",},
   },
-  "compression": 0,
-  "volume": 0.65,
+  "compression": 1,
+  "volume": 0.5,
   "preload": false,
   "bitRate": 128,
   "sampleRate": 44100,
@@ -14,7 +14,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "mu_ranks",
-  "duration": 14.6571465,
+  "duration": 14.6521463,
   "parent": {
     "name": "music",
     "path": "folders/Sounds/music.yy",

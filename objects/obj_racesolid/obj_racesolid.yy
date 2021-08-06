@@ -30,7 +30,7 @@
   "overriddenProperties": [],
   "parent": {
     "name": "race mode",
-    "path": "folders/Objects/pto/race mode.yy",
+    "path": "folders/Objects/pto stuff/race mode.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_racesolid",

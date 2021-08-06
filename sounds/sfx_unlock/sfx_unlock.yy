@@ -11,7 +11,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "sfx_unlock.wav",
-  "duration": 1.851145,
+  "duration": 1.846145,
   "parent": {
     "name": "extra",
     "path": "folders/Sounds/extra.yy",

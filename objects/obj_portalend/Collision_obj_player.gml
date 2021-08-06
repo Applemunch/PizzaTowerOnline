@@ -1,5 +1,8 @@
-if other.state != states.portal && global.panic = true
+if other.state != states.portal && global.panic
 {
+	scr_soundeffect(sfx_box)
+	
+	other.sprite_index = other.spr_fall
 	other.movespeed = 0
 	other.hsp = 0
 	sprite_index = spr_pizzaportalend

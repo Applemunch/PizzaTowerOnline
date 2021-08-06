@@ -1,6 +1,6 @@
 function scr_player_mach2()
 {
-	if windingAnim < 2000 && character == "P"
+	if windingAnim < 2000 && (character == "P" or character == "SP")
 		windingAnim++
 	
 	var railh = 0, railmeet = instance_place(x, y + 1, obj_railparent);
@@ -41,7 +41,7 @@ function scr_player_mach2()
 	}
 
 	//Animations
-	if grounded && vsp > 0
+	if grounded && vsp >= 0
 	{
 		if machpunchAnim
 		{
@@ -141,30 +141,32 @@ function scr_player_mach2()
 	
 	//Climbwall
 	if (!grounded && scr_solidwall(x + hsp, y) && (!place_meeting(x+hsp,y,obj_destructibles) or character == "V") && !place_meeting(x+sign(hsp),y,obj_slope))
-	or (grounded && scr_solidwall(x + hsp, y - (global.gameplay == 0 ? 32 : 31)) && (!place_meeting(x+hsp,y,obj_destructibles) or character == "V")  && !place_meeting(x+hsp,y,obj_metalblock) && scr_slope())
+	or (grounded && (!place_meeting(x+hsp,y,obj_destructibles) or character == "V") && !place_meeting(x+hsp,y,obj_metalblock) && scr_slope())
 	{
-		if (!key_attack && character != "S") or (character == "S" && move == 0)
+		if !grounded or (scr_solidwall(x + hsp, y) && scr_solidwall(x + hsp, y - 32) && !scr_solidwall(x, y - 32))
 		{
-			instance_create(x,y+43,obj_cloudeffect)
+			if (!key_attack && character != "S") or (character == "S" && move == 0)
+			{
+				instance_create(x, y + 43, obj_cloudeffect)
 			
-			vsp = -movespeed
-			state = states.normal
-			movespeed = 0
-		}
-		else
-		{
-			wallspeed = movespeed
-			state = states.climbwall
+				vsp = -movespeed
+				state = states.normal
+				movespeed = 0
+			}
+			else
+			{
+				wallspeed = movespeed
+				state = states.climbwall
+			}
 		}
 	}
   
 	if grounded && !scr_slope() && scr_solid(x+hsp,y,false) && (!place_meeting(x+hsp,y,obj_destructibles) or character == "V") && !place_meeting(x+sign(hsp),y,obj_slope)
 	{
 		movespeed = 0
-		state = states.normal	
+		state = states.normal
 	}
-
-
+	
 	//Effect
 	if !(instance_exists(dashcloudid)) && grounded
 	with instance_create(x,y,obj_dashcloud)
@@ -178,8 +180,7 @@ function scr_player_mach2()
 		image_xscale = other.xscale
 		other.speedlineseffectid = id
 	}
-
-
+	
 	if grounded && floor(image_index) = image_number - 1 && sprite_index = spr_rollgetup
 	{
 		if character == "P"
@@ -189,31 +190,28 @@ function scr_player_mach2()
 	}
 
 	if !grounded && sprite_index != spr_secondjump2 && sprite_index != spr_mach2jump && sprite_index != spr_walljumpstart && sprite_index != spr_walljumpend
-	sprite_index = spr_secondjump1
+		sprite_index = spr_secondjump1
 
 	if floor(image_index) = image_number -1 && sprite_index = spr_secondjump1
-	sprite_index = spr_secondjump2
-
+		sprite_index = spr_secondjump2
 
 	if floor(image_index) = image_number -1 && sprite_index = spr_walljumpstart && character != "S"
-	sprite_index = spr_walljumpend
-
-
-
+		sprite_index = spr_walljumpend
+	
 	//Snick peelout
-	if key_attack  && !scr_solid(x+xscale,y,false) && character = "S" && grounded
+	if key_attack && !scr_solid(x+xscale,y,false) && character == "S" && grounded && vsp >= 0
 	{
 		state = states.handstandjump
 		movespeed = 0
 	}
 
 	//Back to other states
-	if (!key_attack && move != xscale && grounded && character != "S") or (character == "S" && move != xscale && grounded)
+	if (!key_attack or character == "S") && move != xscale && grounded && vsp >= 0
 	{
 		image_index = 0
 		state = states.machslide
 		scr_soundeffect(sfx_break)
-		sprite_index =spr_machslidestart
+		sprite_index = spr_machslidestart
 	}
 
 	if move == -xscale && grounded && character != "S" && vsp >= 0
@@ -253,7 +251,7 @@ function scr_player_mach2()
 		}
 	}
 
-	if (move == xscale && !key_attack && grounded && character != "S") or (move == xscale && character == "S" && grounded && move == 0)
+	if move == xscale && !key_attack && grounded && vsp >= 0 && character != "S"
 	{
 		if character == "SP" && freefallstart == 1
 		{

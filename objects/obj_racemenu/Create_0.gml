@@ -1,8 +1,6 @@
 if !debug
 {
-	scr_soundeffect(sfx_pephurt);
-	show_message("sorry nothing");
-	game_end();
+	instance_destroy();
 	exit;
 }
 

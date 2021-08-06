@@ -28,8 +28,8 @@ if place_meeting(x,y,obj_player1) && player = 0 && obj_player1.state != states.g
 				
 				if sprite_index == spr_playerSP_gottreasure
 				{
-					treasure_x -= 25;
-					treasure_y -= 25;
+					treasure_x -= 25 * xscale;
+					treasure_y -= 20;
 				}
 				
 				global.treasure = true

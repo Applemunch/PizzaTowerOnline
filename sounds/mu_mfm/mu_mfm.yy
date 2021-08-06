@@ -1,5 +1,5 @@
 {
-  "compression": 0,
+  "compression": 1,
   "volume": 1.0,
   "preload": false,
   "bitRate": 8,
@@ -11,7 +11,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "mu_mfm.mp3",
-  "duration": 52.8245926,
+  "duration": 52.81959,
   "parent": {
     "name": "extra",
     "path": "folders/Sounds/extra.yy",

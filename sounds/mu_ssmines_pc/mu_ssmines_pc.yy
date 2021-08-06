@@ -1,5 +1,5 @@
 {
-  "compression": 0,
+  "compression": 1,
   "volume": 1.0,
   "preload": false,
   "bitRate": 128,
@@ -11,7 +11,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "mu_ssmines_pc.ogg",
-  "duration": 168.02063,
+  "duration": 168.015625,
   "parent": {
     "name": "pizza castle",
     "path": "folders/Sounds/extra/sugary spire/pizza castle.yy",

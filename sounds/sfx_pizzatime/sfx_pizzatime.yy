@@ -14,7 +14,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "sfx_pizzatime",
-  "duration": 2.308563,
+  "duration": 2.303562,
   "parent": {
     "name": "pizza castle",
     "path": "folders/Sounds/pizza castle.yy",

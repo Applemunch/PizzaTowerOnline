@@ -1,5 +1,5 @@
 {
-  "compression": 0,
+  "compression": 1,
   "volume": 1.0,
   "preload": false,
   "bitRate": 128,
@@ -11,7 +11,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "mu_noiseescape_OLD.wav",
-  "duration": 159.741959,
+  "duration": 159.736954,
   "parent": {
     "name": "music",
     "path": "folders/Sounds/music.yy",

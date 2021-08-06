@@ -11,7 +11,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "sfx_contout.wav",
-  "duration": 1.005,
+  "duration": 1.0,
   "parent": {
     "name": "extra",
     "path": "folders/Sounds/extra.yy",

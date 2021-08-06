@@ -13,7 +13,7 @@ draw_set_halign(fa_center);
 draw_set_valign(fa_top);
 
 if sprite_exists(_spr)
-	draw_sprite_ext(_spr, img, (960 / 2) + xoffset, (540 / 2) + yoffset, 2, 2, 0, c_white, (100 - abs(xoffset)) / 100);
+	draw_sprite_ext(_spr, img, (960 / 2) + xoffset, (540 / 2) + yoffset, 2, 2, 0, c_white, (100 - abs(xoffset) - abs(yoffset)) / 100);
 
 // text
 palname = ((sel[0] < array_length(selarray) && array_length(selarray[sel[0]]) >= 2) ? selarray[sel[0]][1] : "UNDEFINED");

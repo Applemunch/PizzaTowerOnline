@@ -1,2 +1,3 @@
 /// @description log out
-gms_logout();
+if working && gms_info_isloggedin()
+	gms_logout();

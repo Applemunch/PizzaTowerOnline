@@ -6,4 +6,7 @@ with instance_create(x, y, obj_pizzaslice)
 	depth = other.depth - 1;
 	vsp = -8;
 	hsp = 2;
+	
+	if scr_solid(x, y)
+		scr_pushout(64);
 }

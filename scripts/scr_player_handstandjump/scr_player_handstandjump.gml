@@ -106,7 +106,7 @@ function scr_player_handstandjump()
 		}
 
 		if move != xscale && move != 0 && character != "S"
-		&& state == states.handstandjump // dont remove this its not pointless
+		&& state == states.handstandjump // dont remove this its not pointless i swear
 		{
 			xscale = move;
 			state = states.normal;
@@ -207,7 +207,7 @@ function scr_player_handstandjump()
 		if !(instance_exists(obj_slidecloud)) && grounded && movespeed > 5
 		with instance_create(x,y,obj_slidecloud)
 			image_xscale = other.xscale
-
+		
 		//Noise Bomb
 		if key_shoot2 && character = "N" && global.gameplay == 0
 		{
@@ -226,6 +226,8 @@ function scr_player_handstandjump()
 
 		if character == "S"
 		{
+			if vsp < 0
+				vsp = 10;
 			if key_attack 
 			{
 				hsp = 0

@@ -60,7 +60,14 @@ if key_down2 && sel[1] != lastchar
 			sel[1] = "SP";
 			break;
 		case "SP":
-			sel[1] = "G";
+			if debug
+				sel[1] = "SN";
+			else
+				sel[1] = "G";
+			break;
+		case "SN":
+			if debug
+				sel[1] = "G";
 			break;
 		
 		/*
@@ -93,8 +100,14 @@ else if key_up2 && sel[1] != "P"
 		case "SP":
 			sel[1] = "S";
 			break;
-		case "G":
+		case "SN":
 			sel[1] = "SP";
+			break;
+		case "G":
+			if debug
+				sel[1] = "SN";
+			else
+				sel[1] = "SP";
 			break;
 	}
 	event_user(0);

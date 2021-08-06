@@ -2,7 +2,7 @@
   "ConfigValues": {
     "debug": {"audioGroupId":"{\"name\":\"ag_antonball\",\"path\":\"audiogroups/ag_antonball\"}",},
   },
-  "compression": 0,
+  "compression": 1,
   "volume": 0.5,
   "preload": false,
   "bitRate": 128,
@@ -14,7 +14,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "mu_antondepth",
-  "duration": 27.01126,
+  "duration": 27.00626,
   "parent": {
     "name": "antonball",
     "path": "folders/Sounds/extra/antonball.yy",

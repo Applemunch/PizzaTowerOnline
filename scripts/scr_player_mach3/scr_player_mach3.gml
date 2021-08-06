@@ -13,7 +13,7 @@ function scr_player_mach3()
 	if character != "N" or (character == "N" && noisetype == 1)
 	{
 		#region not noise
-		if windingAnim < 2000 && character == "P"
+		if windingAnim < 2000 && (character == "P" or character == "SP")
 			windingAnim += 1;
 		
 		var railh = 0, railmeet = instance_place(x, y + 1, obj_railparent);
@@ -49,21 +49,25 @@ function scr_player_mach3()
 	{
 		if character != "N" or (character == "N" && noisetype == 1)
 		{
-			if movespeed < 24 && move == xscale
+			if move == xscale
 			{
-				movespeed += 0.1
+				if movespeed < 24
+					movespeed += 0.1
 				
-				if !instance_exists(crazyruneffectid) && grounded
+				if sprite_index == spr_crazyrun && global.gameplay != 0
 				{
-					with instance_create(x, y, obj_crazyruneffect)
+					if !instance_exists(crazyruneffectid) && grounded
 					{
-						playerid = other.object_index
-						other.crazyruneffectid = id
+						with instance_create(x, y, obj_crazyruneffect)
+						{
+							playerid = other.object_index
+							other.crazyruneffectid = id
+						}
 					}
 					
-					if sprite_index = spr_crazyrun
+					if !place_meeting(x, y + 1, obj_water)
 					{
-						with instance_create(x, y, obj_dashcloud) 
+						with instance_create(x, y, obj_dashcloud)
 						{
 							image_xscale = other.xscale
 							sprite_index = spr_flamecloud
@@ -71,7 +75,7 @@ function scr_player_mach3()
 					}
 				}
 			}
-			else if movespeed > 12 && move != xscale && !pizzapepper
+			if movespeed > 12 && move != xscale && !pizzapepper
 				movespeed -= 0.1
 
 			crouchslideAnim = true
@@ -185,12 +189,15 @@ function scr_player_mach3()
 
 			//Climbwall
 			if (!grounded && scr_solidwall(x + hsp, y) && !place_meeting(x + hsp, y, obj_destructibles) && !place_meeting(x + hsp, y, obj_metalblock) && !place_meeting(x + sign(hsp), y, obj_slope))
-			or (grounded && scr_solidwall(x + hsp, y - (global.gameplay == 0 ? 32 : 31)) && !place_meeting(x + hsp, y, obj_destructibles) && !place_meeting(x + hsp, y, obj_metalblock) && scr_slope())
+			or (grounded && !place_meeting(x + hsp, y, obj_destructibles) && !place_meeting(x + hsp, y, obj_metalblock) && scr_slope())
 			{
-				wallspeed = movespeed;
-				if global.gameplay == 0// && character != "SP"
-					wallspeed = 10
-				state = states.climbwall
+				if !grounded or (scr_solidwall(x + hsp, y) && scr_solidwall(x + hsp, y - 32) && !scr_solidwall(x, y - 32))
+				{
+					wallspeed = movespeed;
+					if global.gameplay == 0// && character != "SP"
+						wallspeed = 10
+					state = states.climbwall
+				}
 			}
 			
 			//Bump
@@ -724,8 +731,8 @@ function scr_player_mach3()
 		var dashcloud = instance_create(x,y,obj_superdashcloud);
 		with dashcloud
 		{
-			if other.fightball = true
-				instance_create(obj_player.x,obj_player.y,obj_slapstar)
+			if other.fightball
+				instance_create(x, y, obj_slapstar)
 	
 			image_xscale = other.xscale
 			other.dashcloudid = id

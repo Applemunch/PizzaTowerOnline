@@ -1,5 +1,5 @@
 {
-  "compression": 0,
+  "compression": 1,
   "volume": 1.0,
   "preload": false,
   "bitRate": 128,
@@ -11,7 +11,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "mu_steamcc.wav",
-  "duration": 143.990463,
+  "duration": 143.985458,
   "parent": {
     "name": "sugary spire",
     "path": "folders/Sounds/extra/sugary spire.yy",

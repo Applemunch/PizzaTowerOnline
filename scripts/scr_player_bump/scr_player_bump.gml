@@ -17,16 +17,17 @@ function scr_player_bump()
 	var can_end = true;
 	if sprite_index == spr_tumbleend
 		can_end = !place_meeting(x, y, obj_pepgoblin_kickhitbox);
-	if sprite_index == spr_tumbleend && (!grounded or !can_end) && global.gameplay != 0
+	if sprite_index == spr_tumbleend && (!grounded or !can_end) && !endtumble && global.gameplay != 0
 	    image_speed = 0;
 	else
 	    image_speed = 0.35;
 	
 	if sprite_index == spr_rockethitwall && grounded
 		image_index = image_number - 1;
-
+	
 	if floor(image_index) = image_number -1
 	{
+		endtumble = false
 		if !skateboarding
 		{
 			if sprite_index != spr_rockethitwall or grounded

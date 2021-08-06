@@ -1,3 +1,12 @@
+// wrong room order dumbfuck
+global.pastdisclaimer = false;
+if !(room_first == rm_load && room_next(room_first) == Realtitlescreen)
+{
+	show_message("ayo the room order has been fucked with\nredownload the game lol");
+	game_end();
+	exit;
+}
+
 // crash
 #region report last crash to discord
 
@@ -91,7 +100,7 @@ function check_race() {
 
 function offline_travel()
 {
-	global.logged = true;
+	global.logged = false;
 	instance_destroy(obj_gms);
 	
 	// pizzacoin
@@ -112,6 +121,7 @@ function offline_travel()
 	
 	// travel
 	audio_stop_all();
+	instance_create(0, 0, obj_wc);
 	
 	//scr_soundeffect(sfx_collecttoppin);
 	with instance_create(x,y,obj_fadeout)
@@ -232,6 +242,10 @@ function scr_petspr(index)
 		case 9:
 			spr_petidle = spr_petmario_idle;
 			spr_petrun = spr_petmario_move;
+			break;
+		case 10:
+			spr_petidle = spr_petmisty_idle;
+			spr_petrun = spr_petmisty_move;
 			break;
 	}
 }

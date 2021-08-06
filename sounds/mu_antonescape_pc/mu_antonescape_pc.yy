@@ -1,9 +1,9 @@
 {
-  "compression": 0,
+  "compression": 1,
   "volume": 1.0,
   "preload": false,
-  "bitRate": 8,
-  "sampleRate": 5512,
+  "bitRate": 128,
+  "sampleRate": 44100,
   "type": 0,
   "bitDepth": 1,
   "audioGroupId": {
@@ -11,10 +11,10 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "mu_antonescape_pc.ogg",
-  "duration": 76.24028,
+  "duration": 76.23528,
   "parent": {
-    "name": "extras",
-    "path": "folders/Sounds/pizza castle/extras.yy",
+    "name": "extra",
+    "path": "folders/Sounds/pizza castle/extra.yy",
   },
   "resourceVersion": "1.0",
   "name": "mu_antonescape_pc",

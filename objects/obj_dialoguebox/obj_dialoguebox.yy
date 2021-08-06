@@ -27,7 +27,7 @@
   "overriddenProperties": [],
   "parent": {
     "name": "npc",
-    "path": "folders/Objects/pto/npc.yy",
+    "path": "folders/Objects/pto stuff/npc.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_dialoguebox",

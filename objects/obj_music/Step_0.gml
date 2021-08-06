@@ -14,7 +14,12 @@ if global.gameplay != 0
 			{
 				with obj_teleporter
 				{
-					if alarm[0] > -1 or alarm[1] > -1
+					if player.id == other.id && (alarm[0] > -1 or alarm[1] > -1)
+						_state = storedstate;
+				}
+				with obj_warplaser
+				{
+					if player.id == other.id && (alarm[0] > -1 or alarm[1] > -1)
 						_state = storedstate;
 				}
 			}
@@ -61,47 +66,58 @@ if global.musicgame == 0
 	if !audio_is_playing(mu_antonescape) && !audio_is_playing(mu_pizzatime)
 	&& !audio_is_playing(_mu_noiseescape) && !audio_is_playing(mu_snickescape)
 	&& !audio_is_playing(mu_gladeescape) && !audio_is_playing(mu_pizzyescape)
+	&& !audio_is_playing(mu_war)
 	&& (string_letters(roomname) != "dragonlair" or audio_is_playing(mu_antonlevel))
 	&& global.panic && !obj_pause.pause && !obj_camera.ded && !(room == custom_lvl_room && global.disableescapemusic)
 	{
-		audio_stop_sound(global.music)
-		
-		// antonball
-		if scr_checkskin(checkskin.p_anton)
+		// war level
+		if audio_is_playing(mu_warintro)
 		{
-			scr_sound(mu_antonescape)
-			pausedmusic = mu_antonescape
+			audio_stop_sound(global.music)
+			scr_sound(mu_war)
+			pausedmusic = mu_war
 		}
-		// peppino or vigilante
-		else if obj_player1.character == "P"
-		or obj_player1.character == "V"
+		else
 		{
-			scr_sound(mu_pizzatime)
-			pausedmusic = mu_pizzatime
-		}
-		// noise
-		else if obj_player1.character == "N"
-		{
-			scr_sound(_mu_noiseescape)
-			pausedmusic = _mu_noiseescape
-		}
-		// snick
-		else if obj_player1.character == "S"
-		{
-			scr_sound(mu_snickescape)
-			pausedmusic = mu_snickescape
-		}
-		// glade
-		else if obj_player1.character == "G"
-		{
-			scr_sound(mu_gladeescape)
-			pausedmusic = mu_gladeescape
-		}
-		// pizzelle
-		else if obj_player1.character == "SP"
-		{
-			scr_sound(mu_pizzyescape)
-			pausedmusic = mu_pizzyescape
+			audio_stop_sound(global.music)
+			
+			// antonball
+			if scr_checkskin(checkskin.p_anton)
+			{
+				scr_sound(mu_antonescape)
+				pausedmusic = mu_antonescape
+			}
+			// peppino or vigilante
+			else if obj_player1.character == "P"
+			or obj_player1.character == "V"
+			{
+				scr_sound(mu_pizzatime)
+				pausedmusic = mu_pizzatime
+			}
+			// noise
+			else if obj_player1.character == "N"
+			{
+				scr_sound(_mu_noiseescape)
+				pausedmusic = _mu_noiseescape
+			}
+			// snick
+			else if obj_player1.character == "S"
+			{
+				scr_sound(mu_snickescape)
+				pausedmusic = mu_snickescape
+			}
+			// glade
+			else if obj_player1.character == "G"
+			{
+				scr_sound(mu_gladeescape)
+				pausedmusic = mu_gladeescape
+			}
+			// pizzelle
+			else if obj_player1.character == "SP"
+			{
+				scr_sound(mu_pizzyescape)
+				pausedmusic = mu_pizzyescape
+			}
 		}
 	}
 	

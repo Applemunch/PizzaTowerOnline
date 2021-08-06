@@ -1,3 +1,6 @@
+if !instance_exists(obj_onlinemenu)
+	exit;
+
 with all
 {
 	if variable_instance_exists(id, "__l_e_")

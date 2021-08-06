@@ -1,4 +1,4 @@
-global.roommessage = "LOGIN"
+global.roommessage = "PRELOGIN"
 
 if !debug
 	instance_destroy(obj_wc);

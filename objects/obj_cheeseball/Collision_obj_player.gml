@@ -1,4 +1,4 @@
-if !(other.state = states.knightpep or other.state = states.knightpepattack or other.state == states.knightpepslopes)
+if !(other.state = states.knightpep or other.state = states.knightpepattack or other.state == states.knightpepslopes or other.state == states.hitlag)
 {
 	if other.character == "V"
 		scr_hurtplayer(other)

@@ -48,6 +48,9 @@ if ds_list_find_index(global.baddieroom, id) = -1
 		if object_index == obj_swedishmonkey && irandom_range(0, 100) == 5
 			scr_soundeffect(sfx_monkey);
 		
+		instance_create(x, y, obj_genericpoofeffect);
+	    instance_create(x, y, obj_parryeffect);
+		
 		instance_create(x,y,obj_bangeffect)
 		ds_list_add(global.baddieroom, id) 
 

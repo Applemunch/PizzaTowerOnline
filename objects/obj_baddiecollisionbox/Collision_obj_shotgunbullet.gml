@@ -4,7 +4,7 @@ if other.sync
 */
 
 if instance_exists(baddieID) && baddieID.object_index != obj_pizzaballOLD
-&& (baddieID.hp <= 1 or obj_player1.character != "V")
+//&& (baddieID.hp <= 1 or obj_player1.character != "V")
 {
 	increase_combo();
 	
@@ -15,7 +15,6 @@ if instance_exists(baddieID) && baddieID.object_index != obj_pizzaballOLD
 }
 else if instance_exists(baddieID) && baddieID.stuntouchbuffer <= 0
 {
-	baddieID.hp -= 1
 	baddieID.stuntouchbuffer = 20
 
 	scr_soundeffect(sfx_hitenemy)
@@ -24,6 +23,8 @@ else if instance_exists(baddieID) && baddieID.stuntouchbuffer <= 0
 	global.hit += 1
 	if baddieID.object_index == obj_pizzaballOLD
 		global.golfhit += 1
+	else
+		baddieID.hp -= 1
 	global.combotime = 60
 	
 	instance_create(baddieID.x,baddieID.y,obj_slapstar)

@@ -38,7 +38,7 @@
   "overriddenProperties": [],
   "parent": {
     "name": "server",
-    "path": "folders/Objects/pto/server.yy",
+    "path": "folders/Objects/pto stuff/server.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_gms",

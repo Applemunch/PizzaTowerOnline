@@ -30,6 +30,7 @@ switch sel[1]
 			["DREXYL", "D'AW HELL NAH"],
 			["GB", "One of his greatest achievements."],
 			["HYPOTHERMIA", "Lesson learned, don't bathe inside a freezer."],
+			["RON", "He hates women."],
 		];
 		if global.streamer
 		{
@@ -89,6 +90,7 @@ switch sel[1]
 			["VIGILATEX", "What the fuck"],
 			["THE BARTENDER", "Give me a drink, Bartender."],
 			["MORSHU", "It's yours, my friend."],
+			["TIMOTHY", "Some shading wouldn't do harm..."],
 		];
 		if global.streamer
 		{
@@ -196,7 +198,7 @@ switch sel[1]
 			["BLURPLE", "Also known as \"test\"."],
 			["PAINTLAD", "Very original, Jacko."],
 			["ENA", "Cheese and rice, Moony!"],
-			["COTTON CANDY", "Or as I like to call it, the Trans flag.\n\nI'm sorry."],
+			["COTTON CANDY", "Reminds you of anything?"],
 			["GREEN APPLE", "Why is this the least favorite candy flavor?"],
 			["GRAPE SODA", "There's more purple than actual soda in this."],
 			["NOIK", "The obligatory Noik palette."],
@@ -210,7 +212,6 @@ switch sel[1]
 		if global.streamer
 		{
 			selarray[16][1] = "Very original.";
-			selarray[18][1] = "Reminds you of anything?";
 			selarray[24][1] = "You. Effing. DONKEY.";
 		}
 		
@@ -220,6 +221,15 @@ switch sel[1]
 			selarray[1] = ["TRANNY", "It's the Candy-making tranny!"];
 		*/
 		break;
+	
+	case "SN":
+		spr_palette = spr_creampalette;
+		spr_idle = spr_playerSN_idle;
+		selarray = [
+			["YELLOW", "hey take pizz out of pizzano and translate from spanish"],
+			["PIZZANO", "YAH-HAH!"],
+		];
+	break;
 	
 	#region roleplay
 	
@@ -322,9 +332,10 @@ switch sel[1]
 		locked = false;
 		break;
 }
+var basepal = (sel[1] == "P" or sel[1] == "SP" or sel[1] == "SN" or sel[1] == "G");
 
 if sel[1] != obj_player1.character
-	sel[0] = ((sel[1] == "P" or sel[1] == "SP" or sel[1] == "G") ? 1 : 0);
+	sel[0] = basepal;
 else
 	sel[0] = obj_player1.paletteselect;
 
@@ -334,6 +345,6 @@ selmax = pal_swap_get_pal_count(spr_palette) - 1;
 if !check_shaders()
 {
 	sel[0] = 0;
-	if character == "P" or character == "SP" or character == "G"
+	if basepal
 		selarray[0] = selarray[1];
 }

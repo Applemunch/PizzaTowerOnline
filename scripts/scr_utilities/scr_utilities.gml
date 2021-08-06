@@ -8,6 +8,53 @@ function point_in_camera(x, y, cam)
 	return point_in_rectangle(x, y, camx, camy, camx + camw, camy + camh);
 }
 
+function instance_in_camera(inst, cam)
+{
+	var camx = camera_get_view_x(cam);
+	var camy = camera_get_view_y(cam);
+	var camw = camera_get_view_width(cam);
+	var camh = camera_get_view_height(cam);
+	
+	var result = false;
+	var xx = inst.x - sprite_get_xoffset(inst.sprite_index);
+	var yy = inst.y - sprite_get_yoffset(inst.sprite_index);
+	
+	// left bottom
+	result |= point_in_rectangle(
+		xx + sprite_get_bbox_left(inst.sprite_index), 
+		yy + sprite_get_bbox_bottom(inst.sprite_index), 
+	camx, camy, camx + camw, camy + camh);
+	
+	// left top
+	if !result
+	{
+		result |= point_in_rectangle(
+			xx + sprite_get_bbox_left(inst.sprite_index), 
+			yy + sprite_get_bbox_top(inst.sprite_index), 
+		camx, camy, camx + camw, camy + camh);
+	}
+	
+	// right bottom
+	if !result
+	{
+		result |= point_in_rectangle(
+			xx + sprite_get_bbox_right(inst.sprite_index), 
+			yy + sprite_get_bbox_bottom(inst.sprite_index), 
+		camx, camy, camx + camw, camy + camh);
+	}
+	
+	// right top
+	if !result
+	{
+		result |= point_in_rectangle(
+			xx + sprite_get_bbox_right(inst.sprite_index), 
+			yy + sprite_get_bbox_top(inst.sprite_index), 
+		camx, camy, camx + camw, camy + camh);
+	}
+	
+	return result;
+}
+
 function loydecode(str)
 {
 	var str2 = "";

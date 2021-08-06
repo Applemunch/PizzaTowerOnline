@@ -1,4 +1,7 @@
 {
+  "ConfigValues": {
+    "debug": {"textureGroupId":"{\"name\":\"tg_player\",\"path\":\"texturegroups/tg_player\"}",},
+  },
   "bboxMode": 0,
   "collisionKind": 1,
   "type": 0,

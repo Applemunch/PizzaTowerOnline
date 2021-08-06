@@ -8,24 +8,23 @@ function scr_solid(argument0, argument1)
 	// Store old position
 	var old_x = x
 	var old_y = y
+	var collide = false;
+	
 	x = argument0
 	y = argument1
-
+	
 	// Check if I'm over a tile
-	if place_meeting(x, y, obj_solid)
-	or place_meeting(x, y, obj_ghostwall)
-	{
-		x = old_x
-		y = old_y
-		return true
-	}
+	var _solid = instance_place(x, y, obj_solid);
+	var _ghostwall = instance_place(x, y, obj_ghostwall);
+	
+	if _ghostwall
+		collide = _ghostwall;
+	if _solid
+		collide = _solid;
 
 	// Check if I crossed a tile boundary and landed on a platform
-	if y > old_y && bbox_bottom % 16 == 0 && !place_meeting(x, old_y, obj_platform) && place_meeting(x, y, obj_platform) {
-		x = old_x
-		y = old_y
-		return true
-	}
+	if y > old_y && bbox_bottom % 16 == 0 && !place_meeting(x, old_y, obj_platform) && place_meeting(x, y, obj_platform)
+		collide = instance_place(x, y, obj_platform);
 	
 	// Check if I'm over a slope
 	if slop
@@ -55,9 +54,7 @@ function scr_solid(argument0, argument1)
 		
 				if (other.bbox_bottom >= slope) {
 					// Object is inside slope
-					other.x = old_x
-					other.y = old_y
-					return true
+					collide = slope;
 				}
 			}
 		}
@@ -65,7 +62,7 @@ function scr_solid(argument0, argument1)
 
 	x = old_x
 	y = old_y
-	return false
+	return collide
 }
 
 function scr_solidwall(argument0, argument1)
@@ -73,19 +70,21 @@ function scr_solidwall(argument0, argument1)
 	// Store old position
 	var old_x = x
 	var old_y = y
+	var collide = false
+	
 	x = argument0
 	y = argument1
 
 	// Check if I'm over a tile
-	if place_meeting(x, y, obj_solid)
-	or place_meeting(x, y, obj_ghostwall)
-	{
-		x = old_x
-		y = old_y
-		return true
-	}
+	var _solid = instance_place(x, y, obj_solid);
+	var _ghostwall = instance_place(x, y, obj_ghostwall);
+	
+	if _ghostwall
+		collide = _ghostwall;
+	if _solid
+		collide = _solid;
 	
 	x = old_x
 	y = old_y
-	return false
+	return collide
 }

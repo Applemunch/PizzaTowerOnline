@@ -1,4 +1,4 @@
-/*
+
 
 /// @description 
 with obj_editor_button {

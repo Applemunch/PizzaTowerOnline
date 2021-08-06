@@ -1,0 +1,1 @@
+global.roommessage = "WAR IN THE PIZZA TOWER"

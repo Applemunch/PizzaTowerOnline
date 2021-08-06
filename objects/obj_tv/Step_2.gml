@@ -43,7 +43,7 @@ else
 
 // check if sugary tv
 with obj_player1
-	other.sugary = (character == "SP");
+	other.sugary = (character == "SP" or character == "SN");
 
 //Text
 panicy = 600 + (string_height(message) - 16)
@@ -326,8 +326,21 @@ else
 					if instance_exists(obj_player1)
 					{
 						_state = obj_player1.state;
-				        if _state == states.backbreaker or _state == states.hitlag
+				        if _state == states.hitlag
 				            _state = obj_player1.tauntstoredstate;
+						if _state == states.backbreaker
+						{
+							with obj_teleporter
+							{
+								if alarm[0] > -1 or alarm[1] > -1
+									_state = storedstate;
+							}
+							with obj_warplaser
+							{
+								if alarm[0] > -1 or alarm[1] > -1
+									_state = storedstate;
+							}
+						}
 					}
 					
 			        switch _state

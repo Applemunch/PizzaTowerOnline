@@ -1,5 +1,5 @@
 {
-  "compression": 0,
+  "compression": 1,
   "volume": 1.0,
   "preload": false,
   "bitRate": 128,
@@ -11,7 +11,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "mu_ssmines.ogg",
-  "duration": 167.9997,
+  "duration": 167.99469,
   "parent": {
     "name": "sugary spire",
     "path": "folders/Sounds/extra/sugary spire.yy",

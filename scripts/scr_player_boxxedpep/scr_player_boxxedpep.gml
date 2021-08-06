@@ -40,7 +40,7 @@ function scr_player_boxxedpep()
 		movespeed = 0
 
 	//Input jumping
-	if (grounded && (input_buffer_jump < 8) && vsp > 0 ) && !(scr_solid(x,y-16)) && !(scr_solid(x,y-32))
+	if (grounded && (input_buffer_jump < 8) && vsp >= 0) && !(scr_solid(x,y-16)) && !(scr_solid(x,y-32))
 	{
 		scr_soundeffect(sfx_jump)
 		instance_create(x,y,obj_highjumpcloud2)
@@ -52,13 +52,9 @@ function scr_player_boxxedpep()
 	if move != 0 
 	{
 		if movespeed < 8
-		{
 			movespeed += 0.5
-		}
-		else if floor(movespeed)= 8
-		{
+		else if floor(movespeed) == 8
 			movespeed = 8
-		}
 	}
 	else
 		movespeed = 0
@@ -67,7 +63,7 @@ function scr_player_boxxedpep()
 		movespeed -= 0.1
 	
 	//Land
-	if grounded && (sprite_index == spr_boxxed_jump or sprite_index == spr_boxxed_air)
+	if grounded && vsp >= 0 && (sprite_index == spr_boxxed_jump or sprite_index == spr_boxxed_air)
 	{
 		scr_soundeffect(sfx_step)
 		instance_create(x, y, obj_landcloud)
@@ -95,14 +91,11 @@ function scr_player_boxxedpep()
 	
 	//Effects
 	if !(instance_exists(obj_cloudeffect)) && grounded && move != 0 && (floor(image_index) = 4 or floor(image_index) = 10)
-	{
 		instance_create(x,y+43,obj_cloudeffect)
-	}
 
 	if !(instance_exists(obj_cloudeffect)) && grounded && move != 0 && (sprite_index = spr_player_downslopes or sprite_index = spr_player_upslopes)
-	{
 		instance_create(x,y+43,obj_cloudeffect)
-	}
+	
 	if move != 0 && (floor(image_index) = 3 or floor(image_index) = 8) && steppy = false
 	{
 		//scr_sound(sound_step)

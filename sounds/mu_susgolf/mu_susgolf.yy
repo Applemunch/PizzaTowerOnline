@@ -1,5 +1,5 @@
 {
-  "compression": 0,
+  "compression": 1,
   "volume": 1.0,
   "preload": false,
   "bitRate": 128,
@@ -11,7 +11,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "mu_susgolf.ogg",
-  "duration": 213.3853,
+  "duration": 213.3803,
   "parent": {
     "name": "extra",
     "path": "folders/Sounds/extra.yy",

@@ -269,10 +269,10 @@ var get_chat = gms_other_get_real(player_id, "chat");
 if get_chat or gms_other_get_real(player_id, "busy")
 {
 	draw_set_font(global.font_small);
-	draw_set_colour(c_white);
+	draw_set_colour(get_chat ? c_white : merge_colour(c_red, c_white, 0.5));
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_top);
-	draw_text(x, typingy, (get_chat ? "..." : "(...)"));
+	draw_text(x, typingy, "...");
 	panicy -= 16;
 }
 

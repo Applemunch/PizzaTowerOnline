@@ -75,10 +75,13 @@ else
 		det = "Gnome Forest";
 	
 	else if string_startswith(r, "kungfu")
-		det = "Kung-Fu";
+		det = "Kung Fu";
 	
 	else if string_startswith(r, "minigolf")
 		det = "Minigolf";
+	
+	else if string_startswith(r, "war")
+		det = "Warzone";
 	
 	else if string_startswith(r, "chateau")
 		det = "Pizzascare";
@@ -118,18 +121,26 @@ else
 	
 	else if room == custom_lvl_room
 	{
-		if obj_onlinemenu.level_id == 1 && obj_onlinemenu.paging_type != 3
+		if instance_exists(obj_onlinemenu)
 		{
-			det = "Testing a level";
-			state = "";
+			if obj_onlinemenu.level_id == 1 && obj_onlinemenu.paging_type != 3
+			{
+				det = "Testing a level";
+				state = "";
+			}
+			else
+			{
+				with obj_onlinemenu
+				{
+					other.det = "Playing " + string(level_name);
+					state = "By: " + string(level_author);
+				}
+			}
 		}
 		else
 		{
-			with obj_onlinemenu
-			{
-				other.det = "Playing " + string(level_name);
-				state = "By: " + string(level_author);
-			}
+			det = "Custom Level Room";
+			state = "";
 		}
 	}
 	

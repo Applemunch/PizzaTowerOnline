@@ -2,7 +2,11 @@ if con == 0
 {
 	tryconnect = 0;
 	if draw_editorbutton((room_width / 2) - (192 / 2) - 120, (room_height / 2) - 48 / 2, lang_string("prelogin.offline"))
+	or !global.onlinemode
 	{
+		if global.onlinemode
+			scr_soundeffect(sfx_step);
+		
 		global.saveslot = "1";
 		
 		alpha = 0;
@@ -15,7 +19,10 @@ if con == 0
 		instance_create(371, 170, obj_noiseselect);
 	}
 	if draw_editorbutton((room_width / 2) - (192 / 2) + 120, (room_height / 2) - 48 / 2, lang_string("prelogin.online"))
+	&& global.onlinemode
 	{
+		scr_soundeffect(sfx_step);
+		
 		global.saveslot = "";
 		if !os_is_network_connected(false)
 		{
@@ -47,6 +54,7 @@ if con == 1
 	{
 		if draw_editorbutton(64, 32, lang_string("prelogin.back"))
 		{
+			scr_soundeffect(sfx_step);
 			instance_destroy(obj_gms);
 			con = 0;
 			
@@ -57,15 +65,21 @@ if con == 1
 }
 if con == 2
 {
-	if !(instance_exists(obj_characterselect) && obj_characterselect.ready)
+	if !(instance_exists(obj_characterselect) && obj_characterselect.ready) && global.onlinemode
 	{
 		if draw_editorbutton(64, 32, lang_string("prelogin.back"))
 		{
+			scr_soundeffect(sfx_step);
 			with obj_characterselect
 				goback = true;
 			instance_destroy(obj_peppinoselect);
 			instance_destroy(obj_noiseselect);
 			con = 0;
+			
+			if !playmusic
+				alarm[0] = 1;
+			with obj_roomname
+				showtext = false;
 		}
 	}
 }

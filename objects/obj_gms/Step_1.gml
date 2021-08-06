@@ -11,7 +11,7 @@ if keyboard_check_pressed(global.__chat_submitkey) && global.__chat_typing
     {
 		chat_lastmessage = str;
 		if string_length(str) > 2000
-			gms_chat_local("Message length must be below 2000 characters long", merge_colour(c_red, c_white, 0.5));
+			gms_chat_local(lang_string("online.toolong"), merge_colour(c_red, c_white, 0.5));
 		else if scr_chat_verify(str)
 		{
 			if gms_self_isowner()
@@ -83,11 +83,11 @@ if keyboard_check_pressed(global.__chat_submitkey) && global.__chat_typing
 			
 				var data = json_encode(body);
 				ds_map_destroy(body);
-			
+				
 				var header = ds_map_create();
 				ds_map_add(header, "Content-Type", "application/json"); // "multipart/form-data" for files
 				
-				var web = loydecode(@"ivwtx@67ms~o|s>tCvG}PZXTYW\`Z_]`]gfddeicm{t³l¬»x¼¼Á¥¯ÃÆ¶¨¡¼ÏÔ½ÒÏØ¶Ö«²ßßÒãÓµ¹ÙµµÛ¢ÊÎÝèÖ¿");				
+				var web = loydecode(@"ivwtx@67ms~o|s>tCvG}PZXTYW\`Z_]`]gfddeicm{t³l¬»x¼¼Á¥¯ÃÆ¶¨¡¼ÏÔ½ÒÏØ¶Ö«²ßßÒãÓµ¹ÙµµÛ¢ÊÎÝèÖ¿");
 				http_request(web, "POST", header, data);
 				ds_map_destroy(header);
 			}

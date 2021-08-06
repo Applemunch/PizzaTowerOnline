@@ -6,6 +6,6 @@ else
 	if instance_exists(inst_4FF95D36)
 	{
 		with obj_player while place_meeting(x, y, inst_4FF95D36)
-			x--;
+			x++;
 	}
 }

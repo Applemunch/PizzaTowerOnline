@@ -1,4 +1,7 @@
-	if playerid.visible = false
+if !instance_exists(playerid)
+	exit
+
+if playerid.visible = false
 	{
 	with (obj_player1)
 	{
