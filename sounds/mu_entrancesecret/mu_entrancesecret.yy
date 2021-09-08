@@ -11,7 +11,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "mu_entrancesecret.ogg",
-  "duration": 71.9614258,
+  "duration": 71.4893646,
   "parent": {
     "name": "secret",
     "path": "folders/Sounds/music/secret.yy",

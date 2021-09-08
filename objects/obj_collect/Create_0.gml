@@ -1,10 +1,6 @@
 if room == rm_editor exit;
 
-if irandom_range(1, 10000) == 5
-	sprite_index = spr_wariopill
-else
-	sprite_index = scr_collectsprite();
-
+sprite_index = scr_collectsprite();
 image_speed = 0.35
 
 global.collected = false

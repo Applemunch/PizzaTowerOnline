@@ -18,7 +18,7 @@ with other
 		targetRoom = other.targetRoom
 		
 		image_index = 0		
-		state = states.door		
+		state = states.door
 		mach2 = 0
 		
 		doorx = other.x + 50;

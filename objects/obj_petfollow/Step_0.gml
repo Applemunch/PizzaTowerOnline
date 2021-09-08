@@ -31,10 +31,14 @@ if room == rank_room
 	visible = false;
 
 // misty float
-if petind == 10
+if petind == 10 or petind == 11
 {
+	var sindiv = 20;
+	if petind == 11
+		sindiv = 15;
+	
 	siner++;
-	yoffset = floor(-5 + sin(siner / 20) * -5);
+	yoffset = floor(-5 + sin(siner / sindiv) * -5);
 }
 else
 	yoffset = 0;

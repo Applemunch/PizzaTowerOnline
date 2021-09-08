@@ -7,7 +7,7 @@ selarray = [
 	[spr_petraton_idle, "RATON", "STUPID RAT."],
 	[spr_petgerald_idle, "GERALD", "gerald gooo"],
 	[spr_petglade_idle, "GLADE", "She has no style, she has no grace.\nThis gal has a chubby face."],
-	[spr_petcaptions_idle, "CAPTIONS", "Please don't use this while playing as Glade I beg you -peic\nPlease don't use this -loypoll"],
+	[spr_petcaptions_idle, "CAPTIONS", "Please don't use this -loypoll"],
 	[spr_petpeic_idle, "PEIC", "MY EHWEHREN THE HEHA HRIDFO SHGJHSJKHDSFJK"],
 	[spr_petgrunt_idle, "GRUNT", "Do you ever just need some Madness?"],
 	[spr_petsneck_idle, "SNECK", "Sneck is here for you."],

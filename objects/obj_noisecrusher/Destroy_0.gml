@@ -2,8 +2,9 @@
 
 instance_create(x,y,obj_bombexplosion)
 
+if global.gameplay == 0
+	scr_sleep(200)
 
-scr_sleep(200)
 instance_create(x,y,obj_slapstar)
 instance_create(x,y,obj_slapstar)
 instance_create(x,y,obj_slapstar)

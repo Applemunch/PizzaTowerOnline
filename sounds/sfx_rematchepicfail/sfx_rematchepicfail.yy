@@ -13,8 +13,8 @@
   "soundFile": "sfx_rematchepicfail.ogg",
   "duration": 10.005,
   "parent": {
-    "name": "extra",
-    "path": "folders/Sounds/extra.yy",
+    "name": "pto extra",
+    "path": "folders/Sounds/pto extra.yy",
   },
   "resourceVersion": "1.0",
   "name": "sfx_rematchepicfail",

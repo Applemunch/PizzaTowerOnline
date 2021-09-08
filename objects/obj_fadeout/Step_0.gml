@@ -94,7 +94,7 @@ else if cont
 	fadealpha -= 0.1
 
 with obj_player1
-{	
+{
 	if other.fadein && (obj_player1.state == states.door or obj_player1.state == states.victory)
 	{
 		if obj_player1.sprite_index == spr_downpizzabox or obj_player1.sprite_index == spr_uppizzabox

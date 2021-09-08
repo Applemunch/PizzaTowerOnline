@@ -170,7 +170,7 @@ function scr_enemy_bounce() {
 
 
 
-	scr_collide();
+	//scr_collide();
 
 
 

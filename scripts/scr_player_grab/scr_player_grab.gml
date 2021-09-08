@@ -221,18 +221,21 @@ function scr_player_grab()
 	if (sprite_index = spr_haulingjump && floor(image_index) = image_number - 1) 
 	or (!grounded && (sprite_index = spr_haulingwalk or sprite_index = spr_haulingidle))
 		sprite_index = spr_haulingfall
-
+	
 	//Land
-	if grounded && vsp > 0 && (sprite_index = spr_haulingfall or sprite_index = spr_haulingjump)
+	if grounded && vsp > 0 && (sprite_index == spr_haulingfall or sprite_index == spr_haulingjump)
 	{
+		scr_soundeffect(sfx_step)
+		instance_create(x, y, obj_landcloud)
+		
+		image_index = 0
 		sprite_index = spr_haulingland
 		//movespeed = 2
 	}
 
-	if (sprite_index = spr_haulingland && floor(image_index) = image_number - 1) 
+	if sprite_index = spr_haulingland && floor(image_index) >= image_number - 1
 		sprite_index = spr_haulingidle
-
-
+	
 	//Swing Ding
 	if global.gameplay == 0
 	{

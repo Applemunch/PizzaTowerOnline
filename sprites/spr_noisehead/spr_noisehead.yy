@@ -1,4 +1,7 @@
 {
+  "ConfigValues": {
+    "debug": {"textureGroupId":"{\"name\":\"tg_player\",\"path\":\"texturegroups/tg_player\"}",},
+  },
   "bboxMode": 0,
   "collisionKind": 1,
   "type": 0,
@@ -69,8 +72,8 @@
   ],
   "nineSlice": null,
   "parent": {
-    "name": "joke",
-    "path": "folders/Sprites/players/joke.yy",
+    "name": "JOKE",
+    "path": "folders/Sprites/players/JOKE.yy",
   },
   "resourceVersion": "1.0",
   "name": "spr_noisehead",

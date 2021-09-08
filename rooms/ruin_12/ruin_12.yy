@@ -282,6 +282,8 @@
         {"properties":[],"isDnd":false,"objectId":{"name":"obj_forknight","path":"objects/obj_forknight/obj_forknight.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":801.0,"y":1234.0,"resourceVersion":"1.0","name":"inst_16D37390","tags":[],"resourceType":"GMRInstance",},
         {"properties":[],"isDnd":false,"objectId":{"name":"obj_doorB","path":"objects/obj_doorB/obj_doorB.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":736.0,"y":576.0,"resourceVersion":"1.0","name":"inst_7C56DD89","tags":[],"resourceType":"GMRInstance",},
         {"properties":[],"isDnd":false,"objectId":{"name":"obj_boxofpizza","path":"objects/obj_boxofpizza/obj_boxofpizza.yy",},"inheritCode":false,"hasCreationCode":true,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":-1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":768.0,"y":544.0,"resourceVersion":"1.0","name":"inst_4CF3D366","tags":[],"resourceType":"GMRInstance",},
+        {"properties":[],"isDnd":false,"objectId":{"name":"obj_notoppingmod_del","path":"objects/obj_notoppingmod_del/obj_notoppingmod_del.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":2.0,"scaleY":2.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":1056.0,"y":1056.0,"resourceVersion":"1.0","name":"inst_A88E943","tags":[],"resourceType":"GMRInstance",},
+        {"properties":[],"isDnd":false,"objectId":{"name":"obj_notoppingmod_del","path":"objects/obj_notoppingmod_del/obj_notoppingmod_del.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":16.0,"scaleY":2.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":1152.0,"y":576.0,"resourceVersion":"1.0","name":"inst_348E0C7A","tags":[],"resourceType":"GMRInstance",},
       ],"visible":true,"depth":0,"userdefinedDepth":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"gridX":32,"gridY":32,"layers":[],"hierarchyFrozen":false,"resourceVersion":"1.0","name":"Instances_1","tags":[],"resourceType":"GMRInstanceLayer",},
     {"tilesetId":{"name":"tileset_ruin2","path":"tilesets/tileset_ruin2/tileset_ruin2.yy",},"x":0,"y":0,"tiles":{"SerialiseWidth":85,"SerialiseHeight":94,"TileSerialiseData":[
 14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,
@@ -656,6 +658,8 @@
     {"name":"inst_16D37390","path":"rooms/ruin_12/ruin_12.yy",},
     {"name":"inst_7C56DD89","path":"rooms/ruin_12/ruin_12.yy",},
     {"name":"inst_4CF3D366","path":"rooms/ruin_12/ruin_12.yy",},
+    {"name":"inst_A88E943","path":"rooms/ruin_12/ruin_12.yy",},
+    {"name":"inst_348E0C7A","path":"rooms/ruin_12/ruin_12.yy",},
   ],
   "inheritCreationOrder": false,
   "sequenceId": null,

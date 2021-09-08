@@ -1,4 +1,4 @@
-if vsp >= 0 or (state == states.grabbed && obj_player1.vsp >= 0)
+if vsp >= 0 or (state == states.grabbed && obj_player1.vsp >= 0) or y > yprevious
 {
 	instance_destroy();
 	instance_destroy(obj_pizzaballblock);

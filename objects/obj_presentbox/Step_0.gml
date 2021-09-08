@@ -128,20 +128,14 @@ break
 
 
 //Contact with player
-with instance_place(x,y,obj_player)
+with instance_place(x, y, obj_player)
 {
 	if (((state = states.handstandjump or state = states.punch) && character != "S")
 	or (character == "S" && (state == states.handstandjump or state == states.mach3 or state == states.mach2)))
 	&& other.sprite_index != spr_present
 	{
 		if (state == states.handstandjump or state == states.punch) && character != "S"
-		{
-			sprite_index = choose(spr_suplexmash1,spr_suplexmash2,spr_suplexmash3, spr_suplexmash4, spr_punch)
-			image_index =0
-			state = states.tackle
-			movespeed = 3
-			vsp = -3
-		}
+			scr_pummel();
 
 		with other
 			event_user(0);

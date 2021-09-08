@@ -1,5 +1,6 @@
 /// @param {real} id
-function scr_requestlevel_alt() {
+function scr_requestlevel_alt()
+{
 	levelid = argument[0];
 
 	// send request
@@ -7,6 +8,4 @@ function scr_requestlevel_alt() {
 	requestype = reqtypes.read_level_alt;
 	level_id = levelid;
 	loading = true;
-
-
 }

@@ -17,7 +17,7 @@
   "duration": 76.81202,
   "parent": {
     "name": "antonball",
-    "path": "folders/Sounds/extra/antonball.yy",
+    "path": "folders/Sounds/pto extra/antonball.yy",
   },
   "resourceVersion": "1.0",
   "name": "mu_antonpunchball",

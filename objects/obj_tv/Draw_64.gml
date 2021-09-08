@@ -116,7 +116,7 @@ else
 			    draw_set_valign(fa_top);
 			    draw_set_font(global.combofont);
 			    var num = string_length(str);
-			    var w = string_width(str) / num;
+			    var w = round(string_width(str) / num);
 			    var xx = 0;
 			    var yy = 0;
 			    for (var i = 0; i < num; i++)

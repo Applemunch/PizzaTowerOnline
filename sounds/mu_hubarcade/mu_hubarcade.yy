@@ -1,5 +1,5 @@
 {
-  "compression": 0,
+  "compression": 1,
   "volume": 1.0,
   "preload": false,
   "bitRate": 128,
@@ -13,8 +13,8 @@
   "soundFile": "mu_hubarcade.wav",
   "duration": 157.894745,
   "parent": {
-    "name": "music",
-    "path": "folders/Sounds/music.yy",
+    "name": "pto extra",
+    "path": "folders/Sounds/pto extra.yy",
   },
   "resourceVersion": "1.0",
   "name": "mu_hubarcade",

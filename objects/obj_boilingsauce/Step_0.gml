@@ -16,8 +16,11 @@ else
 		obj_player1.vsp = -25
 		obj_player1.sprite_index = obj_player1.spr_fireass
 		
-		if firesnd == -1 or audio_sound_get_track_position(firesnd) >= 0.5
+		if !audio_is_playing(obj_player1.snd_fireass) or audio_sound_get_track_position(firesnd) >= 0.5
+		{
+			audio_stop_sound(obj_player1.snd_fireass);
 			firesnd = scr_soundeffect(obj_player1.snd_fireass);
+		}
 		
 		tv_push_prompt_once(tv_create_prompt("This is the fireass transformation text", 2, spr_tv_fireass, 3), "fireass");
 	}

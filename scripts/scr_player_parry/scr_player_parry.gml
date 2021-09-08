@@ -12,6 +12,8 @@ function scr_player_parry()
 	
 	if grounded && !scr_solid_player(x + hsp, y + 1)
 		hsp = 0;
+	
+	image_speed = 0.5;
 
 	var _grabbedby = 1;
 	if parry_count > 0
@@ -22,15 +24,24 @@ function scr_player_parry()
 	    with obj_baddie
 	    {
 	        if object_index != obj_grandpa && object_index != obj_pizzaballOLD
-			&& distance_to_object(other.id) < parry_threshold && state != states.grabbed && parryable && !(state == states.stun && thrown == true)
+			&& distance_to_object(other.id) < parry_threshold && state != states.grabbed && state != states.hit && state != states.stun && parryable && !(state == states.stun && thrown)
 	        {
 				image_xscale = -other.xscale;
-				hsp = abs(hsp) * -image_xscale;
 				
-				if hp > 1
-					hp = 1;
-	            grabbedby = _grabbedby;
-	            state = states.grabbed;
+				if global.gameplay == 0
+				{
+					hsp = abs(hsp) * -image_xscale;
+				
+					if hp > 1
+						hp = 1;
+		            grabbedby = _grabbedby;
+		            state = states.grabbed;
+				}
+				else
+				{
+					hp -= 5;
+					scr_hitthrow(id, other.id);
+				}
 	        }
 	    }
 	}

@@ -2,16 +2,18 @@
 /// @param palette sprite
 /// @param pal index
 /// @param  color index
-function pal_swap_get_pal_color(palette, pal, color) {
+function pal_swap_get_pal_color(palette, pal, color)
+{
 	//returns the color for the given palette for the given palette sprite.
 
 	//YOU MUST INDEX YOUR PALETTE FOR THIS TO WORK USING pal_swap_index_palette()!
 	//If you are going to index a palette do it once at the beginning of your game!
 	var _palettes = ds_map_find_value(Pal_Map,palette);
-	var _current_pal=ds_list_find_value(_palettes,pal);
+	if _palettes == undefined
+		return c_white;
+	var _current_pal = ds_list_find_value(_palettes,pal);
+	if _current_pal == undefined
+		return c_white;
+	
 	return(ds_list_find_value(_current_pal,color));
-
-
-
-
 }

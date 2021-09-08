@@ -12,16 +12,16 @@ function scr_enemy_grabpos(player)
 			{
 				if floor(player.image_index) == 0
 				or floor(player.image_index) == 4
-					y -= 4;
+					y -= 3;
 				if floor(player.image_index) == 1
 				or floor(player.image_index) == 5
 					y += 2;
 				if floor(player.image_index) == 2
 				or floor(player.image_index) == 6
-					y += 6;
+					y += 7;
 				if floor(player.image_index) == 3
 				or floor(player.image_index) == 7
-					y += 2;
+					y += 3;
 			}
 			else if player.sprite_index == player.spr_haulingjump
 			{
@@ -34,10 +34,17 @@ function scr_enemy_grabpos(player)
 				if floor(player.image_index) >= 3
 					y -= 6;
 			}
+			else if player.sprite_index == player.spr_haulingland
+			{
+				if floor(player.image_index) == 0
+					y += 15;
+				if floor(player.image_index) == 1
+					y += 8;
+				if floor(player.image_index) == 2
+					y -= 4;
+			}
 			else if player.sprite_index == player.spr_haulingfall
-				y -= 6;
-			else
-				y -= 2;
+				y -= 8;
 			
 			if sprite_index == spr_slimegrabbed or sprite_index == spr_slimegrabbed_re
 				y += 20;
@@ -77,9 +84,6 @@ function scr_enemy_grabpos(player)
 }
 function scr_enemy_driverpos(player)
 {
-	if live_call() return live_result;
-	
-	player = obj_player1;
 	if player.character == "P"
 	{
 		y = player.y

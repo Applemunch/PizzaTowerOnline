@@ -1,4 +1,4 @@
-if other.state == states.gameover exit;
+if other.state == states.gameover or other.state == states.hitlag exit;
 
 if obj_player1.character = "V" 
 	global.playerhealth = clamp(global.playerhealth + 100, 0, 100)
@@ -17,3 +17,5 @@ if global.bullet < 3
 
 event_user(0)
 instance_destroy()
+
+scr_failmod(mods.no_toppings);

@@ -1,7 +1,7 @@
 function scr_enemy_hit()
 {
-	x = hitX + random_range(-6, 6);
-	y = hitY + random_range(-6, 6);
+	x = hitX + random_range(-4, 4);
+	y = hitY + random_range(-4, 4);
 	hitLag--;
 	sprite_index = stunfallspr;
 	

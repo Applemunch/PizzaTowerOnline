@@ -54,9 +54,60 @@ function scr_enemy_rage()
 			}
 			break;
 		
+		case obj_ancho:
+			hsp = 0;
+	        if sprite_index == spr_rage1
+	            vsp = 0;
+	        if sprite_index == spr_rage2
+	            vsp = 10;
+			
+	        if floor(image_index) >= image_number - 1 && sprite_index == spr_rage1
+	            sprite_index = spr_rage2;
+			
+	        if grounded && sprite_index == spr_rage2
+	        {
+				if instance_in_camera(id, view_camera[0])
+					scr_soundeffect(sfx_groundpound);
+				
+	            with obj_camera
+	            {
+	                shake_mag = 10;
+	                shake_mag_acc = 30 / room_speed;
+	            }
+				
+	            image_index = 0
+	            sprite_index = spr_rage3
+	        }
+			
+	        if floor(image_index) >= image_number - 1 && sprite_index == spr_rage3
+	        {
+	            state = states.walk;
+	            sprite_index = idlespr;
+	        }
+			break;
+		
+		case obj_spitcheese:
+			ragedash--;
+	        if ragedash <= 0
+	        {
+	            with instance_create(x, y, obj_bigspitcheesespike)
+				{
+		            other.ragedash = 50;
+		            hsp = other.image_xscale * 5;
+		            vsp = -7;
+				}
+	        }
+	        if floor(image_index) >= image_number - 1
+	        {
+				image_speed = 0.35;
+	            state = states.walk;
+	            sprite_index = idlespr;
+	        }
+	        break
+		
 		case obj_indiancheese:
 	        ragedash--
-	        if ragedash == 0
+	        if ragedash <= 0
 	        {
 	            ragecooldown = 200;
 	            ragedash = 50;

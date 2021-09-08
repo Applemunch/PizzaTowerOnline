@@ -6,6 +6,8 @@ if room == rm_editor {
 
 if ds_list_find_index(global.baddieroom, id) = -1
 {
+	scr_failmod(mods.pacifist);
+	
 	scr_soundeffect(sfx_killenemy)
 	if global.gameplay == 0
 	{
@@ -48,8 +50,11 @@ if ds_list_find_index(global.baddieroom, id) = -1
 		if object_index == obj_swedishmonkey && irandom_range(0, 100) == 5
 			scr_soundeffect(sfx_monkey);
 		
-		instance_create(x, y, obj_genericpoofeffect);
-	    instance_create(x, y, obj_parryeffect);
+		if global.gameplay != 0
+		{
+			instance_create(x, y, obj_genericpoofeffect);
+		    instance_create(x, y, obj_parryeffect);
+		}
 		
 		instance_create(x,y,obj_bangeffect)
 		ds_list_add(global.baddieroom, id) 
@@ -59,8 +64,6 @@ if ds_list_find_index(global.baddieroom, id) = -1
 		{
 			global.combo += 1;
 			global.combotime = 60;
-			global.heattime = 60;
-			global.style += 5 + global.combo;
 		}
 		
 		if !global.snickchallenge

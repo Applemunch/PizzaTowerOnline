@@ -123,8 +123,8 @@
     "PhysicsWorldPixToMetres": 0.1,
   },
   "parent": {
-    "name": "City",
-    "path": "folders/Rooms/Old-levels/City.yy",
+    "name": "Sewer",
+    "path": "folders/Rooms/Old Levels/Sewer.yy",
   },
   "resourceVersion": "1.0",
   "name": "floor4_roomtreasure",

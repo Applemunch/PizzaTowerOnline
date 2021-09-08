@@ -85,7 +85,7 @@
   "nineSlice": null,
   "parent": {
     "name": "rotate",
-    "path": "folders/Sprites/players/joke/rotate.yy",
+    "path": "folders/Sprites/players/JOKE/rotate.yy",
   },
   "resourceVersion": "1.0",
   "name": "spr_player_rotate",

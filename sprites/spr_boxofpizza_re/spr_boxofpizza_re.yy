@@ -69,8 +69,8 @@
   ],
   "nineSlice": null,
   "parent": {
-    "name": "blocks",
-    "path": "folders/Sprites/generalobjects/blocks.yy",
+    "name": "pizzaboxes",
+    "path": "folders/Sprites/generalobjects/blocks/pizzaboxes.yy",
   },
   "resourceVersion": "1.0",
   "name": "spr_boxofpizza_re",

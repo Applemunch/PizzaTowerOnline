@@ -11,7 +11,7 @@ function scr_enemy_idle()
 		state = states.walk
 		sprite_index = walkspr
 		
-		if object_index == obj_spitcheese
+		if object_index == obj_spitcheese && global.gameplay == 0
 			image_xscale = throwdir
 		if object_index == obj_treasureguy
 			state = states.chase

@@ -29,3 +29,4 @@ palsurf = -1;
 dsread = "";
 
 petxprev = x;
+img_angle = 0

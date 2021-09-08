@@ -1,3 +1,4 @@
+/// @description snick and timeattack
 if myturn
 {
 	// SAGE2019
@@ -31,6 +32,6 @@ if myturn
 	global.maxwave = (global.minutes * 60 + global.seconds) * 60
 	
 	obj_music.fadeoff = 0
-	if global.timeattack
-		obj_timeattack.alarm[1] = 60;
+	if global.timeattack with obj_timeattack
+		alarm[1] = 60;
 }

@@ -287,6 +287,7 @@
         {"properties":[],"isDnd":false,"objectId":{"name":"obj_collectescape","path":"objects/obj_collectescape/obj_collectescape.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":320.0,"y":2048.0,"resourceVersion":"1.0","name":"inst_13671F05","tags":[],"resourceType":"GMRInstance",},
         {"properties":[],"isDnd":false,"objectId":{"name":"obj_collectescape","path":"objects/obj_collectescape/obj_collectescape.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":320.0,"y":2112.0,"resourceVersion":"1.0","name":"inst_164307E9","tags":[],"resourceType":"GMRInstance",},
         {"properties":[],"isDnd":false,"objectId":{"name":"obj_pepgoblin","path":"objects/obj_pepgoblin/obj_pepgoblin.yy",},"inheritCode":false,"hasCreationCode":true,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":1317.0,"y":2322.0,"resourceVersion":"1.0","name":"inst_13CC1F4A","tags":[],"resourceType":"GMRInstance",},
+        {"properties":[],"isDnd":false,"objectId":{"name":"obj_notoppingmod_del","path":"objects/obj_notoppingmod_del/obj_notoppingmod_del.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":2.0,"scaleY":7.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":320.0,"y":1952.0,"resourceVersion":"1.0","name":"inst_315A255A","tags":[],"resourceType":"GMRInstance",},
       ],"visible":true,"depth":0,"userdefinedDepth":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"gridX":32,"gridY":32,"layers":[],"hierarchyFrozen":false,"resourceVersion":"1.0","name":"Instances_1","tags":[],"resourceType":"GMRInstanceLayer",},
     {"tilesetId":{"name":"tileset_dungeon","path":"tilesets/tileset_dungeon/tileset_dungeon.yy",},"x":0,"y":0,"tiles":{"SerialiseWidth":63,"SerialiseHeight":79,"TileSerialiseData":[
 5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,
@@ -650,6 +651,7 @@
     {"name":"inst_13671F05","path":"rooms/dungeon_4/dungeon_4.yy",},
     {"name":"inst_164307E9","path":"rooms/dungeon_4/dungeon_4.yy",},
     {"name":"inst_13CC1F4A","path":"rooms/dungeon_4/dungeon_4.yy",},
+    {"name":"inst_315A255A","path":"rooms/dungeon_4/dungeon_4.yy",},
   ],
   "inheritCreationOrder": false,
   "sequenceId": null,

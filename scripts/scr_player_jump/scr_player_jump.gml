@@ -298,21 +298,21 @@ function scr_player_jump()
 			
 			if character != "N" or global.gameplay != 0
 			{
-				with instance_create(x +xscale*30,y+60,obj_shotgunbullet)
+				with instance_create(x + xscale * 30, y + 60, obj_shotgunbullet)
 				{
 					sprite_index = sprite10391
 					spdh = -10
 					spd = 0
 					shotgun = true
 				}
-				with instance_create(x +xscale*30,y+60,obj_shotgunbullet)
+				with instance_create(x + xscale * 30, y + 60, obj_shotgunbullet)
 				{
 					sprite_index = sprite10391
 					spdh = -10
 					spd = 5
 					shotgun = true
 				}
-				with instance_create(x +xscale*30,y+60,obj_shotgunbullet)
+				with instance_create(x + xscale * 30, y + 60, obj_shotgunbullet)
 				{
 					sprite_index = sprite10391
 					spdh = -10

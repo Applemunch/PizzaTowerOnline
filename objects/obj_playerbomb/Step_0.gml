@@ -64,13 +64,14 @@ else
 			instance_destroy();
 	}
 		
-	if place_meeting(x,y,obj_pizzaballOLD)
+	if place_meeting(x, y, obj_pizzaballOLD) or place_meeting(x, y, obj_baddie)
 		instance_destroy()
 
 	//Destroy block
 	with instance_place(x+hsp,y,obj_destructibles)
 		instance_destroy()
-
+	
+	/*
 	with instance_place(x,y,obj_baddie)
 	{
 		if object_index != obj_pizzaballOLD
@@ -79,6 +80,7 @@ else
 			instance_destroy(other)
 		}
 	}
+	*/
 }
 
 scr_collide()

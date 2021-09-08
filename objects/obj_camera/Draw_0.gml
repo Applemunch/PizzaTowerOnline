@@ -39,14 +39,11 @@ while !ds_queue_empty(edge_indicator)
 			case "SP":
 				spr_arrow = spr_pizzelleicon;
 				break;
-			case "G":
-				spr_arrow = spr_gladeicon;
-				break;
 		}
 		
 		draw_set_colour(pal_swap_get_pal_color(player.spr_palette, player.paletteselect, 1));
 		draw_arrow(_x, _y, _x + lengthdir_x(56, _an), _y + lengthdir_y(56, _an), 12);
-	
+		
 		pal_swap_set(player.spr_palette, player.paletteselect, false);
 		draw_sprite_ext(spr_arrow, 0, _x, _y, 1, 1, 0, c_white, 1);
 		pal_swap_reset();

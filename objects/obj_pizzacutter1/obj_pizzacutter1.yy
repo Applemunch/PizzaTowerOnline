@@ -10,10 +10,7 @@
     "path": "sprites/spr_pizzacutterstart/spr_pizzacutterstart.yy",
   },
   "persistent": false,
-  "parentObjectId": {
-    "name": "par_universal",
-    "path": "objects/par_universal/par_universal.yy",
-  },
+  "parentObjectId": null,
   "physicsObject": false,
   "physicsSensor": false,
   "physicsShape": 0,

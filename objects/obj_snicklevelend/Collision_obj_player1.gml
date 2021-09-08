@@ -12,7 +12,7 @@ if image_index == 0 && (global.panic or room == snick_challengeend)
 		ini_close();
 	}
 	image_speed = 0.35
-
+	
 	image_index = 0
 	global.panic = false
 	global.snickchallenge = false

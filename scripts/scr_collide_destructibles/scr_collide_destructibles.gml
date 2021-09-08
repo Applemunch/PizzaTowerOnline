@@ -153,19 +153,14 @@ function scr_collide_destructibles()
 						if place_meeting(x + hsp, y, obj_bigdestructibles)
 						&& !place_meeting(x + hsp, y, obj_tntblock)
 						{
-							if shotgunAnim = false
-							{
-								sprite_index = choose(spr_suplexmash1,spr_suplexmash2,spr_suplexmash3, spr_suplexmash4, spr_punch)
-								image_index = 0
-								state = states.tackle
-								movespeed = 3
-								vsp = -3
-							}
+							if !shotgunAnim or global.gameplay != 0
+								scr_pummel();
 							else
 							{
 								state = states.shotgun
 								image_index = 0
 								sprite_index = spr_shotgunshoot
+								
 								if character != "N"
 								{
 									instance_create(x+image_xscale*20,y+20,obj_shotgunbullet)

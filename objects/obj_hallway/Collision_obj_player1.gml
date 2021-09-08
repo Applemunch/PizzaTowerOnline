@@ -4,7 +4,7 @@ with other
 		x = other.x
 	y = min(y, other.y + (other.sprite_height - 46));
 	
-	if !instance_exists(obj_fadeout) && !instance_exists(obj_pausefadeout) && !obj_pause.pause
+	if !instance_exists(obj_fadeout) && !instance_exists(obj_pausefadeout) && !obj_pause.pause && state != states.hit
 	{
 		targetDoor = other.targetDoor
 	    targetRoom = other.targetRoom

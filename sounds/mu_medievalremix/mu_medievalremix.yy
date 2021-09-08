@@ -3,7 +3,7 @@
     "debug": {"audioGroupId":"{\"name\":\"audiogroup_default\",\"path\":\"audiogroups/audiogroup_default\"}",},
   },
   "compression": 1,
-  "volume": 1.0,
+  "volume": 0.9,
   "preload": false,
   "bitRate": 128,
   "sampleRate": 44100,
@@ -14,7 +14,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "mu_medievalremix.wav",
-  "duration": 173.714279,
+  "duration": 173.7381,
   "parent": {
     "name": "music",
     "path": "folders/Sounds/music.yy",

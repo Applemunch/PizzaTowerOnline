@@ -29,7 +29,7 @@ with (player)
 	}
 }
 
-if floor(player.image_index) == player.image_number - 1 && player.state == states.victory
+if floor(player.image_index) >= player.image_number - 1 && player.state == states.victory
 {
 	myturn = true;
 	with player

@@ -16,7 +16,7 @@ function scr_player_door()
 	if floor(image_index) == image_number - 1
 		image_speed = 0
 
-	if floor(image_index) == image_number - 1 && !instance_exists(obj_fadeout) && (sprite_index = spr_downpizzabox or sprite_index = spr_uppizzabox)
+	if floor(image_index) >= image_number - 3 && !instance_exists(obj_fadeout) && (sprite_index = spr_downpizzabox or sprite_index = spr_uppizzabox)
 	{
 		with obj_boxofpizza_editor
 		{

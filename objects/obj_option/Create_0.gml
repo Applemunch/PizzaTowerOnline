@@ -19,3 +19,5 @@ trans = 0;
 
 state = 0;
 movespeed = 0;
+
+dbg_live = false;

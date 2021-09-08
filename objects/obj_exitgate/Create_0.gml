@@ -23,4 +23,4 @@ if ds_list_find_index(global.saveroom, id) != -1 && !global.panic
 	image_index = 0
 
 if check_sugary()
-	sprite_index = spr_exitgateSP;
+	sprite_index = spr_exitgate_ss;

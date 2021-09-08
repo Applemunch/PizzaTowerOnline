@@ -1,13 +1,6 @@
-if character == "V"
-	scr_hurtplayer(id)
-
-var b = 1
-
-for (i = 0; i <  array_length(transformation)-1; i+=1)
-if state = transformation[i]
-b = 0
-
-if b = 1
+if character = "V"
+	scr_hurtplayer(object_index)
+else if scr_transformationcheck()
 {
 	if !cutscene && other.grounded && state != states.bombpep && state != states.parry && state != states.backbreaker && (state == states.handstandjump or state == states.punch or character == "S")
 	{

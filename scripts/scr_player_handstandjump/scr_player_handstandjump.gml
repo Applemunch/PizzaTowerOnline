@@ -258,37 +258,37 @@ function scr_player_handstandjump()
 		}
 
 		image_speed = 0.35	
-
-		//Faceplant roll
-		if key_slap2 && global.gameplay == 0 && (character == "P" or character == "N")
+	}
+	
+	//Faceplant roll
+	if key_slap2 && global.gameplay == 0 && (character == "P" or character == "N" or character == "SP")
+	{
+		movespeed = 8
+		if !grounded
+			vsp = -5
+		image_index = 0
+		sprite_index = spr_faceplant
+			
+		if character == "N"
+			scr_soundeffect(sfx_Nspin)
+			
+		state = states.faceplant
+		image_speed = 0.5
+		with instance_create(x,y,obj_jumpdust)
+			image_xscale = other.xscale
+			
+		if !(instance_exists(crazyruneffectid))
+		with instance_create(x,y,obj_crazyrunothereffect)
 		{
-			movespeed = 8
-			if !grounded
-				vsp = -5
-			image_index = 0
-			sprite_index = spr_faceplant
-			if character = "N"
-				scr_soundeffect(sfx_Nspin)
-			
-			state = states.faceplant
-			image_speed = 0.5
-			with instance_create(x,y,obj_jumpdust)
-				image_xscale = other.xscale
-			
-			if !(instance_exists(crazyruneffectid))
-			with instance_create(x,y,obj_crazyrunothereffect)
-			{
-				playerid = other.object_index	
-				other.crazyruneffectid = id
-			}
+			playerid = other.object_index	
+			other.crazyruneffectid = id
 		}
 	}
 	
+	// Bump
 	if !place_meeting(x + xscale, y, obj_destructibles) && character != "S"
 	{
 		ledge_bump();
-		
-		// Bump
 		if scr_solid(x + xscale, y) && (!place_meeting(x + xscale, y, obj_slope) or scr_solidwall(x + xscale, y) or scr_solidwall(x, y - 1))
 		{
 			grav = 0.5
@@ -298,13 +298,14 @@ function scr_player_handstandjump()
 			image_index = 0
 			machslideAnim = true
 			machhitAnim = false
-			instance_create(x + (10 * xscale), y + 10, obj_bumpeffect)
+			
+			scr_soundeffect(sfx_bumpwall);
+			instance_create(x + (10 * xscale), y + 10, obj_bumpeffect);
 			
 			if global.gameplay == 0
 			{
-				scr_soundeffect(sfx_bumpwall)
-				state = states.bump
-				hsp = 2.5 * -xscale
+				state = states.bump;
+				hsp = 2.5 * -xscale;
 			}
 			else
 			{

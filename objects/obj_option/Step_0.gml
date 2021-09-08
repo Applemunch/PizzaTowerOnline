@@ -184,10 +184,10 @@ else if menu == 1
 			var move = (obj_player1.key_left + obj_player1.key_right) * 0.02;
 		
 		global.mastervolume = clamp(global.mastervolume + move, 0, 1);
-		audio_master_gain(global.mastervolume);
-		
 		if keyboard_check_pressed(ord("R"))
 			global.mastervolume = 1;
+		
+		audio_master_gain(global.mastervolume / (!code_is_compiled() + 1));
 	}
 	
 	// music volume slider
@@ -281,6 +281,7 @@ else if menu == 1
 		
 		if global.musicvolume <= 0 && audio_is_playing(global.music)
 			audio_stop_sound(global.music);
+		audio_master_gain(global.mastervolume / (!code_is_compiled() + 1));
 		
 		with obj_roomname
 		{

@@ -14,7 +14,9 @@ function scr_player_tumble()
 	if sprite_index = spr_tumblestart && floor(image_index) = image_number -1
 		sprite_index = spr_tumble
 	
-	ledge_bump()
+	// bump
+	if !grounded
+		ledge_bump();
 	
 	if (scr_solidwall(x+xscale,y)
 	&& !place_meeting(x+hsp,y,obj_destructibles)

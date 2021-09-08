@@ -1,5 +1,6 @@
 randomize();
-show_debug_message("VM " + string(!code_is_compiled()));
+if !code_is_compiled()
+	trace("!!RUNNING IN VM!!");
 
 // no shader mode
 ini_open("saveData.ini");
@@ -29,7 +30,7 @@ global.richpresence = ini_read_real("online", "richpresence", true);
 global.streamer = ini_read_real("online", "streamer", false);
 global.showfps = ini_read_real("online", "showfps", false);
 global.pvp = /*ini_read_real("online", "pvp", false)*/ false;
-global.drawborder = ini_read_real("online", "drawborder", true)
+global.drawborder = ini_read_real("online", "drawborder", false)
 global.pestoanchovi = ini_read_real("online", "pestoanchovi", false)
 
 global.panicbg = ini_read_real("online", "panicbg", false); // waving background
@@ -43,7 +44,7 @@ global.mastervolume = ini_read_real("online", "mastervolume", 1);
 global.machsound = ini_read_real("online", "machsound", 0);
 global.musicgame = ini_read_real("online", "musicgame", 0);
 
-audio_master_gain(global.mastervolume);
+audio_master_gain(global.mastervolume / (!code_is_compiled() + 1));
 
 // loaded?
 global.loaded_mus = true;
@@ -57,6 +58,7 @@ while room_exists(global.lastroom)
 global.lastroom -= 1;
 
 global.saveslot = "";
+global.fun = irandom_range(1, 1000);
 
 // language
 global.language = ini_read_string("online", "language", "en") // language

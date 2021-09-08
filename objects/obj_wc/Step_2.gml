@@ -247,7 +247,7 @@ if WC_candrag && WC_assetfinder < 0 && !WC_creatingobj && WC_selectobj == 0
 			if object_index == obj_otherplayer // pt online exclusive
 				gms_p2p_send(p2p.wcdrag, player_id, x, y);
 		}
-	
+		
 		// just incase the object's coordinates are frozen
 		for (i = 0; i < array_length_1d(WC_frozenobj); i++)
 		{

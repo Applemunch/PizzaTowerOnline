@@ -1,4 +1,4 @@
-scr_initenemy()
+event_inherited();
 
 grav = 0;
 hsp = 0;
@@ -29,6 +29,10 @@ scaredspr = spr_ancho_scared
 spr_chargestart = spr_ancho_chargestart
 spr_charge = spr_ancho_charge
 
+spr_rage1 = spr_ancho_rage1
+spr_rage2 = spr_ancho_rage2
+spr_rage3 = spr_ancho_rage3
+
 image_xscale = -1
 flash = false
 slapped = false
@@ -37,7 +41,9 @@ boundbox = false
 spr_dead =  spr_anchodead
 important = false
 heavy = false
-depth =0
+depth = 0
+
+stuck = false
 
 grabbedby = 0
 stuntouchbuffer = 0
@@ -50,6 +56,10 @@ if global.snickrematch
 	grabbedspr = spr_ancho_grabbed_re
 	scaredspr = spr_anchobounce_re
 	spr_dead = spr_anchodead_re
+	
+	spr_rage1 = spr_ancho_rage1_re
+	spr_rage2 = spr_ancho_rage2_re
+	spr_rage3 = spr_ancho_rage3_re
 	
 	spr_chargestart = spr_ancho_chargestart_re
 	spr_charge = spr_ancho_charge_re

@@ -50,15 +50,15 @@ with (obj_player1)
 }
 
 
-if place_meeting(x,y+1,obj_doorA) or place_meeting(x,y-1,obj_doorA)
+if place_meeting(x, y + 6, obj_doorA) or place_meeting(x, y - 6, obj_doorA)
 	targetDoor = "A"
-if place_meeting(x,y+1,obj_doorB) or place_meeting(x,y-1,obj_doorB)
+if place_meeting(x, y + 6, obj_doorB) or place_meeting(x, y - 6, obj_doorB)
 	targetDoor = "B"
-if place_meeting(x,y+1,obj_doorC) or place_meeting(x,y-1,obj_doorC)
+if place_meeting(x, y + 6, obj_doorC) or place_meeting(x, y - 6, obj_doorC)
 	targetDoor = "C"
-if place_meeting(x,y+1,obj_doorD) or place_meeting(x,y-1,obj_doorD)
+if place_meeting(x, y + 6, obj_doorD) or place_meeting(x, y - 6, obj_doorD)
 	targetDoor = "D"
-if place_meeting(x,y+1,obj_doorE) or place_meeting(x,y-1,obj_doorE)
+if place_meeting(x, y + 6, obj_doorE) or place_meeting(x, y - 6, obj_doorE)
 	targetDoor = "E"
 if place_meeting(x, y - image_yscale, obj_doorANY)
 	targetDoor = instance_place(x, y - image_yscale, obj_doorANY).door

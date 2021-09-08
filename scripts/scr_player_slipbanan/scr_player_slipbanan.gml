@@ -13,6 +13,9 @@ function scr_player_slipbanan()
 		
 	    if grounded && vsp > -1
 	    {
+			scr_soundeffect(sfx_step)
+			instance_create(x, y, obj_landcloud)
+			
 	        sprite_index = spr_slipbanan2;
 	        image_index = 0;
 	        image_speed = 0.35;

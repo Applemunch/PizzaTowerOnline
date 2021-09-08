@@ -1,6 +1,6 @@
 if global.gameplay == 0
 {
-	if ((obj_player.state == states.freefallland) && grounded)
+	if obj_player.state == states.freefallland && grounded
 	{
 	    if point_in_camera(x, y, view_camera[0])
 	    {
@@ -10,30 +10,28 @@ if global.gameplay == 0
 	    }
 	}
 
-	if drop = false
-	scr_collide()
+	if !drop
+		scr_collide()
 	else
 	{
-	if (vsp < 12) vsp += grav;
+		if (vsp < 12) vsp += grav;
 
-	x += hsp;
-	y += floor(vsp);
+		x += hsp;
+		y += floor(vsp);
 	}
 
 
-	if scr_solid(x,y+1) && drop =  false
-	{
-	hsp = 0
-	}
+	if scr_solid(x,y+1) && !drop
+		hsp = 0
 
-	if banana = 4
-	instance_destroy()
+	if banana >= 4
+		instance_destroy()
 }
 else
 {
 	scr_collide();
 	if scr_solid(x, y + 1)
 	    hsp = 0;
-	if banana == 2 or !instance_exists(baddieID)
+	if banana >= 2 or !instance_exists(baddieID)
 	    instance_destroy();
 }

@@ -32,6 +32,7 @@ if global.gottp[0] && !obj_pause.pause // tpother
 	
 	if global.gottp[3] < 0
 	{
+		// tp to level editor room
 		__user = noone;
 		if instance_exists(obj_onlinemenu)
 			var onl = obj_onlinemenu;
@@ -45,8 +46,9 @@ if global.gottp[0] && !obj_pause.pause // tpother
 			requestype = reqtypes.tp_level;
 		}
 	}
-	else if global.gottp[3] >= custom_lvl_room + 32
+	else if global.gottp[3] >= global.lastroom + obj_onlinemenu.level_id + 1
 	{
+		// tp to jacko editor room
 		__user = noone;
 		if instance_exists(obj_onlinemenu)
 			var onl = obj_onlinemenu;
@@ -56,19 +58,25 @@ if global.gottp[0] && !obj_pause.pause // tpother
 		with onl
 		{
 			menu = -1;
-			scr_requestlevel(global.gottp[3] - custom_lvl_room - 32);
-			requestype = reqtypes.tp_level;
+			scr_requestlevel_alt(global.lastroom - global.gottp[3] - 1);
+			requestype = reqtypes.tp_level_alt;
 			paging_type = 3;
 		}
 	}
 	else
 	{
-		scr_playerreset();
-		obj_player1.x = global.gottp[1];
-		obj_player1.y = global.gottp[2];
-		obj_player1.targetDoor = "none";
-		
-		room_goto_new(global.gottp[3]);
+		// tp normally
+		global.gottp[0] = true;
+		with obj_player1
+		{
+			scr_playerreset();
+			x = global.gottp[1];
+			y = global.gottp[2];
+			targetDoor = "none";
+			
+			room_goto_new(global.gottp[3]);
+			global.gottp[0] = false;
+		}
 	}
 }
 if global.__gotmessage[0] // global message

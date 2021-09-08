@@ -2,7 +2,7 @@
   "ConfigValues": {
     "debug": {"audioGroupId":"{\"name\":\"audiogroup_default\",\"path\":\"audiogroups/audiogroup_default\"}",},
   },
-  "compression": 1,
+  "compression": 0,
   "volume": 1.0,
   "preload": false,
   "bitRate": 128,
@@ -16,8 +16,8 @@
   "soundFile": "mu_hub2",
   "duration": 135.099335,
   "parent": {
-    "name": "music",
-    "path": "folders/Sounds/music.yy",
+    "name": "pto extra",
+    "path": "folders/Sounds/pto extra.yy",
   },
   "resourceVersion": "1.0",
   "name": "mu_hub2",

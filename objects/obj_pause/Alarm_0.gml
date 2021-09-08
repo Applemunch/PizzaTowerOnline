@@ -75,9 +75,15 @@ else if string_startswith(roomname, "war")
 else if string_startswith(roomname, "etb")
 // early test build
 	room_goto_new(etb_1)
-else if string_startswith(roomname, "steamcc")
-// steamy cotton candy
-	room_goto_new(steamcc_1)
+else if string_startswith(roomname, "ancient")
+// ancient tower
+	room_goto_new(ancient_1)
+else if string_startswith(roomname, "cotton")
+// cottontown
+	room_goto_new(cotton_1)
+else if string_startswith(roomname, "jawbreaker")
+// jawbreaker mines
+	room_goto_new(jawbreaker_1)
 else if room == custom_lvl_room
 // level editor level
 	room_restart();

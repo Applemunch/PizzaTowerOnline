@@ -11,3 +11,5 @@ if global.bullet < 3
 
 event_user(0)
 instance_destroy()
+
+scr_failmod(mods.no_toppings);

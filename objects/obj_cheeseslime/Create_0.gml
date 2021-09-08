@@ -1,5 +1,4 @@
-scr_initenemy()
-
+event_inherited();
 
 grav = 0.5;
 hsp = 0;
@@ -40,7 +39,7 @@ spr_dead = spr_slimedead
 important = false
 
 heavy = false
-depth =0
+depth = 0
 
 if string_startswith(room_get_name(room), "chateau")
 	paletteselect = 1

@@ -10,8 +10,8 @@ size = 0;
 
 cancon = false;
 nonet = false;
-version = 3;
-drm = false;
+version = 4;
+drm = true;
 
 req = -1;
 

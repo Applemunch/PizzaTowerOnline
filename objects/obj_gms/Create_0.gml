@@ -6,6 +6,9 @@ if room != characterselect
 }
 working = true;
 
+if !debug
+	instance_destroy(obj_wc);
+
 // init
 gms_init(obj_gms);
 depth = -9999;
@@ -31,7 +34,7 @@ gms_settings_declare_syncable_object(obj_baddiegibs);
 */
 
 // settings
-gameversion = 7;
+gameversion = 7.3;
 gms_settings(true, gameversion, obj_player1, obj_otherplayer);
 
 // scripts

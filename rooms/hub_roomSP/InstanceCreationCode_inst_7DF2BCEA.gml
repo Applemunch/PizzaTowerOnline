@@ -1,3 +1,3 @@
-targetRoom = ssmines_1;
-msg = "SUGARSHACK MINES";
-level = "ssmines";
+targetRoom = jawbreaker_1;
+msg = "JAWBREAKER MINES";
+level = "jawbreaker";

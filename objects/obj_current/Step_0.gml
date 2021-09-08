@@ -1,4 +1,4 @@
-with instance_place(x,y-1,obj_player1)
+with instance_place(x, y - 1, obj_player1)
 {
 	scr_knightbump(true, false);
 	

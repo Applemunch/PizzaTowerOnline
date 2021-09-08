@@ -1,6 +1,6 @@
 {
   "compression": 1,
-  "volume": 0.8,
+  "volume": 0.85,
   "preload": false,
   "bitRate": 128,
   "sampleRate": 44100,
@@ -11,7 +11,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "mu_war.wav",
-  "duration": 183.5294,
+  "duration": 197.647049,
   "parent": {
     "name": "music",
     "path": "folders/Sounds/music.yy",

@@ -165,20 +165,20 @@ function scr_loadlevel(argument0)
 		}
 		// detect forbidden objects
 		else if ds_list_find_index(_forbidden, _getobj) != -1
-			show_debug_message("FORBIDDEN OBJECT: " + _obj);
+			trace("FORBIDDEN OBJECT " + _obj);
 	}
 
 	// list unsupported objects
 	if ds_list_size(_unsupported) != 0
 	{
-		var str = "This level has undefined objects (report if abuse):\n";
+		var str = "This level has unsupported objects (report if abuse):\n";
 		for(i = 0; i < ds_list_size(_unsupported); i++)
 			str += "\n" + ds_list_find_value(_unsupported, i);
 	
 		show_message(str);
 		_wrapper = false;
 	}
-
+	
 	// free ds lists
 	ds_list_destroy(_forbidden);
 	ds_list_destroy(_unsupported);

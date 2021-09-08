@@ -1,1 +1,1 @@
-instance_create(x,y,obj_bangeffect)
+instance_create(x, y, obj_bangeffect)

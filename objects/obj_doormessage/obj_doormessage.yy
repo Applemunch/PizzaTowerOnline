@@ -27,8 +27,8 @@
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "door",
-    "path": "folders/Objects/level_structure/door.yy",
+    "name": "pto",
+    "path": "folders/Objects/level_structure/pto.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_doormessage",

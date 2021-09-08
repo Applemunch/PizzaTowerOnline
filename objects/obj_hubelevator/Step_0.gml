@@ -29,7 +29,8 @@ if state == 1
 		
 		if key_jump
 		{
-			if hub_array[sel][0] == "TUTORIAL" && global.timeattack
+			if (hub_array[sel][1] == PP_room1)
+			&& (global.timeattack or global.modifier != -1)
 				scr_soundeffect(sfx_denied);
 			else
 				state = 2;

@@ -35,9 +35,13 @@ if sel[1] == "N" && key_taunt2
 
 // change character
 var lastchar = "SP";
+if debug
+	lastchar = "SN";
+/*
 if (instance_exists(obj_gms) && gms_info_isloggedin() && string_lower(gms_self_name()) == "peic")
 or debug
 	lastchar = "G";
+*/
 
 if key_down2 && sel[1] != lastchar
 {

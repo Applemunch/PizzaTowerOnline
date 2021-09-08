@@ -1,7 +1,6 @@
 if state != states.grabbed
 && other.object_index != obj_enemyblock
-&& object_get_parent(other.object_index) != obj_destructibles
-&& object_get_parent(other.object_index) != obj_bigdestructibles
+&& !object_is_ancestor(other.object_index, obj_destructibles)
 {
 	instance_create(x, y, obj_balloonpop);
 	x = xstart;

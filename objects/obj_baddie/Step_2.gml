@@ -27,9 +27,3 @@ if global.gameplay != 0
 	if sprite_index == walkspr && hsp != 0 && floor(image_index) >= image_number - 1 && image_number > 1
 		instance_create(x - image_xscale * 20, y + 43, obj_cloudeffect);
 }
-
-if escape && (!global.panic or (global.gameplay == 0 && object_index != obj_minijohn))
-{
-	boundbox = false;
-	instance_deactivate_object(id);
-}

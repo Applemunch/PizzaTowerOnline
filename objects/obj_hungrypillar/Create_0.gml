@@ -11,5 +11,10 @@ if room == rm_editor {
 }
 
 song = -1;
-if check_sugary()
-	sprite_index = spr_hungrypillar_ss;
+if global.gameplay != 0
+{
+	if check_sugary()
+		sprite_index = spr_hungrypillar_ss;
+}
+else if check_sugary()
+	sprite_index = spr_hungrypillarOLD_ss;

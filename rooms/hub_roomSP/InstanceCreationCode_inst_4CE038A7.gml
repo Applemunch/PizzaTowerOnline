@@ -1,3 +1,3 @@
-targetRoom = steamcc_1;
-msg = "COTTON TOWN";
-level = "steamcc";
+targetRoom = cotton_1;
+msg = "COTTONTOWN";
+level = "cotton";

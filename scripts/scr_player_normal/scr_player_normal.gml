@@ -145,7 +145,7 @@ function scr_player_normal()
 							windingAnim = 0
 							if sprite_index != spr_facehurtup && sprite_index != spr_facehurt
 								sprite_index = spr_facehurtup
-							if floor(image_index) == image_number - 1 && sprite_index == spr_facehurtup
+							if floor(image_index) >= image_number - 1 && sprite_index == spr_facehurtup
 								sprite_index = spr_facehurt
 						}
 				    }
@@ -553,18 +553,18 @@ function scr_player_normal()
 				// shoot in old gameplay
 				state = states.shotgun
 				
-				with instance_create(x+xscale*20,y+20,obj_shotgunbullet)
+				with instance_create(x + xscale * 20, y + 20, obj_shotgunbullet)
 					shotgun = true;
 				if character != "N"
 				{
-					with instance_create(x+xscale*20,y+20,obj_shotgunbullet)
+					with instance_create(x + xscale * 20, y + 20, obj_shotgunbullet)
 					{
-						spdh= 4
+						spdh = 4;
 						shotgun = true;
 					}
-					with instance_create(x+xscale*20,y+20,obj_shotgunbullet)
+					with instance_create(x + xscale * 20, y + 20, obj_shotgunbullet)
 					{
-						spdh= -4
+						spdh = -4;
 						shotgun = true;
 					}
 				}

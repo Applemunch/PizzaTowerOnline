@@ -18,9 +18,6 @@ function scr_player_rotate()
 		case "V":
 			sprite_index = spr_playerV_rotate;
 			break;
-		case "G":
-			sprite_index = spr_playerG_rotate;
-			break;
 		case "SP":
 			sprite_index = spr_playerSP_rotate;
 			break;

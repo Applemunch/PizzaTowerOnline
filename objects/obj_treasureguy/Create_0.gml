@@ -1,4 +1,4 @@
-scr_initenemy()
+event_inherited();
 
 threshold_x = 400
 threshold_y = 96

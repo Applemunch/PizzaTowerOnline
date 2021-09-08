@@ -11,10 +11,10 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "mu_ssmines_pc.ogg",
-  "duration": 168.015625,
+  "duration": 208.0,
   "parent": {
     "name": "pizza castle",
-    "path": "folders/Sounds/extra/sugary spire/pizza castle.yy",
+    "path": "folders/Sounds/pto extra/sugary spire/pizza castle.yy",
   },
   "resourceVersion": "1.0",
   "name": "mu_ssmines_pc",

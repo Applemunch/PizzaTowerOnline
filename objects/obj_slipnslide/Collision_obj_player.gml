@@ -32,6 +32,8 @@ if (drop == false && !instance_exists(obj_pepperman)) or global.gameplay != 0
 			}
 			else
 			{
+				scr_soundeffect(sfx_tumble2)
+				
 				sprite_index = spr_slipbanan1;
 			    other.drop = 1;
 			    vsp = -11;

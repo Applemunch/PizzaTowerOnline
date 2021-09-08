@@ -78,6 +78,7 @@ obj_player.state = states.boxxedpep
 if obj_player.sprite_index != spr_boxxedpep_intro
 {
 obj_player.sprite_index = spr_boxxedpep_intro
+scr_soundeffect(sfx_pephurt)
 //scr_sound(sound_touchspike)
 }
 obj_player.image_index = 0

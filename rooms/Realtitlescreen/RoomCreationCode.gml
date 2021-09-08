@@ -1,19 +1,27 @@
 global.roommessage = "";
+
+// logged out message
 if instance_exists(obj_gms)
 {
 	instance_destroy(obj_gms);
 	global.roommessage = "LOGGED OUT";
 }
-
-global.optimize = 0;
-global.autotile = true;
-
 if variable_global_exists("logged")
 	global.logged = false;
 
+// sertif being a dumbass
+global.optimize = 0;
+global.autotile = true;
 global.loadeditor = false;
+
+// clear excess players
+while instance_number(obj_player1) > 1
+	instance_destroy(instance_find(obj_player1, instance_number(obj_player1) - 1), false);
+
+// reset player properly
 with obj_player1
 {
+	global.modifier = -1;
 	global.hatunlock = [true];
 	
 	scr_playerreset();

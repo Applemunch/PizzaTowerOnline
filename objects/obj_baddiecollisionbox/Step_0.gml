@@ -75,6 +75,7 @@ if instance_exists(baddieID) && place_meeting(x,y,obj_player1) && !obj_player1.c
 				}
 				
 				scr_soundeffect(sfx_punch);
+				scr_failmod(mods.pacifist);
 				exit;
 			}
 			
@@ -115,7 +116,7 @@ if instance_exists(baddieID) && place_meeting(x,y,obj_player1) && !obj_player1.c
 					scr_soundeffect(sfx_stompenemy)
 					other.baddieID.state = states.stun
 					if other.baddieID.stunned < 100
-					other.baddieID.stunned = 100
+						other.baddieID.stunned = 100
 					sprite_index = spr_playerN_pogobounce
 				}
 				else if !other.baddieID.thrown
@@ -199,13 +200,10 @@ if instance_exists(baddieID) && place_meeting(x,y,obj_player1) && !obj_player1.c
 						global.golfhit += 1;
 					scr_soundeffect(sfx_killingblow)
 					
-					image_index = 0
-					sprite_index = choose(spr_suplexmash1,spr_suplexmash2,spr_suplexmash3, spr_suplexmash4, spr_punch)
+					scr_pummel(false);
+					movespeed = 0;
 					
-					state = states.tackle
-					movespeed = 0
-					
-					scr_throwenemy()
+					scr_throwenemy(other.baddieID);
 				}
 			}
 		}

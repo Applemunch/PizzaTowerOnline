@@ -30,6 +30,7 @@
         {"properties":[],"isDnd":false,"objectId":{"name":"obj_doorB","path":"objects/obj_doorB/obj_doorB.yy",},"inheritCode":false,"hasCreationCode":true,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":128.0,"y":864.0,"resourceVersion":"1.0","name":"inst_6D612C4","tags":[],"resourceType":"GMRInstance",},
         {"properties":[],"isDnd":false,"objectId":{"name":"obj_platform","path":"objects/obj_platform/obj_platform.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":6.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":1728.0,"y":384.0,"resourceVersion":"1.0","name":"inst_76E370D6","tags":[],"resourceType":"GMRInstance",},
         {"properties":[],"isDnd":false,"objectId":{"name":"obj_crashplaneblock","path":"objects/obj_crashplaneblock/obj_crashplaneblock.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":31.5,"scaleY":3.5,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":0.0,"y":-992.0,"resourceVersion":"1.0","name":"inst_4DC56D48","tags":[],"resourceType":"GMRInstance",},
+        {"properties":[],"isDnd":false,"objectId":{"name":"obj_pizzaball","path":"objects/obj_pizzaball/obj_pizzaball.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":-1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":1728.0,"y":832.0,"resourceVersion":"1.0","name":"inst_315E9781","tags":[],"resourceType":"GMRInstance",},
       ],"visible":true,"depth":0,"userdefinedDepth":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"gridX":32,"gridY":32,"layers":[],"hierarchyFrozen":false,"resourceVersion":"1.0","name":"Instances_1","tags":[],"resourceType":"GMRInstanceLayer",},
     {"assets":[
         {"spriteId":{"name":"bg_sagetitle2","path":"sprites/bg_sagetitle2/bg_sagetitle2.yy",},"headPosition":-1.0,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"animationSpeed":1.0,"colour":4294967295,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":96.0,"y":448.0,"resourceVersion":"1.0","name":"graphic_2126AADC","tags":[],"resourceType":"GMRSpriteGraphic",},
@@ -95,6 +96,7 @@
     {"name":"inst_6D612C4","path":"rooms/hub_outside2/hub_outside2.yy",},
     {"name":"inst_76E370D6","path":"rooms/hub_outside2/hub_outside2.yy",},
     {"name":"inst_4DC56D48","path":"rooms/hub_outside2/hub_outside2.yy",},
+    {"name":"inst_315E9781","path":"rooms/hub_outside2/hub_outside2.yy",},
   ],
   "inheritCreationOrder": false,
   "sequenceId": null,

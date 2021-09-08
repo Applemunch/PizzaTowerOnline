@@ -1,4 +1,5 @@
-scr_initenemy()
+scr_initenemy();
+
 image_speed = 0.35
 charge = false
 stun = false
@@ -12,7 +13,7 @@ hitboxcreate = false
 mask_index = spr_player_mask
 steppy = 20
 flash = false
-depth =0
+depth = 0
 image_xscale = -1
 
 boundbox = false

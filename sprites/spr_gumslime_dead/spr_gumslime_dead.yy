@@ -69,8 +69,8 @@
   ],
   "nineSlice": null,
   "parent": {
-    "name": "gum",
-    "path": "folders/Sprites/baddie/SUGARY SPIRE/gum.yy",
+    "name": "gumslime",
+    "path": "folders/Sprites/baddie/SUGARY SPIRE/gumslime.yy",
   },
   "resourceVersion": "1.0",
   "name": "spr_gumslime_dead",

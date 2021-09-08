@@ -129,6 +129,7 @@ function scr_player_crouchslide()
 
 		if grounded && input_buffer_jump < 8 && !scr_solid((x + 27), (y - 32)) && !scr_solid((x - 27), (y - 32)) && !scr_solid(x, (y - 32)) && !scr_solid(x, (y - 16))
 		{
+			input_buffer_jump = 8;
 			if character == "P" or character == "SP"
 			{
 			    sprite_index = spr_player_jumpdive1
@@ -148,12 +149,11 @@ function scr_player_crouchslide()
 
 				sprite_index = spr_jump
 				momemtum = true
-		
-		
-				if shotgunAnim = true
+				
+				if shotgunAnim
 					sprite_index = spr_shotgunjump
 				with instance_create(x,y,obj_highjumpcloud2)
-				image_xscale = other.xscale
+					image_xscale = other.xscale
 		
 				vsp = -11
 		
@@ -195,7 +195,7 @@ function scr_player_crouchslide()
 	
 	if !instance_exists(obj_slidecloud) && grounded && movespeed > 5
 	{
-	    with (instance_create(x, y, obj_slidecloud))
+	    with instance_create(x, y, obj_slidecloud)
 	        image_xscale = other.xscale
 	}
 	

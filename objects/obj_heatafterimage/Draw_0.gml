@@ -16,7 +16,7 @@ else
 	surface_set_target(surf);
 	draw_clear_alpha(c_black, 0);
 	pal_swap_set(t.spr_palette, t.paletteselect, false);
-	draw_sprite_ext(t.drawspr, _img, x - camx, y - camy, t.xscale, t.yscale, t.image_angle, t.image_blend, 1);
+	draw_sprite_ext(t.drawspr, _img, x - camx, y - camy, t.xscale, t.yscale, t.img_angle, t.image_blend, 1);
 	pal_swap_reset();
 	surface_reset_target();
 	

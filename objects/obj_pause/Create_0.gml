@@ -15,3 +15,8 @@ draw_screen = false
 
 konami = "";
 konamiend = "UUDDLRLRBA";
+
+newbg = true;
+bgs = [];
+
+surf = -1;

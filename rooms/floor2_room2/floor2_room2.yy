@@ -508,8 +508,8 @@
     "PhysicsWorldPixToMetres": 0.1,
   },
   "parent": {
-    "name": "Forest",
-    "path": "folders/Rooms/Old-levels/Forest.yy",
+    "name": "Mansion",
+    "path": "folders/Rooms/Old Levels/Mansion.yy",
   },
   "resourceVersion": "1.0",
   "name": "floor2_room2",

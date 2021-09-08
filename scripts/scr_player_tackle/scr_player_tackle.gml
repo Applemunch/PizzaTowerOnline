@@ -1,16 +1,15 @@
-function scr_player_tackle() {
+function scr_player_tackle()
+{
 	combo = 0
-
+	
 	mach2 = 0
 	hsp = -xscale * movespeed
-
-
+	
 	if movespeed > 0
-	movespeed -= 0.5
-
+		movespeed -= 0.5
+	
 	start_running = true
-
-
+	
 	jumpAnim = true
 	dashAnim = true
 	landAnim = false
@@ -21,13 +20,8 @@ function scr_player_tackle() {
 	crouchAnim = true
 
 	if floor(image_index) = image_number - 1
-	{
-	state = states.normal
-	}
-
+		state = states.normal
+	
 	//Animations
-
 	image_speed = 0.35
-
-
 }

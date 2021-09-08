@@ -1,5 +1,3 @@
-
-
 with (obj_player1)
 {
 	if other.image_yscale = 1

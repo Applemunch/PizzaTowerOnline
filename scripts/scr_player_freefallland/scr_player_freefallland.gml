@@ -11,8 +11,7 @@ function scr_player_freefallland()
 	machhitAnim = false
 	movespeed = 0
 	
-	if character != "SP"
-		facehurt = true
+	facehurt = true
 	start_running = true
 	alarm[4] = 14
 	vsp = 0

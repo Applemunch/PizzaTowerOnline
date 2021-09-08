@@ -258,6 +258,8 @@
         {"properties":[],"isDnd":false,"objectId":{"name":"obj_collectescape","path":"objects/obj_collectescape/obj_collectescape.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":1216.0,"y":2080.0,"resourceVersion":"1.0","name":"inst_76D38AC5","tags":[],"resourceType":"GMRInstance",},
         {"properties":[],"isDnd":false,"objectId":{"name":"obj_collectescape","path":"objects/obj_collectescape/obj_collectescape.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":1216.0,"y":2144.0,"resourceVersion":"1.0","name":"inst_1DEEB106","tags":[],"resourceType":"GMRInstance",},
         {"properties":[],"isDnd":false,"objectId":{"name":"obj_fencer","path":"objects/obj_fencer/obj_fencer.yy",},"inheritCode":false,"hasCreationCode":true,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":930.0,"y":1551.0,"resourceVersion":"1.0","name":"inst_1B6DFDF","tags":[],"resourceType":"GMRInstance",},
+        {"properties":[],"isDnd":false,"objectId":{"name":"obj_notoppingmod_del","path":"objects/obj_notoppingmod_del/obj_notoppingmod_del.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":2.0,"scaleY":2.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":608.0,"y":1344.0,"resourceVersion":"1.0","name":"inst_77DC6F0F","tags":[],"resourceType":"GMRInstance",},
+        {"properties":[],"isDnd":false,"objectId":{"name":"obj_notoppingmod_del","path":"objects/obj_notoppingmod_del/obj_notoppingmod_del.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":2.0,"scaleY":2.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":1184.0,"y":2144.0,"resourceVersion":"1.0","name":"inst_5110F95","tags":[],"resourceType":"GMRInstance",},
       ],"visible":true,"depth":0,"userdefinedDepth":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"gridX":32,"gridY":32,"layers":[],"hierarchyFrozen":false,"resourceVersion":"1.0","name":"Instances_1","tags":[],"resourceType":"GMRInstanceLayer",},
     {"tilesetId":{"name":"tileset_dungeon","path":"tilesets/tileset_dungeon/tileset_dungeon.yy",},"x":0,"y":0,"tiles":{"SerialiseWidth":44,"SerialiseHeight":88,"TileSerialiseData":[
 5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,
@@ -601,6 +603,8 @@
     {"name":"inst_76D38AC5","path":"rooms/dungeon_3/dungeon_3.yy",},
     {"name":"inst_1DEEB106","path":"rooms/dungeon_3/dungeon_3.yy",},
     {"name":"inst_1B6DFDF","path":"rooms/dungeon_3/dungeon_3.yy",},
+    {"name":"inst_77DC6F0F","path":"rooms/dungeon_3/dungeon_3.yy",},
+    {"name":"inst_5110F95","path":"rooms/dungeon_3/dungeon_3.yy",},
   ],
   "inheritCreationOrder": false,
   "sequenceId": null,

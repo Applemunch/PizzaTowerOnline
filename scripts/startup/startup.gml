@@ -7,6 +7,22 @@ if !(room_first == rm_load && room_next(room_first) == Realtitlescreen)
 	exit;
 }
 
+// trace script
+function trace(txt = undefined)
+{
+	if txt != undefined
+	{
+		txt = string(txt);
+		show_debug_message(txt);
+		
+		if instance_exists(obj_wc)
+		{
+			// trace to console
+			
+		}
+	}
+}
+
 // crash
 #region report last crash to discord
 
@@ -20,7 +36,7 @@ if file_exists("lastcrash")
 	global.crashed = [true, e];
 	
 	if !file_delete("lastcrash")
-		show_debug_message("last crash file didnt delete you dumbass lmfao");
+		trace("last crash file didnt delete dumbass lmfao");
 }
 
 #endregion
@@ -32,7 +48,7 @@ exception_unhandled_handler
 		audio_stop_all();
 		scr_soundeffect(sfx_pephurt);
 		
-		show_debug_message(e);
+		trace(e);
 		show_message("The game crashed! longMessage:\n\n" + e.longMessage);
 		
 		if file_exists("lastcrash")
@@ -103,9 +119,16 @@ function offline_travel()
 	global.logged = false;
 	instance_destroy(obj_gms);
 	
+	ini_open("saveData" + global.saveslot + ".ini");
+	
 	// pizzacoin
-	ini_open("saveData.ini");
-	scr_setcoin(ini_read_real("online", "pizzacoin", 0));
+	if ini_read_real("online", "version", 1) != 2 // version
+	{
+		scr_setcoin(0);
+		ini_write_real("online", "version", 2);
+	}
+	else
+		scr_setcoin(ini_read_real("online", "pizzacoin", 0));
 	global.pizzacoinstart = global.pizzacoin;
 	
 	// hat unlocks
@@ -157,7 +180,7 @@ function unlock_hat(index)
 			gms_ini_player_write("hats", string(index), 1);
 		else
 		{
-			ini_open("saveData.ini");
+			ini_open("saveData" + global.saveslot + ".ini");
 			ini_write_real("online", "hat" + string(index), 1);
 			ini_close();
 		}

@@ -1,19 +1,22 @@
 if async_load[? "event_type"] == "gamepad discovered"
 {
-	if connected
-		ds_list_add(othergamepad, global.cont);
-	
 	var ind = async_load[? "pad_index"];
-	with obj_roomname
+	if global.cont != ind
 	{
-		message = "USING GAMEPAD " + string(ind);
-		showtext = true;
-		alarm[0] = room_speed;
-	}
+		if connected
+			ds_list_add(othergamepad, global.cont);
 		
-	global.cont = ind;
-	connected = true;
-	scr_soundeffect(sfx_contin);
+		with obj_roomname
+		{
+			message = "USING GAMEPAD " + string(ind);
+			showtext = true;
+			alarm[0] = room_speed;
+		}
+		
+		global.cont = ind;
+		connected = true;
+		scr_soundeffect(sfx_contin);
+	}
 }
 if async_load[? "event_type"] == "gamepad lost"
 {

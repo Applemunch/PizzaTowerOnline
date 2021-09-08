@@ -1,4 +1,4 @@
-scr_initenemy()
+event_inherited();
 
 grav = 0.5;
 hsp = 0;
@@ -23,7 +23,7 @@ grounded = true
 bombreset = 0
 idlespr = spr_spitcheese_idle
 stunfallspr = spr_spitcheese_stun
-walkspr =spr_spitcheese_idle
+walkspr = spr_spitcheese_idle
 grabbedspr = spr_spitcheese_stun
 scaredspr = spr_spitcheese_scared
 flash = false
@@ -36,3 +36,5 @@ heavy = false
 depth = 0
 
 throwdir = image_xscale
+ragedash = 0
+image_speed = 0.35

@@ -1,5 +1,5 @@
-depth = 50;
 event_inherited();
+depth = 50;
 
 image_speed = 0.35;
 image_index = 0;
@@ -18,6 +18,9 @@ spr_panic = sprite_index;
 spr_intro_strongcold = sprite_index;
 spr_run_strongcold = sprite_index;
 spr_idle_strongcold = sprite_index;
+
+if instance_exists(playerid)
+	xscale = playerid.xscale;
 
 sc_check = function() {
 	return string_startswith(room_get_name(room), "strongcold");

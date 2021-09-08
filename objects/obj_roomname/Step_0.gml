@@ -1,14 +1,10 @@
-
 //Text
-if showtext = true
+if showtext
 {
 	if yi < 30
-	{
 		yi += 5
-	}
 }
-
-if showtext = false
+else
 {
 	if yi > -50
 		yi -= 1

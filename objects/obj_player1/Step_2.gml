@@ -1,5 +1,7 @@
-/// @description sync variables
+/// @description online
 var glade = false;
+
+// sync variables
 if instance_exists(obj_gms) && gms_info_isloggedin()
 {
 	if gms_self_admin_rights()
@@ -75,10 +77,52 @@ if instance_exists(obj_gms) && gms_info_isloggedin()
 	
 	gms_self_set("petind", petfollow);
 	gms_self_set("busy", online_busy);
+	
+	gms_self_set("img_angle", img_angle);
 }
+
+// glade drm
+/*
 if !glade && !debug
 {
-	if character == "G" or spr_move == spr_playerG_move
-	or string_startswith(sprite_get_name(sprite_index), "spr_playerG_")
-		room_goto(room_of_dog);
+	if character == "G"
+	{
+		character = "P";
+		scr_characterspr();
+	}
 }
+*/
+
+// chat
+if instance_exists(obj_gms) && gms_info_isloggedin() && state != states.titlescreen && state != -1
+&& !instance_exists(obj_skinchoice) && !instance_exists(obj_hatchoice)
+&& !(instance_exists(obj_hubelevator) && obj_hubelevator.state != 0)
+&& !(instance_exists(obj_wc) && obj_wc.WC_consoleopen)
+&& !(instance_exists(obj_dialoguebox))
+&& (room != editor_entrance or instance_exists(obj_wc))
+{
+	if keyboard_check_pressed(ord("T")) && !global.__chat
+	{
+		gms_chat_toggle(true);
+		keyboard_string = "";
+	}
+	if keyboard_check_pressed(vk_escape) && global.__chat
+	{
+		gms_chat_toggle(false);
+		keyboard_key_release(vk_escape);
+		global.__chat_typing = false;
+		global.__chat_directclose = true;
+		global.__chat_highl = true;
+	}
+	
+	if keyboard_check_pressed(vk_up) && global.__chat && obj_gms.chat_lastmessage != ""
+	{
+		global.__chat_typing = true;
+		keyboard_string = obj_gms.chat_lastmessage;
+	}
+}
+
+// drm
+if alarm[11] == -1 && !debug
+	alarm[11] = 15;
+global.pvp = false;

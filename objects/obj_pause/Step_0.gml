@@ -75,7 +75,9 @@ if pause
 			or string_startswith(roomname, "minigolf")
 			or string_startswith(roomname, "war")
 			or string_startswith(roomname, "etb")
-			or string_startswith(roomname, "steamcc")
+			or string_startswith(roomname, "ancient")
+			or string_startswith(roomname, "cotton")
+			or string_startswith(roomname, "jawbreaker")
 			or room == custom_lvl_room
 			{
 				instance_activate_all();
@@ -84,7 +86,6 @@ if pause
 			else
 				scr_soundeffect(sfx_enemyprojectile)
 		}
-
 		else if global.snickchallenge or global.snickrematch
 		{
 			instance_activate_all();

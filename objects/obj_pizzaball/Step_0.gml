@@ -18,6 +18,6 @@ else
 
 with instance_place(x, y + 1, obj_destructibleplatform)
 {
-	falling = 1;
+	falling = true;
 	image_speed = 0.35;
 }

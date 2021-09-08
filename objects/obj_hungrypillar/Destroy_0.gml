@@ -32,8 +32,8 @@ if room == rm_editor exit;
 		instance_create(x, y, obj_slapstar)
 	}
 
-	with (obj_camera) {
-
+	with (obj_camera)
+	{
 	    shake_mag=3;
 	    shake_mag_acc=3/room_speed;
 	}
@@ -41,6 +41,10 @@ if room == rm_editor exit;
 	with instance_create(x,y,obj_sausageman_dead)
 	{
 		sprite_index = spr_hungrypillar_dead
+		
+		// sugary sprites
+		if other.sprite_index == spr_hungrypillarOLD_ss
+			sprite_index = spr_hungrypillardeadOLD_ss;
 		if other.sprite_index == spr_hungrypillar_ss
 			sprite_index = spr_hungrypillardead_ss;
 	}
@@ -70,8 +74,12 @@ if room == rm_editor exit;
 				break
 			
 			case "ruin_11":
-				global.minutes = 3
+				global.minutes = 2
 				global.seconds = 59
+				
+				if global.gameplay != 0
+					global.minutes = 3
+				
 				break
 	
 			case "dungeon_10":

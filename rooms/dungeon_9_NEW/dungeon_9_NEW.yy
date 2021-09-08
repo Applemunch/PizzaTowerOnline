@@ -205,6 +205,7 @@
         {"properties":[],"isDnd":false,"objectId":{"name":"obj_metalblock","path":"objects/obj_metalblock/obj_metalblock.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":4288.0,"y":288.0,"resourceVersion":"1.0","name":"inst_4CA16ACA","tags":[],"resourceType":"GMRInstance",},
         {"properties":[],"isDnd":false,"objectId":{"name":"obj_minijohn","path":"objects/obj_minijohn/obj_minijohn.yy",},"inheritCode":false,"hasCreationCode":true,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":3934.0,"y":306.0,"resourceVersion":"1.0","name":"inst_29C46B41","tags":[],"resourceType":"GMRInstance",},
         {"properties":[],"isDnd":false,"objectId":{"name":"obj_minijohn","path":"objects/obj_minijohn/obj_minijohn.yy",},"inheritCode":false,"hasCreationCode":true,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":4055.0,"y":306.0,"resourceVersion":"1.0","name":"inst_60229A5B","tags":[],"resourceType":"GMRInstance",},
+        {"properties":[],"isDnd":false,"objectId":{"name":"obj_notoppingmod_del","path":"objects/obj_notoppingmod_del/obj_notoppingmod_del.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":2.0,"scaleY":2.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":1952.0,"y":192.0,"resourceVersion":"1.0","name":"inst_4A0C489F","tags":[],"resourceType":"GMRInstance",},
       ],"visible":true,"depth":0,"userdefinedDepth":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"gridX":32,"gridY":32,"layers":[],"hierarchyFrozen":false,"resourceVersion":"1.0","name":"Instances_1","tags":[],"resourceType":"GMRInstanceLayer",},
     {"tilesetId":{"name":"tileset_dungeon3","path":"tilesets/tileset_dungeon3/tileset_dungeon3.yy",},"x":0,"y":0,"tiles":{"SerialiseWidth":144,"SerialiseHeight":22,"TileSerialiseData":[
 5,5,5,5,5,5,5,5,5,4,31,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,33,31,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,
@@ -429,6 +430,7 @@
     {"name":"inst_4CA16ACA","path":"rooms/dungeon_9_NEW/dungeon_9_NEW.yy",},
     {"name":"inst_29C46B41","path":"rooms/dungeon_9_NEW/dungeon_9_NEW.yy",},
     {"name":"inst_60229A5B","path":"rooms/dungeon_9_NEW/dungeon_9_NEW.yy",},
+    {"name":"inst_4A0C489F","path":"rooms/dungeon_9_NEW/dungeon_9_NEW.yy",},
   ],
   "inheritCreationOrder": false,
   "sequenceId": null,

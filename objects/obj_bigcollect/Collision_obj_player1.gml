@@ -1,4 +1,4 @@
-if other.state == states.gameover exit;
+if other.state == states.gameover or other.state == states.hitlag exit;
 
 if obj_player1.character = "V"
 	global.playerhealth = clamp(global.playerhealth + 10, 0, 100)
@@ -14,3 +14,4 @@ with instance_create(x,y,obj_smallnumber)
 create_collect(x, y, sprite_index);
 
 instance_destroy()
+scr_failmod(mods.no_toppings);

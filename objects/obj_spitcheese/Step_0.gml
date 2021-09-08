@@ -8,10 +8,11 @@ switch (state)
     case states.hit: scr_enemy_hit (); break;
     case states.stun: scr_enemy_stun (); break;
     case states.pizzagoblinthrow: scr_pizzagoblin_throw (); break;
+	case states.rage: scr_enemy_rage (); break;
     // grabbed state here
 }
 
-if  state = states.stun && stunned > 100 && birdcreated = false
+if state == states.stun && stunned > 100 && !birdcreated
 {
 	birdcreated = true
 	with instance_create(x,y, obj_enemybird)
@@ -26,15 +27,38 @@ if state != states.stun
 if bombreset > 0
 	bombreset = max(bombreset - 1, 0);
 
-
 //Throw Bomb at
-if state != states.pizzagoblinthrow && bombreset = 0
+var player = instance_nearest(x, y, obj_player)
+if (player.x > x - 400 && player.x < x + 400 && y <= player.y + 60 && y >= player.y - 60)
+or global.gameplay == 0
 {
-	if (state = states.walk or state = states.idle) 
+	if (state == states.walk or state == states.idle) && bombreset <= 0
 	{
-		image_index = 0
-		sprite_index = spr_spitcheese_spit
-		state = states.pizzagoblinthrow
+		if global.stylethreshold >= 3
+		{
+			bombreset = 130;
+	        ragedash = 5;
+	        state = states.rage;
+			
+	        sprite_index = spr_spitcheese_rage;
+	        if x != player.x
+	            image_xscale = -sign(x - player.x);
+			
+	        ragebuffer = 100;
+	        image_index = 0;
+	        image_speed = 0.4;
+	        flash = true;
+	        alarm[4] = 1;
+		}
+		else if grounded
+		{
+			if x != player.x && global.gameplay != 0
+				image_xscale = -sign(x - player.x);
+			throwdir = image_xscale
+			
+			image_index = 0
+			state = states.pizzagoblinthrow
+		}
 	}
 }
 
@@ -47,21 +71,18 @@ if (flash == true && alarm[2] <= 0) {
 
 
 if state != states.grabbed
-depth = 0
-
+	depth = 0
 
 if state != states.stun
-thrown = false
+	thrown = false
 
-if boundbox = false
+if !boundbox
 {
-with instance_create(x,y,obj_baddiecollisionbox)
-{
-sprite_index = other.sprite_index
-mask_index = sprite_index
-baddieID = other.id
-other.boundbox = true
+	with instance_create(x,y,obj_baddiecollisionbox)
+	{
+		sprite_index = other.sprite_index
+		mask_index = sprite_index
+		baddieID = other.id
+		other.boundbox = true
+	}
 }
-}
-
-

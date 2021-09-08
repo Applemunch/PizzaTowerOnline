@@ -77,12 +77,12 @@ function scr_solid_player(argX, argY)
 		
 			// Calculate steepness of slope
 			var m = sign(image_xscale) * (bbox_bottom - bbox_top) / (bbox_right - bbox_left)
-			var slope = slope_start - round(m * (object_side - bbox_left))
+			var slop = slope_start - round(m * (object_side - bbox_left))
 		
-			if other.bbox_bottom >= slope
+			if other.bbox_bottom >= slop
 			{
 				// Object is inside slope
-				collide = slope;
+				collide = id;
 			}
 		}
 	}

@@ -2098,8 +2098,6 @@ function scr_wcevaluate(argument0)
 				            __tempsomething = " with Snick sprites";
 				        else if arg2 == "M"
 				            __tempsomething = " with Pepperman sprites";
-				        else if arg2 == "G" // pt online exclusive
-				            __tempsomething = " with Glade sprites";
 				        else if arg2 == "SP" // pt online exclusive
 				            __tempsomething = " with Pizzelle sprites";
 				        else if arg2 == "SN" // pt online exclusive
@@ -2130,8 +2128,6 @@ function scr_wcevaluate(argument0)
 				        arg1 = "Snick";
 				    else if arg1 == "M"
 				        arg1 = "Pepperman";
-				    else if arg1 == "G" // pt online exclusive
-				        arg1 = "Glade";
 				    else if arg1 == "SP" // pt online exclusive
 				        arg1 = "Pizzelle";
 				    else if arg1 == "SN" // pt online exclusive

@@ -27,8 +27,8 @@
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "level_structure",
-    "path": "folders/Objects/level_structure.yy",
+    "name": "pto",
+    "path": "folders/Objects/level_structure/pto.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_newthing",

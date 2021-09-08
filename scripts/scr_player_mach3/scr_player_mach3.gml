@@ -1,6 +1,7 @@
 function scr_player_mach3()
 {
 	// hit wall sprite
+	/*
 	if character == "N"
 	{
 		if noisetype == 0
@@ -8,6 +9,7 @@ function scr_player_mach3()
 		if noisetype == 1
 			spr_hitwall = spr_playerN_mach3hitwall_skate;
 	}
+	*/
 	
 	// character specific
 	if character != "N" or (character == "N" && noisetype == 1)
@@ -764,7 +766,7 @@ function scr_player_mach3()
 	}
 
 	// animation speeds
-	if sprite_index == spr_mach4 or sprite_index == spr_fightball or sprite_index == spr_mach3jump or sprite_index == spr_mach2jump or sprite_index == spr_snick_tumble
+	if sprite_index == spr_mach4 or sprite_index == spr_fightball or sprite_index == spr_mach3jump or sprite_index == spr_mach2jump or sprite_index == spr_snick_tumble or sprite_index == spr_playerN_jetpackboost
 		image_speed = 0.35
 	if sprite_index == spr_rollgetup
 		image_speed = 0.5

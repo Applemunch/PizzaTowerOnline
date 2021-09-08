@@ -1,4 +1,5 @@
-function cutscene_gustavo_start() {
+function cutscene_gustavo_start()
+{
 	if !instance_exists(obj_fadeout)
 	&& obj_player1.state != states.taxi && obj_player1.state != states.comingoutdoor && obj_player1.state != states.hurt
 	{
@@ -25,6 +26,4 @@ function cutscene_gustavo_start() {
 	    }
 	    cutscene_end_action();
 	}
-
-
 }

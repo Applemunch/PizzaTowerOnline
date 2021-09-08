@@ -7,7 +7,7 @@ if healthshaketime > 0
 	healthshaketime--
 	healthshake = random_range(-2,2)
 }
-if healthshaketime <= 0
+else
 	healthshake = 0
 
 if healthold != global.playerhealth
@@ -112,13 +112,18 @@ camera_set_view_size(view_camera[0], 960 / zoom, 540 / zoom);
 // actual camera
 if instance_exists(player) && player.state != states.timesup && player.state != states.rotate && player.state != states.gameover && room != editor_entrance
 {
+	// vars
 	var WC_oobcam = instance_exists(obj_wc) ? obj_wc.WC_oobcam : false;
+	
+	var cam_view = view_camera[0];
+	var cam_width = camera_get_view_width(cam_view);
+	var cam_height = camera_get_view_height(cam_view);
 	
 	// calculate shaking
 	if shake_mag != 0
 	or shake_mag_panic != 0
 	{
-		var shkh = round(irandom_range(-shake_mag, shake_mag) / 2);
+		var shkh = floor(irandom_range(-shake_mag, shake_mag) / 2);
 		var shkv = irandom_range(-shake_mag, shake_mag);
 			
 		if shake_mag_panic != 0
@@ -130,139 +135,157 @@ if instance_exists(player) && player.state != states.timesup && player.state != 
 		shkv = 0;
 	}
 	
-	// camera pan
-	if instance_exists(target) && target.id == player.id
+	// detached golf camera
+	if detach && player.state == states.golf
 	{
-		if chargecamera == 0 && abs(chargeprev) > 2
-			chargesmooth = chargeprev;
+		var xx = camera_get_view_x(cam_view), yy = camera_get_view_y(cam_view);
+		var chspd = 5;
 		
-		chargesmooth = median(chargesmooth - 16, 0, chargesmooth + 16);
+		var moveh = player.key_left + player.key_right, movev = -player.key_up + player.key_down;
 		
-		// mach
-		if (player.state == states.mach3 or player.state == states.tumble or player.state == states.rideweenie or player.state == states.machroll)
+		xx += moveh * chspd;
+		yy += movev * chspd;
+		
+		targetgoingback = true;
+		camera_set_view_pos(cam_view, xx, yy);
+	}
+	else
+	{
+		detach = false;
+		
+		// camera pan
+		if instance_exists(target) && target.id == player.id
 		{
-			var ch = 100;
-			if global.gameplay != 0
-				ch = player.movespeed * 12;
-			
-			if (sign(player.xscale) == 1 && chargecamera < ch)
-			or (sign(player.xscale) == -1 && chargecamera > -ch)
-				chargecamera += sign(player.xscale) * (2 * max(4 * (sign(chargecamera) != sign(player.xscale)), 1));
-		}
-		else
-		{
-			var ch = sign(chargecamera);
-			if ch != 0
+			if chargecamera == 0 && abs(chargeprev) > 2
+				chargesmooth = chargeprev;
+		
+			chargesmooth = median(chargesmooth - 16, 0, chargesmooth + 16);
+		
+			// mach
+			if (player.state == states.mach3 or player.state == states.tumble or player.state == states.rideweenie or player.state == states.machroll)
 			{
-				chargecamera -= ch * 2;
-				if global.gameplay != 0 && player.state == states.machslide
-					chargecamera -= ch * 6;
-				
-				if sign(chargecamera) != ch
-					chargecamera = 0;
+				var ch = sign(player.xscale) * 100, chspd = 2;
+				if global.gameplay != 0
+				{
+					ch = sign(player.xscale) * ((player.movespeed / 4) * 50);
+					if (ch > 0 && chargecamera < 0) or (ch < 0 && chargecamera > 0)
+						chspd = 8;
+				}
+			
+				chargecamera = Approach(chargecamera, ch, chspd);
 			}
-		}
+			else if chargecamera != 0
+				chargecamera = Approach(chargecamera, 0, (player.state == states.machslide ? 8 : 2));
 		
-		// crouch
-		if ((player.state == states.crouch or (player.character == "S" && player.state == states.normal)) && player.hsp == 0)
-		&& !crouchcameragoingback && player.key_down
-		{
-			if crouchcamera < 1
-				crouchcamera += 0.02;
+			// crouch
+			if ((player.state == states.crouch or (player.character == "S" && player.state == states.normal)) && player.hsp == 0)
+			&& !crouchcameragoingback && player.key_down
+			{
+				if crouchcamera < 1
+					crouchcamera += 0.02;
+				else
+					crouchcamera = min(crouchcamera + 2, 100);
+			}
 			else
-				crouchcamera = min(crouchcamera + 2, 100);
-		}
-		else
-		{
-			crouchcameragoingback = true;
-			crouchcamera = max(crouchcamera - 4, 0);
-			
-			if crouchcamera <= 0
-				crouchcameragoingback = false;
-		}
-	}
-	else
-	{
-		chargecamera = 0;
-		crouchcamera = 0;
-	}
-	chargeprev = chargecamera;
-	
-	// manual camera pan
-	if pancur[0] != panto[0]
-		pancur[0] = median(pancur[0] - 2, panto[0], pancur[0] + 2);
-	if pancur[1] != panto[1]
-		pancur[1] = median(pancur[1] - 2, panto[1], pancur[1] + 2);
-	
-	// set camera position
-	if is_real(target) && instance_exists(target)
-	{
-		lastx = -1;
-		lasty = -1;
-		
-		if targetgoingback
-		{
-			var maxspeed = 25;
-			if target == player
 			{
-				if player.state == states.hurt
-					maxspeed = 45;
+				crouchcameragoingback = true;
+				crouchcamera = max(crouchcamera - 4, 0);
+			
+				if crouchcamera <= 0
+					crouchcameragoingback = false;
 			}
-			
-			shkh = 0;
-			shkv = 0;
-				
-			var tx = target.x - (__view_get(e__VW.WView, 0) / 2) + chargecamera + chargesmooth + pancur[0];
-			var ty = target.y - (__view_get(e__VW.HView, 0) / 2) + floor(crouchcamera) + pancur[1];
-			tx = clamp(tx, 0 + shkh, room_width - __view_get( e__VW.WView, 0 ));
-			ty = clamp(ty, 0 + shkv, room_height - __view_get( e__VW.HView, 0 ));
-			
-			var xx = median(__view_get(e__VW.XView, 0) - maxspeed, tx, __view_get(e__VW.XView, 0) + maxspeed);
-			__view_set( e__VW.XView, 0, xx + shkh);
-			
-			var yy = median(__view_get(e__VW.YView, 0) - maxspeed, ty, __view_get(e__VW.YView, 0) + maxspeed);
-			__view_set( e__VW.YView, 0, yy + shkv);
-			
-			if abs(floor(xx) - floor(tx)) <= maxspeed
-			&& abs(floor(yy) - floor(ty)) <= maxspeed
-				targetgoingback = false;
 		}
 		else
 		{
-			// normal camera
-			__view_set( e__VW.XView, 0, target.x - (__view_get(e__VW.WView, 0) / 2) + chargecamera + chargesmooth + shkh + pancur[0]);
-			__view_set( e__VW.YView, 0, target.y - (__view_get(e__VW.HView, 0) / 2) + floor(crouchcamera) + shkv + pancur[1]);
+			chargecamera = 0;
+			crouchcamera = 0;
 		}
-	}
-	else
-	{
-		// no target
-		if lastx == -1 && lasty == -1
+		chargeprev = chargecamera;
+	
+		// manual camera pan
+		if pancur[0] != panto[0]
+			pancur[0] = median(pancur[0] - 2, panto[0], pancur[0] + 2);
+		if pancur[1] != panto[1]
+			pancur[1] = median(pancur[1] - 2, panto[1], pancur[1] + 2);
+	
+		// set camera position
+		if is_real(target) && instance_exists(target)
 		{
-			lastx = __view_get(e__VW.XView, 0);
-			lasty = __view_get(e__VW.YView, 0);
+			lastx = -1;
+			lasty = -1;
+			
+			if targetgoingback
+			{
+				var maxspeed = 25;
+				if target == player
+				{
+					if player.state == states.hurt
+						maxspeed = 50;
+				}
+			
+				// calculate target pos
+				var tx = target.x - (cam_width / 2) + chargecamera + chargesmooth + pancur[0];
+				var ty = target.y - (cam_height / 2) + floor(crouchcamera) + pancur[1];
+			
+				/*
+				tx = clamp(tx, 0 + shkh, room_width - cam_width);
+				ty = clamp(ty, 0 + shkv, room_height - cam_height);
+				*/
+			
+				// go to position
+				var xx = Approach(camera_get_view_x(cam_view), tx, maxspeed);
+				var yy = Approach(camera_get_view_y(cam_view), ty, maxspeed);
+				camera_set_view_pos(cam_view, xx, yy);
+			
+				// stop when done
+				if xx == tx && yy == ty
+					targetgoingback = false;
+			}
+			else
+			{
+				// normal camera
+				camera_set_view_pos(cam_view,
+					 target.x - (cam_width / 2) + chargecamera + chargesmooth + pancur[0],
+					 target.y - (cam_height / 2) + floor(crouchcamera) + pancur[1]
+				);
+			}
 		}
-		
-		__view_set( e__VW.XView, 0, lastx + shkh + pancur[0]);
-		__view_set( e__VW.YView, 0, lasty + shkv + pancur[1]);
+		else
+		{
+			// no target
+			if lastx == -1 && lasty == -1
+			{
+				lastx = camera_get_view_x(cam_view);
+				lasty = camera_get_view_y(cam_view);
+			}
+			camera_set_view_pos(cam_view, lastx + pancur[0], lasty + pancur[1]);
+		}
 	}
 	
 	if room != custom_lvl_room
 	{
 		// limit camera
 		if !WC_oobcam
-			__view_set( e__VW.XView, 0, clamp(__view_get( e__VW.XView, 0 ), 0 + shkh, room_width - __view_get( e__VW.WView, 0 )) + shkh)
-		if !WC_oobcam
-			__view_set( e__VW.YView, 0, clamp(__view_get( e__VW.YView, 0 ), 0 + shkv, room_height - __view_get( e__VW.HView, 0 )) + shkv)
+		{
+			camera_set_view_pos(cam_view,
+				clamp(camera_get_view_x(cam_view), 0, room_width - cam_width) + shkh,
+				clamp(camera_get_view_y(cam_view), 0, room_height - cam_height) + shkv
+			);
+		}
 	}
 	else
 	{
 		#region EDITOR CAMERA
 		
-		if bound_camera && !WC_oobcam
+		if bound_camera
 		{
-			__view_set( e__VW.XView, 0, clamp(__view_get( e__VW.XView, 0 ), player.cam.x, player.cam.x + player.cam_width - __view_get( e__VW.WView, 0 )) + shkh)
-			__view_set( e__VW.YView, 0, clamp(__view_get( e__VW.YView, 0 ), player.cam.y, player.cam.y + player.cam_height - __view_get( e__VW.HView, 0 )) + shkv)
+			if !WC_oobcam
+			{
+				camera_set_view_pos(cam_view,
+					clamp(camera_get_view_x(cam_view), player.cam.x, player.cam.x + player.cam_width - cam_width) + shkh,
+					clamp(camera_get_view_y(cam_view), player.cam.y, player.cam.y + player.cam_height - cam_height) + shkv
+				);
+			}
 			
 			if player.cam != noone // render
 			{
@@ -280,14 +303,14 @@ if instance_exists(player) && player.state != states.timesup && player.state != 
 		#endregion
 	}
 	
-	if target != player
+	if target != player && !WC_oobcam
 	{
-		var _l = camera_get_view_x(view_camera[0]);
-		var _t = camera_get_view_y(view_camera[0]);
-		var _r = camera_get_view_x(view_camera[0]) + camera_get_view_width(view_camera[0]);
-		var __b = camera_get_view_y(view_camera[0]) + camera_get_view_height(view_camera[0]);
-		var _edge_x = camera_get_view_width(view_camera[0]) / 2 - 64;  //change constant "32" to change arrow dist from edge of view (in room pixels)
-		var _edge_y = camera_get_view_height(view_camera[0]) / 2 - 64;  //change constant "32" to change arrow dist from edge of view (in room pixels)
+		var _l = camera_get_view_x(cam_view);
+		var _t = camera_get_view_y(cam_view);
+		var _r = camera_get_view_x(cam_view) + cam_width;
+		var __b = camera_get_view_y(cam_view) + cam_height;
+		var _edge_x = cam_width / 2 - 64;  //change constant "32" to change arrow dist from edge of view (in room pixels)
+		var _edge_y = cam_height / 2 - 64;  //change constant "32" to change arrow dist from edge of view (in room pixels)
 		var _view_center_x = (_l + _r) / 2;
 		var _view_center_y = (_t + __b) / 2;
 		var _x1, _y1, _x2, _y2;
@@ -312,8 +335,8 @@ if instance_exists(player) && player.state != states.timesup && player.state != 
 // update wave
 if global.panic or global.snickchallenge
 {
-	var camsmooth = obj_camera.alarm[1] / 60;
-	if obj_camera.alarm[1] == -1 or global.minutes == 0 && global.seconds == 0
+	var camsmooth = max(obj_camera.alarm[1] / 60, 0);
+	if obj_camera.alarm[1] == -1 or (global.minutes == 0 && global.seconds == 0)
 		camsmooth = 0;
 	
 	global.wave = max(global.maxwave - (global.minutes * 60 + global.seconds + camsmooth) * 60, 0);

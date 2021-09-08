@@ -1,3 +1,3 @@
 dialogue = [
-	"notice: please don't report farm bugs",
+	"Notice: Fun Farm and Gnome Forest are heavily unfinished",
 ]

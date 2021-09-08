@@ -30,7 +30,7 @@ if real(gms_ini_game_read("game", "version")) > obj_gms.gameversion
 		exit;
 	}
 	else
-		show_debug_message("Server ver. " + string(gms_ini_game_read("game", "version")) + " Current ver. " + string(obj_gms.gameversion));
+		trace("Server ver. " + string(gms_ini_game_read("game", "version")) + " Current ver. " + string(obj_gms.gameversion));
 }
 if !debug
 	obj_gms.alarm[1] = 75;

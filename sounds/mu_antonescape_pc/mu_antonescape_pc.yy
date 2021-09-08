@@ -13,8 +13,8 @@
   "soundFile": "mu_antonescape_pc.ogg",
   "duration": 76.23528,
   "parent": {
-    "name": "extra",
-    "path": "folders/Sounds/pizza castle/extra.yy",
+    "name": "pto extra",
+    "path": "folders/Sounds/pizza castle/pto extra.yy",
   },
   "resourceVersion": "1.0",
   "name": "mu_antonescape_pc",

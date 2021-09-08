@@ -14,16 +14,16 @@ function pal_swap_index_palette() {
 	    var _colors = sprite_get_height(_spr);
 	    var _palettes = ds_list_create();
 	    ds_map_add(Pal_Map,_spr,_palettes);
-    
+		
 	    //Draw the palette to a surface for reading.
-	    if(sprite_get_width(_spr)>1)
+		var _num = sprite_get_width(_spr);
+	    if(_num>0)
 	    {
-	        var _num = sprite_get_width(_spr);
 	        var _surface = surface_create(_num,_colors);
 	        surface_set_target(_surface)
 	        draw_sprite(_spr,0,0,0);
 	    }
-    
+		
 	    //Get the Palettes
 	    for(var i=0; i<_num;i++)
 	    {
@@ -34,7 +34,7 @@ function pal_swap_index_palette() {
 	        }
 	        ds_list_add(_palettes,_pal);
 	    }    
-    
+		
 	    show_debug_message(string(_num)+" palettes indexed for sprite: "+sprite_get_name(_spr));
 	    surface_reset_target();
 	    surface_free(_surface);

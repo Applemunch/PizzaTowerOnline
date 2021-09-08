@@ -125,6 +125,7 @@
         {"properties":[],"isDnd":false,"objectId":{"name":"obj_rematchblock","path":"objects/obj_rematchblock/obj_rematchblock.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":1280.0,"y":448.0,"resourceVersion":"1.0","name":"inst_2B401B3B","tags":[],"resourceType":"GMRInstance",},
         {"properties":[],"isDnd":false,"objectId":{"name":"obj_rematchblock","path":"objects/obj_rematchblock/obj_rematchblock.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":1280.0,"y":416.0,"resourceVersion":"1.0","name":"inst_6CB758CF","tags":[],"resourceType":"GMRInstance",},
         {"properties":[],"isDnd":false,"objectId":{"name":"obj_rematchblock","path":"objects/obj_rematchblock/obj_rematchblock.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":1280.0,"y":384.0,"resourceVersion":"1.0","name":"inst_57197125","tags":[],"resourceType":"GMRInstance",},
+        {"properties":[],"isDnd":false,"objectId":{"name":"obj_notoppingmod_del","path":"objects/obj_notoppingmod_del/obj_notoppingmod_del.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":3.0,"scaleY":2.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":1760.0,"y":96.0,"resourceVersion":"1.0","name":"inst_22B72607","tags":[],"resourceType":"GMRInstance",},
       ],"visible":true,"depth":0,"userdefinedDepth":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"gridX":32,"gridY":32,"layers":[],"hierarchyFrozen":false,"resourceVersion":"1.0","name":"Instances_1","tags":[],"resourceType":"GMRInstanceLayer",},
     {"tilesetId":{"name":"tileset_medieval","path":"tilesets/tileset_medieval/tileset_medieval.yy",},"x":0,"y":0,"tiles":{"SerialiseWidth":88,"SerialiseHeight":22,"TileSerialiseData":[
 18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,18,18,18,18,18,18,18,18,18,18,18,18,18,
@@ -268,6 +269,7 @@
     {"name":"inst_2B401B3B","path":"rooms/medieval_4/medieval_4.yy",},
     {"name":"inst_6CB758CF","path":"rooms/medieval_4/medieval_4.yy",},
     {"name":"inst_57197125","path":"rooms/medieval_4/medieval_4.yy",},
+    {"name":"inst_22B72607","path":"rooms/medieval_4/medieval_4.yy",},
   ],
   "inheritCreationOrder": false,
   "sequenceId": null,

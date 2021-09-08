@@ -12,11 +12,7 @@ function scr_player_crouch()
 
 	mask_index = spr_crouchmask
 	turning = false
-
-
-
-
-
+	
 	//Fall off
 	if !(grounded) && !key_jump  
 	{
@@ -26,13 +22,11 @@ function scr_player_crouch()
 		crouchAnim = true
 		image_index = 0
 	}
-
-
-
-
+	
+	
 	///Back to other states
 	//Normal
-	if grounded && !key_down && !(scr_solid(x,y-16)) && !(scr_solid(x,y-32)) && !key_jump
+	if grounded && !key_down && !scr_solid(x, y - 3) && !key_jump
 	{
 		state = states.normal
 		movespeed = 0

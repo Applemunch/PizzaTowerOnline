@@ -76,3 +76,4 @@ collect_shake = 0;
 hud_posY = 0;
 pizzascore_index = 0;
 pizzascore_number = sprite_get_number(spr_pizzascore);
+detach = false;

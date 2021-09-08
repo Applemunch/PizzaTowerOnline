@@ -63,13 +63,7 @@ else if state == states.grabbed
     var player = asset_get_index("obj_player" + string(grabbedby))
 	
     with player
-    {
-        sprite_index = choose(spr_suplexmash1, spr_suplexmash2, spr_suplexmash3, spr_suplexmash4, spr_punch)
-        image_index = 0
-        state = states.tackle
-        movespeed = 3
-        vsp = -3
-    }
+        scr_pummel();
 	
     can_flash = true
     can_flash_count = can_flash_max
@@ -83,21 +77,25 @@ else if state == states.grabbed
     inv_timer = inv_max
     bombreset -= inv_max
     slide_buffer = slide_max
+	
     if bombreset <= 0
-        bombreset = 0
+        bombreset = 0;
+	
     hp--
     state = states.walk
     sprite_index = walkspr
     invincible = true
+	
     if hp <= 0
         instance_destroy()
+	
     instance_create(x, y, obj_slapstar)
     instance_create(x, y, obj_baddiegibs)
     scr_soundeffect(sfx_killenemy)
     with obj_camera
     {
-        shake_mag = 3
-        shake_mag_acc = (3 / room_speed)
+        shake_mag = 3;
+        shake_mag_acc = 3 / room_speed;
     }
 }
 else if state == states.chase

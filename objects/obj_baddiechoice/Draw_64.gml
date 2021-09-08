@@ -1,7 +1,7 @@
 event_inherited();
 
 // draw the skins
-img += 0.35;
+img += sprite_get_speed(spr_idle) * 0.35;
 if img >= sprite_get_number(spr_idle)
 	img -= sprite_get_number(spr_idle);
 

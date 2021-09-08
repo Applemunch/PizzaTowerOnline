@@ -1,7 +1,4 @@
-with (other.id)
+with other.id
     instance_destroy()
-
-if (!collisioned)
+if !collisioned
     event_user(0)
-
-

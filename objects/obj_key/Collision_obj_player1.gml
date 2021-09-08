@@ -6,6 +6,8 @@ with other
 	if place_meeting(x,y,other)
 	if state != states.bombpep && state != states.ghost && state != states.knightpep && state != states.cheeseball && state != states.boxxedpep && state != states.cheesepep && state != states.knightpepattack && state != states.knightpepslopes && state != states.hurt
 	{
+		global.heattime = 60;
+		
 		instance_destroy(other)
 		global.key_inv = true
 		key_particles = true

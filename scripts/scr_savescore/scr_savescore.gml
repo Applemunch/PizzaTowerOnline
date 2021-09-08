@@ -113,37 +113,51 @@ function endlevel()
 	var namestring = scr_levelname();
 	
 	// calculate ranks
-	if namestring == "golf" && global.funmode
-		global.rank = "yousuck";
-	else if global.srank > 0
+	if global.failedmod
+		global.rank = "d";
+	else if global.modifier == mods.no_toppings
 	{
-		if global.collect >= global.srank
-			global.rank = "s"
-		else if global.collect > global.arank
-			global.rank = "a"
-		else if global.collect > global.brank
-			global.rank = "b"
-		else if global.collect > global.crank
-			global.rank = "c"
-		else 
-			global.rank = "d"
+		if string_endswith(string_letters(room_get_name(room)), "treasure")
+			global.rank = "s";
+		else
+			global.rank = "a";
 	}
 	else
-		global.rank = "d";
-
-	if namestring == "snickrematch" && global.rank == "s"
 	{
-		if !check_hat(HATS.snickcrown)
+		if namestring == "golf" && global.funmode
+			global.rank = "yousuck";
+		else if global.srank > 0
 		{
-			obj_player1.hatsprite = spr_hat_snickcrown;
-			unlock_hat(HATS.snickcrown);
+			if global.collect >= global.srank
+				global.rank = "s"
+			else if global.collect > global.arank
+				global.rank = "a"
+			else if global.collect > global.brank
+				global.rank = "b"
+			else if global.collect > global.crank
+				global.rank = "c"
+			else 
+				global.rank = "d"
 		}
+		else
+			global.rank = "d";
 	}
 	
 	instance_destroy(obj_snickexe);
 	instance_destroy(obj_snickexf);
 	instance_destroy(obj_snickexg);
 	instance_destroy(obj_snickexh);
-
-	scr_savescore(namestring)
+	
+	if global.modifier == -1
+	{
+		if namestring == "snickrematch" && global.rank == "s"
+		{
+			if !check_hat(HATS.snickcrown)
+			{
+				obj_player1.hatsprite = spr_hat_snickcrown;
+				unlock_hat(HATS.snickcrown);
+			}
+		}
+		scr_savescore(namestring)
+	}
 }

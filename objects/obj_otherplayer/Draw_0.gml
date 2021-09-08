@@ -161,7 +161,7 @@ else
 		else
 			pal_swap_set(spr_palette, paletteselect, false);
 	}
-	draw_sprite_ext(sprit, _img, x, y, xscale, yscale, image_angle, pausedcolor, image_alpha);
+	draw_sprite_ext(sprit, _img, x, y, xscale, yscale, img_angle, pausedcolor, image_alpha);
 	pal_swap_reset();
 	
 	//Flash
@@ -170,7 +170,7 @@ else
 		if (gms_other_get_real(player_id, "flash")) {
 		    shader_set(shd_hit);    // Sets the shader to our shader file we created earlier
 		    //Draw
-		draw_sprite_ext(sprit, _img, x, y, xscale, yscale, image_angle, pausedcolor, image_alpha);
+		draw_sprite_ext(sprit, _img, x, y, xscale, yscale, img_angle, pausedcolor, image_alpha);
 		  // Draws the sprite, but now we have a shader set so it draws it as white
 		    shader_reset(); // Resets the shader to the default one (does nothing)
 
@@ -201,7 +201,9 @@ else
 			if cowboyframe >= sprite_get_number(cowboy)
 				cowboyframe -= sprite_get_number(cowboy);
 		}
-		draw_sprite_ext(cowboy, cowboyframe, x, sprite_get_bbox_top(sprit) + y - 40, xscale, yscale, image_angle, pausedcolor, image_alpha);
+		
+		var yplus = lengthdir_y(-sprite_get_bbox_top(sprit) + 40, img_angle + 90);
+		draw_sprite_ext(cowboy, cowboyframe, x, y + yplus, xscale, yscale, img_angle, pausedcolor, image_alpha);
 	}
 	
 	// treasure
@@ -238,7 +240,7 @@ if global.shownames
 	
 	if gms_other_isowner(player_id)
 		draw_set_colour(make_colour_hsv(color_get_hue(c_owner), color_get_saturation(c_owner), color_get_value(c_owner) * (color_get_value(image_blend) / 255)));
-	else if string_lower(name) == "peic"
+	else if string_lower(name) == "spectralpeic"
 		draw_set_colour(make_colour_hsv(color_get_hue(c_peicy), color_get_saturation(c_peicy), color_get_value(c_peicy) * (color_get_value(image_blend) / 255)));
 	else if gms_other_admin_rights(player_id)
 		draw_set_colour(make_colour_hsv(color_get_hue(c_admin), color_get_saturation(c_admin), color_get_value(c_admin) * (color_get_value(image_blend) / 255)));

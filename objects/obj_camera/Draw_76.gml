@@ -8,7 +8,7 @@ var appw = apph * (960 / 540);
 var appx = (winw - appw) / 2;
 
 if (frac(winw / 960) == frac(apph / 540))
-or !global.drawborder or true
+or !global.drawborder
 	exit;
 
 application_surface_draw_enable(true);
@@ -27,6 +27,7 @@ else
 {
 	#region backgrounds
 	
+	/*
 	var bg = bg_hubworld1back;
 	
 	var r = room_get_name(room);
@@ -115,6 +116,7 @@ else
 			}
 		}
 	}
+	*/
 	
 	#endregion
 	
@@ -122,6 +124,7 @@ else
 	
 	draw_clear(c_black);
 	draw_set_colour(c_black);
+	/*
 	if room == characterselect
 	{
 		a = 0.65;
@@ -194,6 +197,9 @@ else
 	}
 	else
 		draw_rectangle(0, 0, winw, apph, false);
+	*/
+	
+	draw_sprite_tiled(bg_space1, 0, x, y + irandom_range(-shake_mag_panic, shake_mag_panic));
 	
 	gpu_set_blendmode(bm_subtract);
 	draw_rectangle(appx, 0, appx + appw - 1, apph, false);

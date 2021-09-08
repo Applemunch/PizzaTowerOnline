@@ -12,32 +12,29 @@ switch (state)
     case states.pizzagoblinthrow: scr_pizzagoblin_throw (); break;
     // grabbed state here
 }
-if  state = states.stun && stunned > 100 && birdcreated = false
+if state = states.stun && stunned > 100 && birdcreated = false
 {
-birdcreated = true
-with instance_create(x,y, obj_enemybird)
-ID = other.id
+	birdcreated = true
+	with instance_create(x,y, obj_enemybird)
+		ID = other.id
 }
 
 if state != states.stun
-birdcreated = false
-
+	birdcreated = false
 
 //Scared
 scr_scareenemy()
 
 //Identify the player
-var targetplayer = instance_nearest(x,y ,obj_player)
+var targetplayer = instance_nearest(x, y, obj_player1);
 
 //Charge
 if x != targetplayer.x && grounded && !rematchscare
 {
 	if ((targetplayer.x > x - 400) && (targetplayer.x < x + 400)) && (y <= targetplayer.y+20 && y >= targetplayer.y- 20)
 	{
-		if (state = states.walk) && charging = false
+		if state == states.walk && !charging
 		{
-			with instance_create(x,y,obj_forkhitbox)
-				ID = other.id
 			charging = true
 			state = states.charge
 			movespeed = 5
@@ -61,14 +58,14 @@ stunned = 0
 
 if state = states.stun or state = states.walk
 {
-charging = false
-movespeed = 0
+	charging = false
+	movespeed = 0
 }
 
 
 //Charge sprite
 if sprite_index = spr_chargestart && floor(image_index) = image_number -1
-sprite_index = spr_charge
+	sprite_index = spr_charge
 
 //Flash
 if (flash == true && alarm[2] <= 0) {
@@ -77,31 +74,27 @@ if (flash == true && alarm[2] <= 0) {
 
 
 
-if  hitboxcreate = false && (state = states.walk) 
+if !hitboxcreate && (state == states.walk or state == states.charge) 
 {
-hitboxcreate = true
-with instance_create(x,y,obj_forkhitbox)
-{
-ID = other.id
-}
+	hitboxcreate = true
+	with instance_create(x,y,obj_forkhitbox)
+		ID = other.id
 }
 
 if state != states.grabbed
-depth = 0
+	depth = 0
 
 
 if state != states.stun
-thrown= false
+	thrown = false
 
-if boundbox = false
+if !boundbox
 {
-with instance_create(x,y,obj_baddiecollisionbox)
-{
-sprite_index = spr_fencer
-mask_index = other.mask_index
-baddieID = other.id
-other.boundbox = true
+	with instance_create(x,y,obj_baddiecollisionbox)
+	{
+		sprite_index = spr_fencer
+		mask_index = other.mask_index
+		baddieID = other.id
+		other.boundbox = true
+	}
 }
-}
-
-

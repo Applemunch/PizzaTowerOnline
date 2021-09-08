@@ -2,7 +2,7 @@ bgalpha = 1
 bgalpha2 = 1
 bgalpha3 = 1
 bgalpha4 = 1
-depth = 50
+depth = 50 + floor((room_height - y) / 64); // show higher startgates BEHIND lower ones
 level = "none"
 
 drawing = false
@@ -13,8 +13,8 @@ short = false
 
 msg = ""
 
-if room == hub_roomSP
-	sprite_index = spr_entrancegateSP;
+if check_sugary()
+	sprite_index = spr_entrancegate_ss;
 
 readsave = false;
 

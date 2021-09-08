@@ -25,13 +25,13 @@ function scr_hurtplayer(argument0)
 		}
 		
 		//Knight armor remove
-		if (state = states.knightpep or state = states.knightpepattack or state = states.knightpepslopes) && cutscene = false
+		if (state = states.knightpep or state = states.knightpepattack or state = states.knightpepslopes) && !cutscene
 		{
 
 		}
 		
 		// custom
-		else if state == states.parry or state == states.backbreaker or state == states.bump or state == states.firemouth or state == states.barrel or state == states.hitlag or state == states.rotate or state == states.frozen or state == states.door or state == states.victory or (state == states.fireass && global.gameplay != 0) or instance_exists(obj_parryhitbox)
+		else if state == states.parry or state == states.taxi or state == states.actor or state == states.backbreaker or state == states.bump or state == states.firemouth or state == states.barrel or state == states.hitlag or state == states.rotate or state == states.frozen or state == states.door or state == states.victory or (state == states.fireass && global.gameplay != 0) or instance_exists(obj_parryhitbox)
 		{
 		
 		}
@@ -44,7 +44,7 @@ function scr_hurtplayer(argument0)
    
 		}
 		//Bomb!!
-		else if state = states.bombpep && hurted = false 
+		else if state = states.bombpep && !hurted
 		{
     
    
@@ -140,46 +140,47 @@ function scr_hurtplayer(argument0)
     
     
 		//Hurt
-		else if state != states.grabbed && cutscene == false && invhurt_buffer <= 0
-		&& ((state != states.hurt && hurted == false)/* or global.gameplay != 0*/)
+		else if state != states.grabbed && !cutscene && invhurt_buffer <= 0
+		&& ((state != states.hurt && !hurted)/* or global.gameplay != 0*/)
 		{
 			if hurt_buffer == -1 && global.gameplay != 0
 		        hurt_buffer = hurt_max;
 			
 			//Pizza delivery HP
-			if (hurt_buffer == -1 or global.gameplay == 0) && global.pizzadelivery == true
+			if /*(hurt_buffer == -1 or global.gameplay == 0) && */global.pizzadelivery
 			{
-				if global.hp > 1
+				with instance_create(x, y, obj_debris)
+			        sprite_index = spr_healthpickupeaten;
+				
+				global.hp -= 1;
+				if global.hp > 0
 				{
-					global.hp -= 1
 					with obj_camera
-						healthshaketime = 60
+						healthshaketime = 20;
 				}
 				else
 				{
 					with obj_music
-			            arena = false
+			            arena = false;
 		
-			        vsp = -20
-			        global.hp = 0
-			        global.pizzadelivery = false
-			        cutscene = true
-			        with instance_create(x, y, obj_debris)
-			            sprite_index = spr_healthpickupeaten
+			        vsp = -20;
+			        global.hp = 0;
+			        global.pizzadelivery = false;
+			        cutscene = true;
 		
 			        with instance_create(0, 0, obj_cutscene_handler)
 			        {
 			            var player = other.id
 			            scene_info = 
 						[
-							//[cutscene_taxi_start, player], 
-							//[cutscene_waitfor_sprite, player], 
+							[cutscene_taxi_start, player], 
+							[cutscene_waitfor_sprite, player], 
 							[cutscene_set_sprite, player, spr_player_outofpizza2, 0.5, player.xscale], 
-							//[cutscene_player_checkground, player], 
+							[cutscene_player_check_ground, player], 
 							[cutscene_set_sprite, player, spr_player_outofpizza3, 0.5, player.xscale], 
-							//[cutscene_waitfor_sprite, player], 
-							[cutscene_set_sprite, player, spr_player_outofpizza4, 0.5, player.xscale], 
-							//[cutscene_taxi_end, player, forest_4]
+							[cutscene_waitfor_sprite, player], 
+							[cutscene_set_sprite, player, spr_player_outofpizza4, 0.35, player.xscale], 
+							[cutscene_taxi_end, player, forest_4]
 						]
 			        }
 				}

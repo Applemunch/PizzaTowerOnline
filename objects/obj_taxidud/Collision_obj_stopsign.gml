@@ -1,18 +1,15 @@
 if !instance_exists(playerid)
 	exit
 
-if playerid.visible = false
+if playerid.state == states.taxi
+{
+	with playerid
 	{
-	with (obj_player1)
-	{
+		instance_create(x, y, obj_genericpoofeffect)
 		scr_soundeffect(sfx_taxi1)
-state = states.normal
-
+		state = states.normal
 		
-		
-
-cutscene = false
+		cutscene = false
+		visible = true
 	}
-	
-	obj_player1.visible = true
-	}
+}

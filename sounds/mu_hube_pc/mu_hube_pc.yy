@@ -16,8 +16,8 @@
   "soundFile": "mu_hube_pc.wav",
   "duration": 162.52742,
   "parent": {
-    "name": "pizza castle",
-    "path": "folders/Sounds/pizza castle.yy",
+    "name": "pto extra",
+    "path": "folders/Sounds/pizza castle/pto extra.yy",
   },
   "resourceVersion": "1.0",
   "name": "mu_hube_pc",

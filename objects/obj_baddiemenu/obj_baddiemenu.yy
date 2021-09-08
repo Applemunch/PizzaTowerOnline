@@ -29,8 +29,8 @@
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "other",
-    "path": "folders/Objects/level_structure/other.yy",
+    "name": "pto",
+    "path": "folders/Objects/level_structure/pto.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_baddiemenu",

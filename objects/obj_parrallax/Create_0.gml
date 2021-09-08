@@ -27,6 +27,6 @@ scroll = 0;
 
 if instance_number(obj_parrallax) > 1
 {
-	show_debug_message("Extra obj_parrallax in " + room_get_name(room));
+	trace("Extra obj_parrallax in " + room_get_name(room));
 	instance_destroy();
 }

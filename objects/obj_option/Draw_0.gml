@@ -1,20 +1,26 @@
-if live_call() return live_result;
+if live_call()
+{
+	//dbg_live = true;
+	return live_result;
+}
 
 var s = 32;
 var c1 = c_black;
 
 // square backgrund
-draw_rectangle_color(0, 0, 960, 540, c2, c2, c2, c2, false);
+draw_set_colour(c1);
+draw_rectangle(0, 0, 960, 540, false);
+draw_set_colour(c2);
 
-if !debug
+if !dbg_live
 {
 	mo = (mo + 0.5) % s;
-	for(var i = -s; i < __view_get(e__VW.XView, 0) + __view_get(e__VW.WView, 0); i += s)
+	for(var i = -s; i < room_width; i += s)
 	{
-		for(var j = -s; j < __view_get(e__VW.YView, 0) + __view_get(e__VW.HView, 0); j += s)
+		for(var j = -s; j < room_height; j += s)
 		{
 			if (i + j) % (s * 2) != 0
-				draw_rectangle_color(i + mo, j + mo, i + s + mo, j + s + mo, c1,c1,c1,c1, false)
+				draw_rectangle(i + mo, j + mo, i + s + mo, j + s + mo, false)
 		}
 	}
 }

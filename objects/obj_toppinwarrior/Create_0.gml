@@ -17,7 +17,7 @@ canattack = false
 global.toppinwarriorattackcountdown = 0
 global.toppinwarriorturn = 1
 
-space =0
+space = 0
 
 dir = obj_player1.xscale
 

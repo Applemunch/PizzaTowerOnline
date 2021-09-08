@@ -1,18 +1,8 @@
 depth = 16;
 image_speed = 0.35;
 
-if abs(image_xscale) == 1
-{
-	var left = place_meeting(x - 32, y, obj_solid);
-	var right = place_meeting(x + 32, y, obj_solid);
-	if left
-	{
-		if right
-			sprite_index = spr_railh;
-		else
-			sprite_index = spr_railhright;
-	}
-	else if right
-		sprite_index = spr_railhleft;
-}
+if room == custom_lvl_room
+	alarm[0] = 1;
+else
+	event_perform(ev_alarm, 0);
 spdh = -5;

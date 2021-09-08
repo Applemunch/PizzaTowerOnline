@@ -1,5 +1,5 @@
 {
-  "bboxMode": 0,
+  "bboxMode": 2,
   "collisionKind": 1,
   "type": 0,
   "origin": 9,
@@ -7,9 +7,9 @@
   "edgeFiltering": false,
   "collisionTolerance": 0,
   "swfPrecision": 2.525,
-  "bbox_left": 7,
-  "bbox_right": 92,
-  "bbox_top": 19,
+  "bbox_left": 16,
+  "bbox_right": 79,
+  "bbox_top": 37,
   "bbox_bottom": 95,
   "HTile": false,
   "VTile": false,
@@ -24,9 +24,9 @@
   "gridX": 0,
   "gridY": 0,
   "frames": [
-    {"compositeImage":{"FrameId":{"name":"f1b701a6-bfbc-467d-9415-3c8098077c28","path":"sprites/spr_boxofpizzaSP/spr_boxofpizzaSP.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"f1b701a6-bfbc-467d-9415-3c8098077c28","path":"sprites/spr_boxofpizzaSP/spr_boxofpizzaSP.yy",},"LayerId":{"name":"5ce23b3c-782d-4e65-8e12-0526ba691e3d","path":"sprites/spr_boxofpizzaSP/spr_boxofpizzaSP.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"spr_boxofpizzaSP","path":"sprites/spr_boxofpizzaSP/spr_boxofpizzaSP.yy",},"resourceVersion":"1.0","name":"f1b701a6-bfbc-467d-9415-3c8098077c28","tags":[],"resourceType":"GMSpriteFrame",},
+    {"compositeImage":{"FrameId":{"name":"b52122c0-c0c9-4e03-b41f-d86b453bcfde","path":"sprites/spr_boxofpizzaSP/spr_boxofpizzaSP.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
+        {"FrameId":{"name":"b52122c0-c0c9-4e03-b41f-d86b453bcfde","path":"sprites/spr_boxofpizzaSP/spr_boxofpizzaSP.yy",},"LayerId":{"name":"a9c9d6fa-7224-4a9e-9dec-edf195a92536","path":"sprites/spr_boxofpizzaSP/spr_boxofpizzaSP.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
+      ],"parent":{"name":"spr_boxofpizzaSP","path":"sprites/spr_boxofpizzaSP/spr_boxofpizzaSP.yy",},"resourceVersion":"1.0","name":"b52122c0-c0c9-4e03-b41f-d86b453bcfde","tags":[],"resourceType":"GMSpriteFrame",},
   ],
   "sequence": {
     "spriteId": {"name":"spr_boxofpizzaSP","path":"sprites/spr_boxofpizzaSP/spr_boxofpizzaSP.yy",},
@@ -41,7 +41,7 @@
     "moments": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore<MomentsEventKeyframe>",},
     "tracks": [
       {"name":"frames","spriteId":null,"keyframes":{"Keyframes":[
-            {"id":"646b140d-c146-42c8-aa89-77190a785ada","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"f1b701a6-bfbc-467d-9415-3c8098077c28","path":"sprites/spr_boxofpizzaSP/spr_boxofpizzaSP.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
+            {"id":"f5c65b3e-03aa-4bf4-b13e-74e3d08d5c8b","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"b52122c0-c0c9-4e03-b41f-d86b453bcfde","path":"sprites/spr_boxofpizzaSP/spr_boxofpizzaSP.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
           ],"resourceVersion":"1.0","resourceType":"KeyframeStore<SpriteFrameKeyframe>",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"modifiers":[],"isCreationTrack":false,"resourceVersion":"1.0","tags":[],"resourceType":"GMSpriteFramesTrack",},
     ],
     "visibleRange": null,
@@ -65,12 +65,12 @@
     "resourceType": "GMSequence",
   },
   "layers": [
-    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"5ce23b3c-782d-4e65-8e12-0526ba691e3d","tags":[],"resourceType":"GMImageLayer",},
+    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"a9c9d6fa-7224-4a9e-9dec-edf195a92536","tags":[],"resourceType":"GMImageLayer",},
   ],
   "nineSlice": null,
   "parent": {
-    "name": "blocks",
-    "path": "folders/Sprites/generalobjects/blocks.yy",
+    "name": "pizzaboxes",
+    "path": "folders/Sprites/generalobjects/blocks/pizzaboxes.yy",
   },
   "resourceVersion": "1.0",
   "name": "spr_boxofpizzaSP",

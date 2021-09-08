@@ -11,6 +11,7 @@ if other.object_index = obj_player1 && other.character != "S" && other.character
 		instance_destroy()
 		
 		tv_push_prompt_once(tv_create_prompt("This is the shotgun powerup text", 2, spr_tv_shotgun, 3), "shotgun");
+		global.heattime = 60;
 		
 		with obj_tv
 		{
@@ -20,7 +21,5 @@ if other.object_index = obj_player1 && other.character != "S" && other.character
 			showtext = true
 			tvsprite = spr_tvdook
 		}
-
 	}
-
 }

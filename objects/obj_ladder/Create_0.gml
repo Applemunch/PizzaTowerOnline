@@ -47,7 +47,6 @@ if global.snickrematch
 else
 
 #endregion
-
 {
 	if string_startswith(roomname, "floor3_room")
 		sprite_index = spr_ladder_factory
@@ -74,6 +73,8 @@ else
 
 	if string_endswith(string_letters(roomname), "medieval")
 		sprite_index = spr_ladder_medieval
+	if string_endswith(string_letters(roomname), "chateau")
+		sprite_index = spr_ladder_chateau
 	if string_endswith(string_letters(roomname), "ruin")
 		sprite_index = spr_ladder_ruin
 	if string_startswith(roomname, "dungeon_")
@@ -97,24 +98,14 @@ else
 	if string_endswith(string_letters(roomname), "secret")
 		sprite_index = spr_ladder_secret
 
-	if string_startswith(roomname, "steamcc_")
+	if string_startswith(roomname, "cotton_")
 		sprite_index = spr_ladderSP_rope
 	else if check_sugary()
 		sprite_index = spr_ladderSP
 }
 
 // autotile
-if abs(image_yscale) == 1
-{
-	var up = place_meeting(x, y - 32, obj_ladder);
-	var down = place_meeting(x, y + 32, obj_ladder);
-	if up
-	{
-		if down
-			image_index = 0;
-		else if !scr_solid(x, y + 32) or place_meeting(x, y + 32, obj_destructibles)
-			image_index = 1;
-	}
-	else if down
-		image_index = 2;
-}
+if room == custom_lvl_room
+	alarm[0] = 1
+else
+	event_perform(ev_alarm, 0)

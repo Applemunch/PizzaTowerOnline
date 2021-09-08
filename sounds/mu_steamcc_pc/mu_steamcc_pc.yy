@@ -14,7 +14,7 @@
   "duration": 144.0,
   "parent": {
     "name": "pizza castle",
-    "path": "folders/Sounds/extra/sugary spire/pizza castle.yy",
+    "path": "folders/Sounds/pto extra/sugary spire/pizza castle.yy",
   },
   "resourceVersion": "1.0",
   "name": "mu_steamcc_pc",

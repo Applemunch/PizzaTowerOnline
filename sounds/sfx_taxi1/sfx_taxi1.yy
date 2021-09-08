@@ -11,7 +11,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "sfx_taxi1",
-  "duration": 0.97155,
+  "duration": 0.96655,
   "parent": {
     "name": "sfx",
     "path": "folders/Sounds/sfx.yy",

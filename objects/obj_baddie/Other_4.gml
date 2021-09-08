@@ -1,2 +1,4 @@
 if ds_list_find_index(global.baddieroom, id) != -1
-	instance_destroy()
+	instance_destroy();
+else
+	event_user(0);

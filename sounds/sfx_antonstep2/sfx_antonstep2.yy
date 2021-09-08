@@ -17,7 +17,7 @@
   "duration": 0.073594,
   "parent": {
     "name": "antonball",
-    "path": "folders/Sounds/extra/antonball.yy",
+    "path": "folders/Sounds/pto extra/antonball.yy",
   },
   "resourceVersion": "1.0",
   "name": "sfx_antonstep2",

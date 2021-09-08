@@ -1,5 +1,11 @@
-if global.panic = true
-	image_index = 1
+if global.panic && sprite_index != spr_exitgateclosing_ss
+	image_index = 1;
+if sprite_index == spr_exitgateclosing_ss && floor(image_index) >= image_number - 1
+{
+	sprite_index = spr_exitgate_ss
+	image_index = 0
+	image_speed = 0
+}
 
 if obj_player1.character == "S"
 {

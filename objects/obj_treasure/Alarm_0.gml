@@ -3,9 +3,9 @@ obj_player.sprgot = -1;
 if global.gameplay == 0
 {
 	obj_player.state = states.normal
-	with instance_create(x,y,obj_smallnumber)
-		number = "1000"
-	global.collect +=  1000
+	with instance_create(x, y, obj_smallnumber)
+		number = "2000"
+	global.collect += 2000
 	instance_destroy()
 }
 else

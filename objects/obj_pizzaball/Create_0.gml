@@ -19,3 +19,4 @@ jspd = 8;
 important = false;
 depth = 0;
 mask_index = spr_player_mask;
+image_speed = 0.35;

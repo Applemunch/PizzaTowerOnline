@@ -73,13 +73,15 @@ function loyencode(str)
 /// game specific
 function check_sugary() {
 	return room == hub_roomSP
-	or string_startswith(room_get_name(room), "steamcc_")
-	or string_startswith(room_get_name(room), "ssmines_");
+	or string_startswith(room_get_name(room), "cotton_")
+	or string_startswith(room_get_name(room), "jawbreaker_");
 }
 
 /// enemy
 function increase_combo()
 {
+	scr_failmod(mods.pacifist);
+	
 	var funny = true;
 	if variable_instance_exists(id, "baddieID")
 	&& instance_exists(baddieID)
@@ -101,21 +103,22 @@ function increase_combo()
 		global.combotime = 60;
 }
 
-function scr_hitthrow(baddie, player)
+function scr_hitthrow(baddie, player, lag = 5)
 {
-	var lag = 5;
 	with baddie
 	{
 		if state != states.hit
 		{
-			increase_combo();
-		
-			repeat 5
+			if stuntouchbuffer <= 0
+				increase_combo();
+			
+			repeat 3
+			{
 				create_particle(x, y, particles.baddiegibs)
-			repeat 5
-				instance_create(x,y,obj_slapstar)
-			instance_create(x,y,obj_bangeffect)
-		
+				instance_create(x, y, obj_slapstar)
+			}
+			instance_create(x, y, obj_bangeffect)
+			
 			hp -= 1;
 			thrown = true;
 						

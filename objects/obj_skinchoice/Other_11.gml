@@ -2,7 +2,7 @@ if obj_player1.state == states.normal
 {
 	var prevanton = scr_checkskin(checkskin.p_anton);
 	var prev = obj_player1.character;
-		
+	
 	with obj_player1
 	{
 		shot = false;
@@ -23,6 +23,9 @@ if obj_player1.state == states.normal
 		if character != prev
 		or paletteselect != other.sel[0]
 		{
+			with obj_global
+				event_user(0);
+			
 			repeat 6
 			{
 				with instance_create(x + random_range(-50, 50), y + random_range(-50, 50), obj_cloudeffect)

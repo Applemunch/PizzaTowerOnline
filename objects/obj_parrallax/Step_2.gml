@@ -55,7 +55,7 @@ layer_y("Backgrounds_steamcc3", (room_height * 1.1) - 600 + (_cam_y * -0.1));
 bgscroll4x = (bgscroll4x + layer_get_hspeed("Backgrounds_steamcc3")) % (sprite_get_width(layer_background_get_sprite(layer_background_get_id("Backgrounds_steamcc3"))));
 	
 layer_x("Backgrounds_steamcc4", _cam_x * 0.75);
-layer_y("Backgrounds_steamcc4", 20 + (_cam_y * 0.75));
+layer_y("Backgrounds_steamcc4", _cam_y * 0.75);
 
 #endregion
 
@@ -64,7 +64,7 @@ layer_y("Backgrounds_sky",  _cam_y * 0.85);
 layer_x("Backgrounds_sky2", _cam_x);
 layer_y("Backgrounds_sky2", _cam_y);
 layer_x("Backgrounds_sky3", _cam_x * 0.95);
-layer_y("Backgrounds_sky3", 20 + (_cam_y * 0.95));
+layer_y("Backgrounds_sky3", _cam_y * 0.95);
 
 var roomwidth = room_width;
 var roomheight = room_height;

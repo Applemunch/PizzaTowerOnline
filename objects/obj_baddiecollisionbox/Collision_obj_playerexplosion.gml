@@ -3,11 +3,22 @@ if other.sync
 
 if instance_exists(baddieID)
 {
-	increase_combo();
 	if baddieID.object_index != obj_pizzaballOLD
 	{
-		instance_destroy(baddieID)
-		instance_destroy()
+		if global.gameplay == 0
+		{
+			instance_destroy(baddieID)
+			instance_destroy()
+		}
+		else if baddieID.state != states.hit
+		{
+			if baddieID.x != other.x
+				baddieID.image_xscale = -sign(baddieID.x - other.x);
+			
+			baddieID.hithsp = 0;
+			baddieID.hitvsp = 0;
+			scr_hitthrow(baddieID, noone, 10);
+		}
 	}
 	else if baddieID.stuntouchbuffer <= 0
 	{
@@ -16,8 +27,11 @@ if instance_exists(baddieID)
 		
 		global.golfhit += 1
 		
-		instance_create(baddieID.x,baddieID.y,obj_slapstar)
-		instance_create(baddieID.x,baddieID.y,obj_baddiegibs)
+		repeat 3
+		{
+			instance_create(baddieID.x, baddieID.y, obj_slapstar)
+			instance_create(baddieID.x, baddieID.y, obj_baddiegibs)
+		}
 		
 		baddieID.flash = true
 		baddieID.state = states.stun

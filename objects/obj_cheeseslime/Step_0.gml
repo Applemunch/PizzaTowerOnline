@@ -76,19 +76,18 @@ if global.stylethreshold >= 3 && object_index == obj_cheeseslime
 }
 
 if state != states.grabbed
-depth = 0
-
+	depth = 0
 
 if state != states.stun 
-thrown= false
+	thrown = false
 
-if boundbox = false
+if !boundbox
 {
-with instance_create(x,y,obj_baddiecollisionbox)
-{
-sprite_index = spr_slimemove
-mask_index = sprite_index
-baddieID = other.id
-other.boundbox = true
-}
+	with instance_create(x,y,obj_baddiecollisionbox)
+	{
+		sprite_index = spr_slimemove
+		mask_index = sprite_index
+		baddieID = other.id
+		other.boundbox = true
+	}
 }

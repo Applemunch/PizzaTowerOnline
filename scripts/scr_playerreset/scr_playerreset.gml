@@ -6,6 +6,10 @@ function scr_playerreset()
 	with obj_followcharacter
 		if object_index != obj_petfollow instance_destroy();
 	
+	// modifiers
+	global.toppings = 0;
+	
+	// other shit
 	global.bullet = 3;
 	global.mort = false;
 	global.stylethreshold = 0;
@@ -15,6 +19,10 @@ function scr_playerreset()
 	global.stylelock = false;
 	global.baddiespeed = 1;
 	global.baddiepowerup = false;
+	
+	global.showgnomelist = false;
+    global.failcutscene = false;
+    global.pizzadelivery = false;
 	
 	global.checkpointDoor = "A"
 	global.checkpointroom = hub_room1
@@ -48,10 +56,6 @@ function scr_playerreset()
 	if ds_exists(global.old_saveroom, ds_type_list)
 		ds_list_clear(global.old_saveroom)
 	
-	if instance_exists(obj_endlevelfade)
-		instance_destroy(obj_endlevelfade, false)
-	
-	instance_destroy(obj_pizzaball_slices, false);
 	global.timeractive = false
 	global.wave = 0
 	global.maxwave = 0
@@ -61,17 +65,10 @@ function scr_playerreset()
 	global.snickrematch = false
 	global.timeattack = false
 	global.giantkey = false
-	if instance_exists(obj_snickexe)
-		instance_destroy(obj_snickexe, false)
 	
 	with obj_timeattack
 		stop = false
-	
-	if instance_exists(obj_pizzaface)
-		instance_destroy(obj_pizzaface, false)
-
-	if instance_exists(obj_pizzashield)
-		instance_destroy(obj_pizzashield, false)
+		
 	global.timedgate = false
 	global.taseconds = 0
 	global.taminutes = 0
@@ -79,14 +76,22 @@ function scr_playerreset()
 	global.miniboss = false
 	
 	obj_player1.spotlight = true
-	if instance_exists(obj_coopflag)
-		instance_destroy(obj_coopflag, false)
-	if instance_exists(obj_cooppointer)
-		instance_destroy(obj_cooppointer, false)
-
-	if instance_exists(obj_toppinwarrior)
-		instance_destroy(obj_toppinwarrior, false)
-
+	
+	instance_destroy(obj_coopflag, false)
+	instance_destroy(obj_cooppointer, false)
+	
+	instance_destroy(obj_endlevelfade, false)
+	instance_destroy(obj_pizzaball_slices, false);
+	instance_destroy(obj_pizzaface, false)
+	instance_destroy(obj_pizzashield, false)
+	instance_destroy(obj_toppinwarrior, false)
+	instance_destroy(obj_gnome_checklist, false);
+	
+	instance_destroy(obj_snickexe, false)
+	instance_destroy(obj_snickexf, false)
+	instance_destroy(obj_snickexg, false)
+	instance_destroy(obj_snickexh, false)
+	
 	with obj_tv
 	{
 		shownranks = false

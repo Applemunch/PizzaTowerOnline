@@ -4,22 +4,22 @@ if state != states.golf
 if ds_list_find_index(global.baddieroom, id) == -1  
 {
 	// thrown camera
-	if thrown
+	if state == states.tumble or thrown
 	{
 		with obj_camera
 		{
 			targetoverride = other.id;
 			targetgoingback = false;
 		}
-		alarm[4] = room_speed / 2;
+		alarm[4] = 5;
 	}
 
 	// reset thrown camera when grabbed
-	if state == states.grabbed
+	if state == states.golf
 	{
 		with obj_camera
 		{
-			if targetoverride = other.id
+			if targetoverride == other.id
 			{
 				targetoverride = noone;
 				targetgoingback = false;

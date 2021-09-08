@@ -191,47 +191,58 @@ else if global.musicgame == 1
 	if !audio_is_playing(mu_antonescape_pc) && !audio_is_playing(mu_pizzatime_pc)
 	&& !audio_is_playing(_mu_noiseescape) && !audio_is_playing(mu_snickescape_pc)
 	&& !audio_is_playing(mu_pizzyescape_pc) && !audio_is_playing(mu_pizzatime_pc) // glade escape here
+	&& !audio_is_playing(mu_war_pc)
 	&& (string_letters(roomname) != "dragonlair" or audio_is_playing(mu_antonlevel_pc))
 	&& global.panic && !obj_pause.pause && !obj_camera.ded && !(room == custom_lvl_room && global.disableescapemusic)
 	{
-		audio_stop_sound(global.music)
-	
-		// antonball
-		if scr_checkskin(checkskin.p_anton)
+		// war level
+		if audio_is_playing(mu_warintro_pc)
 		{
-			scr_sound(mu_antonescape_pc)
-			pausedmusic = mu_antonescape_pc
+			audio_stop_sound(global.music)
+			scr_sound(mu_war_pc)
+			pausedmusic = mu_war_pc
 		}
-		// peppino or vigilante
-		else if obj_player1.character == "P"
-		or obj_player1.character == "V"
+		else
 		{
-			scr_sound(mu_pizzatime_pc)
-			pausedmusic = mu_pizzatime_pc
-		}
-		// noise
-		else if obj_player1.character == "N"
-		{
-			scr_sound(_mu_noiseescape)
-			pausedmusic = _mu_noiseescape
-		}
-		// snick
-		else if obj_player1.character == "S"
-		{
-			scr_sound(mu_snickescape_pc)
-			pausedmusic = mu_snickescape_pc
-		}
-		// glade
-		else if obj_player1.character == "G"
-		{
-			scr_sound(mu_pizzatime_pc) // REPLACE, also up there
-			pausedmusic = mu_pizzatime_pc
-		}
-		// pizzelle
-		else if obj_player1.character == "SP"
-		{
-			scr_sound(mu_pizzyescape_pc)
-			pausedmusic = mu_pizzyescape_pc
+			audio_stop_sound(global.music)
+			
+			// antonball
+			if scr_checkskin(checkskin.p_anton)
+			{
+				scr_sound(mu_antonescape_pc)
+				pausedmusic = mu_antonescape_pc
+			}
+			// peppino or vigilante
+			else if obj_player1.character == "P"
+			or obj_player1.character == "V"
+			{
+				scr_sound(mu_pizzatime_pc)
+				pausedmusic = mu_pizzatime_pc
+			}
+			// noise
+			else if obj_player1.character == "N"
+			{
+				scr_sound(_mu_noiseescape)
+				pausedmusic = _mu_noiseescape
+			}
+			// snick
+			else if obj_player1.character == "S"
+			{
+				scr_sound(mu_snickescape_pc)
+				pausedmusic = mu_snickescape_pc
+			}
+			// glade
+			else if obj_player1.character == "G"
+			{
+				scr_sound(mu_pizzatime_pc) // REPLACE, also up there
+				pausedmusic = mu_pizzatime_pc
+			}
+			// pizzelle
+			else if obj_player1.character == "SP"
+			{
+				scr_sound(mu_pizzyescape_pc)
+				pausedmusic = mu_pizzyescape_pc
+			}
 		}
 	}
    

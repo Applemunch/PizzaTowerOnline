@@ -3,12 +3,12 @@ if !instance_exists(ID) && room != custom_lvl_room
 
 if instance_exists(ID)
 {
-	x = ID.x
-	if ID.object_index == obj_burgknight
+	x = ID.x;
+	if ID.object_index == obj_smurfknight
 		x += ID.image_xscale * 10;
-	y = ID.y
-	image_xscale = ID.image_xscale
-	image_index = ID.image_index
+	y = ID.y;
+	image_xscale = ID.image_xscale;
+	image_index = ID.image_index;
 	
 	if object_get_parent(ID.object_index) == obj_baddie && ID.rematchscare
 	{
@@ -21,7 +21,7 @@ if instance_exists(ID)
 		{
 			if object_index == obj_coolpineapple
 			or object_index == obj_forknight
-			or object_index == obj_burgknight
+			or object_index == obj_smurfknight
 			or object_index == obj_indiancheese
 			or object_index == obj_noisey
 			or object_index == obj_sausageman
@@ -77,12 +77,22 @@ if instance_exists(ID)
 			}
 
 			if object_index == obj_peasanto
-			or object_index = obj_fencer
-			or object_index = obj_ninja
-			or object_index = obj_pizzice
-			or object_index = obj_ancho
+			or object_index == obj_fencer
+			or object_index == obj_ninja
+			or object_index == obj_pizzice
+			or object_index == obj_ancho
 			{
-				if state != states.charge or obj_player1.state == states.handstandjump
+				if (state != states.charge && state != states.rage)
+				or (obj_player1.state == states.handstandjump && global.gameplay == 0)
+				{
+					hitboxcreate = false
+					instance_destroy(other)
+				}
+			}
+
+			if object_index == obj_fencer
+			{
+				if state != states.walk && state != states.charge
 				{
 					hitboxcreate = false
 					instance_destroy(other)

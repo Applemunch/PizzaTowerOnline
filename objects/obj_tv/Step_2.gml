@@ -6,7 +6,7 @@ if room != Realtitlescreen && global.gameplay != 0
 	{
 	    special_prompts = ds_map_create();
 	
-	    ini_open("saveData.ini");
+	    ini_open("saveData" + global.saveslot + ".ini");
 	    ds_map_set(special_prompts, "knight", ini_read_real("Prompts", "knight", 0));
 	    ds_map_set(special_prompts, "boxxedpep", ini_read_real("Prompts", "boxxedpep", 0));
 	    ds_map_set(special_prompts, "mort", ini_read_real("Prompts", "mort", 0));
@@ -46,18 +46,22 @@ with obj_player1
 	other.sugary = (character == "SP" or character == "SN");
 
 //Text
-panicy = 600 + (string_height(message) - 16)
+panicy = 600 + (string_height(message) - 16);
 if showtext
 {
 	xi = (960 / 2) + random_range(1, -1);
 	if yi > 500 + 32
 		yi -= 5
+	else
+		yi = 500 + 32
 }
 else
 {
 	xi = (960 / 2) + random_range(1,-1)
 	if yi < panicy
 		yi += 1
+	else
+		yi = panicy
 }
 
 #region old hud
@@ -627,8 +631,7 @@ else
 	&& obj_player1.y < camera_get_view_y(view_camera[0]) + 187
 	    change_pos = true;
 	
-	if bubblespr != noone
-	&& instance_exists(obj_player1)
+	if bubblespr != noone && instance_exists(obj_player1)
 	&& obj_player1.x > camera_get_view_x(view_camera[0]) + 316
 	&& obj_player1.y < camera_get_view_y(view_camera[0]) + 101
 	    change_pos = true;

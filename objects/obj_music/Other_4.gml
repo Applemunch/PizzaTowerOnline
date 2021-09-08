@@ -210,10 +210,10 @@ else if !global.panic && !global.snickchallenge
 			musplay = mu_war
 	}
 	
-	if string_letters(roomname) == "steamcc"
-		musplay = mu_steamcc
-	if string_letters(roomname) == "ssmines"
-		musplay = mu_ssmines
+	if string_letters(roomname) == "cotton"
+		musplay = mu_cotton
+	if string_letters(roomname) == "jawbreaker"
+		musplay = mu_jawbreaker
 
 	//desert
 	if string_startswith(roomname, "floor1_room")
@@ -274,14 +274,21 @@ else if !global.panic && !global.snickchallenge
 			{
 				if audio_is_playing(mu_tutorial)
 					fadeoff = 0;
-					
-				musplay = mu_ruin
+				
+				if scr_checkskin(checkskin.p_peter)
+					musplay = music_onepizzaatatime
+				else
+					musplay = mu_ruin
 			}
 			else if roomname == "etb_secret" + string(i)
-			&& global.gameplay == 0
+			//&& global.gameplay == 0
 				musplay = mu_ruinsecret
 		}
 	}
+	
+	// ancient
+	if string_letters(roomname) == "ancient"
+		musplay = mu_ancient;
 	
 	/*
 	if string_startswith(roomname, "eatery_")
@@ -319,6 +326,7 @@ else if !global.panic && !global.snickchallenge
 				if character == "SP" musplay = mu_entrancesecretSP;
 		}
 		if string_letters(roomname) == "medievalsecret"
+		or string_letters(roomname) == "ancientsecret"
 			musplay = mu_medievalsecret
 		if string_letters(roomname) == "ruinsecret" 
 			musplay = mu_ruinsecret
@@ -338,7 +346,7 @@ else if !global.panic && !global.snickchallenge
 		or string_startswith(roomname, "floor2_secret")
 			musplay = mu_forestsecret
 	}
-	if string_letters(roomname) == "steamccsecret"
+	if string_letters(roomname) == "cottonsecret"
 		musplay = mu_cottonsecret
 	
 	/*
@@ -349,7 +357,7 @@ else if !global.panic && !global.snickchallenge
 		if audio_exists(sndrep)
 			musplay = sndrep
 		else
-			musplay = mu_cottonsecretSP
+			musplay = mu_steamccsecretSP
 	}
 	*/
 	
@@ -386,10 +394,10 @@ if global.musicgame == 1
 // play the song
 if musplay > -1 && !audio_is_playing(musplay)
 {
-	audio_stop_sound(global.music)
-	scr_sound(musplay)
-	audio_sound_set_track_position(global.music, fadeoff)
-	pausedmusic = musplay
+	audio_stop_sound(global.music);
+	scr_sound(musplay);
+	audio_sound_set_track_position(global.music, fadeoff % audio_sound_length(musplay));
+	pausedmusic = musplay;
 }
 
 if forcefadeoff != -1

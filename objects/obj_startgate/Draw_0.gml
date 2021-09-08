@@ -3,12 +3,14 @@ draw_set_halign(fa_center);
 draw_set_color(c_white)
 draw_self()
 
+// start drawing
 if place_meeting(x,y,obj_player1) && !drawing
 {
 	drawing = true
 	obj_tv.manualhide = manualhide
 }
 
+// stop drawing
 if (!place_meeting(x,y,obj_player1) or obj_player1.state == states.victory) && drawing
 {
 	obj_camera.panto = [0, 0];
@@ -17,8 +19,10 @@ if (!place_meeting(x,y,obj_player1) or obj_player1.state == states.victory) && d
 	obj_tv.manualhide = false
 }
 
+// actually draw
 if drawing
 {
+	// read savefile before drawing
 	if !readsave
 	{
 		ini_open("saveData" + string(global.saveslot) + ".ini");
@@ -40,6 +44,7 @@ if drawing
 		readsave = true;
 	}
 	
+	// time attack time
 	if tamin >= 0 && global.timeattack
 	{
 		draw_set_colour(c_yellow);
@@ -51,20 +56,26 @@ if drawing
 		draw_text(x,y-60, string(tamin) + middle + string(tasec) + " (" + tachar + ")")
 	}
 	
+	// setup
 	draw_set_font(global.bigfont)
 	draw_set_colour(c_white);
 	
+	// secret count
 	var outof = 6;
 	if level == "etb"
 		outof = 2;
 	if level == "mansion"
 		outof = 3;
 	
+	// where the score number should be displayed
 	var scory = -90;
 	
+	// TOPPINS (and secret)
 	if level != "snickchallenge" && level != "snickrematch" && level != "eatery" && level != "dragonlair" && level != ""
 	{
-		scory = -160;
+		scory = -160; // raise score number to fit these
+		
+		// draw secrets
 		if level != "freezer" && level != "sewer" && level != "factory" && level != "golf"
 		&& global.gameplay == 0
 		{
@@ -73,11 +84,17 @@ if drawing
 			draw_text(x, y - 200, string(secret) + " OF " + string(outof) + " SECRET");
 		}
 		
+		// sugary spire toppins
+		var sugary = false;
+		if level == "cotton" or level == "jawbreaker"
+			sugary = true;
+		
+		// shroom
 		if toppin1
 		{
 			if level == "strongcold"
 				draw_sprite(spr_xmasshroomtoppin_idle, -1, x - 75, y - 120)
-			else if level == "steamcc"
+			else if sugary
 				draw_sprite(spr_toppinmallow, -1, x - 75, y - 120)
 			else
 			{
@@ -89,7 +106,7 @@ if drawing
 		}
 		else
 		{
-			if level == "steamcc"
+			if sugary
 				draw_sprite(spr_toppinSP_startgate, 0, x - 75, y - 120);
 			else
 			{
@@ -100,12 +117,12 @@ if drawing
 			}
 		}
 
-
+		// cheese
 		if toppin2
 		{
 			if level == "strongcold"
 				draw_sprite(spr_xmascheesetoppin_idle, -1, x - 35, y - 120)
-			else if level == "steamcc"
+			else if sugary
 				draw_sprite(spr_toppinchoc, -1, x - 35, y - 120)
 			else
 			{
@@ -117,7 +134,7 @@ if drawing
 		}
 		else
 		{
-			if level == "steamcc"
+			if sugary
 				draw_sprite(spr_toppinSP_startgate, 1, x - 35, y - 120);
 			else
 			{
@@ -128,7 +145,7 @@ if drawing
 			}
 		}
 
-
+		// tomato
 		if toppin3
 		{
 			if level == "strongcold"
@@ -143,7 +160,7 @@ if drawing
 		}
 		else
 		{
-			if level == "steamcc"
+			if sugary
 				draw_sprite(spr_toppinSP_startgate, 2, x, y - 120);
 			else
 			{
@@ -153,7 +170,8 @@ if drawing
 					draw_sprite(spr_toppinNEW_startgate, 3, x, y - 120)
 			}
 		}
-
+		
+		// sausage
 		if toppin4
 		{
 			if level == "strongcold"
@@ -168,7 +186,7 @@ if drawing
 		}
 		else
 		{
-			if level == "steamcc"
+			if sugary
 				draw_sprite(spr_toppinSP_startgate, 3, x + 35, y - 120);
 			else
 			{
@@ -178,7 +196,8 @@ if drawing
 					draw_sprite(spr_toppinNEW_startgate, 1, x + 35, y - 120)
 			}
 		}
-	
+		
+		// pineapple
 		if toppin5
 		{
 			if level == "strongcold"
@@ -193,7 +212,7 @@ if drawing
 		}
 		else
 		{
-			if level == "steamcc"
+			if sugary
 				draw_sprite(spr_toppinSP_startgate, 4, x + 75, y - 120);
 			else
 			{
@@ -205,6 +224,7 @@ if drawing
 		}
 	}
 	
+	// draw the score
 	if level != "eatery" && level != ""
 		draw_text(x,y + scory, string(highscore))
 	

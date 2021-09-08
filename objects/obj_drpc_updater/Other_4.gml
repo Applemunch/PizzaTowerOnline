@@ -105,13 +105,16 @@ else
 		det = "Freezer";
 	
 	else if string_startswith(r, "etb")
-		det = "ETB Tower";
+		det = "Early Test Build";
 	
-	else if string_startswith(r, "steamcc")
+	else if string_startswith(r, "ancient")
+		det = "Ancient Tower";
+	
+	else if string_startswith(r, "cotton")
 		det = "Cotton Town";
 	
-	else if string_startswith(r, "eatery")
-		det = "The Endless Eatery";
+	else if string_startswith(r, "jawbreaker")
+		det = "Jawbreaker Mines";
 	
 	else if room == editor_entrance
 	{
@@ -150,7 +153,7 @@ else
 	else if room == timesuproom
 		state = "Time's up!";
 	
-	else if room != timesuproom
+	else
 	{
 		det = "???";
 		state = "";

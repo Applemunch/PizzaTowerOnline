@@ -63,7 +63,8 @@ function scr_initenemy()
 	dodgebuffer = 0
 	arcprojectiletimer = 0
 	
-	escape = false
+	if !variable_instance_exists(id, "escape")
+		escape = false;
 	oggrav = 0.5
 	arena = false
 	wave = 0

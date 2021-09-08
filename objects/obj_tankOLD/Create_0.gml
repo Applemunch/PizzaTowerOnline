@@ -1,4 +1,4 @@
-scr_initenemy()
+event_inherited();
 
 patrolling = false
 patrolmax = 100

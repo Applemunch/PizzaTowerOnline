@@ -1,4 +1,4 @@
-#macro coinoffset 173.411
+#macro coinoffset (global.saveslot == "" ? 173.411 : 0)
 
 function scr_setcoin(n) {
 	global.pizzacoin = n - coinoffset;

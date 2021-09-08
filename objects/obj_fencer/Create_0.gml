@@ -1,4 +1,4 @@
-scr_initenemy()
+event_inherited();
 
 grav = 0.5;
 hsp = 0;
@@ -37,7 +37,7 @@ boundbox = false
 spr_dead = spr_fencer_dead
 important = false
 heavy = false
-depth =0
+depth = 0
 charging = false
 
 grabbedby = 0

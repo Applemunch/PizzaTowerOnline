@@ -77,8 +77,6 @@ else
 }
 if state == states.climbwall
 {
-	show_debug_message("climbwall state");
-	
 	var moves = xscale;
 	while !scr_solid(x + moves + sign(moves), y)
 	{
@@ -90,7 +88,6 @@ if state == states.climbwall
 		}
 	}
 	
-	show_debug_message(string(moves) + " moves");
 	x += moves;
 }
 
@@ -107,6 +104,8 @@ oldhallway = false
 
 roomstartx = x
 roomstarty = y
+hitX = x
+hitY = y
 
 if baddiegrabbedID != 0 && baddiegrabbedID != obj_null && baddiegrabbedID != obj_otherplayer
 {
