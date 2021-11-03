@@ -12,6 +12,14 @@ audio_stop_all();
 instance_activate_all();
 global.music = -1;
 
+// modifier
+global.failedmod = false;
+if global.modifier != -1
+{
+	with obj_drpc_updater
+		event_user(3);
+}
+
 if string_startswith(roomname, "entrance")
 // entrance
 	room_goto_new(entrance_1)

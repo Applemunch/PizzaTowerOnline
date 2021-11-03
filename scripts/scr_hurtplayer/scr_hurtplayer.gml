@@ -31,7 +31,7 @@ function scr_hurtplayer(argument0)
 		}
 		
 		// custom
-		else if state == states.parry or state == states.taxi or state == states.actor or state == states.backbreaker or state == states.bump or state == states.firemouth or state == states.barrel or state == states.hitlag or state == states.rotate or state == states.frozen or state == states.door or state == states.victory or (state == states.fireass && global.gameplay != 0) or instance_exists(obj_parryhitbox)
+		else if state == states.parry or state == states.taxi or state == states.actor or state == states.backbreaker or state == states.bump or state == states.firemouth or state == states.barrel or state == states.hitlag or state == states.rotate or state == states.frozen or state == states.door or state == states.victory or state == states.keyget or (state == states.fireass && global.gameplay != 0) or instance_exists(obj_parryhitbox)
 		{
 		
 		}

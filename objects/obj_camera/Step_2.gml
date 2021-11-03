@@ -289,9 +289,15 @@ if instance_exists(player) && player.state != states.timesup && player.state != 
 			
 			if player.cam != noone // render
 			{
+				with obj_baddiecollisionbox
+				{
+					if instance_exists(baddieID) && !baddieID.thrown && baddieID.state != states.grabbed
+					{
+						instance_deactivate_object(self);
+						instance_deactivate_object(baddieID);
+					}
+				}
 				instance_deactivate_object(obj_forkhitbox);
-				instance_deactivate_object(obj_baddiecollisionbox);
-				instance_deactivate_object(obj_baddie);
 				instance_deactivate_object(obj_cheesedragon);
 				instance_deactivate_object(obj_baddiespawner);
 				
@@ -299,6 +305,8 @@ if instance_exists(player) && player.state != states.timesup && player.state != 
 				instance_activate_region(player.cam.x - offset, player.cam.y - offset, player.cam_width + offset, player.cam_height + offset, true);
 			}
 		}
+		else
+			camera_set_view_pos(cam_view, camera_get_view_x(cam_view) + shkh, camera_get_view_y(cam_view) + shkv);
 		
 		#endregion
 	}

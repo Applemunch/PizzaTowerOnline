@@ -185,7 +185,7 @@ switch sel[1]
 			["GUM", "Don't actually chew it please."],
 			["CANDY CANE", "It's the Candy"],
 			["PUMPKIN", "Uh, a sugary one. Yeah."],
-			["THE NOISE", "Something's wrong."],
+			["FAMILIAR GREMLIN", "Something's wrong."],
 			["SAGE", "If it ever happens I will shit bricks."],
 			["DOOM", "It's the rip and tearing patisje!"],
 			["ANNIE", "Ball-busting time."],
@@ -203,6 +203,15 @@ switch sel[1]
 			["CRAZY FROG", "Ding ding."],
 			["FACTORY", "DOOR STUCK"],
 			["PINJ", "Bismuth subsalicylate."],
+			["SUGAR", "Sugar is green, of course."],
+			["MASSACRE", "SUGARY SPIRE 2: The Quest for Diabetes"],
+			["RIVALS", "Did we find a coder yet?"],
+			["OLD SCHOOL", "Also known as \"grayscale\"."],
+			["ZOMBIFIED", "Uh, brains, I think?"],
+			["FORESTATION", "Made of sugarcane plants."],
+			["LAMDA", "Featuring a white scooter...?"],
+			["GOLDEN", "Unlocks the ability to SHINE."],
+			["GNOME WIZARD", "Despite being a wizard, he has no redeeming qualities."],	
 		];
 		if global.streamer
 		{
@@ -217,8 +226,19 @@ switch sel[1]
 		spr_palette = spr_creampalette;
 		spr_idle = spr_playerSN_idle;
 		selarray = [
-			["YELLOW", "take pizz out of pizzano and translate from spanish"],
+			["YELLOW", "Piss ano"],
 			["PIZZANO", "YAH-HAH!"],
+			["FAMILIAR GREMLIN", "Close enough, but not quite."],
+			["FAMILIAR CHEF", "A somewhat overweight Italian nuisance."],
+			["LASAGNA", "Mondays."],
+			["SPICE", "When you want just a little spiciness on your candy."],
+			["PLUMBER", "Holy shit Super Fucking Mario"],
+			["GREEN APPLE", "Now I know why this is the least favorite candy flavor."],
+			["GRAPE SODA", "There's more purple than actual soda in this."],
+			["ANTIPATHIC", "Isn't it antipathetic?"],
+			["GUMMY BEAR", "Blood tasted."],
+			["LIME", "Unfortunate palette placement."],
+			["CRYSTALIZED", "Missed opportunity to make it transparent..."],
 		];
 	break;
 	

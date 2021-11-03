@@ -53,19 +53,22 @@ if bombreset > 0
 var targetplayer = instance_nearest(x, y, obj_player1)
 
 //Throw Bomb at
-if x != targetplayer.x && state != states.pizzagoblinthrow && bombreset <= 0 && grounded && !rematchscare
+if instance_exists(targetplayer)
 {
-	if ((targetplayer.x > x - 400) && (targetplayer.x < x + 400)) && (y <= targetplayer.y+20 && y >= targetplayer.y- 20)
+	if x != targetplayer.x && state != states.pizzagoblinthrow && bombreset <= 0 && grounded && !rematchscare
 	{
-		if (state = states.walk or state = states.idle) 
+		if ((targetplayer.x > x - 400) && (targetplayer.x < x + 400)) && (y <= targetplayer.y+20 && y >= targetplayer.y- 20)
 		{
-			sprite_index = spr_pizzagoblin_throwbomb
-			if global.snickrematch
-				sprite_index = spr_pizzagoblin_throwbomb_re
+			if (state = states.walk or state = states.idle) 
+			{
+				sprite_index = spr_pizzagoblin_throwbomb
+				if global.snickrematch
+					sprite_index = spr_pizzagoblin_throwbomb_re
 			
-			image_index = 0
-			image_xscale = -sign(x - targetplayer.x)
-			state = states.pizzagoblinthrow
+				image_index = 0
+				image_xscale = -sign(x - targetplayer.x)
+				state = states.pizzagoblinthrow
+			}
 		}
 	}
 }

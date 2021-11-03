@@ -11,7 +11,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "sfx_diagclose.wav",
-  "duration": 1.005,
+  "duration": 1.0,
   "parent": {
     "name": "pto extra",
     "path": "folders/Sounds/pto extra.yy",

@@ -1,4 +1,4 @@
-if !instance_exists(baddieID) && room != custom_lvl_room
+if !instance_exists(baddieID)
 {
 	instance_destroy();
 	exit;

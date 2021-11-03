@@ -24,7 +24,7 @@ if con == 0
 		scr_soundeffect(sfx_step);
 		
 		global.saveslot = "";
-		if !os_is_network_connected(false)
+		if !os_is_network_connected()
 		{
 			scr_soundeffect(sfx_enemyprojectile)
 			with obj_roomname

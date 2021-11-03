@@ -1,2 +1,0 @@
-
-global.roommessage = "DANCE ROOM";

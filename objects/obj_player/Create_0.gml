@@ -1,9 +1,3 @@
-if instance_number(object_index) > 1
-{
-    instance_destroy()
-    exit;
-}
-
 if !global.pastdisclaimer && !debug
 {
 	room_goto(room_of_dog);
@@ -154,9 +148,10 @@ baddiegrabbedID = 0
 spr_palette = spr_peppalette
 character = "P"
 
-pal_swap_init_system(shd_pal_swapper, true);
 scr_characterspr()
 paletteselect = check_shaders()
+if repaintjokebuild
+	paletteselect = 0
 
 global.panic = false
 global.snickchallenge = false
@@ -186,28 +181,19 @@ global.funmode = false
 
 
 //Option
-
 ini_open("saveData.ini");
 global.option_fullscreen = ini_read_real("Option","fullscreen",1)  
 global.option_resolution = ini_read_real("Option","resolution",1)  
 ini_close();
 
+window_set_fullscreen(!global.option_fullscreen);
 
-if global.option_fullscreen = 0
-window_set_fullscreen(true);
-
-if global.option_fullscreen = 1
-window_set_fullscreen(false);
-
-
-if global.option_resolution = 0
-window_set_size( 480, 270 );
-
-if global.option_resolution = 1
-window_set_size( 960, 540 );
-
-if global.option_resolution = 2
-window_set_size( 1920, 1080 );
+if global.option_resolution == 0
+	window_set_size( 480, 270 );
+if global.option_resolution == 1
+	window_set_size( 960, 540 );
+if global.option_resolution == 2
+	window_set_size( 1920, 1080 );
 
 
 backtohubstartx = x
@@ -448,3 +434,4 @@ endtumble = false
 hascollision = true
 
 img_angle = 0
+canfall = true

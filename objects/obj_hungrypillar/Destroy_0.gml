@@ -63,6 +63,11 @@ if room == rm_editor exit;
 		//DDP Set global timer based on current stage
 		switch roomname
 		{
+			default:
+				global.minutes = 2
+				global.seconds = 59
+				break
+				
 			case "entrance_10":
 				global.minutes = 2
 				global.seconds = 30
@@ -222,11 +227,34 @@ if room == rm_editor exit;
 			    global.seconds = global.editorseconds
 			    break
 		}
-
-		// Start up panicbg effects if option is enabled
-		if global.panicbg {
-			scr_panicbg_init()
+		if global.modifier == mods.no_toppings
+		{
+			global.minutes *= 1.5;
+			global.minutes = floor(global.minutes);
+			
+			// calculate seconds
+			if global.seconds == 30
+				global.seconds = 29;
+			
+			global.seconds *= 2;
+			if global.seconds >= 60
+			{
+				global.minutes += 1;
+				global.seconds -= 60;
+			}
+			
+			if global.seconds > 0 && global.seconds < 20
+				global.seconds = 15;
+			if global.seconds > 20 && global.seconds < 40
+				global.seconds = 29;
+			if global.seconds > 40
+				global.seconds = 59;
 		}
+		
+		// Start up panicbg effects if option is enabled
+		if global.panicbg
+			scr_panicbg_init()
+		
 		global.wave = 0
 		global.maxwave = (global.minutes * 60 + global.seconds) * 60
 	}

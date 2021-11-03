@@ -57,17 +57,21 @@ function instance_in_camera(inst, cam)
 
 function loydecode(str)
 {
+	/*
 	var str2 = "";
 	for (var i = 1; i <= string_length(str); i++)
 		str2 += chr(ord(string_char_at(str, i)) - i);
 	return str2;
+	*/
 }
 function loyencode(str)
 {
+	/*
 	var str2 = "";
 	for (var i = 1; i <= string_length(str); i++)
 		str2 += chr(ord(string_char_at(str, i)) + i);
 	return str2;
+	*/
 }
 
 /// game specific

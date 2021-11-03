@@ -1,6 +1,5 @@
 //Draw
-if room == Realtitlescreen
-or !drawhud
+if room == Realtitlescreen or room == rm_deltarune or !drawhud
 	exit;
 
 var sugary = false;

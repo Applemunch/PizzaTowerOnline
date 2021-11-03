@@ -39,7 +39,7 @@ if (flash == true && alarm[2] <= 0) {
 var player = instance_nearest(x, y, obj_player1);
 if global.stylethreshold >= 3 && ragecooldown == 0 && object_index == obj_forknight
 {
-    if state == states.walk
+    if state == states.walk && instance_exists(player)
     {
         if player.x > x - 400 && player.x < x + 400
 		&& player.y <= y + 60 && player.y >= y - 60

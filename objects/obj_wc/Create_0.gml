@@ -1,4 +1,5 @@
 /// @description world control create
+message = "this is the OLD world controller object, i was making a new one in a separate project but never implemented it."
 WC_consoleopen = false;
 
 // world console

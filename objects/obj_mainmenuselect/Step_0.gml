@@ -27,7 +27,7 @@ scr_soundeffect(sfx_step)
 
 if (obj_player1.key_jump or keyboard_check_pressed(vk_enter)) && optionselected = 0
 {
-	if !os_is_network_connected(false)
+	if !os_is_network_connected()
 	{
 		scr_soundeffect(sfx_enemyprojectile)
 		with obj_roomname

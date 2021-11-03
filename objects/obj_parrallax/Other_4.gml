@@ -1,19 +1,19 @@
 if layer_exists("Tiles_1")
 	layer_depth("Tiles_1", 100)
 if layer_exists("Tiles_2")
-	layer_depth("Tiles_2", 98)
+	layer_depth("Tiles_2", 99)
 if layer_exists("Tiles_3")
-	layer_depth("Tiles_3", 97)
+	layer_depth("Tiles_3", 98)
 
 if layer_exists("Assets_1") && room == chateau_7
-	layer_depth("Assets_1", 96)
+	layer_depth("Assets_1", 95)
 
 if layer_exists("Tiles_1_NEW")
 	layer_depth("Tiles_1_NEW", 100)
 if layer_exists("Tiles_2_NEW")
-	layer_depth("Tiles_2_NEW", 98)
+	layer_depth("Tiles_2_NEW", 99)
 if layer_exists("Tiles_3_NEW")
-	layer_depth("Tiles_3_NEW", 97)
+	layer_depth("Tiles_3_NEW", 98)
 
 bgscrollx = 0;
 bgscrolly = 0;

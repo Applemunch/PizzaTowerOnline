@@ -1,5 +1,8 @@
 function scr_checkskin(argument0)
 {
+	if !instance_exists(obj_player1)
+		return false;
+	
 	enum checkskin
 	{
 		p_anton,

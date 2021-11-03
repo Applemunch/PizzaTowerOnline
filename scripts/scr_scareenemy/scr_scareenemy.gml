@@ -1,6 +1,8 @@
 function scr_scareenemy()
 {
 	var player = instance_nearest(x,y,obj_player1)
+	if !instance_exists(player)
+		exit;
 	
 	if state != states.grabbed 
 	if ((player.x > x - 400) && (player.x < x + 400)) && (y <= player.y+60 && y >= player.y- 60)

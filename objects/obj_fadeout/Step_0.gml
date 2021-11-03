@@ -1,5 +1,5 @@
 if instance_exists(obj_pausefadeout)
-instance_destroy(obj_pausefadeout)
+	instance_destroy(obj_pausefadeout)
 
 if fadealpha > 1
 {
@@ -79,7 +79,7 @@ if fadealpha > 1
                 y = other.yy
             }
 		}
-		if obj_player1.state == states.grabbed
+		if instance_exists(obj_player1) && obj_player1.state == states.grabbed
 		{
 			fadealpha = 1
 			cont = false;

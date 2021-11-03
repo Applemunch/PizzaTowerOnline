@@ -5,5 +5,3 @@ sprite_index = spr_snickrematchcomputer
 
 if global.timeattack or global.modifier == mods.no_toppings
 	instance_destroy();
-
-msg = "SNICKS REMATCH";

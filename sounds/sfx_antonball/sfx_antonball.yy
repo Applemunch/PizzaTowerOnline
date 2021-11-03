@@ -14,7 +14,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "sfx_antonball",
-  "duration": 1.505,
+  "duration": 1.5,
   "parent": {
     "name": "antonball",
     "path": "folders/Sounds/pto extra/antonball.yy",

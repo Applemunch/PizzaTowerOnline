@@ -13,8 +13,8 @@
   "soundFile": "mu_fryboys_pc.ogg",
   "duration": 245.624985,
   "parent": {
-    "name": "pto extra",
-    "path": "folders/Sounds/pizza castle/pto extra.yy",
+    "name": "pizza castle",
+    "path": "folders/Sounds/pto extra/pizza castle.yy",
   },
   "resourceVersion": "1.0",
   "name": "mu_fryboys_pc",

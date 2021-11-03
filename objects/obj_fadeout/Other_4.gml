@@ -1,4 +1,7 @@
 /// @description taxi
+if !instance_exists(obj_player)
+	exit;
+
 //Intro
 if room == Titlescreen && obj_player.state == states.titlescreen
 {

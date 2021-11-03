@@ -10,7 +10,7 @@
     "name": "audiogroup_default",
     "path": "audiogroups/audiogroup_default",
   },
-  "soundFile": "mu_hubarcade.wav",
+  "soundFile": "mu_hubarcade.ogg",
   "duration": 157.894745,
   "parent": {
     "name": "pto extra",

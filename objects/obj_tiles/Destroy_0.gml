@@ -3,7 +3,7 @@ if room != rm_editor exit;
 if global.autotile == false exit;
 if global.loadeditor == true exit;
 
-if (sprite_get_number(sprite_index) > 5 || sprite_get_number(sprite_index) <= 1)
+if sprite_get_number(sprite_index) > 5 || sprite_get_number(sprite_index) <= 1
 {
     inst[0] = instance_place((x + 32), y, obj_tiles)
     inst[1] = instance_place((x - 32), y, obj_tiles)
@@ -22,7 +22,7 @@ if (sprite_get_number(sprite_index) > 5 || sprite_get_number(sprite_index) <= 1)
         }
     }
 }
-if (sprite_get_number(sprite_index) <= 5 && sprite_get_number(sprite_index) > 1)
+if sprite_get_number(sprite_index) <= 5 && sprite_get_number(sprite_index) > 1
 {
     inst[0] = instance_place((x + 32), y, obj_tiles)
     inst[1] = instance_place((x - 32), y, obj_tiles)
@@ -41,7 +41,7 @@ if (sprite_get_number(sprite_index) <= 5 && sprite_get_number(sprite_index) > 1)
         }
     }
 }
-if (sprite_get_number(sprite_index) <= 1)
+if sprite_get_number(sprite_index) <= 1
 {
     inst[0] = instance_place((x + 32), y, obj_tiles)
     inst[1] = instance_place((x - 32), y, obj_tiles)

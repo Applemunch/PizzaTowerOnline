@@ -11,7 +11,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "sfx_toppingSP.ogg",
-  "duration": 0.471984,
+  "duration": 0.466984,
   "parent": {
     "name": "sfx",
     "path": "folders/Sounds/sfx.yy",

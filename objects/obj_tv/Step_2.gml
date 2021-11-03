@@ -68,7 +68,12 @@ else
 
 if global.gameplay == 0
 {
-
+	if surface_exists(promptsurface)
+	{
+		surface_free(promptsurface);
+		tvsprite = spr_tvdefault;
+	}
+	
 	// More logic
 	if (instance_exists(obj_player1) && obj_player1.y < camera_get_view_y(view_camera[0]) + 200 && obj_player1.x > camera_get_view_x(view_camera[0]) + camera_get_view_width(view_camera[0]) - 200)
 	or manualhide
@@ -569,7 +574,12 @@ else
 					sprite_index = animset;
 			}
 			else
-				sprite_index = spr_tv_open;
+			{
+				if sugary
+					sprite_index = spr_tv_openSP;
+				else
+					sprite_index = spr_tv_open;
+			}
 			
 			if animset == spr_tv_placeholder
 			{

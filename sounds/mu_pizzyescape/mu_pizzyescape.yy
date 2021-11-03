@@ -11,7 +11,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "mu_pizzyescape.wav",
-  "duration": 198.881866,
+  "duration": 228.975,
   "parent": {
     "name": "music",
     "path": "folders/Sounds/music.yy",

@@ -15,17 +15,22 @@ if sprite_index == spr_exitgate
 	image_index = 1
 
 // rematch computer slow down music
-if sprite_index == spr_snickrematchcomputer
+if sprite_index == spr_snickrematchcomputer && instance_exists(obj_player)
 	audio_sound_pitch(global.music, min(lerp(0.5, 1, floor(distance_to_object(obj_player1)) / 150), 1));
 
 // show level name when player near
-if msg != "" && obj_player1.state != states.victory
-&& distance_to_object(obj_player1) < 50 && obj_player1.state != states.gameover
+if instance_exists(obj_player)
 {
-	with obj_tv
+	var p = instance_nearest(x, y, obj_player);
+	
+	if msg != "" && distance_to_object(p) < 50
+	&& p.state != states.gameover && p.state != states.victory
 	{
-		message = other.msg
-		showtext = true
-		alarm[2] = 2
+		with obj_tv
+		{
+			message = other.msg
+			showtext = true
+			alarm[2] = 2
+		}
 	}
 }

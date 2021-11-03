@@ -46,14 +46,20 @@ if room == forest_1
 	global.srank = 14000
 if room == etb_1
 	global.srank = 3000
+if room == kungfu_1
+{
+	if global.gameplay == 0
+		global.srank = 15000;
+}
 
+// calculate lesser ranks
 if room == custom_lvl_room
 	alarm[1] = 4;
 else
 {
-	global.arank = global.srank -(global.srank/4)
-	global.brank = global.srank -(global.srank/4 * 2)
-	global.crank = global.srank -(global.srank/4 * 3)
+	global.arank = global.srank - global.srank / 4;
+	global.brank = global.srank - global.srank / 4 * 2;
+	global.crank = global.srank - global.srank / 4 * 3;
 }
 
 // change snick rematch appearance
@@ -63,6 +69,20 @@ for (var i = 0; i < array_length(layers); i++;)
 	var layers_e = layer_get_all_elements(layers[i]);
 	for (var j = 0; j < array_length(layers_e); j++)
 	{
+		// repaint sprites
+		if repaintjokebuild
+		{
+			if layer_get_element_type(layers_e[j]) == layerelementtype_sprite
+			{
+				var getch = asset_get_index(sprite_get_name(layer_sprite_get_sprite(layers_e[j])) + "_PP");
+				if sprite_exists(getch)
+					layer_sprite_change(layers_e[j], getch);
+				continue;
+			}
+			else
+				break;
+		}
+		
 		if global.snickrematch
 		{
 			// backgrounds

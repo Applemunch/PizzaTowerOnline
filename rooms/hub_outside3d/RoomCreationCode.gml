@@ -1,3 +1,0 @@
-
-
-global.roommessage = "GRAB MUSEUM"

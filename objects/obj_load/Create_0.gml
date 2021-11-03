@@ -10,14 +10,17 @@ if !check_shaders() && !ini_read_real("online", "shitgraphs", false)
 	ini_write_real("online", "shitgraphs", true);
 }
 
+pal_swap_init_system(shd_pal_swapper, true);
+
 // fonts
-global.bigfont = font_add_sprite_ext(spr_font, "ABCDEFGHIJKLMNOPQRSTUVWXYZ!.1234567890:_-?", true, 0)
+global.bigfont = font_add_sprite_ext((repaintjokebuild ? spr_font_PP : spr_font), "ABCDEFGHIJKLMNOPQRSTUVWXYZ!.1234567890:_-?", true, 0)
+loadfont = font_add_sprite_ext(spr_font, "ABCDEFGHIJKLMNOPQRSTUVWXYZ!.1234567890:_-?", true, 0)
 global.smallfont = font_add_sprite_ext(spr_smallerfont, "ABCDEFGHIJKLMNOPQRSTUVWXYZ!.:?1234567890?", true, 0)
-global.font_small = font_add_sprite_ext(spr_smallfont, "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!._1234567890:;?▯|*/',\"()=-+@█%~ÁÉÍÓÚáéíóúÑñ", true, -2)
+global.font_small = font_add_sprite_ext(spr_smallfont, "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!._1234567890:;?▯|*/',\"()=-+@█%~ÁÉÍÓÚáéíóúÑñ[]", true, -2)
 global.smallnumber = font_add_sprite_ext(spr_smallnumber, "1234567890-.", true, 0)
-global.collectfont = font_add_sprite_ext(spr_font_collect, "0123456789", true, 0)
+global.collectfont = font_add_sprite_ext(spr_font_collect, "0123456789.-", true, 0)
 global.candyfont = font_add_sprite_ext(spr_font_candycollect, "0123456789", true, 0)
-global.combofont = font_add_sprite_ext(spr_font_combo, "0123456789", true, 0)
+global.combofont = font_add_sprite_ext(spr_font_combo, "0123456789.-", true, 0)
 
 // variable
 global.surfacemach = ini_read_real("online", "surfacemach", false);
@@ -32,6 +35,8 @@ global.showfps = ini_read_real("online", "showfps", false);
 global.pvp = /*ini_read_real("online", "pvp", false)*/ false;
 global.drawborder = ini_read_real("online", "drawborder", false)
 global.pestoanchovi = ini_read_real("online", "pestoanchovi", false)
+global.camerasmoothing = ini_read_real("online", "camerasmoothing", false)
+global.screenshader = ini_read_real("online", "screenshader", 0)
 
 global.panicbg = ini_read_real("online", "panicbg", false); // waving background
 global.panicmelt = ini_read_real("online", "panicmelt", false) // motion blur
@@ -43,6 +48,12 @@ global.musicvolume = ini_read_real("online", "musicvolume", 0.6);
 global.mastervolume = ini_read_real("online", "mastervolume", 1);
 global.machsound = ini_read_real("online", "machsound", 0);
 global.musicgame = ini_read_real("online", "musicgame", 0);
+if repaintjokebuild
+{
+	global.musicgame = 0;
+	global.musicvolume = max(global.musicvolume, 0.5);
+	global.mastervolume = 1;
+}
 
 audio_master_gain(global.mastervolume / (!code_is_compiled() + 1));
 
@@ -63,23 +74,7 @@ global.fun = irandom_range(1, 1000);
 // language
 global.language = ini_read_string("online", "language", "en") // language
 global.langmap = -1;
-
-try
-{
-	var _buf = buffer_load("lang/lang-" + global.language + ".json");
-	if _buf > -1
-	{
-		global.langmap = json_decode(string(buffer_read(_buf, buffer_string)));
-		buffer_delete(_buf);
-	}
-}
-
-if global.langmap == -1
-{
-	show_message("Language file failed to load");
-	game_end();
-	exit;
-}
+lang_load(global.language);
 
 // prepare
 ini_close();

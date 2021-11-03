@@ -16,8 +16,8 @@
   "soundFile": "mu_snickrematch_pc.wav",
   "duration": 212.470139,
   "parent": {
-    "name": "pto extra",
-    "path": "folders/Sounds/pizza castle/pto extra.yy",
+    "name": "pizza castle",
+    "path": "folders/Sounds/pto extra/pizza castle.yy",
   },
   "resourceVersion": "1.0",
   "name": "mu_snickrematch_pc",

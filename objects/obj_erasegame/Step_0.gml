@@ -102,9 +102,10 @@ if optionselected == 1 && (obj_player.key_jump or keyboard_check_pressed(vk_ente
 }
 
 //Finish
-if (obj_player1.key_slap2  or keyboard_check_pressed(vk_escape)) or (optionselected = 0  && (obj_player1.key_jump or keyboard_check_pressed(vk_enter))) 
+if (obj_player1.key_slap2 or keyboard_check_pressed(vk_escape)) or (optionselected = 0  && (obj_player1.key_jump or keyboard_check_pressed(vk_enter))) 
 {
 	scr_soundeffect(sfx_enemyprojectile)
 	obj_option.visible = true
+	audio_sound_gain(global.music, global.musicvolume, 0)
 	instance_destroy()
 }

@@ -5,7 +5,7 @@ with (other)
 	if key_up && grounded && (state = states.normal or state = states.mach1 or state = states.mach2 or state == states.pogo or state = states.mach3 or state = states.Sjumpprep) 
 	&& y = other.y + 50 && !instance_exists(obj_noisesatellite) && !instance_exists(obj_fadeout) && state != states.door && state != states.comingoutdoor
 	{
-		if !os_is_network_connected(false)
+		if !os_is_network_connected()
 		{
 			scr_soundeffect(sfx_enemyprojectile)
 			with obj_roomname

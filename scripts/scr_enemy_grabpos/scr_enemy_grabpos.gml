@@ -80,6 +80,9 @@ function scr_enemy_grabpos(player)
 		else
 			y = player.y - (floor(player.image_index) * 10);
 	}
+	if sprite_index == spr_gumslime_stunned
+		y -= 20;
+	
 	image_xscale = -player.xscale
 }
 function scr_enemy_driverpos(player)

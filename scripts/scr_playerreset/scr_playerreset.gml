@@ -75,8 +75,6 @@ function scr_playerreset()
 	
 	global.miniboss = false
 	
-	obj_player1.spotlight = true
-	
 	instance_destroy(obj_coopflag, false)
 	instance_destroy(obj_cooppointer, false)
 	
@@ -125,24 +123,29 @@ function scr_playerreset()
 	obj_music.fadeoff = 0
 	//audio_stop_all()
 
-
 	if instance_exists(obj_timesup)
 		instance_destroy(obj_timesup, false)
 	global.seconds = 59
 	global.minutes = 1
-	obj_player1.state = states.comingoutdoor
-	obj_player1.visible = true
 
-	obj_camera.chargecamera = 0
-	obj_camera.crouchcamera = 0
+	with obj_camera
+	{
+		chargecamera = 0
+		crouchcamera = 0
+	}
 	
 	if ds_exists(global.saveroom, ds_type_list)
 		ds_list_clear(global.saveroom)
 	if ds_exists(global.baddieroom, ds_type_list)
 		ds_list_clear(global.baddieroom)
-	with (obj_player1) 
+	
+	with obj_player
 	{
+		state = states.comingoutdoor
+		visible = true
+		spotlight = true
 		image_blend = c_white;
+		canfall = true;
 		
 		supercharged = false
 		pizzapepper = 0

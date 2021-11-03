@@ -1,4 +1,5 @@
-switch obj_player1.character
+var char = instance_exists(obj_player1) ? obj_player1.character : "P";
+switch char
 {
 	default:
 	case "P":
@@ -16,8 +17,5 @@ switch obj_player1.character
 		break;
 	case "M":
 		image_index = 4;
-		break;
-	case "G":
-		image_index = 5;
 		break;
 }

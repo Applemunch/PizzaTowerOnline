@@ -13,3 +13,4 @@ if running
 
 charprev = "";
 setda = false;
+modstate = "";

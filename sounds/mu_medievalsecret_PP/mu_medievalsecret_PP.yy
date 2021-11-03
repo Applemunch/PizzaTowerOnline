@@ -14,7 +14,7 @@
   "duration": 71.4893646,
   "parent": {
     "name": "secret",
-    "path": "folders/Sounds/repaint/secret.yy",
+    "path": "folders/Sounds/REPAINT/secret.yy",
   },
   "resourceVersion": "1.0",
   "name": "mu_medievalsecret_PP",

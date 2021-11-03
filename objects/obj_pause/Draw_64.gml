@@ -2,6 +2,9 @@ if pause
 {
 	application_surface_draw_enable(true);
 	
+	draw_set_colour(c_black);
+	draw_rectangle(0, 0, 960, 540, false);
+	
 	if array_length(bgs) == 0
 	{
 		// get backgrounds
@@ -34,10 +37,10 @@ if pause
 		draw_surface(surf, 0, 0);
 	}
 	
-	// pause
-	draw_set_colour(c_black);
-	draw_set_alpha(0.8);
+	draw_set_alpha(0.75);
 	draw_rectangle(0, 0, 960, 540, false);
+	
+	// pause
 	draw_set_colour(c_white);
 	draw_set_alpha(1);
 	draw_sprite_ext(spr_pausescreen, selected, 0, 4, 1, 1, 0, c_black, 1);

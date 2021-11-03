@@ -11,7 +11,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "sfx_monkey.wav",
-  "duration": 0.497667,
+  "duration": 0.492667,
   "parent": {
     "name": "sfx",
     "path": "folders/Sounds/sfx.yy",

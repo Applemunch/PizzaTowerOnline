@@ -29,7 +29,7 @@ scr_scareenemy()
 var targetplayer = instance_nearest(x, y, obj_player1);
 
 //Charge
-if x != targetplayer.x && grounded && !rematchscare
+if instance_exists(targetplayer) && x != targetplayer.x && grounded && !rematchscare
 {
 	if ((targetplayer.x > x - 400) && (targetplayer.x < x + 400)) && (y <= targetplayer.y+20 && y >= targetplayer.y- 20)
 	{

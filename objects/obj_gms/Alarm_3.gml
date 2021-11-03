@@ -53,7 +53,7 @@ if loadsave
 	instance_create(x, y, obj_fadeout);
 
 	// spawn in world controller
-	if gms_self_admin_rights()
+	if gms_self_admin_rights() && !repaintjokebuild
 		instance_create(0, 0, obj_wc);
 }
 else

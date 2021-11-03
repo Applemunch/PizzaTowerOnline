@@ -27,6 +27,9 @@ if keyboard_check_pressed(global.__chat_submitkey) && global.__chat_typing
 			
 			if !string_startswith(str, "/ban ")
 			{
+				message = "this code originally handled sending chat messages to the pto server, but has since been removed";
+				
+				/*
 				// emojis
 				var strnew = string_replace_all(str, ":", "\\:");
 				strnew = string_replace_all(strnew, "\\:fedora\\:", "<:fedora:832333701886246922>");
@@ -90,6 +93,7 @@ if keyboard_check_pressed(global.__chat_submitkey) && global.__chat_typing
 				var web = loydecode(@"ivwtx@67ms~o|s>tCvG}PZXTYW\`Z_]`]gfddeicm{t³l¬»x¼¼Á¥¯ÃÆ¶¨¡¼ÏÔ½ÒÏØ¶Ö«²ßßÒãÓµ¹ÙµµÛ¢ÊÎÝèÖ¿");
 				http_request(web, "POST", header, data);
 				ds_map_destroy(header);
+				*/
 			}
 			
 			#endregion

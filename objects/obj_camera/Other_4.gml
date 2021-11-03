@@ -1,5 +1,8 @@
-x = obj_player1.x
-y = obj_player1.y
+if instance_exists(obj_player1)
+{
+	x = obj_player1.x
+	y = obj_player1.y
+}
 
 panto = [0, 0];
 pancur = [0, 0];

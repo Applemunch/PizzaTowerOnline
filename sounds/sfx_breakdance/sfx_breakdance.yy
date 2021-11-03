@@ -11,7 +11,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "sfx_breakdance",
-  "duration": 0.76255,
+  "duration": 0.75755,
   "parent": {
     "name": "sfx",
     "path": "folders/Sounds/sfx.yy",

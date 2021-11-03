@@ -1,5 +1,3 @@
-global.roommessage = "PRELOGIN"
-
 if !debug
 	instance_destroy(obj_wc);
 global.panic = false;

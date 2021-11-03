@@ -28,7 +28,7 @@ if con == 2
 }
 
 // no net
-if nonet == os_is_network_connected(false)
+if net != os_is_network_connected()
 {
 	audio_stop_all();
 	room_restart();

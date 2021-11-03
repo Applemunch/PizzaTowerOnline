@@ -61,12 +61,12 @@ if global.musicgame == 0
 	
 	var _mu_snickchallenge = (global.snickrematch ? mu_snickrematch : mu_snickchallenge);
 	var _mu_snickchallengeend = (global.snickrematch ? mu_snickrematchend : mu_snickchallengeend);
-	var _mu_noiseescape = (global.pestoanchovi ? mu_noiseescape_OLD : mu_noiseescape);
+	var _mu_noiseescape = (global.gameplay == 0 ? mu_noiseescape_OLD : mu_noiseescape);
+	var _mu_pizzyescape = (global.gameplay == 0 ? mu_pizzyescape_OLD : mu_pizzyescape);
 	
 	if !audio_is_playing(mu_antonescape) && !audio_is_playing(mu_pizzatime)
 	&& !audio_is_playing(_mu_noiseescape) && !audio_is_playing(mu_snickescape)
-	&& !audio_is_playing(mu_gladeescape) && !audio_is_playing(mu_pizzyescape)
-	&& !audio_is_playing(mu_war)
+	&& !audio_is_playing(_mu_pizzyescape) && !audio_is_playing(mu_war)
 	&& (string_letters(roomname) != "dragonlair" or audio_is_playing(mu_antonlevel))
 	&& global.panic && !obj_pause.pause && !obj_camera.ded && !(room == custom_lvl_room && global.disableescapemusic)
 	{
@@ -106,17 +106,11 @@ if global.musicgame == 0
 				scr_sound(mu_snickescape)
 				pausedmusic = mu_snickescape
 			}
-			// glade
-			else if obj_player1.character == "G"
-			{
-				scr_sound(mu_gladeescape)
-				pausedmusic = mu_gladeescape
-			}
 			// pizzelle
 			else if obj_player1.character == "SP"
 			{
-				scr_sound(mu_pizzyescape)
-				pausedmusic = mu_pizzyescape
+				scr_sound(_mu_pizzyescape)
+				pausedmusic = _mu_pizzyescape
 			}
 		}
 	}
@@ -186,12 +180,12 @@ else if global.musicgame == 1
 	
 	var _mu_snickchallenge = (global.snickrematch ? mu_snickrematch_pc : mu_snickchallenge_pc);
 	var _mu_snickchallengeend = (global.snickrematch ? mu_snickrematch_pc : mu_snickchallengeend_pc);
-	var _mu_noiseescape = (global.pestoanchovi ? mu_noiseescape_OLD_pc : mu_noiseescape_pc);
+	var _mu_noiseescape = (global.gameplay == 0 ? mu_noiseescape_OLD_pc : mu_noiseescape_pc);
+	var _mu_pizzyescape = (global.gameplay == 0 ? mu_pizzyescape_OLD_pc : mu_pizzyescape_pc);
 	
 	if !audio_is_playing(mu_antonescape_pc) && !audio_is_playing(mu_pizzatime_pc)
 	&& !audio_is_playing(_mu_noiseescape) && !audio_is_playing(mu_snickescape_pc)
-	&& !audio_is_playing(mu_pizzyescape_pc) && !audio_is_playing(mu_pizzatime_pc) // glade escape here
-	&& !audio_is_playing(mu_war_pc)
+	&& !audio_is_playing(_mu_pizzyescape) && !audio_is_playing(mu_war_pc)
 	&& (string_letters(roomname) != "dragonlair" or audio_is_playing(mu_antonlevel_pc))
 	&& global.panic && !obj_pause.pause && !obj_camera.ded && !(room == custom_lvl_room && global.disableescapemusic)
 	{
@@ -231,17 +225,11 @@ else if global.musicgame == 1
 				scr_sound(mu_snickescape_pc)
 				pausedmusic = mu_snickescape_pc
 			}
-			// glade
-			else if obj_player1.character == "G"
-			{
-				scr_sound(mu_pizzatime_pc) // REPLACE, also up there
-				pausedmusic = mu_pizzatime_pc
-			}
 			// pizzelle
 			else if obj_player1.character == "SP"
 			{
-				scr_sound(mu_pizzyescape_pc)
-				pausedmusic = mu_pizzyescape_pc
+				scr_sound(_mu_pizzyescape)
+				pausedmusic = _mu_pizzyescape
 			}
 		}
 	}

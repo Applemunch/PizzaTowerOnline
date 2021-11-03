@@ -11,7 +11,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "sfx_parrySP.wav",
-  "duration": 1.063707,
+  "duration": 1.058707,
   "parent": {
     "name": "sfx",
     "path": "folders/Sounds/sfx.yy",

@@ -55,6 +55,7 @@ if (sprite_get_number(sprite_index) > 30 && global.autotile == true && room == r
     inst[5] = instance_place((x - 32), (y + 32), tiles)
     inst[6] = instance_place((x + 32), (y - 32), tiles)
     inst[7] = instance_place((x - 32), (y - 32), tiles)
+	
     for (var i = 0; i < 8; i++)
     {
         if instance_exists(inst[i])

@@ -43,7 +43,6 @@ thrown= false
 //Scared
 scr_scareenemy()
 
-
 if bombreset > 0
 	bombreset = max(bombreset - 1, 0);
 
@@ -51,18 +50,21 @@ if bombreset > 0
 var targetplayer = instance_nearest(x, y, obj_player1)
 
 //Kick
-if x != targetplayer.x && state != states.pizzagoblinthrow && targetplayer.state != states.tumble && bombreset == 0 && grounded
+if instance_exists(targetplayer)
 {
-	if ((targetplayer.x > x - 80) && (targetplayer.x < x + 80)) && (y <= targetplayer.y+100 && y >= targetplayer.y- 100)
+	if x != targetplayer.x && state != states.pizzagoblinthrow && targetplayer.state != states.tumble && bombreset == 0 && grounded
 	{
-		if state = states.walk && !rematchscare
+		if ((targetplayer.x > x - 80) && (targetplayer.x < x + 80)) && (y <= targetplayer.y+100 && y >= targetplayer.y- 100)
 		{
-			image_index = 0
-			sprite_index = spr_pepgoblin_kick
-			if global.snickrematch
-				sprite_index = spr_pepgoblin_kick_re
-			image_xscale = -sign(x - obj_player.x)
-			state = states.pizzagoblinthrow
+			if state = states.walk && !rematchscare
+			{
+				image_index = 0
+				sprite_index = spr_pepgoblin_kick
+				if global.snickrematch
+					sprite_index = spr_pepgoblin_kick_re
+				image_xscale = -sign(x - obj_player.x)
+				state = states.pizzagoblinthrow
+			}
 		}
 	}
 }

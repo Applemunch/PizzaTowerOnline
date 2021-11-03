@@ -60,7 +60,7 @@
     "eventStubScript": null,
     "parent": {"name":"spr_controls","path":"sprites/spr_controls/spr_controls.yy",},
     "resourceVersion": "1.3",
-    "name": "",
+    "name": "spr_controls",
     "tags": [],
     "resourceType": "GMSequence",
   },

@@ -1,9 +1,9 @@
 {
   "ConfigValues": {
-    "debug": {"audioGroupId":"{\"name\":\"ag_antonball\",\"path\":\"audiogroups/ag_antonball\"}",},
+    "debug": {"audioGroupId":"{\"name\":\"audiogroup_default\",\"path\":\"audiogroups/audiogroup_default\"}",},
   },
   "compression": 0,
-  "volume": 0.5,
+  "volume": 0.35,
   "preload": false,
   "bitRate": 128,
   "sampleRate": 44100,
@@ -14,7 +14,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "sfx_antonballbounce2",
-  "duration": 0.187336,
+  "duration": 0.182336,
   "parent": {
     "name": "antonball",
     "path": "folders/Sounds/pto extra/antonball.yy",

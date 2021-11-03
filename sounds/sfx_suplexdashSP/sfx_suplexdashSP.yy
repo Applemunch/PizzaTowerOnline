@@ -11,7 +11,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "sfx_suplexdashSP",
-  "duration": 0.396837,
+  "duration": 0.391837,
   "parent": {
     "name": "pto extra",
     "path": "folders/Sounds/pto extra.yy",

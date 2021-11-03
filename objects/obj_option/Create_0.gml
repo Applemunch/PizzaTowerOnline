@@ -21,3 +21,9 @@ state = 0;
 movespeed = 0;
 
 dbg_live = false;
+camy = 0;
+holdkey = -1;
+holdkeyt = 0;
+
+if room != Realtitlescreen && !instance_exists(obj_wc)
+	room_goto(room_of_dog);

@@ -1,10 +1,11 @@
-global.roommessage = "";
+if repaintjokebuild
+	window_set_caption("Piss Towel Online");
 
 // logged out message
 if instance_exists(obj_gms)
 {
 	instance_destroy(obj_gms);
-	global.roommessage = "LOGGED OUT";
+	global.roommessage = lang_string("online.loggedout");
 }
 if variable_global_exists("logged")
 	global.logged = false;
@@ -15,8 +16,8 @@ global.autotile = true;
 global.loadeditor = false;
 
 // clear excess players
-while instance_number(obj_player1) > 1
-	instance_destroy(instance_find(obj_player1, instance_number(obj_player1) - 1), false);
+while instance_number(obj_player) > 1
+	instance_destroy(instance_find(obj_player, instance_number(obj_player) - 1));
 
 // reset player properly
 with obj_player1
@@ -28,7 +29,11 @@ with obj_player1
 	state = states.titlescreen;
 	targetDoor = "A";
 	character = "P";
-	paletteselect = 1;
+	
+	paletteselect = check_shaders();
+	if repaintjokebuild
+		paletteselect = 0;
+	
 	petfollow = -1;
 	hatsprite = -1;
 	noisetype = (global.gameplay == 0 ? 0 : 1);

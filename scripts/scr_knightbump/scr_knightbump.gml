@@ -4,7 +4,7 @@ function scr_knightbump()
 {
 	var _check = (argument_count > 0 ? argument[0] : false);
 	var _state = (argument_count > 1 ? argument[1] : true);
-
+	
 	if _check
 	{
 		if (state != states.knightpep && state != states.knightpepattack && state != states.knightpepslopes)

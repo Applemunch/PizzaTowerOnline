@@ -179,7 +179,7 @@ if (flash == true && alarm[2] <= 0) {
 if global.stylethreshold >= 3 && ragecooldown <= 0
 {
 	var player = instance_nearest(x, y, obj_player1);
-    if state == states.walk or state == states.charge
+    if instance_exists(player) && (state == states.walk or state == states.charge)
     {
         if player.x > x - 400 && player.x < x + 400
 		&& player.y <= y + 60 && player.y >= y - 60

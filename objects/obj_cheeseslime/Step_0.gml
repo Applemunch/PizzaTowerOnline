@@ -40,7 +40,7 @@ scr_scareenemy()
 
 // Heat attack
 var player = instance_nearest(x, y, obj_player1);
-if global.stylethreshold >= 3 && object_index == obj_cheeseslime
+if instance_exists(player) && global.stylethreshold >= 3 && object_index == obj_cheeseslime
 {
     if state == states.walk
     {

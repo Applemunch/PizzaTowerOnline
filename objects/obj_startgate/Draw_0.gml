@@ -4,14 +4,14 @@ draw_set_color(c_white)
 draw_self()
 
 // start drawing
-if place_meeting(x,y,obj_player1) && !drawing
+if place_meeting(x, y, obj_player1) && !drawing
 {
 	drawing = true
 	obj_tv.manualhide = manualhide
 }
 
 // stop drawing
-if (!place_meeting(x,y,obj_player1) or obj_player1.state == states.victory) && drawing
+if (!place_meeting(x, y, obj_player1) or obj_player1.state == states.victory) && drawing
 {
 	obj_camera.panto = [0, 0];
 	

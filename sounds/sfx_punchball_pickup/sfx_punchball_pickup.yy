@@ -3,7 +3,7 @@
     "debug": {"audioGroupId":"{\"name\":\"ag_antonball\",\"path\":\"audiogroups/ag_antonball\"}",},
   },
   "compression": 0,
-  "volume": 0.5,
+  "volume": 0.65,
   "preload": false,
   "bitRate": 128,
   "sampleRate": 44100,
@@ -14,7 +14,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "sfx_punchball_pickup",
-  "duration": 0.293798,
+  "duration": 0.288798,
   "parent": {
     "name": "antonball",
     "path": "folders/Sounds/pto extra/antonball.yy",

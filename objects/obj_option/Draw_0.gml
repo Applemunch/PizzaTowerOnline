@@ -1,6 +1,6 @@
 if live_call()
 {
-	//dbg_live = true;
+	dbg_live = true;
 	return live_result;
 }
 
@@ -9,15 +9,15 @@ var c1 = c_black;
 
 // square backgrund
 draw_set_colour(c1);
-draw_rectangle(0, 0, 960, 540, false);
+draw_rectangle(camera_get_view_x(view_camera[0]), camera_get_view_y(view_camera[0]), camera_get_view_x(view_camera[0]) + camera_get_view_width(view_camera[0]), camera_get_view_y(view_camera[0]) + camera_get_view_height(view_camera[0]), false);
 draw_set_colour(c2);
 
 if !dbg_live
 {
 	mo = (mo + 0.5) % s;
-	for(var i = -s; i < room_width; i += s)
+	for(var i = -s; i < camera_get_view_x(view_camera[0]) + camera_get_view_width(view_camera[0]); i += s)
 	{
-		for(var j = -s; j < room_height; j += s)
+		for(var j = -s; j < camera_get_view_y(view_camera[0]) + camera_get_view_height(view_camera[0]); j += s)
 		{
 			if (i + j) % (s * 2) != 0
 				draw_rectangle(i + mo, j + mo, i + s + mo, j + s + mo, false)
@@ -33,23 +33,23 @@ draw_set_color(c_white)
 #region option
 if menu == 0
 {
-	draw_text_colour(960/2, 100, lang_string("options.fullscreen"), c_white, c_white, c_white, c_white, (optionselected == 0 ? 1 : 0.5))
-	draw_text_colour(960/2 - 100, 150, lang_string("options.on"), c_white, c_white, c_white, c_white, (optionsaved_fullscreen == 0 ? 1 : 0.5));
-	draw_text_colour(960/2 + 100, 150, lang_string("options.off"), c_white, c_white, c_white, c_white, (optionsaved_fullscreen == 1 ? 1 : 0.5));
+	draw_text_colour(camera_get_view_width(view_camera[0]) / 2, 100, lang_string("options.fullscreen"), c_white, c_white, c_white, c_white, (optionselected == 0 ? 1 : 0.5))
+	draw_text_colour(camera_get_view_width(view_camera[0]) / 2 - 100, 150, lang_string("options.on"), c_white, c_white, c_white, c_white, (optionsaved_fullscreen == 0 ? 1 : 0.5));
+	draw_text_colour(camera_get_view_width(view_camera[0]) / 2 + 100, 150, lang_string("options.off"), c_white, c_white, c_white, c_white, (optionsaved_fullscreen == 1 ? 1 : 0.5));
 	
-	draw_text_colour(960/2, 250, lang_string("options.resolution"), c_white, c_white, c_white, c_white, (optionselected == 1 ? 1 : 0.5))
-	draw_text_colour(960/2 - 180, 300, "480X270", c_white, c_white, c_white, c_white, (optionsaved_resolution == 0 ? 1 : 0.5));
-	draw_text_colour(960/2 , 300, "960X540", c_white, c_white, c_white, c_white, (optionsaved_resolution == 1 ? 1 : 0.5));
-	draw_text_colour(960/2 + 200, 300, "1920X1080", c_white, c_white, c_white, c_white, (optionsaved_resolution == 2 ? 1 : 0.5));
+	draw_text_colour(camera_get_view_width(view_camera[0]) / 2, 250, lang_string("options.resolution"), c_white, c_white, c_white, c_white, (optionselected == 1 ? 1 : 0.5))
+	draw_text_colour(camera_get_view_width(view_camera[0]) / 2 - 180, 300, "480X270", c_white, c_white, c_white, c_white, (optionsaved_resolution == 0 ? 1 : 0.5));
+	draw_text_colour(camera_get_view_width(view_camera[0]) / 2 , 300, "960X540", c_white, c_white, c_white, c_white, (optionsaved_resolution == 1 ? 1 : 0.5));
+	draw_text_colour(camera_get_view_width(view_camera[0]) / 2 + 200, 300, "1920X1080", c_white, c_white, c_white, c_white, (optionsaved_resolution == 2 ? 1 : 0.5));
 	
 	// key config
-	draw_text_colour(960/2, 375, lang_string("options.keyconfig"), c_white, c_white, c_white, c_white, (optionselected == 2 ? 1 : 0.5))
+	draw_text_colour(camera_get_view_width(view_camera[0]) / 2, 375, lang_string("options.keyconfig"), c_white, c_white, c_white, c_white, (optionselected == 2 ? 1 : 0.5))
 	
 	// sound config
-	draw_text_colour(960/2, 415, lang_string("options.soundconfig"), c_white, c_white, c_white, c_white, (optionselected == 3 ? 1 : 0.5))
+	draw_text_colour(camera_get_view_width(view_camera[0]) / 2, 415, lang_string("options.soundconfig"), c_white, c_white, c_white, c_white, (optionselected == 3 ? 1 : 0.5))
 	
 	// other config
-	draw_text_colour(960/2, 455, lang_string("options.otherconfig"), c_white, c_white, c_white, c_white, (optionselected == 4 ? 1 : 0.5))
+	draw_text_colour(camera_get_view_width(view_camera[0]) / 2, 455, lang_string("options.otherconfig"), c_white, c_white, c_white, c_white, (optionselected == 4 ? 1 : 0.5))
 }
 #endregion
 #region sound options
@@ -58,8 +58,8 @@ if menu == 1
 	var m1y = 50;
 	var m2y = m1y + 100;
 	
-	draw_text_colour(960/2, m1y, lang_string("options.sound.master"), c_white, c_white, c_white, c_white, (optionselected == 0 ? 1 : 0.5));
-	draw_text_colour(960/2, m2y, lang_string("options.sound.music"), c_white, c_white, c_white, c_white, (optionselected == 1 ? 1 : 0.5));
+	draw_text_colour(camera_get_view_width(view_camera[0]) / 2, m1y, lang_string("options.sound.master"), c_white, c_white, c_white, c_white, (optionselected == 0 ? 1 : 0.5));
+	draw_text_colour(camera_get_view_width(view_camera[0]) / 2, m2y, lang_string("options.sound.music"), c_white, c_white, c_white, c_white, (optionselected == 1 ? 1 : 0.5));
 	
 	draw_set_colour(c_gray);
 	draw_rectangle(230, m1y + 56, 730, m1y + 56 + 16, false);
@@ -92,16 +92,16 @@ if menu == 1
 		draw_set_font(global.bigfont);
 	}
 	
-	draw_text_colour(960/2, m2y + 125, lang_string("options.sound.mach"), c_white, c_white, c_white, c_white, (optionselected == 2 ? 1 : 0.5))
-	draw_text_colour(960/2 - 100, m2y + 175, lang_string("options.sound.machold"), c_white, c_white, c_white, c_white, (global.machsound == 1 ? 1 : 0.5));
-	draw_text_colour(960/2 + 100, m2y + 175, lang_string("options.sound.machnew"), c_white, c_white, c_white, c_white, (global.machsound == 0 ? 1 : 0.5));
+	draw_text_colour(camera_get_view_width(view_camera[0]) / 2, m2y + 125, lang_string("options.sound.mach"), c_white, c_white, c_white, c_white, (optionselected == 2 ? 1 : 0.5))
+	draw_text_colour(camera_get_view_width(view_camera[0]) / 2 - 100, m2y + 175, lang_string("options.sound.machold"), c_white, c_white, c_white, c_white, (global.machsound == 1 ? 1 : 0.5));
+	draw_text_colour(camera_get_view_width(view_camera[0]) / 2 + 100, m2y + 175, lang_string("options.sound.machnew"), c_white, c_white, c_white, c_white, (global.machsound == 0 ? 1 : 0.5));
 	
 	if global.loaded_pc
 	{
-		draw_text_colour(960/2, m2y + 250, lang_string("options.sound.game"), c_white, c_white, c_white, c_white, (optionselected == 3 ? 1 : 0.5));
+		draw_text_colour(camera_get_view_width(view_camera[0]) / 2, m2y + 250, lang_string("options.sound.game"), c_white, c_white, c_white, c_white, (optionselected == 3 ? 1 : 0.5));
 	
-		draw_text_colour(960/2 - 100, m2y + 300, lang_string("options.sound.normal"), c_white, c_white, c_white, c_white, (global.musicgame == 0 ? 1 : 0.5));
-		draw_text_colour(960/2 + 100, m2y + 300, lang_string("options.sound.castle"), c_white, c_white, c_white, c_white, (global.musicgame == 1 ? 1 : 0.5));
+		draw_text_colour(camera_get_view_width(view_camera[0]) / 2 - 100, m2y + 300, lang_string("options.sound.normal"), c_white, c_white, c_white, c_white, (global.musicgame == 0 ? 1 : 0.5));
+		draw_text_colour(camera_get_view_width(view_camera[0]) / 2 + 100, m2y + 300, lang_string("options.sound.castle"), c_white, c_white, c_white, c_white, (global.musicgame == 1 ? 1 : 0.5));
 	}
 }
 #endregion
@@ -113,36 +113,40 @@ if menu == 2
 	draw_set_valign(fa_top);
 		
 	img += 1;
-	if img >= 4096
-		img -= 4096;
+	if img >= (60 * 60) * 10
+		img = 0;
 	
-	draw_sprite(spr_cursor, img * .3, 32,
-		40 + (16 * optionselected)
+	var ybase = 32 + camy;
+	var cursory = 32 + 8 + (16 * optionselected)
 		+ ((optionselected > 1) * 16)
 		+ ((optionselected > 5) * 16)
 		+ ((optionselected > 7) * 16)
-		+ ((optionselected > 11) * 16)
-	);
+		+ ((optionselected > 11) * 16);
 	
-	draw_text_colour(72, 32 + (16 * 0), lang_string("options.other.erase"), c_red, c_red, c_red, c_red, (optionselected == 0 ? 1 : 0.5));
-	draw_text_colour(72, 32 + (16 * 1), lang_string("options.other.gameplay"), c_white, c_white, c_white, c_white, (optionselected == 1 ? 1 : 0.5));
+	draw_sprite(spr_cursor, img * .3, 32, cursory + camy);
+	camy = lerp(camy, min(-cursory + camera_get_view_height(view_camera[0]) / 2, 0), 0.1);
 	
-	draw_text_colour(72, 32 + (16 * 3), lang_string("options.other.wavybg"), c_white, c_white, c_white, c_white, (optionselected == 2 ? 1 : 0.5));
-	draw_text_colour(72, 32 + (16 * 4), lang_string("options.other.blur"), c_white, c_white, c_white, c_white, (optionselected == 3 ? 1 : 0.5));
-	draw_text_colour(72, 32 + (16 * 5), lang_string("options.other.shaky"), c_white, c_white, c_white, c_white, (optionselected == 4 ? 1 : 0.5));
-	draw_text_colour(72, 32 + (16 * 6), lang_string("options.other.panicbg"), c_white, c_white, c_white, c_white, (optionselected == 5 ? 1 : 0.5));
+	draw_text_colour(72, ybase + (16 * 0), lang_string("options.other.erase"), c_red, c_red, c_red, c_red, (optionselected == 0 ? 1 : 0.5));
+	draw_text_colour(72, ybase + (16 * 1), lang_string("options.other.gameplay"), c_white, c_white, c_white, c_white, (optionselected == 1 ? 1 : 0.5));
 	
-	draw_text_colour(72, 32 + (16 * 8), lang_string("options.other.afterimage"), c_white, c_white, c_white, c_white, (optionselected == 6 ? 1 : 0.5));
-	draw_text_colour(72, 32 + (16 * 9), lang_string("options.other.demo3"), c_white, c_white, c_white, c_white, (optionselected == 7 ? 1 : 0.5));
+	draw_text_colour(72, ybase + (16 * 3), lang_string("options.other.wavybg"), c_white, c_white, c_white, c_white, (optionselected == 2 ? 1 : 0.5));
+	draw_text_colour(72, ybase + (16 * 4), lang_string("options.other.blur"), c_white, c_white, c_white, c_white, (optionselected == 3 ? 1 : 0.5));
+	draw_text_colour(72, ybase + (16 * 5), lang_string("options.other.shaky"), c_white, c_white, c_white, c_white, (optionselected == 4 ? 1 : 0.5));
+	draw_text_colour(72, ybase + (16 * 6), lang_string("options.other.panicbg"), c_white, c_white, c_white, c_white, (optionselected == 5 ? 1 : 0.5));
 	
-	draw_text_colour(72, 32 + (16 * 11), lang_string("options.other.playernames"), c_white, c_white, c_white, c_white, (optionselected == 8 ? 1 : 0.5));
-	draw_text_colour(72, 32 + (16 * 12), lang_string("options.other.chatbubbles"), c_white, c_white, c_white, c_white, (optionselected == 9 ? 1 : 0.5));
-	draw_text_colour(72, 32 + (16 * 13), lang_string("options.other.synceffects"), c_white, c_white, c_white, c_white, (optionselected == 10 ? 1 : 0.5));
-	draw_text_colour(72, 32 + (16 * 14), lang_string("options.other.fuckoffptd"), c_white, c_white, c_white, c_white, (optionselected == 11 ? 1 : 0.5));
-	//draw_text_colour(72, 32 + (16 * 15), lang_string("options.other.onlinepvp"), c_white, c_white, c_white, c_white, (optionselected == 12 ? 1 : 0.5));
+	draw_text_colour(72, ybase + (16 * 8), lang_string("options.other.afterimage"), c_white, c_white, c_white, c_white, (optionselected == 6 ? 1 : 0.5));
+	draw_text_colour(72, ybase + (16 * 9), lang_string("options.other.demo3"), c_white, c_white, c_white, c_white, (optionselected == 7 ? 1 : 0.5));
 	
-	draw_text_colour(72, 32 + (16 * 16), lang_string("options.other.drpc"), c_white, c_white, c_white, c_white, (optionselected == 12 ? 1 : 0.5));
-	draw_text_colour(72, 32 + (16 * 17), lang_string("options.other.fpscount"), c_white, c_white, c_white, c_white, (optionselected == 13 ? 1 : 0.5));
+	draw_text_colour(72, ybase + (16 * 11), lang_string("options.other.playernames"), c_white, c_white, c_white, c_white, (optionselected == 8 ? 1 : 0.5));
+	draw_text_colour(72, ybase + (16 * 12), lang_string("options.other.chatbubbles"), c_white, c_white, c_white, c_white, (optionselected == 9 ? 1 : 0.5));
+	draw_text_colour(72, ybase + (16 * 13), lang_string("options.other.synceffects"), c_white, c_white, c_white, c_white, (optionselected == 10 ? 1 : 0.5));
+	draw_text_colour(72, ybase + (16 * 14), lang_string("options.other.fuckoffptd"), c_white, c_white, c_white, c_white, (optionselected == 11 ? 1 : 0.5));
+	//draw_text_colour(72, ybase + (16 * 15), lang_string("options.other.onlinepvp"), c_white, c_white, c_white, c_white, (optionselected == 12 ? 1 : 0.5));
+	
+	draw_text_colour(72, ybase + (16 * 16), lang_string("options.other.drpc"), c_white, c_white, c_white, c_white, (optionselected == 12 ? 1 : 0.5));
+	draw_text_colour(72, ybase + (16 * 17), lang_string("options.other.fpscount"), c_white, c_white, c_white, c_white, (optionselected == 13 ? 1 : 0.5));
+	draw_text_colour(72, ybase + (16 * 18), lang_string("options.other.camsmooth"), c_white, c_white, c_white, c_white, (optionselected == 14 ? 1 : 0.5));
+	draw_text_colour(72, ybase + (16 * 19), lang_string("options.other.screenshader"), c_white, c_white, c_white, c_white, (optionselected == 15 ? 1 : 0.5));
 	
 	switch optionselected
 	{
@@ -214,10 +218,10 @@ if menu == 2
 				{
 					surface_set_target(surf);
 					draw_clear_alpha(c_black, 0);
-					draw_sprite_ext(bg_desert, img * 0.25, 400 + 5, 200 + 5, 0.5, 0.5, -0.5, c_black, 0.5);
+					draw_sprite_ext(bg_desert, 0, 400 + 5, 200 + 5, 0.5, 0.5, -0.5, c_black, 0.5);
 					draw_sprite_ext(bg_desert, img * 0.25, 400, 200, 0.5, 0.5, -0.5, c_white, 1);
 					surface_reset_target();
-				
+					
 					shader_set(shd_panicbg);
 					var unif;
 					
@@ -228,7 +232,7 @@ if menu == 2
 					// Set current time in shader
 					unif = shader_get_uniform(shd_panicbg, "time");
 					shader_set_uniform_f(unif, current_time / 1000);
-				
+					
 					// Set amplitude
 					trans = lerp(trans, global.panicbg, 0.25);
 					unif = shader_get_uniform(shd_panicbg, "mult");
@@ -690,6 +694,7 @@ if menu == 2
 			break;
 		
 		#endregion
+		
 		#region rich presence
 		
 		case 12:
@@ -731,7 +736,7 @@ if menu == 2
 			break;
 		
 		#endregion
-		#region rich presence
+		#region fps
 		
 		case 13:
 			draw_set_colour(global.showfps ? merge_colour(c_lime, c_white, 0.5) : c_white);
@@ -743,6 +748,45 @@ if menu == 2
 			draw_set_colour(c_ltgray);
 			draw_text(640, 96, lang_string("options.other.fpscount.desc"));
 			
+			draw_set_colour(c_white);
+			if global.showfps
+				draw_arrow(640 + 140, 240 + 120, 960 - 60, 540 - 60, 16);
+			else
+				draw_text_transformed(640, 260, string(fps), 2, 2, 0);
+			
+			break;
+		
+		#endregion
+		#region camera smoothing
+		
+		case 14:
+			draw_set_colour(global.camerasmoothing ? merge_colour(c_lime, c_white, 0.5) : c_white);
+			draw_set_font(global.bigfont);
+			draw_set_halign(fa_center);
+			draw_text(640 + random_range(-1, 1), 64, string_upper(lang_string("options.other.camsmooth.title")));
+			
+			draw_set_font(global.font_small);
+			draw_set_colour(c_ltgray);
+			draw_text(640, 96, lang_string("options.other.camsmooth.desc"));
+			
+			draw_set_colour(c_white);
+			
+			/*
+			var go = 0;
+			if !global.camerasmoothing
+			{
+				if floor(img / 30) % 2 == 0
+					go = img % 30;
+				else
+					go = 30 - (img % 30);
+				go -= 15;
+			}
+			else
+				go = 15 * sin(img / 10);
+			
+			var w = 960 / 3, h = 540 / 3;
+			draw_rectangle(640 - w / 2 + go * 3, 260 - h / 2, 640 + w / 2 + go * 3, 260 + h / 2, false);
+			*/
 			break;
 		
 		#endregion
@@ -764,18 +808,10 @@ if menu == 2
 				img2 = 0;
 		}
 	}
-	
-	/*
-	draw_text_colour(960/2 - 100, m1y + 50, "ON", c_white, c_white, c_white, c_white, global.panicbg ? 1 : 0.5);
-	draw_text_colour(960/2 + 100, m1y + 50, "OFF", c_white, c_white, c_white, c_white, global.panicbg ? 0.5 : 1);
-	
-	draw_text_colour(960/2 - 100, m2y + 50, "ON", c_white, c_white, c_white, c_white, global.panicmelt ? 1 : 0.5);
-	draw_text_colour(960/2 + 100, m2y + 50, "OFF", c_white, c_white, c_white, c_white, global.panicmelt ? 0.5 : 1);
-	
-	draw_text_colour(960/2 - 100, m3y + 50, "ON", c_white, c_white, c_white, c_white, global.panicshake ? 1 : 0.5);
-	draw_text_colour(960/2 + 100, m3y + 50, "OFF", c_white, c_white, c_white, c_white, global.panicshake ? 0.5 : 1);
-	*/
 }
 else
+{
+	camy = 0;
 	obj_camera.blurpreview = false;
+}
 #endregion

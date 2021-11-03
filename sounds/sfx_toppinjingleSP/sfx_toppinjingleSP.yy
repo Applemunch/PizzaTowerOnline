@@ -11,7 +11,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "sfx_toppinjingleSP.wav",
-  "duration": 1.307834,
+  "duration": 1.302834,
   "parent": {
     "name": "sfx",
     "path": "folders/Sounds/sfx.yy",

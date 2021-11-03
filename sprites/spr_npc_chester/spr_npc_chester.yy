@@ -7,10 +7,10 @@
   "edgeFiltering": false,
   "collisionTolerance": 0,
   "swfPrecision": 2.525,
-  "bbox_left": 27,
-  "bbox_right": 69,
-  "bbox_top": 34,
-  "bbox_bottom": 95,
+  "bbox_left": 0,
+  "bbox_right": 0,
+  "bbox_top": 0,
+  "bbox_bottom": 0,
   "HTile": false,
   "VTile": false,
   "For3D": false,
@@ -27,12 +27,6 @@
     {"compositeImage":{"FrameId":{"name":"d3a6f13c-1435-49b5-9651-afdd1f1af588","path":"sprites/spr_npc_chester/spr_npc_chester.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
         {"FrameId":{"name":"d3a6f13c-1435-49b5-9651-afdd1f1af588","path":"sprites/spr_npc_chester/spr_npc_chester.yy",},"LayerId":{"name":"860cd9a7-9754-4b7f-89b7-f6246cab7ee1","path":"sprites/spr_npc_chester/spr_npc_chester.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
       ],"parent":{"name":"spr_npc_chester","path":"sprites/spr_npc_chester/spr_npc_chester.yy",},"resourceVersion":"1.0","name":"d3a6f13c-1435-49b5-9651-afdd1f1af588","tags":[],"resourceType":"GMSpriteFrame",},
-    {"compositeImage":{"FrameId":{"name":"5c214bcd-232b-438d-a5ed-1d3a4d7d7862","path":"sprites/spr_npc_chester/spr_npc_chester.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"5c214bcd-232b-438d-a5ed-1d3a4d7d7862","path":"sprites/spr_npc_chester/spr_npc_chester.yy",},"LayerId":{"name":"860cd9a7-9754-4b7f-89b7-f6246cab7ee1","path":"sprites/spr_npc_chester/spr_npc_chester.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"spr_npc_chester","path":"sprites/spr_npc_chester/spr_npc_chester.yy",},"resourceVersion":"1.0","name":"5c214bcd-232b-438d-a5ed-1d3a4d7d7862","tags":[],"resourceType":"GMSpriteFrame",},
-    {"compositeImage":{"FrameId":{"name":"51bb357a-7d0a-4cbf-b0ad-4cba70784183","path":"sprites/spr_npc_chester/spr_npc_chester.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"51bb357a-7d0a-4cbf-b0ad-4cba70784183","path":"sprites/spr_npc_chester/spr_npc_chester.yy",},"LayerId":{"name":"860cd9a7-9754-4b7f-89b7-f6246cab7ee1","path":"sprites/spr_npc_chester/spr_npc_chester.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"spr_npc_chester","path":"sprites/spr_npc_chester/spr_npc_chester.yy",},"resourceVersion":"1.0","name":"51bb357a-7d0a-4cbf-b0ad-4cba70784183","tags":[],"resourceType":"GMSpriteFrame",},
   ],
   "sequence": {
     "spriteId": {"name":"spr_npc_chester","path":"sprites/spr_npc_chester/spr_npc_chester.yy",},
@@ -42,14 +36,12 @@
     "playbackSpeedType": 1,
     "autoRecord": true,
     "volume": 1.0,
-    "length": 3.0,
+    "length": 1.0,
     "events": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore<MessageEventKeyframe>",},
     "moments": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore<MomentsEventKeyframe>",},
     "tracks": [
       {"name":"frames","spriteId":null,"keyframes":{"Keyframes":[
             {"id":"89818517-0f6c-4e03-bfe0-88763257bca7","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"d3a6f13c-1435-49b5-9651-afdd1f1af588","path":"sprites/spr_npc_chester/spr_npc_chester.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
-            {"id":"0a192cc4-471a-4c64-983f-ed787a9056a1","Key":1.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"5c214bcd-232b-438d-a5ed-1d3a4d7d7862","path":"sprites/spr_npc_chester/spr_npc_chester.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
-            {"id":"89db9ee2-7928-4677-8adf-4085e582c5b6","Key":2.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"51bb357a-7d0a-4cbf-b0ad-4cba70784183","path":"sprites/spr_npc_chester/spr_npc_chester.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
           ],"resourceVersion":"1.0","resourceType":"KeyframeStore<SpriteFrameKeyframe>",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"modifiers":[],"isCreationTrack":false,"resourceVersion":"1.0","tags":[],"resourceType":"GMSpriteFramesTrack",},
     ],
     "visibleRange": null,

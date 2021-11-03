@@ -11,12 +11,20 @@ else if room == characterselect
 	det = "Logging in...";
 else
 {
-	state = global.roommessage;
+	// bottom text
+	state = lang_string("roomname." + room_get_name(room));
+	
 	if global.snickchallenge
 	{
 		state = "Snick Challenge";
 		if global.snickrematch
 			state = "Snick's Rematch";
+	}
+	
+	if global.modifier != -1
+	{
+		event_user(2);
+		state = modstate;
 	}
 	
 	if string_startswith(r, "hub")
@@ -111,7 +119,7 @@ else
 		det = "Ancient Tower";
 	
 	else if string_startswith(r, "cotton")
-		det = "Cotton Town";
+		det = "Cottontown";
 	
 	else if string_startswith(r, "jawbreaker")
 		det = "Jawbreaker Mines";
@@ -148,16 +156,41 @@ else
 	}
 	
 	else if room == rank_room
+	{
+		if global.snickchallenge
+		{
+			det = "Snick Challenge";
+			if global.snickrematch
+				det = "Snick's Rematch";
+		}
+		
 		state = "Ranking";
+	}
 	
 	else if room == timesuproom
+	{
+		if global.snickchallenge
+		{
+			det = "Snick Challenge";
+			if global.snickrematch
+				det = "Snick's Rematch";
+		}
+		
 		state = "Time's up!";
+	}
 	
 	else
 	{
 		det = "???";
 		state = "";
 	}
+}
+
+if string_startswith(state, "roomname.")
+{
+	state = global.roommessage;
+	if state == ""
+		state = "???";
 }
 
 var detf = det;

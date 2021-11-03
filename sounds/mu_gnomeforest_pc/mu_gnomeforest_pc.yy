@@ -11,7 +11,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "mu_gnomeforest_pc.ogg",
-  "duration": 208.977936,
+  "duration": 208.941177,
   "parent": {
     "name": "pizza castle",
     "path": "folders/Sounds/pizza castle.yy",

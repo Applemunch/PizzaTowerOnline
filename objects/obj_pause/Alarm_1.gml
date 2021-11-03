@@ -15,23 +15,27 @@ audio_stop_all();
 
 if (room == hub_room1 or room == cowboytask or room == Titlescreen or room == Scootertransition) && title
 {
-	pause = 0
+	pause = false
 	instance_activate_all();
-	room = Realtitlescreen
-
+	
+	instance_destroy(obj_debris);
+	with obj_panicdebris
+		alarm[0] = -1;
+	
+	room_goto(Realtitlescreen);
+	
 	with obj_player1
 	{
 		petfollow = -1
 		gravmult = 1
 		character = "P"
+		state = states.titlescreen
+		targetDoor = "A"
 		scr_characterspr()
 	}
 	
 	scr_playerreset()
-
-	obj_player1.state = states.titlescreen
 	global.cowboyhat = false
-	obj_player1.targetDoor = "A"
 }
 else if room == custom_lvl_room
 {
@@ -56,6 +60,8 @@ else
 	global.cowboyhat = false
 	instance_activate_all();
 	scr_playerreset()
-	obj_player.targetDoor = "A"
+	
+	with obj_player1
+		targetDoor = "A"
 	room = hub_room1
 }

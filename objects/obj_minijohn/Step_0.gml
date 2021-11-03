@@ -26,7 +26,7 @@ if  state = states.stun && stunned > 100 && birdcreated = false
 if global.stylethreshold >= 3 && ragecooldown <= 0
 {
     var player = instance_nearest(x, y, obj_player1);
-    if state == states.chase
+    if state == states.chase && instance_exists(player)
     {
         if player.x > x - 400 && player.x < x + 400
 		&& player.y <= y + 60 && player.y >= y - 60

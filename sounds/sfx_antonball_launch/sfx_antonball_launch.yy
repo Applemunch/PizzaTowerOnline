@@ -1,6 +1,6 @@
 {
   "compression": 0,
-  "volume": 0.5,
+  "volume": 0.35,
   "preload": false,
   "bitRate": 128,
   "sampleRate": 44100,
@@ -11,7 +11,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "sfx_antonball_launch.wav",
-  "duration": 0.253163,
+  "duration": 0.248163,
   "parent": {
     "name": "antonball",
     "path": "folders/Sounds/pto extra/antonball.yy",

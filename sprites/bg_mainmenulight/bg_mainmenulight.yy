@@ -71,7 +71,7 @@
     "eventStubScript": null,
     "parent": {"name":"bg_mainmenulight","path":"sprites/bg_mainmenulight/bg_mainmenulight.yy",},
     "resourceVersion": "1.3",
-    "name": "",
+    "name": "bg_mainmenulight",
     "tags": [],
     "resourceType": "GMSequence",
   },

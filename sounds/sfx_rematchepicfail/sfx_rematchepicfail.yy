@@ -11,7 +11,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "sfx_rematchepicfail.ogg",
-  "duration": 10.005,
+  "duration": 10.0,
   "parent": {
     "name": "pto extra",
     "path": "folders/Sounds/pto extra.yy",

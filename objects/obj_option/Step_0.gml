@@ -8,10 +8,33 @@ if !instance_exists(obj_keyconfig) && !instance_exists(obj_erasegame)
 	if menu == 1
 		omax = 2 + global.loaded_pc;
 	if menu == 2
-		omax = 13;
+		omax = 15;
 	
-	if (obj_player1.key_up2 or keyboard_check_pressed(vk_up))
+	var mov = -(obj_player1.key_up2 or keyboard_check_pressed(vk_up)) + (obj_player1.key_down2 or keyboard_check_pressed(vk_down));
+	var movh = -(obj_player1.key_up or keyboard_check(vk_up)) + (obj_player1.key_down or keyboard_check(vk_down));
+	
+	if movh == 0
+		holdkey = -1;
+	if holdkey == 0
 	{
+		holdkeyt--;
+		if holdkeyt <= 0
+		{
+			if optionselected + movh >= 0 && optionselected + movh <= omax
+			{
+				holdkeyt = 5;
+				scr_soundeffect(sfx_step);
+				optionselected += movh;
+			}
+			else
+				holdkey = -1;
+		}
+	}
+	
+	if mov == -1
+	{
+		holdkey = 0;
+		holdkeyt = 20;
 		if optionselected > 0
 		{
 			optionselected -= 1
@@ -23,8 +46,10 @@ if !instance_exists(obj_keyconfig) && !instance_exists(obj_erasegame)
 			scr_soundeffect(sfx_step)
 		}
 	}
-	if (obj_player1.key_down2 or keyboard_check_pressed(vk_down))
+	if mov == 1
 	{
+		holdkey = 0;
+		holdkeyt = 20;
 		if optionselected < omax
 		{
 			optionselected += 1
@@ -445,6 +470,22 @@ else if menu == 2 && !instance_exists(obj_erasegame)
 			global.showfps = !global.showfps;
 			scr_soundeffect(sfx_step);
 		}
+	}
+	
+	// camera smoothing
+	if optionselected == 14
+	{
+		if select
+		{
+			global.camerasmoothing = !global.camerasmoothing;
+			scr_soundeffect(sfx_step);
+		}
+	}
+	
+	// screen shader
+	if optionselected == 15
+	{
+		
 	}
 	
 	//Finish

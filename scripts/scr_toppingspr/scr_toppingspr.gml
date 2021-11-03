@@ -1,15 +1,16 @@
 function scr_collectsprite(single = false)
 {
 	var spr = -1, toppings = [spr_sausagecollect];
+	var char = (instance_exists(obj_player1) ? obj_player1.character : "P");
 	
 	// noise
-	if obj_player1.character == "N"
+	if char == "N"
 		toppings = [spr_halloweencollectibles1, spr_halloweencollectibles2, spr_halloweencollectibles3, spr_halloweencollectibles4, spr_halloweencollectibles5];
 	// snick
-	else if obj_player1.character == "S"
+	else if char == "S"
 		toppings = [spr_snickcollectible1];
 	// pizzelle
-	else if obj_player1.character == "SP"
+	else if char == "SP"
 	{
 		if global.gameplay == 0
 			toppings = [spr_sugarycollectibles1, spr_sugarycollectibles2, spr_sugarycollectibles3, spr_sugarycollectibles4, spr_sugarycollectibles5, spr_sugarycollectibles6, spr_sugarycollectibles7, spr_sugarycollectibles8, spr_sugarycollectibles9, spr_sugarycollectibles10];

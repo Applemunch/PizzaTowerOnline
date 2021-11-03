@@ -1,4 +1,4 @@
-draw_sprite(spr_manual, i, 0, 0);
+draw_sprite(manualspr, i, 0, 0);
 
 draw_set_font(fnt_manual);
 draw_set_colour(c_red);
@@ -52,6 +52,19 @@ if i == 3
 	draw_text(284, 224, lang_string("manual.rules.content2"));
 }
 if i == 4
+{
+	// lapping
+	draw_set_halign(fa_center);
+	draw_set_colour(c_black);
+	draw_text_transformed(960 / 2, 58, lang_string("manual.lapping"), 2, 2, 0);
+	draw_set_colour(c_red);
+	draw_text_transformed(960 / 2, 56, lang_string("manual.lapping"), 2, 2, 0);
+	
+	draw_set_valign(fa_middle);
+	draw_text(960 / 2, 540 / 2, lang_string("manual.lapping.content"));
+	draw_set_valign(fa_top);
+}
+if i == 5
 {
 	// credits
 	draw_set_halign(fa_center);

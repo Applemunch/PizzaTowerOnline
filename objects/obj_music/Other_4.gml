@@ -368,6 +368,14 @@ else if !global.panic && !global.snickchallenge
 
 #endregion
 
+// repaint joke build
+if repaintjokebuild
+{
+	var sndrep = asset_get_index(audio_get_name(musplay) + "_PP");
+	if audio_exists(sndrep)
+		musplay = sndrep;
+}
+
 // pizza castle
 if global.musicgame == 1
 {

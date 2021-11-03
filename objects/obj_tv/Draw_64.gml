@@ -6,6 +6,9 @@ if ((room == dungeon_10 or room == dungeon_9 or room == snick_challengeend) && g
     instance_destroy(obj_baddiespawner, false)
 }
 
+if room == rm_deltarune
+	exit;
+
 // snick rematch jumpscare
 if jumpscare > -1
 {
@@ -39,7 +42,7 @@ if global.gameplay == 0
 	{
 		if !surface_exists(surf)
 			surf = surface_create(960, 540);
-	
+		
 		surface_set_target(surf);
 		draw_clear_alpha(c_black, 0);
 		draw_sprite_ext(spr_tvcomboclear, -1, 832, 74, 1, 1, 0, c_white, 1);
@@ -94,7 +97,7 @@ else
 			
 			if sprite_exists(sprite_index)
 			{
-				if sprite_index != spr_tv_placeholder && sprite_index != spr_tv_placeholderSP && sprite_index != spr_tv_off && sprite_index != spr_tv_open
+				if sprite_index != spr_tv_placeholder && sprite_index != spr_tv_placeholderSP && sprite_index != spr_tv_off && sprite_index != spr_tv_offSP && sprite_index != spr_tv_open && sprite_index != spr_tv_openSP
 				{
 					with obj_player1
 						pal_swap_set(spr_palette, paletteselect, false);
@@ -104,14 +107,15 @@ else
 				pal_swap_reset();
 			}
 			
-			if global.combo != 0 && sprite_index != spr_tv_open && sprite_index != spr_tv_off
+			// draw combo
+			if global.combo != 0 && sprite_index != spr_tv_open && sprite_index != spr_tv_off && sprite_index != spr_tv_openSP && sprite_index != spr_tv_offSP
 			{
 			    draw_sprite_ext(sugary ? spr_tv_comboSP : spr_tv_combo, image_index, 833 + collect_x, 107 + collect_y + hud_posY, 1, 1, 0, c_white, alpha)
 	    
 				var str = string(global.combo);
-			    if global.combo < 10
+			    if global.combo < 10 && global.combo > -1
 			        str = "0" + str;
-			
+				
 			    draw_set_halign(fa_left);
 			    draw_set_valign(fa_top);
 			    draw_set_font(global.combofont);
@@ -142,13 +146,14 @@ else
 	
 		if !surface_exists(promptsurface)
 		    promptsurface = surface_create(290, 102);
-	
+		
 		surface_set_target(promptsurface)
 		draw_clear_alpha(c_black, 0)
 		draw_set_font(font1)
 		draw_set_halign(fa_left)
 		draw_set_valign(fa_middle)
-	
+		
+		// draw bubble
 		if bubblespr == spr_tv_bubble
 		{
 		    promptx -= promptspd;
@@ -157,7 +162,7 @@ else
 		        bubblespr = spr_tv_bubbleclose;
 		        bubbleindex = 0;
 		    }
-		    draw_text_color(promptx - 350, 50, prompt, c_black, c_black, c_black, c_black, 1);
+		    draw_text_color(promptx - 350 - (sugary * 25), 50, prompt, c_black, c_black, c_black, c_black, 1);
 		}
 	
 		draw_set_halign(fa_left);
@@ -170,6 +175,7 @@ else
 
 #endregion
 
+// pizzacoin in the hub
 draw_set_valign(fa_top);
 if room == hub_room1 && !(instance_exists(obj_player1) && obj_player1.state == states.victory)
 {
@@ -186,6 +192,7 @@ if room == hub_room1 && !(instance_exists(obj_player1) && obj_player1.state == s
 }
 draw_set_colour(c_white);
 
+// golf hits
 if instance_exists(obj_pizzaballOLD)
 or instance_exists(obj_pizzaball)
 {

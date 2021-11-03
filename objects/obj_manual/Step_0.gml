@@ -11,7 +11,7 @@ if !visible
 else
 {
 	scr_getinput(true);
-	if key_right2 && i < sprite_get_number(spr_manual) - 1
+	if key_right2 && i < sprite_get_number(manualspr) - 1
 	{
 		i += 1
 		scr_soundeffect(sfx_step)

@@ -1,3 +1,9 @@
+if !global.snickrematch
+{
+	instance_destroy()
+	exit
+}
+
 if deactivate
 {
     x = room_width / 2;
@@ -18,9 +24,6 @@ if !knocked
 	if x != obj_player.x
 	image_xscale = -sign(x - obj_player.x)
 }
-
-if global.snickrematch = false
-	instance_destroy()
 
 if obj_player1.state == states.parry && distance_to_object(obj_player1) < 50 && alarm[0] == -1
 {

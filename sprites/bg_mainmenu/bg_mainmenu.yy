@@ -63,7 +63,7 @@
     "eventStubScript": null,
     "parent": {"name":"bg_mainmenu","path":"sprites/bg_mainmenu/bg_mainmenu.yy",},
     "resourceVersion": "1.3",
-    "name": "",
+    "name": "bg_mainmenu",
     "tags": [],
     "resourceType": "GMSequence",
   },

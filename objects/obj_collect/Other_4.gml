@@ -1,10 +1,10 @@
 if room == rm_editor exit;
 
-if  ds_list_find_index(global.saveroom, id) != -1  
-instance_destroy() 
+if ds_list_find_index(global.saveroom, id) != -1  
+	instance_destroy() 
 
 
 
 //SAGE2019
-if global.snickchallenge = true
-instance_destroy()
+if global.snickchallenge
+	instance_destroy()

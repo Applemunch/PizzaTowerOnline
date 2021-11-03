@@ -35,7 +35,7 @@ if drawshit
 	var _s = dsin(ang);
 	var _x = appw / 2;  //surface origin x
 	var _y = apph / 2;  //surface origin y
-			
+	
 	var _xx = winw / 2 - _c * _x - _s * _y;
 	var _yy = apph / 2 - _c * _y + _s * _x;
 	
@@ -50,5 +50,5 @@ if drawshit
 	draw_rectangle(appx + appw, 0, winw, apph, false);
 	*/
 }
-else
+else if room != rm_deltarune
 	application_surface_draw_enable(true);

@@ -2,23 +2,27 @@
 global.pastdisclaimer = false;
 if !(room_first == rm_load && room_next(room_first) == Realtitlescreen)
 {
-	show_message("ayo the room order has been fucked with\nredownload the game lol");
+	audio_stop_all();
+	scr_soundeffect(sfx_pephurt);
+	
+	show_message("The room order does not match!\nnote: good luck getting past my drm lol");
 	game_end();
 	exit;
 }
 
 // trace script
-function trace(txt = undefined)
+function trace(txt = "trace() at " + string(self))
 {
-	if txt != undefined
+	if debug
 	{
 		txt = string(txt);
 		show_debug_message(txt);
 		
-		if instance_exists(obj_wc)
+		with obj_wc
 		{
 			// trace to console
-			
+			if variable_instance_exists(id, "WC_consolelist")
+				ds_list_insert(WC_consolelist, 0, "[DEBUG] " + txt);
 		}
 	}
 }
@@ -49,7 +53,7 @@ exception_unhandled_handler
 		scr_soundeffect(sfx_pephurt);
 		
 		trace(e);
-		show_message("The game crashed! longMessage:\n\n" + e.longMessage);
+		show_message(lang_string("general.crashed") + e.longMessage);
 		
 		if file_exists("lastcrash")
 			file_delete("lastcrash");
@@ -77,15 +81,6 @@ exception_unhandled_handler
 )
 
 // functions
-function lang_string(str)
-{
-	var ret = global.langmap[? str];
-	if is_undefined(ret)
-		ret = str;
-	
-	return ret;
-}
-
 function check_bysync()
 {
 	if instance_exists(obj_gms)
@@ -144,7 +139,8 @@ function offline_travel()
 	
 	// travel
 	audio_stop_all();
-	instance_create(0, 0, obj_wc);
+	if !repaintjokebuild
+		instance_create(0, 0, obj_wc);
 	
 	//scr_soundeffect(sfx_collecttoppin);
 	with instance_create(x,y,obj_fadeout)

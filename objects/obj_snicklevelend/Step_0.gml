@@ -1,25 +1,30 @@
-if !hit && (obj_player1.character != "S" or (!global.panic && room != snick_challengeend))
+var snick = false;
+with obj_player1
+	if character == "S" snick = true;
+
+if !hit && (!snick or (!global.panic && room != snick_challengeend))
 {
 	visible = false;
 	exit;
 }
-else
-	visible = true;
+visible = true;
 
-if floor(image_index) = image_number -1 && obj_player1.state != states.door && obj_player1.grounded
+if floor(image_index) >= image_number - 1
 {
-	with (obj_player1)
+	image_speed = 0;
+	with obj_player1
 	{
-		state = states.door
-		doorx = x;
-		sprite_index = spr_snick_victory
-		image_index = 0
+		if state != states.door && grounded
+		{
+			state = states.door;
+			doorx = x;
+			sprite_index = spr_snick_victory;
+			image_index = 0;
+			
+			other.alarm[0] = 200;
+		}
 	}
-	alarm[0] = 200
 }
-
-if floor(image_index) = image_number -1
-	image_speed = 0
 
 if room == snick_challengeend && global.snickrematch
     audio_sound_pitch(global.music, min(distance_to_object(obj_player1) / (room_width - 480), 1));

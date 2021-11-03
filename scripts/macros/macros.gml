@@ -1,9 +1,12 @@
 if live_call() return live_result;
 
-// macros
+// config macros
 #macro debug false
 #macro debug:debug true
+#macro repaintjokebuild false
+#macro repaintjokebuild:repaintjokebuild true
 
+// macros
 #macro c_owner merge_colour(c_blue, c_white, 0.75)
 #macro c_admin merge_colour(c_yellow, c_white, 0.5)
 #macro c_eatery merge_colour(c_orange, c_white, 0.25)
@@ -11,6 +14,12 @@ if live_call() return live_result;
 #macro c_pvp merge_colour(c_red, c_white, 0.5)
 #macro c_peicy make_colour_rgb(0, 215, 232)
 
+#macro _camx camera_get_view_x(view_camera[view_current])
+#macro _camy camera_get_view_y(view_camera[view_current])
+#macro _camw camera_get_view_width(view_camera[view_current])
+#macro _camh camera_get_view_height(view_camera[view_current])
+
+// states enum
 globalvar states;
 states = {
 	normal : 0,
@@ -146,140 +155,3 @@ states = {
 	frozen : 129,
 	spindash : 130
 }
-
-/*
-enum states
-{
-	normal,
-	revolver,
-	dynamite,
-	boots,
-	grabbed,
-	tumble,
-	finishingblow,
-	ejected,
-	transitioncutscene,
-	fireass,
-	firemouth,
-	mort,
-	hook,
-	ghost,
-	titlescreen,
-	hookshot,
-	tacklecharge,
-	cheeseball,
-	slap,
-	cheesepep,
-	cheesepepstick,
-	cheesepepstickside,
-	cheesepepstickup,
-	rideweenie,
-	boxxedpep,
-	pistolaim,
-	climbwall,
-	knightpepslopes,
-	portal,
-	secondjump,
-	chainsawbump,
-	handstandjump,
-	gottreasure,
-	knightpep,
-	knightpepattack,
-	meteorpep,
-	bombpep,
-	grabbing,
-	chainsawpogo,
-	shotgunjump,
-	pogo,
-	stunned,
-	highjump,
-	chainsaw,
-	facestomp,
-	mach4,
-	timesup,
-	machroll,
-	shotgun,
-	pistol,
-	machfreefall,
-	_throw,
-	slam,
-	superslam,
-	skateboard,
-	grind,
-	grab,
-	punch,
-	backkick,
-	uppunch,
-	shoulder,
-	backbreaker,
-	bossdefeat,
-	pizzathrow,
-	bossintro,
-	gameover,
-	keyget,
-	tackle,
-	jump,
-	ladder,
-	slipnslide,
-	comingoutdoor,
-	smirk,
-	Sjump,
-	victory,
-	Sjumpprep,
-	crouch,
-	crouchjump,
-	crouchslide,
-	mach1,
-	mach2,
-	machslide,
-	bump,
-	hurt,
-	freefall,
-	hang,
-	turning,
-	freefallland,
-	door,
-	barrel,
-	current,
-	boulder,
-	taxi,
-	runonball,
-	mach3,
-	freefallprep,
-	Sjumpland,
-	faceplant, 
-	rage,
-	//enemy states
-	idle,
-	bounce,
-	charge,
-	pizzagoblinthrow,
-	turn,
-	hitceilling,
-	hitwall,
-	rolling,
-	walk,
-	fall,
-	land,
-	hit,
-	stun,
-	recovery,
-	stomped,
-	chase,
-	spawn,
-	arenaintro,
-	actor,
-	parry,
-	golf,
-	tube,
-	pummel,
-	slipbanan,
-	bombdelete,
-	rocket,
-	gotoplayer,
-	hitlag,
-	dance,
-	rotate,
-	frozen
-}
-*/

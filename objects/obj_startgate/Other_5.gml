@@ -31,7 +31,8 @@ if myturn
 	global.wave = 0
 	global.maxwave = (global.minutes * 60 + global.seconds) * 60
 	
-	obj_music.fadeoff = 0
+	with obj_music
+		fadeoff = 0
 	if global.timeattack with obj_timeattack
 		alarm[1] = 60;
 }
