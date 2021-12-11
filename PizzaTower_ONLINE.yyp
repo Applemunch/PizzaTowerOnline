@@ -1946,6 +1946,7 @@
     {"id":{"name":"tile_medieval2","path":"sprites/tile_medieval2/tile_medieval2.yy",},"order":4,},
     {"id":{"name":"tile_medieval3","path":"sprites/tile_medieval3/tile_medieval3.yy",},"order":5,},
     {"id":{"name":"bg_medievalinterior","path":"sprites/bg_medievalinterior/bg_medievalinterior.yy",},"order":6,},
+    {"id":{"name":"t2_r1","path":"rooms/t2_r1/t2_r1.yy",},"order":2,},
     {"id":{"name":"bg_cotton1","path":"sprites/bg_cotton1/bg_cotton1.yy",},"order":4,},
     {"id":{"name":"bg_medievallibrairy1","path":"sprites/bg_medievallibrairy1/bg_medievallibrairy1.yy",},"order":7,},
     {"id":{"name":"bg_medievallibrairy2","path":"sprites/bg_medievallibrairy2/bg_medievallibrairy2.yy",},"order":8,},
@@ -3920,6 +3921,7 @@
     {"id":{"name":"obj_doorC","path":"objects/obj_doorC/obj_doorC.yy",},"order":14,},
     {"id":{"name":"obj_doorD","path":"objects/obj_doorD/obj_doorD.yy",},"order":15,},
     {"id":{"name":"obj_doorE","path":"objects/obj_doorE/obj_doorE.yy",},"order":16,},
+    {"id":{"name":"t2_r12971","path":"sprites/t2_r12971/t2_r12971.yy",},"order":1,},
     {"id":{"name":"obj_doormessage","path":"objects/obj_doormessage/obj_doormessage.yy",},"order":0,},
     {"id":{"name":"obj_pizzacutter1","path":"objects/obj_pizzacutter1/obj_pizzacutter1.yy",},"order":0,},
     {"id":{"name":"spr_susie_turn_around_dw","path":"sprites/spr_susie_turn_around_dw/spr_susie_turn_around_dw.yy",},"order":12,},
@@ -5410,6 +5412,7 @@
     {"roomId":{"name":"rm_mario","path":"rooms/rm_mario/rm_mario.yy",},},
     {"roomId":{"name":"rm_deltarune","path":"rooms/rm_deltarune/rm_deltarune.yy",},},
     {"roomId":{"name":"PP_room1_fake","path":"rooms/PP_room1_fake/PP_room1_fake.yy",},},
+    {"roomId":{"name":"t2_r1","path":"rooms/t2_r1/t2_r1.yy",},},
   ],
   "Folders": [
     {"folderPath":"folders/Sprites.yy","order":0,"resourceVersion":"1.0","name":"Sprites","tags":[],"resourceType":"GMFolder",},
@@ -5817,6 +5820,7 @@
     {"folderPath":"folders/Sprites/language specific.yy","order":25,"resourceVersion":"1.0","name":"language specific","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Sounds/pto extra/pizza castle/sugary spire.yy","order":7,"resourceVersion":"1.0","name":"sugary spire","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Sprites/mario.yy","order":27,"resourceVersion":"1.0","name":"mario","tags":[],"resourceType":"GMFolder",},
+    {"folderPath":"folders/Rooms/Extra Levels/Demo 2 Factory.yy","order":4,"resourceVersion":"1.0","name":"Demo 2 Factory","tags":[],"resourceType":"GMFolder",},
   ],
   "AudioGroups": [
     {"targets":-1,"resourceVersion":"1.3","name":"audiogroup_default","resourceType":"GMAudioGroup",},
