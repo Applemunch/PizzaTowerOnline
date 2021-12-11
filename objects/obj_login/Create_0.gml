@@ -7,7 +7,7 @@ if room != characterselect
 if !(instance_exists(obj_gms) && gms_info_isloggedin()) && room == characterselect
 {
 	keyboard_string = "";
-	gms_show_set_allowguest(debug);
+	gms_show_set_allowguest(debug ? 1 : 0); // is_real no longer works with bools!!!
 	
 	gms_show_set_fonts(global.bigfont, global.font_small, global.font_small);
 	gms_show_set_constant("c_text", c_white)

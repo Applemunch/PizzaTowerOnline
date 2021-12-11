@@ -1,19 +1,17 @@
 //Move up and down
 if selecting = -1
 {
-if ((obj_player1.key_up2 && obj_player1.key_down2 != obj_player1.key_up2 ) or keyboard_check_pressed(vk_up)) && key_select > -1
-{
-key_select -= 1
-scr_soundeffect(sfx_step)
+	if ((obj_player1.key_up2 && obj_player1.key_down2 != obj_player1.key_up2) or keyboard_check_pressed(vk_up)) && key_select > -1
+	{
+		key_select -= 1
+		scr_soundeffect(sfx_step)
+	}
+	if ((obj_player1.key_down2 && obj_player1.key_up2 != obj_player1.key_down2)  or keyboard_check_pressed(vk_down))  && key_select < 9
+	{
+		key_select += 1
+		scr_soundeffect(sfx_step)
+	}
 }
-if ((obj_player1.key_down2 && obj_player1.key_up2 != obj_player1.key_down2 )  or keyboard_check_pressed(vk_down))  && key_select < 9
-{
-key_select += 1
-scr_soundeffect(sfx_step)
-}
-
-}
-
 
 
 //Go back

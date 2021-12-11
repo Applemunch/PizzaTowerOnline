@@ -5,12 +5,12 @@ if writer < string_length(dialogue[curdiag])
 {
 	var cur_l = string_char_at(dialogue[curdiag], writer);
 	
-	if cur_l == chr(10)
-	or cur_l == " "
-	or cur_l == ","
-	or cur_l == "."
+	if cur_l == "\n" or cur_l == " " or cur_l == ","
+	or cur_l == "." or cur_l == "\\" or cur_l == "?"
+	or cur_l == "!" or cur_l == ":" or cur_l == "\""
 		exit;
 	
+	// pause text (format: ^1, ^2, etc.)
 	if cur_l == "^"
 	{
 		var stop = string_char_at(dialogue[curdiag], writer + 1);
@@ -22,11 +22,11 @@ if writer < string_length(dialogue[curdiag])
 		}
 	}
 	
+	// modifier (format: \\
 	if cur_l == "\\"
 	{
 		writer++;
-		if string_char_at(dialogue[curdiag], writer) == "e"
-			writer++;
+		writer++;
 		exit;
 	}
 	

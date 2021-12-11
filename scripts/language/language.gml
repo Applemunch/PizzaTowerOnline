@@ -266,7 +266,7 @@ function lang_load(lang)
 		ds_map_add(global.langmap, "msg.level.dungeon", "BLOODSAUCE DUNGEON");
 		ds_map_add(global.langmap, "msg.level.desert", "OREGANO DESERT");
 		ds_map_add(global.langmap, "msg.level.graveyard", "THE WASTEYARD");
-		ds_map_add(global.langmap, "msg.level.farm", "FUN FARM");
+		ds_map_add(global.langmap, "msg.level.farm", "FUN FARM WIP");
 		ds_map_add(global.langmap, "msg.level.ufo", "SPACE PINBALL");
 		ds_map_add(global.langmap, "msg.level.forest", "GNOME FOREST WIP");
 		ds_map_add(global.langmap, "msg.level.beach", "PINEAPPLE BEACH");
@@ -289,10 +289,10 @@ function lang_load(lang)
 		ds_map_add(global.langmap, "msg.level.snickchallenge", "SNICK CHALLENGE");
 		ds_map_add(global.langmap, "msg.level.snickrematch", "SNICKS REMATCH");
 		ds_map_add(global.langmap, "msg.level.etb", "EARLY TEST BUILD");
-		ds_map_add(global.langmap, "msg.level.ancient", "ANCIENT TOWER");
+		ds_map_add(global.langmap, "msg.level.ancient", "ANCIENT TOWER WIP");
 		
-		ds_map_add(global.langmap, "msg.level.cotton", "COTTONTOWN");
-		ds_map_add(global.langmap, "msg.level.jawbreaker", "JAWBREAKER MINES");
+		ds_map_add(global.langmap, "msg.level.cotton", "COTTONTOWN WIP");
+		ds_map_add(global.langmap, "msg.level.jawbreaker", "JAWBREAKER MINES WIP");
 		
 		// roomname
 		ds_map_add(global.langmap, "roomname.characterselect", "PRELOGIN");

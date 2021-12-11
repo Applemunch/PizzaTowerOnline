@@ -52,17 +52,26 @@ if con == 1
 	}
 	else
 	{
+		// next dialogue
 		if key_jump && cancon
 		{
 			writer = 0;
 			curdiag++;
 			
+			// done!
 			if curdiag >= array_length(dialogue)
 			{
 				scr_soundeffect(sfx_diagclose);
 				con = 2;
 			}
 		}
+	}
+	
+	// close
+	if key_taunt
+	{
+		scr_soundeffect(sfx_diagcancel);
+		con = 2;
 	}
 }
 

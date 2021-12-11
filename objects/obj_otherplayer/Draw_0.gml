@@ -1,3 +1,4 @@
+/// @description has the most code
 if room == rank_room or room == timesuproom or !viewable
 	exit;
 if gms_other_get_real(player_id, "room") != scr_gms_room()
@@ -111,7 +112,7 @@ else
 		if spr_palette == spr_snickpalette && paletteselect == 13
 			sprit = spr_sbombic;
 		
-		if spr_palette == spr_noisepalette && paletteselect == 19
+		if spr_palette == spr_noisepalette && paletteselect == 18
 		&& !(instance_exists(obj_pause) && obj_pause.pause)
 		{
 			_img = 0;
@@ -167,15 +168,11 @@ else
 	//Flash
 	if !pause && check_shaders()
 	{
-		if (gms_other_get_real(player_id, "flash")) {
-		    shader_set(shd_hit);    // Sets the shader to our shader file we created earlier
-		    //Draw
-		draw_sprite_ext(sprit, _img, x, y, xscale, yscale, img_angle, pausedcolor, image_alpha);
-		  // Draws the sprite, but now we have a shader set so it draws it as white
-		    shader_reset(); // Resets the shader to the default one (does nothing)
-
-		} else {
-
+		if gms_other_get_real(player_id, "flash")
+		{
+		    shader_set(shd_hit);
+			draw_sprite_ext(sprit, _img, x, y, xscale, yscale, img_angle, pausedcolor, image_alpha);
+		    shader_reset();
 		}
 	}
 

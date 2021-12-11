@@ -1,3 +1,4 @@
+/// @description it doesn't actually work so lol
 if !debug
 {
 	instance_destroy();

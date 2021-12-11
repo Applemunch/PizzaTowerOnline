@@ -43,7 +43,8 @@ if con == 1
 		var cur_l = string_char_at(dialogue[curdiag], i);
 		
 		// line breaks
-		if cur_l == chr(10) // chr(10) is Newline
+		if cur_l == "\n" // chr(10)
+		or (cur_l == " " && xx >= xst + 790) // auto newliner
 		{
 			yy += 20;
 			xx = xst;
@@ -63,30 +64,35 @@ if con == 1
 			i++;
 			if string_char_at(dialogue[curdiag], i) == "c" // choice
 			{
-				
+				++i;
+				// placeholder, didn't add choices yet...
 			}
 			if string_char_at(dialogue[curdiag], i) == "e" // effect
 			{
-				i++;
-				
-				var e = string_char_at(dialogue[curdiag], i);
-				if e == "S"
+				var e = string_char_at(dialogue[curdiag], ++i);
+				if e == "0" // reset
+					effect = -1;
+				if e == "S" // SHAKE
 					effect = 0;
 			}
 			continue;
 		}
 		
+		// draw the text, depending on the effect!
 		switch effect
 		{
 			default:
 				draw_text(xx, yy, cur_l);
 				break;
-			case 0:
+			case 0: // shaking
 				draw_text(xx + random_range(-1, 1), yy + random_range(-1, 1), cur_l);
 				break;
 		}
 		
+		// shift next letter
 		xx += 8;
+		
+		// some letters are bigger or smaller than others
 		if cur_l == "l" or cur_l == "i" or cur_l == "!" or cur_l == "j" or cur_l == "I" or cur_l = "'"
 			xx -= 4;
 		if cur_l == "w" or cur_l == "m" or cur_l == "M" or cur_l == "W"

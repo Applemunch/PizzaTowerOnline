@@ -5,3 +5,5 @@ dialogue = [
 	"This version includes decorations all made by the Pizza Tower Discord.",
 	"I hope you enjoy this short level and happy Halloween!",
 ]
+basespr = spr_snicknpc_idle;
+sprite_index = basespr;

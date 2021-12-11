@@ -45,7 +45,7 @@
     "tracks": [
       {"name":"frames","spriteId":null,"keyframes":{"Keyframes":[
             {"id":"732c7e97-bdae-4b62-b85b-25d292a77dd2","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"cfe08dc0-1113-462f-b0d9-370bd837cdcb","path":"sprites/spr_destroyable2_ss_pizza/spr_destroyable2_ss_pizza.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
-          ],"resourceVersion":"1.0","resourceType":"KeyframeStore<SpriteFrameKeyframe>",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"modifiers":[],"isCreationTrack":false,"resourceVersion":"1.0","tags":[],"resourceType":"GMSpriteFramesTrack",},
+          ],"resourceVersion":"1.0","resourceType":"KeyframeStore<SpriteFrameKeyframe>",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"isCreationTrack":false,"resourceVersion":"1.0","tags":[],"resourceType":"GMSpriteFramesTrack","modifiers":[],},
     ],
     "visibleRange": null,
     "lockOrigin": false,
@@ -72,8 +72,8 @@
   ],
   "nineSlice": null,
   "parent": {
-    "name": "other players",
-    "path": "folders/Sprites/players/pizzelle/object/destroyable/other players.yy",
+    "name": "other characters",
+    "path": "folders/Sprites/players/pizzelle/object/destroyable/other characters.yy",
   },
   "resourceVersion": "1.0",
   "name": "spr_destroyable2_ss_pizza",

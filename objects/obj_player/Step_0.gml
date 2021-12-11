@@ -654,7 +654,7 @@ if global.gameplay != 0 && !scr_checkskin(checkskin.n_nose)
 		suplextrail -= 1;
 		if suplextrail <= 0
 		{
-			suplextrail = 4;
+			suplextrail = 3;
 			with instance_create(x, y, obj_suplextrail)
 			{
 				sprite_index = other.drawspr;

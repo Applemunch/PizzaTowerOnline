@@ -1,6 +1,6 @@
 {
   "conversionMode": 0,
-  "compression": 1,
+  "compression": 0,
   "volume": 1.0,
   "preload": false,
   "bitRate": 128,
@@ -11,14 +11,14 @@
     "name": "audiogroup_default",
     "path": "audiogroups/audiogroup_default",
   },
-  "soundFile": "mu_jawbreakersecret.wav",
-  "duration": 50.3977776,
+  "soundFile": "sfx_diagcancel.wav",
+  "duration": 0.5,
   "parent": {
-    "name": "secret",
-    "path": "folders/Sounds/pto extra/sugary spire/secret.yy",
+    "name": "pto extra",
+    "path": "folders/Sounds/pto extra.yy",
   },
   "resourceVersion": "1.0",
-  "name": "mu_jawbreakersecret",
+  "name": "sfx_diagcancel",
   "tags": [],
   "resourceType": "GMSound",
 }

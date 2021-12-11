@@ -1,4 +1,5 @@
-function scr_loginwindowcss() {
+function scr_loginwindowcss() 
+{
 #region login
 
 	gms_show_replace(wt_login, @"<constants>
@@ -1257,6 +1258,4 @@ function scr_loginwindowcss() {
 	</layout>");
 
 #endregion
-
-
 }

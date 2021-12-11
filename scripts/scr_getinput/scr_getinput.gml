@@ -1,5 +1,4 @@
-/// @param force
-function scr_getinput()
+function scr_getinput(force = false)
 {
 	with obj_player1
 		online_busy = false;
@@ -14,7 +13,7 @@ function scr_getinput()
 	{
 		with obj_player1
 			online_busy = true;
-		if !(argument_count > 0 && argument[0] == true)
+		if !force
 		{
 			key_up = false
 			key_up2 = false

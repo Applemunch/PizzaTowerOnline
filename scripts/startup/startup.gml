@@ -60,6 +60,8 @@ exception_unhandled_handler
 		
 		var _f = file_text_open_write("lastcrash");
 		
+		// originally meant to have more info
+		
 		/*
 		file_text_write_string(_f, base64_encode(string(e)));
 		file_text_writeln(_f);

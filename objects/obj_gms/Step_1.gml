@@ -66,9 +66,6 @@ if keyboard_check_pressed(global.__chat_submitkey) && global.__chat_typing
 						case "S":
 							avatar = "https://cdn.discordapp.com/app-assets/828220751810265098/835452547086024705.png";
 							break;
-						case "G":
-							avatar = "https://cdn.discordapp.com/app-assets/828220751810265098/835452546813657100.png";
-							break;
 						case "SP":
 							avatar = "https://cdn.discordapp.com/app-assets/828220751810265098/835452547073703956.png";
 							break;

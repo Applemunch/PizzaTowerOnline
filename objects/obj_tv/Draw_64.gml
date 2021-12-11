@@ -1,9 +1,9 @@
 // snick rematch vignette
 if ((room == dungeon_10 or room == dungeon_9 or room == snick_challengeend) && global.snickchallenge && global.snickrematch)
 {
-    draw_sprite(spr_vignette, 0, 0, 0)
-    instance_destroy(obj_baddie, false)
-    instance_destroy(obj_baddiespawner, false)
+    draw_sprite_ext(spr_vignette, 0, 0, 0, 1, 1, 0, c_white, random_range(0.8, 0.9));
+    instance_destroy(obj_baddie, false);
+    instance_destroy(obj_baddiespawner, false);
 }
 
 if room == rm_deltarune

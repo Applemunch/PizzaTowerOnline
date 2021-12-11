@@ -1,7 +1,7 @@
 {
   "spriteId": {
-    "name": "spr_snicknpc_idle",
-    "path": "sprites/spr_snicknpc_idle/spr_snicknpc_idle.yy",
+    "name": "spr_snick_idle",
+    "path": "sprites/spr_snick_idle/spr_snick_idle.yy",
   },
   "solid": false,
   "visible": true,
