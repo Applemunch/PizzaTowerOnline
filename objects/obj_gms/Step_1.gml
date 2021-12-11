@@ -16,8 +16,6 @@ if keyboard_check_pressed(global.__chat_submitkey) && global.__chat_typing
 		{
 			if gms_self_isowner()
 				gms_chat(str, merge_colour(c_blue, c_white, 0.75));
-			else if string_lower(gms_self_name()) == "spectralpeic"
-				gms_chat(str, c_peicy);
 			else if gms_self_admin_rights()
 				gms_chat(str, merge_colour(c_yellow, c_white, 0.5));
 			else

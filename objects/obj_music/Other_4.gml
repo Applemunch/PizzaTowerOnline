@@ -348,6 +348,8 @@ else if !global.panic && !global.snickchallenge
 	}
 	if string_letters(roomname) == "cottonsecret"
 		musplay = mu_cottonsecret
+	if string_letters(roomname) == "jawbreakersecret"
+		musplay = mu_jawbreakersecret
 	
 	/*
 	if obj_player1.character == "SP" && string_endswith(audio_get_name(musplay), "secret")

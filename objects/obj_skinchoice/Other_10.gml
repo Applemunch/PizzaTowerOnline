@@ -23,14 +23,13 @@ switch sel[1]
 			["LIGHT", "Shiny!"],
 			["AETHER", "Where's a coder when you need one?"],
 			["PETER", "Griffin"],
-			["SAGE", "Pizza Tower Stress Disorder"],
+			["SAGE", "PTSD. \"Pizza Tower Stress Disorder\"."],
 			["BLACK", "Not the clothes."],
 			["MASSACRE", "Forgot his chainsaw at home, but still unstable."],
-			["BURNT PIZZA", "Oh god damn it."],
+			["BURNT PIZZA", "Oh, god damn it."],
 			["DREXYL", "D'AW HELL NAH"],
 			["GB", "One of his greatest achievements."],
 			["HYPOTHERMIA", "Don't bathe inside a freezer."],
-			["RON", "He hates women."],
 		];
 		if global.streamer
 		{
@@ -60,10 +59,9 @@ switch sel[1]
 			["GALAXY", "Stunning."],
 			["CHUNGUS", "A fine chungus, of the big variety."],
 			["MR ORANGE", "I'm seeing double! Four Noise!"],
-			["NEO", "Neo is the new!"],
-			["DR.B.B.", "Snooping as usual, I see!"],
-			["NOSE", "Repeat after me! N-"],
-			["SALAD", "You fat bald bastard you piece of subhuman trash 2000 years of constant human evolution to create a hairless fucking coconut"],
+			["DR.B.B.", "Snoo-ping( )as usual, I see."],
+			["NOSE", "It is rumored that this skin allows you to moon jump.\nWe've yet to prove that theory."],
+			["SALAD", "You fat bald bastard you piece of subhuman trash\n2000 years of constant human evolution to create a hairless fucking coconut"],
 		];
 		break;
 	
@@ -74,7 +72,7 @@ switch sel[1]
 			["THE VIGILANTE", "AKA Vigert Ebenezer Lantte."],
 			["HALLOWEEN", "Trick or treat.\nThis is a threat."],
 			["MM8BDM", "A very exciting night."],
-			["CHOCOLANTE", "It's still cheese."],
+			["CHOCOLANTE", "It's still cheese. Just... with, uh, chocolate flavor."],
 			["JOHN", "A hungry slime."],
 			["GOLDEN", "Something, something, carrots."],
 			["CHEDDAR", "Cheddar cheese is a relatively hard, off-white (or orange if colourings such as annatto are added),\nsometimes sharp-tasting, natural cheese. Originating in the English village of Cheddar in Somerset,\ncheeses of this style are now produced beyond the region and in several countries around the world."],
@@ -83,12 +81,11 @@ switch sel[1]
 			["EMERALD", "Hmm."],
 			["HOLIDAY", "Merry Cheesemas."],
 			["CHEESE MAN", "A gag of the Johnson subject."],
-			["VIGILECHE", "Chocolate milk... cheese?"],
+			["VIGILECHE", "Chocolate milk."],
 			["BLOODSAUCE", "Who dipped the cheese in ketchup?!"],
 			["VIGILATEX", "What the fuck"],
 			["THE BARTENDER", "Give me a drink, Bartender."],
 			["MORSHU", "It's yours, my friend."],
-			["TIMOTHY", "Some shading wouldn't do harm..."],
 		];
 		if global.streamer
 			selarray[14][1] = "What";
@@ -121,53 +118,8 @@ switch sel[1]
 		];
 		if global.streamer
 		{
-			selarray[4][1] = "No, not that one.";
-			selarray[14][1] = "Hilarious.";
-		}
-		break;
-	
-	case "G":
-		spr_palette = -1;
-		spr_idle = -1;
-		selarray = [
-			["???", "If you see this, I messed up."],
-			["GLADE", "She's a blue wolf."],
-			["BRAZ", "Glade's brother."],
-			["RANDOM", "Effortlessly bright."],
-			["EDGY", "Yep."],
-			["LOONA", "Shut up, dear furry!"],
-			["PEPPINO", "Italian cosplay, let's go!"],
-			["THE NOISE", "Fortunately not as noisy."],
-			["NOIK", "... I'm beginning to see a pattern here."],
-			["LEITH", "Speaks with living dirt for some reason."],
-			["BLUGAR", "\"Funny\" clown."],
-			["PUMP", "It's spooky month!!!"],
-			["PURO", "Why?"],
-			["ISABELLE", "You wouldn't get it."],
-			["KAPI", "Hi, PaperKitty."],
-			["MONSTER", "And then I'm gonna eat your girlfriend~"],
-			["DARK WORLD", "Only eyes blinded by darkness can see the way..."],
-			["MINEKEN", "You don't deserve a choice."],
-			["CORRUPTION", "At least they're smiling."],
-			["BLUEBERRY", "But it's not a berry!"],
-			["WII DOG", "HEHA"],
-			["BLUE MARIO", "Not loypoll. This is not loypoll."],
-			["RITZ", "E-girl approved."],
-			["RED", "Vote him out."],
-			["FRITZ", "NO"],
-			["PINK", "Bismuth subsalicylate."],
-			["VOLCANO", "Bursting at the seams."],
-			["GIRLFRIEND", "That's how you do it!"],
-			["SANS", "Turn around and shake his hand."],
-			["BURNT", "Crispy wolf."],
-		];
-		if global.streamer
-			selarray[17] = ["FELIX", "Definitely not the Mineken palette I swear"];
-		
-		with obj_player1
-		{
-			if petfollow == 5 // captions
-				other.selarray[1][1] = "No. Stop. Don't.";
+			selarray[4][1] = "No, not that one."; // snickette
+			selarray[14][1] = "Hilarious."; // elmo
 		}
 		break;
 	
@@ -193,30 +145,29 @@ switch sel[1]
 			["BLURPLE", "Also known as \"test\"."],
 			["PAINTLAD", "Very original name there, Jacko."],
 			["ENA", "Cheese and rice, Moony!"],
-			["COTTON CANDY", "Reference."],
+			["COTTON CANDY", "Not to say something else."],
 			["GREEN APPLE", "Why is this the least favorite candy flavor?"],
 			["GRAPE SODA", "There's more purple than actual soda in this."],
-			["NOIK", "The obligatory canon palette."],
 			["STUPID RAT", "Their beloved, I suppose."],
 			["PASTEL", "Soft on the eyes!"],
 			["BURNT", "You fucking DONKEY."],
 			["CRAZY FROG", "Ding ding."],
 			["FACTORY", "DOOR STUCK"],
 			["PINJ", "Bismuth subsalicylate."],
-			["SUGAR", "Sugar is green, of course."],
+			["SUGAR", "Sugar is green, obviously."],
 			["MASSACRE", "SUGARY SPIRE 2: The Quest for Diabetes"],
 			["RIVALS", "Did we find a coder yet?"],
 			["OLD SCHOOL", "Also known as \"grayscale\"."],
 			["ZOMBIFIED", "Uh, brains, I think?"],
 			["FORESTATION", "Made of sugarcane plants."],
 			["LAMDA", "Featuring a white scooter...?"],
-			["GOLDEN", "Unlocks the ability to SHINE."],
+			["GOLDEN", "Unlocks the ability to SHINE.\nWhich is bound to no key."],
 			["GNOME WIZARD", "Despite being a wizard, he has no redeeming qualities."],	
 		];
 		if global.streamer
 		{
 			selarray[16][1] = "Very original name there.";
-			selarray[24][1] = "You. Effing. DONKEY.";
+			selarray[23][1] = "You effing DONKEY.";
 		}
 		
 		//["PAINTLAD", "Did you know Jacko suggested the name Paintlad\nand is probably never going to be credited for it?"],
@@ -232,37 +183,15 @@ switch sel[1]
 			["FAMILIAR CHEF", "A somewhat overweight Italian nuisance."],
 			["LASAGNA", "Mondays."],
 			["SPICE", "When you want just a little spiciness on your candy."],
-			["PLUMBER", "Holy shit Super Fucking Mario"],
+			["PLUMBER", "Holy shit it's Super Fucking Mario"],
 			["GREEN APPLE", "Now I know why this is the least favorite candy flavor."],
 			["GRAPE SODA", "There's more purple than actual soda in this."],
 			["ANTIPATHIC", "Isn't it antipathetic?"],
-			["GUMMY BEAR", "Blood tasted."],
+			["GUMMY BEAR", "Tastes like blood."],
 			["LIME", "Unfortunate palette placement."],
-			["CRYSTALIZED", "Missed opportunity to make it transparent..."],
+			["CRYSTALIZED", "Missed opportunity to make it transparent."],
 		];
 	break;
-	
-	case "PEIC":
-		spr_palette = spr_peicpalette;
-		spr_idle = spr_peic_idle;
-		selarray = [
-			["PEIC", "peic."],
-			["PARAPPA", "The cool rap dog."],
-			["LOYPOLL", ""],
-			["MOXXIE", "Rick and Morty is better."],
-			["BF", "swagshit moneymoney"],
-			["GROMIT", ""],
-			["GARCELLO", "He fucking dies."],
-			["KILLER FISH", "From San Diego."],
-			["GLADE", "RGB 0 255 255"],
-			["DOG", ""],
-			["SKETCH", "A witness of vehicular manslaughter."],
-			["PINJ", "i was held at gunpoint to add these palettes please help me"],
-			["ETELED", ""],
-			["FROZEN", ""],
-			["MAJIN", ""],
-		];
-		break;
 	
 	#region joke
 	
@@ -288,7 +217,7 @@ switch sel[1]
 		spr_idle = spr_forknight_walk;
 		selarray = [
 			["FORKNIGHT", "His variant is Battle Royale."],
-			["HALLOWEEN", "Slightly darker, I pissed my pants."],
+			["HALLOWEEN", "Slightly darker, ooga booga."],
 		]
 		break;
 	case "PEPGOBLIN":
@@ -296,7 +225,7 @@ switch sel[1]
 		spr_idle = spr_pepgoblin;
 		selarray = [
 			["PEPPERONI GOBLIN", "He will take any opportunity to practice kicks."],
-			["HALLOWEEN", "A nice purple tint."],
+			["HALLOWEEN", "A nice purple tint, somehow meant to be scary."],
 		]
 		break;
 	case "PIZZARD":
@@ -304,7 +233,7 @@ switch sel[1]
 		spr_idle = spr_pizzard_walk;
 		selarray = [
 			["PIZZARD", "The pizzard circle studies pizzamancy."],
-			["HALLOWEEN", "Inverting colors is spooky apparently."],
+			["HALLOWEEN", "Inverted colors! Did you shit yourself yet?"],
 			["DOUGIE", "Bowtie."],
 		]
 		break;
@@ -317,9 +246,9 @@ switch sel[1]
 		spr_idle = spr_playerM_idle;
 		selarray = [
 			["PEPPERMAN", "A giant red pepper with limbs."],
-			["2 HP", "Spooky?"],
+			["2 HP", "Peppers are a good pumpkin replacement."],
 			["1 HP", "568% vitamin C!"],
-			["BANANA", "Apparently still pepper."],
+			["BANANA", "Potassium."],
 		];
 		break;
 	
@@ -364,14 +293,14 @@ switch sel[1]
 		locked = false;
 		break;
 }
-var basepal = (sel[1] == "P" or sel[1] == "SP" or sel[1] == "SN" or sel[1] == "G");
+var basepal = (sel[1] == "P" or sel[1] == "SP" or sel[1] == "SN");
 
 if sel[1] != obj_player1.character
 	sel[0] = basepal;
 else
 	sel[0] = obj_player1.paletteselect;
 
-selmin = (sel[1] == "G" ? 1 : 0);
+selmin = 0;
 selmax = pal_swap_get_pal_count(spr_palette) - 1;
 
 if !check_shaders()

@@ -14,9 +14,11 @@ if obj_player1.state == states.normal
 		scr_characterspr();
 		sprite_index = spr_idle;
 		scr_changetoppings();
-	
+		
+		/*
 		ds_list_copy(palcolors, other.palcolors);
 		custompal_update(palcolors);
+		*/
 		
 		noisetype = other.noisetype;
 	
@@ -26,12 +28,7 @@ if obj_player1.state == states.normal
 			with obj_global
 				event_user(0);
 			
-			repeat 6
-			{
-				with instance_create(x + random_range(-50, 50), y + random_range(-50, 50), obj_cloudeffect)
-					depth = other.depth - 1;
-			}
-				
+			instance_create(x, y, obj_genericpoofeffect);
 			if global.gameplay != 0 && character != prev
 			{
 				with obj_tv

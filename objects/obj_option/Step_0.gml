@@ -8,7 +8,7 @@ if !instance_exists(obj_keyconfig) && !instance_exists(obj_erasegame)
 	if menu == 1
 		omax = 2 + global.loaded_pc;
 	if menu == 2
-		omax = 15;
+		omax = 13 + (debug * 2);
 	
 	var mov = -(obj_player1.key_up2 or keyboard_check_pressed(vk_up)) + (obj_player1.key_down2 or keyboard_check_pressed(vk_down));
 	var movh = -(obj_player1.key_up or keyboard_check(vk_up)) + (obj_player1.key_down or keyboard_check(vk_down));

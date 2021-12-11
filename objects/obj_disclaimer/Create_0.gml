@@ -15,7 +15,7 @@ con = -1;
 size = 0;
 cancon = false;
 
-version = 4;
+version = 5;
 drm = true;
 
 str = lang_string("disclaimer.offline");

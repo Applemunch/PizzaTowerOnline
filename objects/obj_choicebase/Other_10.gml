@@ -1,2 +1,2 @@
 palname = "UNKNOWN";
-paldesc = "loypoll please add details";
+paldesc = "loyjqz please add details";

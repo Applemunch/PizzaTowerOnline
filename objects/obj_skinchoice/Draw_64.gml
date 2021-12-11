@@ -86,7 +86,7 @@ else
 	catch (e)
 	{
 		palname = "PALETTE";
-		paldesc = "loypoll please add details";
+		paldesc = "loyjqz please add details";
 		e = "";
 	}
 }

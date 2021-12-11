@@ -145,8 +145,11 @@ if menu == 2
 	
 	draw_text_colour(72, ybase + (16 * 16), lang_string("options.other.drpc"), c_white, c_white, c_white, c_white, (optionselected == 12 ? 1 : 0.5));
 	draw_text_colour(72, ybase + (16 * 17), lang_string("options.other.fpscount"), c_white, c_white, c_white, c_white, (optionselected == 13 ? 1 : 0.5));
-	draw_text_colour(72, ybase + (16 * 18), lang_string("options.other.camsmooth"), c_white, c_white, c_white, c_white, (optionselected == 14 ? 1 : 0.5));
-	draw_text_colour(72, ybase + (16 * 19), lang_string("options.other.screenshader"), c_white, c_white, c_white, c_white, (optionselected == 15 ? 1 : 0.5));
+	if debug
+	{
+		draw_text_colour(72, ybase + (16 * 18), lang_string("options.other.camsmooth"), c_white, c_white, c_white, c_white, (optionselected == 14 ? 1 : 0.5));
+		draw_text_colour(72, ybase + (16 * 19), lang_string("options.other.screenshader"), c_white, c_white, c_white, c_white, (optionselected == 15 ? 1 : 0.5));
+	}
 	
 	switch optionselected
 	{
@@ -722,7 +725,7 @@ if menu == 2
 				draw_set_colour(c_white);
 				draw_set_halign(fa_left);
 				draw_set_font(font1);
-				draw_text(600, 240, "Pizza Tower ONLINE");
+				draw_text(600, 240, "Pizza Tower Network");
 				draw_set_font(fnt_gms_small);
 				draw_text(600, 260, lang_string("options.other.drpc.example1"));
 			}

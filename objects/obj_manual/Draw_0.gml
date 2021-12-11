@@ -78,7 +78,8 @@ if i == 5
 		draw_text(960 / 2, 132, lang_string("manual.credits.fuckoffptd"));
 	else
 	{
-		draw_text(280, 132, "- Pizza Tower -\nPizzaTowerGuy\n\n- Antonball -\nSummitsphere\n\n- Peppino's Leaning Nightmare -\nDrexyl\nMarcus Does Miscellaneous\nPLN Contributors\n\n- Sugary Spire -\nSlim, Mac\nAssets - PinPan, Ching, etc\nMusic - RodMod, Red");
-		draw_text(680, 132, "- Other -\nSnick Escape - [c]ness\nSmart Debris - MrUnown\nExtra rooms - bepmaster\nLadders - Blugar23\nSugary Blocks - Randy\n\n- Cosmetic -\nPalettes - Planet Pizza Discord\nGlade, Noik & Peic - Sanssul\nNoah - lightninghawk, Sanssul\nGerald, Misty - Random\nCaptions - Croatian Commander, Potato\nSneck - StS\nLeith - Laterance");
+		draw_text(280, 132, "- Pizza Tower -\nPizzaTowerGuy\n\n- Antonball -\nSummitsphere\n\n- Peppino's Leaning Nightmare -\nDrexyl\nMarcus Does Miscellaneous\nPLN Contributors\n\n- Sugary Spire -\nSlim, Mac\nAssets - PinPan, Ching, etc\nMusic - RodMod, etc");
+		//draw_text(680, 132, "- Other -\nSnick Escape - [c]ness\nSmart Debris - MrUnown\nExtra rooms - bepmaster\nLadders - Blugar23\nSugary Blocks - Randy\n\n- Cosmetic -\nPalettes - Planet Pizza Discord\nGlade, Noik & Peic - Sanssul\nNoah - lightninghawk, Sanssul\nGerald, Misty - Random\nCaptions - Croatian Commander, Potato\nSneck - StS\nLeith - Laterance");
+		draw_text(680, 132, "- Other -\nSnick Escape - [c]ness\nSmart Debris - MrUnown\n\n- Cosmetic -\nPLACEHOLDER");
 	}
 }

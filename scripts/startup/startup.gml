@@ -223,48 +223,8 @@ function scr_petspr(index)
 	switch index
 	{
 		case 0:
-			spr_petidle = spr_petnoah_idle;
-			spr_petrun = spr_petnoah_move;
-			break;
-		case 1:
 			spr_petidle = spr_petrat_idle;
 			spr_petrun = spr_petrat_move;
-			break;
-		case 2:
-			spr_petidle = spr_petraton_idle;
-			spr_petrun = spr_petraton_move;
-			break;
-		case 3:
-			spr_petidle = spr_petgerald_idle;
-			spr_petrun = spr_petgerald_move;
-			break;
-		case 4:
-			spr_petidle = spr_petglade_idle;
-			spr_petrun = spr_petglade_move;
-			break;
-		case 5:
-			spr_petidle = spr_petcaptions_idle;
-			spr_petrun = spr_petcaptions_move;
-			break;
-		case 6:
-			spr_petidle = spr_petpeic_idle;
-			spr_petrun = spr_petpeic_move;
-			break;
-		case 7:
-			spr_petidle = spr_petgrunt_idle;
-			spr_petrun = spr_petgrunt_move;
-			break;
-		case 8:
-			spr_petidle = spr_petsneck_idle;
-			spr_petrun = spr_petsneck_move;
-			break;
-		case 9:
-			spr_petidle = spr_petmario_idle;
-			spr_petrun = spr_petmario_move;
-			break;
-		case 10:
-			spr_petidle = spr_petmisty_idle;
-			spr_petrun = spr_petmisty_move;
 			break;
 	}
 }

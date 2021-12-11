@@ -1,19 +1,20 @@
-If you have any questions ask loypoll#7683 on Discord
+If you have any questions ask loyjqz#7683 on Discord
 
-Hold left click and drag any object to move its position to the mouse
-Middle click to duplicate an object and drag it
-CTRL + Hold middle click (while dragging an object) to mass duplicate the object
-CTRL + Left click to teleport player 1 to the mouse
-Right click while dragging an object to delete it
-CTRL + Hold right click to mass delete objects
-ALT + Left click to "alt" drag an object (release left click to actually move it)
-
-INSERT to go to the next room
-DELETE to go to the previous room
+This is a guide for the console, which is only usable in offline mode
+(NEW REMADE VERSION OF THE CONSOLE COMING SOON.)
 
 * The console works on the object obj_wcmod
-* The Pizza Tower font doesn't display all letters so you might make typos (red question mark)
+* The Pizza Tower font doesn't display all letters so you might make typos (shows with a red question mark)
 * You can click a command in the console to repeat it
+
+--CONTROLS--
+	Hold left click and drag any object to move its position to the mouse
+	Middle click to duplicate an object and drag it
+	CTRL + Hold middle click (while dragging an object) to mass duplicate the object
+	CTRL + Left click to teleport player 1 to the mouse
+	Right click while dragging an object to delete it
+	CTRL + Hold right click to mass delete objects
+	ALT + Left click to "alt" drag an object (release left click to actually move it)
 
 --COMMANDS LIST--
 	Keycode 220 - Opens or closes the console
@@ -50,10 +51,10 @@ DELETE to go to the previous room
 	speed <number> - Sets the maximum FPS for the current room
 
 	create <object> (<x> <y>) - Spawns an object. If you don't provide the x and y you will have to create the object with your mouse
-		(Left click to create the object, CTRL + hold left click to mass create and right click to cancel)
+		(Left click to create the object, CTRL + hold left click to mass create and right click to exit out)
 	instancelist - Lists all instances (objects) in the room in a very messy way
 
-	state <state> - Sets player 1's state
+	state <state> - Sets the player's state
 	char <character> (<sprites>) - Changes your character to the inputted string (P, N, V, S, etc) and optionally sets the sprites to a different character's
 		(if you try a character that doesn't exist you might get weird results)
 
@@ -71,7 +72,7 @@ DELETE to go to the previous room
 
 	showhidden - Shows invisible objects (if they don't have a sprite they show their name)
 
-	script <object> <which> <script> (<arg0>, ... , <arg9>) - Executes a script on an object (can use up to 10 arguments) be aware that if a script requieres an argument and you miss it the game will crash
+	script <object> <which> <script> (<arg0>, ... , <arg9>) - Executes a script on an object (can use up to 10 arguments) be aware that if a script requieres an argument and you miss it the game could crash
 
 	debugview (<object> <which>) - Toggle debug view and optionally debug an object
 	While debug view is on press PAGE UP or PAGE DOWN to scroll the variable list.

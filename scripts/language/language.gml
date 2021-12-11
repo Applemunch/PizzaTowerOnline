@@ -1,3 +1,4 @@
+//
 function lang_string(str)
 {
 	var ret = global.langmap[? str];
@@ -161,7 +162,7 @@ function lang_load(lang)
 		ds_map_add(global.langmap, "options.other.screenshader.desc", "Full screen shader effect.");
 		
 		// manual
-		ds_map_add(global.langmap, "manual.welcome", "Welcome to the Pizza Tower Online manual!");
+		ds_map_add(global.langmap, "manual.welcome", "Welcome to the Pizza Tower Network manual!");
 		
 		ds_map_add(global.langmap, "manual.controls", "Controls");
 		ds_map_add(global.langmap, "manual.controls.content", "You can see and change the controls in the options,\nbut there are extra controls exclusive to the mod:\n\n- T to open the chat\n- ENTER to begin typing and again to send a message\n- ESCAPE to exit the chat, if it's open");
@@ -171,7 +172,7 @@ function lang_load(lang)
 		
 		ds_map_add(global.langmap, "manual.rules", "Online - Rules");
 		ds_map_add(global.langmap, "manual.rules.content", "Of course, every online game has rules to follow:");
-		ds_map_add(global.langmap, "manual.rules.content2", "- Don't spam (1 minute auto-mute)\n- Don't swear\n    (the word will change to *** for others)\n- Don't mod the game\n- When recording footage, please enable\n  streamer mode in the OTHER OPTIONS menu");
+		ds_map_add(global.langmap, "manual.rules.content2", "- Don't spam (1 minute auto-mute)\n\n- Don't swear\n    (the word will change to *** for others)\n\n- Don't mod the game\n    (Except simple sprite and music changes)\n\n- When recording footage, please enable\n  streamer mode in the OTHER OPTIONS menu");
 		
 		ds_map_add(global.langmap, "manual.lapping", "Lapping");
 		ds_map_add(global.langmap, "manual.lapping.content", "Every level has a new special \"lap\" room that can be accessed in the OLD gameplay\nstyle by taunting on the left-most wall of the first room in the level.\n\nThe lap room has a big pizza portal inside. In Pizza Time, you can enter it,\nputting you back at the end of the level, and respawning all the enemies.\n\nAt the expense of a tighter time limit, you can get a lot of points from lapping.");
@@ -225,7 +226,7 @@ function lang_load(lang)
 		ds_map_add(global.langmap, "editor.menu.savetitle", "Download Level");
 		ds_map_add(global.langmap, "editor.menu.online.official", "BROWSE");
 		ds_map_add(global.langmap, "editor.menu.online.featured", "FEATURED");
-		ds_map_add(global.langmap, "editor.menu.online.pto", "PTONLINE");
+		ds_map_add(global.langmap, "editor.menu.online.pto", "PTNETWORK");
 		ds_map_add(global.langmap, "editor.menu.search.preid", "ID, ");
 		ds_map_add(global.langmap, "editor.menu.search.prelikes", " LIKES, ");
 		ds_map_add(global.langmap, "editor.menu.search.predislikes", " DISLIKES, ");
