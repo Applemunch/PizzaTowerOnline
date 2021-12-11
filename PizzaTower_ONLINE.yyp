@@ -5839,7 +5839,11 @@
     {"folderPath":"folders/Sprites/language specific.yy","order":25,"resourceVersion":"1.0","name":"language specific","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Sounds/pto extra/pizza castle/sugary spire.yy","order":7,"resourceVersion":"1.0","name":"sugary spire","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Sprites/mario.yy","order":27,"resourceVersion":"1.0","name":"mario","tags":[],"resourceType":"GMFolder",},
+<<<<<<< HEAD
     {"folderPath":"folders/Sprites/generalobjects/blocks/NEW.yy","order":0,"resourceVersion":"1.0","name":"NEW","tags":[],"resourceType":"GMFolder",},
+=======
+    {"folderPath":"folders/Rooms/Extra Levels/Demo 2 Factory.yy","order":4,"resourceVersion":"1.0","name":"Demo 2 Factory","tags":[],"resourceType":"GMFolder",},
+>>>>>>> e40500c145d8afd93cf41e854537a0233f7a2d1d
   ],
   "AudioGroups": [
     {"targets":-1,"resourceVersion":"1.3","name":"audiogroup_default","resourceType":"GMAudioGroup",},
