@@ -53,7 +53,7 @@
     "spriteId": {"name":"spr_debris_NEW","path":"sprites/spr_debris_NEW/spr_debris_NEW.yy",},
     "timeUnits": 1,
     "playback": 1,
-    "playbackSpeed": 10.0,
+    "playbackSpeed": 1.0,
     "playbackSpeedType": 1,
     "autoRecord": true,
     "volume": 1.0,

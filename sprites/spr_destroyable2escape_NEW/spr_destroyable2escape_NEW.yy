@@ -59,7 +59,7 @@
     "spriteId": {"name":"spr_destroyable2escape_NEW","path":"sprites/spr_destroyable2escape_NEW/spr_destroyable2escape_NEW.yy",},
     "timeUnits": 1,
     "playback": 1,
-    "playbackSpeed": 20.0,
+    "playbackSpeed": 1.0,
     "playbackSpeedType": 1,
     "autoRecord": true,
     "volume": 1.0,
