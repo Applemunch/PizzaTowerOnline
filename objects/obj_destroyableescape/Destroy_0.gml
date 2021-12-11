@@ -1,11 +1,17 @@
 if ds_list_find_index(global.saveroom, id) = -1 && global.panic
 {
-	with instance_create(x + sprite_width / 2, y + sprite_height / 2, obj_debris)
+	var rep = global.gameplay == 0 ? 4 : 2; // amount of debris
+	repeat rep
 	{
-		image_xscale = abs(other.image_xscale);
-		image_yscale = abs(other.image_yscale);
+		with instance_create(x + irandom(sprite_width), y + irandom(sprite_height), obj_debris)
+		{
+			image_xscale = abs(other.image_xscale);
+			image_yscale = abs(other.image_yscale);
 			
-		sprite_index = spr_debrisescape
+			sprite_index = spr_debrisescape;
+			if global.gameplay != 0
+				sprite_index = spr_debrisescape_NEW;
+		}
 	}
 	tile_layer_delete_at(1, x, y);
 

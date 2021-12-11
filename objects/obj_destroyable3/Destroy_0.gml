@@ -1,17 +1,17 @@
 if ds_list_find_index(global.saveroom, id) = -1
 {
-	repeat 6
+	var rep = global.gameplay == 0 ? 6 : 4;
+	repeat rep with instance_create(x + irandom(sprite_width), y + irandom(sprite_height), obj_debris)
 	{
-		with instance_create(x + sprite_width / 2, y + sprite_height / 2, obj_debris)
-		{
-			image_xscale = abs(other.image_xscale)
-			image_yscale = abs(other.image_yscale)
+		image_xscale = abs(other.image_xscale)
+		image_yscale = abs(other.image_yscale)
 			
-			if other.sprite_index == spr_bigdestroyable_ss
-				sprite_index = spr_bigdebris_ss;
-			else
-				sprite_index = spr_bigdebris;
-		}
+		if other.sprite_index == spr_bigdestroyable_ss
+			sprite_index = spr_bigdebris_ss;
+		else if global.gameplay == 0
+			sprite_index = spr_bigdebris;
+		else
+			sprite_index = spr_debris_NEW;
 	}
 	
 	/*
