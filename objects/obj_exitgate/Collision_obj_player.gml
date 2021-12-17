@@ -6,12 +6,12 @@ with other
 	{
 		xscale = 1;
 		var slam = (floor(image_index) == image_number - 2);
-			
+		
 		// sugary bullshit
 		if other.sprite_index == spr_exitgate_ss
 		{
 			slam = false;
-			if floor(image_index) == image_number - 5
+			if floor(image_index) >= image_number - 5
 			{
 				other.image_index = 0;
 				other.sprite_index = spr_exitgateclosing_ss;
@@ -37,7 +37,7 @@ with other
 				shake_mag_acc = 30 / room_speed;
 			}
 			
-			if other.sprite_index == spr_exitgate
+			if other.sprite_index != spr_exitgateclosing_ss
 				other.image_index = 0;
 			ds_list_add(global.saveroom, other.id);
 		}

@@ -5,13 +5,16 @@ if string_startswith(msg, "roomname.") or room == hub_room1
 if room != rank_room && room != timesuproom && room != editor_entrance && room != custom_lvl_room && room != Realtitlescreen
 && msg != ""
 {
-	message = msg
-	showtext = true
-	alarm[0] = 200
+	message = msg;
+	showtext = true;
+	alarm[0] = 200;
 }
 else if msg != ""
 {
-	yi = -50
-	showtext = false
-	global.roommessage = "";
+	yi = -50;
+	showtext = false;
 }
+
+with obj_drpc_updater
+	roomname = msg;
+global.roommessage = "";

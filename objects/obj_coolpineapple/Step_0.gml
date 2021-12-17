@@ -167,7 +167,7 @@ if (flash == true && alarm[2] <= 0) {
 
 
 /*
-if  hitboxcreate = false && (state = states.walk) 
+if  hitboxcreate = false && (state == states.walk) 
 {
 hitboxcreate = true
 with instance_create(x,y,obj_forkhitbox)

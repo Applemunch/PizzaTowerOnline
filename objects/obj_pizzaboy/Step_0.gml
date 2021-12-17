@@ -20,7 +20,7 @@ if (flash == true && alarm[2] <= 0) {
    alarm[2] = 0.15 * room_speed; // Flashes for 0.8 seconds before turning back to normal
 }
 
-if state = states.walk
+if state == states.walk
 state = states.idle
 
 

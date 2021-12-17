@@ -59,7 +59,7 @@ if instance_exists(targetplayer)
 	{
 		if ((targetplayer.x > x - 400) && (targetplayer.x < x + 400)) && (y <= targetplayer.y+20 && y >= targetplayer.y- 20)
 		{
-			if (state = states.walk or state = states.idle) 
+			if (state == states.walk or state == states.idle) 
 			{
 				sprite_index = spr_pizzagoblin_throwbomb
 				if global.snickrematch
@@ -78,7 +78,7 @@ if targetplayer.sprite_index == targetplayer.spr_taunt && state != states.pizzag
 if ((targetplayer.x > x - 400) && (targetplayer.x < x + 400)) && (y <= targetplayer.y+20 && y >= targetplayer.y- 20)
 {
 	bombreset = 0
-	if state = states.stun
+	if state == states.stun
 		state = states.walk
 	stunned = 0
 }

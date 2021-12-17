@@ -362,7 +362,7 @@ function scr_player_punch()
 		input_buffer_jump = 0
 		}
 
-		if (grounded && (input_buffer_jump < 8) ) 
+		if (grounded && (input_buffer_jump < 8)) 
 		{
 
 		scr_soundeffect(sfx_jump)

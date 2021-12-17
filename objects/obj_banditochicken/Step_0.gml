@@ -37,14 +37,14 @@ if (flash == true && alarm[2] <= 0) {
 var targetplayer = obj_player1
 
 if ((targetplayer.x > x - 400) && (targetplayer.x < x + 400)) && (y <= targetplayer.y+60 && y >= targetplayer.y- 60)
-if (state = states.walk or state = states.idle)
+if (state == states.walk or state == states.idle)
 	activated = true
 
 if !activated && (state == states.walk or state == states.idle)
 	sprite_index = spr_banditochicken_sleep
 
 //Chase
-if (state = states.walk or state = states.idle) && activated == true && sprite_index != spr_banditochicken_wake && sprite_index != spr_banditochicken_scared
+if (state == states.walk or state == states.idle) && activated == true && sprite_index != spr_banditochicken_wake && sprite_index != spr_banditochicken_scared
 {
 	movespeed = 0
 	image_xscale = -sign(x - targetplayer.x)
@@ -104,7 +104,7 @@ if bonebuffer <= 0
 		bonebuffer = 100
 }
 
-if state = states.charge && movespeed < 5 && global.gameplay == 0
+if state == states.charge && movespeed < 5 && global.gameplay == 0
 	movespeed += 0.1
 
 if state != states.grabbed

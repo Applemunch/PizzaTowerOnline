@@ -28,11 +28,12 @@ if grabbed == true
 	{
 		//Suplex mash
 		scr_getinput();
-
 		move = key_left2 + key_right2;
-
-
-		if !((_state = states.finishingblow) or(_state = states.grab) or (_state = states.grabbing) or (_state = states._throw) or (_state = states.slam) or (_state = states.tacklecharge) or (_state = states.superslam) or (_state = states.backkick) or (_state = states.uppunch) or (_state = states.shoulder) or _state == states.backbreaker)
+		
+		if !(_state == states.finishingblow or _state == states.grab or _state == states.grabbing
+		or _state == states._throw or _state == states.slam or _state == states.tacklecharge
+		or _state == states.superslam or _state == states.backkick or _state == states.uppunch
+		or _state == states.shoulder or _state == states.backbreaker)
 		{
 			other.grav = 0.5
 			other.x = x
@@ -41,11 +42,9 @@ if grabbed == true
 			other.grabbed = false
 		}
 	}
-	
 	hsp = 0
 	
-	
-	if _state = states.finishingblow
+	if _state == states.finishingblow
 	{
 		x = playerid.x + (playerid.xscale * clipin);
 		y = playerid.y

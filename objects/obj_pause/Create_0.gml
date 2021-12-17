@@ -20,3 +20,4 @@ newbg = true;
 bgs = [];
 
 surf = -1;
+objectlist = [];

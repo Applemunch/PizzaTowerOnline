@@ -39,9 +39,9 @@ function scr_enemy_idle()
 	if  (grounded or (grounded && !place_meeting(x,y,obj_platform))) && vsp > 0
 		hsp =0
 
-	if !( (grounded or (grounded && !place_meeting(x,y,obj_platform)))) && hsp < 0
+	if !((grounded or (grounded && !place_meeting(x,y,obj_platform)))) && hsp < 0
 		hsp += 0.1
-	else if !( (grounded or (grounded && !place_meeting(x,y,obj_platform)))) && hsp > 0
+	else if !((grounded or (grounded && !place_meeting(x,y,obj_platform)))) && hsp > 0
 		hsp -= 0.1
 
 	//Animation

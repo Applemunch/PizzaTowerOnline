@@ -1,10 +1,10 @@
 
 with (obj_player)
 {
-if state = states.mach2
+if state == states.mach2
 machpunchAnim = true
 
-if state = states.mach2 or state = states.mach3
+if state == states.mach2 or state == states.mach3
 {
 with instance_create(other.x,other.y,obj_sausageman_dead)
 sprite_index = spr_noise_dead

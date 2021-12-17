@@ -1,13 +1,13 @@
-if drop = false
+if !drop
 {
-instance_create(x,y,obj_bumpeffect)
-hsp = -hsp
-vsp = -3
-drop = true
+	instance_create(x, y, obj_bumpeffect)
+	hsp = -hsp
+	vsp = -3
+	drop = true
 }
 else
 {
-instance_destroy()
-instance_create(x,y,obj_bombexplosion)
+	instance_destroy()
+	instance_create(x, y, obj_bombexplosion)
 }
 

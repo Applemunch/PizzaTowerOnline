@@ -2,7 +2,7 @@ if sprite_index = spr_grabbiehand_fall
 {
 with (obj_player)
 {
-if state = states.boxxedpep 
+if state == states.boxxedpep 
     {
 //    scr_sound(sound_losetransformation)
     with instance_create(x,y,obj_boxxeddebris)
@@ -26,7 +26,7 @@ if state = states.boxxedpep
     image_index = 4
     }
 }
-if state = states.cheesepep or state = states.cheesepepstick
+if state == states.cheesepep or state == states.cheesepepstick
     {
 //    scr_sound(sound_losetransformation)
     instance_create(x,y,obj_slimedebris) 

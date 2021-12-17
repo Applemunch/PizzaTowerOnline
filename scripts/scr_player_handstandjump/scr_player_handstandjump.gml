@@ -4,7 +4,7 @@ function scr_player_handstandjump()
 	if character == "SP"
 	{
 		#region pizzelle golf grab
-	
+		
 		landAnim = false;
 		mach2 = 35;
 		hsp = xscale * movespeed;
@@ -14,9 +14,9 @@ function scr_player_handstandjump()
 		
 		move = key_left + key_right;
 		
-		if image_index <= image_number - 1
+		//if image_index <= image_number - 1
 			movespeed = 11;
-		else
+		//else
 			movespeed -= 1;
 		
 		if move != xscale && move != 0
@@ -32,7 +32,7 @@ function scr_player_handstandjump()
 			}
 		}
 		
-		if floor(image_index) = image_number -1
+		if floor(image_index) >= image_number - 1
 		{
 			if key_attack
 				state = states.mach2;
@@ -69,7 +69,7 @@ function scr_player_handstandjump()
 			dir = predir;
 		}
 		
-		image_speed = 0.5
+		image_speed = 0.35
 	
 		//Effects
 		if !(instance_exists(obj_slidecloud)) && grounded && movespeed > 5
@@ -81,14 +81,12 @@ function scr_player_handstandjump()
 	else
 	{
 		landAnim = false
-
+		
 		hsp = xscale * movespeed
-
 		move = key_left + key_right;
 
 		momemtum = true
 		dir = xscale
-		
 		
 		if movespeed < 10 && grounded
 			movespeed += 0.5
@@ -97,9 +95,9 @@ function scr_player_handstandjump()
 		
 		if global.gameplay != 0 && character != "S"
 			movespeed = 10;
-
+		
 		//Jump Stop
-		if (!key_jump2) && !jumpstop && vsp < 0.5 && !stompAnim
+		if !key_jump2 && !jumpstop && vsp < 0.5 && !stompAnim
 		{
 			vsp /= 10
 			jumpstop = true
@@ -123,9 +121,9 @@ function scr_player_handstandjump()
 			exit;
 		}
 		
-		if (floor(image_index) == image_number - 1 or ((sprite_index == spr_suplexdashjump or sprite_index == spr_suplexdashjumpstart) && !scr_slope())) && grounded
+		if (floor(image_index) >= image_number - 1 or ((sprite_index == spr_suplexdashjump or sprite_index == spr_suplexdashjumpstart) && !scr_slope())) && grounded
 		{
-			if (!key_attack or character = "N") && vsp >= 0
+			if (!key_attack or character == "N") && vsp >= 0
 			{
 				image_speed = 0.35
 				state = states.normal
@@ -140,9 +138,9 @@ function scr_player_handstandjump()
 			}
 		}
 
-		if floor(image_index) == image_number - 1 && sprite_index = spr_suplexdashjumpstart
+		if floor(image_index) >= image_number - 1 && sprite_index == spr_suplexdashjumpstart
 			sprite_index = spr_suplexdashjump
-
+		
 		//Crouchslide
 		if key_down && grounded && vsp >= 0 && character != "S"
 		{
@@ -168,7 +166,7 @@ function scr_player_handstandjump()
 		//Input buffer jumping
 		if key_jump && character != "S"
 			input_buffer_jump = 0
-
+		
 		if (grounded && (input_buffer_jump < 8)) && character != "S"
 		{
 			input_buffer_jump = 8;
@@ -234,11 +232,11 @@ function scr_player_handstandjump()
 				if movespeed < 20
 					movespeed += 0.5
 
-				if movespeed = 20
+				if movespeed >= 20
 					sprite_index = spr_snick_superpeelout
-				else if movespeed < 20 && movespeed > 12
+				else if movespeed < 20 && movespeed >= 12
 					sprite_index = spr_snick_mach3
-				else if movespeed < 12 && movespeed > 8
+				else if movespeed < 12 && movespeed >= 8
 					sprite_index = spr_snick_mach2
 				else
 					sprite_index = spr_snick_walk
@@ -266,6 +264,7 @@ function scr_player_handstandjump()
 		movespeed = 8
 		if !grounded
 			vsp = -5
+		
 		image_index = 0
 		sprite_index = spr_faceplant
 			
@@ -274,7 +273,7 @@ function scr_player_handstandjump()
 			
 		state = states.faceplant
 		image_speed = 0.5
-		with instance_create(x,y,obj_jumpdust)
+		with instance_create(x, y, obj_jumpdust)
 			image_xscale = other.xscale
 			
 		if !(instance_exists(crazyruneffectid))

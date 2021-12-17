@@ -1,11 +1,9 @@
 if instance_exists(obj_endlevelfade)
 	exit;
 
-if room == rm_editor {
-	mask_index = spr_minipillarwoke;
-	exit;
-}
-if (!global.panic or global.gerome) && (!global.treasure or global.gameplay == 0)
+if (!global.panic or global.gerome 
+or (instance_exists(obj_snicklevelend) && obj_snicklevelend.alarm[0] > -1))
+&& (!global.treasure or global.gameplay == 0)
 {
 	x = -10000
 	y = -10000

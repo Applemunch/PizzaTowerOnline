@@ -1,14 +1,14 @@
 if instance_exists(obj_endlevelfade)
 	exit;
 
-if (!global.panic or global.gerome) && (!global.treasure or global.gameplay == 0)
+if (!global.panic or global.gerome 
+or (instance_exists(obj_snicklevelend) && obj_snicklevelend.alarm[0] > -1))
+&& (!global.treasure or global.gameplay == 0)
 {
 	x = xstart
 	y = ystart
 	mask_index = spr_minipillarwoke
-	
-	if !instance_exists(obj_snicklevelend) or !obj_snicklevelend.visible
-		sprite_index = spr_woke
+	sprite_index = spr_woke
 	
 	if place_meeting(x, y, obj_otherplayer)
 		image_alpha = 0.5;

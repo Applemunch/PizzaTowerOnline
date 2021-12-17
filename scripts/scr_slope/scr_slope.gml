@@ -1,14 +1,18 @@
 /// @description Check if object is standing on a slope
-function scr_slope() {
-
-	y++
+function scr_slope(xx = x, yy = y + 1) 
+{
+	var xold = x, yold = y;
+	
+	x = xx;
+	y = yy;
+	
 	var slope = instance_place(x, y, obj_slope)
 	if slope {
 		with slope {
 			var object_side = 0
 			var slope_start = 0
 			var slope_end = 0
-	
+			
 			if image_xscale > 0 {
 				// Slope is facing /|
 				object_side = other.bbox_right
@@ -33,8 +37,8 @@ function scr_slope() {
 		}
 	}
 
-	y--
-	return false
-
-
+	x = xold;
+	y = yold;
+	
+	return false;
 }

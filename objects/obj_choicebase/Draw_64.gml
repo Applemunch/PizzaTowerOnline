@@ -19,8 +19,11 @@ else
 y -= 0.5;
 x += 0.5;
 
-// text
-draw_set_font(global.bigfont);
-draw_text((960 / 2) + random_range(-1, 1), 540 - 100, palname);
-draw_set_font(global.font_small);
-draw_text(960 / 2, 540 - 64, paldesc);
+if basetext
+{
+	// text
+	draw_set_font(titlefont);
+	draw_text((960 / 2) + random_range(-1, 1), 540 - 100, palname);
+	draw_set_font(descfont);
+	draw_text(960 / 2, 540 - 64, paldesc);
+}

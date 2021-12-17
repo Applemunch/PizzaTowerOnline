@@ -43,7 +43,7 @@ function create_particle(x, y, par)
 			{
 				with instance_create(x, y, obj_baddiegibs)
 				{
-					if (object_is_ancestor(bad.object_index, obj_baddie) && bad.sugaryenemy)
+					if (inst_relation(bad, obj_baddie) && bad.sugaryenemy)
 					or (bad.sprite_index == spr_hungrypillar_ss)
 					{
 						sprite_index = spr_baddiegibs_ss;

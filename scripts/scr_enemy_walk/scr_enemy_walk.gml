@@ -39,10 +39,12 @@ function scr_enemy_walk()
 	}
 	
 	//Animation
-	image_speed = 0.35
+	image_speed = 0.35;
 	
-	if (scr_solid(x+image_xscale,y) or place_meeting(x+hsp,y,obj_hallway))
-	if !place_meeting(x+sign(hsp),y,obj_slope)
+	// turn around on wall
+	var sold = scr_solid(x + image_xscale, y, true, true);
+	if place_meeting(x + hsp * 2, y, obj_hallway)
+	or (sold && !inst_relation(sold, obj_slope))
 	{
 		if object_index == obj_forknight
 		{
@@ -74,39 +76,43 @@ function scr_enemy_walk()
 				turntimer = 600;
 		}
 	}
-
-	if object_index != obj_ancho
+	
+	// on platform and about to fall, turn around
+	if object_index != obj_ancho && object_index != obj_miniufo
 	{
-		if !(scr_solid(x+(image_xscale*15),y+31) or place_meeting(x+(image_xscale*15),y+31,obj_platform) or place_meeting(x+(image_xscale*15),y+1,par_platform))
-		if movespeed > 0 && grounded
+		if !scr_solid(x + hsp * 5, y + 30) && !scr_solid(x + hsp * 5, y + 1)
+		&& !place_meeting(x + hsp, y + 30, obj_slope)
 		{
-			if object_index = obj_ninja
+			if movespeed > 0 && grounded
 			{
-				vsp = -11
+				if object_index == obj_ninja
+				{
+					vsp = -11
 			
-				image_index = 0
-				image_xscale = -sign(x - obj_player.x)
-				state = states.charge
-			}
-			else if object_index = obj_forknight
-			{
-				image_xscale *= -1
-				image_index = 0
-				sprite_index = turnspr
-				state = states.idle
-			}
-			else if object_index = obj_tankOLD
-			{
-				image_xscale *= -1
-				image_index = 0
-				sprite_index = turnspr 
-				state = states.turn
-			}
-			else
-			{
-				image_xscale *= -1
-				if object_index == obj_pickle
-					hsp = 0;
+					image_index = 0
+					image_xscale = -sign(x - obj_player.x)
+					state = states.charge
+				}
+				else if object_index == obj_forknight
+				{
+					image_xscale *= -1
+					image_index = 0
+					sprite_index = turnspr
+					state = states.idle
+				}
+				else if object_index == obj_tankOLD
+				{
+					image_xscale *= -1
+					image_index = 0
+					sprite_index = turnspr 
+					state = states.turn
+				}
+				else
+				{
+					image_xscale *= -1
+					if object_index == obj_pickle
+						hsp = 0;
+				}
 			}
 		}
 	}

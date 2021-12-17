@@ -18,3 +18,5 @@ if string_startswith(room_get_name(room), "strongcold")
 
 depth = 1
 content = obj_null
+image_speed = 0.35;
+image_index = x / sprite_width;

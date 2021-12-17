@@ -8,7 +8,7 @@ with (obj_player)
 
 
 
-//if  ((state = states._throw) or (state = states.slam) or (state = states.punch) or (state = states.backkick) or (state = states.uppunch) or (state = states.backbreaker)) && other.flying = false
+//if  ((state = states._throw) or (state == states.slam) or (state == states.punch) or (state == states.backkick) or (state == states.uppunch) or (state == states.backbreaker)) && other.flying = false
 //{ 
    // instance_create(other.x,other.y,obj_bangeffect)
    // if x != other.x
@@ -30,7 +30,7 @@ other.caughtplayer = true
 
     //Stomp
 
-if y < other.y  && (attacking = false) && (state = states.jump) && vsp > 0 && sprite_index != spr_player_stompprep
+if y < other.y  && (attacking = false) && (state == states.jump) && vsp > 0 && sprite_index != spr_player_stompprep
 {
 
 if other.helmet = false
@@ -58,7 +58,7 @@ else
 vsp = -9
 }
 //Mach2 Bump
-if (state = states.mach2 or state = states.mach3 or state = states.grab) && other.grounded = true && other.state = states.stun
+if (state == states.mach2 or state == states.mach3 or state == states.grab) && other.grounded = true && other.state = states.stun
 {
 global.hit += 1
 instance_create(other.x,other.y,obj_slapstar)

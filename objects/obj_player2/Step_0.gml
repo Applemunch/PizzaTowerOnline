@@ -152,7 +152,7 @@ if !instance_exists(superchargedeffectid) && supercharged = true
 
 if global.coop = true
 {
-if (state = states.punch or state = states.handstandjump)
+if (state == states.punch or state == states.handstandjump)
 && !(obj_player1.state = states.punch or obj_player1.state = states.handstandjump)
 {
 	fightballadvantage = true
@@ -168,7 +168,7 @@ thrown = false
 
  //Delay to appear in Coop
  
- if visible = false && state = states.comingoutdoor 
+ if visible = false && state == states.comingoutdoor 
  {
  coopdelay ++
 image_index = 0
@@ -281,7 +281,7 @@ obj_player1.depth = -7
 scr_soundeffect(sfx_explosion)
 
 with obj_player1
-if  (state = states.grab or (state = states.superslam) or state = states.tacklecharge)
+if  (state = states.grab or (state == states.superslam) or state == states.tacklecharge)
 state = states.normal
 
 scr_changetoppings()
@@ -332,7 +332,7 @@ sprite_index = spr_deathstart
 state = states.gameover
 }
 
-if state = states.gameover && y > (room_height * 2)
+if state == states.gameover && y > (room_height * 2)
 {
 	
 scr_playerreset()
@@ -351,10 +351,10 @@ scr_playerreset()
 
 //Out of grab
 
-if !instance_exists(baddiegrabbedID) && (state = states.grab or (state = states.superslam) or state = states.tacklecharge)
+if !instance_exists(baddiegrabbedID) && (state == states.grab or (state == states.superslam) or state == states.tacklecharge)
 state = states.normal
 
-if !(state = states.grab or (state = states.superslam) or state = states.mach2)
+if !(state = states.grab or (state == states.superslam) or state == states.mach2)
 {
 baddiegrabbedID = 0
 heavy = false
@@ -407,7 +407,7 @@ sprite_index = spr_vomit2
 if global.playerhealth = 1 && !instance_exists(obj_sweat) && obj_player.state = states.normal
 instance_create(x,y,obj_sweat)
 //Angry cloud
-if angry = true && !instance_exists(angryeffectid) && state = states.normal
+if angry = true && !instance_exists(angryeffectid) && state == states.normal
 with instance_create(x,y,obj_angrycloud)
  {
 	 playerid = other.object_index
@@ -443,19 +443,19 @@ if inv_frames = false && hurted = false  && state != states.ghost
 image_alpha = 1
 
 //Attack
-if (state = states.mach2) or (state = states.tacklecharge) or (state = states.skateboard) or (state = states.knightpep) or (state = states.boxxedpep) or (state = states.cheesepep) or  (state = states.knightpepslopes) or  (state = states.knightpepattack) or   (state = states.bombpep) or  (state = states.facestomp) or (state = states.machfreefall) or (state = states.facestomp) or (state = states.machroll)  or (state = states.mach3) or (state = states.freefall) or (state = states.Sjump) 
+if (state == states.mach2) or (state == states.tacklecharge) or (state == states.skateboard) or (state == states.knightpep) or (state == states.boxxedpep) or (state == states.cheesepep) or  (state = states.knightpepslopes) or  (state = states.knightpepattack) or   (state = states.bombpep) or  (state = states.facestomp) or (state == states.machfreefall) or (state == states.facestomp) or (state == states.machroll)  or (state == states.mach3) or (state == states.freefall) or (state == states.Sjump) 
 attacking = true
 else
 attacking = false
 
 //Grab Moves
-if (state = states._throw) or (state = states.punch) or (state = states.backkick) or (state = states.shoulder) or (state = states.uppunch)
+if (state == states._throw) or (state == states.punch) or (state == states.backkick) or (state == states.shoulder) or (state == states.uppunch)
 grabbing = true
 else
 grabbing = false
 
 //Instant-Kill Attack
-if  (sprite_index = spr_player_barrelroll) or (state = states.crouchslide) or (state = states.faceplant) or (state = states.rideweenie) or (state = states.mach3) or (state = states.jump && sprite_index = spr_playerN_noisebombspinjump) or (state = states.slipnslide) or (state = states.hurt && thrown = true) or (state = states.mach2) or (state = states.climbwall) or (state = states.freefall) or (state = states.tumble) or (state = states.fireass) or (state = states.firemouth) or (state = states.hookshot) or (state = states.skateboard) or  (state = states.mach4) or (state = states.Sjump) or (state = states.machroll) or (state = states.machfreefall) or (state = states.tacklecharge)  or (state = states.superslam && sprite_index = spr_piledriver) or (state = states.knightpep) or (state = states.knightpepattack) or (state = states.knightpepslopes)  or (state = states.boxxedpep) or (state = states.cheesepep) or (state = states.cheeseball) 
+if  (sprite_index = spr_player_barrelroll) or (state == states.crouchslide) or (state == states.faceplant) or (state == states.rideweenie) or (state == states.mach3) or (state == states.jump && sprite_index = spr_playerN_noisebombspinjump) or (state == states.slipnslide) or (state == states.hurt && thrown = true) or (state == states.mach2) or (state == states.climbwall) or (state == states.freefall) or (state == states.tumble) or (state == states.fireass) or (state == states.firemouth) or (state == states.hookshot) or (state == states.skateboard) or  (state = states.mach4) or (state == states.Sjump) or (state == states.machroll) or (state == states.machfreefall) or (state == states.tacklecharge)  or (state == states.superslam && sprite_index = spr_piledriver) or (state == states.knightpep) or (state == states.knightpepattack) or (state == states.knightpepslopes)  or (state == states.boxxedpep) or (state == states.cheesepep) or (state == states.cheeseball) 
 instakillmove = true
 else
 instakillmove = false
@@ -521,8 +521,8 @@ if state != states.jump
 stompAnim = false
 
 
-if (state = states.mach3 or (state = states.grabbed && instance_exists(obj_player2) && obj_player2.state = states.mach3) 
-or (state = states.crouchslide) or pizzapepper > 0   or sprite_index = spr_player_barrelroll or state = states.rideweenie or state = states.punch or state = states.mach2 or (state = states.jump && sprite_index = spr_playerN_noisebombspinjump) or  pogochargeactive = true or state = states.climbwall or state = states.hookshot or state = states.machroll  or state = states.tacklecharge or state = states.handstandjump or state = states.machslide) && macheffect = false
+if (state == states.mach3 or (state == states.grabbed && instance_exists(obj_player2) && obj_player2.state = states.mach3) 
+or (state == states.crouchslide) or pizzapepper > 0   or sprite_index = spr_player_barrelroll or state == states.rideweenie or state == states.punch or state == states.mach2 or (state == states.jump && sprite_index = spr_playerN_noisebombspinjump) or  pogochargeactive = true or state == states.climbwall or state == states.hookshot or state == states.machroll  or state == states.tacklecharge or state == states.handstandjump or state == states.machslide) && macheffect = false
 {
 macheffect = true
 toomuchalarm1 = 6
@@ -535,15 +535,15 @@ sprite_index = other.sprite_index
 }
 }
 
-if !(state = states.mach3 or (state = states.grabbed && instance_exists(obj_player2) && obj_player2.state = states.mach3) 
-or (state = states.crouchslide) or pizzapepper > 0   or sprite_index = spr_player_barrelroll or state = states.rideweenie or state = states.punch or state = states.mach2 or (state = states.jump && sprite_index = spr_playerN_noisebombspinjump) or pogochargeactive = true or state = states.climbwall or state = states.hookshot or state = states.machroll  or state = states.tacklecharge or state = states.handstandjump or state = states.machslide)
+if !(state = states.mach3 or (state == states.grabbed && instance_exists(obj_player2) && obj_player2.state = states.mach3) 
+or (state == states.crouchslide) or pizzapepper > 0   or sprite_index = spr_player_barrelroll or state == states.rideweenie or state == states.punch or state == states.mach2 or (state == states.jump && sprite_index = spr_playerN_noisebombspinjump) or pogochargeactive = true or state == states.climbwall or state == states.hookshot or state == states.machroll  or state == states.tacklecharge or state == states.handstandjump or state == states.machslide)
 macheffect = false
 
 //Too much alarm 1
 if (toomuchalarm1 > 0) {
     toomuchalarm1 -= 1;
-    if (toomuchalarm1 <= 0) && (state = states.mach3 or (state = states.grabbed && instance_exists(obj_player2) && obj_player2.state = states.mach3) 
-	or (state = states.crouchslide) or pizzapepper > 0  or sprite_index = spr_player_barrelroll or state = states.rideweenie or state = states.punch or state = states.climbwall or (state = states.jump && sprite_index = spr_playerN_noisebombspinjump) or pogochargeactive = true or (state = states.hookshot) or state = states.mach2 or state = states.tacklecharge or state = states.machslide or state = states.machroll or state = states.handstandjump or (state = states.chainsaw && mach2 >= 100) ){
+    if (toomuchalarm1 <= 0) && (state == states.mach3 or (state == states.grabbed && instance_exists(obj_player2) && obj_player2.state = states.mach3) 
+	or (state == states.crouchslide) or pizzapepper > 0  or sprite_index = spr_player_barrelroll or state == states.rideweenie or state == states.punch or state == states.climbwall or (state == states.jump && sprite_index = spr_playerN_noisebombspinjump) or pogochargeactive = true or (state == states.hookshot) or state == states.mach2 or state == states.tacklecharge or state == states.machslide or state == states.machroll or state == states.handstandjump or (state == states.chainsaw && mach2 >= 100)){
         {
 		with instance_create(x,y,obj_mach3effect)
 {
@@ -570,7 +570,7 @@ vsp = 10
 }
 
 if character = "S"
-if state = states.crouchjump or state = states.crouch
+if state == states.crouchjump or state == states.crouch
 state = states.normal
 
 //Mask
@@ -584,7 +584,7 @@ mask_index = spr_crouchmask
 else if place_meeting(x,y,obj_solid)
 mask_index = spr_crouchmask
 
-if character = "S" && state = states.bombpep
+if character = "S" && state == states.bombpep
 mask_index =spr_player_mask
 else if character = "S"
 mask_index = spr_crouchmask
@@ -592,9 +592,9 @@ mask_index = spr_crouchmask
 
 
 
-if state = states.gottreasure or sprite_index = spr_knightpepstart
-or sprite_index = spr_knightpepthunder or state = states.keyget 
-or state = states.door or state = states.ejected or state = states.victory or state = states.comingoutdoor or state = states.gameover
+if state == states.gottreasure or sprite_index = spr_knightpepstart
+or sprite_index = spr_knightpepthunder or state == states.keyget 
+or state == states.door or state == states.ejected or state == states.victory or state == states.comingoutdoor or state == states.gameover
 {
 cutscene = true
 }
@@ -604,7 +604,7 @@ cutscene = false
 //SAGE2019
 //Up arrow
 if (place_meeting(x,y,obj_door) or place_meeting(x,y,obj_dresser) or place_meeting(x,y,obj_snick) or (place_meeting(x,y,obj_keydoor)) or (place_meeting(x,y,obj_exitgate) && global.panic = true))
-&& !instance_exists(obj_uparrow) && scr_solid(x,y+1) && state = states.normal && obj_player1.spotlight = false
+&& !instance_exists(obj_uparrow) && scr_solid(x,y+1) && state == states.normal && obj_player1.spotlight = false
 with instance_create(x,y,obj_uparrow)
  {
 	 playerid = other.object_index

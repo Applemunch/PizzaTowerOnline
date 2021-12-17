@@ -1,14 +1,14 @@
 var player = other;
 with player
 {
-	if place_meeting(x, y, other) && key_up && grounded && (state = states.normal or state = states.mach1 or state = states.mach2) 
+	if place_meeting(x, y, other) && key_up && grounded && (state == states.normal or state == states.mach1 or state == states.mach2) 
 	&& !instance_exists(obj_noisesatellite) && !instance_exists(obj_fadeout) && state != states.victory && state != states.comingoutdoor
 	&& spotlight = true
 	{
 		if !scr_checkskin(checkskin.p_anton)
-		or (other.level == "snickchallenge" or other.level == "snickrematch")
+		or (other.level == "snickchallenge" or other.level == "snickrematch" or other.level == "grinch")
 			audio_stop_all()
-
+		
 		backtohubstartx = x
 		backtohubstarty = y
 		backtohubroom = room

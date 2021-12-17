@@ -16,9 +16,9 @@ if sel[1] == "N"
 	if global.gameplay != 0 && noisetype == 0
 		_spr = spr_playerN_pogofall;
 	
-	if sel[0] == 15 or sel[0] == 19
+	if sel[0] == 14 or sel[0] == 17
 	{
-		if sel[0] == 19
+		if sel[0] == 17
 		{
 			_spr = spr_playerN_idle;
 			img = 0;

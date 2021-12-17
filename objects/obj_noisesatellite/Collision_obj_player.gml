@@ -8,7 +8,7 @@ with (obj_player)
 
 
 
-//if  ((state = states._throw) or (state = states.slam) or (state = states.punch) or (state = states.backkick) or (state = states.uppunch) or (state = states.backbreaker)) && other.flying = false
+//if  ((state = states._throw) or (state == states.slam) or (state == states.punch) or (state == states.backkick) or (state == states.uppunch) or (state == states.backbreaker)) && other.flying = false
 //{ 
    // instance_create(other.x,other.y,obj_bangeffect)
    // if x != other.x
@@ -27,7 +27,7 @@ with (obj_player)
 
 
 //Stomp
-if y < other.y  && (attacking = false) && (state = states.jump) && vsp > 0
+if y < other.y  && (attacking = false) && (state == states.jump) && vsp > 0
 {
 //scr_sound(sound_stomp)
 if vsp > 0
@@ -75,7 +75,7 @@ sprite_index = spr_player_stompprep
 
 //Stun
 
-    if state = states.mach1 
+    if state == states.mach1 
     {
 //scr_sound(sound_tackleenemy)
     instance_create(x,y,obj_bumpeffect)
@@ -99,7 +99,7 @@ sprite_index = spr_player_stompprep
     }
     
 //Mach2 Bump
-if state = states.mach2 && other.grounded = true
+if state == states.mach2 && other.grounded = true
 {
 //scr_sound(sound_tackleenemy)
 other.hp = 0

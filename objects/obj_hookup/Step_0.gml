@@ -2,7 +2,7 @@ if place_meeting(x, y - 1, obj_player1)
 {
 	with obj_player1
 	{
-		if place_meeting(x,y+1,other) && key_down && (state = states.crouch or (character = "S" && (state = states.normal or state = states.mach1))) && place_meeting(x,y+1,obj_platform)
+		if place_meeting(x,y+1,other) && key_down && (state == states.crouch or (character = "S" && (state == states.normal or state == states.mach1))) && place_meeting(x,y+1,obj_platform)
 		{
 			other.hooked = true
 			other.playerid = object_index

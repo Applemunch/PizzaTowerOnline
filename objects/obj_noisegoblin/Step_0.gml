@@ -58,7 +58,7 @@ if x != obj_player1.x && obj_player1.state != states.bombpep && state != states.
 {
 if ((obj_player1.x > x - 200) && (obj_player1.x < x + 200)) && (y <= obj_player1.y+200 && y >= obj_player1.y- 200)
 {
-if (state = states.walk or state = states.idle) 
+if (state == states.walk or state == states.idle) 
 {
 sprite_index = spr_archergoblin_shoot
 image_index = 0

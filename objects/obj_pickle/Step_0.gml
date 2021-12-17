@@ -53,7 +53,7 @@ if bombreset > 0
 
 //Fade
 
-if bombreset = 0 && state = states.walk
+if bombreset = 0 && state == states.walk
 {
 	attacking = false;
 	targetplayer = instance_nearest(x,y,obj_player1)
@@ -70,7 +70,7 @@ if bombreset = 0 && state = states.walk
 
 
 //Teleport
-if state = states.chase
+if state == states.chase
 {
 	if fade
     {

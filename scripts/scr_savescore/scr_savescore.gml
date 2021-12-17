@@ -43,21 +43,7 @@ function scr_savescore(namestring)
 		
 		// time attack score
 		if global.timeattack
-		{
-			if ((ini_read_real("TAmin", namestring, -1) * 60) + ini_read_real("TAsec", namestring, -1) > (global.taminutes * 60) + global.taseconds)
-			or ini_read_real("TAmin", namestring, -1) == -1
-			{
-				ini_write_real("TAsec",namestring,global.taseconds);
-				ini_write_real("TAmin",namestring,global.taminutes);
-		
-				var char = string(obj_player1.character);
-				if char == "N" && obj_player1.noisetype == 1
-					char += "S";
-				if global.gameplay != 0
-					char += "-NEW";
-				ini_write_string("TAchar",namestring,char);
-			}
-		}
+			scr_savetatime(namestring);
 		
 		// save pizzacoin
 		if instance_exists(obj_gms) && !gms_self_isguest()
@@ -66,6 +52,26 @@ function scr_savescore(namestring)
 			ini_write_real("online", "pizzacoin", scr_getcoin());
 	}
 	ini_close();
+}
+
+function scr_savetatime(namestring)
+{
+	if ini_read_real("TAmin", namestring, -1) == -1
+	or ((ini_read_real("TAmin", namestring, -1) * 60) + ini_read_real("TAsec", namestring, -1) > (global.taminutes * 60) + global.taseconds)
+	{
+		ini_write_real("TAsec", namestring, global.taseconds);
+		ini_write_real("TAmin", namestring, global.taminutes);
+		
+		var char = string(obj_player.character);
+		if char == "N" && obj_player.noisetype == 1
+			char += "S";
+		if global.gameplay == 2
+			char += "-REMIX";
+		else if global.gameplay != 0
+			char += "-NEW";
+				
+		ini_write_string("TAchar", namestring, char);
+	}
 }
 
 function scr_levelname()

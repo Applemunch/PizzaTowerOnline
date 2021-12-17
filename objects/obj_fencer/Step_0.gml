@@ -12,7 +12,7 @@ switch (state)
     case states.pizzagoblinthrow: scr_pizzagoblin_throw (); break;
     // grabbed state here
 }
-if state = states.stun && stunned > 100 && birdcreated = false
+if state == states.stun && stunned > 100 && birdcreated = false
 {
 	birdcreated = true
 	with instance_create(x,y, obj_enemybird)
@@ -50,13 +50,13 @@ if targetplayer.sprite_index =  targetplayer.spr_taunt && state != states.charge
 if  ((targetplayer.x > x - 400) && (targetplayer.x < x + 400)) && (y <= targetplayer.y+20 && y >= targetplayer.y- 20)
 {
 bombreset = 0
-if state = states.stun
+if state == states.stun
 state = states.walk
 stunned = 0
 }
 */
 
-if state = states.stun or state = states.walk
+if state == states.stun or state == states.walk
 {
 	charging = false
 	movespeed = 0

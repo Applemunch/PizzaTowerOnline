@@ -1,6 +1,6 @@
 with other
 {
-	if state = states.tumble or state = states.knightpepslopes or state = states.mach3 or state = states.mach2 or state == states.machroll
+	if state == states.tumble or state == states.knightpepslopes or state == states.mach3 or state == states.mach2 or state == states.machroll
 	{
 		if global.gameplay == 0
 			other.image_speed = 0.35

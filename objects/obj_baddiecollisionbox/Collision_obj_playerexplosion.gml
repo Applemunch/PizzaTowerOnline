@@ -1,6 +1,3 @@
-if other.sync
-	exit;
-
 if instance_exists(baddieID)
 {
 	if baddieID.object_index != obj_pizzaballOLD

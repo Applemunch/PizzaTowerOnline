@@ -1,4 +1,5 @@
-function scr_panicbg_end() {
+function scr_panicbg_end()
+{
 	//DDP This script is run after the last background element has been drawn
 	if !check_shaders()
 		exit;

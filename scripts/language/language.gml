@@ -105,16 +105,19 @@ function lang_load(lang)
 		
 		ds_map_add(global.langmap, "options.other.gameplay.desc", "The game changed a lot throughout development.\nSome people may prefer older moveset and music.");
 		ds_map_add(global.langmap, "options.other.gameplay.old", "OLD");
-		ds_map_add(global.langmap, "options.other.gameplay.pto", "MIXED");
+		ds_map_add(global.langmap, "options.other.gameplay.remix", "REMIX");
 		ds_map_add(global.langmap, "options.other.gameplay.final", "FINAL");
+		ds_map_add(global.langmap, "options.other.gameplay.old.desc", "Moveset mostly from before the April 2021 Patreon build.");
+		ds_map_add(global.langmap, "options.other.gameplay.final.desc", "Recreation of the final version of the game.");
+		ds_map_add(global.langmap, "options.other.gameplay.remix.desc", "Makes the \"perfect mix\" between the two gameplay styles.\nYou can suggest non-OP changes for this one.\n\n(Unfinished. Very similar to NEW gameplay currently.)");
 		
 		ds_map_add(global.langmap, "options.other.wavybg.title", "WAVY BACKGROUND");
 		ds_map_add(global.langmap, "options.other.wavybg.desc", "When it's Pizza Time, the background slowly distorts\nand tints red depending on your time left.");
-		ds_map_add(global.langmap, "options.other.wavybg.locked", "shit graphics mode on. This option is locked");
-		ds_map_add(global.langmap, "options.other.wavybg.shaderfail", "Shaders not compiled.\nPlease restart the game");
+		ds_map_add(global.langmap, "options.other.wavybg.locked", "Shit Graphix mode on. This option is locked.");
+		ds_map_add(global.langmap, "options.other.wavybg.shaderfail", "Shaders not compiled.\nPlease restart the game.");
 		
 		ds_map_add(global.langmap, "options.other.blur.title", "MOTION BLUR");
-		ds_map_add(global.langmap, "options.other.blur.desc", "When it's Pizza Time, the screen will have motion blur.");
+		ds_map_add(global.langmap, "options.other.blur.desc", "When it's Pizza Time, the screen will have motion blur.\nIt gets more intense depending on your time left.");
 		
 		ds_map_add(global.langmap, "options.other.shaky.title", "ESCAPE SHAKE");
 		ds_map_add(global.langmap, "options.other.shaky.desc", "When it's Pizza Time, the screen will shake.");
@@ -123,10 +126,10 @@ function lang_load(lang)
 		ds_map_add(global.langmap, "options.other.panicbg.desc", "When it's Pizza Time, some backgrounds will change.");
 		
 		ds_map_add(global.langmap, "options.other.afterimage.title", "FANCY AFTERIMAGES");
-		ds_map_add(global.langmap, "options.other.afterimage.desc", "Applies your current palette to the colored afterimages.\nThis is a nearly unnoticeable detail that just tanks on performance.");
+		ds_map_add(global.langmap, "options.other.afterimage.desc", "Applies your current palette to the colored afterimages.\nThis is a nearly unnoticeable detail that just tanks on performance.\nGood to have the option, though.");
 		
-		ds_map_add(global.langmap, "options.other.demo3.title", "FANCY DEBRIS");
-		ds_map_add(global.langmap, "options.other.demo3.desc", "Secret debris will have their respective tiles\ninstead of a generic block's.");
+		ds_map_add(global.langmap, "options.other.demo3.title", "TILED DEBRIS");
+		ds_map_add(global.langmap, "options.other.demo3.desc", "Secret tile particles will show their respective\ntiles on them instead of a generic block's.");
 		
 		ds_map_add(global.langmap, "options.other.playernames.title", "SHOW NAMES");
 		ds_map_add(global.langmap, "options.other.playernames.desc", "Show other people's usernames when playing online.");
@@ -140,7 +143,7 @@ function lang_load(lang)
 		ds_map_add(global.langmap, "options.other.onlinepvp.desc", "Attack other players. The other player will need PVP enabled too.");
 		
 		ds_map_add(global.langmap, "options.other.synceffects.title", "SYNC EFFECTS");
-		ds_map_add(global.langmap, "options.other.synceffects.desc", "Sync effects like afterimages or the taunt in online mode.");
+		ds_map_add(global.langmap, "options.other.synceffects.desc", "Sync effects like afterimages or taunts in online mode.");
 		
 		ds_map_add(global.langmap, "options.other.fuckoffptd.title", "STREAMER MODE");
 		ds_map_add(global.langmap, "options.other.fuckoffptd.desc", "Replaces *most* player names with their player IDs.");
@@ -156,7 +159,7 @@ function lang_load(lang)
 		ds_map_add(global.langmap, "options.other.fpscount.desc", "Shows an FPS counter at the bottom right of the screen.");
 		
 		ds_map_add(global.langmap, "options.other.camsmooth.title", "SMOOTH CAMERA");
-		ds_map_add(global.langmap, "options.other.camsmooth.desc", "Smooths out the camera, just for fun.\nIf you seriously use this you are sick.");
+		ds_map_add(global.langmap, "options.other.camsmooth.desc", "Smooths out the camera movement, just for fun.\nIf you unironically use this you are sick.");
 		
 		ds_map_add(global.langmap, "options.other.screenshader.title", "SCREEN SHADER");
 		ds_map_add(global.langmap, "options.other.screenshader.desc", "Full screen shader effect.");
@@ -290,6 +293,7 @@ function lang_load(lang)
 		ds_map_add(global.langmap, "msg.level.snickrematch", "SNICKS REMATCH");
 		ds_map_add(global.langmap, "msg.level.etb", "EARLY TEST BUILD");
 		ds_map_add(global.langmap, "msg.level.ancient", "ANCIENT TOWER WIP");
+		ds_map_add(global.langmap, "msg.level.grinch", "GRINCH");
 		
 		ds_map_add(global.langmap, "msg.level.cotton", "COTTONTOWN WIP");
 		ds_map_add(global.langmap, "msg.level.jawbreaker", "JAWBREAKER MINES WIP");

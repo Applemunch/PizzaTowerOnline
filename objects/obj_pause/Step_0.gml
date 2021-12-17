@@ -1,6 +1,7 @@
 if instance_exists(obj_gms) && gms_info_isloggedin()
 	gms_self_set("pause", pause);
 
+// start pausing
 if !pause && !instance_exists(obj_fadeout) && !instance_exists(obj_pausefadeout)
 {
 	var kstart = false;
@@ -16,8 +17,9 @@ if !pause && !instance_exists(obj_fadeout) && !instance_exists(obj_pausefadeout)
 	{
 		if !check_race() && (!instance_exists(obj_player1) or (obj_player1.state != states.grabbed && obj_player1.baddiegrabbedID != obj_otherplayer))
 		{
-			selected = 0
-			instance_create(x,y,obj_pausefadeout)
+			selected = 0;
+			objectlist = [];
+			instance_create(x, y, obj_pausefadeout);
 		}
 		else
 			scr_soundeffect(sfx_denied);
@@ -25,12 +27,12 @@ if !pause && !instance_exists(obj_fadeout) && !instance_exists(obj_pausefadeout)
 }
 
 if instance_exists(obj_pausefadeout) && instance_exists(obj_fadeout)
-	instance_destroy(obj_pausefadeout)
+	instance_destroy(obj_pausefadeout);
 
 if pause
 {
 	if !string_startswith(konami, "UUDDLRLR")
-	    scr_getinput()
+	    scr_getinput();
 	
 	//DDP Always draw normally while paused
 	application_surface_draw_enable(true)
@@ -38,17 +40,20 @@ if pause
 	if instance_exists(obj_pausefadeout) && !obj_pausefadeout.fadein
 		exit;
 	
-    if key_down2 && selected < 2 {
+    if key_down2 && selected < 2
+	{
         selected += 1
 		scr_soundeffect(sfx_step)
     }
 
-    if key_up2 && selected > 0 {
+    if key_up2 && selected > 0
+	{
 		selected -= 1
 		scr_soundeffect(sfx_step)
     }
 
-	if key_jump && selected = 1 {
+	if key_jump && selected == 1
+	{
 		if !global.snickchallenge
 		{
 			var roomname = room_get_name(room)
@@ -93,15 +98,16 @@ if pause
 		}
 	}
 
-    if key_jump2 && selected = 2
+    if key_jump2 && selected == 2
 	{
 		instance_activate_all();
 		alarm[1] = 1;
     }
 
-    if key_jump2 && selected = 0 {
+    if key_jump2 && selected == 0
+	{
         if !instance_exists(obj_pausefadeout)
-			instance_create(x,y,obj_pausefadeout)
+			instance_create(x, y, obj_pausefadeout);
     }
 	
 	// konami code

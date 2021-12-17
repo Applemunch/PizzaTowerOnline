@@ -1343,17 +1343,6 @@ function scr_characterspr(char = character)
 				break;
 		
 		#endregion
-		#region PEIC
-		
-			case "PEIC":
-				spr_idle = spr_peic_idle
-				spr_mach4 = spr_peic_mach4
-				spr_crazyrun = spr_peic_crazyrun
-				
-				spr_palette = spr_peicpalette
-				break;
-		
-		#endregion
 	}
 	pal_swap_index_palette(spr_palette);
 	

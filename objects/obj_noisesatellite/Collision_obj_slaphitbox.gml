@@ -1,6 +1,6 @@
 
 //Grab
-if state = states.stun && hp = 0 && stunned > 40 && slapped = false
+if state == states.stun && hp = 0 && stunned > 40 && slapped = false
 {
 slapped = true
 instance_create(x + (obj_player.xscale * 40),y, obj_punchdust)

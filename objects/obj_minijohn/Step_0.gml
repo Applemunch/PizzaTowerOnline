@@ -73,7 +73,7 @@ if state != states.chase
 	momentum = 0
 
 //Chase
-if state = states.walk or state = states.idle
+if state == states.walk or state == states.idle
 {
 	//Identify the player
 	var targetplayer = obj_player1
@@ -92,7 +92,7 @@ if state = states.walk or state = states.idle
 
 
 
-if  hitboxcreate = false && (state = states.chase) 
+if  hitboxcreate = false && (state == states.chase) 
 {
 	hitboxcreate = true
 	with instance_create(x,y,obj_minijohn_hitbox)

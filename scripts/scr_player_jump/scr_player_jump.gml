@@ -1,6 +1,6 @@
 function scr_player_jump()
 {
-	if momemtum = false
+	if !momemtum
 		hsp = move * movespeed;
 	else
 		hsp = xscale * movespeed;
@@ -67,7 +67,7 @@ function scr_player_jump()
 	//Wallcling
 	if character == "N" && wallclingcooldown == 10 && noisetype == 0
 	{
-		if scr_solid(x+xscale,y) && key_jump
+		if scr_solid(x + xscale, y) && key_jump
 		{
 			scr_soundeffect(sfx_step)
 			
@@ -78,6 +78,7 @@ function scr_player_jump()
 			vsp = 0
 			doublejump = false
 		}
+		
 		//Noise double jump
 		else if key_jump && !doublejump && sprite_index != spr_freefall && sprite_index != spr_facestomp
 		{
@@ -87,7 +88,7 @@ function scr_player_jump()
 			image_index = 0
 			jumpstop = false
 			vsp = -9
-			with instance_create(x,y,obj_highjumpcloud2)
+			with instance_create(x, y, obj_highjumpcloud2)
 				image_xscale = other.xscale
 			doublejump = true
 		}
@@ -182,10 +183,10 @@ function scr_player_jump()
 	}
 	
 	//Dynamite jump effect
-	if floor(image_index) = image_number -1 && sprite_index = spr_playerV_superjump
+	if floor(image_index) >= image_number -1 && sprite_index == spr_playerV_superjump
 	{
-		with instance_create(x, y+25,obj_balloonpop)
-			sprite_index= spr_shotgunimpact
+		with instance_create(x, y + 25, obj_balloonpop)
+			sprite_index = spr_shotgunimpact
 	}
     
 	//Input buffer jumping
@@ -199,10 +200,10 @@ function scr_player_jump()
 			fallinganimation ++
 
 		if fallinganimation >= 40 && fallinganimation < 80
-			sprite_index =spr_facestomp
+			sprite_index = spr_facestomp
 
 		if fallinganimation >= 80 
-			sprite_index =spr_freefall
+			sprite_index = spr_freefall
 	}
 
 
@@ -282,7 +283,7 @@ function scr_player_jump()
 	//Manual Freefall
 	if key_down2
 	{
-		image_index= 0
+		image_index = 0
 		state = states.freefallprep
 		if character != "N" && character != "V" && character != "SP"
 			vsp = -5
@@ -324,8 +325,8 @@ function scr_player_jump()
 		grav = 0.5;
 	}
 	
-	image_speed = 0.35
-	if sprite_index == spr_suplexcancel
+	image_speed = 0.3;
+	if sprite_index == spr_suplexcancel or (jumpstop && jumpAnim && !stompAnim)
 		image_speed = 0.4;
 
 	//Chainsaw Pogo
@@ -612,7 +613,7 @@ function scr_player_jump()
 	}
 	
 	//Jetpack flash
-	if character == "N" && (pogochargeactive = true or pizzapepper > 0)
+	if character == "N" && pogochargeactive or pizzapepper > 0
 	{
 		if key_attack2
 		{
@@ -647,16 +648,11 @@ function scr_player_jump()
 		}
 		grav = 0.5;
 	}
-
-
-
-
-
+	
 	if !key_attack or move != xscale
 		mach2 = 0
 
-	    //Land Mach1
-	//Mach1
+	//Land Mach1
 	if key_attack && grounded && fallinganimation < 40 && (!(character == "N" && noisetype == 0) && character != "S")
 	{
 		if pizzapepper == 0
@@ -690,7 +686,7 @@ function scr_player_jump()
 
 
 	//Pogo
-	if key_attack && character = "N"  && pogochargeactive = false && !key_slap2 && pizzapepper = 0 && noisetype == 0
+	if key_attack && character == "N" && state != states.Sjumpprep && !key_slap2 && pizzapepper <= 0 && noisetype == 0
 	{
 		sprite_index = spr_playerN_pogostart
 		image_index = 0
@@ -698,7 +694,7 @@ function scr_player_jump()
 		grav = 0.5;
 	}
 
-	if floor(image_index) == image_number -1
+	if floor(image_index) >= image_number -1
 		jumpAnim = false
 	
 	//Vigilante revolver

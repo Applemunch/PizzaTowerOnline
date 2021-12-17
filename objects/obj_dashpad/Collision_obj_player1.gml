@@ -7,7 +7,7 @@ with other
 	    if place_meeting(x, y, obj_superspring) or global.gameplay == 0
 	        changecoord = false;
 	
-		if (grounded && (state == states.mach1 or state = states.mach2 or (state == states.handstandjump && (-key_left or key_right) && character == "S")) && key_attack)
+		if (grounded && (state == states.mach1 or state == states.mach2 or (state == states.handstandjump && (-key_left or key_right) && character == "S")) && key_attack)
 		or (global.gameplay != 0 && (sprite_index != spr_dashpadmach or spr_dashpadmach == spr_move) && alarm[0] <= 0)
 		{
 			if other.image_xscale != 0

@@ -1,60 +1,45 @@
-if fadealpha > 1 && fadein = false
+if !instance_exists(obj_pause)
+{
+	instance_destroy();
+	exit;
+}
+
+if fadealpha > 1 && !fadein
 {
 	if obj_pause.pause
 	{
-		obj_pause.pause = false
-		instance_activate_all();
+		obj_pause.pause = false;
 		
-		#region re-deactivate instances
-		
-		// escape collectibles
-		if !global.panic
-			instance_deactivate_object(obj_collectescape);
-		
-		// arena rounds
-		with obj_arenaspawn
+		var act = noone;
+		while act != undefined
 		{
-		    if state == 115 or state == 116
-		    {
-		        if !ds_list_empty(baddielist)
-		        {
-		            for (i = 0; i < ds_list_size(baddielist); i++)
-		            {
-		                var b = ds_list_find_value(baddielist, i);
-		                if b[0] != wave && instance_exists(b[1])
-		                    instance_deactivate_object(b[1]);
-		            }
-		        }
-		    }
-		    else if !ds_list_empty(baddielist)
-		    {
-		        for (i = 0; i < ds_list_size(baddielist); i++)
-		        {
-		            b = ds_list_find_value(baddielist, i)[1];
-		            if instance_exists(b)
-		                instance_deactivate_object(b);
-		        }
-		    }
+			act = array_pop(obj_pause.objectlist);
+			instance_activate_object(act);
 		}
 		
-		#endregion
+		if code_is_compiled()
+			alarm[0] = 1;
+		else
+			event_perform(ev_alarm, 0);
 		
-		event_perform(ev_alarm, 0);
-		
-		alarm[0] = 1;
 		audio_resume_all();
 	}
 	else
 	{
 		audio_pause_all()
-		obj_pause.pause = true
+		obj_pause.pause = true;
 		
-		instance_deactivate_all(true);
-		instance_activate_object(obj_pause)
-		instance_activate_object(obj_otherplayer)
-		instance_activate_object(obj_gms)
-		instance_activate_object(obj_wc)
-		instance_activate_object(obj_onlinemenu)
+		with all
+		{
+			if object_index != obj_pause && object_index != obj_otherplayer && object_index != obj_gms
+			&& object_index != obj_wc && object_index != obj_onlinemenu && id != other.id
+			{
+				array_push(obj_pause.objectlist, id);
+				instance_deactivate_object(id);
+			}
+			if object_index == obj_fadeout
+				instance_destroy();
+		}
 		
 		global.__chat = false;
 	}
@@ -62,13 +47,11 @@ if fadealpha > 1 && fadein = false
 	fadein = true
 }
 
-if fadein = false
+if !fadein
 	fadealpha += 0.1
-else if fadein = true
+else
+{
 	fadealpha -= 0.1
-
-if fadein = true && fadealpha < 0 
-	instance_destroy()
-
-instance_activate_object(obj_fadeout)
-instance_destroy(obj_fadeout)
+	if fadealpha <= 0
+		instance_destroy();
+}

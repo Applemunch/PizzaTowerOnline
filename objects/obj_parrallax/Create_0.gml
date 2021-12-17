@@ -30,3 +30,6 @@ if instance_number(obj_parrallax) > 1
 	trace("Extra obj_parrallax in " + room_get_name(room));
 	instance_destroy();
 }
+depth = 99;
+
+uTime = -1;

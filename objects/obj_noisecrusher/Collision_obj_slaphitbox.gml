@@ -1,4 +1,4 @@
-if invframes = false && state = states.stun
+if invframes = false && state == states.stun
 {
 //Grab
 //scr_sound(sound_slaphit)

@@ -24,7 +24,7 @@ function scr_collide_destructibles()
 		}
 		
 		//Destroy Destructibles
-		if (state == states.punch && sprite_index != spr_breakdanceuppercut) or state = states.faceplant or state == states.rideweenie or state = states.tacklecharge or sprite_index = spr_barrelroll or state = states.mach2 or state = states.mach3 or state = states.machroll or state = states.knightpepslopes or state = states.tumble or state = states.hookshot or state == states.crouchslide or (state == states.firemouth && global.gameplay != 0) or (state == states.grab && sprite_index == spr_swingding) or state == states.cheeseball
+		if (state == states.punch && sprite_index != spr_breakdanceuppercut) or state == states.faceplant or state == states.rideweenie or state == states.tacklecharge or sprite_index = spr_barrelroll or state == states.mach2 or state == states.mach3 or state == states.machroll or state == states.knightpepslopes or state == states.tumble or state == states.hookshot or state == states.crouchslide or (state == states.firemouth && global.gameplay != 0) or (state == states.grab && sprite_index == spr_swingding) or state == states.cheeseball
 		{
 			if place_meeting(x + hsp, y, obj_destructibles)
 			{
@@ -40,13 +40,13 @@ function scr_collide_destructibles()
 		}
 		
 		// Destroy thrown
-		if state = states.hurt && thrown = true
+		if state == states.hurt && thrown = true
 			if place_meeting(x - hsp, y, obj_destructibles)
 				with instance_place(x - hsp, y, obj_destructibles)
 					instance_destroy();
 
 		// Destroy from over
-		if (state = states.knightpep or state = states.superslam or state = states.hookshot) && vsp > 0
+		if (state == states.knightpep or state == states.superslam or state == states.hookshot) && vsp > 0
 		{
 			if place_meeting(x, y + 1, obj_destructibles)
 			{
@@ -99,7 +99,7 @@ function scr_collide_destructibles()
 		}
 
 		// Superslam destroy metal
-		if state =states.freefall or state =states.freefallland
+		if state == states.freefall or state == states.freefallland
 		{
 			if place_meeting(x, y + 1, obj_metalblock) && freefallsmash > 10 && room != etb_7
 			{

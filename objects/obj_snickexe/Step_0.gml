@@ -1,15 +1,21 @@
+if !global.snickchallenge
+{
+	instance_destroy(id, false);
+	exit;
+}
+
 if deactivate
 {
 	if hitboxcreate
     {
-        with (obj_forkhitbox)
+        with obj_forkhitbox
         {
-            if (ID == other.id)
-                instance_destroy()
+            if ID == other.id
+                instance_destroy();
         }
 		
-        repeat(6) with instance_create(x+random_range(-100,100), y+random_range(-100,100),obj_balloonpop)
-			sprite_index= spr_shotgunimpact
+        repeat 6 with instance_create(x + random_range(-100, 100), y + random_range(-100, 100), obj_balloonpop)
+			sprite_index = spr_shotgunimpact;
     }
 	
     x = room_width / 2;
@@ -23,16 +29,20 @@ if deactivate
 
 if !knocked
 {
-	x=median(x-maxspeed,obj_player1.x,x+maxspeed)
-	
-	if global.snickrematch
-		y=median(y-maxspeed * 0.75,obj_player1.y,y+maxspeed * 0.75)
-	else
-		y=median(y-maxspeed,obj_player1.y,y+maxspeed)
-
-
-	if x != obj_player.x
-		image_xscale = -sign(x - obj_player.x)
+	var target = instance_nearest(x, y, obj_player);
+	if target
+	{
+		// approach
+		x = median(x - maxspeed, target.x, x + maxspeed)
+		if global.snickrematch
+			y = median(y - maxspeed * 0.75, target.y, y + maxspeed * 0.75)
+		else
+			y = median(y - maxspeed, target.y, y + maxspeed)
+		
+		// turn
+		if x != target.x
+			image_xscale = -sign(x - target.x)
+	}
 }
 else if !global.snickrematch
 {
@@ -44,12 +54,9 @@ else if !global.snickrematch
 	}
 }
 
-if !global.snickchallenge
-	instance_destroy()
-
 if global.snickrematch
 {
-	sprite_index = spr_snick_rexe
+	sprite_index = spr_snick_rexe;
 	with obj_player1
 		if character == "S" other.sprite_index = spr_snick_exi;
 	maxspeed = 2.75;
@@ -74,21 +81,22 @@ if obj_player1.state == states.parry && distance_to_object(obj_player1) < 50 && 
 		vspeed = -16;
 }
 
-if hitboxcreate = false && (obj_player1.instakillmove = false && obj_player1.state != states.handstandjump && obj_player1.state != states.punch)
+if !hitboxcreate && (!obj_player.instakillmove && obj_player.state != states.handstandjump && obj_player.state != states.punch)
 {
 	hitboxcreate = true
-	with instance_create(x,y,obj_forkhitbox)
+	with instance_create(x, y, obj_forkhitbox)
 	{
 		sprite_index = other.sprite_index
 		ID = other.id
 	}
 }
 
-if (place_meeting(x,y,obj_player1) && (obj_player1.instakillmove = true or obj_player1.state == states.handstandjump))
+if (place_meeting(x, y, obj_player) && (obj_player.instakillmove or obj_player1.state == states.handstandjump))
 or place_meeting(x, y, obj_shotgunbullet) or place_meeting(x, y, obj_antonball) or ((obj_player1.state == states.keyget or obj_player1.state == states.victory) && !deactivate)
+or place_meeting(x, y, obj_playerexplosion) or place_meeting(x, y, obj_dynamiteexplosion)
 {
-	repeat(6) with instance_create(x+random_range(-100,100), y+random_range(-100,100),obj_balloonpop)
-		sprite_index= spr_shotgunimpact
+	repeat 6 with instance_create(x + random_range(-100, 100), y + random_range(-100, 100), obj_balloonpop)
+		sprite_index = spr_shotgunimpact;
 	
 	if global.snickrematch
 	{
@@ -106,12 +114,12 @@ or place_meeting(x, y, obj_shotgunbullet) or place_meeting(x, y, obj_antonball) 
 			antonball.vsp = sign(antonball.y - y) * 4;
 	}
 	
-	x = room_width/2
-	y = -100
+	x = room_width / 2
+	y = -100 
 }
 
-if room = ruin_11 or room = ruin_3 or room == medieval_pizzamart or room == ruin_pizzamart or room == dungeon_pizzamart
+if room == ruin_11 or room == ruin_3 or room == medieval_pizzamart or room == ruin_pizzamart or room == dungeon_pizzamart
 {
-	x = room_width/2
-	y = -100
+	x = room_width / 2;
+	y = -100;
 }

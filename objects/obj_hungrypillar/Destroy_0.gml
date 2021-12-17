@@ -24,21 +24,22 @@ if room == rm_editor exit;
 	if global.musicvolume == 0
 		scr_soundeffect(sfx_escaperumble)
 	
-	obj_camera.alarm[1] = 60
-	instance_create(x,y,obj_bangeffect)
+	instance_create(x, y, obj_bangeffect)
 	repeat 3
 	{
 		create_particle(x, y, particles.baddiegibs);
 		instance_create(x, y, obj_slapstar)
 	}
 
-	with (obj_camera)
+	with obj_camera
 	{
-	    shake_mag=3;
-	    shake_mag_acc=3/room_speed;
+		alarm[1] = 60;
+		
+	    shake_mag = 3;
+	    shake_mag_acc = 3 / room_speed;
 	}
 
-	with instance_create(x,y,obj_sausageman_dead)
+	with instance_create(x, y, obj_sausageman_dead)
 	{
 		sprite_index = spr_hungrypillar_dead
 		

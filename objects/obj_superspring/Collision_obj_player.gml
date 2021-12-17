@@ -3,7 +3,7 @@ with other
 	if state != states.Sjump
 	{
 		scr_knightbump(true, false);
-		if state = states.bombpep
+		if state == states.bombpep
 			instance_create(x,y,obj_bombexplosion)
 		
 		audio_stop_sound(sfx_superjumprelease)

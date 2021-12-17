@@ -32,3 +32,6 @@ if irandom_range(0, 100) >= 95
 pizzasurf = -1;
 
 holdt = -1;
+titlefont = global.bigfont;
+descfont = global.font_small;
+basetext = true;

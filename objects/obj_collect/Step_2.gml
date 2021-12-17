@@ -1,8 +1,5 @@
 if room == rm_editor exit;
 
-if global.collectsound < 10
-	global.collectsound += 1;
-
 // collect
 var player = instance_place(x, y, obj_player);
 if player && player.state != states.gameover && player.state != states.hitlag

@@ -8,16 +8,21 @@ if pause
 	if array_length(bgs) == 0
 	{
 		// get backgrounds
-		var layers = layer_get_all();
-		for (var i = array_length(layers) - 1; i > 0; i--)
+		if string_startswith(room_get_name(room), "grinch_")
+			bgs = [bg_grinch_stu];
+		else
 		{
-			var layers_e = layer_get_all_elements(layers[i]);
-			if array_length(layers_e) > 0
-			&& layer_get_element_type(layers_e[0]) == layerelementtype_background
+			var layers = layer_get_all();
+			for (var i = array_length(layers) - 1; i > 0; i--)
 			{
-				var getbg = layer_background_get_sprite(layers_e[0]);
-				if sprite_exists(getbg)
-					array_push(bgs, getbg);
+				var layers_e = layer_get_all_elements(layers[i]);
+				if array_length(layers_e) > 0
+				&& layer_get_element_type(layers_e[0]) == layerelementtype_background
+				{
+					var getbg = layer_background_get_sprite(layers_e[0]);
+					if sprite_exists(getbg)
+						array_push(bgs, getbg);
+				}
 			}
 		}
 	}

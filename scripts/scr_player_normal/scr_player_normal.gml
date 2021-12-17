@@ -603,12 +603,12 @@ function scr_player_normal()
 	}
 	
 	//Jetpack flash
-	if character == "N" && (pogochargeactive = true or pizzapepper > 0)
+	if character == "N" && (pogochargeactive or pizzapepper > 0)
 	{
 		if key_attack2
 		{
 			scr_soundeffect(sfx_noisewoah)
-			state =states.Sjumpprep
+			state = states.Sjumpprep
 			image_index = 0
 			if !key_up
 				sprite_index = spr_playerN_jetpackstart
@@ -620,12 +620,13 @@ function scr_player_normal()
 	}
 	
 	//Noise Bomb
-	if key_shoot2 && character = "N" && !shotgunAnim && global.gameplay == 0
+	if key_shoot2 && character == "N" && !shotgunAnim && global.gameplay == 0
 	{
 		state = states._throw
 		sprite_index = spr_playerN_noisebombthrow
 		image_index = 0
 		scr_soundeffect(sfx_noisewoah)
+		
 		with instance_create(x,y,obj_playerbomb)
 		{
 			vsp = -7
@@ -671,7 +672,7 @@ function scr_player_normal()
 	}
 	
 	//Pogo
-	if key_attack && character = "N"  && pogochargeactive = false && !key_slap2 && pizzapepper = 0 && noisetype == 0
+	if key_attack && character == "N" && state != states.Sjumpprep && !key_slap2 && pizzapepper <= 0 && noisetype == 0
 	{
 		sprite_index = spr_playerN_pogostart
 		image_index = 0
@@ -679,7 +680,7 @@ function scr_player_normal()
 	}
 	
 	//Snick walk
-	if character = "S" && move != 0 && !scr_solidwall(x + xscale, y)
+	if character == "S" && move != 0 && !scr_solidwall(x + xscale, y)
 	{
 		movespeed = 6
 		sprite_index = spr_mach1

@@ -44,17 +44,16 @@ function scr_player_faceplant()
 	    vsp = -3
 	    mach2 = 0
 	    image_index = 0
-	    instance_create(x+10,y+10,obj_bumpeffect)
+	    instance_create(x + 10, y + 10, obj_bumpeffect)
 	}
 
-
-	if floor(image_index) = image_number - 1
+	if floor(image_index) >= image_number - 1
 	{
 		image_speed = 0.35
-		if key_attack && (character != "N" or (character == "N" && noisetype == 1))
-			state = states.mach2
+		if key_attack && (character != "N" or noisetype == 1)
+			state = states.mach2;
 		else
-			state = states.normal
+			state = states.normal;
 		grav = 0.5
 	}
 	if key_down && grounded && vsp > 0
@@ -65,11 +64,9 @@ function scr_player_faceplant()
 	    state = states.crouchslide;
 	    movespeed = 15;
 	}
-
+	
 	//Effects
-	if !(instance_exists(obj_dashcloud2)) && grounded && movespeed > 5
-	with instance_create(x,y,obj_dashcloud2)
-	image_xscale = other.xscale
-
-
+	if !instance_exists(obj_dashcloud2) && grounded && movespeed > 5
+	with instance_create(x, y, obj_dashcloud2)
+		image_xscale = other.xscale
 }

@@ -25,7 +25,7 @@ birdcreated = false
 
 
 //Chargehitbox
-if  hitboxcreate = false && (state = states.charge) && obj_player.state != states.mach3 && obj_player.state != states.mach2
+if  hitboxcreate = false && (state == states.charge) && obj_player.state != states.mach3 && obj_player.state != states.mach2
 {
 hitboxcreate = true
 with instance_create(x,y,obj_forkhitbox)
@@ -52,7 +52,7 @@ if state != states.idle
 if (x != obj_player1.x && ((obj_player1.x > x - 200) && (obj_player1.x < x + 200)) && obj_player1.y = y)
 or (obj_player1.sprite_index == obj_player1.spr_taunt && state != states.pizzagoblinthrow && ((obj_player1.x > x - 400) && (obj_player1.x < x + 400)) && (y <= obj_player1.y+20 && y >= obj_player1.y- 20))
 {
-	if (state = states.walk or state = states.idle)
+	if (state == states.walk or state == states.idle)
 	{
 		if sprite_index == spr_pizzaboy
 			instance_create(x,y,obj_balloonpop)

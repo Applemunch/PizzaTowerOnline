@@ -13,7 +13,7 @@ switch (state)
 }
 scr_scareenemy();
 
-if state = states.stun && stunned > 100 && birdcreated = false
+if state == states.stun && stunned > 100 && birdcreated = false
 {
 	birdcreated = true
 	with instance_create(x,y, obj_enemybird)
@@ -31,7 +31,7 @@ if (flash == true && alarm[2] <= 0) {
 var player = instance_nearest(x,y,obj_player1);
 if global.gameplay == 0
 {
-	if state = states.walk && sprite_index == walkspr
+	if state == states.walk && sprite_index == walkspr
 	if ((player.x > x - 400) && (player.x < x + 400)) && (y <= player.y+60 && y >= player.y- 60)
 	{
 		state = states.idle
@@ -113,7 +113,7 @@ if !grounded && sprite_index == spr_indiancheese_jump && floor(image_index) = im
 else if image_speed = 0
 	image_speed = 0.35
 
-if hitboxcreate = false && state = states.walk
+if hitboxcreate = false && state == states.walk
 {
 	hitboxcreate = true
 	with instance_create(x,y,obj_forkhitbox)

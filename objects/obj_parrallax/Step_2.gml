@@ -1,12 +1,11 @@
-/// @description Insert description here
-// You can write your code in this editor
 var _cam_x = camera_get_view_x(view_camera[0]);
 var _cam_y = camera_get_view_y(view_camera[0]);
 
 var _cam_x2 = _cam_x;
 var _cam_y2 = _cam_y;
 
-if instance_exists(obj_camera) && obj_camera.bound_camera && instance_exists(obj_player1.cam)
+if instance_exists(obj_camera) && instance_exists(obj_player1)
+&& obj_camera.bound_camera && instance_exists(obj_player1.cam)
 {
 	_cam_x2 -= obj_player1.cam.x;
 	_cam_y2 -= obj_player1.cam.y;
@@ -69,7 +68,8 @@ layer_y("Backgrounds_sky3", _cam_y * 0.95);
 var roomwidth = room_width;
 var roomheight = room_height;
 
-if room == custom_lvl_room && instance_exists(obj_camera) && obj_camera.bound_camera
+if room == custom_lvl_room && instance_exists(obj_player1)
+&& instance_exists(obj_camera) && obj_camera.bound_camera
 {
 	roomwidth = obj_player1.cam_width;
 	roomheight = obj_player1.cam_width;

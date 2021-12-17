@@ -115,7 +115,7 @@ switch state
 		{
 			if instance_exists(currentarena[| i])
 			{
-				if object_is_ancestor(currentarena[| i].object_index, obj_baddie)
+				if inst_relation(currentarena[| i].object_index, obj_baddie)
 				{
 					dsempty = false;
 					break;

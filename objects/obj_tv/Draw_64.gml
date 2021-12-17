@@ -162,9 +162,9 @@ else
 		        bubblespr = spr_tv_bubbleclose;
 		        bubbleindex = 0;
 		    }
-		    draw_text_color(promptx - 350 - (sugary * 25), 50, prompt, c_black, c_black, c_black, c_black, 1);
+		    draw_text_color(promptx - 350 - (sugary * 75), 50, prompt, c_black, c_black, c_black, c_black, 1);
 		}
-	
+		
 		draw_set_halign(fa_left);
 		surface_reset_target();
 		draw_surface(promptsurface, 350, hud_posY);

@@ -1,3 +1,9 @@
+if !global.snickrematch
+{
+	instance_destroy(id, false);
+	exit;
+}
+
 if deactivate
 {
     x = room_width / 2;
@@ -12,18 +18,12 @@ if deactivate
 
 if !knocked
 {
-	x=median(x-maxspeed * 0.75,obj_player1.x,x+maxspeed * 0.75)
-	y=median(y-maxspeed,obj_player1.y,y+maxspeed)
+	x = median(x-maxspeed * 0.75,obj_player1.x,x+maxspeed * 0.75)
+	y = median(y-maxspeed,obj_player1.y,y+maxspeed)
 
 
 	if x != obj_player.x
 	image_xscale = sign(x - obj_player.x)
-}
-
-if global.snickrematch = false
-{
-	instance_destroy()
-	exit
 }
 
 if obj_player1.state == states.parry && distance_to_object(obj_player1) < 50 && alarm[0] == -1
@@ -54,11 +54,12 @@ if hitboxcreate = false && (obj_player1.instakillmove = false && obj_player1.sta
 	}
 }
 
-if (place_meeting(x,y,obj_player1) && (obj_player1.instakillmove = true or obj_player1.state = states.handstandjump))
-or place_meeting(x, y, obj_shotgunbullet) or place_meeting(x, y, obj_antonball) or ((obj_player1.state == states.keyget or obj_player1.state == states.victory) && !deactivate)
+if (place_meeting(x, y, obj_player) && (obj_player.instakillmove or obj_player.state = states.handstandjump))
+or place_meeting(x, y, obj_shotgunbullet) or place_meeting(x, y, obj_antonball) or ((obj_player.state == states.keyget or obj_player.state == states.victory) && !deactivate)
+or place_meeting(x, y, obj_playerexplosion) or place_meeting(x, y, obj_dynamiteexplosion)
 {
-	repeat(6) with instance_create(x+random_range(-100,100), y+random_range(-100,100),obj_balloonpop)
-		sprite_index= spr_shotgunimpact
+	repeat 6 with instance_create(x + random_range(-100, 100), y + random_range(-100, 100), obj_balloonpop)
+		sprite_index = spr_shotgunimpact;
 	
 	deactivate = true;
 	alarm[1] = room_speed * 5;
@@ -73,12 +74,11 @@ or place_meeting(x, y, obj_shotgunbullet) or place_meeting(x, y, obj_antonball) 
 			antonball.vsp = sign(antonball.y - y) * 4;
 	}
 	
-	x = room_width/2
-	y = room_height + 100
+	x = room_width / 2;
+	y = room_height + 100;
 }
 
-
-if room = ruin_11 or room = ruin_3 or room == ruin_4 or room == medieval_pizzamart or room == ruin_pizzamart or room == dungeon_pizzamart
+if room == dungeon_pizzamart
 {
 	x = room_width / 2
 	y = room_height + 100

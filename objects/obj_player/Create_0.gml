@@ -435,3 +435,4 @@ hascollision = true
 
 img_angle = 0
 canfall = true
+godmode = false

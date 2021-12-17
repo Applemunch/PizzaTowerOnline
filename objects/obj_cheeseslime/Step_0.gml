@@ -83,7 +83,7 @@ if state != states.stun
 
 if !boundbox
 {
-	with instance_create(x,y,obj_baddiecollisionbox)
+	with instance_create(x, y, obj_baddiecollisionbox)
 	{
 		sprite_index = spr_slimemove
 		mask_index = sprite_index

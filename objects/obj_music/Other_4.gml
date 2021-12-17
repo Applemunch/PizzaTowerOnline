@@ -37,7 +37,8 @@ if scr_checkskin(checkskin.p_anton) && global.loaded_anton
 #endregion
 #region pizza tower
 
-else if !global.panic && !global.snickchallenge
+else if (!global.panic or string_letters(roomname) == "dragonlair" or string_letters(roomname) == "grinch")
+&& !global.snickchallenge
 {
 	if instance_exists(obj_pepperman)
 	{
@@ -45,7 +46,7 @@ else if !global.panic && !global.snickchallenge
 		musplay = mu_chase
 	}
 	
-	if string_letters(roomname) = "Realtitlescreen" or string_letters(roomname) = "Realtitlescreen"
+	if string_letters(roomname) == "Realtitlescreen" or string_letters(roomname) == "Realtitlescreen"
 	{
 		fadeoff = 0
 		musplay = mu_title
@@ -57,8 +58,13 @@ else if !global.panic && !global.snickchallenge
 		musplay = mu_editor
 	}
 	
-	if string_startswith(roomname, "hub_room") or string_letters(roomname) = "Titlescreen" or string_letters(roomname) = "halloweenentrance"
+	if string_startswith(roomname, "hub_room") or string_letters(roomname) == "Titlescreen" or string_letters(roomname) == "halloweenentrance"
+	{
+		if audio_is_playing(mu_tutorial)
+			fadeoff = 0;
+		
 		musplay = mu_hub
+	}
 	if string_startswith(roomname, "hub_outside")
 		musplay = mu_hub2
 	if string_startswith(roomname, "hub_roomMOD")
@@ -84,7 +90,7 @@ else if !global.panic && !global.snickchallenge
 		}
 	}
 	
-	if string_letters(roomname) = "PProom" or string_letters(roomname) = "PProom"
+	if string_letters(roomname) == "PProom"
 	{
 		fadeoff = 0
 		musplay = mu_tutorial
@@ -96,15 +102,13 @@ else if !global.panic && !global.snickchallenge
 			musplay = mu_noiseentrance
 		else if obj_player1.character == "S"
 			musplay = mu_snickentrance
-		else if obj_player1.character == "V"
-			musplay = mu_vigientrance
 		else if obj_player1.character == "SP"
 			musplay = mu_pizzyentrance
 		else
 			musplay = mu_entrance
 	}
 	
-	if string_letters(roomname) = "dungeon"
+	if string_letters(roomname) == "dungeon"
 	{
 		for (i = 0; i < 20; ++i)
 		{
@@ -118,7 +122,7 @@ else if !global.panic && !global.snickchallenge
 		}
 	}
 	
-	if string_letters(roomname) = "strongcold"
+	if string_letters(roomname) == "strongcold"
 	{
 		for (i = 0; i < 20; ++i)
 		{
@@ -138,7 +142,7 @@ else if !global.panic && !global.snickchallenge
 		}
 	}
 	
-	if string_letters(roomname) = "medieval" 
+	if string_letters(roomname) == "medieval" 
 	{
 		for (i = 0; i < 20; ++i)
 		{
@@ -151,7 +155,7 @@ else if !global.panic && !global.snickchallenge
 		}
 	}
 
-	if string_letters(roomname) = "ruin" 
+	if string_letters(roomname) == "ruin" 
 	{
 		for (i = 0; i < 20; ++i)
 		{
@@ -165,22 +169,22 @@ else if !global.panic && !global.snickchallenge
 	if string_letters(roomname) == "chateau"
 		musplay = mu_chateau
 	
-	if string_letters(roomname) = "farm" 
+	if string_letters(roomname) == "farm" 
 		musplay = mu_farm
 	
-	if string_letters(roomname) = "graveyard" 
+	if string_letters(roomname) == "graveyard" 
 		musplay = mu_graveyard
 
-	if string_letters(roomname) = "ufo" 
+	if string_letters(roomname) == "ufo" 
 		musplay = mu_pinball
 
-	if string_letters(roomname) = "dragonlair" 
+	if string_letters(roomname) == "dragonlair" 
 		musplay = mu_dragonlair
 
-	if string_letters(roomname) = "beach" 
+	if string_letters(roomname) == "beach" 
 		musplay = mu_beach
 	
-	if string_letters(roomname) = "forest" 
+	if string_letters(roomname) == "forest" 
 	{
 		if roomname == "forest_4" or roomname == "forest_4b"
 		{
@@ -290,6 +294,10 @@ else if !global.panic && !global.snickchallenge
 	if string_letters(roomname) == "ancient"
 		musplay = mu_ancient;
 	
+	// grinch
+	if string_letters(roomname) == "grinch"
+		musplay = mu_christmas;
+	
 	/*
 	if string_startswith(roomname, "eatery_")
 	{
@@ -342,6 +350,8 @@ else if !global.panic && !global.snickchallenge
 			musplay = mu_farmsecret
 		if string_letters(roomname) == "ufosecret" 
 			musplay = mu_pinballsecret
+		if string_letters(roomname) == "kungfusecret" 
+			musplay = mu_kungfusecret
 		if string_letters(roomname) == "forestsecret" 
 		or string_startswith(roomname, "floor2_secret")
 			musplay = mu_forestsecret

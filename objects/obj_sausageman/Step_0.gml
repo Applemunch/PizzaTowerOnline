@@ -68,7 +68,7 @@ else
 }
 
 
-if cigar = true && cigarcreate = false && (state = states.idle or state = states.walk or state = states.turn or state = states.land)
+if cigar = true && cigarcreate = false && (state == states.idle or state == states.walk or state == states.turn or state == states.land)
 {
 	cigarcreate = true
 	with instance_create(x,y,obj_sausagemancigar)
@@ -77,7 +77,7 @@ if cigar = true && cigarcreate = false && (state = states.idle or state = states
 	}
 }
 
-if cigar && hitboxcreate = false && (state = states.walk) 
+if cigar && hitboxcreate = false && (state == states.walk) 
 {
 	hitboxcreate = true
 	with instance_create(x,y,obj_forkhitbox)

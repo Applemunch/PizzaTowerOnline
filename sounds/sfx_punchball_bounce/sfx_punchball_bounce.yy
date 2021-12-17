@@ -2,6 +2,7 @@
   "ConfigValues": {
     "debug": {"audioGroupId":"{\"name\":\"ag_antonball\",\"path\":\"audiogroups/ag_antonball\"}",},
   },
+  "conversionMode": 0,
   "compression": 0,
   "volume": 0.65,
   "preload": false,

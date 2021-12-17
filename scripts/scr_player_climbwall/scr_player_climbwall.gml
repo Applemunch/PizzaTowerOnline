@@ -3,11 +3,11 @@ function scr_player_climbwall()
 	switch (character)
 	{
 		default:
-		if character != "N" or (character == "N" && noisetype == 1)
+		if character != "N" or noisetype == 1
 		{
 			if windingAnim < 200 && (character == "P" or character == "SP")
 				windingAnim++
-
+			
 			move = key_left + key_right;
 
 			suplexmove = false
@@ -135,13 +135,11 @@ function scr_player_climbwall()
 			if !(instance_exists(obj_cloudeffect)) 
 				instance_create(x,y+43,obj_cloudeffect)
 		}
-
-		if character == "N" && noisetype == 0
+		else
 		{
 			hsp = 0
-			if sprite_index = spr_playerN_wallclingstart && floor(image_index) = image_number-1
+			if sprite_index = spr_playerN_wallclingstart && floor(image_index) >= image_number - 1
 				sprite_index = spr_playerN_wallcling
-
 
 			if sprite_index = spr_playerN_wallcling
 				vsp = 2
@@ -150,8 +148,7 @@ function scr_player_climbwall()
 
 			wallclingcooldown = 0
 
-
-			if floor(image_index) = image_number - 1 or !key_jump2
+			if floor(image_index) >= image_number - 1 or !key_jump2
 			{
 				vsp = -15
 				state = states.jump

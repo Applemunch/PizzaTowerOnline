@@ -5,7 +5,7 @@ if other.cutscene = false
 
 //Fightball
 if  hurted = false && other.hurted = false &&  fightballadvantage = true
-&& (state = states.handstandjump or state = states.punch) &&  (other.state = states.handstandjump or other.state = states.punch)
+&& (state == states.handstandjump or state == states.punch) &&  (other.state = states.handstandjump or other.state = states.punch)
  {
 
 	 if object_index = obj_player1
@@ -59,7 +59,7 @@ obj_player2.fightball = true
 
 with (obj_player1)
 {
-if state = states.handstandjump && other.hurted = false && other.state != states.hurt && other.state != states.knightpepslopes && other.state != states.knightpep && other.state != states.tumble
+if state == states.handstandjump && other.hurted = false && other.state != states.hurt && other.state != states.knightpepslopes && other.state != states.knightpep && other.state != states.tumble
 && other.state != states.fireass && other.state != states.bombpep && other.cutscene = false && other.hurted = false && hurted = false &&  !(other.state = states.handstandjump or other.state = states.punch)
 {
 	
@@ -90,7 +90,7 @@ obj_player2.depth = -6
 
 	}
 	
-			if state = states.freefall && other.hurted = false  && other.state != states.stunned && other.state != states.hurt && hurted = false
+			if state == states.freefall && other.hurted = false  && other.state != states.stunned && other.state != states.hurt && hurted = false
 	{
 		
 if obj_player1.spotlight = false
@@ -112,7 +112,7 @@ obj_player2.depth = -6
 
 	}
 
-if other.state =states.punch && hurted = false && other.hurted = false &&  !(state = states.handstandjump or state = states.punch)
+if other.state =states.punch && hurted = false && other.hurted = false &&  !(state = states.handstandjump or state == states.punch)
 {
 	
 		

@@ -49,7 +49,6 @@ switch sel[1]
 			["XMAS", "Merry!!!"],
 			["INVERTED", ".yracS"],
 			["NAKED", "Hell yeah! Public indecency!"],
-			["NOIK", "He's canon."],
 			["CONCEPT", "The original."],
 			["THE DOISE", "Do not steal."],
 			["NOISETTE", "It takes a noiser noise than\nThe Noise's noise to annoy The Noise."],
@@ -112,7 +111,6 @@ switch sel[1]
 			["ELMO", "Homosexual, the sixty-ninth."],
 			["GB", "Wait, what?"],
 			["HELLSNICK", "Si."],
-			["SPIRIT", "3rd song transformation."],
 			["MAJIN", "Fun is infinite."],
 			["NEON", "I've seen OC's brighter than this."],
 		];

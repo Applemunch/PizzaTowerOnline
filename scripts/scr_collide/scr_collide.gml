@@ -3,19 +3,22 @@ function scr_collide()
 {
 	__scr_collide = true;
 	grounded = false;
-
+	
 	// Vertical
-	repeat(abs(vsp)) {
+	repeat(abs(vsp))
+	{
 	    if !scr_solid(x, y + sign(vsp))
 	        y += sign(vsp); 
-	    else {
+	    else
+		{
 	        vsp = 0;
 	        break;
 	    }
 	}
 
 	// Horizontal
-	repeat(abs(hsp)) {
+	repeat(abs(hsp)) 
+	{
 	    // Move up slope
 	    if scr_solid(x + sign(hsp), y) && !scr_solid(x + sign(hsp), y - 1)
 			y--
@@ -26,19 +29,21 @@ function scr_collide()
 
 	    if !scr_solid(x + sign(hsp), y)
 	        x += sign(hsp); 
-	    else {
+	    else
+		{
 	        hsp = 0;
 	        break;
 	    }
 	}
 
-	//Gravity
-	vsp = min(vsp + grav, 10);
-
 	// Check if a wall is below me
-	grounded |= scr_solid(x, y + 1) > 0
+	grounded |= scr_solid(x, y + 1)
 	// Check if I'm on a platform
 	grounded |= !place_meeting(x, y, obj_platform) && place_meeting(x, y + 1, obj_platform)
-
-
+	
+	//Gravity
+	if !grounded
+		vsp = min(vsp + grav, 10);
+	
+	__scr_collide = true;
 }

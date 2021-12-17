@@ -100,18 +100,18 @@ function scr_player_tacklecharge()
 			}
 			else if baddiegrabbedID != obj_null
 			{
-				with (baddiegrabbedID) 
+				with baddiegrabbedID
 				{	
 					scr_soundeffect(sfx_hitenemy)
 						
 					grabbed = false
 					grav = 0.5
-					instance_create(x,y,obj_bangeffect)
+					instance_create(x, y, obj_bangeffect)
 					repeat 3
 					{
-						instance_create(x,y,obj_slapstar)
-						if object_is_ancestor(object_index, obj_baddie)
-							create_particle(x,y,particles.baddiegibs)
+						instance_create(x, y, obj_slapstar)
+						if inst_relation(id, obj_baddie)
+							create_particle(x, y, particles.baddiegibs)
 					}
 					flash = true
 						
@@ -155,8 +155,7 @@ function scr_player_tacklecharge()
 			
 			if baddiegrabbedID.object_index != obj_otherplayer
 			&& baddiegrabbedID.object_index != obj_pizzaballOLD
-			&& baddiegrabbedID.object_index != obj_junk
-			&& !object_is_ancestor(baddiegrabbedID.object_index, obj_junk)
+			&& !inst_relation(baddiegrabbedID, obj_junk)
 			{
 				baddiegrabbedID.hp--;
 				if baddiegrabbedID.hp <= 0

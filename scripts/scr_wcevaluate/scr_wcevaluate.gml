@@ -56,7 +56,7 @@ function scr_wcevaluate(argument0)
 			
 		case "noclip":
 			if !WC_consoleopen // pt exclusive
-				window_mouse_set(obj_player1.x - __view_get(0, 0), obj_player1.y - __view_get(1, 0) + 10);
+				window_mouse_set(obj_player1.x - _camx, obj_player1.y - _camy + 10);
 			else
 				ds_list_insert(WC_consolelist, 0, "Tip: Click an object to drag it!");
 			break;

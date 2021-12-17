@@ -11,7 +11,7 @@ switch (state)
     // grabbed state here
 }
 
-if state = states.stun && stunned > 100 && birdcreated = false
+if state == states.stun && stunned > 100 && birdcreated = false
 {
 	birdcreated = true
 	with instance_create(x,y, obj_enemybird)
@@ -22,10 +22,10 @@ if state != states.stun
 	birdcreated = false
 
 //Chargehitbox
-if hitboxcreate = false && state == states.charge && scr_solid(x, y + 1) && obj_player.state != states.mach3 && obj_player.state != states.mach2
+if !hitboxcreate && state == states.charge && grounded && obj_player.state != states.mach3 && obj_player.state != states.mach2
 {
 	hitboxcreate = true
-	with instance_create(x,y,obj_forkhitbox)
+	with instance_create(x, y, obj_forkhitbox)
 	{
 		sprite_index = spr_player_mask
 		ID = other.id

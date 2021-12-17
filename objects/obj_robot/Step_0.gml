@@ -45,7 +45,7 @@ if x != obj_player1.x && state != states.pizzagoblinthrow && bombreset <= 0
 {
 	if ((obj_player1.x > x - 400) && (obj_player1.x < x + 400)) && (y <= obj_player1.y+ 20 && y >= obj_player1.y- 20)
 	{
-		if (state = states.walk or state = states.idle) 
+		if (state == states.walk or state == states.idle) 
 		{
 			image_index = 0
 			image_xscale = -sign(x - obj_player1.x)

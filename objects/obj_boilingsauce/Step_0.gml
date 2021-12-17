@@ -13,6 +13,8 @@ if player
 		//Burn player
 		if player.state != states.boots && player.state != states.gameover && player.state != states.rideweenie
 		{
+			scr_knightbump(true, false);
+			
 			player.image_blend = c_white
 			player.state = states.fireass
 			player.image_index = 0

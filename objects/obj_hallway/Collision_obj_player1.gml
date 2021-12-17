@@ -4,7 +4,7 @@ with other
 		x = other.x
 	y = min(y, other.y + (other.sprite_height - 46));
 	
-	if !instance_exists(obj_fadeout) && !instance_exists(obj_pausefadeout) && !obj_pause.pause && state != states.hit
+	if !instance_exists(obj_fadeout) && !instance_exists(obj_pausefadeout) && (!instance_exists(obj_pause) or !obj_pause.pause) && state != states.hit
 	{
 		targetDoor = other.targetDoor
 	    targetRoom = other.targetRoom
@@ -29,12 +29,12 @@ with other
 		
 		other.visited = true
 		/*
-		if state = states.machslide
+		if state == states.machslide
 			state = states.normal
 		*/
 		
 		scr_soundeffect(sfx_door)
-		instance_create(x,y,obj_fadeout)
+		instance_create(x, y, obj_fadeout)
 	}
 	if instance_exists(obj_pausefadeout)
 	{

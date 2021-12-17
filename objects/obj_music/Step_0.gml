@@ -67,7 +67,7 @@ if global.musicgame == 0
 	if !audio_is_playing(mu_antonescape) && !audio_is_playing(mu_pizzatime)
 	&& !audio_is_playing(_mu_noiseescape) && !audio_is_playing(mu_snickescape)
 	&& !audio_is_playing(_mu_pizzyescape) && !audio_is_playing(mu_war)
-	&& (string_letters(roomname) != "dragonlair" or audio_is_playing(mu_antonlevel))
+	&& ((string_letters(roomname) != "dragonlair" && string_letters(roomname) != "grinch") or audio_is_playing(mu_antonlevel))
 	&& global.panic && !obj_pause.pause && !obj_camera.ded && !(room == custom_lvl_room && global.disableescapemusic)
 	{
 		// war level
@@ -186,7 +186,7 @@ else if global.musicgame == 1
 	if !audio_is_playing(mu_antonescape_pc) && !audio_is_playing(mu_pizzatime_pc)
 	&& !audio_is_playing(_mu_noiseescape) && !audio_is_playing(mu_snickescape_pc)
 	&& !audio_is_playing(_mu_pizzyescape) && !audio_is_playing(mu_war_pc)
-	&& (string_letters(roomname) != "dragonlair" or audio_is_playing(mu_antonlevel_pc))
+	&& ((string_letters(roomname) != "dragonlair" && string_letters(roomname) != "grinch") or audio_is_playing(mu_antonlevel_pc))
 	&& global.panic && !obj_pause.pause && !obj_camera.ded && !(room == custom_lvl_room && global.disableescapemusic)
 	{
 		// war level

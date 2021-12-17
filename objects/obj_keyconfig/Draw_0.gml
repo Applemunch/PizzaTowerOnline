@@ -5,7 +5,7 @@ draw_set_halign(fa_center);
 draw_set_colour(c_white);
 
 draw_rectangle_color(0, 0, 960, 540, c_black, c_black, c_black, c_black, false)
-draw_text_colour(50, 50, "BACK", c_white, c_white, c_white, c_white, key_select == -1 ? 1 : 0.5)
+draw_text_colour(80, 50, "BACK", c_white, c_white, c_white, c_white, key_select == -1 ? 1 : 0.5)
 
 // keys
 draw_text_colour(960/2 - 60, 50, "UP", c_white, c_white, c_white, c_white, key_select == 0 ? 1 : 0.5)

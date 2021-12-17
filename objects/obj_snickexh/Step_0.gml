@@ -1,3 +1,9 @@
+if !global.snickrematch
+{
+	instance_destroy();
+	exit;
+}
+
 if deactivate
 {
     x = room_width / 2;
@@ -15,12 +21,6 @@ if deactivate
 	with obj_camera
 		manualhide = false;
 	exit;
-}
-
-if !global.snickrematch
-{
-	instance_destroy()
-	exit
 }
 
 if obj_player1.state == states.parry && distance_to_object(obj_player1) < 50 && alarm[0] == -1

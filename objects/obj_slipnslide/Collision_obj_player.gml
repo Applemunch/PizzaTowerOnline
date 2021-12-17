@@ -11,7 +11,7 @@ if (drop == false && !instance_exists(obj_pepperman)) or global.gameplay != 0
 		{
 			if global.gameplay == 0
 			{
-				if state = states.barrel
+				if state == states.barrel
 				{
 					movespeed = 4
 					sprite_index = spr_player_barrelslipnslide

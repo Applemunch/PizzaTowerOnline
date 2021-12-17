@@ -25,40 +25,40 @@ function scr_hurtplayer(argument0)
 		}
 		
 		//Knight armor remove
-		if (state = states.knightpep or state = states.knightpepattack or state = states.knightpepslopes) && !cutscene
+		if (state == states.knightpep or state == states.knightpepattack or state == states.knightpepslopes) && !cutscene
 		{
 
 		}
 		
 		// custom
-		else if state == states.parry or state == states.taxi or state == states.actor or state == states.backbreaker or state == states.bump or state == states.firemouth or state == states.barrel or state == states.hitlag or state == states.rotate or state == states.frozen or state == states.door or state == states.victory or state == states.keyget or (state == states.fireass && global.gameplay != 0) or instance_exists(obj_parryhitbox)
+		else if godmode or state == states.parry or state == states.taxi or state == states.actor or state == states.backbreaker or state == states.bump or state == states.firemouth or state == states.barrel or state == states.hitlag or state == states.rotate or state == states.frozen or state == states.door or state == states.victory or state == states.keyget or (state == states.fireass && global.gameplay != 0) or instance_exists(obj_parryhitbox)
 		{
 		
 		}
 	
 		//Ghost
 	    
-		else if state = states.ghost
+		else if state == states.ghost
 		{
     
    
 		}
 		//Bomb!!
-		else if state = states.bombpep && !hurted
+		else if state == states.bombpep && !hurted
 		{
     
    
 		}
     
 		//Weenie ride
-		else if state = states.rideweenie
+		else if state == states.rideweenie
 		{
     
    
 		}
 		
 		//Boxxed
-		else if state = states.boxxedpep
+		else if state == states.boxxedpep
 		{
 			scr_soundeffect(sfx_loseknight)
 			grav = 0.5
@@ -86,7 +86,7 @@ function scr_hurtplayer(argument0)
 		}
 	    
 		//Tumble
-		else if state = states.tumble
+		else if state == states.tumble
 		{
     
 		}
@@ -114,7 +114,7 @@ function scr_hurtplayer(argument0)
 	
 		//Cheesed
     
-		else if (state = states.cheesepep or state = states.cheesepepstick) 
+		else if (state == states.cheesepep or state == states.cheesepepstick) 
 		{
     
 		
@@ -198,7 +198,7 @@ function scr_hurtplayer(argument0)
 			if character = "V"
 				global.playerhealth -= 25
 				
-			if state = states.mort
+			if state == states.mort
 			{
 				with instance_create(x,y,obj_sausageman_dead)
 					sprite_index = spr_mortdead

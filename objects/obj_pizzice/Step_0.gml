@@ -20,10 +20,10 @@ ID = other.id
 }
 
 
-if state = states.idle or state = states.walk
+if state == states.idle or state == states.walk
 state = states.charge
 
-if  hitboxcreate = false && (state = states.charge) && obj_player.state != states.mach3 && obj_player.state != states.mach2 && obj_player1.state != states.handstandjump
+if  hitboxcreate = false && (state == states.charge) && obj_player.state != states.mach3 && obj_player.state != states.mach2 && obj_player1.state != states.handstandjump
 {
 hitboxcreate = true
 with instance_create(x,y,obj_forkhitbox)

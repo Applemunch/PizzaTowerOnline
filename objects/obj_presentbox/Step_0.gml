@@ -130,7 +130,7 @@ break
 //Contact with player
 with instance_place(x, y, obj_player)
 {
-	if (((state = states.handstandjump or state = states.punch) && character != "S")
+	if (((state = states.handstandjump or state == states.punch) && character != "S")
 	or (character == "S" && (state == states.handstandjump or state == states.mach3 or state == states.mach2)))
 	&& other.sprite_index != spr_present
 	{

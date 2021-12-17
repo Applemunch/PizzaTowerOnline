@@ -11,7 +11,7 @@ switch (state)
     // grabbed state here
 }
 
-if state = states.stun && stunned > 100 && birdcreated = false
+if state == states.stun && stunned > 100 && birdcreated = false
 {
 	birdcreated = true
 	with instance_create(x,y, obj_enemybird)
@@ -35,7 +35,7 @@ if (flash == true && alarm[2] <= 0) {
 
 
 
-if hitboxcreate = false && state = states.walk
+if hitboxcreate = false && state == states.walk
 {
 	hitboxcreate = true
 	with instance_create(x,y,obj_forkhitbox)

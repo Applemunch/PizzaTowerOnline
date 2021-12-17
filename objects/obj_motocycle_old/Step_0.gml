@@ -47,7 +47,7 @@ scr_getinput();
 move = key_left2 + key_right2;
 
 
-if  !((state = states.grab) or (state = states.grabbing) or (state = states._throw) or (state = states.slam) or (state = states.tacklecharge) or (state = states.punch) or (state = states.superslam) or (state = states.backkick) or (state = states.uppunch) or (state = states.shoulder))
+if  !((state = states.grab) or (state == states.grabbing) or (state == states._throw) or (state == states.slam) or (state == states.tacklecharge) or (state == states.punch) or (state == states.superslam) or (state == states.backkick) or (state == states.uppunch) or (state == states.shoulder))
 {
 
 other.x = x 

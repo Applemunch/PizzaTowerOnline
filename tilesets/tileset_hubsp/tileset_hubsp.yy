@@ -104,8 +104,8 @@
     "TileSerialiseData": [],
   },
   "parent": {
-    "name": "sugary spire",
-    "path": "folders/Tile Sets/sugary spire.yy",
+    "name": "SUGARY SPIRE",
+    "path": "folders/Tile Sets/SUGARY SPIRE.yy",
   },
   "resourceVersion": "1.0",
   "name": "tileset_hubsp",

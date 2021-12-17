@@ -36,7 +36,7 @@ if state == states.walk && y != ystart && !scr_solid(x, y)
 		stuck = false;
 }
 
-if state = states.stun
+if state == states.stun
 	grav = 0.5
 else 
 	grav = 0
@@ -60,7 +60,7 @@ if state != states.charge
 if sprite_index = spr_chargestart && floor(image_index) = image_number -1
 {
 	//Chargehitbox
-	if  hitboxcreate = false && (state = states.charge)  
+	if  hitboxcreate = false && (state == states.charge)  
 	{
 		hitboxcreate = true
 		with instance_create(x,y,obj_forkhitbox)
@@ -126,13 +126,13 @@ if targetplayer.sprite_index =  targetplayer.spr_taunt && state != states.charge
 if ((targetplayer.x > x - 200) && (targetplayer.x < x + 200)) && (y <= targetplayer.y+50 && y >= targetplayer.y- 50)
 {
 bombreset = 0
-if state = states.stun
+if state == states.stun
 state = states.walk
 stunned = 0
 }
 */
 
-if state = states.stun or state = states.walk
+if state == states.stun or state == states.walk
 {
 movespeed = 0
 }

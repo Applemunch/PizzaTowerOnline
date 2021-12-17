@@ -24,7 +24,7 @@ if (room == hub_room1 or room == cowboytask or room == Titlescreen or room == Sc
 	
 	room_goto(Realtitlescreen);
 	
-	with obj_player1
+	with obj_player
 	{
 		petfollow = -1
 		gravmult = 1
@@ -34,19 +34,19 @@ if (room == hub_room1 or room == cowboytask or room == Titlescreen or room == Sc
 		scr_characterspr()
 	}
 	
-	scr_playerreset()
-	global.cowboyhat = false
+	scr_playerreset();
 }
 else if room == custom_lvl_room
 {
-	pause = 0
-	global.cowboyhat = false
-	
+	pause = false;
 	instance_activate_all();
 	
-	scr_playerreset()
-	obj_player1.targetDoor = "B"
-	obj_player1.state = states.titlescreen;
+	scr_playerreset();
+	with obj_player
+	{
+		targetDoor = "B";
+		state = states.titlescreen;
+	}
 	
 	if obj_onlinemenu.level_id == 1
 		obj_onlinemenu.menu = menutypes.menustart;
@@ -56,12 +56,11 @@ else if room == custom_lvl_room
 }
 else
 {
-	pause = 0
-	global.cowboyhat = false
+	pause = false;
 	instance_activate_all();
-	scr_playerreset()
 	
-	with obj_player1
-		targetDoor = "A"
-	room = hub_room1
+	scr_playerreset();
+	with obj_player
+		targetDoor = "A";
+	room_goto(hub_room1);
 }

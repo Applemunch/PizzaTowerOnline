@@ -10,7 +10,7 @@ function scr_pushout(threshold)
 		xo += 1;
 		if xo > thresh
 		{
-			xo = 999;
+			xo = 0;
 			break;
 		}
 	}
@@ -21,7 +21,7 @@ function scr_pushout(threshold)
 		xo2 -= 1;
 		if xo2 < -thresh
 		{
-			xo2 = 999;
+			xo2 = 0;
 			break;
 		}
 	}
@@ -40,7 +40,7 @@ function scr_pushout(threshold)
 		yo += 1;
 		if yo > thresh
 		{
-			yo = 999;
+			yo = 0;
 			break;
 		}
 	}
@@ -51,7 +51,7 @@ function scr_pushout(threshold)
 		yo2 -= 1;
 		if yo2 < -thresh
 		{
-			yo2 = 999;
+			yo2 = 0;
 			break;
 		}
 	}
@@ -61,11 +61,13 @@ function scr_pushout(threshold)
 	else
 		yo3 = yo;
 	
-	if !(xo3 == 999 && yo3 == 999)
+	if !(xo3 == 0 && yo3 == 0)
 	{
-		if (abs(xo3) > abs(yo3))
+		if abs(xo3) > abs(yo3)
 			y += yo3;
 		else
 			x += xo3;
+		return true;
 	}
+	return false;
 }

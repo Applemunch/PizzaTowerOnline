@@ -11,7 +11,7 @@ switch (state)
     // grabbed state here
 }
 
-if state = states.stun && stunned > 100 && birdcreated = false
+if state == states.stun && stunned > 100 && birdcreated = false
 {
 	birdcreated = true
 	with instance_create(x,y, obj_enemybird)
@@ -28,7 +28,7 @@ if bombreset > 0
 //Throw Bomb at
 if state != states.pizzagoblinthrow && bombreset = 0
 {
-	if (state = states.walk or state = states.idle) 
+	if (state == states.walk or state == states.idle) 
 	{
 		//if (!audio_is_playing(sound_enemythrow))
 		//scr_sound(sound_enemythrow)
@@ -55,7 +55,7 @@ if obj_player1.sprite_index == obj_player1.spr_taunt && state != states.pizzagob
 if ((obj_player1.x > x - 400) && (obj_player1.x < x + 400)) && (y <= obj_player1.y+20 && y >= obj_player1.y- 20)
 {
 	bombreset = 0
-	if state = states.stun
+	if state == states.stun
 		state = states.walk
 	stunned = 0
 }

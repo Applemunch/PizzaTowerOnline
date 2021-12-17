@@ -26,13 +26,13 @@ if state != states.stun
 birdcreated = false
 
 
-if state = states.walk && y > ystart && !scr_solid(x,y-1)
+if state == states.walk && y > ystart && !scr_solid(x,y-1)
 y--
-if state = states.walk && y < ystart && !scr_solid(x,y+1)
+if state == states.walk && y < ystart && !scr_solid(x,y+1)
 y++
 
 
-if state = states.stun
+if state == states.stun
 	grav = 0.5
 else 
 	grav = 0

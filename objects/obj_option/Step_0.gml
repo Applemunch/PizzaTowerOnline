@@ -320,49 +320,49 @@ else if menu == 1
 #region other options
 else if menu == 2 && !instance_exists(obj_erasegame)
 {
-	var select = obj_player1.key_jump or keyboard_check_pressed(vk_enter);
+	var select = obj_player.key_jump or keyboard_check_pressed(vk_enter);
 	
 	// erase game
-	if optionselected = 0
-	&& select
+	if optionselected == 0 && select
 	{
 		scr_soundeffect(sfx_step)
 		visible = false
-		instance_create(x,y,obj_erasegame)
+		instance_create(x, y, obj_erasegame)
 	}
 	
 	// gameplay style
-	if optionselected = 1
+	if optionselected == 1
 	{
 		if select
 		{
-			global.gameplay = !global.gameplay;
+			global.gameplay++;
 			scr_soundeffect(sfx_step);
 		}
-		if move != 0 && max(move, 0) != global.gameplay
+		else if move != 0
 		{
-			global.gameplay = max(move, 0);
+			global.gameplay += move;
 			scr_soundeffect(sfx_step);
 		}
+		if global.gameplay > 2
+			global.gameplay = 0;
+		if global.gameplay < 0
+			global.gameplay = 2;
 	}
 	
 	// panic bg
-	if optionselected = 2
+	if optionselected == 2 && select
 	{
-		if select
+		if check_shaders()
 		{
-			if check_shaders()
-			{
-				global.panicbg = !global.panicbg;
-				scr_soundeffect(sfx_step);
-			}
-			else
-				scr_soundeffect(sfx_denied);
+			global.panicbg = !global.panicbg;
+			scr_soundeffect(sfx_step);
 		}
+		else
+			scr_soundeffect(sfx_denied);
 	}
 	
 	// panic melt
-	if optionselected = 3
+	if optionselected == 3
 	{
 		if select
 		{
@@ -372,7 +372,7 @@ else if menu == 2 && !instance_exists(obj_erasegame)
 	}
 	
 	// panic shake
-	if optionselected = 4
+	if optionselected == 4
 	{
 		if select
 		{
@@ -382,7 +382,7 @@ else if menu == 2 && !instance_exists(obj_erasegame)
 	}
 	
 	// panic change bg
-	if optionselected = 5
+	if optionselected == 5
 	{
 		if select
 		{
@@ -392,7 +392,7 @@ else if menu == 2 && !instance_exists(obj_erasegame)
 	}
 	
 	// surface afterimages
-	if optionselected = 6
+	if optionselected == 6
 	{
 		if select
 		{
@@ -402,7 +402,7 @@ else if menu == 2 && !instance_exists(obj_erasegame)
 	}
 	
 	// secret debris
-	if optionselected = 7
+	if optionselected == 7
 	{
 		if select
 		{
@@ -412,7 +412,7 @@ else if menu == 2 && !instance_exists(obj_erasegame)
 	}
 	
 	// show names
-	if optionselected = 8
+	if optionselected == 8
 	{
 		if select
 		{
@@ -422,7 +422,7 @@ else if menu == 2 && !instance_exists(obj_erasegame)
 	}
 	
 	// chat bubbles
-	if optionselected = 9
+	if optionselected == 9
 	{
 		if select
 		{

@@ -3,7 +3,7 @@ if !running
 	exit;
 
 var r = room_get_name(room);
-var state = "";
+var state = -1;
 
 if room == Realtitlescreen
 	det = "In the titlescreen";
@@ -185,13 +185,8 @@ else
 		state = "";
 	}
 }
-
-if string_startswith(state, "roomname.")
-{
-	state = global.roommessage;
-	if state == ""
-		state = "???";
-}
+if state == -1
+	state = roomname == "" ? "???" : roomname;
 
 var detf = det;
 if instance_exists(obj_gms) && gms_info_isloggedin()

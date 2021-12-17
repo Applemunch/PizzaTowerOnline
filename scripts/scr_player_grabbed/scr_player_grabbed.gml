@@ -60,7 +60,7 @@ function scr_player_grabbed()
 	}
 	with (player)
 	{
-		if !((state = states.grab) or (state = states.mach3 && fightball = true) or (state = states.finishingblow) or (state = states.grabbing) or (state = states._throw) or (state = states.slam) or (state = states.tacklecharge) or (state = states.punch) or (state = states.superslam) or (state = states.backkick) or (state = states.uppunch) or (state = states.shoulder))
+		if !((state = states.grab) or (state == states.mach3 && fightball = true) or (state == states.finishingblow) or (state == states.grabbing) or (state == states._throw) or (state == states.slam) or (state == states.tacklecharge) or (state == states.punch) or (state == states.superslam) or (state == states.backkick) or (state == states.uppunch) or (state == states.shoulder))
 		&& !string_contains(sprite_get_name(sprite_index), "_haulingstart") or pause
 		{
 			other.x = x 

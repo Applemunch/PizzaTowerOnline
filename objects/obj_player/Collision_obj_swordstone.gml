@@ -1,4 +1,4 @@
-if grounded && other.sprite_index == spr_swordstone && (((state = states.handstandjump or state = states.punch) && character != "S") or (character == "S" && key_slap2))
+if grounded && other.sprite_index == spr_swordstone && (((state = states.handstandjump or state == states.punch) && character != "S") or (character == "S" && key_slap2))
 {
 	scr_soundeffect(sfx_knightsword)
 	global.SAGEknighttaken = true

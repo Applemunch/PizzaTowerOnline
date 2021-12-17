@@ -1,6 +1,6 @@
 with other
 {
-	if key_up2 && grounded && state = states.normal && y == other.y + 50
+	if key_up2 && grounded && state == states.normal && y == other.y + 50
 	{
 		scr_soundeffect(sfx_step);
 		other.open = true;

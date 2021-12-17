@@ -1,14 +1,10 @@
 /// @description Check if object is currently clipping into a wall or slope
-function scr_solid(argument0, argument1)
+function scr_solid(argument0, argument1, slop = true, retcol = false)
 {
-	var slop = true;
-	if argument_count > 2
-		slop = argument[2];
-	
 	// Store old position
 	var old_x = x
 	var old_y = y
-	var collide = false;
+	var collide = noone;
 	
 	x = argument0
 	y = argument1
@@ -54,27 +50,27 @@ function scr_solid(argument0, argument1)
 		
 				if (other.bbox_bottom >= slope) {
 					// Object is inside slope
-					collide = slope;
+					collide = id;
 				}
 			}
 		}
 	}
-
-	x = old_x
-	y = old_y
-	return collide
+	
+	x = old_x;
+	y = old_y;
+	return (retcol ? collide : instance_exists(collide));
 }
 
-function scr_solidwall(argument0, argument1)
+function scr_solidwall(xx, yy, retcol = false)
 {
 	// Store old position
 	var old_x = x
 	var old_y = y
-	var collide = false
+	var collide = noone
 	
-	x = argument0
-	y = argument1
-
+	x = xx
+	y = yy
+	
 	// Check if I'm over a tile
 	var _solid = instance_place(x, y, obj_solid);
 	var _ghostwall = instance_place(x, y, obj_ghostwall);
@@ -84,7 +80,7 @@ function scr_solidwall(argument0, argument1)
 	if _solid
 		collide = _solid;
 	
-	x = old_x
-	y = old_y
-	return collide
+	x = old_x;
+	y = old_y;
+	return (retcol ? collide : instance_exists(collide));
 }

@@ -1,15 +1,21 @@
-
- //   draw_sprite_tiled(bg,image_index,lerp(
-//0,room_width-sprite_get_width(bg), camera_get_view_x(view_camera)/(room_width-960)) /6,lerp(
-//0,room_height-sprite_get_height(bg), camera_get_view_y(view_camera)/(room_height-540))/6-20 )
-
-
-//   draw_sprite_tiled(bg2,image_index,lerp( 
-//0,room_width-sprite_get_width(bg2), camera_get_view_x(view_camera)/(room_width-960)) /8,lerp(
-//0,room_height-sprite_get_height(bg2), camera_get_view_y(view_camera)/(room_height-540))/8-20 )
-
-
-
-//   draw_sprite_tiled(bg3,image_index,lerp(
-//0,room_width-sprite_get_width(bg3), camera_get_view_x(view_camera)/(room_width-960)) /10,lerp(
-//0,room_height-sprite_get_height(bg3), camera_get_view_y(view_camera)/(room_height-540))/10-20 )
+// grinch bg
+if string_startswith(room_get_name(room), "grinch_")
+{
+	depth = layer_get_depth("Backgrounds_1") - 1;
+	
+	if uTime == -1
+		uTime = shader_get_uniform(shd_wind, "Time");
+	
+	shader_set(shd_wind);
+	shader_set_uniform_f(uTime, current_time / 1000);
+	draw_sprite_tiled(bg_grinch_santa, 0, _camx * 0.25, _camy * 0.25);
+	shader_reset();
+	
+	if global.panicbg
+	{
+		draw_set_colour(c_red);
+		draw_set_alpha((global.wave / global.maxwave) / 3);
+		draw_rectangle(_camx - 32, _camy - 32, _camw + 32, _camh + 32, false);
+		draw_set_alpha(1);
+	}
+}

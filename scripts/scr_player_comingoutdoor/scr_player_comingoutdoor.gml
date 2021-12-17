@@ -23,7 +23,7 @@ function scr_player_comingoutdoor()
 		image_blend = c_white;
 	
 	//Back to normal
-	if floor(image_index) = image_number-1 
+	if floor(image_index) >= image_number - 1 
 	{
 		start_running = true
 		movespeed = 0

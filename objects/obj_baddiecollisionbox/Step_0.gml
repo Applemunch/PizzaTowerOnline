@@ -37,7 +37,7 @@ if instance_exists(baddieID) && place_meeting(x,y,obj_player1) && !obj_player1.c
 				}
 				if bad.object_index != obj_tankOLD
 				{
-					if state = states.mach3 or (state == states.freefall && freefallsmash > 10)
+					if state == states.mach3 or (state == states.freefall && freefallsmash > 10)
 					or state == states.knightpep or state == states.knightpepslopes
 					or state == states.superslam or state == states.tumble
 						bad.hp -= 99;
@@ -49,7 +49,7 @@ if instance_exists(baddieID) && place_meeting(x,y,obj_player1) && !obj_player1.c
 				global.hit += 1
 				if !grounded && state != states.freefall && key_jump2
 				{
-					if state = states.mach2 or (state = states.mach3 && !fightball)
+					if state == states.mach2 or (state == states.mach3 && !fightball)
 						sprite_index = spr_mach2jump
 					suplexmove = false
 					vsp = -11
@@ -80,7 +80,7 @@ if instance_exists(baddieID) && place_meeting(x,y,obj_player1) && !obj_player1.c
 			}
 			
 			//Stomp
-			if instance_exists(other.baddieID) && y < other.baddieID.y && attacking = false && sprite_index != spr_player_mach2jump && sprite_index != spr_swingding && ((state = states.boots && vsp > 0) or state = states.jump  or state = states.mach1 or state = states.grab) && vsp > 0 && other.baddieID.vsp >= 0 && sprite_index != spr_stompprep && (sprite_index != spr_swingding or global.gameplay == 0) && !other.baddieID.invincible && other.baddieID.stompable
+			if instance_exists(other.baddieID) && y < other.baddieID.y && attacking = false && sprite_index != spr_player_mach2jump && sprite_index != spr_swingding && ((state = states.boots && vsp > 0) or state == states.jump  or state == states.mach1 or state == states.grab) && vsp > 0 && other.baddieID.vsp >= 0 && sprite_index != spr_stompprep && (sprite_index != spr_swingding or global.gameplay == 0) && !other.baddieID.invincible && other.baddieID.stompable
 			{
 				scr_soundeffect(sfx_stompenemy)
 				

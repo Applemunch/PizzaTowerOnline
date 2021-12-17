@@ -1,2 +1,2 @@
 
-global.roommessage = "ITS NOT A SHINESPARK"
+global.roommessage = "NOT A SHINESPARK"

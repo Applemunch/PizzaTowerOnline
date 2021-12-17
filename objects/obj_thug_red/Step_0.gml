@@ -160,7 +160,7 @@ switch (state)
 if state == states.grabbed or state == states.stun
 	chasing = true;
 
-if state = states.stun && stunned > 100 && !birdcreated
+if state == states.stun && stunned > 100 && !birdcreated
 {
 	birdcreated = true
 	with instance_create(x,y, obj_enemybird)

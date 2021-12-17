@@ -3,7 +3,7 @@ with obj_player1
 {
 	if state != states.gameover
 	{
-		if state = states.knightpep
+		if state == states.knightpep
 			state = states.knightpepslopes
 		else if state != states.knightpepslopes
 		{

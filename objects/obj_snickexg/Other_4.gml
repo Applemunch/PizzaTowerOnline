@@ -10,4 +10,4 @@ else
 	maxspeed = 1
 
 if room == snick_challengeend
-	y = -50
+	y = -50;
