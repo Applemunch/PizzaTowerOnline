@@ -9,7 +9,7 @@ function scr_player_handstandjump()
 		mach2 = 35;
 		hsp = xscale * movespeed;
 		vsp = 0;
-		momemtum = true;
+		momentum = true;
 		dir = xscale;
 		
 		move = key_left + key_right;
@@ -85,7 +85,7 @@ function scr_player_handstandjump()
 		hsp = xscale * movespeed
 		move = key_left + key_right;
 
-		momemtum = true
+		momentum = true
 		dir = xscale
 		
 		if movespeed < 10 && grounded

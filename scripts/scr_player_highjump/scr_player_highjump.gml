@@ -1,13 +1,13 @@
 function scr_player_highjump() {
 	move = key_left + key_right;
 
-	if momemtum = false
+	if momentum = false
 	hsp = move * movespeed;
 	else
 	hsp = xscale * movespeed
 
 
-	if move = 0 && momemtum = false
+	if move = 0 && momentum = false
 	movespeed = 0
 
 	if move != 0 && movespeed < 6

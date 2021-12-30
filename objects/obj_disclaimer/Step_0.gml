@@ -35,10 +35,11 @@ if net != os_is_network_connected()
 }
 
 // input
-if cancon or debug or !drm
+if (cancon or debug or !drm)
+&& con == 1
 {
 	scr_getinput();
-	if (keyboard_check_pressed(vk_enter) or key_jump) && con == 1
+	if keyboard_check_pressed(vk_enter) or key_jump
 	{
 		audio_stop_all();
 		scr_soundeffect(sfx_diagclose);

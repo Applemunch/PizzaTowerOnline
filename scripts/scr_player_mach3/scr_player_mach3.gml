@@ -1,20 +1,10 @@
 function scr_player_mach3()
 {
-	// hit wall sprite
-	/*
-	if character == "N"
-	{
-		if noisetype == 0
-			spr_hitwall = spr_playerN_mach3hitwall;
-		if noisetype == 1
-			spr_hitwall = spr_playerN_mach3hitwall_skate;
-	}
-	*/
-	
 	// character specific
-	if character != "N" or (character == "N" && noisetype == 1)
+	if character != "N" or noisetype == 1
 	{
 		#region not noise
+		
 		if windingAnim < 2000 && (character == "P" or character == "SP")
 			windingAnim += 1;
 		
@@ -23,7 +13,7 @@ function scr_player_mach3()
 		hsp = xscale * movespeed + railh;
 		
 		mach2 = 100
-		momemtum = true
+		momentum = true
 	
 		move = key_right + key_left
 		move2 = key_right2 + key_left2
@@ -49,7 +39,7 @@ function scr_player_mach3()
 	#region not noise, not vigi & noise
 	if character != "V"
 	{
-		if character != "N" or (character == "N" && noisetype == 1)
+		if character != "N" or noisetype == 1
 		{
 			if move == xscale
 			{
@@ -190,15 +180,16 @@ function scr_player_mach3()
 			}
 
 			//Climbwall
-			if (!grounded && scr_solidwall(x + hsp, y) && !place_meeting(x + hsp, y, obj_destructibles) && !place_meeting(x + hsp, y, obj_metalblock) && !place_meeting(x + sign(hsp), y, obj_slope))
+			if (!grounded && !place_meeting(x + hsp, y, obj_destructibles) && !place_meeting(x + hsp, y, obj_metalblock) && !place_meeting(x + sign(hsp), y, obj_slope))
 			or (grounded && !place_meeting(x + hsp, y, obj_destructibles) && !place_meeting(x + hsp, y, obj_metalblock) && scr_slope())
 			{
-				if !grounded or (scr_solidwall(x + hsp, y) && scr_solidwall(x + hsp, y - 32) && !scr_solidwall(x, y - 32))
+				if (!grounded && scr_solidwall(x + hsp, y))
+				or (scr_solidwall(x + hsp, y) && scr_solidwall(x + hsp, y - 32) && !scr_solidwall(x, y - 32))
 				{
 					wallspeed = movespeed;
-					if global.gameplay == 0// && character != "SP"
-						wallspeed = 10
-					state = states.climbwall
+					if global.gameplay == 0
+						wallspeed = 10;
+					state = states.climbwall;
 				}
 			}
 			
@@ -297,8 +288,7 @@ function scr_player_mach3()
 
 			//}
 		}
-		
-		if character == "N" && noisetype == 0
+		else
 		{
 			hsp = xscale * movespeed
 			move = key_right + key_left
@@ -730,7 +720,7 @@ function scr_player_mach3()
 	// dash cloud effects
 	if !instance_exists(dashcloudid) && grounded
 	{
-		var dashcloud = instance_create(x,y,obj_superdashcloud);
+		var dashcloud = instance_create(x, y, obj_superdashcloud);
 		with dashcloud
 		{
 			if other.fightball
@@ -739,7 +729,7 @@ function scr_player_mach3()
 			image_xscale = other.xscale
 			other.dashcloudid = id
 		}
-		if place_meeting(x, y + 1, obj_water)
+		if place_meeting(x, y + 1, obj_water) or place_meeting(x, y + 1, obj_transwater)
 			dashcloud.sprite_index = spr_watereffect;
 	}
 

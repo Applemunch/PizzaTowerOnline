@@ -109,16 +109,16 @@ function scr_player_grab()
 			if move != xscale && baddiegrabbedID.object_index != obj_pizzaballOLD
 				movespeed = 2
 			
-			if momemtum = false
+			if momentum = false
 				hsp = move * movespeed;
 			else
 				hsp = xscale * movespeed
 
-			if move != xscale && momemtum = true && movespeed != 0 
+			if move != xscale && momentum = true && movespeed != 0 
 				movespeed -= 0.05
 
 			if movespeed = 0
-				momemtum = false
+				momentum = false
 
 			if move != 0 && movespeed < 6
 				movespeed += 0.5
@@ -141,7 +141,7 @@ function scr_player_grab()
 		if move = -xscale
 		{
 			mach2 = 0
-			momemtum = false
+			momentum = false
 		}
 
 		landAnim = true

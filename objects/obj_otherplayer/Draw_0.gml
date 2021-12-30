@@ -4,6 +4,11 @@ if room == rank_room or room == timesuproom or !viewable
 if gms_other_get_real(player_id, "room") != scr_gms_room()
 	exit;
 
+// pln room color
+var col = image_blend;
+if room == hub_roomPLN
+	col = merge_colour(col, c_black, 0.4);
+
 // taxi
 if state == states.taxi
 {	
@@ -19,7 +24,7 @@ if state == states.taxi
 }
 else
 {
-	var pausedcolor = (pause ? merge_colour(image_blend, c_black, 0.75) : image_blend);
+	var pausedcolor = (pause ? merge_colour(col, c_black, 0.75) : col);
 	
 	// baddie grabbie
 	var baddiegrabbed = gms_other_get_real(player_id, "grabenemy");
@@ -97,13 +102,13 @@ else
 		draw_sprite_ext(petspr, petframe, petx, pety, petxscale, 1, 0, pausedcolor, image_alpha);
 	}
 	
-	//Draw
+	// determine some things, then draw
 	var sprit = sprite_index;
 	if !is_real(sprit) or !sprite_exists(sprit) or sprit == 0
 		sprit = spr_player_idle;
 	
 	var _img = image_index;
-	if state != states.cheeseball
+	if state != states.cheeseball && state != states.cotton
 	{
 		if spr_palette == spr_peppalette && paletteselect == 17
 			sprit = spr_player_petah;
@@ -134,47 +139,21 @@ else
 		}
 	}
 	
-	if is_real(spr_palette) && spr_palette != 0 && sprite_exists(spr_palette)
-	&& (state != states.cheeseball or sprite_index == spr_playerSP_cheeseball) && (state != states.ghost or (sprite_index == spr_player_ghostend && image_index >= 12) or spr_palette == spr_noisepalette)
+	// draw the player
+	var flash = gms_other_get_real(player_id, "flash");
+	if !flash
 	{
-		if paletteselect < 0
-		{
-			/*
-			var getread = gms_other_get_string(player_id, "palcolors");
-			if getread != ""
-			{
-				if getread != dsread
-				{
-					dsread = getread;
-					
-					ds_list_clear(palcolors);
-					ds_list_read(palcolors, dsread);
-				
-					custompal_update(palcolors);
-				}
-				else if !surface_exists(palcolors)
-					custompal_update(palcolors);
-				else
-					pal_swap_set(palsurf, 1, true);
-			}
-			*/
-		}
-		else
+		if is_real(spr_palette) && spr_palette != 0 && sprite_exists(spr_palette)
+		&& (state != states.cheeseball or sprite_index == spr_playerSP_cheeseball) && state != states.cotton && (state != states.ghost or (sprite_index == spr_player_ghostend && image_index >= 12) or spr_palette == spr_noisepalette)
 			pal_swap_set(spr_palette, paletteselect, false);
 	}
+	else
+		draw_set_flash(true);
+	
 	draw_sprite_ext(sprit, _img, x, y, xscale, yscale, img_angle, pausedcolor, image_alpha);
 	pal_swap_reset();
 	
-	//Flash
-	if !pause && check_shaders()
-	{
-		if gms_other_get_real(player_id, "flash")
-		{
-		    shader_set(shd_hit);
-			draw_sprite_ext(sprit, _img, x, y, xscale, yscale, img_angle, pausedcolor, image_alpha);
-		    shader_reset();
-		}
-	}
+	draw_set_flash(false);
 
 	// pizza shield
 	if gms_other_get_real(player_id, "pizzashield")
@@ -236,13 +215,13 @@ if global.shownames
 		nickname = "Player" + string(player_id);
 	
 	if gms_other_isowner(player_id)
-		draw_set_colour(make_colour_hsv(color_get_hue(c_owner), color_get_saturation(c_owner), color_get_value(c_owner) * (color_get_value(image_blend) / 255)));
+		draw_set_colour(make_colour_hsv(color_get_hue(c_owner), color_get_saturation(c_owner), color_get_value(c_owner) * (color_get_value(col) / 255)));
 	else if gms_other_admin_rights(player_id)
-		draw_set_colour(make_colour_hsv(color_get_hue(c_admin), color_get_saturation(c_admin), color_get_value(c_admin) * (color_get_value(image_blend) / 255)));
+		draw_set_colour(make_colour_hsv(color_get_hue(c_admin), color_get_saturation(c_admin), color_get_value(c_admin) * (color_get_value(col) / 255)));
 	else if gms_other_get_real(player_id, "pvp") == true
-		draw_set_colour(make_colour_hsv(color_get_hue(c_pvp), color_get_saturation(c_pvp), color_get_value(c_pvp) * (color_get_value(image_blend) / 255)));
+		draw_set_colour(make_colour_hsv(color_get_hue(c_pvp), color_get_saturation(c_pvp), color_get_value(c_pvp) * (color_get_value(col) / 255)));
 	else
-		draw_set_colour(image_blend);
+		draw_set_colour(col);
 	
 	draw_set_font(global.font_small);
 	draw_set_halign(fa_center);

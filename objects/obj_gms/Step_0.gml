@@ -24,9 +24,9 @@ if gms_info_isloggedin() && room == Realtitlescreen
 }
 
 // gots
-if global.gottp[0] && !obj_pause.pause // tpother
+if (!instance_exists(obj_pause) or !obj_pause.pause) && global.gottp[0] // tpother
 {
-	with obj_player1
+	with obj_player
 		alarm[11] = 60;
 	global.gottp[0] = false;
 	
@@ -46,7 +46,7 @@ if global.gottp[0] && !obj_pause.pause // tpother
 			requestype = reqtypes.tp_level;
 		}
 	}
-	else if global.gottp[3] >= global.lastroom + obj_onlinemenu.level_id + 1
+	else if instance_exists(obj_onlinemenu) && global.gottp[3] >= global.lastroom + obj_onlinemenu.level_id + 1
 	{
 		// tp to jacko editor room
 		__user = noone;

@@ -160,7 +160,7 @@
     "eventStubScript": null,
     "parent": {"name":"spr_boilingsauce","path":"sprites/spr_boilingsauce/spr_boilingsauce.yy",},
     "resourceVersion": "1.3",
-    "name": "",
+    "name": "spr_boilingsauce",
     "tags": [],
     "resourceType": "GMSequence",
   },

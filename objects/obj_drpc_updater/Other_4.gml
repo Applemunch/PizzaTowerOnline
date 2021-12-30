@@ -6,14 +6,20 @@ var r = room_get_name(room);
 var state = -1;
 
 if room == Realtitlescreen
+{
 	det = "In the titlescreen";
+	state = "";
+}
 else if room == characterselect
-	det = "Logging in...";
+{
+	det = "Mode Select";
+	state = "";
+	if instance_exists(obj_login)
+		state = "Logging in...";
+}
 else
 {
 	// bottom text
-	state = lang_string("roomname." + room_get_name(room));
-	
 	if global.snickchallenge
 	{
 		state = "Snick Challenge";
@@ -53,13 +59,25 @@ else
 		det = "Entrance";
 	
 	else if string_startswith(r, "medieval")
+	{
 		det = "Pizzascape";
+		if global.snickrematch
+			det = "Snick's Castle (PLN)";
+	}
 	
 	else if string_startswith(r, "ruin")
+	{
 		det = "The Ancient Cheese";
+		if global.snickrematch
+			det = "Ruins of The Temple (PLN)";
+	}
 	
 	else if string_startswith(r, "dungeon") or string_startswith(r, "snick_challengeend")
+	{
 		det = "Bloodsauce Dungeon";
+		if global.snickrematch
+			det = "Bloodbath Dungeon (PLN)";
+	}
 	
 	else if string_startswith(r, "dragonlair")
 		det = "Dragon Lair";
@@ -118,18 +136,45 @@ else
 	else if string_startswith(r, "ancient")
 		det = "Ancient Tower";
 	
+	else if string_startswith(r, "grinch")
+		det = "Grinch";
+	
 	else if string_startswith(r, "cotton")
 		det = "Cottontown";
 	
 	else if string_startswith(r, "jawbreaker")
 		det = "Jawbreaker Mines";
 	
+	else if room == rm_peic
+	{
+		det = "Hub";
+		state = "Room of a Mistake";
+	}
+	else if room == rm_test
+	{
+		det = "Test Room";
+		state = "";
+	}
+	else if room == rm_blank
+	{
+		det = "rm_blank";
+		state = "THE GLORIOUS NOTHINGNESS";
+	}
+	else if room == rm_mariohell
+	{
+		det = "Mario";
+		state = "";
+	}
+	else if room == boss_room1
+	{
+		det = "Boss Fight";
+		state = "Noise Crusher";
+	}
 	else if room == editor_entrance
 	{
 		det = "Level Editor";
 		state = "Browsing the menus";
 	}
-	
 	else if room == custom_lvl_room
 	{
 		if instance_exists(obj_onlinemenu)
@@ -154,7 +199,6 @@ else
 			state = "";
 		}
 	}
-	
 	else if room == rank_room
 	{
 		if global.snickchallenge
@@ -166,7 +210,6 @@ else
 		
 		state = "Ranking";
 	}
-	
 	else if room == timesuproom
 	{
 		if global.snickchallenge
@@ -178,7 +221,6 @@ else
 		
 		state = "Time's up!";
 	}
-	
 	else
 	{
 		det = "???";

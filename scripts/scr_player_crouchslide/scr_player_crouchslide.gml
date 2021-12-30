@@ -148,7 +148,7 @@ function scr_player_crouchslide()
 				scr_soundeffect(sfx_jump)
 
 				sprite_index = spr_jump
-				momemtum = true
+				momentum = true
 				
 				if shotgunAnim
 					sprite_index = spr_shotgunjump

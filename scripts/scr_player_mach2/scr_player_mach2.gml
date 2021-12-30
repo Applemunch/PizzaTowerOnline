@@ -139,11 +139,12 @@ function scr_player_mach2()
 			sprite_index = spr_playerV_divekickstart 
 	}
 	
-	//Climbwall
-	if (!grounded && scr_solidwall(x + hsp, y) && (!place_meeting(x+hsp,y,obj_destructibles) or character == "V") && !place_meeting(x+sign(hsp),y,obj_slope))
-	or (grounded && (!place_meeting(x+hsp,y,obj_destructibles) or character == "V") && !place_meeting(x+hsp,y,obj_metalblock) && scr_slope())
+	// Climbwall
+	if (!grounded && (!place_meeting(x + hsp, y, obj_destructibles) or character == "V") && !place_meeting(x + sign(hsp), y, obj_slope))
+	or (grounded && (!place_meeting(x + hsp, y, obj_destructibles) or character == "V") && scr_slope())
 	{
-		if !grounded or (scr_solidwall(x + hsp, y) && scr_solidwall(x + hsp, y - 32) && !scr_solidwall(x, y - 32))
+		if (!grounded && scr_solidwall(x + hsp, y))
+		or (scr_solidwall(x + hsp, y) && scr_solidwall(x + hsp, y - 32) && !scr_solidwall(x, y - 32))
 		{
 			if (!key_attack && character != "S") or (character == "S" && move == 0)
 			{
@@ -160,8 +161,8 @@ function scr_player_mach2()
 			}
 		}
 	}
-  
-	if grounded && !scr_slope() && scr_solid(x+hsp,y,false) && (!place_meeting(x+hsp,y,obj_destructibles) or character == "V") && !place_meeting(x+sign(hsp),y,obj_slope)
+	
+	if grounded && !scr_slope() && scr_solid(x + hsp, y, false) && (!place_meeting(x+hsp,y,obj_destructibles) or character == "V") && !place_meeting(x+sign(hsp),y,obj_slope)
 	{
 		movespeed = 0
 		state = states.normal
@@ -183,7 +184,7 @@ function scr_player_mach2()
 	
 	if grounded && floor(image_index) = image_number - 1 && sprite_index = spr_rollgetup
 	{
-		if character == "P"
+		if character == "P" && scr_stylecheck(2)
 			sprite_index = spr_player_machhit
 		else
 			sprite_index = spr_mach
@@ -221,6 +222,32 @@ function scr_player_mach2()
 		state = states.machslide
 		
 		sprite_index = spr_machslideboost
+	}
+	
+	// pizzelle faceplant roll
+	if !grounded && key_slap2 && global.gameplay != 0 && character == "SP"
+	{
+		scr_soundeffect(sfx_suplexdashSP);
+		if movespeed < 10
+			movespeed = 10;
+		if vsp > -5
+			vsp = -5;
+		
+		image_index = 0
+		sprite_index = spr_faceplant
+		
+		state = states.faceplant
+		image_speed = 0.35
+		with instance_create(x, y, obj_jumpdust)
+			image_xscale = other.xscale
+			
+		if !instance_exists(crazyruneffectid)
+		with instance_create(x, y, obj_crazyrunothereffect)
+		{
+			playerid = other.object_index	
+			other.crazyruneffectid = id
+		}
+		exit;
 	}
 	
 	//Vigilante revolver

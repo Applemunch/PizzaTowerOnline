@@ -4,30 +4,43 @@ if !instance_exists(obj_pause)
 	exit;
 }
 
-if fadealpha > 1 && !fadein
+if fadealpha >= 1 && !fadein
 {
 	if obj_pause.pause
 	{
-		obj_pause.pause = false;
+		audio_resume_all();
 		
-		var act = noone;
-		while act != undefined
+		obj_pause.pause = false;
+		obj_pause.pausefad = 2;
+		obj_pause.pausealpha = 1;
+		
+		while true
 		{
-			act = array_pop(obj_pause.objectlist);
-			instance_activate_object(act);
+			_act = array_pop(obj_pause.objectlist);
+			if _act == undefined
+				break;
+			instance_activate_object(_act);
 		}
 		
 		if code_is_compiled()
 			alarm[0] = 1;
 		else
 			event_perform(ev_alarm, 0);
-		
-		audio_resume_all();
 	}
 	else
 	{
 		audio_pause_all()
-		obj_pause.pause = true;
+		
+		with obj_pause
+		{
+			pause = true;
+			pausefad = 1;
+			pausealpha = 0;
+			
+			if sprite_exists(pausebg)
+				sprite_delete(pausebg);
+			pausebg = sprite_create_from_surface(application_surface, 0, 0, surface_get_width(application_surface), surface_get_height(application_surface), false, false, 0, 0);
+		}
 		
 		with all
 		{
@@ -52,6 +65,6 @@ if !fadein
 else
 {
 	fadealpha -= 0.1
-	if fadealpha <= 0
+	//if fadealpha <= 0
 		instance_destroy();
 }

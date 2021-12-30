@@ -1,10 +1,10 @@
 event_inherited();
 yoffset = 0;
-sprite_index = x != xprevious ? spr_gerome_keymove : spr_gerome_keyidle;
-if xprevious - x != 0
-    image_xscale = -sign(xprevious - x);
-else
+
+if abs(x - xprevious) > 2
 {
-    if playerid.hsp == 0
-        image_xscale = playerid.xscale
+    xscale = -sign(xprevious - x);
+	sprite_index = spr_gerome_keymove;
 }
+else
+	sprite_index = spr_gerome_keyidle;

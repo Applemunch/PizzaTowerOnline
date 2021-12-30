@@ -16,7 +16,7 @@ if ds_list_find_index(global.saveroom, id) = -1 && !global.snickchallenge
 	// old destroy
 	else
 	{
-		repeat 6 with instance_create(x + irandom(sprite_width), y + irandom(sprite_height), obj_debris)
+		repeat 6 with instance_create(x + sprite_width / 2, y + sprite_height / 2, obj_debris)
 		{
 			image_xscale = abs(other.image_xscale)
 			image_yscale = abs(other.image_yscale)

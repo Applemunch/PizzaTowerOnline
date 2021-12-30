@@ -71,6 +71,5 @@ function scr_collide_player()
 	}
 	
 	//Gravity
-	if !grounded
-		vsp = min(vsp + (grav * gravmult), 20 * gravmult);
+	vsp = min(vsp + (grav * gravmult), 20 * gravmult);
 }

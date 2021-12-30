@@ -2,15 +2,24 @@
 with all
 	if !persistent instance_destroy(id, false);
 
-var timeattack = global.timeattack
-var roomname = room_get_name(room)
+var timeattack = global.timeattack;
+var snickrematch = global.snickrematch;
+var roomname = room_get_name(room);
 
-global.pizzacoin = global.pizzacoinstart
+global.pizzacoin = global.pizzacoinstart;
 
 audio_resume_all();
 audio_stop_all();
 instance_activate_all();
 global.music = -1;
+
+// player reset shit
+pause = 0;
+scr_playerreset();
+with obj_player1
+	targetDoor = "A";
+
+global.snickrematch = snickrematch; // stored
 
 // modifier
 global.failedmod = false;
@@ -86,6 +95,9 @@ else if string_startswith(roomname, "etb")
 else if string_startswith(roomname, "ancient")
 // ancient tower
 	room_goto_new(ancient_1)
+else if string_startswith(roomname, "grinch")
+// grinch race
+	room_goto_new(grinch_1)
 else if string_startswith(roomname, "cotton")
 // cottontown
 	room_goto_new(cotton_1)
@@ -95,12 +107,6 @@ else if string_startswith(roomname, "jawbreaker")
 else if room == custom_lvl_room
 // level editor level
 	room_restart();
-
-// player reset shit
-pause = 0;
-scr_playerreset();
-with obj_player1
-	targetDoor = "A";
 
 // reset time attack
 global.timeattack = timeattack;

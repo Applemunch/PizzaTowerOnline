@@ -1,7 +1,7 @@
 {
   "spriteId": {
-    "name": "sprite_hubsp_tiles",
-    "path": "sprites/sprite_hubsp_tiles/sprite_hubsp_tiles.yy",
+    "name": "tile_hubsp_tiles",
+    "path": "sprites/tile_hubsp_tiles/tile_hubsp_tiles.yy",
   },
   "tileWidth": 32,
   "tileHeight": 32,

@@ -13,6 +13,8 @@ short = false
 
 msg = ""
 
+if global.gameplay != 0
+	sprite_index = spr_entrancegate_NEW;
 if check_sugary()
 	sprite_index = spr_entrancegate_ss;
 

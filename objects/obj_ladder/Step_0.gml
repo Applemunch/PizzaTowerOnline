@@ -1,6 +1,7 @@
-if place_meeting(x,y-1,obj_player1)
+var player = instance_place(x, y - 1, obj_player);
+if player
 {
-	with (obj_player1)
+	with player
 	{
 		if place_meeting(x, y + 1, obj_ladder) && !place_meeting(x, y + 1, obj_solid) && key_down && !key_up && (state == states.crouch or (character = "S" && (state == states.normal or state == states.mach1))) && place_meeting(x, y + 1, obj_platform)
 		{

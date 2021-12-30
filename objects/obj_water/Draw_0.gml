@@ -1,6 +1,7 @@
+if scr_culling()
+	exit;
+
 for (var i = 0; i < abs(image_xscale); i++)
-{
-    draw_sprite(spr_water, -1, x + (32 * i), y)
-	for (var j = 0; j < abs(image_yscale - 1); j++)
-	    draw_sprite(spr_water2, -1, x + (32 * i), y + (32 * (j + 1)))
-}
+    draw_sprite(sprite_index, -1, x + (32 * i), y)
+if abs(image_yscale) != 1
+	draw_sprite_stretched(spr_water2, -1, x, y + 32, sprite_width, sprite_height - 32);

@@ -98,7 +98,7 @@ function scr_hurtplayer(argument0)
 			grav = 0.5
 		
 			repeat 9
-				instance_create(x,y,obj_slimedebris) 
+				instance_create(x, y, obj_slimedebris) 
 		
 			hsp = xscale * -5;
 			vsp = -3
@@ -143,6 +143,12 @@ function scr_hurtplayer(argument0)
 		else if state != states.grabbed && !cutscene && invhurt_buffer <= 0
 		&& ((state != states.hurt && !hurted)/* or global.gameplay != 0*/)
 		{
+			if state == states.cotton
+			{
+				scr_soundeffect(sfx_hitenemy);
+				instance_create(x, y, obj_genericpoofeffect);
+			}
+			
 			if hurt_buffer == -1 && global.gameplay != 0
 		        hurt_buffer = hurt_max;
 			

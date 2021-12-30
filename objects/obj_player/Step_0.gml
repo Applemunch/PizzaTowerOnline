@@ -3,14 +3,18 @@ if room == rm_editor {
 	exit;
 }
 
-if room == custom_lvl_room {
-	if place_meeting(x, y, par_camera_editor) {
+if room == custom_lvl_room
+{
+	if place_meeting(x, y, par_camera_editor)
+	{
 		cam = instance_place(x, y, par_camera_editor);
 		cam_width = instance_place(x, y, par_camera_editor).width;
 		cam_height = instance_place(x, y, par_camera_editor).height;
-		with obj_camera {
+		
+		with obj_camera
 			bound_camera = true;
-		}/*
+		
+		/*
 		if cam != instance_place(x, y, par_camera_editor) {
 			scr_render();
 			cam = instance_place(x, y, par_camera_editor);
@@ -23,18 +27,19 @@ if room == custom_lvl_room {
 			}
 		}*/
 	}
-	else {
+	else
+	{
 		cam = noone;
 		cam_width = 0;
 		cam_height = 0;
 		instance_activate_all();
-		with obj_camera {
+		
+		with obj_camera
 			bound_camera = false;
-		}
 	}
 }
 
-switch (state)
+switch state
 {
 	default: state = states.normal;
 	case -1: break;
@@ -141,6 +146,7 @@ switch (state)
 	case states.frozen: scr_player_frozen (); break;
 	case states.spindash: scr_player_spindash (); break;
 	case states.golf: scr_player_golf (); break;
+	case states.cotton: scr_player_cotton (); break;
 }
 global.coop = false;
 
@@ -326,7 +332,7 @@ if state != states.grabbed && state != states.hurt
 	thrown = false
 
 //Reset suplex
-if grounded && state != states.handstandjump
+if grounded && state != states.handstandjump && sprite_index != spr_cotton_drill
 	suplexmove = false
 
 if state != states.freefall && state != states.hitlag
@@ -576,7 +582,7 @@ if state != states.normal
 }
 
 if state != states.mach1 && state != states.jump && state != states.hookshot  && state != states.handstandjump && state != states.normal && state != states.mach2 && state != states.mach3 && state != states.freefallprep && state != states.knightpep && state != states.shotgun && state != states.knightpepslopes
-	momemtum = false
+	momentum = false
 
 if state != states.Sjump && state != states.Sjumpprep
 	a = 0
@@ -598,7 +604,7 @@ else if ladderbuffer > 0 //Ladder Buffer
 if state != states.jump
 	stompAnim = false
 
-if state != states.grabbing && state != states.barrel && state != states.tumble && state != states.ghost && sprite_index != spr_pmortjump
+if state != states.grabbing && state != states.barrel && state != states.tumble && state != states.ghost && sprite_index != spr_pmortjump && state != states.cotton
     grav = 0.5;
 else if state == states.barrel or (state == states.tumble && global.gameplay != 0)
     grav = 0.6;
@@ -629,6 +635,8 @@ or (state == states.machroll && scr_stylecheck(0, 2))
 or (state == states.handstandjump && scr_stylecheck(0, 2))
 or (state == states.Sjump && scr_stylecheck(0, 2))
 or (state == states.chainsaw && mach2 >= 100)
+or (state == states.faceplant && !scr_stylecheck(0))
+or (state == states.cotton && (sprite_index == spr_cotton_run or sprite_index == spr_cotton_maxrun))
 {
 	if !macheffect
 	{
@@ -639,7 +647,7 @@ or (state == states.chainsaw && mach2 >= 100)
 	toomuchalarm1 -= 1;
     if toomuchalarm1 <= 0
 	{
-		with instance_create(x,y,obj_mach3effect)
+		with instance_create(x, y, obj_mach3effect)
 		{
 			playerid = other.object_index
 			image_index = other.image_index
@@ -653,7 +661,14 @@ or (state == states.chainsaw && mach2 >= 100)
     }
 }
 else
+{
 	macheffect = false;
+	with obj_mach3effect
+	{
+		if !check_bysync() && !sync && !keep
+			instance_destroy();
+	}
+}
 
 // suplex trail
 if !scr_stylecheck(0, 2) && !scr_checkskin(checkskin.n_nose)

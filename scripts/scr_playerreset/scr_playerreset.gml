@@ -4,7 +4,14 @@ function scr_playerreset()
 		ds_list_clear(global.baddietomb);
 	
 	with obj_followcharacter
-		if object_index != obj_petfollow instance_destroy();
+		if object_index != obj_petfollow instance_destroy(id, false);
+	
+	ds_list_clear(global.followerlist);
+	with obj_petfollow
+	{
+		pos = 0;
+		ds_list_add(global.followerlist, id);
+	}
 	
 	// modifiers
 	global.toppings = 0;
@@ -291,7 +298,7 @@ function scr_playerreset()
 		hurtsound = false
 
 		idleanim = 0
-		momemtum = false
+		momentum = false
 		cutscene = false
 		grabbing = false
 		dir = xscale

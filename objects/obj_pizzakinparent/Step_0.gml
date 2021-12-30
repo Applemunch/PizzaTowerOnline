@@ -31,7 +31,7 @@ if sprite_index == _spr_intro && floor(image_index) >= image_number - 1 && _spr_
 if sprite_index != _spr_intro or _spr_intro == _spr_run
 {
 	// Sprites
-	if x != xprevious
+	if abs(x - xprevious) > 2
 	{
 		sprite_index = _spr_run;
 		xscale = sign(x - xprevious);

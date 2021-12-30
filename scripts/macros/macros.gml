@@ -4,7 +4,8 @@ if live_call() return live_result;
 #macro debug false
 #macro debug:debug true
 #macro repaintjokebuild false
-#macro repaintjokebuild:repaintjokebuild true
+#macro patron true
+#macro pt_online false
 
 // macros
 #macro c_owner merge_colour(c_blue, c_white, 0.75)
@@ -12,7 +13,6 @@ if live_call() return live_result;
 #macro c_eatery merge_colour(c_orange, c_white, 0.25)
 #macro c_beebawp merge_colour(c_fuchsia, c_white, 0.5)
 #macro c_pvp merge_colour(c_red, c_white, 0.5)
-//#macro c_peicy make_colour_rgb(0, 215, 232)
 
 #macro _camx camera_get_view_x(view_camera[view_current])
 #macro _camy camera_get_view_y(view_camera[view_current])
@@ -121,7 +121,8 @@ states = {
 	Sjumpland : 96,
 	faceplant : 97,
 	rage : 98,
-	//enemy states
+	
+	// enemy states
 	idle : 99,
 	bounce : 100,
 	charge : 101,
@@ -129,7 +130,6 @@ states = {
 	turn : 103,
 	hitceilling : 104,
 	hitwall : 105,
-	rolling : 106,
 	walk : 107,
 	fall : 108,
 	land : 109,
@@ -138,7 +138,9 @@ states = {
 	recovery : 112,
 	stomped : 113,
 	chase : 114,
-	spawn : 115,
+	spawn : 115, // tank
+	
+	// pto new
 	arenaintro : 116,
 	actor : 117,
 	parry : 118,
@@ -153,5 +155,6 @@ states = {
 	dance : 127,
 	rotate : 128,
 	frozen : 129,
-	spindash : 130
+	spindash : 130,
+	cotton : 131
 }

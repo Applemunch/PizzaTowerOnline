@@ -136,7 +136,7 @@ function scr_player_cheesepep() {
 	freefallstart = 0
 
 
-	momemtum = false
+	momentum = false
 
 	instance_create(x,y,obj_landcloud)
 	sprite_index = spr_cheesepep_land

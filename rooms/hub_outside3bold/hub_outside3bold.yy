@@ -365,8 +365,8 @@
     "PhysicsWorldPixToMetres": 0.1,
   },
   "parent": {
-    "name": "outside",
-    "path": "folders/Rooms/Hub/outside.yy",
+    "name": "old",
+    "path": "folders/Rooms/Hub/old.yy",
   },
   "resourceVersion": "1.0",
   "name": "hub_outside3bold",

@@ -1,7 +1,8 @@
 if global.musicvolume <= 0
 	exit;
 
-if global.gameplay != 0
+// music pitch depending on player state
+if !scr_stylecheck(0, 2)
 {
 	if !global.panic && !global.snickchallenge && !global.miniboss && room != Realtitlescreen
 	{
@@ -55,236 +56,76 @@ if global.gameplay != 0
 		audio_sound_pitch(global.music, lerp(audio_sound_get_pitch(global.music), musicpitch, 0.35));
 }
 
-if global.musicgame == 0
+// music to play
+var musplay = -1;
+	
+if global.panic && !(room == custom_lvl_room && global.disableescapemusic)
+&& !audio_is_playing(mu_war)
+&& ((string_letters(roomname) != "dragonlair" && string_letters(roomname) != "grinch") or scr_checkskin(checkskin.p_anton))
 {
-	#region pizza tower
-	
-	var _mu_snickchallenge = (global.snickrematch ? mu_snickrematch : mu_snickchallenge);
-	var _mu_snickchallengeend = (global.snickrematch ? mu_snickrematchend : mu_snickchallengeend);
-	var _mu_noiseescape = (global.gameplay == 0 ? mu_noiseescape_OLD : mu_noiseescape);
-	var _mu_pizzyescape = (global.gameplay == 0 ? mu_pizzyescape_OLD : mu_pizzyescape);
-	
-	if !audio_is_playing(mu_antonescape) && !audio_is_playing(mu_pizzatime)
-	&& !audio_is_playing(_mu_noiseescape) && !audio_is_playing(mu_snickescape)
-	&& !audio_is_playing(_mu_pizzyescape) && !audio_is_playing(mu_war)
-	&& ((string_letters(roomname) != "dragonlair" && string_letters(roomname) != "grinch") or audio_is_playing(mu_antonlevel))
-	&& global.panic && !obj_pause.pause && !obj_camera.ded && !(room == custom_lvl_room && global.disableescapemusic)
-	{
-		// war level
-		if audio_is_playing(mu_warintro)
-		{
-			audio_stop_sound(global.music)
-			scr_sound(mu_war)
-			pausedmusic = mu_war
-		}
-		else
-		{
-			audio_stop_sound(global.music)
-			
-			// antonball
-			if scr_checkskin(checkskin.p_anton)
-			{
-				scr_sound(mu_antonescape)
-				pausedmusic = mu_antonescape
-			}
-			// peppino or vigilante
-			else if obj_player1.character == "P"
-			or obj_player1.character == "V"
-			{
-				scr_sound(mu_pizzatime)
-				pausedmusic = mu_pizzatime
-			}
-			// noise
-			else if obj_player1.character == "N"
-			{
-				scr_sound(_mu_noiseescape)
-				pausedmusic = _mu_noiseescape
-			}
-			// snick
-			else if obj_player1.character == "S"
-			{
-				scr_sound(mu_snickescape)
-				pausedmusic = mu_snickescape
-			}
-			// pizzelle
-			else if obj_player1.character == "SP"
-			{
-				scr_sound(_mu_pizzyescape)
-				pausedmusic = _mu_pizzyescape
-			}
-		}
-	}
-	
-	/*
-	if (instance_exists(obj_hungrypillar) && ((!audio_is_playing(mu_dungeondepth)) && (obj_pause.pause == 0))) && !string_startswith(room_get_name(room), "dragonlair") && room != custom_lvl_room
-	{
-	    audio_stop_all()
-	    scr_sound(mu_dungeondepth)
-	    pausedmusic = mu_dungeondepth
-	}
-	*/
-   
-	//Stop miniboss music
-	if !global.miniboss && audio_is_playing(mu_miniboss)
-		audio_stop_sound(mu_miniboss)
-   
-	//SAGE2019
-	if global.snickchallenge = true && obj_pause.pause = 0 && obj_camera.ded = false
-	{
-		if global.minutes >= 2 or (global.snickrematch && global.musicgame == 1)
-		{
-			if !audio_is_playing(_mu_snickchallenge)
-			{
-				audio_stop_sound(global.music)
-				scr_sound(_mu_snickchallenge)
-			}
-		}
-		else
-		{
-			if !audio_is_playing(_mu_snickchallengeend)
-			{
-				audio_stop_sound(global.music)
-				scr_sound(_mu_snickchallengeend)
-			}
-		}
-	}
-  
-	if audio_is_playing(global.music)
-		fadeoff = audio_sound_get_track_position(global.music);
+	// war level
+	if audio_is_playing(mu_warintro)
+		musplay = mu_war;
 	else
-		fadeoff = 0;
-
-	//Christmas
-	if room == strongcold_miniboss && global.miniboss
 	{
-		if !audio_is_playing(mu_miniboss)
+		// antonball
+		if scr_checkskin(checkskin.p_anton)
+			musplay = mu_antonescape;
+		
+		// gerome
+		else if global.gameplay != 0 && (global.gerome or global.treasure or instance_exists(obj_geromeanim))
+			musplay = mu_chase;
+		
+		// pizza time
+		else
 		{
-			audio_stop_sound(global.music)
-			scr_sound(mu_miniboss)
+			if obj_player1.character == "N"
+				musplay = global.gameplay == 0 ? mu_noiseescape_OLD : mu_noiseescape;
+			else if obj_player1.character == "S"
+				musplay = mu_snickescape;
+			else if obj_player1.character == "SP"
+				musplay = global.gameplay == 0 ? mu_pizzyescape_OLD : mu_pizzyescape;
+			else // peppino, etc
+				musplay = mu_pizzatime;
 		}
 	}
-	else if room == strongcold_endscreen
-	{
-		if !audio_is_playing(mu_entrance)
-		{
-			audio_stop_sound(global.music)
-			scr_sound(mu_entrance)  
-		}
-	}
-	
-	#endregion
 }
-else if global.musicgame == 1
+
+// snick challenge
+if global.snickchallenge && !obj_pause.pause && !obj_camera.ded
 {
-	#region pizza castle
-	
-	var _mu_snickchallenge = (global.snickrematch ? mu_snickrematch_pc : mu_snickchallenge_pc);
-	var _mu_snickchallengeend = (global.snickrematch ? mu_snickrematch_pc : mu_snickchallengeend_pc);
-	var _mu_noiseescape = (global.gameplay == 0 ? mu_noiseescape_OLD_pc : mu_noiseescape_pc);
-	var _mu_pizzyescape = (global.gameplay == 0 ? mu_pizzyescape_OLD_pc : mu_pizzyescape_pc);
-	
-	if !audio_is_playing(mu_antonescape_pc) && !audio_is_playing(mu_pizzatime_pc)
-	&& !audio_is_playing(_mu_noiseescape) && !audio_is_playing(mu_snickescape_pc)
-	&& !audio_is_playing(_mu_pizzyescape) && !audio_is_playing(mu_war_pc)
-	&& ((string_letters(roomname) != "dragonlair" && string_letters(roomname) != "grinch") or audio_is_playing(mu_antonlevel_pc))
-	&& global.panic && !obj_pause.pause && !obj_camera.ded && !(room == custom_lvl_room && global.disableescapemusic)
-	{
-		// war level
-		if audio_is_playing(mu_warintro_pc)
-		{
-			audio_stop_sound(global.music)
-			scr_sound(mu_war_pc)
-			pausedmusic = mu_war_pc
-		}
-		else
-		{
-			audio_stop_sound(global.music)
-			
-			// antonball
-			if scr_checkskin(checkskin.p_anton)
-			{
-				scr_sound(mu_antonescape_pc)
-				pausedmusic = mu_antonescape_pc
-			}
-			// peppino or vigilante
-			else if obj_player1.character == "P"
-			or obj_player1.character == "V"
-			{
-				scr_sound(mu_pizzatime_pc)
-				pausedmusic = mu_pizzatime_pc
-			}
-			// noise
-			else if obj_player1.character == "N"
-			{
-				scr_sound(_mu_noiseescape)
-				pausedmusic = _mu_noiseescape
-			}
-			// snick
-			else if obj_player1.character == "S"
-			{
-				scr_sound(mu_snickescape_pc)
-				pausedmusic = mu_snickescape_pc
-			}
-			// pizzelle
-			else if obj_player1.character == "SP"
-			{
-				scr_sound(_mu_pizzyescape)
-				pausedmusic = _mu_pizzyescape
-			}
-		}
-	}
-   
-	//Stop miniboss music
-	if !global.miniboss && audio_is_playing(mu_miniboss_pc)
-		audio_stop_sound(mu_miniboss_pc)
-   
-	//SAGE2019
-	if global.snickchallenge && obj_pause.pause = 0 && obj_camera.ded = false
-	{
-		if global.minutes >= 2 or (global.snickrematch && global.musicgame == 1)
-		{
-			if !audio_is_playing(_mu_snickchallenge)
-			{
-				audio_stop_sound(global.music)
-				scr_sound(_mu_snickchallenge)
-			}
-		}
-		else
-		{
-			if !audio_is_playing(_mu_snickchallengeend)
-			{
-				audio_stop_sound(global.music)
-				scr_sound(_mu_snickchallengeend)
-			}
-		}
-	}
-  
-	if audio_is_playing(global.music)
-		fadeoff = audio_sound_get_track_position(global.music);
+	if global.minutes >= 2
+		musplay = global.snickrematch ? mu_snickrematch : mu_snickchallenge;
 	else
-		fadeoff = 0;
-
-	//Christmas
-	if room = strongcold_miniboss && global.miniboss =true
-	{
-		if !audio_is_playing(mu_miniboss_pc)
-		{
-			audio_stop_sound(global.music)
-			scr_sound(mu_miniboss_pc)
-			scr_soundeffect(obj_player1.snd_fireass)
-		}
-
-	}
-	else if room = strongcold_endscreen
-	{
-		if !audio_is_playing(mu_entrance_pc)
-		{
-			audio_stop_sound(global.music)
-			scr_sound(mu_entrance_pc)  
-		}
-	}
-	
-	#endregion
+		musplay = global.snickrematch ? mu_snickrematchend : mu_snickchallengeend;
 }
+
+// miniboss music
+if global.miniboss
+	musplay = mu_miniboss;
+else if audio_is_playing(mu_miniboss)
+	audio_stop_sound(global.music);
+
+// pizza castle
+if global.musicgame == 1
+	musplay = scr_getmidi(musplay);
+
+// actually play the song
+if audio_exists(musplay) && !audio_is_playing(musplay)
+&& !obj_pause.pause && !obj_camera.ded
+{
+	audio_stop_sound(global.music);
+	scr_sound(musplay);
+}
+
+// last music position
+if audio_is_playing(global.music)
+	fadeoff = audio_sound_get_track_position(global.music);
+else
+	fadeoff = 0;
 
 pausedmusic = global.music;
+
+// pln slowdown
+if room == hub_roomPLN && audio_is_playing(global.music)
+	audio_sound_pitch(global.music, 0.5);

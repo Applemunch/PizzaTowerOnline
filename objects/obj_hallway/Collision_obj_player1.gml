@@ -28,10 +28,8 @@ with other
 		}
 		
 		other.visited = true
-		/*
-		if state == states.machslide
+		if state == states.machslide && scr_stylecheck(0)
 			state = states.normal
-		*/
 		
 		scr_soundeffect(sfx_door)
 		instance_create(x, y, obj_fadeout)

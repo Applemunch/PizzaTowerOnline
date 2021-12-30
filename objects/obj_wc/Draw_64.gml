@@ -1,5 +1,6 @@
 /// @description world control draw gui
-if live_call() return live_result;
+if live_enabled
+	if live_call() return live_result;
 
 // dragging text
 draw_set_font(global.font_small);
@@ -64,12 +65,12 @@ if WC_debuginfo
 		draw_set_halign(fa_right);
 		var objvars = variable_instance_get_names(WC_debugselected);
 		
-		if array_length_1d(objvars) == 0
+		if array_length(objvars) <= 0
 		    draw_text(display_get_gui_width(), 4 + i, "No variables");
 		else
 		{
-		    WC_debugvarstart = clamp(WC_debugvarstart, 0, max(array_length_1d(objvars) - 32, 0));
-		    for (var b = WC_debugvarstart; b < min(WC_debugvarstart + 33, array_length_1d(objvars)); b++)
+		    WC_debugvarstart = clamp(WC_debugvarstart, 0, max(array_length(objvars) - 32, 0));
+		    for (var b = WC_debugvarstart; b < min(WC_debugvarstart + 33, array_length(objvars)); b++)
 		    {
 				var getvar;
 		        if WC_debugselected == global
@@ -105,8 +106,8 @@ if WC_debuginfo
 			if keyboard_check_pressed(vk_pagedown)
 			{
 			    WC_debugvarstart += 32;
-			    if WC_debugvarstart > array_length_1d(objvars) - 32
-			        WC_debugvarstart = array_length_1d(objvars) - 32;
+			    if WC_debugvarstart > array_length(objvars) - 32
+			        WC_debugvarstart = array_length(objvars) - 32;
 			}
 		}
 	}
@@ -152,17 +153,24 @@ if WC_consoleopen
 	draw_set_halign(fa_left);
 	draw_set_colour(c_silver);
 	
-	for (i = WC_consolescroll; i < min(ds_list_size(WC_consolelist), ceil(WC_consolebottom / 20) + WC_consolescroll); i++)
+	var g = string_height("G");
+	var cony = WC_consolebottom + (g * WC_consolescroll) - g;
+	for (i = 0; i < ds_list_size(WC_consolelist); i++)
 	{
-		var yy = (window_mouse_get_y() / window_get_height()) * 540;
-		var cony = WC_consolebottom - (20 * (i + 1 - WC_consolescroll));
 		var context = string(ds_list_find_value(WC_consolelist, i));
+		var con_h = string_height_ext(context, g, 960 - 4);
+		cony -= con_h;
+		
+		if cony >= WC_consolebottom - g
+			continue;
+		if cony + con_h < 0
+			break;
 		
 		draw_set_colour(c_silver);
 		if string_char_at(context, 1) == "%"
 		{
 			// check if mouse hovering
-			if (yy >= cony - 20 && yy < cony)
+			if point_in_rectangle(WC_mx, WC_my, 0, cony, string_width(context), cony + g)
 			{
 				draw_set_colour(c_red);
 				if mouse_check_button_pressed(mb_left)
@@ -179,17 +187,17 @@ if WC_consoleopen
 		
 		//if !WC_swapconsolefont
 		//	context = string_replace_all(context, "-", "M");
-			
-	    draw_text_ext(4, cony - 20, context, 20, 960 - 4); // draw the logs
+		
+	    draw_text_ext(4, cony, context, g, 960 - 4); // draw the logs
 	}
 	
 	// write text
 	draw_set_colour(c_white);
-	draw_text_ext(4, WC_consolebottom - 20, (WC_consoletext == "" ? "Type a valid command..." : WC_consoletext), 20, display_get_gui_width() - 4);
+	draw_text_ext(4, WC_consolebottom - g, (WC_consoletext == "" ? "Type a valid command..." : WC_consoletext), g, display_get_gui_width() - 4);
 	
 	// poppin line
 	if WC_drawline
-		draw_rectangle(6 + string_width(WC_consoletext), WC_consolebottom - 20, 6 + string_width(WC_consoletext) + 1, WC_consolebottom - 4, false);
+		draw_rectangle(6 + string_width(WC_consoletext), WC_consolebottom - g, 6 + string_width(WC_consoletext) + 1, WC_consolebottom - 4, false);
 }
 
 // asset list finder thing
@@ -232,8 +240,8 @@ if WC_assetfinder > -1
 		if cony >= display_get_gui_height()
 			break;
 		
-		var yy = (window_mouse_get_y() / window_get_height()) * 540;
-		var xx = (window_mouse_get_x() / window_get_width()) * 960;
+		var yy = WC_my;
+		var xx = WC_mx;
 		var str = string(ds_list_find_value(WC_assetlist, i));
 		
 		// check if mouse hovering

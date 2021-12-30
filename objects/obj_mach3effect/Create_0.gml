@@ -6,6 +6,7 @@ if obj_pause.pause
 
 playerid = obj_player1
 image_speed = 0
+keep = false
 
 randomize()
 if !check_bysync() && scr_checkskin(checkskin.p_sage) or playerid.character == "S"

@@ -17,17 +17,22 @@ switch loadwhat
 			var _tex_array = texturegroup_get_textures("tg_player");
 			for (var i = 0; i < array_length(_tex_array); ++i)
 				texture_prefetch(_tex_array[i]);
-			trace("tg_player preloaded");
+			trace("tg_player texture group prefetched");
 			
 			_tex_array = texturegroup_get_textures("tg_background");
 			for (var i = 0; i < array_length(_tex_array); ++i)
 				texture_prefetch(_tex_array[i]);
-			trace("tg_background preloaded");
+			trace("tg_background texture group prefetched");
 			
 			_tex_array = texturegroup_get_textures("tg_baddie");
 			for (var i = 0; i < array_length(_tex_array); ++i)
 				texture_prefetch(_tex_array[i]);
-			trace("tg_baddie preloaded");
+			trace("tg_baddie texture group prefetched");
+			
+			_tex_array = texturegroup_get_textures("Default");
+			for (var i = 0; i < array_length(_tex_array); ++i)
+				texture_prefetch(_tex_array[i]);
+			trace("Default texture group prefetched");
 			
 			loadwhat = -1;
 			alarm[1] = 2;

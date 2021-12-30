@@ -21,3 +21,9 @@ bgs = [];
 
 surf = -1;
 objectlist = [];
+canpause = true;
+
+pausealpha = 0;
+pausefad = 0;
+pausebg = -1;
+pausesurf = -1;

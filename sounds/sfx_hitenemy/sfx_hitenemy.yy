@@ -12,7 +12,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "sfx_hitenemy",
-  "duration": 0.317,
+  "duration": 0.312,
   "parent": {
     "name": "sfx",
     "path": "folders/Sounds/sfx.yy",

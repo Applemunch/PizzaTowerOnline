@@ -1,36 +1,36 @@
 function scr_player_jump()
 {
-	if !momemtum
+	if !momentum
 		hsp = move * movespeed;
 	else
 		hsp = xscale * movespeed;
-
+	
 	if dir != xscale
 	{
 		dir = xscale
 		movespeed = 2
 		facehurt = false
 	}
-
+	
 	if move != xscale
 		movespeed = 2;
 	move = key_left + key_right;
-
+	
 	if movespeed == 0
-		momemtum = false;
-
+		momentum = false;
+	
 	if scr_solidwall(x + hsp, y)
 	{
 		movespeed = 0;
 		mach2 = 0;
 	}
-
+	
 	//Movespeed
 	if move != 0 
 	{
 		if movespeed < 6
 			movespeed += 0.5
-		else if floor(movespeed)= 6
+		else if floor(movespeed) == 6
 			movespeed = 6
 		
 		if scr_solidwall(x + xscale, y) && move == xscale
@@ -172,7 +172,7 @@ function scr_player_jump()
 		if sprite_index != spr_shotgunshoot
 			image_index = 0;
 		
-		instance_create(x,y,obj_landcloud)
+		instance_create(x, y, obj_landcloud)
 		input_buffer_secondjump = 0
 		state = states.normal
 		jumpAnim = true
@@ -705,7 +705,7 @@ function scr_player_jump()
 		image_index = 0
 		sprite_index = spr_playerV_airrevolver
 		image_index = 0
-		instance_create(x+image_xscale*20,y+20,obj_shotgunbullet)
+		instance_create(x + xscale * 20, y + 20, obj_shotgunbullet)
 		scr_soundeffect(sfx_killingblow)
 		grav = 0.5;
 	}

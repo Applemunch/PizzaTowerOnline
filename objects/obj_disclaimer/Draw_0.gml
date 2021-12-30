@@ -1,3 +1,14 @@
+if con == -1
+{
+	if showwait
+	{
+		draw_set_font(global.font_small);
+		draw_text(room_width / 2, room_height / 2, lang_string("load.unusual"));
+	}
+}
+else
+	showwait = false;
+
 // roundrect
 draw_set_colour($222222);
 

@@ -1,13 +1,12 @@
-if obj_player1.character = "S"
-	instance_destroy()
-
-if sprite_index == sprgot && obj_player1.state != states.gottreasure
-	instance_destroy()
+if obj_player.character == "S"
+	instance_destroy();
+if sprite_index == sprgot && obj_player.state != states.gottreasure
+	instance_destroy();
 
 if sprite_index != sprgot
 	sprite_index = spridle
 
-if place_meeting(x,y,obj_player1) && player = 0 && obj_player1.state != states.gameover
+if place_meeting(x, y, obj_player1) && !player && obj_player1.state != states.gameover
 {
 	if global.gameplay != 0 && global.musicgame == 1
 	{
@@ -48,13 +47,18 @@ if place_meeting(x,y,obj_player1) && player = 0 && obj_player1.state != states.g
 				sprgot = other.sprgot
 				other.x = treasure_x
 				other.y = treasure_y - 35
-				obj_tv.showtext = true
-				obj_tv.message = "YOU GOT A TOWER SECRET TREASURE!!!"
-				obj_tv.alarm[0] = 200
-				other.player = 1
-
-				ini_close(); 
-			}
+				other.player = true
+				
+				with obj_tv
+				{
+					showtext = true
+					message = "YOU GOT A TOWER SECRET TREASURE!!!"
+					alarm[0] = 200
+				}
+				
+				if global.timeattack with obj_timeattack
+					stop = true;
+			} 
 		}
 	}
 }

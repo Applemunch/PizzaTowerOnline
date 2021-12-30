@@ -42,8 +42,7 @@ function scr_collide()
 	grounded |= !place_meeting(x, y, obj_platform) && place_meeting(x, y + 1, obj_platform)
 	
 	//Gravity
-	if !grounded
-		vsp = min(vsp + grav, 10);
+	vsp = min(vsp + grav, 10);
 	
 	__scr_collide = true;
 }

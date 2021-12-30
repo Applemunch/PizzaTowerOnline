@@ -7,39 +7,40 @@ function scr_savescore(namestring)
 	{
 		// score
 		if ini_read_real("Highscore", namestring, 0) < global.collect
-			ini_write_real("Highscore",namestring,global.collect);
+			ini_write_real("Highscore", namestring, global.collect);
 		
 		// collected treasure
-		if ini_read_real("Treasure", namestring, 0) = 0
-			ini_write_real("Treasure",namestring,global.treasure);
+		if ini_read_real("Treasure", namestring, 0) == 0
+			ini_write_real("Treasure", namestring, global.treasure);
 		
 		// secret count
 		if ini_read_real("Secret", namestring, 0) < global.secretfound
-			ini_write_string("Secret",namestring,global.secretfound);
+			ini_write_string("Secret", namestring, global.secretfound);
 		
 		// toppins
-		if ini_read_real("Toppin", namestring +"1", false) = 0
-			ini_write_real("Toppin",namestring + "1" ,global.shroomfollow);
-		if ini_read_real("Toppin", namestring +"2", false) = 0
-			ini_write_real("Toppin",namestring + "2",global.cheesefollow );
-		if ini_read_real("Toppin", namestring +"3", false) = 0
-			ini_write_real("Toppin",namestring + "3",global.tomatofollow);
-		if ini_read_real("Toppin", namestring +"4", false) = 0
-			ini_write_real("Toppin",namestring + "4",global.sausagefollow);
-		if ini_read_real("Toppin", namestring +"5", false) = 0
-			ini_write_real("Toppin",namestring + "5",global.pineapplefollow);
+		if ini_read_real("Toppin", namestring + "1", 0) == 0
+			ini_write_real("Toppin", namestring + "1", global.shroomfollow);
+		if ini_read_real("Toppin", namestring + "2", 0) == 0
+			ini_write_real("Toppin", namestring + "2", global.cheesefollow);
+		if ini_read_real("Toppin", namestring + "3", 0) == 0
+			ini_write_real("Toppin", namestring + "3", global.tomatofollow);
+		if ini_read_real("Toppin", namestring + "4", 0) == 0
+			ini_write_real("Toppin", namestring + "4", global.sausagefollow);
+		if ini_read_real("Toppin", namestring + "5", 0) == 0
+			ini_write_real("Toppin", namestring + "5", global.pineapplefollow);
 		
 		// rank
-		if global.rank = "s"
-			ini_write_string("Ranks",namestring,global.rank)
-		if global.rank = "a" &&  "s"  !=  ini_read_string("Ranks",namestring,"none")
-			ini_write_string("Ranks",namestring,global.rank)
-		if global.rank = "b" && "s"  !=  ini_read_string("Ranks",namestring,"none") && "a"  !=  ini_read_string("Ranks",namestring,"none")
-			ini_write_string("Ranks",namestring,global.rank)
-		if global.rank = "c" && "s"  !=  ini_read_string("Ranks",namestring,"none") && "a"  !=  ini_read_string("Ranks",namestring,"none") && "b"  !=  ini_read_string("Ranks",namestring,"none") 
-			ini_write_string("Ranks",namestring,global.rank)
-		if global.rank = "d" && "s"  !=  ini_read_string("Ranks",namestring,"none") && "a"  !=  ini_read_string("Ranks",namestring,"none") && "b"  !=  ini_read_string("Ranks",namestring,"none") && "c"  !=  ini_read_string("Ranks",namestring,"none") 
-			ini_write_string("Ranks",namestring,global.rank)
+		var previousrank = ini_read_string("Ranks", namestring, "none");
+		if global.rank == "s"
+			ini_write_string("Ranks", namestring, global.rank)
+		if global.rank == "a" && previousrank != "s"
+			ini_write_string("Ranks", namestring, global.rank)
+		if global.rank == "b" && previousrank != "s" && previousrank != "a"
+			ini_write_string("Ranks", namestring, global.rank)
+		if global.rank == "c" && previousrank != "s" && previousrank != "a" && previousrank != "b"
+			ini_write_string("Ranks", namestring, global.rank)
+		if global.rank == "d" && previousrank != "s" && previousrank != "a" && previousrank != "b" && previousrank != "c"
+			ini_write_string("Ranks", namestring, global.rank)
 		
 		// time attack score
 		if global.timeattack
@@ -102,14 +103,17 @@ function scr_levelname()
 
 	if string_endswith(namestring, "treasure")
 		namestring = string_replace(namestring, "treasure", "");
+	
+	if global.snickrematch && !global.snickchallenge
+		namestring += "_re";
 	return namestring;
 }
 
 function endlevel()
 {	
 	audio_stop_sound(global.music)
-	if global.timeattack
-		obj_timeattack.stop = true
+	if global.timeattack with obj_timeattack
+		stop = true;
 
 	with obj_player1
 		targetDoor = "none"

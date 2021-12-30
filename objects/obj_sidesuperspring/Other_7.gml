@@ -1,4 +1,4 @@
-if global.gameplay == 0
+if sprite_index == spr_spring
 {
 	image_speed = 0;
 	image_index = 0;

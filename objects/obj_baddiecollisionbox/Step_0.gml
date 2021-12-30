@@ -11,7 +11,7 @@ if instance_exists(baddieID)
 	image_xscale = baddieID.image_xscale;
 }
 
-if instance_exists(baddieID) && place_meeting(x,y,obj_player1) && !obj_player1.cutscene
+if instance_exists(baddieID) && place_meeting(x, y, obj_player1) && !obj_player1.cutscene
 && (obj_player1.state != states.firemouth or global.gameplay != 0) && obj_player1.state != states.gameover
 && obj_player1.state != states.hitlag
 {
@@ -20,7 +20,7 @@ if instance_exists(baddieID) && place_meeting(x,y,obj_player1) && !obj_player1.c
 		with (obj_player1)
 		{
 			//Insta kill
-			if instance_exists(other.baddieID) && instakillmove && other.baddieID.state != states.grabbed && (!other.baddieID.thrown or global.gameplay != 0) && !other.baddieID.invincible && other.baddieID.instantkillable
+			if instance_exists(other.baddieID) && instakillmove && (!other.baddieID.thrown or global.gameplay != 0) && !other.baddieID.invincible && other.baddieID.instantkillable
 			&& (other.baddieID.stuntouchbuffer <= 0 or other.baddieID.state != states.stun or global.gameplay == 0)
 			{
 				var bad = other.baddieID;
@@ -107,7 +107,7 @@ if instance_exists(baddieID) && place_meeting(x,y,obj_player1) && !obj_player1.c
 			}
 			
 			//Pogo
-			if place_meeting(x,y+1, other) && state == states.pogo && vsp > 0 && other.baddieID.vsp >= 0 && sprite_index != spr_playerN_pogobounce && !other.baddieID.invincible
+			if place_meeting(x, y + 1, other) && state == states.pogo && vsp > 0 && other.baddieID.vsp >= 0 && sprite_index != spr_playerN_pogobounce && !other.baddieID.invincible
 			{
 				if !pogochargeactive or other.baddieID.object_index == obj_pizzaballOLD
 				{
@@ -128,20 +128,56 @@ if instance_exists(baddieID) && place_meeting(x,y,obj_player1) && !obj_player1.c
 					sprite_index = spr_playerN_pogobouncemach
 				}
 				
-				instance_create(x,y+ 50, obj_stompeffect)
+				instance_create(x, y + 50, obj_stompeffect)
 				image_index = 0
 				movespeed = 0
 				vsp = 0
 			}
 			
+			// Cotton
+			if state == states.cotton && (sprite_index == spr_cotton_attack or sprite_index == spr_cotton_maxrun or sprite_index == spr_cotton_drill) && other.baddieID.instantkillable && !other.baddieID.thrown
+			{
+				scr_soundeffect(sfx_punch);
+				if sprite_index == spr_cotton_drill
+				{
+					if other.baddieID.vsp < 8
+						other.baddieID.vsp = 8;
+					other.baddieID.hsp = 0;
+				}
+				else
+				{
+					if other.baddieID.vsp > -12
+						other.baddieID.vsp = -12; 
+					other.baddieID.hsp = xscale * 15;
+				}
+				
+				with other.baddieID
+				{
+					if global.gameplay == 0
+					{
+						hp = 0;
+						scr_throwenemy();
+					}
+					else
+					{
+						if hp > 0
+							hp = 0;
+						image_xscale = -other.xscale;
+						hithsp = hsp;
+						hitvsp = vsp;
+						scr_hitthrow(id, other, 10);
+					}
+				}
+			}
+			
 			//Stun from touching
-			if instance_exists(other.baddieID) && other.baddieID.thrown= false && other.baddieID.stuntouchbuffer == 0 && other.baddieID.state != states.pizzagoblinthrow  && other.baddieID.vsp > 0 && state != states.punch && state != states.tackle && state != states.superslam && state != states.pogo && state != states.machslide  && state != states.freefall && (state != states.mach2 or other.baddieID.object_index == obj_pizzaballOLD) && state != states.handstandjump && state != states.hurt && other.baddieID.state != states.chase
+			if !other.baddieID.thrown && other.baddieID.stuntouchbuffer == 0 && other.baddieID.state != states.pizzagoblinthrow && other.baddieID.vsp > 0 && state != states.punch && state != states.tackle && state != states.superslam && state != states.pogo && state != states.machslide  && state != states.freefall && (state != states.mach2 or other.baddieID.object_index == obj_pizzaballOLD) && state != states.handstandjump && state != states.hurt && other.baddieID.state != states.chase
 			&& other.baddieID.bumpable && !other.baddieID.invincible 
 			&& ((other.baddieID.object_index != obj_pizzice && other.baddieID.object_index != obj_ninja) or other.baddieID.state != states.charge)
 			{
 				scr_soundeffect(sfx_bumpwall)
 				
-				if state != states.bombpep && state != states.mach1 && state != states.crouchslide && state != states.machroll && state != states.mach2 && state != states.mach3 && state != states.revolver && state != states.dynamite && state != states.climbwall && state != states.frozen
+				if state != states.bombpep && state != states.mach1 && state != states.crouchslide && state != states.machroll && state != states.mach2 && state != states.mach3 && state != states.revolver && state != states.dynamite && state != states.climbwall && state != states.frozen && state != states.cotton
 					movespeed = 0
 				
 				other.baddieID.stuntouchbuffer = 50

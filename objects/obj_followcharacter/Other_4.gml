@@ -1,9 +1,18 @@
-ds_queue_clear(followqueue);
-xoffset = 0;
+followqueue = [];
 
-if instance_exists(obj_player1)
+var target = obj_player;
+if instance_exists(target)
 {
-	x = obj_player1.x;
-	y = obj_player1.y;
-	xscale = obj_player1.xscale;
+	xscale = target.xscale;
+	
+	if off_on_y
+		xoffset = 0;
+	else
+		xoffset = -xscale * xoffsetmax;
+	
+	x = target.x + xoffset * pos;
+	y = target.y;
+	
+	lerpx = x;
+	lerpy = y;
 }

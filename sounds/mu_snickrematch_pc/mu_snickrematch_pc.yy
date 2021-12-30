@@ -1,7 +1,4 @@
 {
-  "ConfigValues": {
-    "debug": {"audioGroupId":"{\"name\":\"ag_pcmusic\",\"path\":\"audiogroups/ag_pcmusic\"}",},
-  },
   "conversionMode": 0,
   "compression": 1,
   "volume": 1.0,
@@ -14,11 +11,11 @@
     "name": "audiogroup_default",
     "path": "audiogroups/audiogroup_default",
   },
-  "soundFile": "mu_snickrematch_pc.wav",
-  "duration": 212.470139,
+  "soundFile": "mu_snickrematch_pc.ogg",
+  "duration": 177.372681,
   "parent": {
-    "name": "pizza castle",
-    "path": "folders/Sounds/pto extra/pizza castle.yy",
+    "name": "snick's rematch",
+    "path": "folders/Sounds/pto extra/pizza castle/snick's rematch.yy",
   },
   "resourceVersion": "1.0",
   "name": "mu_snickrematch_pc",

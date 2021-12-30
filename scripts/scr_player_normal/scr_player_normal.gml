@@ -3,7 +3,7 @@ function scr_player_normal()
 	mach2 = 0;
 	move = key_left + key_right;
 	skateboarding = false;
-	momemtum = false;
+	momentum = false;
 	jumpstop = false;
 	
 	//Turn

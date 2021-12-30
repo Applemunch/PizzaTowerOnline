@@ -63,7 +63,7 @@ function scr_player_shotgun() {
 	landAnim = false
 
 
-	momemtum = true
+	momentum = true
 
 
 	if character = "N"

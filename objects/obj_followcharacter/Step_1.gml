@@ -1,4 +1,4 @@
-var leader = obj_player1, target = leader;
+var leader = obj_player, target = leader;
 
 // who to follow
 if instance_exists(followid)
@@ -6,45 +6,45 @@ if instance_exists(followid)
 if !instance_exists(target)
 	exit; // do nothing
 
-// follow target
-ds_queue_enqueue(followqueue, target.x);
-ds_queue_enqueue(followqueue, target.y);
+// enqueue whoever i'm following
+array_push(followqueue, target.x);
+array_push(followqueue, target.y);
 
+// stand behind target
 xscale = leader.xscale;
-if ds_queue_size(followqueue) > LAG_STEPS
+if xoffsetmax > 0
 {
-	// stand behind target
-	if xoffsetmax > 0
-	{
-		if leader.state != states.ladder && leader.state != states.climbwall && leader.state != states.cheesepepstickside && leader.state != states.comingoutdoor && leader.state != states.door
-			xoffset = Approach(xoffset, xoffsetmax * -xscale, 4);
-		else // stand below target
-			xoffset = Approach(xoffset, 0, 4);
-	}
-	else
-		xoffset = 0;
-	
-	var xx = ds_queue_dequeue(followqueue);
-	var yy = ds_queue_dequeue(followqueue);
-	
-	y = yy;
-	x = xx + xoffset;
+	off_on_y = leader.state == states.ladder or leader.state == states.climbwall or leader.state == states.cheesepepstickside or leader.state == states.comingoutdoor or leader.state == states.door or leader.state == states.Sjump or leader.state == states.Sjumpland or leader.sprite_index == leader.spr_lookdoor or leader.sprite_index == leader.spr_entergate;
+	if !off_on_y
+		xoffset = Approach(xoffset, xoffsetmax * -xscale, 4);
+	else // stand below target
+		xoffset = Approach(xoffset, 0, 4);
 }
+else
+	xoffset = 0;
 
-/*
-yslope = 0;
-if place_meeting(x, y + yslope, obj_slope)
+// follow them!!!
+var xx = x, yy = y;
+if array_length(followqueue) > LAG_STEPS // lag steps are 20
 {
-	var slope = instance_place(x, y + yslope, obj_slope);
-	while place_meeting(x, y + yslope, slope)
-		yslope -= sign(slope.image_yscale);
+	xx = followqueue[0];
+	yy = followqueue[1];
+	array_delete(followqueue, 0, 2);
 }
-if place_meeting(x, y + 32, obj_slope) && !place_meeting(x, y + yslope + 1, obj_slope)
+else if scr_stylecheck(2) && array_length(followqueue) >= 2
 {
-	while !place_meeting(x, y + yslope + 1, obj_slope)
-		yslope += 1;
+	if is_undefined(lerpx) or is_undefined(lerpy)
+	{
+		lerpx = x;
+		lerpy = y;
+	}
+	
+	var amt = clamp(array_length(followqueue) / LAG_STEPS, 0, 1);
+	xx = lerp(lerpx, followqueue[0], amt);
+	yy = lerp(lerpy, followqueue[1], amt);
 }
-*/
+y = yy;
+x = xx + xoffset;
 
 image_blend = leader.image_blend;
 image_alpha = leader.image_alpha;

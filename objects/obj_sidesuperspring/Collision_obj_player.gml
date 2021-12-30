@@ -2,7 +2,7 @@ with other
 {
 	if state == states.tumble or state == states.knightpepslopes or state == states.mach3 or state == states.mach2 or state == states.machroll
 	{
-		if global.gameplay == 0
+		if other.sprite_index == spr_spring
 			other.image_speed = 0.35
 		else
 		{

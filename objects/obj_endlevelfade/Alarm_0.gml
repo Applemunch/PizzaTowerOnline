@@ -1,2 +1,3 @@
-instance_create(room_width/2,room_height/2,obj_rank)
-obj_player1.visible = false
+instance_create(960 / 2, 540 / 2, obj_rank);
+with obj_player
+	visible = false;

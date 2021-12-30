@@ -60,7 +60,7 @@
     "eventStubScript": null,
     "parent": {"name":"tile_tutorial","path":"sprites/tile_tutorial/tile_tutorial.yy",},
     "resourceVersion": "1.3",
-    "name": "",
+    "name": "tile_tutorial",
     "tags": [],
     "resourceType": "GMSequence",
   },

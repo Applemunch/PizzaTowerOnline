@@ -126,7 +126,7 @@ toomuchalarm1 = 0
 toomuchalarm2 = 0
 
 idleanim = 0
-momemtum = false
+momentum = false
 cutscene = false
 grabbing = false
 dir = xscale

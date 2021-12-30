@@ -45,12 +45,11 @@ if room == beach_1
 if room == forest_1
 	global.srank = 14000
 if room == etb_1
-	global.srank = 3000
+	global.srank = 7000
+if room == grinch_1
+	global.srank = 6400
 if room == kungfu_1
-{
-	if global.gameplay == 0
-		global.srank = 15000;
-}
+	global.srank = 15000;
 
 // calculate lesser ranks
 if room == custom_lvl_room
@@ -122,6 +121,45 @@ for (var i = 0; i < array_length(layers); i++;)
 	}
 }
 
+// make solids visible and stuff
+if (string_startswith(room_get_name(room), "ancient_")) or (string_startswith(room_get_name(room), "cotton_"))
+{
+	var hastiles = false;
+	for (var i = 0; i < array_length(layers); i++;)
+	{
+		if string_startswith(layer_get_name(layers[i]), "Tiles_")
+		{
+			hastiles = true;
+			break;
+		}
+	}
+	
+	if !hastiles
+	{
+		// make backgrounds higher depth
+		for (var i = 0; i < array_length(layers); i++;)
+		{
+			if string_startswith(layer_get_name(layers[i]), "Backgrounds_")
+				layer_depth(layers[i], layer_get_depth(layers[i]) + 500);
+		}
+		
+		// make some invisible stuff visible
+		with obj_solid
+			visible = true;
+		with obj_slope
+			visible = true;
+		with obj_platform
+			visible = true;
+		with obj_secretblock
+			visible = true;
+		with obj_secretbigblock
+			visible = true;
+		with obj_secretmetalblock
+			visible = true;
+	}
+}
+
+// i dont even know if i use this
 if layer_exists("Tiles_1_NEW")
 {
 	if global.gameplay == 0

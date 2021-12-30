@@ -1,5 +1,5 @@
 // grinch bg
-if string_startswith(room_get_name(room), "grinch_")
+if string_startswith(room_get_name(room), "grinch_") && room != grinch_10
 {
 	depth = layer_get_depth("Backgrounds_1") - 1;
 	
@@ -15,7 +15,7 @@ if string_startswith(room_get_name(room), "grinch_")
 	{
 		draw_set_colour(c_red);
 		draw_set_alpha((global.wave / global.maxwave) / 3);
-		draw_rectangle(_camx - 32, _camy - 32, _camw + 32, _camh + 32, false);
+		draw_rectangle(_camx - 32, _camy - 32, _camx + _camw + 32, _camy + _camh + 32, false);
 		draw_set_alpha(1);
 	}
 }

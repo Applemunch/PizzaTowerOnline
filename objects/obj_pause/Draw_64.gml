@@ -1,7 +1,9 @@
-if pause
+if pause or pausefad == 2
 {
-	application_surface_draw_enable(true);
+	if pausefad != 2
+		application_surface_draw_enable(true);
 	
+	/*
 	draw_set_colour(c_black);
 	draw_rectangle(0, 0, 960, 540, false);
 	
@@ -44,12 +46,58 @@ if pause
 	
 	draw_set_alpha(0.75);
 	draw_rectangle(0, 0, 960, 540, false);
+	*/
+	
+	// manage fading
+	if pausefad == 1 && pausealpha < 1
+		pausealpha += 0.1;
+	if pausefad == 2
+	{
+		if pausealpha > 0
+			pausealpha -= 0.15;
+		else
+		{
+			pausefad = 0;
+			if sprite_exists(pausebg)
+				sprite_delete(pausebg);
+		}
+	}
+	
+	// draw the background
+	draw_set_colour(c_black);
+	draw_rectangle(0, 0, 960, 540, false);
+	
+	if sprite_exists(pausebg) && check_shaders() && pausefad != 2
+	{
+		if pausealpha < 1
+			draw_sprite_ext(pausebg, 0, 0, 0, 0.5, 0.5, 0, c_white, 1 - pausealpha);
+		
+		draw_set_alpha(pausebg);
+		shader_set(shd_blur);
+		shader_set_uniform_f(shader_get_uniform(shd_blur, "size"), 960 / 2 + 32, 540 / 2 + 32, 8);
+		draw_sprite_ext(pausebg, 0, 0, 0, 0.5, 0.5, 0, c_white, pausealpha);
+		shader_reset();
+		
+		draw_set_alpha(pausealpha / 2);
+		draw_rectangle(0, 0, 960, 540, false);
+	}
 	
 	// pause
-	draw_set_colour(c_white);
+	if !surface_exists(pausesurf)
+		pausesurf = surface_create(960, 540);
+	surface_set_target(pausesurf);
+	
+	draw_clear_alpha(c_black, 0);
 	draw_set_alpha(1);
 	draw_sprite_ext(spr_pausescreen, selected, 0, 4, 1, 1, 0, c_black, 1);
-	draw_sprite(spr_pausescreen, selected, 0, 0);
+	draw_sprite_ext(spr_pausescreen, selected, 0, 0, 1, 1, 0, c_white, 1);
+	
+	surface_reset_target();
+	draw_surface_ext(pausesurf, 0, 0, 1, 1, 0, c_white, pausealpha);
 }
 else
+{
+	if surface_exists(pausesurf)
+		surface_free(pausesurf);
 	bgs = [];
+}

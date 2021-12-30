@@ -100,7 +100,7 @@ function scr_player_knightpep()
 		freefallstart = 0
 
 
-		momemtum = false
+		momentum = false
 		scr_soundeffect(sfx_groundpound)
 		instance_create(x,y,obj_landcloud)
 		sprite_index = spr_knightpepland

@@ -58,7 +58,10 @@ else
 {
 	sel[0] = 0;
 	if !locked && (-key_left2 or key_right2)
-		palname = "ur graphic card is shit";
+	{
+		scr_soundeffect(sfx_denied);
+		palname = "Palettes unavailable.";
+	}
 }
 
 // change character

@@ -55,13 +55,13 @@ function scr_player_climbwall()
 			}
 
 			//Hit head
-			if scr_solidwall(x,y-1) && !place_meeting(x, y - 1, obj_destructibles) or place_meeting(x, y - 1, obj_slope) //&& !place_meeting(x + sign(hsp), y, obj_slope) && !place_meeting(x - sign(hsp), y, obj_slope)
+			if scr_solidwall(x, y - 1) && !place_meeting(x, y - 1, obj_destructibles) or place_meeting(x, y - 1, obj_slope) //&& !place_meeting(x + sign(hsp), y, obj_slope) && !place_meeting(x - sign(hsp), y, obj_slope)
 			{
 				image_speed = 0.6;
-				with (obj_camera)
+				with obj_camera
 				{
-					shake_mag=2;
-					shake_mag_acc=5/room_speed;
+					shake_mag = 3;
+					shake_mag_acc = 4 / room_speed;
 				}
 				
 				if character == "SP"
@@ -75,7 +75,7 @@ function scr_player_climbwall()
 				machhitAnim = false
 			}
 			
-			if !scr_solid(x+xscale,y) && state == states.climbwall
+			if !scr_solid(x + xscale, y) && state == states.climbwall
 			{
 				var yplus = 0;
 				while !scr_solid(x + xscale, y + yplus)
@@ -89,7 +89,7 @@ function scr_player_climbwall()
 				}
 				y += yplus - 1;
 				
-				with instance_create(x,y,obj_jumpdust)
+				with instance_create(x, y, obj_jumpdust)
 					image_xscale = other.xscale
 				
 				if movespeed >= 12
@@ -131,9 +131,9 @@ function scr_player_climbwall()
 				state = states.jump
 				sprite_index = spr_fall
 			}
-    
-			if !(instance_exists(obj_cloudeffect)) 
-				instance_create(x,y+43,obj_cloudeffect)
+			
+			if !instance_exists(obj_cloudeffect)
+				instance_create(x, y + 43, obj_cloudeffect)
 		}
 		else
 		{

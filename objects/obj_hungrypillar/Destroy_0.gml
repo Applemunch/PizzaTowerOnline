@@ -256,8 +256,8 @@ if room == rm_editor exit;
 		if global.panicbg
 			scr_panicbg_init()
 		
-		global.wave = 0
-		global.maxwave = (global.minutes * 60 + global.seconds) * 60
+		global.wave = 0;
+		global.maxwave = (global.minutes * 60 + global.seconds) * 60;
 	}
 
 	//ds_list_add(global.saveroom, id)

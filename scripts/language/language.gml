@@ -43,8 +43,9 @@ function lang_load(lang)
 		// TEXT
 		ds_map_add(global.langmap, "load.loading", "LOADING");
 		ds_map_add(global.langmap, "load.txgrp", "PRE-LOADING SPRITES");
+		ds_map_add(global.langmap, "load.unusual", "This is taking unusually long to load.\nEither wait or restart the game.");
 		
-		ds_map_add(global.langmap, "general.wc", "Welcome to PTO dev console");
+		ds_map_add(global.langmap, "general.wc", "Welcome to the developer console");
 		ds_map_add(global.langmap, "general.crash", "The game crashed last time.");
 		ds_map_add(global.langmap, "general.crash.con", "Press start to play");
 		ds_map_add(global.langmap, "general.crashed", "The game crashed! longMessage:\n\n");
@@ -54,9 +55,11 @@ function lang_load(lang)
 		
 		ds_map_add(global.langmap, "disclaimer.title", "DISCLAIMER");
 		ds_map_add(global.langmap, "disclaimer.continue", "Press ENTER to play");
-		ds_map_add(global.langmap, "disclaimer.outdated", "Outdated version.");
-		ds_map_add(global.langmap, "disclaimer.error", "Status not success, error.\nServers might be unavailable.\n\nRunning in offline mode.");
-		ds_map_add(global.langmap, "disclaimer.offline", "You are playing offline.\nSome features will be disabled.");
+		ds_map_add(global.langmap, "disclaimer.outdated", "Outdated version!\n\nUsually this means something really bad happened and\nthe creator wants to block an older version from working.");
+		ds_map_add(global.langmap, "disclaimer.error", "Server error!\nI can't do anything about this, so just wait and try again.");
+		ds_map_add(global.langmap, "disclaimer.errornodrm", "Status not success, error.\nServers might be unavailable.\n\nRunning in offline mode.");
+		ds_map_add(global.langmap, "disclaimer.offline", "You have stumbled upon the asshole version of this disclaimer.\n\nYou can't start the game offline.\nConnect to the internet, then we're talkin'.");
+		ds_map_add(global.langmap, "disclaimer.offlinenodrm", "You are playing offline.\nSome features will be disabled.");
 		
 		// options 1
 		ds_map_add(global.langmap, "options.fullscreen", "FULLSCREEN");
@@ -104,6 +107,7 @@ function lang_load(lang)
 		ds_map_add(global.langmap, "options.other.erase.desc", "All your progress, gone. Game will restart.");
 		
 		ds_map_add(global.langmap, "options.other.gameplay.desc", "The game changed a lot throughout development.\nSome people may prefer older moveset and music.");
+		ds_map_add(global.langmap, "options.other.gameplay.nonpatron", "This option is reserved for Patrons only.");
 		ds_map_add(global.langmap, "options.other.gameplay.old", "OLD");
 		ds_map_add(global.langmap, "options.other.gameplay.remix", "REMIX");
 		ds_map_add(global.langmap, "options.other.gameplay.final", "FINAL");
@@ -165,7 +169,10 @@ function lang_load(lang)
 		ds_map_add(global.langmap, "options.other.screenshader.desc", "Full screen shader effect.");
 		
 		// manual
-		ds_map_add(global.langmap, "manual.welcome", "Welcome to the Pizza Tower Network manual!");
+		if pt_online
+			ds_map_add(global.langmap, "manual.welcome", "Welcome to the Pizza Tower ONLINE manual!");
+		else
+			ds_map_add(global.langmap, "manual.welcome", "Welcome to the Pizza Tower Network manual!");
 		
 		ds_map_add(global.langmap, "manual.controls", "Controls");
 		ds_map_add(global.langmap, "manual.controls.content", "You can see and change the controls in the options,\nbut there are extra controls exclusive to the mod:\n\n- T to open the chat\n- ENTER to begin typing and again to send a message\n- ESCAPE to exit the chat, if it's open");
@@ -178,7 +185,7 @@ function lang_load(lang)
 		ds_map_add(global.langmap, "manual.rules.content2", "- Don't spam (1 minute auto-mute)\n\n- Don't swear\n    (the word will change to *** for others)\n\n- Don't mod the game\n    (Except simple sprite and music changes)\n\n- When recording footage, please enable\n  streamer mode in the OTHER OPTIONS menu");
 		
 		ds_map_add(global.langmap, "manual.lapping", "Lapping");
-		ds_map_add(global.langmap, "manual.lapping.content", "Every level has a new special \"lap\" room that can be accessed in the OLD gameplay\nstyle by taunting on the left-most wall of the first room in the level.\n\nThe lap room has a big pizza portal inside. In Pizza Time, you can enter it,\nputting you back at the end of the level, and respawning all the enemies.\n\nAt the expense of a tighter time limit, you can get a lot of points from lapping.");
+		ds_map_add(global.langmap, "manual.lapping.content", "Some levels have a \"lap\" room that can be accessed in the OLD gameplay\nstyle by taunting on the left-most wall of the first room in the level.\n\nThe lap room has a big pizza portal inside. In Pizza Time, you can enter it,\nputting you back at the end of the level, and respawning all the enemies.\n\nAt the expense of a tighter time limit, you can get a lot of points from lapping.");
 		
 		ds_map_add(global.langmap, "manual.credits", "Credits");
 		ds_map_add(global.langmap, "manual.credits.fuckoffptd", "You can't see the credits\nin streamer mode. For safety.");
@@ -261,6 +268,9 @@ function lang_load(lang)
 		
 		// messages
 		ds_map_add(global.langmap, "msg.titleoption", "OPTIONS");
+		ds_map_add(global.langmap, "msg.titlesel.0", "START GAME");
+		ds_map_add(global.langmap, "msg.titlesel.1", "OPTIONS");
+		ds_map_add(global.langmap, "msg.titlesel.2", "QUIT");
 		
 		// level names
 		ds_map_add(global.langmap, "msg.level.entrance", "ENTRANCE");
@@ -272,7 +282,7 @@ function lang_load(lang)
 		ds_map_add(global.langmap, "msg.level.farm", "FUN FARM WIP");
 		ds_map_add(global.langmap, "msg.level.ufo", "SPACE PINBALL");
 		ds_map_add(global.langmap, "msg.level.forest", "GNOME FOREST WIP");
-		ds_map_add(global.langmap, "msg.level.beach", "PINEAPPLE BEACH");
+		ds_map_add(global.langmap, "msg.level.beach", "PINEAPPLE BEACH WIP");
 		ds_map_add(global.langmap, "msg.level.kungfu", "KUNG FU");
 		ds_map_add(global.langmap, "msg.level.minigolf", "GOLF");
 		ds_map_add(global.langmap, "msg.level.space", "SPACE");
@@ -291,6 +301,9 @@ function lang_load(lang)
 		ds_map_add(global.langmap, "msg.level.golf", "GOLF");
 		ds_map_add(global.langmap, "msg.level.snickchallenge", "SNICK CHALLENGE");
 		ds_map_add(global.langmap, "msg.level.snickrematch", "SNICKS REMATCH");
+		ds_map_add(global.langmap, "msg.level.medieval_re", "SNICK CASTLE");
+		ds_map_add(global.langmap, "msg.level.ruin_re", "RUINS OF THE TEMPLE");
+		ds_map_add(global.langmap, "msg.level.dungeon_re", "BLOODBATH DUNGEON");
 		ds_map_add(global.langmap, "msg.level.etb", "EARLY TEST BUILD");
 		ds_map_add(global.langmap, "msg.level.ancient", "ANCIENT TOWER WIP");
 		ds_map_add(global.langmap, "msg.level.grinch", "GRINCH");
@@ -299,7 +312,7 @@ function lang_load(lang)
 		ds_map_add(global.langmap, "msg.level.jawbreaker", "JAWBREAKER MINES WIP");
 		
 		// roomname
-		ds_map_add(global.langmap, "roomname.characterselect", "PRELOGIN");
+		ds_map_add(global.langmap, "roomname.characterselect", "MODE SELECT");
 		
 		ds_map_add(global.langmap, "roomname.hub_room1", "TOWER FLOOR 1");
 		ds_map_add(global.langmap, "roomname.hub_room2", "TOWER FLOOR 2");
@@ -308,6 +321,7 @@ function lang_load(lang)
 		ds_map_add(global.langmap, "roomname.hub_roomE3", "DANCE ROOM");
 		ds_map_add(global.langmap, "roomname.hub_roomMOD", "ARCADE");
 		ds_map_add(global.langmap, "roomname.hub_roomSP", "SPIRE FLOOR 1");
+		ds_map_add(global.langmap, "roomname.hub_roomPLN", "NIGHTMARE HUB");
 		
 		ds_map_add(global.langmap, "roomname.hub_outside2", "OUTSIDE");
 		ds_map_add(global.langmap, "roomname.hub_outside3", "HUB OF FUN");

@@ -68,20 +68,20 @@ function scr_player_throw() {
 	if !grounded
 	{
 
-		if momemtum = false
+		if momentum = false
 		hsp = move * movespeed;
 		else
 		hsp = xscale * movespeed
 
-		if move != xscale && momemtum = true && movespeed != 0 
+		if move != xscale && momentum = true && movespeed != 0 
 		{
 		movespeed -= 0.05
 		}
 
 		if movespeed = 0
-		momemtum = false
+		momentum = false
 
-		if (move = 0 && momemtum = false) or scr_solid(x+(hsp),y)
+		if (move = 0 && momentum = false) or scr_solid(x+(hsp),y)
 		{
 		movespeed = 0
 		mach2 = 0
@@ -108,7 +108,7 @@ function scr_player_throw() {
 		{
 		mach2 = 0
 		movespeed = 0 
-		momemtum = false
+		momentum = false
 		}
 
 		landAnim = true

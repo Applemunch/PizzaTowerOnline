@@ -19,8 +19,24 @@ function scr_solid(argument0, argument1, slop = true, retcol = false)
 		collide = _solid;
 
 	// Check if I crossed a tile boundary and landed on a platform
-	if y > old_y && bbox_bottom % 16 == 0 && !place_meeting(x, old_y, obj_platform) && place_meeting(x, y, obj_platform)
-		collide = instance_place(x, y, obj_platform);
+	if place_meeting(x, y, obj_platform)
+	{
+		var instlist = ds_list_create();
+		var numplat = instance_place_list(x, y, obj_platform, instlist, true);
+	
+		if y > old_y && bbox_bottom % 16 == 0
+		{
+			for(var i = numplat - 1; i >= 0; i--)
+			{
+				if !place_meeting(x, old_y, instlist[| i]) && place_meeting(x, y, instlist[| i])
+				{
+					collide = instlist[| i];
+					break;
+				}
+			}
+		}
+		ds_list_destroy(instlist);
+	}
 	
 	// Check if I'm over a slope
 	if slop

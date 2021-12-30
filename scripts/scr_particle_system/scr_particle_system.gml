@@ -14,8 +14,9 @@ function create_collect(x, y, sprite)
 	}
 }
 
-function create_baddiegibsticks(x, y) {
-	if global.gameplay == 0
+function create_baddiegibsticks(x, y)
+{
+	if scr_stylecheck(0, 2)
 		exit;
 	
 	with instance_create(x, y, obj_baddiegibsstick)

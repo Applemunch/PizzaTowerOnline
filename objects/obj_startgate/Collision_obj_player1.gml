@@ -3,11 +3,10 @@ with player
 {
 	if place_meeting(x, y, other) && key_up && grounded && (state == states.normal or state == states.mach1 or state == states.mach2) 
 	&& !instance_exists(obj_noisesatellite) && !instance_exists(obj_fadeout) && state != states.victory && state != states.comingoutdoor
-	&& spotlight = true
 	{
 		if !scr_checkskin(checkskin.p_anton)
 		or (other.level == "snickchallenge" or other.level == "snickrematch" or other.level == "grinch")
-			audio_stop_all()
+			audio_stop_sound(global.music);
 		
 		backtohubstartx = x
 		backtohubstarty = y
@@ -23,9 +22,6 @@ with player
 			sprite_index = spr_lookdoor
 		else
 			sprite_index = spr_entergate
-		
-		global.collect = 0;
-		global.bullet = 3;
 	}
 }
 
@@ -40,6 +36,6 @@ if floor(player.image_index) >= player.image_number - 1 && player.state == state
 		global.pizzacoinstart = global.pizzacoin
 		
 		if !instance_exists(obj_fadeout)
-			instance_create(x,y,obj_fadeout)
+			instance_create(x, y, obj_fadeout);
 	}
 }

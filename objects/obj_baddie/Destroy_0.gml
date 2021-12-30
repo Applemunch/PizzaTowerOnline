@@ -11,29 +11,29 @@ if ds_list_find_index(global.baddieroom, id) = -1
 	scr_soundeffect(sfx_killenemy)
 	if global.gameplay == 0
 	{
-		scr_sleep(50)
+		scr_sleep(50);
 		repeat 3
-			instance_create(x,y,obj_slapstar)
+			instance_create(x, y, obj_slapstar);
 		repeat 3
-			instance_create(x,y,obj_baddiegibs)
+			create_particle(x, y, particles.baddiegibs);
 	}
 	
 	with obj_camera
 	{
-		shake_mag=3;
-		shake_mag_acc=3/room_speed;
+		shake_mag = 3;
+		shake_mag_acc = 3 / room_speed;
 	}
-	with instance_create(x,y,obj_sausageman_dead)
+	with instance_create(x, y, obj_sausageman_dead)
 	{
-		sprite_index = other.spr_dead
+		sprite_index = other.spr_dead;
 		if global.gameplay != 0
-			hsp = other.hsp
+			hsp = other.hsp;
 		
 		if variable_instance_exists(other, "haspalette") && other.haspalette
 		{
-			haspalette = other.haspalette
+			haspalette = other.haspalette;
 			spr_palette = other.spr_palette;
-			paletteselect = other.paletteselect
+			paletteselect = other.paletteselect;
 		}
 	}
 	
@@ -59,7 +59,7 @@ if ds_list_find_index(global.baddieroom, id) = -1
 		instance_create(x,y,obj_bangeffect)
 		ds_list_add(global.baddieroom, id) 
 
-		//Combos
+		// Combos
 		if global.gameplay == 0
 		{
 			global.combo += 1;
@@ -69,23 +69,18 @@ if ds_list_find_index(global.baddieroom, id) = -1
 		if !global.snickchallenge
 		{
 			var num = 10;
-			if global.gameplay == 0
+			if scr_stylecheck(0, 2)
 			{
-				if global.combo == 1
+				if global.combo <= 1
 					num = 10;
-				if global.combo == 2
-					num = 20;
-				if global.combo == 3
-					num = 40;
-				if global.combo >= 4
-					num = 80;
+				else num = min(power(2, global.combo - 1) * 10, 80);
 			}
 			else
 				num = 10 * (global.stylethreshold + 1);
 		
-			global.collect += num
-			with instance_create(x,y,obj_smallnumber)
-				number = string(num)
+			global.collect += num;
+			with instance_create(x, y, obj_smallnumber)
+				number = string(num);
 		}
 	}
 }

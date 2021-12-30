@@ -1,6 +1,4 @@
-draw_set_alpha(fadealpha); // Increase or decrease to change tint intensity
-draw_set_color(c_white); // Change to the color you want
-draw_rectangle(__view_get( e__VW.XView, 0 ), __view_get( e__VW.YView, 0 ), __view_get( e__VW.XView, 0 ) + __view_get( e__VW.WView, 0 ), __view_get( e__VW.YView, 0 ) + __view_get( e__VW.HView, 0 ), false);
+draw_set_alpha(fadealpha);
+draw_set_color(c_white);
+draw_rectangle(_camx - 32, _camy - 32, _camx + _camw + 32, _camy + _camh + 32, false);
 draw_set_alpha(1);
-
-

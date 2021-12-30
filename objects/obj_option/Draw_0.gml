@@ -179,14 +179,17 @@ if menu == 2
 			draw_set_halign(fa_center);
 			draw_text(640 + random_range(-1, 1), 64, string_upper(lang_string("options.other.gameplay")));
 			
-			draw_set_font(global.smallfont);
-			
-			var sagecol = (global.gameplay == 0 ? merge_colour(c_lime, c_white, 0.5) : c_white);
-			var finalcol = (global.gameplay == 1 ? merge_colour(c_lime, c_white, 0.5) : c_white);
-			var mixcol = (global.gameplay == 2 ? merge_colour(c_lime, c_white, 0.5) : c_white);
-			draw_text_colour(640 - 75, 100, lang_string("options.other.gameplay.old"), sagecol, sagecol, sagecol, sagecol, (global.gameplay == 0 ? 1 : 0.5));
-			draw_text_colour(640 + 75, 100, lang_string("options.other.gameplay.remix"), mixcol, mixcol, mixcol, mixcol, (global.gameplay == 2 ? 1 : 0.5));
-			draw_text_colour(640, 100, lang_string("options.other.gameplay.final"), finalcol, finalcol, finalcol, finalcol, (global.gameplay == 1 ? 1 : 0.5));
+			if patron
+			{
+				draw_set_font(global.smallfont);
+				
+				var sagecol = (global.gameplay == 0 ? merge_colour(c_lime, c_white, 0.5) : c_white);
+				var finalcol = (global.gameplay == 1 ? merge_colour(c_lime, c_white, 0.5) : c_white);
+				var mixcol = (global.gameplay == 2 ? merge_colour(c_lime, c_white, 0.5) : c_white);
+				draw_text_colour(640 - 75, 100, lang_string("options.other.gameplay.old"), sagecol, sagecol, sagecol, sagecol, (global.gameplay == 0 ? 1 : 0.5));
+				draw_text_colour(640 + 75, 100, lang_string("options.other.gameplay.remix"), mixcol, mixcol, mixcol, mixcol, (global.gameplay == 2 ? 1 : 0.5));
+				draw_text_colour(640, 100, lang_string("options.other.gameplay.final"), finalcol, finalcol, finalcol, finalcol, (global.gameplay == 1 ? 1 : 0.5));
+			}
 			
 			draw_set_font(global.font_small);
 			draw_set_colour(c_ltgray);

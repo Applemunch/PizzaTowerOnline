@@ -33,7 +33,12 @@ function scr_player_ladder()
 	}
 	
 	if x != doorx && doorx != 0
-		x = Approach(x, doorx, 3);
+	{
+		if scr_stylecheck(2)
+			x = Approach(x, doorx, 3);
+		else
+			x = doorx;
+	}
 	else
 		doorx = 0;
 	

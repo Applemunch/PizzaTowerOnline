@@ -30,7 +30,14 @@ if writer < string_length(dialogue[curdiag])
 		exit;
 	}
 	
-	var diagsound = sfx_antonstep3;
-	audio_stop_sound(diagsound);
-	scr_soundeffect(diagsound);
+	if is_array(diagsound)
+	{
+		audio_stop_sound(diagsound_p);
+		diagsound_p = scr_soundeffect(diagsound[irandom(array_length(diagsound) - 1)]);
+	}
+	else if audio_exists(diagsound)
+	{
+		audio_stop_sound(diagsound);
+		scr_soundeffect(diagsound);
+	}
 }

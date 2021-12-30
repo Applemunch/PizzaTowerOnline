@@ -3,7 +3,7 @@ with other
 	if image_xscale != other.image_xscale
 		image_xscale = other.image_xscale
 	
-	if global.gameplay == 0
+	if other.sprite_index == spr_spring
 		other.image_speed = 0.35
 	else
 	{

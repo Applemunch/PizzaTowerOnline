@@ -3,7 +3,7 @@ if !(global.snickrematch && global.snickchallenge)
 	x = -100;
 	y = -100;
 	image_alpha = 1;
-	sprite_index = spr_rematchblocksleep;
+	sprite_index = spr_rematchplugsleep;
 }
 else
 {

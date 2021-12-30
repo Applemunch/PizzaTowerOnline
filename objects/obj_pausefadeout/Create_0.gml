@@ -1,4 +1,4 @@
-fadealpha = 0
+fadealpha = 1
 
 fadein = false
 gotonoplayer = 0

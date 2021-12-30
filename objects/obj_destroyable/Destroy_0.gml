@@ -7,7 +7,7 @@ if ds_list_find_index(global.saveroom, id) = -1
 	var rep = global.gameplay == 0 ? 4 : 2; // amount of debris
 	repeat rep
 	{
-		with instance_create(x + irandom(sprite_width), y + irandom(sprite_height), obj_debris)
+		with instance_create(x + sprite_width / 2, y + sprite_height / 2, obj_debris)
 		{
 			image_xscale = abs(other.image_xscale);
 			image_yscale = abs(other.image_yscale);
@@ -16,6 +16,8 @@ if ds_list_find_index(global.saveroom, id) = -1
 				sprite_index = spr_debris_NEW;
 			if other.sprite_index == spr_destroyable_ss
 				sprite_index = spr_debris_ss;
+			
+			hsp2 = other.hsp2;
 		}
 	}
 	

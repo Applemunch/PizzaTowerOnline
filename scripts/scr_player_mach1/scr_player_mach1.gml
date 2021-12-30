@@ -33,7 +33,7 @@ function scr_player_mach1()
 	if xscale == -move
 	{
 		sprite_index = spr_mach1
-		momemtum = false
+		momentum = false
 		mach2 = 0
 		movespeed = 6
 		image_index = 0
@@ -132,7 +132,7 @@ function scr_player_mach1()
 	scr_soundeffect(sfx_jump)
 	sprite_index = spr_airdash1
 	dir = xscale
-	momemtum = true
+	momentum = true
 	vsp = -11
 
 

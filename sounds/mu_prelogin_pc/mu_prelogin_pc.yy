@@ -12,7 +12,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "mu_prelogin_pc.ogg",
-  "duration": 3.243243,
+  "duration": 9.896916,
   "parent": {
     "name": "pizza castle",
     "path": "folders/Sounds/pizza castle.yy",

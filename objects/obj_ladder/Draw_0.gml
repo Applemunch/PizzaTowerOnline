@@ -1,3 +1,6 @@
+if scr_culling()
+	exit;
+
 if abs(image_yscale) > 1
 {
 	for (var i = 0; i < abs(image_yscale); i++)

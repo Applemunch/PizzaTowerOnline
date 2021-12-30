@@ -1,4 +1,4 @@
-if !global.snickrematch
+if !(global.snickrematch && global.snickchallenge)
 {
 	instance_destroy();
 	exit;

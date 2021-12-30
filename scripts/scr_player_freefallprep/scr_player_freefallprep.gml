@@ -7,15 +7,15 @@ function scr_player_freefallprep() {
 		hsp = move * movespeed;
 
 
-		if move != xscale && momemtum = true && movespeed != 0 
+		if move != xscale && momentum = true && movespeed != 0 
 		{
 		movespeed -= 0.05
 		}
 
 		if movespeed = 0
-		momemtum = false
+		momentum = false
 
-		if (move = 0 && momemtum = false) or scr_solid(x+(hsp),y)
+		if (move = 0 && momentum = false) or scr_solid(x+(hsp),y)
 		{
 		movespeed = 0
 		mach2 = 0
@@ -42,7 +42,7 @@ function scr_player_freefallprep() {
 		{
 		mach2 = 0
 		movespeed = 0 
-		momemtum = false
+		momentum = false
 		}
 			if move != 0
 		xscale = move

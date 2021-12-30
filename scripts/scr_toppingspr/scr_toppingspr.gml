@@ -24,10 +24,10 @@ function scr_collectsprite(single = false)
 		// default / peppino
 		else
 		{
-			//if global.gameplay == 0
+			if global.gameplay == 0
 				toppings = [spr_shroomcollect, spr_tomatocollect, spr_cheesecollect, spr_sausagecollect, spr_pineapplecollect];
-			//else
-			//	toppings = [spr_sausagecollect_NEW, spr_shroomcollect_NEW, spr_pineapplecollect_NEW, spr_tomatocollect_NEW, spr_cheesecollect_NEW];
+			else
+				toppings = [spr_sausagecollect_NEW, spr_shroomcollect_NEW, spr_pineapplecollect_NEW, spr_tomatocollect_NEW, spr_cheesecollect_NEW];
 		}
 	
 		// strongcold

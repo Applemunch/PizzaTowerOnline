@@ -74,7 +74,7 @@
   "nineSlice": null,
   "parent": {
     "name": "mario",
-    "path": "folders/Sprites/mario.yy",
+    "path": "folders/Sprites/cosmetic or etc/mario.yy",
   },
   "resourceVersion": "1.0",
   "name": "spr_mario_jump",

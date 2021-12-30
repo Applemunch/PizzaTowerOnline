@@ -13,6 +13,12 @@ function incubic(arg0, arg1, arg2, arg3) {
 }
 
 // animation
+if con == -1
+{
+	if playsound
+		scr_soundeffect(sfx_diagopen);
+	con = 0;
+}
 if con == 0
 {
 	t += 0.1;
@@ -42,7 +48,7 @@ if con == 1
 	if writer < string_length(dialogue[curdiag])
 	{
 		if alarm[0] == -1 && !instant
-			alarm[0] = 1;
+			alarm[0] = rate;
 		
 		if (key_slap2 && canskip) or instant
 		{
@@ -61,16 +67,18 @@ if con == 1
 			// done!
 			if curdiag >= array_length(dialogue)
 			{
-				scr_soundeffect(sfx_diagclose);
+				if playsound
+					scr_soundeffect(sfx_diagclose);
 				con = 2;
 			}
 		}
 	}
 	
 	// close
-	if key_taunt
+	if key_taunt && canskip
 	{
-		scr_soundeffect(sfx_diagcancel);
+		if playsound
+			scr_soundeffect(sfx_diagcancel);
 		con = 2;
 	}
 }
@@ -78,7 +86,8 @@ if con == 1
 // restart
 if keyboard_check_pressed(ord("R")) && debug
 {
-	scr_soundeffect(sfx_diagopen);
+	if playsound
+		scr_soundeffect(sfx_diagopen);
 	t = 0;
 	con = 0;
 	alarm[0] = -1;

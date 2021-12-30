@@ -5,7 +5,7 @@ if !(room_first == rm_load && room_next(room_first) == Realtitlescreen)
 	audio_stop_all();
 	scr_soundeffect(sfx_pephurt);
 	
-	show_message("The room order does not match!\nnote: good luck getting past my drm lol");
+	show_message("The room order does not match");
 	game_end();
 	exit;
 }

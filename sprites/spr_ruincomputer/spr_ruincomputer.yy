@@ -73,8 +73,8 @@
   ],
   "nineSlice": null,
   "parent": {
-    "name": "demo_event",
-    "path": "folders/Sprites/demo_event.yy",
+    "name": "hub computers",
+    "path": "folders/Sprites/hub computers.yy",
   },
   "resourceVersion": "1.0",
   "name": "spr_ruincomputer",

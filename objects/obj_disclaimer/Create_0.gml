@@ -17,6 +17,8 @@ cancon = false;
 
 version = 5;
 drm = true;
+if !patron
+	drm = false;
 
 str = lang_string("disclaimer.offline");
 
@@ -28,3 +30,6 @@ else
 	event_user(1);
 
 t = 0;
+
+alarm[1] = room_speed * 5;
+showwait = false;

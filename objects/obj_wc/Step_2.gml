@@ -15,6 +15,9 @@ or repaintjokebuild) && !debug
 var tempobj, tempvar, temparray, tempind, tempval, tempscript, temproom, temproom2, temp_fetchobjects, temp_objfind, frz, i, scrarg; // funny variables
 WC_modkp = -1; // reset keybind
 
+WC_mx = device_mouse_x_to_gui(0);
+WC_my = device_mouse_y_to_gui(0);
+
 // add scripts to gmlive
 if live_enabled && variable_global_exists("g_gml_func_script_id") && depth == 0
 {
@@ -91,7 +94,7 @@ if WC_consoleopen
 	}
 	
 	// scroll
-	if (window_mouse_get_y() / window_get_height()) * 540 <= WC_maxconsolebottom
+	if WC_my <= WC_maxconsolebottom
 	{
 		if mouse_wheel_up()
 			WC_consolescroll += 1;
@@ -180,9 +183,9 @@ while ds_list_size(WC_consolelist) > power(2, 31) - 1
 	ds_list_delete(WC_consolelist, power(2, 31) - 1);
 
 // update frozen variables
-if array_length_1d(WC_frozenvar) != 0
+if array_length(WC_frozenvar) != 0
 {
-	for (i = 0; i < array_length_1d(WC_frozenvar); i++)
+	for (i = 0; i < array_length(WC_frozenvar); i++)
 	{
 		if WC_frozenvar[i] != undefined
 		{
@@ -215,7 +218,7 @@ if WC_candrag && WC_assetfinder < 0 && !WC_creatingobj && WC_selectobj == 0
 			}
 			
 			// just incase the object's coordinates are frozen
-			for (i = 0; i < array_length_1d(WC_frozenobj); i++)
+			for (i = 0; i < array_length(WC_frozenobj); i++)
 			{
 			    if WC_fakedragobj == WC_frozenobj[i]
 			    {
@@ -265,7 +268,7 @@ if WC_candrag && WC_assetfinder < 0 && !WC_creatingobj && WC_selectobj == 0
 	}
 
 	// start dragging the object
-	if mouse_check_button_pressed(mb_left) && !(WC_consoleopen && (window_mouse_get_y() / window_get_height()) * 540 <= WC_maxconsolebottom)
+	if mouse_check_button_pressed(mb_left) && !(WC_consoleopen && WC_my <= WC_maxconsolebottom)
 	{
 		if keyboard_check(vk_control) && instance_exists(obj_player1) // drag player
 		{
@@ -316,7 +319,7 @@ if WC_candrag && WC_assetfinder < 0 && !WC_creatingobj && WC_selectobj == 0
 		WC_fakedragobj = noone;
 
 	// duplicate the object
-	if mouse_check_button_pressed(mb_middle) && !(WC_consoleopen && (window_mouse_get_y() / window_get_height()) * 540 <= WC_maxconsolebottom)
+	if mouse_check_button_pressed(mb_middle) && !(WC_consoleopen && WC_my <= WC_maxconsolebottom)
 	{
 		if !instance_exists(WC_fakedragobj)
 		{
@@ -524,7 +527,7 @@ if WC_modkp == ord("3")
 	        show_message("Set global variable global." + string(tempvar) + " to string " + tempval);
 	    }
 		
-	    for (i = 0; i < array_length_1d(WC_frozenobj); i++)
+	    for (i = 0; i < array_length(WC_frozenobj); i++)
 	    {
 	        if "__WC_GLOBAL__" + tempvar == WC_frozenvar[i]
 	            WC_frozenval[i] = variable_global_get(tempvar);
@@ -937,7 +940,6 @@ if WC_modkp == ord("5")
 	{
 	    with obj_camera
 			alarm[1] = -1;
-	    instance_destroy(obj_itspizzatime);
 	    audio_stop_all();
 	    global.panic = false;
 		

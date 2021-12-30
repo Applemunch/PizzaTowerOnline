@@ -16,19 +16,22 @@ function scr_player_victory()
 	or place_meeting(x, y, obj_geromedoor)
 	or place_meeting(x, y, obj_keydoor_editor)
 	{
-		sprite_index = spr_victory
+		sprite_index = spr_victory;
 		
-		x = Approach(x, doorx, 6);
-		if x != xprevious
-			xscale = sign(x - xprevious);
+		if scr_stylecheck(2)
+		{
+			x = Approach(x, doorx, 6);
+			if x != xprevious
+				xscale = sign(x - xprevious);
+		}
 	}
 	
-	if floor(image_index) == image_number -1
-		image_speed = 0
+	if floor(image_index) >= image_number -1
+		image_speed = 0;
 	else
-		image_speed = 0.35
+		image_speed = 0.35;
 	
-	if place_meeting(x, y, obj_startgate)
+	if place_meeting(x, y, obj_startgate) && scr_stylecheck(2)
 	{
 		x = Approach(x, doorx, 10);
 		if x != xprevious

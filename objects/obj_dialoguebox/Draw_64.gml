@@ -26,10 +26,11 @@ if con == 1
 	var xst = 90;
 	var yst = 390;
 	
-	if sprite_exists(face)
+	if face != -1
 	{
 		xst = 220;
-		draw_sprite_ext(face, 0, 140, 440, 1, 1, 0, c_white, 1);
+		if sprite_exists(face)
+			draw_sprite_ext(face, 0, 140, 440, 1, 1, 0, c_white, 1);
 	}
 	
 	var xx = xst;
@@ -66,6 +67,21 @@ if con == 1
 			{
 				++i;
 				// placeholder, didn't add choices yet...
+			}
+			if string_char_at(dialogue[curdiag], i) == "%" // skip
+			{
+				var e = string_char_at(dialogue[curdiag], ++i);
+				if e == "%"
+				{
+					if playsound
+						scr_soundeffect(sfx_diagcancel);
+					con = 2;
+				}
+				else
+				{
+					writer = 0;
+					curdiag++;
+				}
 			}
 			if string_char_at(dialogue[curdiag], i) == "e" // effect
 			{

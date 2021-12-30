@@ -1,9 +1,3 @@
-if place_meeting(x, y, obj_solid) && room != custom_lvl_room
-{
-	instance_destroy(id, false);
-	exit;
-}
-
 if ds_list_find_index(global.saveroom, id) != -1  
 {
 	var lay_id = get_layer("Tiles_1");

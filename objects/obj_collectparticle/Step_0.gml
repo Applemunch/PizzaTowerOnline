@@ -4,8 +4,11 @@ vsp = lengthdir_y(16, _dir);
 x += hsp;
 y += vsp;
 
-outofx = x < 238;
-outofy = y < 159;
+var outofx = x < 238;
+var outofy = y < 159;
+if scr_stylecheck(2)
+	outofy = y < (159 - 32);
+
 if outofx && outofy
 {
     with obj_camera

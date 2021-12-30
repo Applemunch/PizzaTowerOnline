@@ -1,5 +1,5 @@
 if state == states.hang
-	state = states.normal
+	state = states.normal;
 
 if place_meeting(x, y, obj_boxofpizza) or place_meeting(x, y - 1, obj_boxofpizza)
 {
@@ -36,6 +36,7 @@ if !oldhallway
 			x = doortarget.x + 32;
 		else
 			x = doortarget.x + 16;
+		
 		y = doortarget.y - 14;
 		
 		if targetDoor == "A" && place_meeting(x, y, obj_exitgate)
@@ -77,18 +78,16 @@ else
 }
 if state == states.climbwall
 {
-	var moves = xscale;
-	while !scr_solid(x + moves + sign(moves), y)
+	var xx = x;
+	while !scr_solid(x + xscale, y)
 	{
-		moves += xscale;
-		if abs(moves) >= room_width
+		x += xscale;
+		if abs(x) > room_width
 		{
-			moves = 0;
+			x = xx;
 			break;
 		}
 	}
-	
-	x += moves;
 }
 
 if state == states.ladder

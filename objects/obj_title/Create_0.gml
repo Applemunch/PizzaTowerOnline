@@ -24,3 +24,9 @@ if object_index == obj_title
 		depth = other.depth - 1;
 	}
 }
+else if pt_online
+	sprite_index = spr_title2_old;
+
+sel = 0;
+selimg = 0;
+selected = false;

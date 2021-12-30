@@ -41,6 +41,13 @@ function scr_solid_player(argX, argY, slop = true, retcol = false)
 		ds_list_destroy(instlist);
 	}
 	
+	var transwater = instance_place(x, y, obj_transwater);
+	if transwater && !place_meeting(x, old_y, transwater)
+	{
+		if state == states.mach3 or (state == states.machslide && sprite_index == spr_mach3boost)
+			collide = transwater;
+	}
+	
 	// Check if I'm on a grindrail
 	if y > old_y && bbox_bottom % 16 == 0
 	&& !place_meeting(x, old_y, obj_grindrail) && place_meeting(x, y, obj_grindrail)

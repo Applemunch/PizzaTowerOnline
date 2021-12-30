@@ -16,7 +16,6 @@ roomname = room_get_name(room)
 if string_endswith(roomname, "_NEW")
 	roomname = string_replace(roomname, "_NEW", "");
 
-var musicprev = pausedmusic;
 var musplay = -1;
 
 #region antonball
@@ -96,7 +95,7 @@ else if (!global.panic or string_letters(roomname) == "dragonlair" or string_let
 		musplay = mu_tutorial
 	}
 	
-	if string_letters(roomname) = "entrance" 
+	if string_letters(roomname) == "entrance" 
 	{
 		if obj_player1.character == "N"
 			musplay = mu_noiseentrance
@@ -112,12 +111,16 @@ else if (!global.panic or string_letters(roomname) == "dragonlair" or string_let
 	{
 		for (i = 0; i < 20; ++i)
 		{
-			if roomname = "dungeon_" + string(i) && i <= 8
-				musplay = mu_dungeon
-			else if roomname = "dungeon_" + string(i) && i > 8
+			if roomname == "dungeon_" + string(i) && i <= 8
 			{
-				fadeoff = 0
-				musplay = mu_dungeondepth
+				musplay = mu_dungeon;
+				if global.snickrematch
+					musplay = mu_dungeon_re;
+			}
+			else if roomname == "dungeon_" + string(i) && i > 8
+			{
+				fadeoff = 0;
+				musplay = mu_dungeondepth;
 			}
 		}
 	}
@@ -144,25 +147,35 @@ else if (!global.panic or string_letters(roomname) == "dragonlair" or string_let
 	
 	if string_letters(roomname) == "medieval" 
 	{
-		for (i = 0; i < 20; ++i)
+		if global.snickrematch
+			musplay = mu_phantom
+		else
 		{
-			if roomname = "medieval_" + string(i) && i <= 2
-				musplay = mu_medievalentrance
-			else if roomname = "medieval_" + string(i) && i > 2 && i <= 5
-				musplay = mu_medievalremix
-			else if roomname = "medieval_" + string(i) && i > 5
-				musplay = mu_medieval
+			for (i = 0; i < 20; ++i)
+			{
+				if roomname = "medieval_" + string(i) && i <= 2
+					musplay = mu_medievalentrance
+				else if roomname = "medieval_" + string(i) && i > 2 && i <= 5
+					musplay = mu_medievalremix
+				else if roomname = "medieval_" + string(i) && i > 5
+					musplay = mu_medieval
+			}
 		}
 	}
 
 	if string_letters(roomname) == "ruin" 
 	{
-		for (i = 0; i < 20; ++i)
+		if global.snickrematch
+			musplay = mu_apartment
+		else
 		{
-			if roomname = "ruin_" + string(i) && i <= 6
-				musplay = mu_ruin
-			else if roomname = "ruin_" + string(i) && i > 6
-				musplay = mu_ruinremix
+			for (i = 0; i < 20; ++i)
+			{
+				if roomname = "ruin_" + string(i) && i <= 6
+					musplay = mu_ruin
+				else if roomname = "ruin_" + string(i) && i > 6
+					musplay = mu_ruinremix
+			}
 		}
 	}
 
@@ -335,13 +348,27 @@ else if (!global.panic or string_letters(roomname) == "dragonlair" or string_let
 		}
 		if string_letters(roomname) == "medievalsecret"
 		or string_letters(roomname) == "ancientsecret"
+		{
 			musplay = mu_medievalsecret
-		if string_letters(roomname) == "ruinsecret" 
+			if global.snickrematch
+				musplay = mu_medievalsecret_re;
+		}
+		if string_letters(roomname) == "ruinsecret"
+		{
 			musplay = mu_ruinsecret
+			if global.snickrematch
+				musplay = mu_ruinsecret_re;
+		}
+		if string_letters(roomname) == "dungeonsecret"
+		{
+			musplay = mu_dungeonsecret
+			if global.snickrematch
+				musplay = mu_dungeonsecret_re
+		}
 		if string_letters(roomname) == "chateausecret" 
 			musplay = mu_chateausecret
-		if string_letters(roomname) == "dungeonsecret" or string_letters(roomname) = "strongcoldsecret"
-			musplay = mu_dungeonsecret
+		if string_letters(roomname) == "strongcoldsecret"
+			musplay = mu_strongcoldsecret
 		if string_startswith(roomname, "floor1_secret")
 			musplay = mu_desertsecret
 		if string_letters(roomname) == "graveyardsecret" 
@@ -390,34 +417,14 @@ if repaintjokebuild
 
 // pizza castle
 if global.musicgame == 1
-{
-	// placeholders
-	if musplay == mu_antonpunchball
-		musplay = mu_antonlevel_pc
-	else if musplay == mu_kidsparty
-		musplay = mu_characterselect_pc
-	else if musplay == mu_hub2
-		musplay = mu_characterselect_pc
-	else if musplay == mu_snickentrance or musplay == mu_vigientrance
-		musplay = mu_entrance_pc
-	else if musplay == mu_susgolf
-		musplay = mu_minigolf_pc
-	else
-	{
-		// replace the sound
-		var sndrep = asset_get_index(audio_get_name(musplay) + "_pc");
-		if audio_exists(sndrep)
-			musplay = sndrep;
-	}
-}
+	musplay = scr_getmidi(musplay);
 
 // play the song
 if musplay > -1 && !audio_is_playing(musplay)
 {
 	audio_stop_sound(global.music);
-	scr_sound(musplay);
+	pausedmusic = scr_sound(musplay);
 	audio_sound_set_track_position(global.music, fadeoff % audio_sound_length(musplay));
-	pausedmusic = musplay;
 }
 
 if forcefadeoff != -1
@@ -426,5 +433,4 @@ if forcefadeoff != -1
 	forcefadeoff = -1;
 }
 
-if musicprev != musplay
-	audio_sound_pitch(global.music, musicpitch);
+audio_sound_pitch(global.music, musicpitch);

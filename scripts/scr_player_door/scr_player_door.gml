@@ -13,8 +13,8 @@ function scr_player_door()
 
 	image_speed = 0.35
 
-	if floor(image_index) == image_number - 1
-		image_speed = 0
+	if floor(image_index) >= image_number - 1
+		image_speed = 0;
 
 	if floor(image_index) >= image_number - 3 && !instance_exists(obj_fadeout) && (sprite_index = spr_downpizzabox or sprite_index = spr_uppizzabox)
 	{
@@ -36,7 +36,7 @@ function scr_player_door()
 		instance_create(x,y,obj_fadeout)
 	}
 	
-	if x != doorx
+	if scr_stylecheck(2) && x != doorx
 	{
 		var spd = (box ? 9 : 6);
 		x = Approach(x, doorx, spd);

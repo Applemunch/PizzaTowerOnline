@@ -1,12 +1,17 @@
-/// @description snick and timeattack
+/// @description snick and timeattack and etc
 if myturn
 {
+	global.style = 0;
+	global.stylethreshold = 0;
+	global.collect = 0;
+	global.bullet = 3;
+	
 	// SAGE2019
 	if level == "snickchallenge" 
 	{
 		global.snickchallenge = true
 		global.collect = 10000
-	
+		
 		with obj_camera
 		{
 			alarm[1] = 60
@@ -19,7 +24,7 @@ if myturn
 		global.snickchallenge = true
 		global.snickrematch = true
 		global.collect = 10000
-	
+		
 		with obj_camera
 		{
 			alarm[1] = 60
@@ -27,6 +32,8 @@ if myturn
 			global.minutes = 7
 		}
 	}
+	if level == "medieval_re" or level == "ruin_re" or level == "dungeon_re"
+		global.snickrematch = true;
 	
 	global.wave = 0
 	global.maxwave = (global.minutes * 60 + global.seconds) * 60

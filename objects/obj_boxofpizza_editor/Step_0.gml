@@ -39,6 +39,8 @@ with (obj_player1)
 				chargecamera = 0
 			
 			doorx = other.x
+			if !scr_stylecheck(2)
+				x = doorx;
 			y = other.y + 24
 			
 			sprite_index = spr_uppizzabox

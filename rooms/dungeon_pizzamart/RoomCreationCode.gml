@@ -1,2 +1,2 @@
 
-global.roommessage = "SHOP OF HECK"
+global.roommessage = "SHOP OF HELL"

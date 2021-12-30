@@ -1,5 +1,5 @@
 if object_index == obj_solid
 {
-	depth = 1000
+	depth++
 	image_alpha = 0.75
 }

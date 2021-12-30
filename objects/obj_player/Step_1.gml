@@ -1,4 +1,6 @@
 /// @description other??
+if !patron
+	global.gameplay = 0;
 
 // pizzelle new grab sprite
 if character == "SP"

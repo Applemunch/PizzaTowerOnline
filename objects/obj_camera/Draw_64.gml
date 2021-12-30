@@ -287,22 +287,24 @@ else
 	    }
 		
 		var heatfill = sugary ? spr_heatmeter_candyfill : spr_heatmeter_fill;
-		
 		var sw = sprite_get_width(heatfill);
 	    var sh = sprite_get_height(heatfill);
 	    var b = global.style / 55;
 	    var hud_xx = 149 + irandom_range(-collect_shake, collect_shake);
 	    var hud_yy = 105 + irandom_range(-collect_shake, collect_shake) + hud_posY;
 		
-		// sugary spire bullshit
-		pal_swap_set(sugary ? spr_heatmeter_candy_palette : spr_heatmeter_palette, global.stylethreshold, 0);
-		if sugary
-			draw_sprite_part(heatfill, pizzascore_index, 0, 0, sw * b, sh, hud_xx - 95, hud_yy - 87);
-		else
-			draw_sprite_part(heatfill, pizzascore_index, 0, 0, sw * b, sh, hud_xx - 95, hud_yy + 24);
+		if !scr_stylecheck(2)
+		{
+			// sugary spire bullshit
+			pal_swap_set(sugary ? spr_heatmeter_candy_palette : spr_heatmeter_palette, global.stylethreshold, 0);
+			if sugary
+				draw_sprite_part(heatfill, pizzascore_index, 0, 0, sw * b, sh, hud_xx - 95, hud_yy - 87);
+			else
+				draw_sprite_part(heatfill, pizzascore_index, 0, 0, sw * b, sh, hud_xx - 95, hud_yy + 24);
 		
-	    draw_sprite_ext(sugary ? spr_heatmeter_candy : spr_heatmeter, pizzascore_index, hud_xx, hud_yy, 1, 1, 0, c_white, alpha);
-		pal_swap_reset();
+		    draw_sprite_ext(sugary ? spr_heatmeter_candy : spr_heatmeter, pizzascore_index, hud_xx, hud_yy, 1, 1, 0, c_white, alpha);
+			pal_swap_reset();
+		}
 		
 	    draw_sprite_ext(sugary ? spr_candyscore : spr_pizzascore, pizzascore_index, hud_xx, hud_yy, 1, 1, 0, c_white, alpha);
 		
@@ -382,6 +384,8 @@ else
 			{
 			    var bx = hud_xx - 25;
 			    var by = hud_yy + 20;
+				if scr_stylecheck(2)
+					by -= 32;
 			    var bpad = 25;
 			    var bspr = spr_peppinobullet_collectible;
 			
@@ -439,6 +443,10 @@ if instance_exists(obj_player1) && obj_player1.character == "V" && showhud
 //Key
 if showhud
 {
+	var styley = 0;
+	if scr_stylecheck(2)
+		styley -= 32;
+	
 	if !sugary or global.gameplay == 0
 	{
 		var xx = 50;
@@ -450,15 +458,15 @@ if showhud
 		}
 		
 		if global.key_inv
-			draw_sprite_ext((check_sugary() ? spr_key_ss : spr_key), -1, xx, yy, 1, 1, 0, c_white, alpha)
-		draw_sprite_ext(spr_inv, -1, xx, yy, 1, 1, 0, c_white, alpha)
+			draw_sprite_ext((check_sugary() ? spr_key_ss : spr_key), -1, xx, yy + styley, 1, 1, 0, c_white, alpha)
+		draw_sprite_ext(spr_inv, -1, xx, yy + styley, 1, 1, 0, c_white, alpha)
 	}
 	if sugary && global.gameplay != 0
 	{
 		if global.key_inv
-			draw_sprite_ext((check_sugary() ? spr_keyinvSP_ss : spr_keyinvSP), 0, 696, 86 + obj_tv.hud_posY, 1, 1, 0, c_white, alpha);
+			draw_sprite_ext((check_sugary() ? spr_keyinvSP_ss : spr_keyinvSP), 0, 696, 86 + obj_tv.hud_posY + styley, 1, 1, 0, c_white, alpha);
 		else
-			draw_sprite_ext(spr_invSP, 0, 696, 86 + obj_tv.hud_posY, 1, 1, 0, c_white, alpha);
+			draw_sprite_ext(spr_invSP, 0, 696, 86 + obj_tv.hud_posY + styley, 1, 1, 0, c_white, alpha);
 	}
 }
 

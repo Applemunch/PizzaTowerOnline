@@ -1,4 +1,4 @@
-if global.gameplay == 0
+if scr_stylecheck(0, 2)
 {
 	sprite_index = spr_spring
 	image_speed = 0

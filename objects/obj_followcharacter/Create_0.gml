@@ -4,7 +4,7 @@ xoffset = 0;
 yoffset = 2;
 
 LAG_STEPS = 20;
-followqueue = ds_queue_create();
+followqueue = [];
 ds_list_add(global.followerlist, id);
 pos = ds_list_find_index(global.followerlist, id);
 followid = (pos > 0 ? ds_list_find_value(global.followerlist, pos - 1) : noone);
@@ -13,3 +13,7 @@ xscale = 1;
 
 yslope = 0;
 moveback = false;
+
+lerpx = undefined;
+lerpy = undefined;
+off_on_y = false; // useful for the room start

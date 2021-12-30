@@ -64,6 +64,9 @@ WC_assetsel = 0;
 WC_assetboxsel = false;
 WC_assetboxtext = "";
 
+WC_mx = 0;
+WC_my = 0;
+
 // pt exclusive
 WC_oobcam = false;
 WC_prioritizebaddies = true;

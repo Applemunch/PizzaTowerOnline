@@ -1,0 +1,1 @@
+targetRoom = cotton_1;

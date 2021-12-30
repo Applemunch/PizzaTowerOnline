@@ -201,7 +201,7 @@ if menu == 0
 else if menu == 1
 {
 	// master volume slider
-	if optionselected = 0
+	if optionselected == 0
 	{
 		if keyboard_check(vk_shift)
 			var move = (obj_player1.key_left2 + obj_player1.key_right2) * 0.01;
@@ -211,9 +211,8 @@ else if menu == 1
 		global.mastervolume = clamp(global.mastervolume + move, 0, 1);
 		if keyboard_check_pressed(ord("R"))
 			global.mastervolume = 1;
-		
-		audio_master_gain(global.mastervolume / (!code_is_compiled() + 1));
 	}
+	audio_master_gain(global.mastervolume);
 	
 	// music volume slider
 	if optionselected = 1
@@ -306,7 +305,6 @@ else if menu == 1
 		
 		if global.musicvolume <= 0 && audio_is_playing(global.music)
 			audio_stop_sound(global.music);
-		audio_master_gain(global.mastervolume / (!code_is_compiled() + 1));
 		
 		with obj_roomname
 		{
@@ -489,15 +487,16 @@ else if menu == 2 && !instance_exists(obj_erasegame)
 	}
 	
 	//Finish
-	if (obj_player1.key_slap2 or keyboard_check_pressed(vk_escape)) && !instance_exists(obj_keyconfig)
+	if (obj_player.key_slap2 or keyboard_check_pressed(vk_escape)) && !instance_exists(obj_keyconfig)
 	{
 		scr_soundeffect(sfx_enemyprojectile)
 		menu = 0
 		optionselected = 4
 		
 		ini_open("saveData.ini");
-		ini_write_real("online","gameplay",global.gameplay)
-		obj_player1.noisetype = global.gameplay;
+		ini_write_real("online", "gameplay", global.gameplay)
+		with obj_player
+			noisetype = (global.gameplay == 0 ? 0 : 1);
 		
 		ini_write_real("online","panicmelt",global.panicmelt)  
 		ini_write_real("online","panicbg",global.panicbg)  

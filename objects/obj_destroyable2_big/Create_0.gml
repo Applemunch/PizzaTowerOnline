@@ -10,7 +10,7 @@ else if obj_player1.character == "SP"
 	sprite_index = spr_destroyable2big_ss
 else if check_sugary()
 	sprite_index = spr_bigdestroyable_ss_pizza
-else if global.gameplay != 0
+else if !scr_stylecheck(0, 2)
 	sprite_index = spr_bigbreakable_NEW
 
 if string_startswith(room_get_name(room), "strongcold")
@@ -19,4 +19,4 @@ if string_startswith(room_get_name(room), "strongcold")
 depth = 1
 content = obj_null
 image_speed = 0.35;
-image_index = x / sprite_width;
+image_index = random(image_number);

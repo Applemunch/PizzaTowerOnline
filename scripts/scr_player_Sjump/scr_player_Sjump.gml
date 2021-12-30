@@ -1,4 +1,5 @@
-function scr_player_Sjump() {
+function scr_player_Sjump()
+{
 	hsp = 0
 
 	mach2 = 0
@@ -56,13 +57,13 @@ function scr_player_Sjump() {
 				sprite_index = spr_superjumpland;
 		}
         
-		with (obj_camera)
+		with obj_camera
 		{
-			shake_mag=10;
-			shake_mag_acc=30/room_speed;
+			shake_mag = 10;
+			shake_mag_acc = 30 / room_speed;
 		}
 			
-		with (obj_baddie)
+		with obj_baddie
 		{
 			if point_in_camera(x, y, view_camera[0])
 			{
@@ -96,7 +97,7 @@ function scr_player_Sjump() {
 			{
 				landAnim = false;
 				mach2 = 35;
-				momemtum = true;
+				momentum = true;
 				jumpstop = true;
 				springsjump = false;
 		

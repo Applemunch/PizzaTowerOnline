@@ -1,3 +1,3 @@
-ds_list_delete(global.followerlist, pos);
-if ds_exists(followqueue, ds_type_queue)
-    ds_queue_destroy(followqueue);
+var find = ds_list_find_index(global.followerlist, id);
+if find != -1
+	ds_list_delete(global.followerlist, find);

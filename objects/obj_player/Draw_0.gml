@@ -2,7 +2,16 @@
 drawspr = sprite_index;
 var _img = image_index;
 
-if state != states.cheeseball
+// pln room color
+var col = image_blend;
+if room == hub_roomPLN
+{
+	var startgate = instance_place(x, y, obj_startgate);
+	if !(startgate && startgate.image_index == 1)
+		col = merge_colour(col, c_black, 0.4);
+}
+
+if state != states.cheeseball && state != states.cotton
 {
 	if scr_checkskin(checkskin.p_peter)
 		drawspr = spr_player_petah;
@@ -26,38 +35,23 @@ if state != states.cheeseball
 				image_xscale = other.xscale;
 				sprite_index = other.drawspr;
 				depth = other.depth + 1;
+				image_blend = col;
 			}
 		}
 	}
 }
 
-if (state != states.cheeseball or drawspr == spr_playerSP_cheeseball) && (state != states.ghost or (drawspr == spr_player_ghostend && image_index >= 12) or spr_palette == spr_noisepalette)
+if !flash
 {
-	if paletteselect == -1
-	{
-		if !surface_exists(palsurf)
-			custompal_update(palcolors);
-		else
-			pal_swap_set(palsurf, 1, true);
-	}
-	else
+	if (state != states.cheeseball or drawspr == spr_playerSP_cheeseball) && state != states.cotton && (state != states.ghost or (drawspr == spr_player_ghostend && image_index >= 12) or spr_palette == spr_noisepalette)
 		pal_swap_set(spr_palette, paletteselect, false);
 }
+else
+	draw_set_flash(true);
 
-draw_sprite_ext(drawspr, _img, x + random_range(-shake, shake), y, xscale, yscale, img_angle, image_blend, image_alpha);
-shader_reset()
-
-//Flash
-if flash == true && check_shaders()
-{ 
-    shader_set(shd_hit); // Sets the shader to our shader file we created earlier
-	
-    //Draw
-	draw_sprite_ext(drawspr, _img, x, y, xscale, yscale, img_angle, image_blend, image_alpha);
-	
-	// Draws the sprite, but now we have a shader set so it draws it as white
-    shader_reset(); // Resets the shader to the default one (does nothing)
-}
+draw_sprite_ext(drawspr, _img, x + random_range(-shake, shake), y, xscale, yscale, img_angle, col, image_alpha);
+draw_set_flash(false);
+pal_swap_reset();
 
 // Cowboyhat
 if hatsprite > -1
@@ -67,7 +61,7 @@ if hatsprite > -1
 		hatimg -= sprite_get_number(hatsprite);
 	
 	var yplus = lengthdir_y(-sprite_get_bbox_top(drawspr) + 40, img_angle + 90);
-	draw_sprite_ext(hatsprite, hatimg, x, y + yplus, xscale, yscale, img_angle, image_blend, image_alpha);
+	draw_sprite_ext(hatsprite, hatimg, x, y + yplus, xscale, yscale, img_angle, col, image_alpha);
 }
 
 // Draw name
@@ -80,15 +74,15 @@ if instance_exists(obj_gms) && gms_info_isloggedin()
 		nick = "Player" + string(gms_self_playerid());
 	
 	if gms_self_isowner()
-		draw_set_colour(make_colour_hsv(color_get_hue(c_owner), color_get_saturation(c_owner), color_get_value(c_owner) * (color_get_value(image_blend) / 255)));
+		draw_set_colour(make_colour_hsv(color_get_hue(c_owner), color_get_saturation(c_owner), color_get_value(c_owner) * (color_get_value(col) / 255)));
 	else if string_lower(gms_self_name()) == "spectralpeic"
-		draw_set_colour(make_colour_hsv(color_get_hue(c_peicy), color_get_saturation(c_peicy), color_get_value(c_peicy) * (color_get_value(image_blend) / 255)));
+		draw_set_colour(make_colour_hsv(color_get_hue(c_peicy), color_get_saturation(c_peicy), color_get_value(c_peicy) * (color_get_value(col) / 255)));
 	else if gms_self_admin_rights()
-		draw_set_colour(make_colour_hsv(color_get_hue(c_admin), color_get_saturation(c_admin), color_get_value(c_admin) * (color_get_value(image_blend) / 255)));
+		draw_set_colour(make_colour_hsv(color_get_hue(c_admin), color_get_saturation(c_admin), color_get_value(c_admin) * (color_get_value(col) / 255)));
 	else if global.pvp
-		draw_set_colour(make_colour_hsv(color_get_hue(c_pvp), color_get_saturation(c_pvp), color_get_value(c_pvp) * (color_get_value(image_blend) / 255)));
+		draw_set_colour(make_colour_hsv(color_get_hue(c_pvp), color_get_saturation(c_pvp), color_get_value(c_pvp) * (color_get_value(col) / 255)));
 	else
-		draw_set_colour(image_blend);
+		draw_set_colour(col);
 	
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_top);

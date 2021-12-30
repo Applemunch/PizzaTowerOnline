@@ -1,5 +1,9 @@
-if global.gameplay == 0
+if scr_stylecheck(0, 2)
+{
+	global.style = 0;
+	global.stylethreshold = 0;
 	exit;
+}
 
 if global.style > 55 && global.stylethreshold < 3
 {

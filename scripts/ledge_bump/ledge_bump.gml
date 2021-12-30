@@ -12,7 +12,8 @@ function ledge_bump()
 				yy--;
 			
 			y += yy;
-			with obj_camera
+			
+			if scr_stylecheck(2) with obj_camera
 				pancur[1] -= yy;
 		}
 	}

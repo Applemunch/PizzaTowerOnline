@@ -142,13 +142,13 @@ else
 		}
 	
 		if bubblespr != noone
-		    draw_sprite_ext(bubblespr, bubbleindex, 512, 53 + hud_posY, 1, 1, 1, c_white, alpha);
+		    draw_sprite_ext(bubblespr, bubbleindex, 512 - (sugary * 65), 53 + hud_posY, 1, 1, 1, c_white, alpha);
 	
 		if !surface_exists(promptsurface)
 		    promptsurface = surface_create(290, 102);
 		
 		surface_set_target(promptsurface)
-		draw_clear_alpha(c_black, 0)
+		draw_clear_alpha(c_black, 0) 
 		draw_set_font(font1)
 		draw_set_halign(fa_left)
 		draw_set_valign(fa_middle)
@@ -161,13 +161,14 @@ else
 		    {
 		        bubblespr = spr_tv_bubbleclose;
 		        bubbleindex = 0;
+				promptx = promptxstart;
 		    }
-		    draw_text_color(promptx - 350 - (sugary * 75), 50, prompt, c_black, c_black, c_black, c_black, 1);
+		    draw_text_color(promptx - 350, 50, prompt, c_black, c_black, c_black, c_black, 1);
 		}
 		
 		draw_set_halign(fa_left);
 		surface_reset_target();
-		draw_surface(promptsurface, 350, hud_posY);
+		draw_surface(promptsurface, 350 - (sugary * 65), hud_posY);
 	}
 	
 	draw_set_font(global.bigfont)
