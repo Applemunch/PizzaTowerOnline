@@ -29,83 +29,58 @@ if global.modifier != -1
 		event_user(3);
 }
 
+// go to da levels
 if string_startswith(roomname, "entrance")
-// entrance
 	room_goto_new(entrance_1)
 else if string_startswith(roomname, "medieval")
-// medieval
 	room_goto_new(medieval_1)
 if string_startswith(roomname, "chateau")
-// chateau
 	room_goto_new(chateau_1)
 else if string_startswith(roomname, "ruin")
-// ruin
 	room_goto_new(ruin_1)
 else if string_startswith(roomname, "dungeon")
-// dungeon
 	room_goto_new(dungeon_1)
 else if string_startswith(roomname, "floor1_")
-// desert
 	room_goto_new(floor1_room0)
 else if string_startswith(roomname, "floor2_")
-// mansion
 	room_goto_new(floor2_room9)
 else if string_startswith(roomname, "floor3_")
-// factory
 	room_goto_new(floor3_room0)
 else if string_startswith(roomname, "floor4_")
-// sewer
 	room_goto_new(floor4_room0)
 else if string_startswith(roomname, "floor5_")
-// freezer
 	room_goto_new(floor5_room1)
 else if string_startswith(roomname, "golf_")
-// original golf
 	room_goto_new(golf_room1)
 else if string_startswith(roomname, "graveyard")
-// graveyard
 	room_goto_new(graveyard_1)
 else if string_startswith(roomname, "farm")
-// farm
 	room_goto_new(farm_1)
 else if string_startswith(roomname, "ufo")
-// pinball
 	room_goto_new(ufo_1)
 else if string_startswith(roomname, "dragonlair")
-// dragon lair
 	room_goto_new(dragonlair_1)
 else if string_startswith(roomname, "strongcold")
-// strongcold
 	room_goto_new(strongcold_10)
 else if string_startswith(roomname, "beach")
-// beach
 	room_goto_new(beach_1)
 else if string_startswith(roomname, "forest")
-// forest
 	room_goto_new(forest_1)
 else if string_startswith(roomname, "kungfu")
-// kung fu
 	room_goto_new(kungfu_1)
 else if string_startswith(roomname, "war")
-// war
 	room_goto_new(war_1)
 else if string_startswith(roomname, "etb")
-// early test build
 	room_goto_new(etb_1)
 else if string_startswith(roomname, "ancient")
-// ancient tower
 	room_goto_new(ancient_1)
 else if string_startswith(roomname, "grinch")
-// grinch race
 	room_goto_new(grinch_1)
 else if string_startswith(roomname, "cotton")
-// cottontown
 	room_goto_new(cotton_1)
 else if string_startswith(roomname, "jawbreaker")
-// jawbreaker mines
 	room_goto_new(jawbreaker_1)
 else if room == custom_lvl_room
-// level editor level
 	room_restart();
 
 // reset time attack
@@ -114,4 +89,11 @@ if timeattack
 {
 	with obj_timeattack
 		alarm[1] = 60;
+}
+
+// create nice fadeout instead of just a cut into the level
+with instance_create(0, 0, obj_fadeout)
+{
+	fadealpha = 1;
+	fadein = true;
 }

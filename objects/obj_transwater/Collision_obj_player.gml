@@ -2,8 +2,9 @@ with other
 {
 	if state == states.cotton
 	{
-		if vsp > 0
-			vsp *= 3;
+		alarm[5] = 3
+		alarm[7] = 60
+		
 		state = states.normal;
 		
 		scr_soundeffect(sfx_hitenemy);

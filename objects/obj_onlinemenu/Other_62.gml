@@ -4,9 +4,11 @@ if ds_map_find_value(async_load, "id") == request
 	{
 		loading = false;
 		asyncresult = ds_map_find_value(async_load, "result");
+		
 		map = json_decode(asyncresult);
 		if map == -1
 		{
+			trace(asyncresult);
 			with obj_roomname
 			{
 				showtext = true;

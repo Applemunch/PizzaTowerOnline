@@ -11,6 +11,8 @@ function scr_getmidi(mus)
 		mus = mu_entrance_pc
 	else if mus == mu_susgolf
 		mus = mu_minigolf_pc
+	else if mus == mu_strongcoldsecret
+		mus = mu_dungeonsecret_pc
 	else
 	{
 		// replace the sound

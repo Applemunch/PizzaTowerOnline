@@ -64,3 +64,10 @@ else
 		targetDoor = "A";
 	room_goto(hub_room1);
 }
+
+// create nice fadeout
+with instance_create(0, 0, obj_fadeout)
+{
+	fadealpha = 1;
+	fadein = true;
+}

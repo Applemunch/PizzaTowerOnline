@@ -5,7 +5,10 @@
   },
   "solid": false,
   "visible": true,
-  "spriteMaskId": null,
+  "spriteMaskId": {
+    "name": "spr_watertransparent",
+    "path": "sprites/spr_watertransparent/spr_watertransparent.yy",
+  },
   "persistent": false,
   "parentObjectId": null,
   "physicsObject": false,

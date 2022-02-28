@@ -21,22 +21,23 @@ selarray = [
 	[obj_rancher, "RANCH SHOOTER", "Doesn't really shoot ranch though."],
 	[obj_swedishmonkey, "SWEDISH MONKEY", "Desperate to get a laugh."],
 	[obj_bigcheese, "BIG CHEESE", "Now with no scared animation!"],
-	[obj_pizzaball, "GREASEBALL", "Not actually an enemy."],
-	[obj_pizzaballOLD, "OLD GREASEBALL", "You see instead of actually using them as a golf ball,\nyou beat the shit out of them."],
-	[obj_spitcheese, "SPIT CHEESE", "What a creative name."],
-	[obj_trash, "TRASH PAN", "A sentient recycle bin that endlessly shoots cheese."],
+	[obj_pizzaball, "GREASEBALL", "Everything in this game has to be cheese.\nEven a golf ball."],
+	[obj_pizzaballOLD, "OLD GREASEBALL", "You see, instead of actually using them as a golf ball,\nyou beat the shit out of them."],
+	[obj_spitcheese, "SPIT CHEESE", "Makes sense."],
+	[obj_trash, "TRASH PAN", "Someone has a lot of spare cheese."],
 	[obj_peasanto, "PEASANTO", "Arson!"],
-	[obj_ninja, "NINJA SLICE", " "],
-	[obj_coolpineapple, "COOL PINEAPPLE", " "],
-	[obj_noisey, "NOISEY", " "],
-	[obj_indiancheese, "INDIAN CHEESE", " "],
-	[obj_fencer, "PENCER", ""],
+	[obj_ninja, "NINJA SLICE", "A pizza slice with their fulfilled dreams of becoming a ninja."],
+	[obj_coolpineapple, "COOL PINEAPPLE", "Where's the cool in getting parried?"],
+	[obj_noisey, "NOISEY", "Fortunately not as... noisey."],
+	[obj_indiancheese, "INDIAN CHEESE", "I shit you not this cheese right here comes straight from the indian lands."],
+	[obj_fencer, "PENCER", "Pizza fencer."],
 	[obj_sausageman, "SAUSAGE MAN", "Don't do drugs."],
-	[obj_weeniesquire, "WEENIE SQUIRE", " "],
-	[obj_thug_red, "SHRIMP THUG", " "],
+	["special1", "SMOKED SAUSAGE MAN", "What did I tell you?"],
+	[obj_weeniesquire, "WEENIE SQUIRE", "HOG RIDER"],
+	[obj_thug_red, "SHRIMP THUG", "Stereotypical street criminal, for the chinese themed level."],
 	[obj_gumslime, "GUMSLIME", "Totally useless. Cannon fodder."],
-	[obj_smurfknight, "SUGARY FORKNIGHT", "Forknight! Now with diabetes."]
-];
+	[obj_smurfknight, "SMURFKNIGHT", "Forknight! Now with diabetes."]
+]
 spr_idle = -1;
 
 sel[0] = 0;

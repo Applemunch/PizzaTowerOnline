@@ -1,4 +1,11 @@
 {
+  "ConfigValues": {
+    "debug": {"textureGroupId":"{\"name\":\"Default\",\"path\":\"texturegroups/Default\"}",},
+  },
+  "textureGroupId": {
+    "name": "Default",
+    "path": "texturegroups/Default",
+  },
   "bboxMode": 0,
   "collisionKind": 1,
   "type": 0,
@@ -16,10 +23,6 @@
   "For3D": false,
   "width": 175,
   "height": 296,
-  "textureGroupId": {
-    "name": "Default",
-    "path": "texturegroups/Default",
-  },
   "swatchColours": null,
   "gridX": 0,
   "gridY": 0,
@@ -94,7 +97,7 @@
   "nineSlice": null,
   "parent": {
     "name": "door",
-    "path": "folders/Sprites/players/pizzelle/object/door.yy",
+    "path": "folders/Sprites/sugary spire/door.yy",
   },
   "resourceVersion": "1.0",
   "name": "spr_exitgateclosing_ss",

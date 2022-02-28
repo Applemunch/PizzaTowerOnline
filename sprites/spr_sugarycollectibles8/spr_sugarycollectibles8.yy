@@ -1,6 +1,10 @@
 {
   "ConfigValues": {
-    "debug": {"textureGroupId":"{\"name\":\"tg_player\",\"path\":\"texturegroups/tg_player\"}",},
+    "debug": {"textureGroupId":"{\"name\":\"Default\",\"path\":\"texturegroups/Default\"}",},
+  },
+  "textureGroupId": {
+    "name": "Default",
+    "path": "texturegroups/Default",
   },
   "bboxMode": 0,
   "collisionKind": 1,
@@ -19,10 +23,6 @@
   "For3D": false,
   "width": 32,
   "height": 32,
-  "textureGroupId": {
-    "name": "Default",
-    "path": "texturegroups/Default",
-  },
   "swatchColours": null,
   "gridX": 0,
   "gridY": 0,
@@ -81,7 +81,7 @@
   "nineSlice": null,
   "parent": {
     "name": "toppings",
-    "path": "folders/Sprites/players/pizzelle/object/collectibles/toppings.yy",
+    "path": "folders/Sprites/sugary spire/collectibles/toppings.yy",
   },
   "resourceVersion": "1.0",
   "name": "spr_sugarycollectibles8",

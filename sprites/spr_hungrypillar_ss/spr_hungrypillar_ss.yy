@@ -1,4 +1,11 @@
 {
+  "ConfigValues": {
+    "debug": {"textureGroupId":"{\"name\":\"Default\",\"path\":\"texturegroups/Default\"}",},
+  },
+  "textureGroupId": {
+    "name": "Default",
+    "path": "texturegroups/Default",
+  },
   "bboxMode": 0,
   "collisionKind": 1,
   "type": 0,
@@ -16,10 +23,6 @@
   "For3D": false,
   "width": 224,
   "height": 224,
-  "textureGroupId": {
-    "name": "Default",
-    "path": "texturegroups/Default",
-  },
   "swatchColours": null,
   "gridX": 0,
   "gridY": 0,
@@ -114,7 +117,7 @@
   "nineSlice": null,
   "parent": {
     "name": "john",
-    "path": "folders/Sprites/players/pizzelle/object/john.yy",
+    "path": "folders/Sprites/sugary spire/john.yy",
   },
   "resourceVersion": "1.0",
   "name": "spr_hungrypillar_ss",

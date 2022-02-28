@@ -28,7 +28,7 @@ if !oldhallway
 			if door == other.targetDoor doortarget = id;
 	}
 	
-	if doortarget != -1 && instance_exists(doortarget)
+	if instance_exists(doortarget)
 	{
 		if hallway
 			x = doortarget.x + (hallwaydirection * 100);
@@ -51,7 +51,7 @@ if !oldhallway
 		x = obj_checkpoint.x;
 		y = obj_checkpoint.y - 46;
 	}
-		
+	
 	if is_real(targetDoor)
 	{
 		if !audio_is_playing(global.music)
@@ -62,7 +62,7 @@ if !oldhallway
 		
 		with obj_teleporter
 		{
-			if trigger = other.targetDoor && start = 0 
+			if trigger == other.targetDoor && !start
 			{
 				player.x = x
 				player.y = y - 14

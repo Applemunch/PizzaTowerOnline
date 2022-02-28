@@ -55,7 +55,7 @@ if instance_exists(obj_gms) && gms_info_isloggedin()
 	
 	if global.panic
 		gms_self_set("panic", 1);
-	else if global.snickrematch
+	else if global.snickchallenge && global.snickrematch
 		gms_self_set("panic", 3);
 	else if global.snickchallenge
 		gms_self_set("panic", 2);

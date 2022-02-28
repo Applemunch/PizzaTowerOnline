@@ -1,6 +1,10 @@
 {
   "ConfigValues": {
-    "debug": {"textureGroupId":"{\"name\":\"tg_player\",\"path\":\"texturegroups/tg_player\"}",},
+    "debug": {"textureGroupId":"{\"name\":\"Default\",\"path\":\"texturegroups/Default\"}",},
+  },
+  "textureGroupId": {
+    "name": "Default",
+    "path": "texturegroups/Default",
   },
   "bboxMode": 0,
   "collisionKind": 1,
@@ -19,10 +23,6 @@
   "For3D": false,
   "width": 96,
   "height": 64,
-  "textureGroupId": {
-    "name": "Default",
-    "path": "texturegroups/Default",
-  },
   "swatchColours": null,
   "gridX": 0,
   "gridY": 0,
@@ -133,7 +133,7 @@
   "nineSlice": null,
   "parent": {
     "name": "collectibles",
-    "path": "folders/Sprites/players/pizzelle/object/collectibles.yy",
+    "path": "folders/Sprites/sugary spire/collectibles.yy",
   },
   "resourceVersion": "1.0",
   "name": "spr_pizzaboxopen_ss",

@@ -15,7 +15,7 @@ function scr_player_mach1()
 	move = key_left + key_right;
 
 	landAnim = false
-	if scr_solid(x+xscale,y) && (!place_meeting(x+xscale,y,obj_slope) or scr_solidwall(x, y - 1))
+	if scr_solid(x + xscale, y) && (!place_meeting(x + xscale, y, obj_slope) or scr_solidwall(x, y - 1))
 	{
 	    mach2 = 0 
 	    state = states.normal
@@ -47,23 +47,18 @@ function scr_player_mach1()
 			movespeed += 0.075
 		else
 		{
-
 			state = states.mach2
-			with instance_create(x,y,obj_jumpdust)
-			image_xscale = other.xscale
+			with instance_create(x, y, obj_jumpdust)
+				image_xscale = other.xscale
 		}
 	}
 
 	//Fall off
-	if !(grounded) && sprite_index != spr_airdash1 
+	if !grounded && sprite_index != spr_airdash1 
 		sprite_index = spr_airdash2
-
-	if sprite_index = spr_airdash1 && floor(image_index) = image_number - 1
+	if sprite_index == spr_airdash1 && floor(image_index) == image_number - 1
 		sprite_index = spr_airdash2
-
-
-
-
+	
 	//Back to other states
 	//Normal
 	if (!key_attack && character != "S") or (character == "S" && move == 0)
@@ -96,71 +91,53 @@ function scr_player_mach1()
 
 
 	//Effects
-
-	if !(instance_exists(dashcloudid)) && grounded
+	if !instance_exists(dashcloudid) && grounded
 	with instance_create(x,y,obj_dashcloud)
 	{
 		image_xscale = other.xscale
-	   other.dashcloudid = id
-	
+		other.dashcloudid = id
 	}
-
-		//Down slam
-		/*
-	if key_slap2 && key_down
-	{
-	image_index = 0
-		state = states.freefallprep
-		if character = "P"
-		vsp = -5
-		else
-		vsp = -7
-	}
-	*/
-
 
 	if grounded && sprite_index != spr_mach1 && vsp > 0
 	{
-	sprite_index = spr_mach1
-	image_index = 0
+		sprite_index = spr_mach1
+		image_index = 0
 	}
-
-
+	
 	//Jump
 	if key_jump && grounded 
 	{
-	scr_soundeffect(sfx_jump)
-	sprite_index = spr_airdash1
-	dir = xscale
-	momentum = true
-	vsp = -11
-
-
-	jumpAnim = true
-	image_index = 0
+		scr_soundeffect(sfx_jump)
+		sprite_index = spr_airdash1
+		dir = xscale
+		momentum = true
+		vsp = -11
+		
+		jumpAnim = true
+		image_index = 0
 	}
 
 	//Snick peelout
-	if key_attack && !scr_solid(x+xscale,y)  && character = "S" && grounded
+	if key_attack && !scr_solid(x + xscale, y) && character == "S" && grounded
 	{
 		state = states.handstandjump
 		movespeed = 0
 	}
 		
 	//Vigilante revolver
-	if key_slap2 && character = "V"
+	if key_slap2 && character == "V"
 	{
 		vsp = -5
 		state = states.revolver	
 		image_index = 0
 		sprite_index = spr_playerV_airrevolver
 		image_index = 0
-		instance_create(x+image_xscale*20,y+20,obj_shotgunbullet)
+		instance_create(x + xscale * 20, y + 20, obj_shotgunbullet)
 		scr_soundeffect(sfx_killingblow)
 	}
 	
 	//Vigilante Dynamite
-	if key_shoot2 && character = "V" && !instance_exists(obj_dynamite)
+	if key_shoot2 && character == "V" && !instance_exists(obj_dynamite)
 	{
 		vsp = -5
 

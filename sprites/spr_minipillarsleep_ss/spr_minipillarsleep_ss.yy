@@ -1,6 +1,10 @@
 {
   "ConfigValues": {
-    "debug": {"textureGroupId":"{\"name\":\"tg_player\",\"path\":\"texturegroups/tg_player\"}",},
+    "debug": {"textureGroupId":"{\"name\":\"Default\",\"path\":\"texturegroups/Default\"}",},
+  },
+  "textureGroupId": {
+    "name": "Default",
+    "path": "texturegroups/Default",
   },
   "bboxMode": 0,
   "collisionKind": 1,
@@ -19,17 +23,13 @@
   "For3D": false,
   "width": 32,
   "height": 32,
-  "textureGroupId": {
-    "name": "Default",
-    "path": "texturegroups/Default",
-  },
   "swatchColours": null,
   "gridX": 0,
   "gridY": 0,
   "frames": [
-    {"compositeImage":{"FrameId":{"name":"3ce648e1-da75-432e-a015-13eecaf6758d","path":"sprites/spr_minipillarsleep_ss/spr_minipillarsleep_ss.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"3ce648e1-da75-432e-a015-13eecaf6758d","path":"sprites/spr_minipillarsleep_ss/spr_minipillarsleep_ss.yy",},"LayerId":{"name":"c2fab52e-8b8b-4758-a98c-6c35571e691c","path":"sprites/spr_minipillarsleep_ss/spr_minipillarsleep_ss.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"spr_minipillarsleep_ss","path":"sprites/spr_minipillarsleep_ss/spr_minipillarsleep_ss.yy",},"resourceVersion":"1.0","name":"3ce648e1-da75-432e-a015-13eecaf6758d","tags":[],"resourceType":"GMSpriteFrame",},
+    {"compositeImage":{"FrameId":{"name":"0475fccc-d457-48ae-a6db-616d85df0e08","path":"sprites/spr_minipillarsleep_ss/spr_minipillarsleep_ss.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
+        {"FrameId":{"name":"0475fccc-d457-48ae-a6db-616d85df0e08","path":"sprites/spr_minipillarsleep_ss/spr_minipillarsleep_ss.yy",},"LayerId":{"name":"cfbf2a93-fa5e-44a1-bf29-9e97824d7d24","path":"sprites/spr_minipillarsleep_ss/spr_minipillarsleep_ss.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
+      ],"parent":{"name":"spr_minipillarsleep_ss","path":"sprites/spr_minipillarsleep_ss/spr_minipillarsleep_ss.yy",},"resourceVersion":"1.0","name":"0475fccc-d457-48ae-a6db-616d85df0e08","tags":[],"resourceType":"GMSpriteFrame",},
   ],
   "sequence": {
     "spriteId": {"name":"spr_minipillarsleep_ss","path":"sprites/spr_minipillarsleep_ss/spr_minipillarsleep_ss.yy",},
@@ -44,7 +44,7 @@
     "moments": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore<MomentsEventKeyframe>",},
     "tracks": [
       {"name":"frames","spriteId":null,"keyframes":{"Keyframes":[
-            {"id":"2e3e7d21-6ca2-451e-a865-c1d65d3d6afa","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"3ce648e1-da75-432e-a015-13eecaf6758d","path":"sprites/spr_minipillarsleep_ss/spr_minipillarsleep_ss.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
+            {"id":"524c19ee-502c-4c3f-b731-8d7f1368eb78","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"0475fccc-d457-48ae-a6db-616d85df0e08","path":"sprites/spr_minipillarsleep_ss/spr_minipillarsleep_ss.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
           ],"resourceVersion":"1.0","resourceType":"KeyframeStore<SpriteFrameKeyframe>",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"isCreationTrack":false,"resourceVersion":"1.0","tags":[],"resourceType":"GMSpriteFramesTrack","modifiers":[],},
     ],
     "visibleRange": null,
@@ -68,12 +68,12 @@
     "resourceType": "GMSequence",
   },
   "layers": [
-    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"c2fab52e-8b8b-4758-a98c-6c35571e691c","tags":[],"resourceType":"GMImageLayer",},
+    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"cfbf2a93-fa5e-44a1-bf29-9e97824d7d24","tags":[],"resourceType":"GMImageLayer",},
   ],
   "nineSlice": null,
   "parent": {
     "name": "minipillar",
-    "path": "folders/Sprites/players/pizzelle/object/minipillar.yy",
+    "path": "folders/Sprites/sugary spire/minipillar.yy",
   },
   "resourceVersion": "1.0",
   "name": "spr_minipillarsleep_ss",

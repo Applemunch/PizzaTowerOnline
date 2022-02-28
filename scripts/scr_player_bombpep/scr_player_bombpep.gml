@@ -1,7 +1,7 @@
 function scr_player_bombpep()
 {
 	alarm[8] = 60
-
+	
 	//Input buffer jumping
 	if key_jump
 		input_buffer_jump = 0
@@ -42,7 +42,7 @@ function scr_player_bombpep()
 	if bombpeptimer < 20 && bombpeptimer > 0
 		sprite_index = spr_bombpeprunabouttoexplode
 
-	if sprite_index == spr_bombpepend && floor(image_index) = image_number -1
+	if sprite_index == spr_bombpepend && floor(image_index) >= image_number - 1
 	{
 		alarm[5] = 2
 		alarm[7] = 60

@@ -13,5 +13,10 @@ if room != custom_lvl_room
 	{
 		spr_woke = spr_minipillarwoke_ss
 		spr_sleep = spr_minipillarsleep_ss
+		if global.gameplay == 0
+		{
+			spr_woke = spr_minipillarwokeOLD_ss
+			spr_sleep = spr_minipillarsleepOLD_ss
+		}
 	}
 }

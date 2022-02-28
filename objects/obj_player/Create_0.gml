@@ -12,7 +12,9 @@ if !variable_global_exists("saveroom")
 	global.baddietomb = ds_list_create();
 }
 
-grav = 0.5;
+basegrav = 0.5;
+grav = basegrav;
+
 gravmult = 1;
 hsp = 0;
 vsp = 0;

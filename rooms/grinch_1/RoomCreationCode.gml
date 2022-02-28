@@ -1,6 +1,8 @@
 global.panic = true;
-global.minutes = 4;
+global.minutes = 2;
 global.seconds = 59;
+if global.modifier == mods.no_toppings
+	global.minutes = 4;
 global.wave = 0;
 global.maxwave = (global.minutes * 60 + global.seconds) * 60;
 

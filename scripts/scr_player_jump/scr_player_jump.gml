@@ -26,20 +26,28 @@ function scr_player_jump()
 	}
 	
 	//Movespeed
+	var _acc = 0.5;
+	var _msp = 6;
+	if scr_checkskin(checkskin.n_hardoween)
+	{
+		_acc = 0.25;
+		_msp = 8;
+	}
+	
 	if move != 0 
 	{
-		if movespeed < 6
-			movespeed += 0.5
-		else if floor(movespeed) == 6
-			movespeed = 6
+		if movespeed < _msp
+			movespeed += _acc
+		else if floor(movespeed) == _msp
+			movespeed = _msp
 		
 		if scr_solidwall(x + xscale, y) && move == xscale
 			movespeed = 0
 	}
 	else
 		movespeed = 0
-
-	if movespeed > 6
+	
+	if movespeed > _msp
 		movespeed -= 0.1
 
 	//Turn
@@ -100,7 +108,7 @@ function scr_player_jump()
 	        vsp = 6;
 	    if !key_jump2
 	    {
-	        grav = 0.5;
+	        grav = basegrav;
 	        sprite_index = spr_fall;
 	    }
 	}
@@ -114,13 +122,14 @@ function scr_player_jump()
 	        scr_soundeffect(sfx_woosh);
 	        sprite_index = spr_pmortjump;
 	        image_index = 0;
-	        jumpstop = 0;
+	        jumpstop = false;
 	        grav = 0.25;
 	        mort = 1;
+			doublejump = false;
 	    }
 	}
 	if sprite_index != spr_pmortjump
-		grav = 0.5;
+		grav = basegrav;
 
 	//Input jumping
 	if (grounded && (input_buffer_jump < 8) && !key_down && !key_attack && vsp > 0) && !(sprite_index = spr_facestomp or sprite_index = spr_freefall)
@@ -179,7 +188,7 @@ function scr_player_jump()
 		jumpstop = false
 
 		freefallstart = 0
-		grav = 0.5;
+		grav = basegrav;
 	}
 	
 	//Dynamite jump effect
@@ -277,7 +286,7 @@ function scr_player_jump()
 			movespeed = 6
 			vsp = -6
 		}
-		grav = 0.5;
+		grav = basegrav;
 	}
 
 	//Manual Freefall
@@ -322,7 +331,7 @@ function scr_player_jump()
 				}
 			}
 		}
-		grav = 0.5;
+		grav = basegrav;
 	}
 	
 	image_speed = 0.3;
@@ -368,7 +377,7 @@ function scr_player_jump()
 		else
 			sprite_index = spr_bodyslamland
 		state = states.freefallland
-		grav = 0.5;
+		grav = basegrav;
 	}
 
 
@@ -411,7 +420,7 @@ function scr_player_jump()
 			instance_create(x, y, obj_highjumpcloud2);
 			instance_create(x, y, obj_swingdinghitbox);
 			
-			grav = 0.5;
+			grav = basegrav;
 		}
 		else if !suplexmove
 		{
@@ -439,7 +448,7 @@ function scr_player_jump()
 		
 			if global.gameplay != 0
 				instance_create(x, y, obj_crazyrunothereffect)
-			grav = 0.5;
+			grav = basegrav;
 		}
 	}
 
@@ -476,7 +485,7 @@ function scr_player_jump()
 				image_index = 0;
 				instance_create(x, y, obj_swingdinghitbox);
 						
-				grav = 0.5;
+				grav = basegrav;
 			}
 		}
 		else
@@ -555,7 +564,7 @@ function scr_player_jump()
 	{
 		if shoot_buffer <= 0 && key_shoot2
 		{
-			grav = 0.5;
+			grav = basegrav;
 			if global.gameplay == 0
 			{
 				// shoot in old gameplay
@@ -627,9 +636,8 @@ function scr_player_jump()
 			hsp = 0
 			vsp = 0
 			
-			grav = 0.5;
+			grav = basegrav;
 		}
-	
 	}
 
 
@@ -646,7 +654,7 @@ function scr_player_jump()
 			vsp = -7
 			image_xscale = other.xscale
 		}
-		grav = 0.5;
+		grav = basegrav;
 	}
 	
 	if !key_attack or move != xscale
@@ -671,7 +679,7 @@ function scr_player_jump()
 			state = states.mach3
 			movespeed = 20
 		}
-		grav = 0.5;
+		grav = basegrav;
 	}
 
 	//Vigilante Boots 
@@ -691,7 +699,7 @@ function scr_player_jump()
 		sprite_index = spr_playerN_pogostart
 		image_index = 0
 		state = states.pogo
-		grav = 0.5;
+		grav = basegrav;
 	}
 
 	if floor(image_index) >= image_number -1
@@ -707,7 +715,7 @@ function scr_player_jump()
 		image_index = 0
 		instance_create(x + xscale * 20, y + 20, obj_shotgunbullet)
 		scr_soundeffect(sfx_killingblow)
-		grav = 0.5;
+		grav = basegrav;
 	}
 	
 	//Taunt

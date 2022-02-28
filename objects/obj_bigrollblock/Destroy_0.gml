@@ -7,7 +7,7 @@ if room == custom_lvl_room {
 
 if ds_list_find_index(global.saveroom, id) = -1
 {
-	scr_secretbigdebris();
+	scr_secretbigdebris(true, $00C058);
 	
 	if audio_is_playing(sfx_breakblock1) or audio_is_playing(sfx_breakblock2)
 	{

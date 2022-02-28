@@ -25,5 +25,5 @@ if basetext
 	draw_set_font(titlefont);
 	draw_text((960 / 2) + random_range(-1, 1), 540 - 100, palname);
 	draw_set_font(descfont);
-	draw_text(960 / 2, 540 - 64, paldesc);
+	draw_text_ext(960 / 2, 540 - 64, paldesc, 16, 960 - 32);
 }

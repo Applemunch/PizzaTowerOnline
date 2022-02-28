@@ -9,9 +9,11 @@ con = 0;
 
 audio_stop_sound(global.music);
 alarm[0] = 5;
-with obj_player1
+with obj_player
 {
 	x = -500;
+	y = -500;
+	doorx = x;
 	state = states.titlescreen;
 }
 

@@ -1,7 +1,6 @@
-If you have any questions ask loyjqz#7683 on Discord
+If you have any questions ask Loypoll#7683 on Discord
 
 This is a guide for the console, which is only usable in offline mode
-(NEW REMADE VERSION OF THE CONSOLE COMING SOON.)
 
 * The console works on the object obj_wcmod
 * The Pizza Tower font doesn't display all letters so you might make typos (shows with a red question mark)
@@ -52,7 +51,7 @@ This is a guide for the console, which is only usable in offline mode
 
 	create <object> (<x> <y>) - Spawns an object. If you don't provide the x and y you will have to create the object with your mouse
 		(Left click to create the object, CTRL + hold left click to mass create and right click to exit out)
-	instancelist - Lists all instances (objects) in the room in a very messy way
+	instancelist - Lists all instances (objects) in the room
 
 	state <state> - Sets the player's state
 	char <character> (<sprites>) - Changes your character to the inputted string (P, N, V, S, etc) and optionally sets the sprites to a different character's
@@ -75,7 +74,7 @@ This is a guide for the console, which is only usable in offline mode
 	script <object> <which> <script> (<arg0>, ... , <arg9>) - Executes a script on an object (can use up to 10 arguments) be aware that if a script requieres an argument and you miss it the game could crash
 
 	debugview (<object> <which>) - Toggle debug view and optionally debug an object
-	While debug view is on press PAGE UP or PAGE DOWN to scroll the variable list.
+	While debug view is on with an object selected press PAGE UP or PAGE DOWN to scroll the variable list.
 
 	checkvar (<object> <which> / global) <variable> - Displays the current value of the inputted variable
 

@@ -1,4 +1,4 @@
-//
+// language
 function lang_string(str)
 {
 	var ret = global.langmap[? str];

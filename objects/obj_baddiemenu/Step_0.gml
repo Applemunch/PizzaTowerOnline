@@ -41,7 +41,11 @@ if refresh <= 0 && content != noone
 	image_speed = 0.35
 	if floor(image_index) == 5
 	{
-		with instance_create(x, y - 20, content)
+		var _c = content;
+		if _c == "special1"
+			_c = obj_sausageman;
+		
+		with instance_create(x, y - 20, _c)
 		{
 			image_xscale = other.image_xscale;
 			state = states.stun
@@ -49,6 +53,9 @@ if refresh <= 0 && content != noone
 			vsp = -5
 			other.baddieid = id
 			important = true
+			
+			if other.content == "special1"
+				cigar = true;
 		}
 		
 		refresh = 100

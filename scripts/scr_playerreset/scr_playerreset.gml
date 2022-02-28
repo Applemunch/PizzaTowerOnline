@@ -171,7 +171,9 @@ function scr_playerreset()
 		alarm[8] = -1
 		alarm[9] = -1
 		alarm[10] = -1
-		grav = 0.5;
+		
+		grav = basegrav;
+		
 		gravmult = 1;
 		hsp = 0;
 		vsp = 0;

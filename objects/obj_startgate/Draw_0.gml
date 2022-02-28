@@ -71,12 +71,12 @@ if drawing
 	var scory = -90;
 	
 	// TOPPINS (and secret)
-	if level != "snickchallenge" && level != "snickrematch" && level != "eatery" && level != "dragonlair" && level != ""
+	if level != "snickchallenge" && level != "snickrematch" && level != "eatery" && level != "dragonlair" && level != "golf" && level != ""
 	{
 		scory = -160; // raise score number to fit these
 		
 		// draw secrets
-		if level != "freezer" && level != "sewer" && level != "factory" && level != "golf"
+		if level != "freezer" && level != "sewer" && level != "factory"
 		&& global.gameplay == 0
 		{
 			if sprite_index == spr_entrancegate && obj_player1.state == states.normal

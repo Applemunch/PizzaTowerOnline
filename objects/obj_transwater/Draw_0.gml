@@ -1,7 +1,14 @@
-if scr_culling()
+if image_xscale == 0 or image_yscale == 0
+or scr_culling()
 	exit;
 
+var drawdir = sign(image_yscale);
 for (var i = 0; i < abs(image_xscale); i++)
-    draw_sprite_ext(spr_water, -1, x + (32 * i), y, 1, 1, image_angle, image_blend, 0.5)
+    draw_sprite_ext(sprite_index, -1, x + (32 * i) * sign(image_xscale), y, 1, drawdir, image_angle, image_blend, image_alpha);
 if abs(image_yscale) != 1
-	draw_sprite_stretched_ext(spr_water2, -1, x, y + 32, sprite_width, sprite_height - 32, image_blend, 0.5);
+{
+	draw_set_colour(col);
+	draw_set_alpha(image_alpha);
+	draw_rectangle(x, y + 32 * drawdir, x + sprite_width - 1, y + sprite_height - sprite_yoffset - 1, false);
+	draw_set_alpha(1);
+}

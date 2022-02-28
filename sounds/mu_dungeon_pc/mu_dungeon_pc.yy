@@ -15,7 +15,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "mu_dungeon_pc.wav",
-  "duration": 212.061569,
+  "duration": 212.129272,
   "parent": {
     "name": "pizza castle",
     "path": "folders/Sounds/pizza castle.yy",

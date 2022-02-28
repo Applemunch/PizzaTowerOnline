@@ -14,3 +14,4 @@ depth = -5
 unpickable = false
 
 stuntouchbuffer = 0
+grabiconimg = 0

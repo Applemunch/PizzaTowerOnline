@@ -61,7 +61,7 @@ function scr_hurtplayer(argument0)
 		else if state == states.boxxedpep
 		{
 			scr_soundeffect(sfx_loseknight)
-			grav = 0.5
+			grav = basegrav
 			
 			with instance_create(x,y,obj_boxxeddebris)
 				image_index = 0;
@@ -95,7 +95,7 @@ function scr_hurtplayer(argument0)
 		else if state == states.cheeseball
 		{
 			scr_soundeffect(sfx_loseknight)
-			grav = 0.5
+			grav = basegrav
 		
 			repeat 9
 				instance_create(x, y, obj_slimedebris) 
@@ -201,16 +201,16 @@ function scr_hurtplayer(argument0)
 				global.style -= 25;
 			}
 			
-			if character = "V"
+			if character == "V"
 				global.playerhealth -= 25
 				
 			if state == states.mort
 			{
-				with instance_create(x,y,obj_sausageman_dead)
+				with instance_create(x, y, obj_sausageman_dead)
 					sprite_index = spr_mortdead
-				repeat (6) with instance_create(x,y,obj_debris)
+				repeat 6 with instance_create(x, y, obj_debris)
 					sprite_index = spr_feather
-				grav = 0.5
+				grav = basegrav
 			}
 			
 			//scr_soundeffect(sfx_oh, sfx_ohman,sfx_hurt1,sfx_hurt2,sfx_hurt3, sfx_mammamia)

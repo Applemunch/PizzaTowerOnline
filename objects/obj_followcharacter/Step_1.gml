@@ -31,7 +31,7 @@ if array_length(followqueue) > LAG_STEPS // lag steps are 20
 	yy = followqueue[1];
 	array_delete(followqueue, 0, 2);
 }
-else if scr_stylecheck(2) && array_length(followqueue) >= 2
+else if array_length(followqueue) >= 2
 {
 	if is_undefined(lerpx) or is_undefined(lerpy)
 	{

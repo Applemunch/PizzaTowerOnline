@@ -12,7 +12,7 @@ function scr_player_grab()
 		grabbedby = 1;
 	}
 	
-	grav = 0.5
+	grav = basegrav
 	move = key_left + key_right;
 	
 	if grounded

@@ -1,3 +1,4 @@
+/// @description prelogin
 audio_stop_sound(global.music);
 if global.musicvolume > 0
 {

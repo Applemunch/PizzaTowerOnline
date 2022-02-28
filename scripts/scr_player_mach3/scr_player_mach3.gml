@@ -44,7 +44,11 @@ function scr_player_mach3()
 			if move == xscale
 			{
 				if movespeed < 24
-					movespeed += 0.1
+				{
+					if scr_checkskin(checkskin.n_hardoween)
+						movespeed += 0.1;
+					movespeed += 0.1;
+				}
 				
 				if sprite_index == spr_crazyrun && global.gameplay != 0
 				{
@@ -57,7 +61,7 @@ function scr_player_mach3()
 						}
 					}
 					
-					if !place_meeting(x, y + 1, obj_water)
+					if !place_meeting(x, y + 1, obj_water) && !place_meeting(x, y + 1, obj_transwater)
 					{
 						with instance_create(x, y, obj_dashcloud)
 						{
@@ -303,24 +307,26 @@ function scr_player_mach3()
 			if key_down  && fightball = false
 				vsp = 3
 
-			if movespeed < 24 && move = xscale
+			if movespeed < 24 && move == xscale
 			{
 				if sprite_index != spr_snick_tumble
 					movespeed += 0.1
 
-				if !(instance_exists(crazyruneffectid)) && grounded
+				if !instance_exists(crazyruneffectid) && grounded
 				{
-					with instance_create(x,y,obj_crazyruneffect)
+					with instance_create(x, y, obj_crazyruneffect)
 					{
 						playerid = other.object_index	
 						other.crazyruneffectid = id
 					}
 					
-					if sprite_index = spr_crazyrun
-					with instance_create(x,y,obj_dashcloud) 
+					if sprite_index == spr_crazyrun
 					{
-						image_xscale = other.xscale
-						sprite_index = spr_flamecloud
+						with instance_create(x, y, obj_dashcloud) 
+						{
+							image_xscale = other.xscale
+							sprite_index = spr_flamecloud
+						}
 					}
 				}
 			}
@@ -443,26 +449,28 @@ function scr_player_mach3()
 	#region vigilante
 	else
 	{
-		if movespeed < 24 && move = xscale
+		if move == xscale
 		{
-			if character = "P"
-				movespeed += 0.1
-			else
+			if movespeed < 24
 				movespeed += 0.05
-
-			if !(instance_exists(crazyruneffectid)) && grounded
+			
+			if sprite_index == spr_crazyrun && global.gameplay != 0
 			{
-				with instance_create(x,y,obj_crazyruneffect)
+				if !instance_exists(crazyruneffectid) && grounded
 				{
-					playerid = other.object_index
-					other.crazyruneffectid = id
+					with instance_create(x, y, obj_crazyruneffect)
+					{
+						playerid = other.object_index
+						other.crazyruneffectid = id
+					}
 				}
-				
-				if sprite_index == spr_crazyrun
-				with instance_create(x,y,obj_dashcloud) 
+				if !place_meeting(x, y + 1, obj_water) && !place_meeting(x, y + 1, obj_transwater)
 				{
-					image_xscale = other.xscale
-					sprite_index = spr_flamecloud
+					with instance_create(x, y, obj_dashcloud)
+					{
+						image_xscale = other.xscale
+						sprite_index = spr_flamecloud
+					}
 				}
 			}
 		}
@@ -492,7 +500,7 @@ function scr_player_mach3()
 			scr_soundeffect(sfx_jump)
 			if sprite_index != spr_fightball
 			{
-				image_index =0
+				image_index = 0
 				sprite_index = spr_mach3jump
 			}
 
@@ -732,18 +740,6 @@ function scr_player_mach3()
 		if place_meeting(x, y + 1, obj_water) or place_meeting(x, y + 1, obj_transwater)
 			dashcloud.sprite_index = spr_watereffect;
 	}
-
-	/*
-	//Shoot Gun
-	if key_shoot
-	{
-	if grounded
-	vsp -= 5
-	sprite_index = spr_player_pistolair
-	image_index = 0
-	state = states.pistol
-	}
-	*/
 
 	// charge effect
 	if !instance_exists(chargeeffectid)

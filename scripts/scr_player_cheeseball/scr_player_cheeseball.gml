@@ -8,7 +8,7 @@ function scr_player_cheeseball()
 	&& !place_meeting(x + sign(hsp), y, obj_destructibles)
 	{
 	    scr_soundeffect(sfx_loseknight)
-	    grav = 0.5
+	    grav = basegrav
 		repeat(8)
 			instance_create(x,y,obj_slimedebris)
 		

@@ -29,7 +29,7 @@ function scr_player_Sjump()
 	if character = "V" && image_index > 3 && !springsjump
 		vsp = -11
 	
-	if sprite_index = spr_player_supersidejump
+	if sprite_index == spr_player_supersidejump
 	{
 		if a < 25
 			a ++
@@ -44,8 +44,8 @@ function scr_player_Sjump()
 	if (scr_solid(x,y-1)) && !place_meeting(x,y-1,obj_destructibles) && ((springsjump && !place_meeting(x,y-1,obj_metalblock)) or !springsjump)
 	{
 		springsjump = false;
+		a = 0;
 		
-		a = 0
 		if sprite_index = spr_player_supersidejump
 			sprite_index = spr_player_supersidejumpland
         

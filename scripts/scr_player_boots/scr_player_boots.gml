@@ -151,22 +151,17 @@ function scr_player_boots() {
 
 
 	//Boots out anim
-	if floor(image_index) = image_number -1 && sprite_index = spr_playerV_bootsout 
-	{
+	if floor(image_index) >= image_number -1 && sprite_index == spr_playerV_bootsout 
 		sprite_index = spr_playerV_bootsidle
-	}
 
 	//Dive kick
 	if key_down && movespeed > 12
 	{
-
-	image_index = 0
-		grav = 0.5
-	sprite_index = spr_playerV_divekickstart
-	machhitAnim = false
-	state = states.crouchslide
-
-
+		image_index = 0
+		grav = basegrav;
+		sprite_index = spr_playerV_divekickstart
+		machhitAnim = false
+		state = states.crouchslide
 	}
 
 

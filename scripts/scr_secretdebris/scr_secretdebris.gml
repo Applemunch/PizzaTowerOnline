@@ -1,9 +1,5 @@
-function scr_secretdebris()
+function scr_secretdebris(debris = true, blend = c_white)
 {
-	var debris = true;
-	if argument_count > 0
-		debris = argument[0];
-	
 	var lay_id = get_layer("Tiles_1");
 	if lay_id == -1
 	{
@@ -56,6 +52,11 @@ function scr_secretdebris()
 			}
 			else with instance_create(x + sprite_width / 2, y + sprite_height / 2, obj_debris)
 			{
+				if blend != c_white
+				{
+					sprite_index = spr_secretdebris;
+					image_blend = blend;
+				}
 				image_xscale = abs(other.image_xscale);
 				image_yscale = abs(other.image_yscale);
 			}
@@ -63,12 +64,8 @@ function scr_secretdebris()
 	}
 }
 
-function scr_secretbigdebris()
+function scr_secretbigdebris(debris = true, blend = c_white)
 {
-	var debris = true;
-	if argument_count > 0
-		debris = argument[0];
-	
 	var lay_id = get_layer("Tiles_1");
 	var lay_id2 = get_layer("Tiles_2");
 	
@@ -104,10 +101,16 @@ function scr_secretbigdebris()
 				{
 					image_xscale = abs(other.image_xscale)
 					image_yscale = abs(other.image_yscale)
-				
+					
 					sprite_index = spr_bigdebris
 					if check_sugary()
 						sprite_index = spr_bigdebris_ss
+					
+					if blend != c_white
+					{
+						sprite_index = spr_secretbigdebris;
+						image_blend = blend;
+					}
 				}
 		
 			if data2 != 0
@@ -127,6 +130,12 @@ function scr_secretbigdebris()
 					sprite_index = spr_bigdebris
 					if check_sugary()
 						sprite_index = spr_bigdebris_ss
+					
+					if blend != c_white
+					{
+						sprite_index = spr_secretbigdebris;
+						image_blend = blend;
+					}
 				}
 	
 			if data3 != 0
@@ -146,6 +155,12 @@ function scr_secretbigdebris()
 					sprite_index = spr_bigdebris
 					if check_sugary()
 						sprite_index = spr_bigdebris_ss
+					
+					if blend != c_white
+					{
+						sprite_index = spr_secretbigdebris;
+						image_blend = blend;
+					}
 				}
 	
 			if data4 != 0
@@ -165,6 +180,12 @@ function scr_secretbigdebris()
 					sprite_index = spr_bigdebris
 					if check_sugary()
 						sprite_index = spr_bigdebris_ss
+					
+					if blend != c_white
+					{
+						sprite_index = spr_secretbigdebris;
+						image_blend = blend;
+					}
 				}
 		}
 	}
@@ -204,6 +225,12 @@ function scr_secretbigdebris()
 					sprite_index = spr_bigdebris
 					if check_sugary()
 						sprite_index = spr_bigdebris_ss
+					
+					if blend != c_white
+					{
+						sprite_index = spr_secretbigdebris;
+						image_blend = blend;
+					}
 				}
 		
 			if data2_ != 0
@@ -223,6 +250,12 @@ function scr_secretbigdebris()
 					sprite_index = spr_bigdebris
 					if check_sugary()
 						sprite_index = spr_bigdebris_ss
+					
+					if blend != c_white
+					{
+						sprite_index = spr_secretbigdebris;
+						image_blend = blend;
+					}
 				}
 	
 			if data3_ != 0
@@ -242,6 +275,12 @@ function scr_secretbigdebris()
 					sprite_index = spr_bigdebris
 					if check_sugary()
 						sprite_index = spr_bigdebris_ss
+					
+					if blend != c_white
+					{
+						sprite_index = spr_secretbigdebris;
+						image_blend = blend;
+					}
 				}
 	
 			if data4_ != 0
@@ -261,6 +300,12 @@ function scr_secretbigdebris()
 					sprite_index = spr_bigdebris
 					if check_sugary()
 						sprite_index = spr_bigdebris_ss
+					
+					if blend != c_white
+					{
+						sprite_index = spr_secretbigdebris;
+						image_blend = blend;
+					}
 				}
 		}
 	}

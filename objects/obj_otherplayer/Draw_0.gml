@@ -4,8 +4,20 @@ if room == rank_room or room == timesuproom or !viewable
 if gms_other_get_real(player_id, "room") != scr_gms_room()
 	exit;
 
-// pln room color
+// player color
 var col = image_blend;
+
+// coming out of gate, dye white instead of black
+var alp = image_alpha;
+/*
+if (place_meeting(x, y, obj_exitgate) or place_meeting(x, y, obj_startgate)) && col != c_white
+{
+	alp *= color_get_value(col) / 255;
+	col = c_white;
+}
+*/
+
+// pln hub color
 if room == hub_roomPLN
 	col = merge_colour(col, c_black, 0.4);
 
@@ -55,7 +67,7 @@ else
 			draw_sprite_ext(baddiegrabbed, baddiegrabbedimg, gms_other_get_real(player_id, "grabenemyx"), gms_other_get_real(player_id, "grabenemyy"), (baddiegrabbed == spr_punchball ? abs(xscale) : -xscale), yscale, 1, c_white, 0.5);
 		}
 	}
-
+	
 	// ladder
 	if gms_other_get_real(player_id, "hooked")
 	{
@@ -99,7 +111,7 @@ else
 				petframe -= sprite_get_number(petspr);
 		}
 		
-		draw_sprite_ext(petspr, petframe, petx, pety, petxscale, 1, 0, pausedcolor, image_alpha);
+		draw_sprite_ext(petspr, petframe, petx, pety, petxscale, 1, 0, pausedcolor, alp);
 	}
 	
 	// determine some things, then draw
@@ -108,7 +120,7 @@ else
 		sprit = spr_player_idle;
 	
 	var _img = image_index;
-	if state != states.cheeseball && state != states.cotton
+	if state != states.cheeseball
 	{
 		if spr_palette == spr_peppalette && paletteselect == 17
 			sprit = spr_player_petah;
@@ -117,7 +129,7 @@ else
 		if spr_palette == spr_snickpalette && paletteselect == 13
 			sprit = spr_sbombic;
 		
-		if spr_palette == spr_noisepalette && paletteselect == 18
+		if spr_palette == spr_noisepalette && paletteselect == 17
 		&& !(instance_exists(obj_pause) && obj_pause.pause)
 		{
 			_img = 0;
@@ -144,13 +156,13 @@ else
 	if !flash
 	{
 		if is_real(spr_palette) && spr_palette != 0 && sprite_exists(spr_palette)
-		&& (state != states.cheeseball or sprite_index == spr_playerSP_cheeseball) && state != states.cotton && (state != states.ghost or (sprite_index == spr_player_ghostend && image_index >= 12) or spr_palette == spr_noisepalette)
+		&& (state != states.cheeseball or sprite_index == spr_playerSP_cheeseball) && (state != states.ghost or (sprite_index == spr_player_ghostend && image_index >= 12) or spr_palette == spr_noisepalette)
 			pal_swap_set(spr_palette, paletteselect, false);
 	}
 	else
 		draw_set_flash(true);
 	
-	draw_sprite_ext(sprit, _img, x, y, xscale, yscale, img_angle, pausedcolor, image_alpha);
+	draw_sprite_ext(sprit, _img, x, y, xscale, yscale, img_angle, pausedcolor, alp);
 	pal_swap_reset();
 	
 	draw_set_flash(false);
@@ -164,7 +176,7 @@ else
 			if shieldframe >= sprite_get_number(spr_pizzashield)
 				shieldframe = 0;
 		}
-		draw_sprite_ext(spr_pizzashield, shieldframe, x, y, xscale, yscale, image_angle, pausedcolor, image_alpha);
+		draw_sprite_ext(spr_pizzashield, shieldframe, x, y, xscale, yscale, image_angle, pausedcolor, alp);
 	}
 	
 	// cowboy hat
@@ -179,7 +191,7 @@ else
 		}
 		
 		var yplus = lengthdir_y(-sprite_get_bbox_top(sprit) + 40, img_angle + 90);
-		draw_sprite_ext(cowboy, cowboyframe, x, y + yplus, xscale, yscale, img_angle, pausedcolor, image_alpha);
+		draw_sprite_ext(cowboy, cowboyframe, x, y + yplus, xscale, yscale, img_angle, pausedcolor, alp);
 	}
 	
 	// treasure
@@ -208,12 +220,14 @@ else
 var typingy;
 if global.shownames
 {
+	// get the player's name
 	var nickname = gms_other_get_string(player_id, "nickname");
 	if nickname == ""
 		nickname = name;
 	if global.streamer
 		nickname = "Player" + string(player_id);
 	
+	// apply the color
 	if gms_other_isowner(player_id)
 		draw_set_colour(make_colour_hsv(color_get_hue(c_owner), color_get_saturation(c_owner), color_get_value(c_owner) * (color_get_value(col) / 255)));
 	else if gms_other_admin_rights(player_id)
@@ -223,15 +237,21 @@ if global.shownames
 	else
 		draw_set_colour(col);
 	
+	// setup
 	draw_set_font(global.font_small);
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_top);
-	var yy = clamp(sprite_get_bbox_top(sprit) + y - 75, 0, room_height - 16);
-	if room == custom_lvl_room
+	draw_set_alpha(alp);
+	
+	var yy = clamp(sprite_get_bbox_top(sprit)+ y - 75, 0, room_height - 16);
+	if room == custom_lvl_room // ignore room boundaries in a custom level
 		yy = sprite_get_bbox_top(sprit) + y - 75;
 	
+	// draw it
 	draw_text(x, yy, nickname);
 	
+	// reset
+	draw_set_alpha(1);
 	draw_set_colour(c_white);
 	typingy = sprite_get_bbox_top(sprit) + y - 95;
 }

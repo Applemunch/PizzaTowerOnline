@@ -11,8 +11,8 @@
     "name": "audiogroup_default",
     "path": "audiogroups/audiogroup_default",
   },
-  "soundFile": "mu_pizzyentrance.mp3",
-  "duration": 207.02037,
+  "soundFile": "mu_pizzyentrance.wav",
+  "duration": 221.922058,
   "parent": {
     "name": "music",
     "path": "folders/Sounds/music.yy",

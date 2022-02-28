@@ -6,6 +6,7 @@ function scr_player_handstandjump()
 		#region pizzelle golf grab
 		
 		landAnim = false;
+		
 		mach2 = 35;
 		hsp = xscale * movespeed;
 		vsp = 0;
@@ -13,11 +14,7 @@ function scr_player_handstandjump()
 		dir = xscale;
 		
 		move = key_left + key_right;
-		
-		//if image_index <= image_number - 1
-			movespeed = 11;
-		//else
-			movespeed -= 1;
+		movespeed = 10;
 		
 		if move != xscale && move != 0
 		{
@@ -27,7 +24,7 @@ function scr_player_handstandjump()
 				image_index = 0;
 				sprite_index = spr_suplexcancel;
 				jumpAnim = true;
-				grav = 0.5;
+				grav = basegrav;
 				state = states.jump;
 			}
 		}
@@ -41,13 +38,13 @@ function scr_player_handstandjump()
 			dir = predir;
 			
 			image_speed = 0.35
-			grav = 0.5
+			grav = basegrav
 		}
 	
 		//Crouchslide
 		if key_down && grounded && vsp >= 0
 		{
-			grav = 0.5
+			grav = basegrav
 			sprite_index = spr_crouchslip
 				
 			scr_soundeffect(sfx_suplexdashSP);
@@ -114,27 +111,27 @@ function scr_player_handstandjump()
 				image_index = 0;
 				sprite_index = spr_suplexcancel;
 				jumpAnim = true;
-				grav = 0.5;
+				grav = basegrav;
 				state = states.jump;
 				suplexmove = false;
 			}
 			exit;
 		}
 		
-		if (floor(image_index) >= image_number - 1 or ((sprite_index == spr_suplexdashjump or sprite_index == spr_suplexdashjumpstart) && !scr_slope())) && grounded
+		if (floor(image_index) >= image_number - 1 or ((sprite_index == spr_suplexdashjump or sprite_index == spr_suplexdashjumpstart) && !scr_slope())) && (grounded && vsp >= 0)
 		{
 			if (!key_attack or character == "N") && vsp >= 0
 			{
 				image_speed = 0.35
 				state = states.normal
-				grav = 0.5
+				grav = basegrav
 			}
 
 			if key_attack && (!(character == "N" && noisetype == 0) && character != "S")
 			{
 				image_speed = 0.35
 				state = states.mach2
-				grav = 0.5
+				grav = basegrav
 			}
 		}
 
@@ -144,7 +141,7 @@ function scr_player_handstandjump()
 		//Crouchslide
 		if key_down && grounded && vsp >= 0 && character != "S"
 		{
-			grav = 0.5
+			grav = basegrav
 			if character == "P" && global.gameplay != 0
 				sprite_index = spr_player_breakdancesuper
 			else
@@ -290,7 +287,7 @@ function scr_player_handstandjump()
 		ledge_bump();
 		if scr_solid(x + xscale, y) && (!place_meeting(x + xscale, y, obj_slope) or scr_solidwall(x + xscale, y) or scr_solidwall(x, y - 1))
 		{
-			grav = 0.5
+			grav = basegrav
 			movespeed = 0
 			vsp = -3
 			mach2 = 0

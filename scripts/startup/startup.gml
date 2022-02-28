@@ -144,11 +144,12 @@ function offline_travel()
 	if !repaintjokebuild
 		instance_create(0, 0, obj_wc);
 	
-	//scr_soundeffect(sfx_collecttoppin);
-	with instance_create(x,y,obj_fadeout)
+	instance_create(x, y, obj_fadeout)
+	with obj_player
 	{
-		obj_player1.targetRoom = hub_room1
-		obj_player1.state = states.normal
+		targetDoor = "A";
+		targetRoom = hub_room1;
+		state = states.door;
 	}
 }
 

@@ -101,15 +101,9 @@ function scr_player_mach2()
 			movespeed = 8;
 		if movespeed < 12
 		{
-			/*
-			if character == "SP"
-				movespeed += 0.075
-			else
-			*/
-				movespeed += 0.1
-
-			if movespeed < 8
-				movespeed += 1
+			if scr_checkskin(checkskin.n_hardoween)
+				movespeed += 0.1;
+			movespeed += 0.1
 		}
 		else
 		{
@@ -251,19 +245,19 @@ function scr_player_mach2()
 	}
 	
 	//Vigilante revolver
-	if key_slap2 && character = "V"
+	if key_slap2 && character == "V"
 	{
 		vsp = -5
 		state = states.revolver	
 		image_index = 0
 		sprite_index = spr_playerV_airrevolver
 		image_index = 0
-		instance_create(x+image_xscale*20,y+20,obj_shotgunbullet)
+		instance_create(x + xscale * 20, y + 20, obj_shotgunbullet)
 		scr_soundeffect(sfx_killingblow)
 	}
 	
 	//Vigilante Dynamite
-	if key_shoot2 && character = "V" && !instance_exists(obj_dynamite)
+	if key_shoot2 && character == "V" && !instance_exists(obj_dynamite)
 	{
 		vsp = -5
 

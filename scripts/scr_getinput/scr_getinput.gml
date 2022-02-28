@@ -94,9 +94,9 @@ function scr_getinput(force = false)
 		
 		if (gamepad_axis_value(cont, gp_axislh) > deadzone or gamepad_axis_value(cont, gp_axislh) < -deadzone)
 		or (gamepad_axis_value(cont, gp_axislv) > deadzone or gamepad_axis_value(cont, gp_axislv) < -deadzone)
-			stickpressed = true
+			stickpressed = true;
 		else
-			stickpressed = false
+			stickpressed = false;
 	}
 	else
 		stickpressed = true;

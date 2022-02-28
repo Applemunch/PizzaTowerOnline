@@ -11,8 +11,8 @@
     "name": "audiogroup_default",
     "path": "audiogroups/audiogroup_default",
   },
-  "soundFile": "mu_ranksuck.wav",
-  "duration": 38.15617,
+  "soundFile": "mu_ranksuck.ogg",
+  "duration": 29.5384579,
   "parent": {
     "name": "music",
     "path": "folders/Sounds/music.yy",

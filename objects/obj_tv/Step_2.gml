@@ -82,10 +82,6 @@ if global.gameplay == 0
 		alpha = 1
 
 	//TV
-
-
-
-
 	//Rank milestone
 	if instance_exists(obj_itspizzatime)
 	{
@@ -414,22 +410,26 @@ else
 			            case states.golf:
 			                idlespr = spr_tv_golf;
 			                break;
-			
+						
 			            case states.rocket:
 			                idlespr = spr_tv_rocket;
 			                break;
-			
+						
 			            case states.cheeseball:
 			                idlespr = spr_tv_cheeseball;
 			                break;
-			
+						
+			            case states.cotton:
+			                idlespr = spr_tv_cotton;
+			                break;
+						
 			            case states.cheesepep:
 			            case states.cheesepepstick:
 			            case states.cheesepepstickside:
 			            case states.cheesepepstickup:
 			                idlespr = spr_tv_cheesepep
 			                break
-			
+						
 			            case states.boxxedpep:
 			                idlespr = spr_tv_boxxedpep
 			                break
@@ -580,33 +580,8 @@ else
 				else
 					sprite_index = spr_tv_open;
 			}
-			
-			if animset == spr_tv_placeholder
-			{
-				idleanim--;
-				if idleanim <= 0
-				{
-					if choose(true, false, false)
-					{
-						if image_index < 9
-						{
-							image_speed = 0;
-							image_index = irandom_range(9, image_number - 1);
-						}
-						else if idleanim <= -irandom_range(4, 8)
-						{
-							image_index = 0;
-							idleanim = 800 + irandom_range(0, 2000);
-						}
-					}
-					else
-						idleanim = 400;
-				}
-				else if image_index >= 9
-					image_index -= 9;
-			}
 	        break;
-	
+		
 	    case states.transitioncutscene:
 			if animset == spr_tv_off
 				animset = spr_tv_open;

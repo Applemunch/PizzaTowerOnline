@@ -28,7 +28,7 @@ if room == golf_room1
 {
 	global.srank = 4500;
 	if global.gameplay != 0
-		global.srank = 5500;
+		global.srank = 3200;
 }
 if room == farm_1
 	global.srank = 10300

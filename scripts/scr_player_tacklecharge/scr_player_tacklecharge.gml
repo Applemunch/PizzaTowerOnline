@@ -105,7 +105,7 @@ function scr_player_tacklecharge()
 					scr_soundeffect(sfx_hitenemy)
 						
 					grabbed = false
-					grav = 0.5
+					grav = basegrav
 					instance_create(x, y, obj_bangeffect)
 					repeat 3
 					{

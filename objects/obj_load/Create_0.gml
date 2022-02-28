@@ -18,7 +18,7 @@ pal_swap_init_system(shd_pal_swapper, true);
 global.bigfont = font_add_sprite_ext((repaintjokebuild ? spr_font_PP : spr_font), "ABCDEFGHIJKLMNOPQRSTUVWXYZ!.1234567890:_-?", true, 0)
 loadfont = font_add_sprite_ext(spr_font, "ABCDEFGHIJKLMNOPQRSTUVWXYZ!.1234567890:_-?", true, 0)
 global.smallfont = font_add_sprite_ext(spr_smallerfont, "ABCDEFGHIJKLMNOPQRSTUVWXYZ!.:?1234567890▯'", true, 0)
-global.font_small = font_add_sprite_ext(spr_smallfont, "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!._1234567890:;?▯|*/',\"()=-+@█%~ÁÉÍÓÚáéíóúÑñ[]", true, -2)
+global.font_small = font_add_sprite_ext(spr_smallfont, "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!._1234567890:;?▯|*/',\"()=-+@█%~ÁÉÍÓÚáéíóúÑñ[]<>$", true, -2)
 global.smallnumber = font_add_sprite_ext(spr_smallnumber, "1234567890-.", true, 0)
 global.collectfont = font_add_sprite_ext(spr_font_collect, "0123456789.-", true, 0)
 global.candyfont = font_add_sprite_ext(spr_font_candycollect, "0123456789", true, 0)

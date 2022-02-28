@@ -1,3 +1,4 @@
+/// @description play music
 alarm[0] = -1;
 
 if !playmusic

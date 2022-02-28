@@ -156,7 +156,7 @@ if instance_exists(baddieID) && place_meeting(x, y, obj_player1) && !obj_player1
 					if global.gameplay == 0
 					{
 						hp = 0;
-						scr_throwenemy();
+						scr_throwenemy(id);
 					}
 					else
 					{

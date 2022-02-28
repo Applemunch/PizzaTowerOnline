@@ -1,5 +1,8 @@
 followqueue = [];
 
+lerpx = undefined;
+lerpy = undefined;
+
 var target = obj_player;
 if instance_exists(target)
 {
@@ -12,7 +15,4 @@ if instance_exists(target)
 	
 	x = target.x + xoffset * pos;
 	y = target.y;
-	
-	lerpx = x;
-	lerpy = y;
 }

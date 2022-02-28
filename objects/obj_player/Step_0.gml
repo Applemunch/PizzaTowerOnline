@@ -1,4 +1,5 @@
-if room == rm_editor {
+if room == rm_editor
+{
 	visible = false;
 	exit;
 }
@@ -150,6 +151,12 @@ switch state
 }
 global.coop = false;
 
+// hardoween noise gravity
+if scr_checkskin(checkskin.n_hardoween)
+	basegrav = 0.4;
+else
+	basegrav = 0.5;
+
 // invhurt
 if global.gameplay != 0
 {
@@ -199,23 +206,9 @@ if pizzapepper > 0
 	angry = true
 	anger = 1
 	
-	/*
-	if character = "P"
-		paletteselect = 2
-	else
-		paletteselect = 1
-	*/
-	
 	pizzapepper--
 	if pizzapepper <= 0
 	{
-		/*
-		if character = "P"
-			paletteselect = 1
-		else
-			paletteselect = 0
-		*/
-		
 		angry = false;
 		anger = 0;
 	}
@@ -235,7 +228,7 @@ if ((global.combo >= 3 && global.gameplay == 0) or (supercharge == 4 && global.g
 	else
 		anger = 100
 }
-if global.combotime > 0
+if global.combotime > 0 && !cutscene
     global.combotime -= 0.5;
 if global.combotime <= 0 && state != states.backbreaker
 {
@@ -248,7 +241,7 @@ if global.combotime <= 0 && state != states.backbreaker
 //Supercharged effect
 if !instance_exists(superchargedeffectid) && supercharged
 {
-	with instance_create(x,y,obj_superchargeeffect)
+	with instance_create(x, y, obj_superchargeeffect)
 	{
 		playerid = other.object_index	
 		other.superchargedeffectid = id
@@ -278,7 +271,7 @@ if state != states.pogo && state != states.backbreaker
 scr_playersounds()
 
 //Reset doublejump for Noise
-if grounded
+if grounded && vsp >= 0
 	doublejump = false
 
 //Jetpack flash
@@ -346,10 +339,10 @@ if (global.playerhealth <= 0 && state != states.gameover)
 	state = states.gameover
 }
 
+// reset from checkpoint
 if state == states.gameover && y > room_height * 2
 {
 	room = global.checkpointroom
-	
 	if global.checkpointroom == editor_entrance
 	{
 		obj_onlinemenu.menu = menutypes.leveldetails;
@@ -479,28 +472,31 @@ if anger > 0
 else
 	angry = false
 
-//Stop winding up
+// Stop winding up
 if sprite_index == spr_winding && state != states.normal 
 	windingAnim = 0
 
 if state != states.grab && state != states.grabbed
 	swingdingbuffer = 0
 
-//vomit anim
-if sprite_index = spr_player_idlevomit && image_index > 28 && image_index < 43
+// vomit anim
+if sprite_index == spr_player_idlevomit && image_index > 28 && image_index < 43
+	instance_create(x + random_range(-5, 5), y + 46, obj_vomit)
+
+if sprite_index == spr_player_idlevomitblood && image_index > 28 && image_index < 43
 {
-instance_create(x+random_range(-5,5), y+ 46, obj_vomit)
+	with instance_create(x + random_range(-5, 5), y + 46, obj_vomit)
+		sprite_index = spr_vomit2
 }
 
-if sprite_index = spr_player_idlevomitblood && image_index > 28 && image_index < 43
+// Sweat
+if global.playerhealth <= 30 && state == states.normal
 {
-with instance_create(x+random_range(-5,5), y+ 46, obj_vomit)
-sprite_index = spr_vomit2
+	if !instance_exists(obj_sweat)
+		instance_create(x, y, obj_sweat);
 }
-
-//Sweat
-if global.playerhealth <= 30 && !instance_exists(obj_sweat) && obj_player.state = states.normal
-instance_create(x,y,obj_sweat)
+else
+	instance_destroy(obj_sweat);
 
 //Angry cloud
 if (angry or global.stylethreshold >= 2) && !instance_exists(angryeffectid)
@@ -514,14 +510,16 @@ if (angry or global.stylethreshold >= 2) && !instance_exists(angryeffectid)
 }
 
 //Input buffer jumping
-if (input_buffer_jump < 8)
-input_buffer_jump++
+if input_buffer_jump < 8
+	input_buffer_jump++
+
 //Input buffer second jumping
-if (input_buffer_secondjump < 8)
-input_buffer_secondjump++
+if input_buffer_secondjump < 8
+	input_buffer_secondjump++
+
 //Input buffer high jumping
-if (input_buffer_highjump < 8)
-input_buffer_highjump++
+if input_buffer_highjump < 8
+	input_buffer_highjump++
 
 if shoot_buffer > 0
     shoot_buffer--;
@@ -581,43 +579,54 @@ if state != states.normal
 	dashdust = false
 }
 
-if state != states.mach1 && state != states.jump && state != states.hookshot  && state != states.handstandjump && state != states.normal && state != states.mach2 && state != states.mach3 && state != states.freefallprep && state != states.knightpep && state != states.shotgun && state != states.knightpepslopes
+// reset momentum
+if state != states.mach1 && state != states.jump && state != states.hookshot && state != states.handstandjump && state != states.normal && state != states.mach2 && state != states.mach3 && state != states.freefallprep && state != states.knightpep && state != states.shotgun && state != states.knightpepslopes && state != states.faceplant
 	momentum = false
 
+// reset super side jump speed?
 if state != states.Sjump && state != states.Sjumpprep
 	a = 0
 
+// reset face stomp anim
 if state != states.facestomp
 	facestompAnim = false
 
+// reset super slam time
 if state != states.freefall && state != states.facestomp && state != states.superslam && state != states.freefallland
 	superslam = 0
 
+// reset mach punch anim
 if state != states.mach2
 	machpunchAnim = false
 
+// ladder buffer
 if state != states.jump && state != states.ladder
 	ladderbuffer = 0
-else if ladderbuffer > 0 //Ladder Buffer
-	ladderbuffer --
+else if ladderbuffer > 0
+	ladderbuffer--
 
+// reset stomp
 if state != states.jump
 	stompAnim = false
 
+// reset gravity
 if state != states.grabbing && state != states.barrel && state != states.tumble && state != states.ghost && sprite_index != spr_pmortjump && state != states.cotton
-    grav = 0.5;
+    grav = basegrav;
 else if state == states.barrel or (state == states.tumble && global.gameplay != 0)
     grav = 0.6;
 
+// reset shot variable
 if state != states.pistol && state != states.normal
 	shot = false
 
+// reset mort
 if mort
 {
     if state != states.normal && state != states.jump && state != states.handstandjump && state != states.pistol
         mort = false;
 }
 
+// reset black fade
 if state != states.comingoutdoor && c < 255
 {
 	c = 255;
@@ -697,7 +706,7 @@ if y > room_height + 200 && !cutscene
 && room != custom_lvl_room && room != rank_room && canfall
 && state != states.gameover && state != states.comingoutdoor && visible
 {
-	grav = 0.5;
+	grav = basegrav;
 	
 	x = roomstartx;
 	y = roomstarty;
@@ -744,7 +753,7 @@ else
 
 // cutscene
 cutscene = (
-	state == states.gottreasure or sprite_index = spr_knightpepstart or sprite_index = spr_knightpepthunder
+	state == states.gottreasure or sprite_index == spr_knightpepstart or sprite_index == spr_knightpepthunder
 	or state == states.keyget or state == states.door or state == states.ejected
 	or state == states.victory or state == states.comingoutdoor or state == states.gameover
 )
@@ -764,7 +773,8 @@ else if instance_exists(obj_uparrow)
 	instance_destroy(obj_uparrow);
  
 // speed lines
-if state == states.mach2 && !instance_exists(speedlineseffectid) 
+if !instance_exists(speedlineseffectid)
+&& (state == states.mach2 or sprite_index == spr_cotton_maxrun)
 {
 	with instance_create(x, y, obj_speedlines)
 	{
@@ -772,6 +782,8 @@ if state == states.mach2 && !instance_exists(speedlineseffectid)
 		other.speedlineseffectid = id
 	}
 }
+else if instance_exists(speedlineseffectid)
+	instance_destroy(speedlineseffectid);
 
 // collision
 scr_collide_destructibles();

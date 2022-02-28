@@ -28,16 +28,10 @@ paldesc = "";
 if !locked
 	paldesc = ((sel[0] < array_length(selarray) && array_length(selarray[sel[0]]) >= 3) ? selarray[sel[0]][2] : "loyjqz please add details");
 
-draw_set_font(titlefont);
 if sel[0] == 2 // SPAMTON
 {
+	draw_set_font(titlefont);
 	draw_text_outline((960 / 2) + random_range(-1, 1), 540 - 100, palname, c_black, 1, 0, 2);
 	draw_set_font(descfont);
 	draw_text_outline(960 / 2, 540 - 64, paldesc, c_black, 1.5);
-}
-else
-{
-	draw_text((960 / 2) + random_range(-1, 1), 540 - 100, palname);
-	draw_set_font(descfont);
-	draw_text(960 / 2, 540 - 64, paldesc);
 }

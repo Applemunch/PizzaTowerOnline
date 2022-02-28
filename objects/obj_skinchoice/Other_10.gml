@@ -145,7 +145,7 @@ switch sel[1]
 			["ENA", "Cheese and rice, Moony!"],
 			["COTTON CANDY", "Not to say something else."],
 			["GREEN APPLE", "Why is this the least favorite candy flavor?"],
-			["GRAPE SODA", "There's more purple than actual soda in this."],
+			["SECRET", "Lookie! You've found a pretty sweet surprise."],
 			["STUPID RAT", "Their beloved, I suppose."],
 			["PASTEL", "Soft on the eyes!"],
 			["BURNT", "You fucking DONKEY."],
@@ -156,12 +156,12 @@ switch sel[1]
 			["MASSACRE", "SUGARY SPIRE 2: The Quest for Diabetes"],
 			["RIVALS", "Did we find a coder yet?"],
 			["OLD SCHOOL", "Also known as \"grayscale\"."],
-			["ZOMBIFIED", "Uhh... brains, probably."],
+			["ZOMBIFIED", "Ricochet, eh? I sense some inspiration-ception."],
 			["FORESTATION", "Made of sugarcane plants."],
-			["LAMDA", "What's the reference I don't get it"],
+			["LAMDA", "I have nothing to say about this."],
 			["GOLDEN", "Unlocks the ability to SHINE, which is bound to no key."],
-			["GNOME WIZARD", "Despite being a wizard, he has no redeeming qualities."],	
-		];
+			["GNOME WIZARD", "Despite being a wizard, he has no redeeming qualities."],
+		]
 		if global.streamer
 		{
 			selarray[16][1] = "Very original name there.";

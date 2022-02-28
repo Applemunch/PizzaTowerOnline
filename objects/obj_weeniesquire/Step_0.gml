@@ -9,18 +9,18 @@ else if stun = true && grounded = true
 hsp = 0
 
 
-if stun = false && chargebuffer > 0
-chargebuffer --
+if !stun && chargebuffer > 0
+	chargebuffer--;
 
-if boundbox = false
+if !boundbox
 {
-with instance_create(x,y,obj_baddiecollisionboxother)
-{
-sprite_index = other.sprite_index
-mask_index = sprite_index
-baddieID = other.id
-other.boundbox = true
-}
+	with instance_create(x,y,obj_baddiecollisionboxother)
+	{
+		sprite_index = other.sprite_index
+		mask_index = sprite_index
+		baddieID = other.id
+		other.boundbox = true
+	}
 }
 
 

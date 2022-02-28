@@ -1,4 +1,11 @@
 {
+  "ConfigValues": {
+    "debug": {"textureGroupId":"{\"name\":\"Default\",\"path\":\"texturegroups/Default\"}",},
+  },
+  "textureGroupId": {
+    "name": "Default",
+    "path": "texturegroups/Default",
+  },
   "bboxMode": 0,
   "collisionKind": 1,
   "type": 0,
@@ -16,10 +23,6 @@
   "For3D": false,
   "width": 100,
   "height": 100,
-  "textureGroupId": {
-    "name": "Default",
-    "path": "texturegroups/Default",
-  },
   "swatchColours": null,
   "gridX": 0,
   "gridY": 0,
@@ -70,7 +73,7 @@
   "nineSlice": null,
   "parent": {
     "name": "particle",
-    "path": "folders/Sprites/players/pizzelle/object/particle.yy",
+    "path": "folders/Sprites/sugary spire/particle.yy",
   },
   "resourceVersion": "1.0",
   "name": "spr_lock_ss",

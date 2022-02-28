@@ -7,7 +7,11 @@ if thrown && state != states.hit
 	with obj_destructibles
 	{
 		if place_meeting(x - other.hsp, y, other)
+		{
+			if scr_stylecheck(2)
+				hsp2 = other.hsp / 2;
 			instance_destroy();
+		}
 	}
 	if abs(hsp) < 24 && grav == 0
 		grav = 0.35;

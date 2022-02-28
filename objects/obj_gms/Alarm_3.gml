@@ -27,11 +27,7 @@ if loadsave
 		if gms_ini_player_exists("hats", i)
 			global.hatunlock[i] = true;
 	}
-
-	/*
-	if gms_ini_player_exists("saveData", "eatery")
-		global.eatery = gms_ini_player_read("saveData", "eatery");
-	*/
+	
 	if gms_ini_player_read("saveData", "customlock") == "P"
 	{
 		with obj_player1
@@ -45,10 +41,11 @@ if loadsave
 	audio_stop_all();
 
 	scr_soundeffect(sfx_collecttoppin);
-	with obj_player1
+	with obj_player
 	{
-		targetRoom = hub_room1
-		state = states.normal
+		targetDoor = "A";
+		targetRoom = hub_room1;
+		state = states.door;
 	}
 	instance_create(x, y, obj_fadeout);
 

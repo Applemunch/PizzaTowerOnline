@@ -1,11 +1,11 @@
 function scr_player_taunt()
 {
-	with obj_player1
+	with obj_player
 	{
 		if (!instance_exists(obj_fadeout) or obj_fadeout.fadein)
 		&& state != states.backbreaker
 		{
-			grav = 0.5;
+			grav = basegrav;
 			
 			taunttimer = 20
 			tauntstoredmovespeed = movespeed

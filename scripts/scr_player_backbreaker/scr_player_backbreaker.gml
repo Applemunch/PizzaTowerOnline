@@ -58,82 +58,11 @@ function scr_player_backbreaker()
 		if noisebombcooldown > 0
 			noisebombcooldown -= 1;
 
-		// change characters
-		/*
-		if key_up2 && noisebombcooldown == 0 && !(instance_exists(obj_snicklevelend) && obj_snicklevelend.image_index > 0)
-		{
-			noisebombcooldown = 15;
-			shotgunAnim = false;
-		
-			if scr_checkskin(checkskin.p_anton)
-			{
-				audio_stop_sound(global.music);
-				with obj_music
-					event_perform(ev_other, ev_room_start);
-			}
-		
-			if character = "P"
-			{
-				character = "N"
-				paletteselect = 0
-			}
-			else if character = "N"
-			{
-				character = "V"
-				paletteselect = 0
-			}
-			else if character = "V"
-			{
-				character = "S"
-				paletteselect = 0
-			}
-			else if character = "S"
-			{
-				character = "P"
-				paletteselect = 1
-			}
-		
-			scr_characterentrance(character);
-	
-			scr_characterspr()
-			scr_changetoppings();
-			scr_soundeffect(sfx_taunt)
-			taunttimer = 20
-			state = states.backbreaker
-	
-			// supertaunt
-			if supercharged && (character == "P" or character == "N")
-			{
-				image_index = 0
-				sprite_index = choose(spr_supertaunt1,spr_supertaunt2,spr_supertaunt3,spr_supertaunt4)
-				tauntstoredstate = states.normal
-			}
-			else
-			{
-				if !supercharged
-					taunttimer = 20
-				image_index = random_range(0,11)
-				sprite_index = spr_taunt	
-				tauntstoredstate = states.normal
-			}
-			instance_create(x,y,obj_taunteffect)	
-		}
-		*/
-
 		// change palette
 		if debug
 		{
 			if key_taunt2 && taunttimer != 20 && !(instance_exists(obj_snicklevelend) && obj_snicklevelend.image_index > 0) && tauntstoredstate == states.normal
 			{
-				/*
-				if paletteselect < pal_swap_get_pal_count(spr_palette) - 1
-					paletteselect += 1
-				else
-					paletteselect = 0;
-				
-				taunttimer = 20
-				*/
-				
 				if instance_exists(obj_skinchoice) == false
 					instance_create(0, 0, obj_skinchoice);
 			}
@@ -251,41 +180,39 @@ function scr_player_backbreaker()
 			parry_inst = noone;
 		}
 	}
-
-
-	//if character = "N" && sprite_index = spr_taunt
-	//{
-	//image_index = (gamepad_button_value(0, gp_shoulderlb) * 20)
-
-
-	//if gamepad_button_value(0, gp_shoulderlb) = 0
-	//state = states.normal
-	//}
-
-
+	
+	// noise dab
+	if sprite_index == spr_playerN_dab
+	{
+		if global.cont <= -1 or gamepad_button_value(global.cont, gp_shoulderlb) == 0
+			state = states.normal;
+		else
+			image_index = gamepad_button_value(global.cont, gp_shoulderlb) * 20;
+	}
+	
 	//Eat spag
-	if floor(image_index) = image_number -1 && sprite_index = spr_player_eatspaghetti
+	if floor(image_index) >= image_number - 1 && sprite_index == spr_player_eatspaghetti
 		state = states.normal
 	
 	//Throw bomb
-	if floor(image_index) = image_number -1 && sprite_index = spr_player_throw
+	if floor(image_index) >= image_number - 1 && sprite_index == spr_player_throw
 		state = states.normal
 	
 	//Level intro
-	if floor(image_index) = image_number -1 && sprite_index = spr_Timesup && place_meeting(x,y,obj_exitgate)
+	if floor(image_index) = image_number - 1 && sprite_index == spr_Timesup && place_meeting(x, y, obj_exitgate)
 		state = states.normal
 
 	//Ball goal
-	if floor(image_index) = image_number -1 && (sprite_index = spr_player_levelcomplete or sprite_index = spr_victory)
+	if floor(image_index) = image_number - 1 && (sprite_index == spr_player_levelcomplete or sprite_index == spr_victory)
 		state = states.normal
 	
 	//Phone
-	if key_jump && sprite_index = spr_player_phoneidle
+	if key_jump && sprite_index == spr_player_phoneidle
 	{
 		global.panic = true
 		sprite_index = spr_bossintro
 		image_index = 0
-		with instance_create(x,y,obj_debris)
+		with instance_create(x, y, obj_debris)
 		{
 			image_index = 0
 			sprite_index = spr_phonedebris
@@ -293,6 +220,6 @@ function scr_player_backbreaker()
 	}
 
 	//Scream at boss
-	if sprite_index = spr_bossintro && floor(image_index) = image_number - 1
+	if sprite_index == spr_bossintro && floor(image_index) >= image_number - 1
 		state = states.normal
 }

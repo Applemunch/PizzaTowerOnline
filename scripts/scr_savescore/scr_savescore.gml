@@ -128,6 +128,7 @@ function endlevel()
 	else if global.modifier == mods.no_toppings
 	{
 		if string_endswith(string_letters(room_get_name(room)), "treasure")
+		or global.gameplay == 0
 			global.rank = "s";
 		else
 			global.rank = "a";

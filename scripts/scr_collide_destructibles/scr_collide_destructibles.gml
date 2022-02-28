@@ -61,17 +61,17 @@ function scr_collide_destructibles()
 								
 								if character != "N"
 								{
-									instance_create(x + image_xscale * 20, y + 20, obj_shotgunbullet);
-									with instance_create(x + image_xscale * 20, y + 20, obj_shotgunbullet)
+									instance_create(x + xscale * 20, y + 20, obj_shotgunbullet);
+									with instance_create(x + xscale * 20, y + 20, obj_shotgunbullet)
 										spdh = 4;
-									with instance_create(x + image_xscale * 20, y + 20, obj_shotgunbullet)
+									with instance_create(x + xscale * 20, y + 20, obj_shotgunbullet)
 										spdh = -4;
 								}
 							}
 						}
 					}
 					if scr_stylecheck(2)
-						hsp2 = other.hsp / 3;
+						hsp2 = other.hsp / 2;
 					instance_destroy();
 				}
 				
@@ -97,7 +97,7 @@ function scr_collide_destructibles()
 		}
 		
 		// Destroy from under
-		if vsp <= 0.5 && (state == states.jump or state == states.pogo or state == states.climbwall or state == states.fireass or state == states.Sjump or state == states.mach2 or state == states.mach3 or state == states.punch)
+		if vsp <= 0.5 && (state == states.jump or state == states.pogo or state == states.climbwall or state == states.fireass or state == states.Sjump or state == states.mach1 or state == states.mach2 or state == states.mach3 or state == states.punch)
 		{
 			var block = instance_place(x, y - 2, obj_destructibles);
 			if block

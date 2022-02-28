@@ -15,7 +15,7 @@ sel = [0, 0];
 selmin = 1;
 selmax = 0;
 
-stickpressed = false;
+stickpressed = true;
 locked = false;
 
 selarray = [];

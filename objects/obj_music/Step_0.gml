@@ -60,11 +60,11 @@ if !scr_stylecheck(0, 2)
 var musplay = -1;
 	
 if global.panic && !(room == custom_lvl_room && global.disableescapemusic)
-&& !audio_is_playing(mu_war)
+&& !audio_is_playing(mu_war) && !audio_is_playing(mu_war_pc)
 && ((string_letters(roomname) != "dragonlair" && string_letters(roomname) != "grinch") or scr_checkskin(checkskin.p_anton))
 {
 	// war level
-	if audio_is_playing(mu_warintro)
+	if audio_is_playing(mu_warintro) or audio_is_playing(mu_warintro_pc)
 		musplay = mu_war;
 	else
 	{

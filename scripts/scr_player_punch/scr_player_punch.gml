@@ -100,7 +100,7 @@ function scr_player_punch()
 				&& !place_meeting(x + xscale, y, obj_destructibles)
 			    {
 			        scr_soundeffect(sfx_bumpwall)
-			        grav = 0.5
+			        grav = basegrav
 			        movespeed = 0
 			        state = states.bump
 			        hsp = 2.5 * -xscale
@@ -120,10 +120,7 @@ function scr_player_punch()
 			break
 	
 	case "S":
-		
 		move = key_left + key_right;
-
-
 		if grounded
 		{
 			//Turn
@@ -274,21 +271,21 @@ function scr_player_punch()
 		sprite_index = spr_punch
 		image_speed = 0.35
 		break
+		
+		
 		case "N":
-
+		
 		hsp = xscale * movespeed
 		move = key_left + key_right;
-
+		
 		momentum = true
 		dir = xscale
-
-
-
+		
 		//Jump Stop
 		if (!key_jump2) && jumpstop = false && vsp < 0.5 && stompAnim =false 
 		{
-		vsp /= 10
-		jumpstop = true
+			vsp /= 10
+			jumpstop = true
 		}
 
 		//Noise Bomb
@@ -299,84 +296,76 @@ function scr_player_punch()
 			image_index = 0
 			with instance_create(x+hsp,y,obj_playerbomb)
 			{
-			movespeed = other.movespeed + 2
-			vsp = -5
-			image_xscale = other.xscale
-			if scr_solid(x,y)
-			{
-			x = other.x
-			y = other.y
-			}
+				movespeed = other.movespeed + 2
+				vsp = -5
+				image_xscale = other.xscale
+				if scr_solid(x,y)
+				{
+					x = other.x
+					y = other.y
+				}
 			}
 		}
 
 
 
 		if move != xscale && move != 0
-		state = states.normal
+			state = states.normal
 
-		if floor(image_index) = image_number - 1
-		state =states.normal
+		if floor(image_index) >= image_number - 1
+			state = states.normal
 
 		if movespeed > 0
-		movespeed -= 0.35
+			movespeed -= 0.35
 
 		//Jetpack flash
-		if pogochargeactive = true
+		if pogochargeactive
 		{
-
 			if key_attack2 
-		{
-			scr_soundeffect(sfx_noisewoah)
-		state =states.Sjumpprep
-		image_index = 0
-		if !key_up
-		sprite_index = spr_playerN_jetpackstart
-		else
-		sprite_index = spr_superjumpprep
-		hsp = 0
-		vsp = 0
+			{
+				scr_soundeffect(sfx_noisewoah)
+				state = states.Sjumpprep
+				image_index = 0
+				if !key_up
+					sprite_index = spr_playerN_jetpackstart
+				else
+					sprite_index = spr_superjumpprep
+				hsp = 0
+				vsp = 0
 
+			}
 		}
-	
-		}
+		landAnim = false
 
-
-			landAnim = false
-
-		    //Crouchslide
+		//Crouchslide
 		if key_down && grounded && vsp > 0
 		{
-			grav = 0.5
-		sprite_index = spr_crouchslip
+			grav = basegrav
+			sprite_index = spr_crouchslip
 
-		machhitAnim = false
-		state = states.crouchslide
-		movespeed = 15
+			machhitAnim = false
+			state = states.crouchslide
+			movespeed = 15
 		}
 
 
 		//Input buffer jumping
 		if key_jump
-		{
-		input_buffer_jump = 0
-		}
+			input_buffer_jump = 0
 
 		if (grounded && (input_buffer_jump < 8)) 
 		{
+			scr_soundeffect(sfx_jump)
+			instance_create(x,y,obj_highjumpcloud2)
 
-		scr_soundeffect(sfx_jump)
-		instance_create(x,y,obj_highjumpcloud2)
-
-		vsp = -9
-
+			vsp = -9
 		}
 		
 		//Bump
 	    if scr_solid(x+xscale,y) && !place_meeting(x+sign(hsp),y,obj_slope) && !place_meeting(x+xscale,y,obj_destructibles) 
 	    {
 			scr_soundeffect(sfx_bumpwall)
-			grav = 0.5
+			grav = basegrav
 		    movespeed = 0
 		    state = states.bump
 		    hsp = 2.5 * -xscale
@@ -388,25 +377,22 @@ function scr_player_punch()
 		    instance_create(x+10,y+10,obj_bumpeffect)
 
 	    }
-	
+		
 		//Pogo
-		if key_attack2 && character = "N" &&  pogochargeactive = false
+		if key_attack2 && character == "N" && !pogochargeactive && noisetype == 0
 		{
 			sprite_index = spr_playerN_pogostart
 			image_index = 0
 			state = states.pogo
 			pogospeed = 8
 		}
-	
+		
 		//Effects
-		if !(instance_exists(obj_slidecloud)) && grounded && movespeed > 5
-		with instance_create(x,y,obj_slidecloud)
-		image_xscale = other.xscale
-
-		image_speed=  0.35
-
+		if !instance_exists(obj_slidecloud) && grounded && movespeed > 5
+		with instance_create(x, y, obj_slidecloud)
+			image_xscale = other.xscale
+		
+		image_speed = 0.35
 		break
 	}
-
-
 }

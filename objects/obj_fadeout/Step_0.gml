@@ -10,7 +10,7 @@ if fadealpha > 1
 		{
 			with obj_player1
 			{
-				if place_meeting(x,y,obj_goldendoor)
+				if place_meeting(x, y, obj_goldendoor)
 				{
 					gms_logout();
 					game_restart()
@@ -93,11 +93,11 @@ if !fadein
 else if cont
 	fadealpha -= 0.1
 
-with obj_player1
+with obj_player
 {
-	if other.fadein && (obj_player1.state == states.door or obj_player1.state == states.victory)
+	if other.fadein && (state == states.door or state == states.victory)
 	{
-		if obj_player1.sprite_index == spr_downpizzabox or obj_player1.sprite_index == spr_uppizzabox
+		if sprite_index == spr_downpizzabox or sprite_index == spr_uppizzabox
 			state = states.crouchjump
 		else
 		{
@@ -108,5 +108,5 @@ with obj_player1
 	}
 }
 
-if fadein && fadealpha < 0 
+if fadein && fadealpha <= 0
 	instance_destroy()

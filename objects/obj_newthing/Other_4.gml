@@ -1,22 +1,20 @@
 var act = ((action == NREM || action == NRES || action == NMOV) ? 1 : 0);
-switch action
+if (act == 0 && scr_stylecheck(0))
+or (act == 1 && !scr_stylecheck(0))
 {
-	case NREM:
-	case OREM:
-		if global.gameplay == act
-		{
+	switch action
+	{
+		case NREM:
+		case OREM:
 			with all
 			{
 				if id != other.id && place_meeting(x, y, other)
 					instance_destroy(id, false);
 			}
-		}
-		break;
+			break;
 	
-	case NRES:
-	case ORES:
-		if global.gameplay == act
-		{
+		case NRES:
+		case ORES:
 			with all
 			{
 				if id != other.id && place_meeting(x, y, other)
@@ -33,13 +31,10 @@ switch action
 					image_yscale = sizy;
 				}
 			}
-		}
-		break;
+			break;
 	
-	case NMOV:
-	case OMOV:
-		if global.gameplay == act
-		{
+		case NMOV:
+		case OMOV:
 			with all
 			{
 				if id != other.id && place_meeting(x, y, other)
@@ -56,8 +51,8 @@ switch action
 					y = yy;
 				}
 			}
-		}
-		break;
+			break;
+	}
 }
 
 instance_destroy();

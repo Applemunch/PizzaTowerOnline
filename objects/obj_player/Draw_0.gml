@@ -41,19 +41,33 @@ if state != states.cheeseball && state != states.cotton
 	}
 }
 
+// flashing and apply palette
 if !flash
 {
-	if (state != states.cheeseball or drawspr == spr_playerSP_cheeseball) && state != states.cotton && (state != states.ghost or (drawspr == spr_player_ghostend && image_index >= 12) or spr_palette == spr_noisepalette)
+	if (state != states.cheeseball or drawspr == spr_playerSP_cheeseball) && (state != states.ghost or (drawspr == spr_player_ghostend && image_index >= 12) or spr_palette == spr_noisepalette)
 		pal_swap_set(spr_palette, paletteselect, false);
 }
 else
 	draw_set_flash(true);
 
-draw_sprite_ext(drawspr, _img, x + random_range(-shake, shake), y, xscale, yscale, img_angle, col, image_alpha);
+// coming out of gate, dye white instead of black
+var alp = image_alpha;
+/*
+if (place_meeting(x, y, obj_exitgate) or place_meeting(x, y, obj_startgate)) && col != c_white
+{
+	col = c_white;
+	alp *= c / 255;
+}
+*/
+
+// draw
+draw_sprite_ext(drawspr, _img, x + random_range(-shake, shake), y, xscale, yscale, img_angle, col, alp);
+
+// reset flash and palette
 draw_set_flash(false);
 pal_swap_reset();
 
-// Cowboyhat
+// cowboy hat
 if hatsprite > -1
 {
 	hatimg += sprite_get_speed(hatsprite);
@@ -67,12 +81,12 @@ if hatsprite > -1
 // Draw name
 if instance_exists(obj_gms) && gms_info_isloggedin()
 {
-	draw_set_font(global.font_small);
-	
+	// get player name
 	var nick = (nickname == "" ? gms_self_name() : nickname);
 	if global.streamer
 		nick = "Player" + string(gms_self_playerid());
 	
+	// apply color
 	if gms_self_isowner()
 		draw_set_colour(make_colour_hsv(color_get_hue(c_owner), color_get_saturation(c_owner), color_get_value(c_owner) * (color_get_value(col) / 255)));
 	else if string_lower(gms_self_name()) == "spectralpeic"
@@ -84,15 +98,21 @@ if instance_exists(obj_gms) && gms_info_isloggedin()
 	else
 		draw_set_colour(col);
 	
+	// setup
+	draw_set_font(global.font_small);
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_top);
+	draw_set_alpha(alp);
 	
 	var yy = clamp(sprite_get_bbox_top(drawspr) + y - 75, 0, room_height - 16);
-	if room == custom_lvl_room
+	if room == custom_lvl_room // ignore boundaries in level editor level
 		yy = sprite_get_bbox_top(drawspr) + y - 75;
 	
+	// draw
 	draw_text(x, yy, nick);
 	
+	// reset
+	draw_set_alpha(1);
 	draw_set_halign(fa_left);
 	draw_set_colour(c_white);
 }

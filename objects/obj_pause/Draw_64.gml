@@ -60,26 +60,30 @@ if pause or pausefad == 2
 			pausefad = 0;
 			if sprite_exists(pausebg)
 				sprite_delete(pausebg);
+			exit;
 		}
 	}
 	
 	// draw the background
-	draw_set_colour(c_black);
-	draw_rectangle(0, 0, 960, 540, false);
-	
-	if sprite_exists(pausebg) && check_shaders() && pausefad != 2
+	if pausefad != 2
 	{
-		if pausealpha < 1
-			draw_sprite_ext(pausebg, 0, 0, 0, 0.5, 0.5, 0, c_white, 1 - pausealpha);
-		
-		draw_set_alpha(pausebg);
-		shader_set(shd_blur);
-		shader_set_uniform_f(shader_get_uniform(shd_blur, "size"), 960 / 2 + 32, 540 / 2 + 32, 8);
-		draw_sprite_ext(pausebg, 0, 0, 0, 0.5, 0.5, 0, c_white, pausealpha);
-		shader_reset();
-		
-		draw_set_alpha(pausealpha / 2);
+		draw_set_colour(c_black);
 		draw_rectangle(0, 0, 960, 540, false);
+	
+		if sprite_exists(pausebg) && check_shaders()
+		{
+			if pausealpha < 1
+				draw_sprite_ext(pausebg, 0, 0, 0, 0.5, 0.5, 0, c_white, 1 - pausealpha);
+		
+			draw_set_alpha(pausebg);
+			shader_set(shd_blur);
+			shader_set_uniform_f(shader_get_uniform(shd_blur, "size"), 960 / 2 + 32, 540 / 2 + 32, 8);
+			draw_sprite_ext(pausebg, 0, 0, 0, 0.5, 0.5, 0, c_white, pausealpha);
+			shader_reset();
+		
+			draw_set_alpha(pausealpha / 2);
+			draw_rectangle(0, 0, 960, 540, false);
+		}
 	}
 	
 	// pause

@@ -55,7 +55,7 @@ function scr_player_ghost() {
 		image_alpha = 1
 		hsp = 0
 		image_index = 0
-		grav = 0.5
+		grav = basegrav
 		movespeed = 0
 		sprite_index = spr_ghostend
 		

@@ -1,3 +1,14 @@
+// cottontown generate foreground
+if string_startswith(room_get_name(room), "cotton_")
+&& !string_startswith(room_get_name(room), "cotton_secret")
+{
+	var l = layer_create(-100, "Backgrounds_steamcc3");
+	var l2 = layer_background_create(l, bg_cotton5);
+	layer_background_htiled(l2, true);
+	layer_hspeed(l, -0.75);
+}
+
+// tile layer depths
 if layer_exists("Tiles_1")
 	layer_depth("Tiles_1", 100)
 if layer_exists("Tiles_2")
@@ -16,6 +27,7 @@ if layer_exists("Tiles_2_NEW")
 if layer_exists("Tiles_3_NEW")
 	layer_depth("Tiles_3_NEW", 98)
 
+// setup vars
 bgscrollx = 0;
 bgscrolly = 0;
 

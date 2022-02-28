@@ -22,19 +22,23 @@ function scr_solid_player(argX, argY, slop = true, retcol = false)
 		collide = _solid;
 	
 	// Check if I crossed a tile boundary and landed on a platform
-	if place_meeting(x, y, obj_platform)
+	if place_meeting(x, y, obj_platform) && state != states.ladder
 	{
 		var instlist = ds_list_create();
 		var numplat = instance_place_list(x, y, obj_platform, instlist, true);
-	
-		if y > old_y && bbox_bottom % 16 == 0 && state != states.ladder
+		
+		if y > old_y && bbox_bottom % 16 == 0
 		{
 			for(var i = numplat - 1; i >= 0; i--)
 			{
-				if !place_meeting(x, old_y, instlist[| i]) && place_meeting(x, y, instlist[| i])
+				var inst = instlist[| i];
+				if !place_meeting(x, old_y, inst) && place_meeting(x, y, inst)
 				{
-					collide = instlist[| i];
-					break;
+					if inst.object_index != obj_cottonplatform or state == states.cotton
+					{
+						collide = inst;
+						break;
+					}
 				}
 			}
 		}

@@ -68,12 +68,12 @@ function scr_player_faceplant()
 			state = states.mach2;
 		else
 			state = states.normal;
-		grav = 0.5
+		grav = basegrav;
 	}
 	
 	if key_down && grounded && vsp > 0
 	{
-	    grav = 0.5;
+	    grav = basegrav;
 	    sprite_index = spr_crouchslip;
 	    machhitAnim = 0;
 	    state = states.crouchslide;

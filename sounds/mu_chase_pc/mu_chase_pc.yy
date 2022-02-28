@@ -15,7 +15,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "mu_chase_pc.ogg",
-  "duration": 76.55907,
+  "duration": 174.082947,
   "parent": {
     "name": "pizza castle",
     "path": "folders/Sounds/pizza castle.yy",

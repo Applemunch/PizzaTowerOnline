@@ -3,7 +3,7 @@
     "debug": {"audioGroupId":"{\"name\":\"audiogroup_default\",\"path\":\"audiogroups/audiogroup_default\"}",},
   },
   "conversionMode": 0,
-  "compression": 0,
+  "compression": 1,
   "volume": 0.8,
   "preload": false,
   "bitRate": 128,
@@ -15,7 +15,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "mu_chase.wav",
-  "duration": 158.09,
+  "duration": 174.225128,
   "parent": {
     "name": "music",
     "path": "folders/Sounds/music.yy",

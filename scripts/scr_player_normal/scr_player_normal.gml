@@ -14,9 +14,19 @@ function scr_player_normal()
 		facehurt = false
 	}
 	
+	// on rail
 	var railh = 0, railmeet = instance_place(x, y + 1, obj_railparent);
 	if railmeet then railh = railmeet.spdh;
 	hsp = move * movespeed + railh;
+	
+	// hardoween noise physics
+	var _acc = 0.5;
+	var _msp = 6;
+	if scr_checkskin(checkskin.n_hardoween)
+	{
+		_acc = 0.25;
+		_msp = 8;
+	}
 	
 	//Idles Anim
 	if character != "S"
@@ -26,10 +36,10 @@ function scr_player_normal()
 			xscale = move
 			
 			//Movespeed
-			if movespeed < 6
-		        movespeed += 0.5;
-		    else if floor(movespeed) == 6
-		        movespeed = 6;
+			if movespeed < _msp
+		        movespeed += _acc;
+		    else if floor(movespeed) == _msp
+		        movespeed = _msp;
 			
 			var mv = movespeed / 6;
 			image_speed = lerp(0.35, 0.6, floor(mv) + (floor(frac(mv) * 100) / 100)); // limit to 2 decimal places
@@ -153,9 +163,10 @@ function scr_player_normal()
 			}
 		}
 	}
-	if movespeed > 6
+	if movespeed > _msp
 		movespeed -= 0.1
 	
+	// snick idle animation
 	if character == "S"
 	{
 		if !machslideAnim
@@ -784,18 +795,20 @@ function scr_player_normal()
 			if character == "SP"
 				audio_sound_pitch(stepsnd, 1.5);
 		}
-		instance_create(x,y+43,obj_cloudeffect)
+		instance_create(x, y + 43, obj_cloudeffect)
 		steppy = true
 	}
 
 	if move != 0 && floor(image_index) != step1 && floor(image_index) != step2
 		steppy = false
-
-	//if gamepad_button_value(0, gp_shoulderlb) != 0 && character = "N"
-	//{
-	//state = states.backbreaker
-	//sprite_index = spr_taunt
-	//}
+	
+	// noise dab
+	if global.cont > -1 && gamepad_button_value(global.cont, gp_shoulderlb) != 0 && scr_checkskin(checkskin.n_hardoween)
+	{
+		image_index = 0;
+		state = states.backbreaker;
+		sprite_index = spr_playerN_dab;
+	}
 	
 	//Taunt
 	if key_taunt2 
