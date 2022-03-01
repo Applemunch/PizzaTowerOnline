@@ -1,5 +1,4 @@
-# PizzaTowerOnline
-the entire pizza tower online / network? source code.
-this uses the leaked western v3 source code of pizza tower, so most of the vanilla code looks horrendous.
+# PizzaTowerOnline Optimized
+This uses the code from Pizza Tower Online to make an offline PT game, now with extra optimizations for code!
 
-if you're gonna clone this at least change the game id in the gamemaker server code.
+use patterns
