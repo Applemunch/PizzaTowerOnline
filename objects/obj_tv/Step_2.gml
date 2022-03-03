@@ -182,22 +182,36 @@ if global.gameplay == 0
 		if instance_exists(obj_player1)
 			char = obj_player1.character;
 		
-		if char == "P"
-			character = "PEPPINO"
-		else if char == "N"
-			character = "THE NOISE"
-		else if char == "S"
-			character = "SNICK"
-		else if char == "V"
-			character = "VIGILANTE"
-		else if char == "G"
-			character = "GLADE"
-		else if char == "SP"
-			character = "PIZZELLE"
-		else if char == "M"
-			character = "PEPPERMAN"
-		else
-			character = "NULLINO"
+		switch char
+		{
+			case "P":
+				character = "PEPPINO"
+				break;
+			case "N":
+				character = "THE NOISE"
+				break;
+			case "S":
+				character = "SNICK"
+				break;
+			case "V":
+				character = "VIGILANTA"
+				break;
+			case "G":
+				character = "GLADE"
+				break;
+			case "SP":
+				character = "PIZZELLE"
+				break;
+			case "SN":
+				character = "CREAMPUFF"
+				break;
+			case "M":
+				character = "PEPPERMAN"
+				break;
+			default:
+				character = "NULLINO"
+				break;
+		}
 		
 		message = "YOU HAVE HURT " + string(character) + " " + string(global.hurtmilestone) + " TIMES..."
 		if tvsprite != spr_tvtalking1 && tvsprite != spr_tvtalking2 && tvsprite != spr_tvtalking3 && tvsprite != spr_tvtalking4
