@@ -91,42 +91,33 @@ if global.gameplay == 0
 		showtext = true
 		tvsprite = spr_tvexit
 	}
-
-	else if global.collect >= global.srank && !shownranks && obj_player1.character != "S" && global.srank > 0
+	
+	else if !shownranks && obj_player1.character != "S" && global.srank > 0
 	{
 		image_speed = 0
-		message = "YOU GOT ENOUGH FOR RANK S"
+		switch true
+		{
+			
+			case (global.collect >= global.srank):
+				message = "YOU GOT ENOUGH FOR RANK S"
+				tvsprite = spr_tvranks
+				break;
+			case (global.collect >= global.arank):
+				message = "YOU GOT ENOUGH FOR RANK A"
+				tvsprite = spr_tvranks
+				break;
+			case (global.collect >= global.brank):
+				message = "YOU GOT ENOUGH FOR RANK B"
+				tvsprite = spr_tvranks
+				break;
+			case (global.collect >= global.crank):
+				message = "YOU GOT ENOUGH FOR RANK C"
+				tvsprite = spr_tvranks
+				break;
+		}
 		showtext = true
 		alarm[0] = 200
-		tvsprite = spr_tvranks
 		shownranks = true
-	}
-	else if global.collect >= global.arank && !shownranka && obj_player1.character != "S" && global.srank > 0
-	{
-		image_speed = 0
-		message = "YOU GOT ENOUGH FOR RANK A"
-		showtext = true
-		alarm[0] = 200
-		tvsprite = spr_tvranka
-		shownranka = true
-	}
-	else if global.collect >= global.brank && !shownrankb && obj_player1.character != "S" && global.srank > 0
-	{
-		image_speed = 0
-		message = "YOU GOT ENOUGH FOR RANK B"
-		showtext = true
-		alarm[0] = 200
-		tvsprite = spr_tvrankb
-		shownrankb = true
-	}
-	else if global.collect >= global.crank && !shownrankc && obj_player1.character != "S" && global.srank > 0
-	{
-		image_speed = 0
-		message = "YOU GOT ENOUGH FOR RANK C"
-		showtext = true
-		alarm[0] = 200
-		tvsprite = spr_tvrankc
-		shownrankc = true
 	}
 	else
 	//Clap
